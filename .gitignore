@@ -1,0 +1,25 @@
+# ----------
+# R
+# ----------
+
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+rclass2.Rproj
+
+# ----------
+# TeX
+# ----------
+
+*.tex
+!lectures/beamer_header.tex
+
+# ----------
+# MacOS
+# ---------
+
+*.DS_Store
+.DS_Store
+__MACOSX/
