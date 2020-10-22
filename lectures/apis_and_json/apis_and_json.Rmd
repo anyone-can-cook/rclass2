@@ -1,0 +1,786 @@
+---
+title: "Introduction to APIs and JSON"
+author:
+date: 
+urlcolor: blue
+output: 
+  html_document:
+    toc: TRUE
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    highlight: tango
+    theme: default
+    fig_caption: true
+    #fig_width = 7 #Default width (in inches) for figures
+    #fig_height = 5 #Default height (in inches) for figures
+    #html_preview: TRUE #TRUE to also generate an HTML file for the purpose of locally previewing what the document will look like on GitHub.    
+    df_print: tibble # Method to be used for printing data 
+---
+
+# Introduction to APIs
+Load packages:
+```{r, message=FALSE}
+library(tidyverse)
+#install.packages('rscorecard')
+library(rscorecard)
+library(tidycensus)
+```
+
+Resources used to create this lecture:  
+
+- https://zapier.com/learn/apis/  
+- https://learn.g2.com/api
+- https://medium.com/swlh/api-for-dummies-232a5a48f950 
+- https://blog.hubspot.com/marketing/how-to-use-apis  
+- https://medium.com/@traffordDataLab/querying-apis-in-r-39029b73d5f1  
+- https://github.com/wdoyle42/hoddatasci/blob/master/lessons/07-webscraping.Rmd
+
+
+## What are APIs and why do we use them  
+
+[API video](https://www.youtube.com/watch?v=s7wmiS2mSXY), from MuleSoft
+
+What is an __API__? (from [wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface))
+
+> "An application programming interface (API) is a computing interface to a software component or a system, that defines how other components or systems can use it. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. "  
+
+You might have heard the term __API__ used colloquially at some point. API stands for **A**pplication **P**rogramming **I**nterface. In simple terms, an API allows applications (or systems) to communicate with one another.  
+
+Before getting into the nuts and bolts of APIs, we must first talk about servers.  
+
+- Servers are big computers (with no keyboard, monitor, or mouse) that are connected remotely.  
+- There are a variety of tasks that servers can perform, but the most common for example are web servers which we interact with often when we visit a website.
+
+[![](https://images.zapier.com/storage/photos/73c10a4db7511d53234d673e9b37aaf9.png)](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/)
+
+*Credit: Brian Cooksey ([An introduction to APIs: Chapter 1](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/))*
+
+The image above depicts the workflow of communicating with a __server__. As a __user__, we type something into our web brower using our computer-- also known as the __client__. The __client__ then communicates our request to the __server__ via an __API__. The server returns a website, which we as the user are able to view.  
+
+APIs as messengers  
+
+- Alternatively, you can think of APIs as intermediaries or messengers. Take for example, you go to your favorite restaurant for breakfast. You peruse the menu and decide to order blueberry pancakes. The waiter takes your order and sends it to the kitchen.  
+
+[![](https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png)](https://learn.g2.com/api)
+
+*Credit: Bridget Poetker ([What is an API?](https://learn.g2.com/api))*  
+
+
+- The customer is you, the __client__  
+- The waiter is the __API__, the intermediary between you and the kitchen  
+- The kitchen is the __server__ (it receives the customer's (client) request from the waiter (API) and returns your order of blueberry pancakes)  
+  
+
+# Web Protocols  
+
+Many APIs use HTTP protocol to make requests to the server. HTTP stands for __Hyper-Text Transfer Protocol__ and it is the main protocol used on the web. Similar to how people have social norms and rules to communicate with one another (e.g. listening to someone speak, pausing, facial expressions, etc.) -- an HTTP protocol is a way computers communicate on the web. 
+
+## HTTP Requests   
+
+[HTTP Requests](https://zapier.com/learn/apis/chapter-2-protocols/) work through what is known as a Request-Response Cycle. Similar to our example above, a client sends a request and the server responds to the server's request.  
+
+[![](https://images.zapier.com/storage/photos/9ec65c79de8ae54080c1b417540469a6.png)](https://zapier.com/learn/apis/chapter-2-protocols/)  
+
+*Credit: Brian Cooksey ([An introduction to APIs: Chapter 2](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/))*  
+
+Valid requests need the following four things:  
+
+1. URL  
+2. Method  
+3. List of Headers  
+4. Body
+
+    [![](https://images.zapier.com/storage/photos/4717d012f26dc6a4928e0d025102af7f.png){ width=65% height=300px}](https://zapier.com/learn/apis/chapter-2-protocols/)  
+
+
+*Credit: Brian Cooksey ([An introduction to APIs: Chapter 2](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/))*
+
+### URL
+A [__URL__](https://www.whoishostingthis.com/resources/url/) is an acronym for Uniform Resource Locator and it refers to the location of a "thing" or resource on the web. Usually URLs are considered "addresses" to a thing or "resource". Most of the time, these resources are web pages, but can also be images, pictures, or documents.   
+
+A simple URL will include the protocol, the host name or address, and the resource location  
+
+- Example : https://anyone-can-cook.github.io/rclass2/lectures/apis_and_json/apis_and_json.html
+    - __https__ is the protocol  
+    - __github.io__ is the domain (__anyone-can-cook__ is the subdomain) 
+    - __/rclass2/lectures/apis_and_json/apis_and_json.html__ is the resource location
+
+### Method  
+
+The [__method__](https://www.w3schools.com/tags/ref_httpmethods.asp) in an HTTP request tells the server what action the client wants the server to take.  
+
+Four of the most common methods used for APIs are:  
+
+- __GET__ - requests data from a server (what we will be doing!)
+- __POST__ - sends data to a server  
+- __PUT__ - asks the server to edit/update an existing resource 
+- __DELETE__ - asks the server to delete a resource  
+
+
+    [![](https://hallmark.brightspotcdn.com/dims4/default/b0741e7/2147483647/strip/true/crop/2500x1404+0+0/resize/3420x1920!/quality/90/?url=http%3A%2F%2Fhallmark-channel-brightspot.s3.amazonaws.com%2F04%2Fc3%2Feb57bfe0eecc31cd0eab3162a6b6%2Fhome-family-blueberry-pancakes.jpg){ width=50% height=200px }](https://www.hallmarkchannel.com/home-and-family/recipes/blueberry-pancakes) 
+
+*Credit: Cristina Ferrare ([Blueberry pancakes](https://www.hallmarkchannel.com/home-and-family/recipes/blueberry-pancakes))* 
+
+- You make a __POST__ request by telling your waiter (API) you want to order blueberry pancakes.  
+- After you have made your order, you realize that you are also craving something savory like roasted breakfast potatoes. You make a __PUT__ request by asking your waiter to update your order and communicate those changes to the kitchen (server).  
+- After waiting for some time, you make a __GET__ request by asking your waiter for an update on your order which will be sent to the kitchen (server) and they will reply with the status of your order.  
+- It's been over an hour and still no food. You make a __DELETE__ request and tell your waiter (API) to cancel your order which in turn they will communicate to the kitchen (server).  
+
+### List of Headers  
+
+[__Headers__](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) let the client and server provide additional information about an HTTP request. An HTTP header has a case-sensitive name followed by a colon `:` and its value.  
+
+[![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/http_request.png)](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039) 
+
+*Credit: Burak Guzel ([HTTP Headers for Dummies](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039))*
+
+There are four kinds of HTTP message [headers](https://www.tutorialspoint.com/http/http_header_fields.htm):  
+
+- __General Header__: These headers generally apply to both request and response messages.  
+- __Client Request Header__: These headers only apply to request messages.  
+- __Server Response Header__: These headers only apply to response messages.  
+- __Entity Header__: These headers provide additional information about the entity-body or, if no body is present, about the resource identified by the request.  
+
+
+### Body  
+
+- The message [body](https://zapier.com/learn/apis/chapter-2-protocols/) of an HTTP request contains data the client wants to send to the server and data the server sends back to the client. In our blueberry pancake example, the data would be our order. Unlike other components of the HTTP protocol (e.g. URL, headers, etc.), the client has more control over this part of the request (aka ordering food at a restaurant).
+- Not all HTTP requests have a message body. If the message body is available for the HTTP request, then it is used to carry the entity-body associated with the request.
+    - The entity-body is simply the content (data) of the request (from [w3.org](https://www.w3.org/Protocols/HTTP/1.1/rfc2616bis/draft-lafon-rfc2616bis-03.html#entity.body)).
+    - The Content-Type, Content-Length, and Transfer-Encoding headers signal whether a message body can be made with the HTTP request (from [w3.org](https://www.w3.org/Protocols/HTTP/1.1/rfc2616bis/draft-lafon-rfc2616bis-03.html#message.body))   
+
+- The response message body will depend on two things- the request method and the status code. 
+
+    [![](https://mdn.mozillademos.org/files/13821/HTTP_Request_Headers2.png)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)  
+    
+*Credit: MDN contributors ([HTTP messages)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)*
+
+- The image above shows three types of headers-- General, Request, and Entity headers.  
+
+    - The light blue section containing __Content-Type__ and __Content-Length__ signal to us that we can include a message body if we choose to.  
+ 
+- An example HTTP request and response.  
+
+[![](https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)  
+    
+*Credit: MDN contributors ([HTTP messages)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)*
+
+## HTTP Responses  
+
+Once a client sends a request to the server, the server sends a response to the client. The format of the response is similar to a request except a response does not have a method or URL-- it has a status code.  
+
+A [status code](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes) is a three-digit number that succinctly communicates a lot of information to the client. There are five different classes of status codes that are identified by the first digit:  
+
+- 1xx: Informational  
+- 2xx: Success  
+- 3xx: Redirection  
+- 4xx: Client Error  
+- 5xx: Server Error  
+
+A common status code we have encountered is 404, which means "Not Found":   
+
+[![](https://images.zapier.com/storage/photos/8b38efb0fa87bbf81018ff532f929a8a.png)](https://zapier.com/learn/apis/chapter-2-protocols/)  
+
+*Credit: Brian Cooksey ([An introduction to APIs: Chapter 2](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/))*
+
+<br>
+Other common status codes are:
+
+- 400: Bad request  
+- 401: Unauthorized  
+- 403: Forbidden  
+- 502: Bad Gateway  
+- 200: Success
+
+    [![](https://images.zapier.com/storage/photos/df8b6d09ab35aac47c1fb7b020a42d61.png){ width=70% }](https://zapier.com/learn/apis/chapter-2-protocols/)  
+
+
+# Authentication: API keys  
+ 
+Three of the most common forms of API authentication are:  
+
+- HTTP Basic Authentication  
+- API Keys  
+- OAuth  
+
+Authentication vs. Authorization (from Nordic APIs [blog](https://nordicapis.com/3-common-methods-api-authentication-explained/))  
+
+- Prior to a discussion on different methods of API authentication, it is important to distinguish the terms __authentication__ and __authorization__-- which tend to be used interchangeably.  
+    - __Authentication__: an entity proves an identity (e.g. Bruin card to prove you are a UCLA student)   
+    - __Authorization__: an entity proves a right to access (e.g. a ticket lets you in to a football game)  
+    - __Authentication & Authorization__: an entity proves an identity and proves right to access (e.g. Bruin card to prove you are a UCLA student and can use the gym)
+    
+
+## HTTP Basic Authentication  
+
+Basic authentication (from Brian Cookey, [An Introduction to APIs](https://zapier.com/learn/apis/chapter-4-authentication-part-1/))  
+
+>"Basic Auth only requires a username and password. The client takes these two credentials, smooshes them together to form a single value, and passes that along in the request in an HTTP header called Authorization."  
+
+- The server will receive the request and compare the credentials in the request (Authorization header) with credentials it has stored. If the credentials match, the server will return status code (200), otherwise it will return status code (401) (authentication failed and the request has been denied). 
+
+    [![](https://dotnetthoughts.net/assets/images/2013/11/basic_auth.png)](https://dotnetthoughts.net/basic-http-authentication-in-asp-net-web-api/)  
+
+*Credit: Anuraj ([Basic HTTP authentication](https://dotnetthoughts.net/basic-http-authentication-in-asp-net-web-api/))*
+
+- Basic Auth is not an ideal API authentication system because the user inputs the same username and password from their account and this could lead to security issues. 
+
+## API Keys  
+
+- An API key is a unique key composed of a series of letters and numbers given to the user.  
+- API keys are distinct from HTTP basic authentication because the user authenticates using a unique key instead of their credentials (from Brian Cookey, [An Introduction to APIs](https://zapier.com/learn/apis/chapter-4-authentication-part-1/)).  
+- The API key is a default approach for many API providers as it grants users access and at the same time servers can limit administrative functions. 
+
+    [![](https://secureservercdn.net/166.62.109.86/486.2ea.myftpupload.com/wp-content/uploads/2020/02/api-key.png){ width=70%}](https://api-university.com/blog/is-the-api-key-enough-common-api-security-issues-and-how-to-fix-them/)
+    
+*Credit: API University ([Is the API-key enough?](https://api-university.com/blog/is-the-api-key-enough-common-api-security-issues-and-how-to-fix-them/))*
+
+- A drawback of API keys is that they are long and can lead to user input errors (typos). Additionally, API keys can compromise the security of the network.
+
+API security (from [Kristopher Sandoval](https://nordicapis.com/3-common-methods-api-authentication-explained/))
+
+>"Because anyone who makes a request of a service transmits their key, in theory, this key can be picked up just as easy as any network transmission, and if any point in the entire network is insecure, the entire network is exposed."
+
+
+## OAuth  
+
+- OAuth is different from the previous two approaches in that it can be used for both authentication and authorization (from [Kristopher Sandoval, Three Common Methods of API authentication explained ](https://nordicapis.com/3-common-methods-api-authentication-explained/))  
+- OAuth requires various steps (from [Brian Cooksey, Authentication, Part 2](https://zapier.com/learn/apis/chapter-5-authentication-part-2/)):   
+
+    - __Step 1__: User tells the client to connect to the server  
+    - __Step 2__: Client directs user to the server  
+    - __Step 3__: User logs-in to the server and grants client access  
+    - __Step 4__: Server sends user back to client, along with code 
+    - __Step 5__: Client exchanges code + secret key for access token  
+    - __Step 6__: Client fetches data from server  
+    
+- Have you ever tried to sign in to a website or app and seen a "Sign In With Facebook" or "Sign in with Google" button?     
+
+    [![](https://www.howtogeek.com/wp-content/uploads/2017/08/img_59824fe226969.png){width=75%}](https://www.howtogeek.com/53275/exchanging-data-safely-with-oauth/)
+
+*Credit: Chris Hoffman ([What is OAuth?](https://www.howtogeek.com/53275/exchanging-data-safely-with-oauth/))*  
+
+- While the term OAuth might be new to us, we interact with OAuth authentication daily. 
+- OAuth is used for two main purposes: Signing In or Third-Party Applications (from Chris Hoffman [What is OAuth?](https://www.howtogeek.com/53275/exchanging-data-safely-with-oauth/))  
+- We may go to the Spotify account and are given the option to log in with our Facebook account.  
+    - By selecting "Continue as Bob" we are granting Spotify access to certain features of our Facebook account.  
+
+
+    [![](https://www.howtogeek.com/wp-content/uploads/2017/08/img_598254182a05f.png){width=75%}](https://www.howtogeek.com/53275/exchanging-data-safely-with-oauth/)
+
+*Credit: Chris Hoffman ([What is OAuth?](https://www.howtogeek.com/53275/exchanging-data-safely-with-oauth/))*
+
+- So how does OAuth work? 
+
+    [![](https://a.slack-edge.com/fbd3c/img/api/articles/oauth_scopes_tutorial/slack_oauth_flow_diagram.png){width=80%}](https://api.slack.com/legacy/oauth) 
+
+*Credit: Slack API ([Using OAuth 2.0](https://api.slack.com/legacy/oauth))*  
+
+- On the right hand side we are the __User__  
+- The __client__ or __application__ on the left hand side would be Spotify for example.  
+- The __service API__ (Facebook) is both an authorization and resource server.  
+- The __client__ or __application__ (Spotify) sends the __user__ (us) a request for authorization (to our Facebook). The __user__ (us) clicks on the "Continue with Facebook" button and the __client__ then sends us to the __server__ (Facebook) to sign in and grant the client access. The __server__ (Facebook) sends us back to the __client__ (Spotify) with an access token. The __client__ (Spotify) uses the access token to fetch data from the __server__ (Facebook). 
+
+
+# API data: JSON
+
+What is **JSON**?
+
+- **JavaScript Object Notation** (**JSON**) is a data file format, like CSV
+- Data fetched from API's often come in JSON format
+- JSON syntax is derived from JavaScript
+
+What does **JSON** data look like?
+
+- In JavaScript, there are data structures called **arrays** and **objects**
+  - **Arrays**: Contains elements separated by `,` and surrounded by square brackets (`[]`)
+    - Example: `["a", "b", "c"]`
+    - We can think of this as `R` vectors, except the elements do not have to be the same type
+  - **Objects**: Contains key-value pairs separated by `,` and surrounded by curly brackets (`{}`)
+    - Example: `{"a": "alfa", "b": "bravo", "c": "charlie"}`
+    - We can think of this as `R` lists
+- Each element can be a string or numeric type
+  - String elements must be surrounded by **double quotes**
+- There can be nested "arrays" and/or "objects" in the JSON data
+
+<br>
+**Example**: Simple JSON data
+
+- In this particular example, the data can easily be converted to an R dataframe
+  - Each row is a state
+  - The columns are `state_name` and `median_household_income`
+
+```
+[
+  {
+    "state_name": "Alaska",
+    "median_household_income": 72515
+  },
+  {
+    "state_name": "California",
+    "median_household_income": 61818
+  },
+  {
+    "state_name": "New York",
+    "median_household_income": 59269
+  }
+]
+```
+
+<br>
+**Example**: Nested JSON data
+
+```
+{
+   "status" : "OK",
+   "plus_code" : {
+      "compound_code" : "P27Q+MC New York, NY, USA",
+      "global_code" : "87G8P27Q+MC"
+   },
+   "results" : [
+      {
+         "formatted_address" : "279 Bedford Ave, Brooklyn, NY 11211, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 40.7142484,
+               "lng" : -73.9614103
+            }
+         },
+         "types" : [
+            "bakery",
+            "cafe",
+            "establishment",
+            "food",
+            "point_of_interest",
+            "store"
+         ]
+      }
+   ]
+}
+```
+
+*Source: [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)*
+
+
+# Using APIs to request data  
+
+__Tidycensus package__ (from tidycensus [website](https://walkerke.github.io/tidycensus/index.html))  
+
+> tidycensus is an R package that allows users to interface with the US Census Bureau’s decennial Census and five-year American Community APIs and return tidyverse-ready data frames, optionally with simple feature geometry included.  
+
+- This package allows users to interact with Census data that is pre-prepared for data exploration and manipulation using `tidyverse` and spatial exploration using `sf`. 
+
+<br>
+
+About the __US Census__ (from 2020 census [website](https://2020census.gov/en/what-is-2020-census.html))  
+
+  - The US Census is a count (of every person living in the United States) mandated by the Constitution and conducted by a nonpartisan government agency-- the U.S. Census Bureau.  
+  - This count is conducted every 10 years and provides critical information to lawmakers, business owners, researchers, teachers, etc.  
+
+[Programs](https://www.census.gov/about/what/census-at-a-glance.html)  
+
+  - Censuses: Decennial Census, Economic Census, and Census of Governments  
+  - Surveys: American Community Survey, Demographic Surveys, Economic Surveys, and Sponsered Surveys  
+    - Note: ACS is administered annually and a random sample of addressed are selected to participate.
+    
+ 
+<br>
+
+## census_api_key  
+
+Tidycensus documentation (from [CRAN](https://cran.r-project.org/web/packages/tidycensus/tidycensus.pdf))  
+
+
+`census_api_key()`: Install a Census API key in your `.Renviron` file for repeated use  
+
+- __Description__  
+
+    - This function will add your CENSUS API key to your `.Renviron` file so it can be called securely without being stored in your code. After you have installed your key, it can be called any time by typing `Sys.getenv("CENSUS_API_KEY")` and can be used in package functions by simply typing `CENSUS_API_KEY`. If you do not have an `.Renviron` file, the function will create one for you. If you already have an `.Renviron` file, the function will append the key to your existing file, while making a backup of your original file for disaster recovery purposes.
+
+- __Usage__  
+
+    - `census_api_key(key, overwrite = FALSE, install = FALSE)`
+
+- __Arguments__  
+  
+    - `key` : The API key provided to you from Census formatted in quotes. A key can be acquired at https://api.census.gov/data/key_signup.html  
+    - `overwrite` : If `TRUE`, it will overwrite an existing `CENSUS_API_KEY` that you already have in your `.Renviron` file  
+    - `install` : If `TRUE`, will install the key in your `.Renviron` file for use in future sessions. Default is set to `FALSE`.
+    
+    
+## load_variables  
+
+`load_variables`: Load variables from a decennial Census or American Community Survey dataset to search in R 
+
+- __Description__  
+
+    - Load variables from a decennial Census or American Community Survey dataset to search in R  
+    
+- __Usage__  
+
+    - `load_variables`(year, dataset, cache = FALSE)  
+    
+- __Arguments__  
+
+    - `year`: The year for which you are requesting variables. Either the year of the decennial Census, or the endyear for a 5-year ACS sample.
+    - `dataset`: One of "sf1", "sf3", "acs1", "acs3", "acs5", "acs1/profile", "acs3/profile, "acs5/profile", "acs1/subject", "acs3/subject", or "acs5/subject".
+    - `cache`: Whether you would like to cache the dataset for future access, or load the dataset from an existing cache. Defaults to FALSE.
+
+
+## get_acs  
+
+`get_acs()`: Obtain data and feature geometry for the five-year American Community Survey  
+
+- __Description__  
+
+    - Obtain data and feature geometry for the five-year American Community Survey  
+    
+- __Usage__  
+
+    - `get_acs`(geography,
+        variables = NULL,
+        table = NULL,
+        cache_table = FALSE,
+        year = 2018,
+        endyear = NULL,
+        output = "tidy",
+        state = NULL,
+        county = NULL,
+        geometry = FALSE,
+        keep_geo_vars = FALSE,
+        shift_geo = FALSE,
+        summary_var = NULL,
+        key = NULL,
+        moe_level = 90,
+        survey = "acs5",
+        show_call = FALSE,
+        ...
+    )`
+
+- __Arguments__  
+
+    - `geography`: The geography of your data.  
+    - `variables`: Character string or vector of character strings of variable IDs. tidycensus automatically returns the estimate and the margin of error associated with the variable.  
+    - `table`: The ACS table for which you would like to request all variables. Uses lookup tables to identify the variables; performs faster when variable table already exists through load_variables(cache = TRUE). Only one table may be requested per call.  
+    - `cache_table`:  Whether or not to cache table names for faster future access. Defaults to FALSE; if TRUE, only needs to be called once per dataset. If variables dataset is already cached via the load_variables function, this can be bypassed.  
+    - `year`: The year, or endyear, of the ACS sample. 2009 through 2018 are available. Defaults to 2018.  
+    - `endyear`: Deprecated and will be removed in a future release.  
+    - `output`: One of "tidy" (the default) in which each row represents an enumeration unitvariable combination, or "wide" in which each row represents an enumeration unit and the variables are in the columns.  
+    - `state`: An optional vector of states for which you are requesting data. State names, postal codes, and FIPS codes are accepted. Defaults to NULL.  
+    - `county`: The county for which you are requesting data. County names and FIPS codes are accepted. Must be combined with a value supplied to ‘state‘. Defaults to NULL.  
+    - `geometry`: if FALSE (the default), return a regular tibble of ACS data. if TRUE, uses the tigris package to return an sf tibble with simple feature geometry in the ‘geometry‘ column. state, county, tract, block group, block, and ZCTA geometry are supported.  
+    - `keep_geo_vars`: if TRUE, keeps all the variables from the Census shapefile obtained by tigris. Defaults to FALSE.  
+    - `shift_geo`: if TRUE, returns geometry with Alaska and Hawaii shifted for thematic mapping of the entire US. Geometry was originally obtained from the albersusa R package.  
+    - `summary_var`: Character string of a "summary variable" from the ACS to be included in your output. Usually a variable (e.g. total population) that you’ll want to use as a denominator or comparison.  
+    - `key`:  Your Census API key. Obtain one at http://api.census.gov/data/key_signup.html  
+    - `moe_level`: The confidence level of the returned margin of error. One of 90 (the default), 95, or 99.  
+    - `survey`: The ACS contains one-year, three-year, and five-year surveys expressed as "acs1", "acs3", and "acs5". The default selection is "acs5."  
+    - `show_call`: if TRUE, display call made to Census API. This can be very useful in debugging and determining if error messages returned are due to tidycensus or the Census API. Copy to the API call into a browser and see what is returned by the API directly. Defaults to FALSE.  
+    - `...`: Other keyword arguments  
+    
+
+## tidycensus example
+__Example__: Using tidycensus (from Will Doyle [GitHub](https://github.com/wdoyle42/hoddatasci/blob/master/lessons/07-webscraping.Rmd)) 
+
+- Request an API from the Census https://api.census.gov/data/key_signup.html
+
+```{r message=FALSE, eval=FALSE}
+#load package
+#install.packages("tidycensus")
+library(tidycensus)
+library(tidyverse)
+
+
+#census_api_key("YOUR API KEY GOES HERE")
+
+my_acs_key<-readLines("~/Desktop/census_api.txt",warn = FALSE)
+
+acs_key<-my_acs_key
+
+# Or just paste it here.
+#acs_key<-"<your_acs_key_here>"
+
+census_api_key(acs_key)
+```
+
+- Read in ACS data
+```{r message=FALSE, eval=FALSE}
+#Load variables from acs 2017 
+acs17 <- load_variables(2017, "acs5")
+
+#View(acs17)
+#glimpse(acs17)
+
+#create a list of variables
+var_list<-paste0("B15002_",c("001",
+                            "014",
+                            "015",
+                            "016",
+                            "017",
+                            "018",
+                            "031",
+                            "032",
+                            "033",
+                            "034",
+                            "035"))
+
+var_list
+#obtain data from acs, long version
+#educ<-get_acs(geography = 'county', 
+#              variables=var_list
+              #geometry=TRUE
+#              )
+
+educ<- get_acs(geography = 'zcta', #zip code tabulation area
+              variables=var_list, #list of variables
+              output="wide" #each row represents an enumeration unit and the variables are in the columns
+              #geometry=T #not using geometry argument 
+              )
+
+educ_v2<- get_acs(geography = 'zcta', #zip code tabulation area
+              variables=var_list #list of variables
+              #output="wide" #each row represents an enumeration unit and the variables are in the columns
+              #geometry=T #not using geometry argument 
+              )
+
+educ_v2 %>%
+  group_by(GEOID) %>%
+  arrange(GEOID)
+
+names(educ)<-tolower(names(educ)) #lowercase variable names
+
+head(educ)
+```
+
+```
+## # A tibble: 6 x 24
+##   geoid name  b15002_001e b15002_001m b15002_014e b15002_014m b15002_015e
+##   <chr> <chr>       <dbl>       <dbl>       <dbl>       <dbl>       <dbl>
+## 1 43964 ZCTA…        6316         314         276          82         245
+## 2 28216 ZCTA…       33273        1009        1084         237        2969
+## 3 28277 ZCTA…       48340        1019        1205         272        9285
+## 4 28278 ZCTA…       18009         802         506         159        2655
+## 5 28303 ZCTA…       20122         570         951         237        1576
+## 6 28314 ZCTA…       35672         789        1824         270        2678
+## # … with 17 more variables: b15002_015m <dbl>, b15002_016e <dbl>,
+## #   b15002_016m <dbl>, b15002_017e <dbl>, b15002_017m <dbl>, b15002_018e <dbl>,
+## #   b15002_018m <dbl>, b15002_031e <dbl>, b15002_031m <dbl>, b15002_032e <dbl>,
+## #   b15002_032m <dbl>, b15002_033e <dbl>, b15002_033m <dbl>, b15002_034e <dbl>,
+## #   b15002_034m <dbl>, b15002_035e <dbl>, b15002_035m <dbl>
+```
+
+## student exercise
+
+1. Apply for an API key here https://api.census.gov/data/key_signup.html
+2. Install and/or load packages  
+    - `library(tidycensus)` and `library(tidyverse)`
+3. Follow the steps from above to load your API key, and use the `load_variables()` function to get 'acs', '2017' variables.
+4. Can use the same variables from the example above or choose your own 5 variables  
+    - *hint: could use the `var_list` example from above*  
+5. Use `get_acs()` to read in acs data.  
+    - In `geography` argument use 'county' instead of 'zcta'  
+    - Use the `state` argument to filter for 'CA'  
+
+<br>
+<details><summary>**Solution**: Student exercise</summary>
+
+```{r message=FALSE, eval=FALSE}
+#load package
+library(tidycensus)
+library(tidyverse)
+
+
+#census_api_key("YOUR API KEY GOES HERE")
+
+#my_acs_key<-readLines("~/Desktop/census_api.txt",warn = FALSE)
+
+#acs_key<-my_acs_key
+
+# Or just paste it here.
+#acs_key<-"<your_acs_key_here>"
+
+census_api_key(acs_key) #using our census api key
+
+
+#Load variables from acs 2017 
+acs17 <- load_variables(2017, "acs5")
+
+#create a list of variables
+var_list<-paste0("B15002_",c("001",
+                            "014",
+                            "015",
+                            "016",
+                            "017",
+                            "018",
+                            "031",
+                            "032",
+                            "033",
+                            "034",
+                            "035"))
+
+
+#load acs ca county level data 
+county<- get_acs(geography = 'county', #zip code tabulation area
+                 state = 'CA',
+                 variables=var_list, #list of variables
+                 output="wide" #each row represents an enumeration unit and the variables are in the columns
+              #geometry=T #not using geometry argument 
+              )
+
+
+```
+
+</details>
+<br>
+
+
+
+
+
+
+```{r echo=FALSE, message=FALSE, eval=FALSE}
+library(rvest)
+library(lubridate)
+library(acs)
+library(leaflet)
+library(tigris)
+options(tigris_use_cache = TRUE) # save tigris shapefiles
+library(ggplot2)
+library(forcats)
+library(tidycensus)
+library(tidyverse)
+library(mapview)
+
+lookup_code("CA","Los Angeles") 
+state_fips<-"06"
+county_stub<-"037"
+
+county_fips<-paste0(state_fips,county_stub)
+
+county_to_zip<-read_csv("http://www2.census.gov/geo/docs/maps-data/data/rel/zcta_county_rel_10.txt")
+
+#easier names to work with
+names(county_to_zip)<-tolower(names(county_to_zip))
+
+#Just zip codes in selected county
+county_to_zip<-county_to_zip%>%
+  filter(state%in%as.numeric(state_fips),county==county_stub)%>%
+  select(zcta5,state,county)
+
+#list of zip codes
+ziplist<-county_to_zip$zcta5
+
+#data(zip_codes) 
+
+
+
+
+#Load variables from acs 2017 
+acs17 <- load_variables(2017, "acs5")
+
+#View(acs17)
+#glimpse(acs17)
+
+#create a list of variables
+var_list<-paste0("B15002_",c("001",
+                            "014",
+                            "015",
+                            "016",
+                            "017",
+                            "018",
+                            "031",
+                            "032",
+                            "033",
+                            "034",
+                            "035"))
+
+#obtain data from acs, long version
+#educ<-get_acs(geography = 'county', 
+#              variables=var_list
+              #geometry=TRUE
+#              )
+
+educ<- get_acs(geography = 'zcta', #zip code tabulation area
+              variables=var_list, #list of variables
+              output="wide", #each row represents an enumeration unit and the variables are in the columns
+              geometry=T
+              )
+
+
+names(educ)<-tolower(names(educ))
+
+educ%>%filter(geoid%in%ziplist)->county_educ #creating df of LA county zip codes
+
+county_educ <- county_educ %>%
+  rename(zip=geoid) %>%
+  group_by(zip) %>%
+  mutate(college_educ=((b15002_014e+
+                         b15002_015e+
+                         b15002_016e+
+                         b15002_017e+
+                         b15002_018e+
+                         b15002_031e+
+                         b15002_032e+
+                        b15002_033e+
+                         b15002_034e+
+                         b15002_035e)/b15002_001e)*100) %>%
+    select(zip,college_educ)
+
+
+
+
+var_list<-paste0("B19001_",c("001",
+                             "013",
+                             "014",
+                            "015",
+                           "016",
+                            "017"
+                           ))
+income<-get_acs("zcta",
+                variables=var_list,
+                output="wide"
+                )
+names(income)<-tolower(names(income))
+
+county_income <- income%>%filter(geoid%in%ziplist)
+
+county_income <- county_income %>%
+  rename(zip = geoid)%>%
+  group_by(zip) %>%
+  mutate(
+    income_75 = ((
+      b19001_013e +
+        b19001_014e +
+        b19001_015e +
+        b19001_016e +
+        b19001_017e 
+    ) / b19001_001e)*100
+  )%>%
+  select(zip,income_75)
+
+
+county_df<- inner_join(county_educ,county_income, by="zip")
+
+county_df%>%
+  select(zip,college_educ,income_75)%>%
+  arrange(zip)->county_df
+
+#map
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
