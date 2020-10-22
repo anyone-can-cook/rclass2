@@ -1,0 +1,178 @@
+##
+## This is as list of all IPEDS files as given in the
+## complete data files portal. If you want to add files
+## that I've missed, be sure they match the name of the
+## link in the Data File column of the drop down table.
+##
+## You can prevent the script from downloading
+## specific files by either commenting out the name with
+## a hash symbol (#) or erasing it all together.
+##
+## Keep in mind that if you've already downloaded some
+## of the files before, the download script will not
+## download them again unless you change the -overwrite-
+## option to TRUE.
+##
+
+## -----------------------------
+## LAST UPDATED: 2 December 2019
+## -----------------------------
+
+## ---------------------------
+## 2018
+## ---------------------------
+
+HD2018
+IC2018
+IC2018_AY
+IC2018_PY
+EFFY2018
+EFIA2018
+ADM2018
+EF2018A
+EF2018CP
+EF2018B
+EF2018C
+EF2018D
+EF2018A_DIST
+C2018_A
+C2018_B
+C2018_C
+C2018DEP
+SAL2018_IS
+SAL2018_NIS
+S2018_OC
+S2018_SIS
+S2018_IS
+S2018_NH
+EAP2018
+F1718_F1A
+F1718_F2
+F1718_F3
+SFA1718
+SFAV1718
+GR2018
+GR2018_L2
+GR2018_PELL_SSL
+GR200_18
+OM2018
+AL2018
+FLAGS2018
+
+## ---------------------------
+## 2017
+## ---------------------------
+
+HD2017
+IC2017
+IC2017_AY
+IC2017_PY
+EFFY2017
+EFIA2017
+EF2017A
+EF2017B
+EF2017C
+EF2017D
+EF2017A_DIST
+C2017_A
+C2017_B
+C2017_C
+C2017DEP
+SAL2017_IS
+SAL2017_NIS
+S2017_OC
+S2017_SIS
+S2017_IS
+S2017_NH
+EAP2017
+F1617_F1A
+F1617_F2
+F1617_F3
+GR2017
+GR2017_L2
+GR2017_PELL_SSL
+GR200_17
+OM2017
+AL2017
+FLAGS2017
+
+## ---------------------------
+## 2016
+## ---------------------------
+
+HD2016
+IC2016
+IC2016_AY
+IC2016_PY
+EFFY2016
+EFIA2016
+ADM2016
+EF2016A
+EF2016CP
+EF2016B
+EF2016C
+EF2016D
+EF2016A_DIST
+C2016_A
+C2016_B
+C2016_C
+C2016DEP
+SAL2016_IS
+SAL2016_NIS
+S2016_OC
+S2016_SIS
+S2016_IS
+S2016_NH
+EAP2016
+F1516_F1A
+F1516_F2
+F1516_F3
+SFA1516
+SFAV1516
+GR2016
+GR2016_L2
+GR200_16
+GR2016_PELL_SSL
+OM2016
+AL2016
+FLAGS2016
+
+## ---------------------------
+## 2015
+## ---------------------------
+
+HD2015
+IC2015
+IC2015_AY
+IC2015_PY
+EFFY2015
+EFIA2015
+ADM2015
+EF2015A
+EF2015B
+EF2015C
+EF2015D
+EF2015A_DIST
+C2015_A
+C2015_B
+C2015_C
+C2015DEP
+SAL2015_IS
+SAL2015_NIS
+S2015_OC
+S2015_SIS
+S2015_IS
+S2015_NH
+EAP2015
+F1415_F1A
+F1415_F2
+F1415_F3
+SFA1415
+SFAV1415
+GR2015
+GR2015_L2
+GR200_15
+OM2015
+AL2015
+FLAGS2015
+
