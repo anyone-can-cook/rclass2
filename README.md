@@ -1,4 +1,4 @@
-# EDUC 263: Fundamentals of Programming in R
+# EDUC 263: Fundamentals of Programming, using R
 
 This is the public GitHub repository for EDUC 263.  
 
