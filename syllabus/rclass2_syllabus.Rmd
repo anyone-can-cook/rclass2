@@ -1,5 +1,5 @@
 ---
-title: "EDUC 263: Fundamentals of Programming, using R"
+title: "EDUC XXX: Fundamentals of Programming"
 subtitle: "Winter 2021"
 author: 
 date: 
@@ -27,8 +27,8 @@ output:
 library(kableExtra)
 library(tidyverse)
 
-t <- c("Class website", "Class Zoom link", "Questions & Discussion", "Announcements")
-l <- c("https://anyone-can-cook.github.io/rclass2/", "TBD", "TBD", "TBD")
+t <- c("Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
+l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements", "TBD")
 
 info <- tibble(t, l)
 
@@ -38,16 +38,12 @@ kable(info,col.names = c("Resource","Link"), escape = T) %>%
 
 # Course description
 
-This course is the second in a sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC 263: Introduction to Programming and Data Management Using R](https://anyone-can-cook.github.io/rclass1/)).
+EDUC XXX is the second course in "Anyone Can Cook," a data science sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/)). Although EDUC XXX uses the R programming language, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; using Git and GitHub for version control and collaboration; strings and regular expressions; iteration; and writing functions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming and analyzing social media data, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups. Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom.
 
-The course is organized around fundamental programming skills, including the following: using Git and GitHub for collaboration and version control; iteration; writing functions; regular expressions; using application programming interfaces (APIs) to acquire data. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming social media data, interactive maps, machine learning).
-
-During class, lecture will give students a conceptual understanding of programming concepts
-(e.g., using regular expressions to manipulate string data). Earlier in the quarter, each class will be more lecture intensive in order to cover ground on initial topics. Starting around week 4 or 5, we will aim for a balance where not more than the first two hours of class is devoted to lecture and the remaining class time is devoted to students applying these programming concepts to challenging, practical problem sets (e.g., stream Tweets using Twitter API and use regular expressions to analyze text patterns in Tweets). Students will work on these problem sets in small groups during class and submit them prior to the next class. Although this uses the programming language R, these skills will translate to other object oriented programming languages (e.g., Python).
 
 ## Prerequisite Requirements 
 
-The prerequisite is the first course in the sequence: [EDUC 263: Introduction to Programming and Data Management Using R](https://anyone-can-cook.github.io/rclass1/).
+The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/) or equivalent.
 
 # Instructor and teaching assistants
 
@@ -64,30 +60,42 @@ The prerequisite is the first course in the sequence: [EDUC 263: Introduction to
 
 # Course learning goals
 
-1. Become proficient in version control using Git and Github
-    - Perform essential actions in Git/GitHub (clone repo, commit, push, merge)
+1. Organize files, directories, and programming scripts for a research project
+1. Use Git and Github for version control and collaboration
+    - Perform essential actions in Git (clone repo, commit, push, merge)
     - Use GitHub to work collaboratively in teams
-1. Visualize data with plots
-    - Use R's ggplot library
-    - Create scatterplots, line plots, bar plots, etc.
-1. Use APIs to request data
-    - Understand application programming interfaces (APIs) and HTTP requests 
-    - Become familiar with JSON formatted files
-1. Work with strings and datetimes
-    - Use regular expression (regex) patterns to parse text
+1. Become proficient in manipulating string/character data using string functions and regular expressions
+    - Use string functions and regular expression (regex) patterns to parse text
     - Apply regular expressions to practical applications (e.g., analyzing Twitter data, web-scraping)
-    - Work with dates and times
-1. Understand core programming concepts
-    - Write loops
-    - Use conditional statements
-    - Write and understand functions
+1. Learn programming concepts to write efficient code that completes multiple tasks
+    - Iteration using loops
+    - Conditional statements
+    - Writing functions
+    - Functional programming
 
 ## Course structure
 
-For the first two weeks of the course, we will have synchronous lectures and class time will be on TBD. In the subsequent weeks, we will have asynchronous (pre-class) lectures and a synchronous workshop-style class that meets on TBD. Weekly homework will consist of students working through the lectures on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
+For the first two weeks of the course, we will have synchronous lectures and class time will be on TBD. In the subsequent weeks, we will have asynchronous (pre-class) lectures and a synchronous workshop-style class that meets on TBD. 
+
+The course will be structured around weekly asynchronous (pre-class) lectures and one synchronous workshop-style class meeting per week. Weekly homework will consist of students working through the lectures on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
 
 1. __Asynchronous (pre-class) lectures__. Weekly asynchronous lectures will be posted on the course website with the expectation that students work through the lecture in advance of our weekly synchronous class meeting. Lecture materials will consist of three types of resources: first, detailed lecture notes (HTML) with sample code; second, short videos (e.g., 15 to 30 total minutes per week) that provide a high-level discussion of important and/or challenging concepts from the lecture slides, but not a line-by-line recitation of the lecture; and, third, the .Rmd file that created the HTML lecture notes. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will be able to "learn by doing" in that they can run R code on their own computer while they work through lecture materials on their own.
 1. __Synchronous workshop-style class meetings.__ We will have one synchronous class meeting per week. Typically, these meetings will begin with a discussion of concepts students found difficult or confusing from the lecture materials. The bulk of class time will be devoted to students working in groups on a substantive activity posed by the instructor. While students work in groups, the instructor and teaching assistants will visit each group to answer questions and talk through ideas. We will not be recording these synchronous sessions to respect student privacy.
+
+## How to succeed in this class
+
+In just a few words, the keys to success in this class are: __start early, ask for help, help others__
+
+Here are some substantive tips to help you succeed:
+
+- Work through weekly asynchronous lecture materials as soon as you can
+  - The weekly asynchronous lecture materials (lecture PDF, lecture .Rmd file with code, short video lecture) are the core of this course. Lecture materials are designed for you to run the code on your computer as you work through the lecture. Therefore, treat each lecture as an active learning experience rather than passively reading slides.
+- Start the weekly problem set early so that have time to seek help on questions you are struggling with
+- If you can't figure something out, ask for help!
+  - Discuss with your problem set group
+  - Ask a question on github
+  - Come to office hours
+- Be supportive of your classmates and together we will create a classroom environment where we all help each other succeed!  
 
 # Classroom environment
 
@@ -204,6 +212,16 @@ kable(grade,col.names = c("Letter Grade", "Percentage"), escape = T) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F, position = "left")
 ```
 
+# Course topics and schedule
+
+Below is a overview of course topics and schedule. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](https://anyone-can-cook.github.io/rclass2/).
+
+1. Organizing files, directories, and scripts; reading and writing data [1 week]
+1. Git and GitHub [3 weeks]
+1. Strings and regular expressions [3 weeks]
+1. Loops, writing functions, and functional programming [3 weeks]
+
+
 # Course policies
 
 ## Learning during a global pandemic
@@ -250,18 +268,6 @@ __UCLA policy__
 __This class__  
 
   - Given that 90% of course grade is based on problem sets, the primary academic honesty concern that could come up in this class is copying problem set solutions from somebody else and passing this in as your own work.
-
-
-# Course schedule
-
-Below is an overview of the tentative course schedule, which is subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, required reading, and optional reading will be posted on the [course website](https://anyone-can-cook.github.io/rclass2/).
-
-1. Git and GitHub
-1. ggplot
-1. APIs and JSON
-1. Strings and regex
-1. Loops and functions
-
 
 # Campus resources
 
