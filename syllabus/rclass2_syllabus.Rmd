@@ -62,6 +62,7 @@ The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to
 
 1. Organize files, directories, and programming scripts for a research project
 1. Use Git and Github for version control and collaboration
+    - Learn basic basic Unix commands ("Terminal" for Mac users; "Bash" for PC) necessary to perform Git operations from the command line
     - Perform essential actions in Git (clone repo, commit, push, merge)
     - Use GitHub to work collaboratively in teams
 1. Become proficient in manipulating string/character data using string functions and regular expressions
