@@ -40,7 +40,7 @@ kable(info,col.names = c("Resource","Link"), escape = T) %>%
 
 EDUC XXX is the second course in "Anyone Can Cook," a data science sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/.)) Although EDUC XXX primarily uses the R programming language, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; reading (importing) and writing (exporting) data; using Git and GitHub for version control and collaboration; writing functions; iteration (e.g., "loops"); conditional execution; strings and regular expressions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming and analyzing social media data, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups. Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom.
 
-The course primarily use data and examples from education research. However, the course is designed to skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
+The course primarily use data and examples from education research. However, the course is designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
 
 ## Prerequisite Requirements 
 
@@ -64,7 +64,7 @@ The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to
 1. Organize files, directories, and programming scripts for a research project
 1. Read data (e.g., .csv files) into R; Write data from R to other formats
 1. Use Git and Github for version control and collaboration
-    - Learn basic basic Unix commands ("Terminal" for Mac users; "Bash" for PC) necessary to perform Git operations from the command line
+    - Learn basic Unix commands ("Terminal" for Mac users; "Bash" for PC) necessary to perform Git operations from the command line
     - Perform essential actions in Git (clone repo, commit, push, merge)
     - Use GitHub to work collaboratively in teams
 1. Become proficient in manipulating string/character data using string functions and regular expressions
@@ -76,14 +76,14 @@ The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to
     - Writing functions
     - Functional programming
 
-Another broad learning goal is for students to continue develping practical proficiency in "computational thinking." The [California Computer Science Standards](https://www.cde.ca.gov/be/st/ss/documents/compsciintroduction.docx) define computational thinking as "the human ability to formulate problems so that their solutions can be represented as computational steps or algorithms to be executed by a computer." This course will encourage students to work on the following elements of computational thinking:
+Another broad goal of the course is for students to begin developing practical proficiency in "computational thinking." The [California Computer Science Standards](https://www.cde.ca.gov/be/st/ss/documents/compsciintroduction.docx) define computational thinking as "the human ability to formulate problems so that their solutions can be represented as computational steps or algorithms to be executed by a computer." This course will encourage students to work on the following elements of computational thinking:
 
 - Continue practicing elements of computational thinking described in the syllabus of [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/), the prerequisite to this course.
-- For people who are new to programming, taking formal courses (like this one) and working through textbooks ([like this one](https://r4ds.had.co.nz/)) is a great way to learn programming skills and computational thinking. More advanced programmers often learn new skills by reading blog posts and tutorials on the web ([like this one](https://www.w3schools.com/html/html_intro.asp)). Therefore, a goal of this course is for you to learn how to learn on your own. As such, a substantial portion of the required reading will be blog posts and online tutorials. Once you become proficient at learning from these resources, you can learn new programming skills on your own without always having to take a formal course.
+- For people who are new to programming, taking formal courses (like this one) and working through textbooks ([like this one](https://r4ds.had.co.nz/)) are great ways to learn programming skills and computational thinking. More advanced programmers often learn new skills by reading blog posts and tutorials on the web ([like this one](https://www.w3schools.com/html/html_intro.asp)). Therefore, a goal of this course is for you to learn how to learn on your own. As such, a substantial portion of the required reading will be blog posts and online tutorials. Once you become proficient at learning from these resources, you can learn new programming skills on your own without always having to take a formal course.
 
 ## Course structure
 
-For the first two or three weeks of the course, we will have synchronous lectures and class time will be on TBD. In the subsequent weeks, we will have asynchronous (pre-class) lectures and a synchronous workshop-style class that meets on TBD. 
+<!-- For the first two or three weeks of the course, we will have synchronous lectures and class time will be on TBD. In the subsequent weeks, we will have asynchronous (pre-class) lectures and a synchronous workshop-style class that meets on TBD.  -->
 
 The course will be structured around weekly asynchronous (pre-class) lectures and one synchronous workshop-style class meeting per week. Weekly homework will consist of students working through the lectures on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
 
@@ -97,11 +97,11 @@ In just a few words, the keys to success in this class are: __start early, ask f
 Here are some substantive tips to help you succeed:
 
 - Work through weekly asynchronous lecture materials as soon as you can
-  - The weekly asynchronous lecture materials (lecture PDF, lecture .Rmd file with code, short video lecture) are the core of this course. Lecture materials are designed for you to run the code on your computer as you work through the lecture. Therefore, treat each lecture as an active learning experience rather than passively reading slides.
+  - The weekly asynchronous lecture materials (lecture HTML, lecture .Rmd file with code, short video lecture) are the core of this course. Lecture materials are designed for you to run the code on your computer as you work through the lecture. Therefore, treat each lecture as an active learning experience rather than passively reading lecture notes.
 - Start the weekly problem set early so that have time to seek help on questions you are struggling with
 - If you can't figure something out, ask for help!
   - Discuss with your problem set group
-  - Ask a question on github
+  - Ask a question on GitHub
   - Come to office hours
 - Be supportive of your classmates and together we will create a classroom environment where we all help each other succeed!  
 
