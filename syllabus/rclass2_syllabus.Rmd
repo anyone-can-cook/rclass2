@@ -1,5 +1,5 @@
 ---
-title: "EDUC XXX: Fundamentals of Programming"
+title: "EDUC 263: Fundamentals of Programming"
 subtitle: "Winter 2021"
 author: 
 date: 
@@ -28,7 +28,7 @@ library(kableExtra)
 library(tidyverse)
 
 t <- c("Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
-l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements", "TBD")
+l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements", "https://ucla.zoom.us/j/94557277378")
 
 info <- tibble(t, l)
 
@@ -38,13 +38,13 @@ kable(info,col.names = c("Resource","Link"), escape = T) %>%
 
 # Course description
 
-EDUC XXX is the second course in "Anyone Can Cook," a data science sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/.)) Although EDUC XXX primarily uses the R programming language, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; reading (importing) and writing (exporting) data; using Git and GitHub for version control and collaboration; writing functions; iteration (e.g., "loops"); conditional execution; strings and regular expressions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming and analyzing social media data, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups. Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom.
+EDUC 263: Fundamentals of Programming is the second course in "Anyone Can Cook," a data science sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC 263: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/.)) Although EDUC 263 primarily uses the R programming language, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; reading (importing) and writing (exporting) data; using Git and GitHub for version control and collaboration; writing functions; iteration (e.g., "loops"); conditional execution; strings and regular expressions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming and analyzing social media data, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups. Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom.
 
 The course primarily use data and examples from education research. However, the course is designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
 
 ## Prerequisite Requirements 
 
-The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/) or equivalent.
+The prerequisite is the first course in the sequence: [EDUC 263: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/) or equivalent.
 
 # Instructor and teaching assistants
 
@@ -58,6 +58,25 @@ The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to
 - Office hours:
   - Zoom office hours: TBD
   - And by appointment
+  
+## Teaching assistants
+
+**Patricia Martín**  
+
+- Pronouns: she/her/hers/ella
+- Email: [pmarti@g.ucla.edu](pmarti@g.ucla.edu)
+- Office hours:
+  - Zoom office hours: TBD
+  - And by appointment  
+  
+**Crystal Han**  
+
+- Pronouns: she/her/hers
+- Email: [cyouh95@ucla.edu](cyouh95@ucla.edu)
+- Office hours:
+  - Zoom office hours: TBD
+  - And by appointment  
+
 
 # Course learning goals
 
@@ -78,7 +97,7 @@ The prerequisite is the first course in the sequence: [EDUC XXX: Introduction to
 
 Another broad goal of the course is for students to begin developing practical proficiency in "computational thinking." The [California Computer Science Standards](https://www.cde.ca.gov/be/st/ss/documents/compsciintroduction.docx) define computational thinking as "the human ability to formulate problems so that their solutions can be represented as computational steps or algorithms to be executed by a computer." This course will encourage students to work on the following elements of computational thinking:
 
-- Continue practicing elements of computational thinking described in the syllabus of [EDUC XXX: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/), the prerequisite to this course.
+- Continue practicing elements of computational thinking described in the syllabus of [EDUC 263: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/), the prerequisite to this course.
 - For people who are new to programming, taking formal courses (like this one) and working through textbooks ([like this one](https://r4ds.had.co.nz/)) are great ways to learn programming skills and computational thinking. More advanced programmers often learn new skills by reading blog posts and tutorials on the web ([like this one](https://www.w3schools.com/html/html_intro.asp)). Therefore, a goal of this course is for you to learn how to learn on your own. As such, a substantial portion of the required reading will be blog posts and online tutorials. Once you become proficient at learning from these resources, you can learn new programming skills on your own without always having to take a formal course.
 
 ## Course structure
@@ -127,7 +146,7 @@ All course related material can be found on the [course website](https://anyone-
 
 ## Course discussion
 
-We will be using GitHub teams for class announcements [HERE](#).
+We will be using GitHub teams for class announcements [HERE](https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements).
 
   - __GitHub teams__: The teaching team will post all class announcements using GitHub teams. The GitHub team discussions feature allows for quick and seamless communication to all members of an organization or team -- in this case, to all students with a GitHub account enrolled in the course. Some features include:  
   
@@ -138,7 +157,7 @@ We will be using GitHub teams for class announcements [HERE](#).
 
 *Credit: [Introducing team discussions](https://github.blog/2017-11-20-introducing-team-discussions/)*  
 
-We will be using GitHub issues for questions and class discussion [HERE](#).
+We will be using GitHub issues for questions and class discussion [HERE](https://github.com/anyone-can-cook/rclass2_student_issues).
 
   - __GitHub issues__: GitHub issues are traditionally used by collaborators of a repository for managing tasks for a project. Our rational for using issues is twofold: 1) help track and organize questions related to course material and problem sets and 2) promote classroom participation. Students are encouraged to contribute to issues by posting questions, sharing helpful resources, and/or taking a stab at answering questions posted on issues. Some features include: 
     
@@ -181,15 +200,15 @@ Course grade will be based on the following components:
 
 ## Problem sets (90 percent of total grade)
 
-Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by TBD, right before we start class. 
+Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by 9:00am, right before we start class. 
 
-Late submissions will lose 20% (i.e., max grade becomes 80%). Problem sets not submitted by TBD will not receive points because at that point we will post solutions on the course website. The lowest problem-set grade will be dropped from the calculation of your final grade. 
+Problem sets submitted a week after the problem set is due will not receive points because at that point we will post solutions on the course website. **Only** problem sets that are given an extension--with the approval of the teaching team-- will be accepted late. The lowest problem-set grade will be dropped from the calculation of your final grade. 
 
 Your will not lose points for late submission if you cannot submit a problem set due to an unexpected emergency. But please contact the instructor by email as soon as you can so we can work out a plan.
 
-In general, each problem set will give you practice using the skills and concepts introduced during the previous lecture.  For example, after the lecture on ggplot, the problem set for that week will require that students complete several different tasks involving plotting data.  Additionally, the weekly problem sets will require you to use data visualization skills you learned in previous weeks.  
+In general, each problem set will give you practice using the skills and concepts introduced during the previous lecture.  For example, after the lecture on creating functions, the problem set for that week will require that students complete several different tasks involving creating their own function(s).  Additionally, the weekly problem sets will require you to use the programming skills you learned in previous weeks.  
 
-With the exception of the first problem set, students will complete problem sets in groups of 3. We will form groups during class in week 2 and you will keep the same group throughout the quarter. However, each student will submit their own assignment. You are encouraged to work together and get help from your group. However, it is important that you understand how to do the problem set on your own, rather than copying the solution developed by group members.  
+With the exception of the first problem set, students will complete problem sets in groups of 3. We will form groups during class in week 1 and you will keep the same group throughout the quarter. However, each student will submit their own assignment. You are encouraged to work together and get help from your group. However, it is important that you understand how to do the problem set on your own, rather than copying the solution developed by group members.  
 
 Since you will be working together, it is understandable that answers for many questions will be the same as your group members. However, if I find compelling evidence that a student merely copied solutions from a classmate, I will consider this a violation of academic integrity and that student will receive a zero for the homework assignment.
 
@@ -226,8 +245,8 @@ Below is a overview of course topics and schedule. Topics and schedule are subje
 
 1. Organizing files, directories, and scripts; reading and writing data [1 week]
 1. Git and GitHub [3 weeks]
-1. Strings and regular expressions [3 weeks]
 1. Loops, writing functions, and functional programming [3 weeks]
+1. Strings and regular expressions [2 weeks]
 
 
 # Course policies
