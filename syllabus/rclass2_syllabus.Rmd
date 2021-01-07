@@ -106,8 +106,8 @@ Another broad goal of the course is for students to begin developing practical p
 
 The course will be structured around weekly asynchronous (pre-class) lectures and one synchronous workshop-style class meeting per week. Weekly homework will consist of students working through the lectures on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
 
-1. __Asynchronous (pre-class) lectures__. Weekly asynchronous lectures will be posted on the course website with the expectation that students work through the lecture in advance of our weekly synchronous class meeting. Lecture materials will consist of three types of resources: first, detailed lecture notes (HTML) with sample code; second, short videos (e.g., 15 to 30 total minutes per week) that provide a high-level discussion of important and/or challenging concepts from the lecture slides, but not a line-by-line recitation of the lecture; and, third, the .Rmd file that created the HTML lecture notes. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will be able to "learn by doing" in that they can run R code on their own computer while they work through lecture materials on their own.
-1. __Synchronous workshop-style class meetings.__ We will have one synchronous class meeting per week. Typically, these meetings will begin with a discussion of concepts students found difficult or confusing from the lecture materials. The bulk of class time will be devoted to students working in groups on a substantive activity posed by the instructor. While students work in groups, the instructor and teaching assistants will visit each group to answer questions and talk through ideas. We will not be recording these synchronous sessions to respect student privacy.
+1. __Asynchronous (pre-class) lecture materials__. Weekly asynchronous lecture materials will be posted on the course website with the expectation that students work through all lecture materials on their own. Lecture materials will consist of three types of resources: first, detailed lecture notes (HTML) with sample code; second, video lectures (45 to 60 minutes total per week) that discuss important and/or challenging concepts from the lecture, but not a line-by-line recitation of the lecture; and, third, the .Rmd file that created the HTML lecture notes. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will be able to "learn by doing" in that they can run R code on their own computer while they work through lecture materials on their own.
+1. __Synchronous class meetings.__ Our weekly synchronous meeting will by Fridays from 9:00 - 10:30AM. However, for Week 1 (and potentially for other selected weeks) weeks we will meet from 9:00 - 11:20AM. Synchronous meetings will largely be forward-looking (i.e., introducing new material) rather than backward-looking (e.g., reviewing/applying previously introduced material). The bulk of synchronous class time will be lecture about new course material. Lectures will not cover every concept and every slide. Rather, the goal of these lectures is for students to learn the most important and/or difficult concepts so that they have an easier time working through lecture materials on their own. These lectures will be recorded and added to the asynchronous lecture materials. We will also devote some time to Q&A about previous material and -- time permitting -- time for students to get started on the upcoming problem set.
 
 ## How to succeed in this class
 
@@ -122,7 +122,7 @@ Here are some substantive tips to help you succeed:
   - Discuss with your problem set group
   - Ask a question on GitHub
   - Come to office hours
-- Be supportive of your classmates and together we will create a classroom environment where we all help each other succeed!  
+- Be supportive of your classmates. Together, we will create a classroom environment where we all help each other succeed!  
 
 # Classroom environment
 
@@ -141,8 +141,7 @@ In this course we will utilize data that reflect systemic gaps based on race, et
 
 ## Course website
 
-All course related material can be found on the [course website](https://anyone-can-cook.github.io/rclass2/). Pre-recorded lecture videos, lecture notes (HTML), and .Rmd files will be posted on the class website under the associated sections. Additional resources (e.g., syllabus) may also be posted on the class website. 
-
+All course related material can be found on the [course website](https://anyone-can-cook.github.io/rclass2/). Pre-recorded lecture videos, lecture notes (HTML), and .Rmd files will be posted on the class website under the associated sections. Additional resources (e.g., syllabus) may also be posted on the class website.
 
 ## Course discussion
 
