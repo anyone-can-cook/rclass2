@@ -8,12 +8,12 @@
 */
 
 :root {
-	--color-primary: #a672af;
-	--color-secondary: #ea89c7;
-	--color-tertiary: #f5e9ed;
-	--color-title: #cc76ad;
-	--color-highlight: #ffceed;
-	--color-footer: #f5e9ed;
+	--color-primary: #1D6F42;
+	--color-secondary: #01A66C;
+	--color-tertiary: #9DB0A3;
+	--color-title: #01A65E;
+	--color-highlight: #93D4AB;
+	--color-footer: #9DB0A3;
 }
 
 html, body, div, span, applet, object,
