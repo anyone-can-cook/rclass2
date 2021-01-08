@@ -4813,7 +4813,7 @@ div.tocify {
 <span id="cb113-16"><a href="#cb113-16"></a></span>
 <span id="cb113-17"><a href="#cb113-17"></a></span>
 <span id="cb113-18"><a href="#cb113-18"></a><span class="co"># Read in string that has names of IPEDS files</span></span>
-<span id="cb113-19"><a href="#cb113-19"></a>ipeds &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="kw">url</span>(<span class="st">&#39;https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/ipeds_file_list.txt&#39;</span>))</span>
+<span id="cb113-19"><a href="#cb113-19"></a>ipeds &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="kw">url</span>(<span class="st">&#39;https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/ipeds/ipeds_file_list.txt&#39;</span>))</span>
 <span id="cb113-20"><a href="#cb113-20"></a><span class="co">#str(ipeds)</span></span>
 <span id="cb113-21"><a href="#cb113-21"></a><span class="kw">writeLines</span>(ipeds[<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>])</span>
 <span id="cb113-22"><a href="#cb113-22"></a><span class="co">#&gt; ##</span></span>
@@ -5401,7 +5401,7 @@ div.tocify {
 <span id="cb143-6"><a href="#cb143-6"></a>  }</span>
 <span id="cb143-7"><a href="#cb143-7"></a>)</span>
 <span id="cb143-8"><a href="#cb143-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb143-9"><a href="#cb143-9"></a><span class="co">#&gt;   6.894   5.053  12.072</span></span></code></pre></div>
+<span id="cb143-9"><a href="#cb143-9"></a><span class="co">#&gt;   6.978   4.935  12.133</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (<a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -5439,7 +5439,7 @@ div.tocify {
 <span id="cb145-10"><a href="#cb145-10"></a>  }</span>
 <span id="cb145-11"><a href="#cb145-11"></a>)</span>
 <span id="cb145-12"><a href="#cb145-12"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb145-13"><a href="#cb145-13"></a><span class="co">#&gt;   0.341   0.005   0.348</span></span></code></pre></div>
+<span id="cb145-13"><a href="#cb145-13"></a><span class="co">#&gt;   0.338   0.006   0.346</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>ifelse()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a><span class="kw">system.time</span>(</span>
 <span id="cb146-2"><a href="#cb146-2"></a>  output &lt;-<span class="st"> </span><span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>,</span>
@@ -5448,7 +5448,7 @@ div.tocify {
 <span id="cb146-5"><a href="#cb146-5"></a>                   )</span>
 <span id="cb146-6"><a href="#cb146-6"></a>)</span>
 <span id="cb146-7"><a href="#cb146-7"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb146-8"><a href="#cb146-8"></a><span class="co">#&gt;   0.052   0.001   0.053</span></span></code></pre></div>
+<span id="cb146-8"><a href="#cb146-8"></a><span class="co">#&gt;   0.059   0.001   0.061</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -5489,7 +5489,7 @@ div.tocify {
 <span id="cb147-29"><a href="#cb147-29"></a>  }</span>
 <span id="cb147-30"><a href="#cb147-30"></a>)</span>
 <span id="cb147-31"><a href="#cb147-31"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb147-32"><a href="#cb147-32"></a><span class="co">#&gt;   0.053   0.001   0.054</span></span></code></pre></div>
+<span id="cb147-32"><a href="#cb147-32"></a><span class="co">#&gt;   0.046   0.000   0.047</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -5519,7 +5519,7 @@ div.tocify {
 <span id="cb148-22"><a href="#cb148-22"></a>  }</span>
 <span id="cb148-23"><a href="#cb148-23"></a>)</span>
 <span id="cb148-24"><a href="#cb148-24"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb148-25"><a href="#cb148-25"></a><span class="co">#&gt;   0.024   0.000   0.024</span></span></code></pre></div>
+<span id="cb148-25"><a href="#cb148-25"></a><span class="co">#&gt;   0.024   0.001   0.024</span></span></code></pre></div>
 <p><br> <strong>[Method 3]</strong> Using the vectorised <code>ifelse()</code> function</p>
 <ul>
 <li>Note that using a vectorised function when possible would still be the fastest</li>
@@ -5531,7 +5531,7 @@ div.tocify {
 <span id="cb149-4"><a href="#cb149-4"></a>                   <span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb149-5"><a href="#cb149-5"></a>)</span>
 <span id="cb149-6"><a href="#cb149-6"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb149-7"><a href="#cb149-7"></a><span class="co">#&gt;   0.012   0.007   0.019</span></span></code></pre></div>
+<span id="cb149-7"><a href="#cb149-7"></a><span class="co">#&gt;   0.011   0.006   0.018</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -5785,22 +5785,22 @@ div.tocify {
 <span id="cb162-7"><a href="#cb162-7"></a><span class="co">#&gt;  Date[1:1], format: &quot;1979-01-16&quot;</span></span></code></pre></div>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate an age given a birthdate:</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1"></a><span class="kw">today</span>()</span>
-<span id="cb163-2"><a href="#cb163-2"></a><span class="co">#&gt; [1] &quot;2020-10-21&quot;</span></span>
+<span id="cb163-2"><a href="#cb163-2"></a><span class="co">#&gt; [1] &quot;2021-01-07&quot;</span></span>
 <span id="cb163-3"><a href="#cb163-3"></a></span>
 <span id="cb163-4"><a href="#cb163-4"></a><span class="co"># Calculate difference</span></span>
 <span id="cb163-5"><a href="#cb163-5"></a><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)</span>
-<span id="cb163-6"><a href="#cb163-6"></a><span class="co">#&gt; Time difference of 15254 days</span></span>
+<span id="cb163-6"><a href="#cb163-6"></a><span class="co">#&gt; Time difference of 15332 days</span></span>
 <span id="cb163-7"><a href="#cb163-7"></a><span class="kw">str</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb163-8"><a href="#cb163-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15254</span></span>
+<span id="cb163-8"><a href="#cb163-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15332</span></span>
 <span id="cb163-9"><a href="#cb163-9"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb163-10"><a href="#cb163-10"></a></span>
 <span id="cb163-11"><a href="#cb163-11"></a><span class="co"># Convert to duration</span></span>
 <span id="cb163-12"><a href="#cb163-12"></a><span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb163-13"><a href="#cb163-13"></a><span class="co">#&gt; [1] &quot;1317945600s (~41.76 years)&quot;</span></span>
+<span id="cb163-13"><a href="#cb163-13"></a><span class="co">#&gt; [1] &quot;1324684800s (~41.98 years)&quot;</span></span>
 <span id="cb163-14"><a href="#cb163-14"></a></span>
 <span id="cb163-15"><a href="#cb163-15"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb163-16"><a href="#cb163-16"></a><span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb163-17"><a href="#cb163-17"></a><span class="co">#&gt; [1] 41.76318</span></span>
+<span id="cb163-17"><a href="#cb163-17"></a><span class="co">#&gt; [1] 41.97673</span></span>
 <span id="cb163-18"><a href="#cb163-18"></a><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
 <span id="cb163-19"><a href="#cb163-19"></a><span class="co">#&gt; [1] 41</span></span>
 <span id="cb163-20"><a href="#cb163-20"></a></span>
@@ -6130,7 +6130,7 @@ div.tocify {
 <p><summary><strong>Example 2</strong>: Creating a new z-score variable for the recruiting dataset</summary></p>
 <p>We can apply our function to a “real” dataset too:</p>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1"></a><span class="co">#load dataset with one obs per recruiting event</span></span>
-<span id="cb183-2"><a href="#cb183-2"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://github.com/anyone-can-cook/rclass2/raw/master/data/recruit_event_somevars.RData&quot;</span>))</span>
+<span id="cb183-2"><a href="#cb183-2"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_event_somevars.RData&quot;</span>))</span>
 <span id="cb183-3"><a href="#cb183-3"></a></span>
 <span id="cb183-4"><a href="#cb183-4"></a>df_event_small &lt;-<span class="st"> </span>df_event[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep first 10 observations</span></span>
 <span id="cb183-5"><a href="#cb183-5"></a><span class="st">  </span><span class="kw">select</span>(instnm,univ_id,event_type,med_inc) <span class="co"># keep 4 vars</span></span>

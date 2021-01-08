@@ -2016,7 +2016,7 @@ stata_do_suffix <- "_Stata.zip" # Stata do file w/ variable labels and value lab
 
 
 # Read in string that has names of IPEDS files
-ipeds <- readLines(url('https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/ipeds_file_list.txt'))
+ipeds <- readLines(url('https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/ipeds/ipeds_file_list.txt'))
 #str(ipeds)
 writeLines(ipeds[1:30])
 
@@ -3288,7 +3288,7 @@ We can apply our function to a "real" dataset too:
 
 ```{r}
 #load dataset with one obs per recruiting event
-load(url("https://github.com/anyone-can-cook/rclass2/raw/master/data/recruit_event_somevars.RData"))
+load(url("https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_event_somevars.RData"))
 
 df_event_small <- df_event[1:10,] %>% # keep first 10 observations
   select(instnm,univ_id,event_type,med_inc) # keep 4 vars

@@ -3716,7 +3716,7 @@ readRDS(file, refhook = NULL)
 
 - Have the third member of your team add the data file
   - Create a sub-directory in the repository called `data`
-  - Inside `data`, save the recruiting dataset from [here](https://github.com/anyone-can-cook/rclass2/raw/master/data/recruit_school_somevars.RDS)
+  - Inside `data`, save the recruiting dataset from [here](https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RDS)
   - Add/commit the file and push to GitHub
 - All other team members will pull this change
 
