@@ -1,0 +1,1252 @@
+---
+title: "Organizing and Reading/Writing Data"
+subtitle:
+author:
+date: 
+urlcolor: blue
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: # toc_float option to float the table of contents to the left of the main document content. floating table of contents will always be visible even when the document is scrolled
+      collapsed: true # collapsed (defaults to TRUE) controls whether the TOC appears with only the top-level (e.g., H2) headers. If collapsed initially, the TOC is automatically expanded inline when necessary
+      smooth_scroll: true # smooth_scroll (defaults to TRUE) controls whether page scrolls are animated when TOC items are navigated to via mouse clicks
+    number_sections: true
+    fig_caption: true # ? this option doesn't seem to be working for figure inserted below outside of r code chunk    
+    highlight: default # Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock" (specify null to prevent syntax    
+    theme: default # theme specifies the Bootstrap theme to use for the page. Valid themes include default, cerulean, journal, flatly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
+    df_print: tibble #options: default, tibble, paged
+    # keep_md: true # may be helpful for storing on github
+    
+---
+
+```{r, echo=FALSE, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE, warning = FALSE, message = FALSE)
+  #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
+```
+
+# Introduction
+
+## Libraries we will use
+
+Load packages:
+
+```{r, message=F}
+library(dplyr)
+library(readr)
+library(readxl)
+library(haven)
+```
+
+## Lecture overview
+
+When you begin a new project, it is a good idea to have a consistent and efficient way of **organizing your folders and files**. This can help save you time and trouble later down the road, as you will know exactly where everything is when you need to look for them. Another common task you may encounter in your project is **reading and writing data**. This lecture covers these two fundamental topics for helping you get started with a project.
+
+**Organizing folders and files**:
+
+- **Organizing folders**: how to structure and navigate your project directory
+- **Organizing files**: how to structure an R script
+
+**Reading and writing data**:
+
+Common file formats to **read** from:
+
+| **Format** | **Package** | **Function** |
+| ------ | -------- | ------- | ------- |
+| Comma-separated values (`.csv`) | `readr` | `read_csv()` |
+| Text-formated data (`.txt`) | `readr` | `read_table()` |
+| Tab-separated values (`.tsv`) | `readr` | `read_tsv()` |
+| Excel (`.xls` or `.xlsx`) | `readxl` | `read_excel()` |
+| Stata (`.dta`) | `haven` | `read_dta()` |
+| SPSS (`.sav`) | `haven` | `read_sav()` |
+| SAS (`.sas`) | `haven` | `read_sas()` |
+| R (`.rds`) | base R | `readRDS()` |
+| R (`.Rdata`) | base R | `load()` |
+
+_Source: Professor Darin Christensen_
+
+<br>
+Common file formats to **write** to:
+
+| **Format** | **Package** | **Function** |
+| ------ | -------- | ------- | ------- |
+| Comma-separated values (`.csv`) | `readr` | `write_csv()` |
+| Stata (`.dta`) | `haven` | `write_dta()` |
+| R (`.rds`) | base R | `saveRDS()` |
+| R (`.Rdata`) | base R | `save()` |
+
+# Organizing project directory
+
+What is a **directory** and how to organize one?
+
+- Folders are referred to as **directories**
+- Your project directory is the folder that contains all the files and subfolders (i.e., subdirectories) you create for the purpose of your project
+- There is no right or wrong way to organize a project directory, but the structure shown below is generally a good way to set up your project
+  - You can have a `data/` subdirectory to hold all data files, `scripts/` subdirectory to hold your scripts, etc.
+- When using RStudio, it is often useful to turn your project directory into an **RStudio project**
+
+```
+my_project/
+|
+|- data/
+|- scripts/
+|- figures/
+```
+
+## RStudio project
+
+How to create an **RStudio project**?
+
+- On the top right corner in RStudio, select `New Project` under the dropdown menu
+- If there's a folder you want to turn into a project, select `Existing Directory`
+- Under `Project working directory`, browse for your folder and click `Create Project`
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/rstudio_project.png)
+
+<br>
+Why use **RStudio project**?
+
+- Creating a RStudio project helps keep everything relative to the project directory
+  - Your R Console and R scripts will run using the project directory as the working directory
+  - Your Terminal in RStudio will start in the project directory
+  - Your file browser window (bottom right panel) will also start off in the project directory
+
+
+## Working directory
+
+What is a **working directory**?
+
+- Your **working directory** is the directory that you are currently working in (e.g., running a script from)
+  - It'll be important to keep the working directory in mind when you need to refer to files/folders _relative_ to the working directory
+- Note that the working directory is different when you run an R markdown file (`.Rmd`) vs. an R script (`.R`)
+- You can use the `getwd()` function to check your current working directory
+
+<br>
+__The `getwd()` function__:
+
+```{r, eval = FALSE}
+?getwd
+
+# SYNTAX
+getwd()
+```
+
+- Function: Returns an absolute filepath representing the current working directory
+- Arguments: NA
+
+<br>
+When you run R code in an **R markdown file**, the working directory is the directory that your `.Rmd` file is in:
+
+```{r}
+getwd()
+```
+
+<br>
+When you run an **R script**, the working directory is the directory indicated at the top of your console in RStudio:
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/r_console.png)
+
+- This is typically your home directory (e.g., `~/` for Macs) if you are not working from an RStudio project
+- If you are working from an RStudio project, your working directory would be the project directory
+
+## File paths
+
+There are two types of file paths:
+
+- **Absolute file path**: full path that includes the complete list of directories needed to locate a file or folder
+  - E.g., `/Users/my_username/Desktop/my_project/` is the absolute file path to the `my_project/` directory
+  - E.g., `/Users/my_username/Desktop/my_project/data/` is the absolute file path to the `data/` directory
+  - E.g., `/Users/my_username/Desktop/my_project/scripts/` is the absolute file path to the `scripts/` directory
+- **Relative file path**: path relative to your current working directory
+  - E.g., Assuming your working directory is the `Desktop/` folder:
+    - `./my_project/` is the relative file path to the `my_project/` directory
+    - `./my_project/data/` is the relative file path to the `data/` directory
+  - E.g., Assuming your working directory is the `data/` folder:
+    - `./` is the relative file path to the `data/` directory
+    - `../` is the relative file path to the `my_project/` directory
+    - `../scripts/` is the relative file path to the `scripts/` directory
+
+<br>
+As seen, **relative file paths** uses dots to indicate the relative directory:
+            
+| **Key** | **Description** |
+| ------ | -------- |
+| `.` | this directory (i.e., current directory)   |
+| `..` | up a directory (i.e., parent directory)   |
+
+- Usually, the `.` and trailing `/` in relative paths are not mandatory
+  - E.g., `./my_project/` is equivalent to `my_project`, `my_project/`, and `./my_project`
+
+## Navigating files and folders
+
+### Listing content of directory
+
+<br>
+__The `list.files()` function__:
+
+```{r, eval = FALSE}
+?list.files
+
+# SYNTAX AND DEFAULT VALUES
+list.files(path = ".", pattern = NULL, all.files = FALSE,
+           full.names = FALSE, recursive = FALSE,
+           ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+```
+
+- Function: List all files and folders inside a directory
+- Arguments
+  - `path`: Path to the directory you want to list content of
+  - `full.names`: The provided `path` will be prepended to the listed file/folder names
+
+<br>
+<details><summary>**Example**: Listing content of current working directory using `list.files()`</summary>
+
+```{r}
+# Check current working directory
+getwd()
+
+# List files and folders in current directory
+list.files()
+
+# List files and folders in parent directory
+list.files('..')
+```
+
+</details>
+
+### Changing working directory
+
+<br>
+__The `setwd()` function__:
+
+```{r, eval = FALSE}
+?setwd
+
+# SYNTAX
+setwd(dir)
+```
+
+- Function: Change working directory
+- Arguments
+  - `dir`: path to set working directory to
+- Notes
+  - In an **R script**, you only need to set your working directory using `setwd()` once in the script
+  - In an **R markdown file**, if you set your working directory in a code chunk, it will be reset to the default directory after the code chunk is finished running
+
+<br>
+<details><summary>**Example**: Setting working directory using `setwd()`</summary>
+
+```{r}
+# Check current working directory
+getwd()
+
+# List files and folders in current directory
+list.files()
+
+# Set working directory to parent directory
+setwd('..')
+
+# Check new working directory
+getwd()
+
+# List files and folders in new working directory
+list.files()
+```
+
+<br>
+Remember that for `.Rmd` files, the working directory will be reset in new code chunks:
+
+```{r}
+# Check current working directory
+getwd()
+```
+
+</details>
+
+### Creating directories
+
+<br>
+__The `dir.create()` function__:
+
+```{r, eval = FALSE}
+?dir.create
+
+# SYNTAX AND DEFAULT VALUES
+dir.create(path, showWarnings = TRUE, recursive = FALSE, mode = "0777")
+```
+
+- Function: Creates new directories
+- Arguments  
+  - `path`: A character vector containing a single path name
+  - `showWarnings`: Should the warnings on failure be shown?
+    - If directory you want to create already exists, you will get a warning, but this won't cause the code to stop running
+  - `recursive`: Should elements of the path other than the last be created?
+    - That is, will `dir.create()` create the file path `new_directory/new_sub_directory` if neither `new_directory` nor `new_sub_directory` exist?
+
+<br>
+<details><summary>**Example**: Creating a new directory within current working directory using `dir.create()`</summary>
+
+```{r}
+# Check current working directory
+getwd()
+
+# Create new directory called `my_folder`
+dir.create(path = "my_folder")
+
+# Check that `my_folder` has been created
+list.files()
+```
+
+</details>
+
+### Deleting directories
+
+<br>
+__The `unlink()` function__:
+
+```{r, eval = FALSE}
+?unlink
+
+# SYNTAX AND DEFAULT VALUES
+unlink(x, recursive = FALSE, force = FALSE)
+```
+
+- Function: Deletes files or directories
+- Arguments  
+  - `x`: A character vector with the names of the files or directories to be deleted
+  - `recursive`: Should directories be deleted recursively?
+    - If recursive = `FALSE`, directories are not deleted, not even empty ones
+  - `force`: Should permissions be changed (if possible) to allow the file or directory to be removed?
+
+<br>
+<details><summary>**Example**: Deleting a directory within current working directory using `unlink()`</summary>
+
+```{r}
+# Delete `my_folder` we just created
+unlink(x = "my_folder", recursive = TRUE) 
+
+# Check that `my_folder` has been deleted
+list.files()
+```
+
+</details>
+
+
+# Organizing R script
+
+How to organize an **R script**?
+
+- Like folder structure, there is no absolute right or wrong way to organize your R script
+- The general guideline is to clearly label each section of your script and define objects (e.g., directory paths, functions) at the top of your file to be used throughout the script
+- Below is one way you can organize your script
+
+```
+################################################################################
+##
+## [ PROJ ] < Name of the overall project >
+## [ FILE ] < Name of this particular file >
+## [ AUTH ] < Your name + email / Twitter / GitHub handle >
+## [ INIT ] < Date you started the file >
+##
+################################################################################
+
+## ---------------------------
+## libraries
+## ---------------------------
+
+## ---------------------------
+## directory paths
+## ---------------------------
+
+## ---------------------------
+## functions
+## ---------------------------
+
+## -----------------------------------------------------------------------------
+## < BODY >
+## -----------------------------------------------------------------------------
+
+## ---------------------------
+## input
+## ---------------------------
+
+## ---------------------------
+## process
+## ---------------------------
+
+## ---------------------------
+## output
+## ---------------------------
+
+## -----------------------------------------------------------------------------
+## END SCRIPT
+## -----------------------------------------------------------------------------
+```
+
+_Source: [R script template](https://edquant.github.io/edh7916/scripts/template.R) by Ben Skinner_
+
+## Creating directory path objects
+
+> We use the `file.path()` command because it is smart. Some computer operating systems use forward slashes, `/`, for their file paths; others use backslashes, `\`. Rather than try to guess or assume what operating system future users will use, we can use R's function, `file.path()`, to check the current operating system and build the paths correctly for us.
+
+_Source: [Organizing Lecture](https://edquant.github.io/edh7916/lessons/organizing.html) by Ben Skinner_
+
+<br>
+__The `file.path()` function__:
+
+```{r, eval = FALSE}
+?file.path
+
+# SYNTAX AND DEFAULT VALUES
+file.path(..., fsep = .Platform$file.sep)
+```
+
+- Function: Construct the path to a file from components in a platform-independent way
+- Arguments
+  - `...`: File path component(s)
+
+<br>
+**Example**: Creating a file path using `file.path()`
+
+```{r}
+# Pass in each section of the file path as a separate argument
+file.path('.', 'lectures', 'week_1')
+
+# You can also save the paths in objects at the top of your R script
+lec_dir <- file.path('.', 'lectures', 'week_1')
+```
+
+
+# Reading in data
+
+There are many functions available to read in various types of data. The most common types that we will cover are:
+
+| **Format** | **Package** | **Function** |
+| ------ | -------- | ------- | ------- |
+| Comma-separated values (`.csv`) | `readr` | `read_csv()` |
+| Excel (`.xls` or `.xlsx`) | `readxl` | `read_excel()` |
+| Stata (`.dta`) | `haven` | `read_dta()` |
+| R (`.rds`) | base R | `readRDS()` |
+| R (`.Rdata`) | base R | `load()` |
+
+<br>
+What can these functions read in?
+
+- All the functions can take a **file path** (absolute or relative) to your local data file
+- Some functions can take a **URL** to the file directly on the web
+  - This method saves time and reduces the steps of downloading, saving, and reading in data
+- Some functions can also read in **literal data** (i.e., passed in as a string)
+
+## `download.file()` function
+
+Although it is most convenient to read in data directly from the web, not all functions support that. In addition, we may want to download and save a copy of the data locally in some cases. This can be done using the `download.file()` function.
+
+<br>
+__The `download.file()` function__:
+
+```{r, eval = FALSE}
+?download.file
+
+# SYNTAX AND DEFAULT VALUES
+download.file(url, destfile, method, quiet = FALSE, mode = "w",
+              cacheOK = TRUE,
+              extra = getOption("download.file.extra"),
+              headers = NULL, ...)
+```
+
+- Function: Downloads file from the Internet
+- Arguments
+  - `url`: URL of a resource to be downloaded
+  - `destfile`: Name where the downloaded file is saved
+  
+<br>
+**Example**: Downloading data file from the Internet using `download.file()`
+
+We will be downloading the **2019 Institutional Characteristics** data dictionary file from the [IPEDS Data Center](https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx). Select the year and survey from the drop down and right-click the "Dictionary" link to obtain the URL to download:
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/hd2019.png)
+
+```{r}
+# Create new directory called `data` to store downloaded file
+dir.create(path = 'data')
+
+# Download data dictionary file
+download.file(url = 'https://nces.ed.gov/ipeds/datacenter/data/HD2019_Dict.zip',
+              destfile = 'data/hd2019_dictionary')  # rename downloaded file
+
+# Check that the file has been downloaded in `data` folder
+list.files('data')
+```
+
+
+## `unzip()` function
+
+Some files downloaded from the web, like the example above, is contained in a zip folder. The `unzip()` function can be used to extract the zipped contents.
+
+<br>
+__The `unzip()` function__:
+
+```{r, eval = FALSE}
+?unzip
+
+# SYNTAX AND DEFAULT VALUES
+unzip(zipfile, files = NULL, list = FALSE, overwrite = TRUE,
+      junkpaths = FALSE, exdir = ".", unzip = "internal",
+      setTimes = FALSE)
+```
+
+- Function: Extract files from or list a zip archive
+- Arguments
+  - `zipfile`: Path to zip file
+  - `exdir`: The directory to extract files to
+
+<br>
+**Example**: Extracting zipped data file using `unzip()`
+
+Continuing from the previous example, we can use `unzip()` to extract the contents of the downloaded file:
+
+```{r}
+# Download data dictionary file
+unzip(zipfile = 'data/hd2019_dictionary',
+      exdir = 'data')  # extract to `data` folder
+
+# Check that the file has been downloaded in `data` folder
+list.files('data')
+```
+
+
+# `readr` package
+
+__The `readr` package__:
+
+```{r, eval = FALSE}
+?readr
+```
+
+- The `readr` package contains functions to "read rectangular text data (like 'csv', 'tsv', and 'fwf')" into R [[doc](https://cran.r-project.org/web/packages/readr/readr.pdf)]
+- `readr` is part of `tidyverse`, and it is automatically loaded every time you load `tidyverse`
+- **Comma-separated values (CSV) files** are delimited text files that use commas to separate values
+- The functions to read and write CSV files are `read_csv()` and `write_csv()`
+
+<br>
+`readr` functions for reading data:
+
+| **Format** | **Function** |
+| ------ | -------- |
+| Comma-separated values (`.csv`)   | `read_csv()`   |
+| Semicolon-separated values    | `read_csv2()`   |
+| Tab-separated values (`.tsv`)    | `read_tsv()`   |
+| General delimited files    | `read_delim()`   |
+| Fixed width files   | `read_fwf()`   |
+| Text-formatted data (`.txt`)    | `read_table()` |
+| Web log files    | `read_log()` |
+
+## `read_csv()` function
+
+__The `read_csv()` function__:
+
+```{r, eval = FALSE}
+?read_csv
+
+# SYNTAX AND DEFAULT VALUES
+read_csv(file, col_names = TRUE, col_types = NULL,
+         locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+         quote = "\"", comment = "", trim_ws = TRUE, skip = 0,
+         n_max = Inf, guess_max = min(1000, n_max),
+         progress = show_progress(), skip_empty_rows = TRUE)
+```
+
+- Function: Reads in CSV file
+- Arguments
+  - `file`: File path or URL to a CSV file, or literal data
+  - `col_names`: Whether to use first row of input as column names or provide own column names
+  - `col_types`: Specifies data type for columns you read in
+  - `na`: Vector of values to treat as missing value
+  - `comment`: A string used to identify comments
+  - `skip`: Number of lines to skip before reading data
+
+
+### `file` argument
+
+The `file` argument:
+
+- Provide URL to read in data directly from the web
+- Provide file path to read in a data file on your computer
+- Provide a string containing comma-separated values to read in literal data
+
+We will be reading data from the [Mobility Report Cards: The Role of Colleges in Intergenerational Mobility](http://www.equality-of-opportunity.org/documents/). This is part of the [Equality of Opportunity Project](http://www.equality-of-opportunity.org/papers/coll_mrc_paper.pdf), which uses two data sources -- federal tax records and Department of Education records (1999-2013) -- to investigate intergenerational income mobility at colleges in the US. 
+
+We will be reading in **Online Data Table 1** under the **Mobility Report Cards: The Role of Colleges in Intergenerational Mobility** drop down from the [Equality of Opportunity Project Data Page](http://www.equality-of-opportunity.org/data/). Right-click the "Excel" link to obtain the URL to read (Note: it is actually a CSV file, not Excel):
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/mrc_table1.png)
+
+<br>
+**Example**: Reading data from the web using `read_csv()`
+
+```{r, message=FALSE}
+# Read data from URL
+mrc <- read_csv(file = 'http://www.equality-of-opportunity.org/data/college/mrc_table1.csv')
+
+# View first 4 rows and 4 columns 
+mrc[1:4, 1:4]
+```
+
+
+<br>
+**Example**: Reading data from local file using `read_csv()`
+
+If we have downloaded data files on our computer, we can read them in by providing the path to the file:
+
+```{r}
+# First, download Chetty data file
+download.file(url = 'http://www.equality-of-opportunity.org/data/college/mrc_table1.csv',
+              destfile = 'data/mrc_table1.csv')  # save to `data` folder we created earlier
+
+# Read data from local file
+mrc <- read_csv(file = 'data/mrc_table1.csv')
+```
+
+<br>
+**Example**: Reading in literal data from string using `read_csv()`
+
+We can also provide literal comma-separated data in the form of a string to be read:
+
+```{r}
+# Read literal data
+mrc <- read_csv(
+  file = "super_opeid,name,czname,state
+          2665,Vaughn College Of Aeronautics And Technology,New York,NY
+          7273,CUNY Bernard M. Baruch College,New York,NY
+          2688,City College Of New York - CUNY,New York,NY
+          7022,CUNY Lehman College,New York,NY"
+)
+
+mrc
+```
+
+### `col_names` argument
+
+The `col_names` argument:
+
+- If `TRUE`, the first row of the input will be used as the column names (default)
+- If `FALSE`, column names will be generated automatically (`X1`, `X2`, `X3`, etc.)
+- If provide a character vector, the values will be used as the names of the columns
+
+<br>
+<details><summary>**Example**: Setting `col_names` to `TRUE` in `read_csv()` (default)</summary>
+
+```{r}
+read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T",
+  col_names = TRUE
+)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Setting `col_names` to `FALSE` in `read_csv()`</summary>
+
+```{r}
+read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T",
+  col_names = FALSE
+)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Providing character vector for `col_names` in `read_csv()`</summary>
+
+```{r}
+read_csv(
+  file = "1, 2, F
+          4, 5, T",
+  col_names = c('a', 'b', 'c')
+)
+```
+
+</details>
+
+
+### `col_types` argument
+
+By default, `read_csv()` attempts to guess each column's data type by looking at the first 1000 rows (e.g. character, double, etc). But you can manually specify the data type for the columns you read in using `col_types`.
+
+The `col_types` argument:
+
+- If `NULL`, column data types guessed from the first 1000 rows (default)
+- Use `cols()` to specify data type for all columns
+- Use `cols_only()` to specify data type and read in only a subset of the columns
+- Use compact string representation where each character represents one column
+    
+To specify column type:
+
+| **Column Type** | **Parser function** |  **Character representation** |
+| ------ | ------ | ------ |
+| Logical  | `col_logical()`   | `l` |
+| Integers   | `col_integer()`   | `i` |
+| Doubles    | `col_double()`   | `d` |
+| Characters   | `col_character()`   | `c` |
+| Numbers   | `col_numeric()` | `n` |
+| Factors   | `col_factors(levels, ordered)` | `f` |
+| Dates    | `col_date(format = "")`   | `D` |
+    
+<br>
+<details><summary>**Example**: Setting `col_types` to `NULL` in `read_csv()` (default)</summary>
+
+We can see that `read_csv()` guessed `double`, `double`, and `logical` as the data type of the 3 columns:
+
+```{r}
+df <- read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T",
+  col_types = NULL
+)
+
+str(df)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Setting `col_types` using `cols()` in `read_csv()`</summary>
+
+We can manually choose the data type of columns using `cols()` and the corresponding parser function:
+
+```{r}
+df <- read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T", 
+  col_types = cols(
+       a = col_factor(c('1', '2', '3', '4')),
+       b = col_character()
+    )
+)
+
+str(df)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Setting `col_types` using `cols_only()` in `read_csv()`</summary>
+
+We can use `cols_only()` to specify data type and read in only the specified columns. This is useful when you want to read in one variable at a time to check that they look good.
+
+```{r}
+df <- read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T", 
+  col_types = cols_only(
+       a = col_factor(c('1', '2', '3', '4'))
+    )
+)
+
+str(df)
+
+df <- read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T", 
+  col_types = cols_only(
+       a = col_factor(c('1', '2', '3', '4')),
+       c = col_logical()
+    )
+)
+
+str(df)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Setting `col_types` using compact string representation in `read_csv()`</summary>
+
+For example, the string representation `'icl'` specifies the 3 columns to be of type `integer`, `character`, and `logical`, respectively:
+
+```{r}
+df <- read_csv(
+  file = "a, b, c
+          1, 2, F
+          4, 5, T",
+  col_types = 'icl'
+)
+
+str(df)
+```
+
+</details>
+
+
+### Other arguments
+
+Other useful arguments for `read_csv()`:
+
+- `na`: Vector of values to treat as missing value
+    - E.g., `na = c(-2, 'TBD')`: Treat the values `-2` and `'TBD'` as missing values 
+- `comment`: A string used to identify comments
+    - E.g., `comment = '#'`: Any lines starting with `#` should be treated as a comment and ignored when reading in data
+- `skip`: Number of lines to skip before reading data
+    - E.g., `n = 5`: Skip the first 5 lines when reading in the data
+
+<br>
+<details><summary>**Example**: Specifying the `na` argument in `read_csv()`</summary>
+
+Treat the values `-2` and `'TBD'` as missing values (i.e., `NA` values):
+
+```{r}
+read_csv(
+  file = "column_1, column_2, column_3
+          1, -2, 3
+          4, 5, TBD",
+  na = c(-2, 'TBD')
+)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Specifying the `comment` argument in `read_csv()`</summary>
+
+Skip the first line of comment that contains some meta information on the data:
+
+```{r}
+read_csv(
+  file = "# This file contains data on student charges for the acdemic year.
+          a, b, c
+          1, 2, 3
+          4, 5, 6", 
+  comment = '#'
+)
+```
+
+<br>
+We can specify what character indicates the start of a comment:
+
+```{r}
+read_csv(
+  file = "* This file contains data on student charges for the acdemic year.
+          a, b, c
+          1, 2, 3
+          4, 5, 6", 
+  comment = '*'
+)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Specifying the `skip` argument in `read_csv()`</summary>
+
+Skip the first 2 lines that contains some meta information on the data:
+
+```{r}
+read_csv(
+  file = 
+    "This file contains data on student charges for the acdemic year.
+     File name: IC2016_AY
+     a, b, c
+     1, 2, 3
+     4, 5, 6", 
+  skip = 2
+)
+```
+
+<br>
+We can also use `skip` to skip the first row of header data when we want to provide our own headings using `col_names`:
+
+```{r}
+read_csv(
+  file = 
+    "This file contains data on student charges for the acdemic year.
+     File name: IC2016_AY
+     a, b, c
+     1, 2, 3
+     4, 5, 6", 
+  skip = 3,
+  col_names = c('colA', 'colB', 'colC')
+)
+```
+
+</details>
+
+
+## `write_csv()` function
+
+__The `write_csv()` function__:
+
+```{r, eval = FALSE}
+?write_csv
+
+# SYNTAX AND DEFAULT VALUES
+write_csv(x, path, na = "NA", append = FALSE, col_names = !append,
+          quote_escape = "double")
+```
+
+- Function: Writes to CSV file
+- Arguments
+  - `x`: A data frame to write to disk
+  - `path`: Path or connection to write to
+  - `na`: Vector of values to treat as missing value
+  - `append`: Whether or not to overwrite existing file or append to it
+  - `col_names`: Whether or not to write column names at the top of the file
+  - `quote_escape`: The type of escaping to use for quoted values
+
+<br>
+**Example**: Writing to CSV file using `write_csv()`
+
+Recall the Chetty data from earlier. We can write the data from the dataframe to a CSV file:
+
+```{r}
+# Chetty data
+mrc
+
+# Write to CSV file
+write_csv(mrc,
+          path = 'data/mrc.csv')  # write to `data` folder we created earlier
+```
+
+
+# `readxl` package
+
+__The `readxl` package__:
+
+```{r, eval = FALSE}
+?readxl
+```
+
+- The `readxl` package is designed to import Excel files into R [[doc](https://cran.r-project.org/web/packages/readxl/readxl.pdf)]
+- `readxl` is part of `tidyverse`, so you'll have the package if you have `tidyverse` installed. But unlike `readr`, it is not automatically loaded when you load `tidyverse` so you'll need to explicitly load `readxl` if you want to use it.
+- The function to read Excel files is `read_excel()`
+
+## `read_excel()` function
+
+__The `read_excel()` function__:
+
+```{r, eval = FALSE}
+?read_excel
+
+# SYNTAX AND DEFAULT VALUES
+read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
+           col_types = NULL, na = "", trim_ws = TRUE, skip = 0,
+           n_max = Inf, guess_max = min(1000, n_max),
+           progress = readxl_progress(), .name_repair = "unique")
+```
+
+- Function: Reads in `.xls` and `.xlsx` files
+- Arguments
+    - `path`: Path to the Excel file
+    - `sheet`: Sheet to read -- either a string (the name of a sheet) or an integer (the position of the sheet)
+    - `range`: A cell range to read from  
+        - `cell_rows()`: Cell rows to read from  
+        - `cell_cols()`: Cell columns to read from  
+    - `col_names`: Whether to use first row of input as column names or provide own column names
+    - `col_types`: Specifies data type for columns you read in
+    - `na`: Character vector of strings to interpret as missing values
+    - `n_max`: Maximum number of data rows to read  
+
+<br>
+**Example**: Reading in an Excel spreadsheet using `read_excel()`
+
+`readxl` has several example files that we could use as practice: 
+
+```{r}
+# List available sample Excel files
+readxl_example()
+
+# Get path to datasets.xlsx
+path_to_datasets <- readxl_example('datasets.xlsx')
+path_to_datasets
+
+# View sheets in datasets.xlsx
+excel_sheets(path_to_datasets)
+```
+
+<br>
+If we read in the Excel file without specifying the sheet, it will default to the first sheet:
+
+```{r}
+iris_dataset <- read_excel(path_to_datasets)
+head(iris_dataset, n = 4)
+```
+
+<br>
+We could also specify a specific sheet to read using the `sheet` argument:
+
+```{r}
+quakes_dataset <- read_excel(path_to_datasets, sheet = 'quakes')
+head(quakes_dataset, n = 4)
+```
+
+
+<br>
+<details><summary>**Example**: Specifying the `range` argument in `read_excel()`</summary>
+
+Cell notation in Excel uses letters to indicate columns and numbers to indicate rows (e.g., cell `A4` is the cell on the 1st column and 4th row). We can specify the cell range we want to read using this notation:
+
+```{r}
+# Selects range of cells from C1 at top left corner to E4 at bottom right corner
+read_excel(path_to_datasets, sheet = 'quakes', range = 'C1:E4')
+
+# Selects rows of cells from row 1 to 3 using cell_rows()
+read_excel(path_to_datasets, sheet = 'quakes', range = cell_rows(1:3))
+
+# Selects columns of cells from column A to C using cell_cols()
+head(read_excel(path_to_datasets, sheet = 'quakes', range = cell_cols('A:C')))
+```
+
+<br>
+Note that we could also specify the sheet we want to select from using `range`, thus eliminating the need to specify sheet using the `sheet` argument:
+
+```{r}
+# Selects range of cells from C1 to E4 in the quakes spreadsheet
+read_excel(path_to_datasets, range = 'quakes!C1:E4')
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Specifying the `n_max` argument in `read_excel()`</summary>
+
+```{r}
+# Read in at most 5 rows (if available)
+read_excel(path_to_datasets, n_max = 4)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Reading in local Excel file using `read_excel()`</summary>
+
+Recall the data dictionary we downloaded earlier for the 2019 IPEDS Institutional Characteristics survey (`hd2019.xlsx`). We will use `read_excel()` to:
+
+- Read in the `Frequencies` sheet
+- Read in only the rows 151 to 154
+- Make sure the column names are: `varnumber`, `varname`, `codevalue`, `valuelabel`, `frequency`, `percent`
+- Read in `'-3'` as `NA` values
+
+```{r}
+read_excel(path = 'data/hd2019.xlsx',
+           sheet = 'Frequencies',
+           range = cell_rows(151:154),
+           col_names = c('varnumber', 'varname', 'codevalue', 'valuelabel', 'frequency', 'percent'),
+           na = '-3')
+```
+
+</details>
+
+
+# `haven` package
+
+__The `haven` package__:
+
+```{r, eval = FALSE}
+?haven
+```
+
+- The `haven` package that allows users to import and export data from the following statistical packages: SAS, SPSS, Stata [[doc](https://cran.r-project.org/web/packages/haven/haven.pdf)]
+- `haven` is part of `tidyverse` so you'll have the package if you have `tidyverse` installed. But unlike `readr`, it is not automatically loaded when you load `tidyverse` so you'll need to explicitly load `haven` if you want to use it.
+- The functions to read and write to Stata `.dta` files are `read_dta()` and `write_dta()`
+
+<br>
+`haven` functions for reading data:
+
+| **Format** | **Function** |
+| ------ | -------- |
+| SAS    | `read_sas()`   |
+| SPSS    | `read_sav()`   |
+| Stata    | `read_dta()`   |
+
+
+## `read_dta()` function
+
+__The `read_dta()` function__:
+
+```{r, eval = FALSE}
+?read_dta
+
+# SYNTAX AND DEFAULT VALUES
+read_dta(file, encoding = NULL, col_select = NULL, skip = 0,
+         n_max = Inf, .name_repair = "unique")
+```
+
+- Function: Reads in Stata `.dta` files
+- Arguments
+  - `file`: File path or URL to a `.dta` file, or literal data
+  - `skip`: Number of lines to skip before reading data
+  - `n_max`: Maximum number of data rows to read  
+
+<br>
+**Example**: Reading in `.dta` data file using `read_dta()`
+
+High school longitudinal surveys from National Center for Education Statistics (NCES) follow U.S. students from high school through college and the labor market. We will be working with [High School Longitudinal Study of 2009 (HSLS:09)](https://nces.ed.gov/surveys/hsls09/index.asp):
+
+- Follows 9th graders from 2009
+- Data collection waves
+  - Base Year (2009)
+  - First Follow-up (2012)
+  - 2013 Update (2013)
+  - High School Transcripts (2013-2014)
+  - Second Follow-up (2016) 
+
+```{r}
+# Read .dta file from URL
+hsls <- read_dta('https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/hsls/hsls_sch_small.dta')
+
+# Print first few rows of the hsls dataframe
+head(hsls)
+```
+
+## `write_dta()` function
+
+__The `write_dta()` function__:
+
+```{r, eval = FALSE}
+?write_dta
+
+# SYNTAX AND DEFAULT VALUES
+write_dta(data, path, version = 14, label = attr(data, "label"))
+```
+
+- Function: Writes to Stata `.dta` files
+- Arguments
+  - `data`: Dataframe to write
+  - `path`: Path to a file where the data will be written
+
+<br>
+**Example**: Writing to `.dta` data file using `read_dta()`
+
+```{r}
+# Write the first few rows of the hsls dataframe to a .dta file
+write_dta(head(hsls),
+          path = 'data/hsls_sch_small_subset.dta')  # write to `data` folder we created earlier
+```
+
+
+# Saving R objects
+
+There are base R functions for saving R objects, such as dataframes, to R data files. This is useful when you want to preserve data structures, such as column data types of a dataframe. [[x](http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata)]
+
+## Saving one object
+
+Single R objects can be saved to `.RDS` files using `saveRDS()` and loaded again using `readRDS()`.
+
+<br>
+__The `saveRDS()` function__:
+
+```{r, eval = FALSE}
+?saveRDS
+
+# SYNTAX AND DEFAULT VALUES
+saveRDS(object, file = "", ascii = FALSE, version = NULL,
+        compress = TRUE, refhook = NULL)
+```
+
+- Function: Saves single R object to `.RDS` file
+- Arguments
+  - `object`: R object to write
+  - `file`: Name of the file where the R object is saved to
+
+<br>
+**Example**: Saving single R object to `.RDS` file using `saveRDS()`
+
+```{r}
+# Save the `mrc` dataframe from earlier
+saveRDS(mrc, file = 'data/mrc.RDS')
+```
+
+
+<br>
+__The `readRDS()` function__:
+
+```{r, eval = FALSE}
+?readRDS
+
+# SYNTAX AND DEFAULT VALUES
+readRDS(file, refhook = NULL)
+```
+
+- Function: Loads single R object from `.RDS` file
+- Arguments
+  - `file`: Name of the file where the R object is loaded from
+- Notes
+  - You need to assign the loaded object using `<-` to retain it in your environment
+
+<br>
+**Example**: Loading single R object from `.RDS` file using `readRDS()`
+
+```{r}
+# Load `mrc` dataframe
+mrc_df <- readRDS(file = 'data/mrc.RDS')
+
+mrc_df
+```
+
+## Saving multiple objects
+
+One or more R objects can be saved to `.RData` files using `save()` and loaded again using `load()`.
+
+<br>
+__The `save()` function__:
+
+```{r, eval = FALSE}
+?save
+
+# SYNTAX AND DEFAULT VALUES
+save(..., list = character(),
+     file = stop("'file' must be specified"),
+     ascii = FALSE, version = NULL, envir = parent.frame(),
+     compress = isTRUE(!ascii), compression_level,
+     eval.promises = TRUE, precheck = TRUE)
+```
+
+- Function: Saves R object(s) to `.RData` file
+- Arguments
+  - `...`: Dataframe to write
+  - `file`: Name of the file where the R object(s) are saved to
+
+<br>
+**Example**: Saving multiple R objects to `.RData` file using `save()`
+
+```{r}
+# Save the `iris_dataset` and `quakes_dataset` dataframes from earlier
+save(iris_dataset, quakes_dataset, file = 'data/datasets.RData')
+```
+
+
+<br>
+__The `load()` function__:
+
+```{r, eval = FALSE}
+?load
+
+# SYNTAX AND DEFAULT VALUES
+load(file, envir = parent.frame(), verbose = FALSE)
+```
+
+- Function: Loads R object(s) from `.RData` file
+- Arguments
+  - `file`: Name of the file where the R object(s) are loaded from
+- Notes
+  - You do NOT need to assign the loaded object(s) using `<-` because they will all be loaded into your environment with their original names
+
+<br>
+**Example**: Loading multiple R objects from `.RData` file using `load()`
+
+```{r}
+# Load `iris_dataset` and `quakes_dataset` dataframes
+load(file = 'data/datasets.RData')
+```
+
+```{r, echo = FALSE}
+unlink('data', recursive = TRUE)
+```
