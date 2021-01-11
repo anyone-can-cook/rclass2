@@ -334,11 +334,14 @@ list.files()
 
 # Organizing R script
 
-How to organize an **R script**?
+What is an **R script** and how to organize one?
 
-- Like folder structure, there is no absolute right or wrong way to organize your R script
-- The general guideline is to clearly label each section of your script and define objects (e.g., directory paths, functions) at the top of your file to be used throughout the script
-- Below is one way you can organize your script
+- An **R script** contains R code (i.e., what you'd write inside R code chunks in an _R markdown file_)
+- Any lines of text that aren't R code should start with a `#` to indicate that they are lines of _comments_
+- You can run code in an R script by putting your cursor on the line you want to run (or highlighting the code to run multiple lines) and clicking `Run` at the top of the script
+    - Alternatively, you can hit `ctrl` + `enter`/`cmd` + `enter` on your keyboard to run the code
+- Like folder structure, there is no absolute right or wrong way to organize your R script, but below is one way you can do it
+    - The general guideline is to clearly label each section of your script and define objects (e.g., directory paths, functions) at the top of your file to be used throughout the script
 
 ```
 ################################################################################

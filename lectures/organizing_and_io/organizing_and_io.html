@@ -1912,11 +1912,18 @@ list.files()
 </div>
 <div id="organizing-r-script" class="section level1">
 <h1><span class="header-section-number">3</span> Organizing R script</h1>
-<p>How to organize an <strong>R script</strong>?</p>
+<p>What is an <strong>R script</strong> and how to organize one?</p>
 <ul>
-<li>Like folder structure, there is no absolute right or wrong way to organize your R script</li>
+<li>An <strong>R script</strong> contains R code (i.e., what you’d write inside R code chunks in an <em>R markdown file</em>)</li>
+<li>Any lines of text that aren’t R code should start with a <code>#</code> to indicate that they are lines of <em>comments</em></li>
+<li>You can run code in an R script by putting your cursor on the line you want to run (or highlighting the code to run multiple lines) and clicking <code>Run</code> at the top of the script
+<ul>
+<li>Alternatively, you can hit <code>ctrl</code> + <code>enter</code>/<code>cmd</code> + <code>enter</code> on your keyboard to run the code</li>
+</ul></li>
+<li>Like folder structure, there is no absolute right or wrong way to organize your R script, but below is one way you can do it
+<ul>
 <li>The general guideline is to clearly label each section of your script and define objects (e.g., directory paths, functions) at the top of your file to be used throughout the script</li>
-<li>Below is one way you can organize your script</li>
+</ul></li>
 </ul>
 <pre><code>################################################################################
 ##
