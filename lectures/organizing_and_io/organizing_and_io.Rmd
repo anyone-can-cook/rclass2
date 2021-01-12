@@ -135,7 +135,7 @@ getwd()
 - Arguments: NA
 
 <br>
-When you run R code in an **R markdown file**, the working directory is the directory that your `.Rmd` file is in:
+When you run R code in an **R markdown file**, the working directory is the directory that your `.Rmd` file is in (the directory where the .Rmd file is saved):
 
 ```{r}
 getwd()
@@ -1021,7 +1021,7 @@ read_excel(path_to_datasets, range = 'quakes!C1:E4')
 <details><summary>**Example**: Specifying the `n_max` argument in `read_excel()`</summary>
 
 ```{r}
-# Read in at most 5 rows (if available)
+# Read in at most 4 rows (if available)
 read_excel(path_to_datasets, n_max = 4)
 ```
 
