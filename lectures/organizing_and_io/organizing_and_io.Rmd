@@ -114,6 +114,8 @@ Why use **RStudio project**?
 
 ## Working directory
 
+[CRYSTAL - ADD A BRIEF DISCUSSION OF THE HOME DIRECTORY; WHAT IT MEANS; WHAT OUR DEFAULT HOME DIRECTORY IS FOR MAC/PC; HOW TO SEE IT ON THE FILES WINDOW ON BOTTOM RIGHT OF RSTUDIO CONSOLE; YOU DECIDE WHERE EXACTLY YOU WANT TO PUT THIS; DOESN'T HAVE TO BE MORE THAN A FEW LINES TOTAL AND MAYBE/MAYBE NOT AN IMAGE; SEE https://edquant.github.io/edh7916/lessons/organizing.html ]
+
 What is a **working directory**?
 
 - Your **working directory** is the directory that you are currently working in (e.g., running a script from)
@@ -149,7 +151,14 @@ When you run an **R script**, the working directory is the directory indicated a
 - This is typically your home directory (e.g., `~/` for Macs) if you are not working from an RStudio project
 - If you are working from an RStudio project, your working directory would be the project directory
 
+CRYSTAL - CREATE A TABLE THAT CONSOLIDATES THE ABOVE INFO BY SHOWING STATING WHAT IS THE WORKING DIRECTORY FOR DIFFERENT KINDS OF SITUATIONS
+
+- MAYBE ROWS ARE SOMETHING LIKE: IN .RMD CODE CHUNK; IN .R SCRIPT; IN CONSOLE;
+- MAYBE COLUMNS ARE SOMETHING LIKE: NOT WORKING FROM AN RSTUDIO PROJECT; WORKING FROM AN RSTUDIO PROJECT
+
 ## File paths
+
+CRYSTAL - SOMEWHERE IN THIS SECTION, STATE WHAT THIS SYMBOL MEANS `/`; MAYBE ADD TO TABLE BELOW; ALSO, SOMEWHERE EXPLAIN THAT R USES `/` FOR FILEPATHS REGARDLESS OF WHETHER YOU ARE A MAC USER OR A PC USER, EVEN THOUGH PCs GENERALLY USE `\` FOR FILEPATHS
 
 There are two types of file paths:
 
@@ -168,14 +177,29 @@ There are two types of file paths:
 
 <br>
 As seen, **relative file paths** uses dots to indicate the relative directory:
-            
+
+
 | **Key** | **Description** |
 | ------ | -------- |
 | `.` | this directory (i.e., current directory)   |
 | `..` | up a directory (i.e., parent directory)   |
 
-- Usually, the `.` and trailing `/` in relative paths are not mandatory
+- Usually, the `.` [CRYSTAL - SHOULD WE SAY "LEADING `.`"; OR THE "LEADING `./`"] and trailing `/` in relative paths are not mandatory 
   - E.g., `./my_project/` is equivalent to `my_project`, `my_project/`, and `./my_project`
+  
+CRYSTAL - CAN YOU EXPLAIN, IS THERE ANY REASON WHY WE WOULD WANT TO ADD THE LEADING `./` AND/OR THE TRAILING `/`? THIS IS SOMETHING I HAVE ALWAYS WONDERED ABOUT. BEN SKINNER ALWAYS ADD THEM, BUT I DON'T KNOW WHY. I'M SURE HE MUST HAVE A REASON, EVEN IF IT IS JUST CONSISTENCY OR THAT HE THINKS IT ADDS CLARITY IN TERMS OF READING CODE]
+
+PERHAPS HELPFUL TO ADD A VISUALIZATION SIMILAR IN SPIRIT TO THIS ONE TO SHOW RELATIVE FILEPATHS
+```
+my_project/
+|
+|- data/
+|- scripts/
+|- figures/
+```
+AND PERHAPS HELPFUL TO ADD SOMETHING SIMILAR TO VISUALLY CONVEY ABSOLUTE FILEPATHS [BUT MAYBE NOT WORTH ADDING THIS; YOU DECIDE). 
+
+AT END OF THIS SUB-SECTION, GIVE SOME INTUITION ABOUT WHY WE WOULD PREFER RELATIVE FILEPATHS RATHER THAN ABSOLUTE FILEPATHS. FEEL FREE TO COPY FROM SKINNER'S LECTURE https://edquant.github.io/edh7916/lessons/organizing.html. JUST GIVE HIM CREDIT AND PUT IN QUOTES ANY VERBATIM TEXT.
 
 ## Navigating files and folders
 
@@ -197,6 +221,8 @@ list.files(path = ".", pattern = NULL, all.files = FALSE,
 - Arguments
   - `path`: Path to the directory you want to list content of
   - `full.names`: The provided `path` will be prepended to the listed file/folder names
+
+CRYSTAL - IN BELOW EXAMPLE YOU WRITE `list.files('..')`; CHANGE THIS TO `list.files(path = '..')`; IN GENERAL, LET'S TRY TO GET IN THE HABIT OF REMEMBERING TO INCLUDE THE ARGUMENT NAME FOR THE FUNCTION INSTEAD OF ONLY INCLUDING THE ARGUMENT VALUE; THIS APPROACH IS BETTER FOR PEDAGOGICAL PURPOSES
 
 <br>
 <details><summary>**Example**: Listing content of current working directory using `list.files()`</summary>
@@ -263,6 +289,10 @@ getwd()
 
 </details>
 
+CRYSTAL - ADD TABLE THAT IS QUICK REFERENCE TO INFO PROVIDE ABOVE. I WANT TABLE TO INDICATE HOW BEHAVIOR OF `setwd()` differs depending on whether you are using .rmd/console/script. 
+
+- so the rows of the table would be (you decide order): Rmd; .R script; console
+- cells would indicate what the working directory is *after* the `setwd()` function finishes running.
 ### Creating directories
 
 <br>
@@ -314,9 +344,10 @@ unlink(x, recursive = FALSE, force = FALSE)
 - Function: Deletes files or directories
 - Arguments  
   - `x`: A character vector with the names of the files or directories to be deleted
-  - `recursive`: Should directories be deleted recursively?
-    - If recursive = `FALSE`, directories are not deleted, not even empty ones
+  - `recursive`: Should directories be deleted recursively? [CRYSTAL - SAY WHAT IS MEANT BY "RECURSIVELY"]
+    - If recursive = `FALSE`, directories are not deleted, not even empty ones (NOT CLEAR TO ME WHAT THIS MEANS. CLARIFY)
   - `force`: Should permissions be changed (if possible) to allow the file or directory to be removed?
+    - CRYSTAL - WHICH "PERMISSIONS" IS IT REFERRING TO?; DOES WHAT "FORCE" DOES DEPEND ON VALUE OF "RECURSIVE" AND VICE-VERSA?
 
 <br>
 <details><summary>**Example**: Deleting a directory within current working directory using `unlink()`</summary>
@@ -331,8 +362,25 @@ list.files()
 
 </details>
 
+CRYSTAL - ADD AN EXAMPLE THAT CREATES A DIRECTORY FOR A HYPOTHETICAL RESEARCH PROJECT CALLED `research_project` OR SOMETHING; AND CREATES SUB-DIRECTORIES FOR `data`, `scripts`, `output`,`output/tables`,`output/figures`; AND THEN AT END OF EXAMPLE, DELETE THE RESEARCH PROJECT DIRECTORY. MAYBE THE DIRECTIONS FOR THE EXAMPLE SHOULD GIVE STUDENTS SOMETHING LIKE THIS TO HELP CONCEPTUALIZE WHAT THEY ARE TRYING TO DO:
+
+```
+organizing_and_io/
+  |
+  |__research_project
+    |
+    |__data/
+    |__scripts/
+    |__output/
+      |__tables/
+      |__figures/
+```
 
 # Organizing R script
+
+CRYSTAL - SEPARATE "WHAT IS AN R SCRIPT" FROM "HOW TO ORGANIZE AN R SCRIPT"
+
+- FOR WHAT IS AN R SCRIPT, HAVE A BULLET THAT EXPLAINS WHY WE WOULD WANT TO USE R SCRIPT RATHER THAN .RMD FILE 
 
 What is an **R script** and how to organize one?
 
@@ -388,6 +436,10 @@ What is an **R script** and how to organize one?
 
 _Source: [R script template](https://edquant.github.io/edh7916/scripts/template.R) by Ben Skinner_
 
+CRYSTAL - STATE THAT FOR MAJORITY OF PROBLEM SETS FOR THE REST OF QUARTER WE WILL REQUIRE STUDENTS TO SUBMIT A .R SCRIPT RATHER THAN .RMD FILE
+
+- REMIND STUDENTS ABOUT LINK TO PROBLEM SET R SCRIPT TEMPLATE
+
 ## Creating directory path objects
 
 > We use the `file.path()` command because it is smart. Some computer operating systems use forward slashes, `/`, for their file paths; others use backslashes, `\`. Rather than try to guess or assume what operating system future users will use, we can use R's function, `file.path()`, to check the current operating system and build the paths correctly for us.
@@ -407,6 +459,9 @@ file.path(..., fsep = .Platform$file.sep)
 - Function: Construct the path to a file from components in a platform-independent way
 - Arguments
   - `...`: File path component(s)
+  - `fsep`: the path separator to use (default is `/`)
+    - usually, we ignore this argument
+- Value/output: a character vector object of the arguments concatenated by the `/` path separator (unless an alternative path separator is specified in `fsep`)
 
 <br>
 **Example**: Creating a file path using `file.path()`
@@ -415,12 +470,31 @@ file.path(..., fsep = .Platform$file.sep)
 # Pass in each section of the file path as a separate argument
 file.path('.', 'lectures', 'week_1')
 
+# Note that the object created by file.path() is just a character vector
+file.path('.', 'lectures', 'week_1') %>% str()
+
 # You can also save the paths in objects at the top of your R script
 lec_dir <- file.path('.', 'lectures', 'week_1')
+
+# inspect object
+lec_dir
+lec_dir %>% str()
+
+# delete object
+rm(lec_dir)
 ```
+
+CRYSTAL - GIVE A MORE SUBSTANTIVE EXAMPLE OF `file.path()` IN ACTION
+
+- FOR THIS EXAMPLE, START BY RECREATING THE `research_project` AND SUB-DIRECTORIES FROM THE EXAMPLE I LAID OUT AT AND OF CREATING/DELETING DIRECTORIES SECTION
+- THEN USE `file.path()` TO CREATE SEPARATE OBJECTS FOR EACH OF THESE SUB-DIRECTORIES.
+- MAYBE ADD A FILE TO ONE OR TWO OF THE SUB-DIRECTORIES (E.G., a .RDS file with some simple data)
+- THEN SHOW HOW THE OBJECTS CREATED BY `file.path()` ARE USED TO ACCESS THOSE FILES
 
 
 # Reading in data
+
+CRYSTAL - IF THIS LEVEL-1 SECTION CALLED "READING IN DATA" THEN SHOULDN'T THE SECTIONS "`readr`", "`readxl`", and "`haven`" BE LEVEL-2 SECTIONS RATHER THAN LEVEL1? ALTERNATIVELY [OPTION 2], YOU COULD RENAME THE "READING IN DATA" LEVEL-1 SECTION TO DENOTE THAT THE MAIN CONTENTS ARE `download.file()` and `unzip` functions. [POST-SCRIPT NOW THAT I HAVE GONE THROUGH REST OF LECTURE; GO WITH OPTION 2 OF JUST GIVING THIS SECTION A DIFFERENT NAME. AND EXPLAIN THAT WE ARE TRANSITIONING TO READING/WRITING DATA AND THESE FUNCTIONS DOWNLOAD/UNZIP ARE PART OF TOOLKIT FOR READING/WRITING]
 
 There are many functions available to read in various types of data. The most common types that we will cover are:
 
@@ -470,6 +544,8 @@ We will be downloading the **2019 Institutional Characteristics** data dictionar
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/hd2019.png)
 
 ```{r}
+getwd()
+
 # Create new directory called `data` to store downloaded file
 dir.create(path = 'data')
 
@@ -516,6 +592,8 @@ unzip(zipfile = 'data/hd2019_dictionary',
 # Check that the file has been downloaded in `data` folder
 list.files('data')
 ```
+
+CRYSTAL - ADD SHORT EXAMPLE THAT DOES SIMILAR DOWNLOAD AND UNZIP (E.G., MAYBE THE CSV DATA RATHER THAN THE DATA DICTIONARY) AS THE TWO EXAMPLES ABOVE BUT THIS TIME USES `file.path()` TO CREATE OBJECTS FOR SPECIFIC FILEPATHS AND THEN USES THOSE OBJECTS IN THE CODE TO DOWNLOAD/UNZIP
 
 
 # `readr` package
@@ -568,6 +646,7 @@ read_csv(file, col_names = TRUE, col_types = NULL,
   - `comment`: A string used to identify comments
   - `skip`: Number of lines to skip before reading data
 
+CRYSTAL - ADD ONE OR TWO SENTENCES SAYING WHAT WE WILL DO IN THIS SECTION AND/OR WHAT ARE OUR GOALS. BASICALLY, WE WANT TO INTRODUCE THEM TO THE FUNCTION AND GIVE STUDENTS PRACTICE W/ A FEW OF THE MOST COMMONLY USED ARGUMENTS, BUT WE WON'T PROVIDE AN EXHAUSTIVE EXPLANATION.
 
 ### `file` argument
 
@@ -609,6 +688,10 @@ download.file(url = 'http://www.equality-of-opportunity.org/data/college/mrc_tab
 mrc <- read_csv(file = 'data/mrc_table1.csv')
 ```
 
+CRYSTAL - ADD EXAMPLE THAT IS SAME AS ABOVE, BUT FIRST USES `file.path()` TO CREATE AN OBJECT CALLED `data_dir` [OR SOMETHING SIMILAR] THAT IS RELATIVE FILEPATH TO THE `data` FOLDER AND THEN USES THAT `data_dir` WITHIN THE `download.file` AND THE `mrc` FUNCTIONS
+
+- PRACTICALLY, THIS APPROACH IS MORE STEPS THAN THE PREVIOUS APPROACH. BUT I THINK SHOWING STUDENTS HOW TO DO THIS WILL HELP THEM GET PRACTICE FOR PROBLEM SET, ETC.
+
 <br>
 **Example**: Reading in literal data from string using `read_csv()`
 
@@ -626,6 +709,8 @@ mrc <- read_csv(
 
 mrc
 ```
+
+ADD NOTE SAYING THAT USUALLY IN PROJECTS YOU WOULD NOT SPECIFY LITERAL DATA IN FILE ARGUMENT OF READ_CSV FUNCTION; HOWEVER, THIS APPROACH TO PROVIDING LITERAL DATA IS USEFUL FOR EXPERIMENTING WITH THE READ_CSV FUNCTION AND ITS ARGUMENTS (AS SHOWN BELOW)
 
 ### `col_names` argument
 
@@ -788,6 +873,8 @@ str(df)
 ```
 
 </details>
+
+CRYSTAL - ADD A NOTE SAYING THAT AN APPROACH WE PARTICULARLY RECOMMEND IS THE APPROACH OF using cols_only() argument and adding one variable at a time; explain why we recommend this approach (cuz forces you to check that you read in each variable as correct type, one variable at a time). 
 
 
 ### Other arguments
@@ -1137,11 +1224,17 @@ write_dta(head(hsls),
 
 # Saving R objects
 
+CRYSTAL - RENAME THIS SECTION "Saving and reading R objects" BECAUSE YOU ALSO SHOW HOW TO READ IN RDS AND .RData? IF SO THE LEVEL-2 SECTIONS WOULD BE RENAMED: "Saving/reading one object"; "Saving/reading multiple objects"
+
 There are base R functions for saving R objects, such as dataframes, to R data files. This is useful when you want to preserve data structures, such as column data types of a dataframe. [[x](http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata)]
+
+CRYSTAL - CAN YOU REMIND THE READER WHAT IS DIFFERENCE BETWEEN .RDS AND .RData FILE TYPE?
 
 ## Saving one object
 
-Single R objects can be saved to `.RDS` files using `saveRDS()` and loaded again using `readRDS()`.
+Single R objects (e.g., a single data frame, or a single character vector) can be saved to `.RDS` files using `saveRDS()` and loaded again using `readRDS()`.
+
+
 
 <br>
 __The `saveRDS()` function__:
