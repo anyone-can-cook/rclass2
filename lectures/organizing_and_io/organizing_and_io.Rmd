@@ -589,6 +589,7 @@ Similarly, we can use the file path object anywhere that we would normally input
 list.files(path = output_dir)
 ```
 
+CRYSTAL - ADD AN EXAMPLE (EXPANDABLE) WHERE YOU DOWNLOAD AN IMAGE AND SAVE IT TO THE FIGURES DIRECTORY, USING THE figures_dir object. THEN USING THE figures_dir object you display that picture 
 # Downloading and unzipping data
 
 There are many functions available to read in various types of data. The most common types that we will cover are:
