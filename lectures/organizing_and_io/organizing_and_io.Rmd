@@ -114,8 +114,6 @@ Why use **RStudio project**?
 
 ## Working directory
 
-[CRYSTAL - ADD A BRIEF DISCUSSION OF THE HOME DIRECTORY; WHAT IT MEANS; WHAT OUR DEFAULT HOME DIRECTORY IS FOR MAC/PC; HOW TO SEE IT ON THE FILES WINDOW ON BOTTOM RIGHT OF RSTUDIO CONSOLE; YOU DECIDE WHERE EXACTLY YOU WANT TO PUT THIS; DOESN'T HAVE TO BE MORE THAN A FEW LINES TOTAL AND MAYBE/MAYBE NOT AN IMAGE; SEE https://edquant.github.io/edh7916/lessons/organizing.html ]
-
 What is a **working directory**?
 
 - Your **working directory** is the directory that you are currently working in (e.g., running a script from)
@@ -148,26 +146,68 @@ When you run an **R script**, the working directory is the directory indicated a
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/r_console.png)
 
-- This is typically your home directory (e.g., `~/` for Macs) if you are not working from an RStudio project
+- If you are not working from an RStudio project, this is typically your **home directory**
 - If you are working from an RStudio project, your working directory would be the project directory
 
-CRYSTAL - CREATE A TABLE THAT CONSOLIDATES THE ABOVE INFO BY SHOWING STATING WHAT IS THE WORKING DIRECTORY FOR DIFFERENT KINDS OF SITUATIONS
+<br>
+What is the **home directory**?
 
-- MAYBE ROWS ARE SOMETHING LIKE: IN .RMD CODE CHUNK; IN .R SCRIPT; IN CONSOLE;
-- MAYBE COLUMNS ARE SOMETHING LIKE: NOT WORKING FROM AN RSTUDIO PROJECT; WORKING FROM AN RSTUDIO PROJECT
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/home.png)
+
+- You can view your home directory in RStudio by clicking on `Home` in the bottom right file viewer panel
+- The [home directory](https://en.wikipedia.org/wiki/Home_directory) is a user's main directory on a computer and it varies by operating systems
+    - MacOS: `/Users/<username>`
+    - Windows: `C:\Users\<username>`
+- The tilde (`~`) refers to the user's home directory
+    - Note that it is possible to change the default `~` in R [[see here](https://stackoverflow.com/a/26918755/6373540)]
+- You can check your home directory by running the following R code
+
+```{r}
+# Check home directory
+Sys.getenv('HOME')
+
+# Confirm that ~ denotes a user's home directory
+path.expand('~')
+```
+
+<br>
+To summarize, your **working directory** will be as follows in the various scenarios:
+
+|  | **Not working from RStudio Project** | **Working from RStudio Project** |
+| ------ | -------- | ------- |
+| **In R Markdown code chunk** | Directory that the `.Rmd` file is in | Directory that the `.Rmd` file is in  |
+| **In R script** | Home directory | Project directory |
+| **In R console** | Home directory  | Project directory  |
 
 ## File paths
 
-CRYSTAL - SOMEWHERE IN THIS SECTION, STATE WHAT THIS SYMBOL MEANS `/`; MAYBE ADD TO TABLE BELOW; ALSO, SOMEWHERE EXPLAIN THAT R USES `/` FOR FILEPATHS REGARDLESS OF WHETHER YOU ARE A MAC USER OR A PC USER, EVEN THOUGH PCs GENERALLY USE `\` FOR FILEPATHS
+What are **file paths**?
 
-There are two types of file paths:
+- A **file path** specifies the list of directories needed to locate a file
+- The directories in a path can be separated by a forward slash (`/`) or backward slash (`\`) depending on the operating system
+  - MacOS: `/path/to/file`
+  - Windows: `C:\path\to\file`
+- R uses `/` in file paths regardless of whether you're a Mac or PC user
+
+<br>
+
+```
+/path/to/my_project/   # E.g., /Users/my_username/Desktop/
+|
+|- my_project/
+   |
+   |- data/
+   |- scripts/
+```
+
+There are two types of **file paths**:
 
 - **Absolute file path**: full path that includes the complete list of directories needed to locate a file or folder
   - E.g., `/Users/my_username/Desktop/my_project/` is the absolute file path to the `my_project/` directory
   - E.g., `/Users/my_username/Desktop/my_project/data/` is the absolute file path to the `data/` directory
   - E.g., `/Users/my_username/Desktop/my_project/scripts/` is the absolute file path to the `scripts/` directory
 - **Relative file path**: path relative to your current working directory
-  - E.g., Assuming your working directory is the `Desktop/` folder:
+  - E.g., Assuming your working directory is the `Desktop/` folder in the example above:
     - `./my_project/` is the relative file path to the `my_project/` directory
     - `./my_project/data/` is the relative file path to the `data/` directory
   - E.g., Assuming your working directory is the `data/` folder:
@@ -178,28 +218,24 @@ There are two types of file paths:
 <br>
 As seen, **relative file paths** uses dots to indicate the relative directory:
 
-
 | **Key** | **Description** |
 | ------ | -------- |
-| `.` | this directory (i.e., current directory)   |
-| `..` | up a directory (i.e., parent directory)   |
+| `.` | this directory (i.e., current directory) |
+| `..` | up a directory (i.e., parent directory) |
+| `/` | separates directories in a file path |
 
-- Usually, the `.` [CRYSTAL - SHOULD WE SAY "LEADING `.`"; OR THE "LEADING `./`"] and trailing `/` in relative paths are not mandatory 
+- Usually, the leading `./` and trailing `/` in relative paths are not mandatory
   - E.g., `./my_project/` is equivalent to `my_project`, `my_project/`, and `./my_project`
-  
-CRYSTAL - CAN YOU EXPLAIN, IS THERE ANY REASON WHY WE WOULD WANT TO ADD THE LEADING `./` AND/OR THE TRAILING `/`? THIS IS SOMETHING I HAVE ALWAYS WONDERED ABOUT. BEN SKINNER ALWAYS ADD THEM, BUT I DON'T KNOW WHY. I'M SURE HE MUST HAVE A REASON, EVEN IF IT IS JUST CONSISTENCY OR THAT HE THINKS IT ADDS CLARITY IN TERMS OF READING CODE]
+- You can add the slashes if you want to make it clear/explicit that you are referring to a file path 
+  - Slashes might be required in other scenarios (e.g., when referring to filenames for [some commands](https://stackoverflow.com/a/14890660/6373540) on the command line) 
+  - But otherwise it can just be for clarification purposes
 
-PERHAPS HELPFUL TO ADD A VISUALIZATION SIMILAR IN SPIRIT TO THIS ONE TO SHOW RELATIVE FILEPATHS
-```
-my_project/
-|
-|- data/
-|- scripts/
-|- figures/
-```
-AND PERHAPS HELPFUL TO ADD SOMETHING SIMILAR TO VISUALLY CONVEY ABSOLUTE FILEPATHS [BUT MAYBE NOT WORTH ADDING THIS; YOU DECIDE). 
+<br>
+What are the advantages of using **relative file paths**?
 
-AT END OF THIS SUB-SECTION, GIVE SOME INTUITION ABOUT WHY WE WOULD PREFER RELATIVE FILEPATHS RATHER THAN ABSOLUTE FILEPATHS. FEEL FREE TO COPY FROM SKINNER'S LECTURE https://edquant.github.io/edh7916/lessons/organizing.html. JUST GIVE HIM CREDIT AND PUT IN QUOTES ANY VERBATIM TEXT.
+- Notice that the _absolute file path_ is dependent on your specific machine
+    - E.g., `/Users/<username>/path/to/file` has your specific username in it
+- When you are collaborating with others on a shared project directory (e.g., on a GitHub repository), you will want to use _relative file paths_ in your scripts to refer to the shared files/folders, so that the path will be valid for everyone
 
 ## Navigating files and folders
 
@@ -222,8 +258,6 @@ list.files(path = ".", pattern = NULL, all.files = FALSE,
   - `path`: Path to the directory you want to list content of
   - `full.names`: The provided `path` will be prepended to the listed file/folder names
 
-CRYSTAL - IN BELOW EXAMPLE YOU WRITE `list.files('..')`; CHANGE THIS TO `list.files(path = '..')`; IN GENERAL, LET'S TRY TO GET IN THE HABIT OF REMEMBERING TO INCLUDE THE ARGUMENT NAME FOR THE FUNCTION INSTEAD OF ONLY INCLUDING THE ARGUMENT VALUE; THIS APPROACH IS BETTER FOR PEDAGOGICAL PURPOSES
-
 <br>
 <details><summary>**Example**: Listing content of current working directory using `list.files()`</summary>
 
@@ -235,7 +269,7 @@ getwd()
 list.files()
 
 # List files and folders in parent directory
-list.files('..')
+list.files(path = '..')
 ```
 
 </details>
@@ -257,6 +291,7 @@ setwd(dir)
   - `dir`: path to set working directory to
 - Notes
   - In an **R script**, you only need to set your working directory using `setwd()` once in the script
+  - Similarly, if you set working directory in your **R console**, it will persist for the duration of your current R session
   - In an **R markdown file**, if you set your working directory in a code chunk, it will be reset to the default directory after the code chunk is finished running
 
 <br>
@@ -270,7 +305,7 @@ getwd()
 list.files()
 
 # Set working directory to parent directory
-setwd('..')
+setwd(dir = '..')
 
 # Check new working directory
 getwd()
@@ -289,10 +324,7 @@ getwd()
 
 </details>
 
-CRYSTAL - ADD TABLE THAT IS QUICK REFERENCE TO INFO PROVIDE ABOVE. I WANT TABLE TO INDICATE HOW BEHAVIOR OF `setwd()` differs depending on whether you are using .rmd/console/script. 
 
-- so the rows of the table would be (you decide order): Rmd; .R script; console
-- cells would indicate what the working directory is *after* the `setwd()` function finishes running.
 ### Creating directories
 
 <br>
@@ -329,7 +361,7 @@ list.files()
 
 </details>
 
-### Deleting directories
+### Deleting files and directories
 
 <br>
 __The `unlink()` function__:
@@ -344,10 +376,11 @@ unlink(x, recursive = FALSE, force = FALSE)
 - Function: Deletes files or directories
 - Arguments  
   - `x`: A character vector with the names of the files or directories to be deleted
-  - `recursive`: Should directories be deleted recursively? [CRYSTAL - SAY WHAT IS MEANT BY "RECURSIVELY"]
-    - If recursive = `FALSE`, directories are not deleted, not even empty ones (NOT CLEAR TO ME WHAT THIS MEANS. CLARIFY)
+  - `recursive`: Should directories be deleted recursively? (i.e., delete content that are nested inside a directory)
+    - If `recursive = FALSE`, you can only delete files. Directories are not deleted, not even empty ones.
+    - You must set `recursive = TRUE` in order to delete a directory, including the files/subdirectories inside it
   - `force`: Should permissions be changed (if possible) to allow the file or directory to be removed?
-    - CRYSTAL - WHICH "PERMISSIONS" IS IT REFERRING TO?; DOES WHAT "FORCE" DOES DEPEND ON VALUE OF "RECURSIVE" AND VICE-VERSA?
+    - In the case where you do not have write permission for a file or directory, you need to set `force = TRUE` in order to be able to delete it
 
 <br>
 <details><summary>**Example**: Deleting a directory within current working directory using `unlink()`</summary>
@@ -362,34 +395,63 @@ list.files()
 
 </details>
 
-CRYSTAL - ADD AN EXAMPLE THAT CREATES A DIRECTORY FOR A HYPOTHETICAL RESEARCH PROJECT CALLED `research_project` OR SOMETHING; AND CREATES SUB-DIRECTORIES FOR `data`, `scripts`, `output`,`output/tables`,`output/figures`; AND THEN AT END OF EXAMPLE, DELETE THE RESEARCH PROJECT DIRECTORY. MAYBE THE DIRECTIONS FOR THE EXAMPLE SHOULD GIVE STUDENTS SOMETHING LIKE THIS TO HELP CONCEPTUALIZE WHAT THEY ARE TRYING TO DO:
+## Example project directory
+
+Let's create a directory for a hypothetical research project called `research_project`. Inside this directory, we'll create separate subdirectories for `data`, `scripts`, `output`, `output/tables`, `output/figures`:.
 
 ```
-organizing_and_io/
-  |
-  |__research_project
-    |
-    |__data/
-    |__scripts/
-    |__output/
-      |__tables/
-      |__figures/
+research_project/
+|
+|- data/
+|- scripts/
+|- output/
+  |- tables/
+  |- figures/
 ```
+
+```{r}
+# Check working directory to see where your directory will be created
+getwd()
+
+# Create `research_project` directory
+dir.create(path = "research_project")
+
+# Create `data` and `scripts` within `research_project`
+dir.create(path = "research_project/data")
+dir.create(path = "research_project/scripts")
+
+# List the contents of `research_project` directory
+list.files(path = "research_project")
+
+# Though we did not create the `output` directory yet, we can still directly create the `output/tables` subdirectory if we specify `recursive = TRUE`, which will create both `output` and `tables`
+dir.create(path = "research_project/output/tables", recursive = TRUE)
+dir.create(path = "research_project/output/figures")
+
+# List the contents of `output` directory
+list.files(path = "research_project/output")
+
+# To delete `research_project`, remember you need `recursive = TRUE` to delete a directory
+# unlink(x = "research_project", recursive = TRUE)
+```
+
 
 # Organizing R script
 
-CRYSTAL - SEPARATE "WHAT IS AN R SCRIPT" FROM "HOW TO ORGANIZE AN R SCRIPT"
-
-- FOR WHAT IS AN R SCRIPT, HAVE A BULLET THAT EXPLAINS WHY WE WOULD WANT TO USE R SCRIPT RATHER THAN .RMD FILE 
-
-What is an **R script** and how to organize one?
+What is an **R script**?
 
 - An **R script** contains R code (i.e., what you'd write inside R code chunks in an _R markdown file_)
 - Any lines of text that aren't R code should start with a `#` to indicate that they are lines of _comments_
 - You can run code in an R script by putting your cursor on the line you want to run (or highlighting the code to run multiple lines) and clicking `Run` at the top of the script
     - Alternatively, you can hit `ctrl` + `enter`/`cmd` + `enter` on your keyboard to run the code
+- You will want to use an **R script** for the purpose of writing R code
+    - On the other hand, you can only execute R code within code chunks in _R markdown files_, so they are not as well-suited for large amounts of code writing. `.Rmd` files are mostly useful for combining text and code (e.g., writing a report) and presenting it in various formats (e.g., PDF, HTML)
+    
+How to organize an **R script**?
+
 - Like folder structure, there is no absolute right or wrong way to organize your R script, but below is one way you can do it
     - The general guideline is to clearly label each section of your script and define objects (e.g., directory paths, functions) at the top of your file to be used throughout the script
+- You will be completing the remaining problem sets in this course using an R script rather than R markdown file
+    - Your scripts will be organized based on the [Problem set R script template](https://anyone-can-cook.github.io/rclass2/assets/resources/ps_template.R) that can be found under the **Syllabus & Resources** section of the [class website](https://anyone-can-cook.github.io/rclass2/)
 
 ```
 ################################################################################
@@ -436,9 +498,6 @@ What is an **R script** and how to organize one?
 
 _Source: [R script template](https://edquant.github.io/edh7916/scripts/template.R) by Ben Skinner_
 
-CRYSTAL - STATE THAT FOR MAJORITY OF PROBLEM SETS FOR THE REST OF QUARTER WE WILL REQUIRE STUDENTS TO SUBMIT A .R SCRIPT RATHER THAN .RMD FILE
-
-- REMIND STUDENTS ABOUT LINK TO PROBLEM SET R SCRIPT TEMPLATE
 
 ## Creating directory path objects
 
@@ -459,42 +518,78 @@ file.path(..., fsep = .Platform$file.sep)
 - Function: Construct the path to a file from components in a platform-independent way
 - Arguments
   - `...`: File path component(s)
-  - `fsep`: the path separator to use (default is `/`)
-    - usually, we ignore this argument
-- Value/output: a character vector object of the arguments concatenated by the `/` path separator (unless an alternative path separator is specified in `fsep`)
+  - `fsep`: The path separator to use (default is `/`)
+    - Usually, we ignore this argument
+- Output: A character vector object of the arguments concatenated by the `/` path separator (unless an alternative path separator is specified in `fsep`)
 
 <br>
-**Example**: Creating a file path using `file.path()`
+**Example**: Creating file path objects using `file.path()`
 
-```{r}
-# Pass in each section of the file path as a separate argument
-file.path('.', 'lectures', 'week_1')
+Recall our example `research_project` directory from earlier:
 
-# Note that the object created by file.path() is just a character vector
-file.path('.', 'lectures', 'week_1') %>% str()
-
-# You can also save the paths in objects at the top of your R script
-lec_dir <- file.path('.', 'lectures', 'week_1')
-
-# inspect object
-lec_dir
-lec_dir %>% str()
-
-# delete object
-rm(lec_dir)
+```
+research_project/
+|
+|- data/
+|- scripts/
+|- output/
+  |- tables/
+  |- figures/
 ```
 
-CRYSTAL - GIVE A MORE SUBSTANTIVE EXAMPLE OF `file.path()` IN ACTION
+<br>
+Let's use `file.path()` to create file path objects for some of these directories:
 
-- FOR THIS EXAMPLE, START BY RECREATING THE `research_project` AND SUB-DIRECTORIES FROM THE EXAMPLE I LAID OUT AT AND OF CREATING/DELETING DIRECTORIES SECTION
-- THEN USE `file.path()` TO CREATE SEPARATE OBJECTS FOR EACH OF THESE SUB-DIRECTORIES.
-- MAYBE ADD A FILE TO ONE OR TWO OF THE SUB-DIRECTORIES (E.G., a .RDS file with some simple data)
-- THEN SHOW HOW THE OBJECTS CREATED BY `file.path()` ARE USED TO ACCESS THOSE FILES
+```{r}
+# Pass in each section of the path as a separate argument
+file.path('.', 'research_project', 'data')
+```
 
 
-# Reading in data
+<br>
+We would usually create and save these objects at the top of our script to be used later on:
 
-CRYSTAL - IF THIS LEVEL-1 SECTION CALLED "READING IN DATA" THEN SHOULDN'T THE SECTIONS "`readr`", "`readxl`", and "`haven`" BE LEVEL-2 SECTIONS RATHER THAN LEVEL1? ALTERNATIVELY [OPTION 2], YOU COULD RENAME THE "READING IN DATA" LEVEL-1 SECTION TO DENOTE THAT THE MAIN CONTENTS ARE `download.file()` and `unzip` functions. [POST-SCRIPT NOW THAT I HAVE GONE THROUGH REST OF LECTURE; GO WITH OPTION 2 OF JUST GIVING THIS SECTION A DIFFERENT NAME. AND EXPLAIN THAT WE ARE TRANSITIONING TO READING/WRITING DATA AND THESE FUNCTIONS DOWNLOAD/UNZIP ARE PART OF TOOLKIT FOR READING/WRITING]
+```{r}
+# Create file path object for `data` directory
+data_dir <- file.path('.', 'research_project', 'data')
+data_dir
+
+# Create file path object for `output` directory
+output_dir <- file.path('.', 'research_project', 'output')
+output_dir
+
+# Create file path object for `tables` directory
+tables_dir <- file.path('.', 'research_project', 'output', 'tables')
+tables_dir
+```
+
+<br>
+Note that the object created by `file.path()` is just a character vector containing the path:
+
+```{r}
+# Investigate file path object
+output_dir %>% str()
+```
+
+
+<br>
+Since the file path object is just a regular character vector, we could use that as input to `file.path()` to help create subdirectory path objects:
+
+```{r}
+# Create file path object for `figures` directory using `output_dir`
+figures_dir <- file.path(output_dir, 'figures')
+figures_dir
+```
+
+<br>
+Similarly, we can use the file path object anywhere that we would normally input a file path:
+
+```{r}
+# List the contents of the `output` directory
+list.files(path = output_dir)
+```
+
+# Downloading and unzipping data
 
 There are many functions available to read in various types of data. The most common types that we will cover are:
 
@@ -513,6 +608,10 @@ What can these functions read in?
 - Some functions can take a **URL** to the file directly on the web
   - This method saves time and reduces the steps of downloading, saving, and reading in data
 - Some functions can also read in **literal data** (i.e., passed in as a string)
+
+<br>
+As we transition into learning about reading/writing data, let's first take a look at some helpful functions to **download** and **unzip** data files, as you may need to use them when obtaining your data.
+
 
 ## `download.file()` function
 
@@ -535,26 +634,28 @@ download.file(url, destfile, method, quiet = FALSE, mode = "w",
 - Arguments
   - `url`: URL of a resource to be downloaded
   - `destfile`: Name where the downloaded file is saved
+    - This can specify both where you want the downloaded file to be saved and what you want the file to be named
   
 <br>
-**Example**: Downloading data file from the Internet using `download.file()`
+**Example**: Downloading data from the Internet using `download.file()`
 
 We will be downloading the **2019 Institutional Characteristics** data dictionary file from the [IPEDS Data Center](https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx). Select the year and survey from the drop down and right-click the "Dictionary" link to obtain the URL to download:
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/hd2019.png)
 
 ```{r}
-getwd()
+# Recall the file path object to the `data` directory we created earlier
+data_dir
 
-# Create new directory called `data` to store downloaded file
-dir.create(path = 'data')
-
-# Download data dictionary file
+# Download data dictionary file to `data` directory
 download.file(url = 'https://nces.ed.gov/ipeds/datacenter/data/HD2019_Dict.zip',
-              destfile = 'data/hd2019_dictionary')  # rename downloaded file
+              destfile = file.path(data_dir, 'hd2019_dictionary.zip'))  # rename downloaded file
 
-# Check that the file has been downloaded in `data` folder
-list.files('data')
+# Check where we downloaded the data (i.e., the `destfile` arg from above)
+file.path(data_dir, 'hd2019_dictionary.zip')
+
+# Confirm that the file has been downloaded in `data` folder
+list.files(path = data_dir)
 ```
 
 
@@ -585,15 +686,14 @@ unzip(zipfile, files = NULL, list = FALSE, overwrite = TRUE,
 Continuing from the previous example, we can use `unzip()` to extract the contents of the downloaded file:
 
 ```{r}
-# Download data dictionary file
-unzip(zipfile = 'data/hd2019_dictionary',
-      exdir = 'data')  # extract to `data` folder
+# Extract data dictionary file
+unzip(zipfile = file.path(data_dir, 'hd2019_dictionary.zip'),
+      exdir = data_dir)  # extract to `data` folder
 
-# Check that the file has been downloaded in `data` folder
-list.files('data')
+# Check that the file has been extracted in `data` folder
+list.files(path = data_dir)
 ```
 
-CRYSTAL - ADD SHORT EXAMPLE THAT DOES SIMILAR DOWNLOAD AND UNZIP (E.G., MAYBE THE CSV DATA RATHER THAN THE DATA DICTIONARY) AS THE TWO EXAMPLES ABOVE BUT THIS TIME USES `file.path()` TO CREATE OBJECTS FOR SPECIFIC FILEPATHS AND THEN USES THOSE OBJECTS IN THE CODE TO DOWNLOAD/UNZIP
 
 
 # `readr` package
@@ -646,7 +746,8 @@ read_csv(file, col_names = TRUE, col_types = NULL,
   - `comment`: A string used to identify comments
   - `skip`: Number of lines to skip before reading data
 
-CRYSTAL - ADD ONE OR TWO SENTENCES SAYING WHAT WE WILL DO IN THIS SECTION AND/OR WHAT ARE OUR GOALS. BASICALLY, WE WANT TO INTRODUCE THEM TO THE FUNCTION AND GIVE STUDENTS PRACTICE W/ A FEW OF THE MOST COMMONLY USED ARGUMENTS, BUT WE WON'T PROVIDE AN EXHAUSTIVE EXPLANATION.
+<br>
+As you can see from above, the `read_csv()` function provides you with many options for how you can read in the data. We'll introduce you to some of the most commonly used arguments in `read_csv()`, but keep in mind this won't cover them all exhaustively.
 
 ### `file` argument
 
@@ -682,15 +783,11 @@ If we have downloaded data files on our computer, we can read them in by providi
 ```{r}
 # First, download Chetty data file
 download.file(url = 'http://www.equality-of-opportunity.org/data/college/mrc_table1.csv',
-              destfile = 'data/mrc_table1.csv')  # save to `data` folder we created earlier
+              destfile = file.path(data_dir, 'mrc_table1.csv'))  # save to `data` folder
 
 # Read data from local file
-mrc <- read_csv(file = 'data/mrc_table1.csv')
+mrc <- read_csv(file = file.path(data_dir, 'mrc_table1.csv'))
 ```
-
-CRYSTAL - ADD EXAMPLE THAT IS SAME AS ABOVE, BUT FIRST USES `file.path()` TO CREATE AN OBJECT CALLED `data_dir` [OR SOMETHING SIMILAR] THAT IS RELATIVE FILEPATH TO THE `data` FOLDER AND THEN USES THAT `data_dir` WITHIN THE `download.file` AND THE `mrc` FUNCTIONS
-
-- PRACTICALLY, THIS APPROACH IS MORE STEPS THAN THE PREVIOUS APPROACH. BUT I THINK SHOWING STUDENTS HOW TO DO THIS WILL HELP THEM GET PRACTICE FOR PROBLEM SET, ETC.
 
 <br>
 **Example**: Reading in literal data from string using `read_csv()`
@@ -710,7 +807,7 @@ mrc <- read_csv(
 mrc
 ```
 
-ADD NOTE SAYING THAT USUALLY IN PROJECTS YOU WOULD NOT SPECIFY LITERAL DATA IN FILE ARGUMENT OF READ_CSV FUNCTION; HOWEVER, THIS APPROACH TO PROVIDING LITERAL DATA IS USEFUL FOR EXPERIMENTING WITH THE READ_CSV FUNCTION AND ITS ARGUMENTS (AS SHOWN BELOW)
+Note that for a real project, you would typically be reading in data from a file, rather than providing literal data. But for the purpose of experimentation and providing examples (as in the next few sections), it is helpful to use literal data so we are able to see the data.
 
 ### `col_names` argument
 
@@ -771,6 +868,7 @@ The `col_types` argument:
 - If `NULL`, column data types guessed from the first 1000 rows (default)
 - Use `cols()` to specify data type for all columns
 - Use `cols_only()` to specify data type and read in only a subset of the columns
+    - This is particularly useful for reading in one variable at a time to check that its type looks good
 - Use compact string representation where each character represents one column
     
 To specify column type:
@@ -827,7 +925,7 @@ str(df)
 <br>
 <details><summary>**Example**: Setting `col_types` using `cols_only()` in `read_csv()`</summary>
 
-We can use `cols_only()` to specify data type and read in only the specified columns. This is useful when you want to read in one variable at a time to check that they look good.
+We can use `cols_only()` to specify data type and read in only the specified columns. This is useful when you want to read in one variable at a time to check that the type looks good.
 
 ```{r}
 df <- read_csv(
@@ -854,6 +952,14 @@ df <- read_csv(
 str(df)
 ```
 
+<br>
+To summarize, the approach would be:
+
+- Read in first column of data using `col_types = cols_only(...)` and make sure variable looks good
+- Add second column of data to `cols_only()`
+- ...
+- Add nth column of data to `cols_only()`
+
 </details>
 
 <br>
@@ -873,8 +979,6 @@ str(df)
 ```
 
 </details>
-
-CRYSTAL - ADD A NOTE SAYING THAT AN APPROACH WE PARTICULARLY RECOMMEND IS THE APPROACH OF using cols_only() argument and adding one variable at a time; explain why we recommend this approach (cuz forces you to check that you read in each variable as correct type, one variable at a time). 
 
 
 ### Other arguments
@@ -1001,8 +1105,8 @@ Recall the Chetty data from earlier. We can write the data from the dataframe to
 mrc
 
 # Write to CSV file
-write_csv(mrc,
-          path = 'data/mrc.csv')  # write to `data` folder we created earlier
+write_csv(x = mrc,
+          path = file.path(data_dir, 'mrc.csv'))  # write to `data` folder we created earlier
 ```
 
 
@@ -1065,7 +1169,7 @@ excel_sheets(path_to_datasets)
 If we read in the Excel file without specifying the sheet, it will default to the first sheet:
 
 ```{r}
-iris_dataset <- read_excel(path_to_datasets)
+iris_dataset <- read_excel(path = path_to_datasets)
 head(iris_dataset, n = 4)
 ```
 
@@ -1073,7 +1177,7 @@ head(iris_dataset, n = 4)
 We could also specify a specific sheet to read using the `sheet` argument:
 
 ```{r}
-quakes_dataset <- read_excel(path_to_datasets, sheet = 'quakes')
+quakes_dataset <- read_excel(path = path_to_datasets, sheet = 'quakes')
 head(quakes_dataset, n = 4)
 ```
 
@@ -1085,13 +1189,13 @@ Cell notation in Excel uses letters to indicate columns and numbers to indicate 
 
 ```{r}
 # Selects range of cells from C1 at top left corner to E4 at bottom right corner
-read_excel(path_to_datasets, sheet = 'quakes', range = 'C1:E4')
+read_excel(path = path_to_datasets, sheet = 'quakes', range = 'C1:E4')
 
 # Selects rows of cells from row 1 to 3 using cell_rows()
-read_excel(path_to_datasets, sheet = 'quakes', range = cell_rows(1:3))
+read_excel(path = path_to_datasets, sheet = 'quakes', range = cell_rows(1:3))
 
 # Selects columns of cells from column A to C using cell_cols()
-head(read_excel(path_to_datasets, sheet = 'quakes', range = cell_cols('A:C')))
+head(read_excel(path = path_to_datasets, sheet = 'quakes', range = cell_cols('A:C')))
 ```
 
 <br>
@@ -1099,7 +1203,7 @@ Note that we could also specify the sheet we want to select from using `range`, 
 
 ```{r}
 # Selects range of cells from C1 to E4 in the quakes spreadsheet
-read_excel(path_to_datasets, range = 'quakes!C1:E4')
+read_excel(path = path_to_datasets, range = 'quakes!C1:E4')
 ```
 
 </details>
@@ -1109,7 +1213,7 @@ read_excel(path_to_datasets, range = 'quakes!C1:E4')
 
 ```{r}
 # Read in at most 4 rows (if available)
-read_excel(path_to_datasets, n_max = 4)
+read_excel(path = path_to_datasets, n_max = 4)
 ```
 
 </details>
@@ -1125,7 +1229,7 @@ Recall the data dictionary we downloaded earlier for the 2019 IPEDS Institutiona
 - Read in `'-3'` as `NA` values
 
 ```{r}
-read_excel(path = 'data/hd2019.xlsx',
+read_excel(path = file.path(data_dir, 'hd2019.xlsx'),
            sheet = 'Frequencies',
            range = cell_rows(151:154),
            col_names = c('varnumber', 'varname', 'codevalue', 'valuelabel', 'frequency', 'percent'),
@@ -1190,7 +1294,7 @@ High school longitudinal surveys from National Center for Education Statistics (
 
 ```{r}
 # Read .dta file from URL
-hsls <- read_dta('https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/hsls/hsls_sch_small.dta')
+hsls <- read_dta(file = 'https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/hsls/hsls_sch_small.dta')
 
 # Print first few rows of the hsls dataframe
 head(hsls)
@@ -1217,24 +1321,27 @@ write_dta(data, path, version = 14, label = attr(data, "label"))
 
 ```{r}
 # Write the first few rows of the hsls dataframe to a .dta file
-write_dta(head(hsls),
-          path = 'data/hsls_sch_small_subset.dta')  # write to `data` folder we created earlier
+write_dta(data = head(hsls),
+          path = file.path(data_dir, 'hsls_sch_small_subset.dta'))
 ```
 
 
-# Saving R objects
-
-CRYSTAL - RENAME THIS SECTION "Saving and reading R objects" BECAUSE YOU ALSO SHOW HOW TO READ IN RDS AND .RData? IF SO THE LEVEL-2 SECTIONS WOULD BE RENAMED: "Saving/reading one object"; "Saving/reading multiple objects"
+# Saving and loading R objects
 
 There are base R functions for saving R objects, such as dataframes, to R data files. This is useful when you want to preserve data structures, such as column data types of a dataframe. [[x](http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata)]
 
-CRYSTAL - CAN YOU REMIND THE READER WHAT IS DIFFERENCE BETWEEN .RDS AND .RData FILE TYPE?
+We'll be looking at saving and loading R objects with `.RDS` and `.RData` file types. A summary of the differences is below and we will provide examples in the following sections.
 
-## Saving one object
+| `.RDS` files | `.RData` files |
+|----|----|
+| Can store only 1 R object | Can store 1 or more R object(s) |
+| Use `saveRDS()` to save object | Use `save()` to save object(s) |
+| Use `readRDS()` to load object | Use `load()` to load object(s) |
+| Need to assign loaded object in order to retain it | Object(s) will be loaded directly to your environment |
+
+## `.RDS` files
 
 Single R objects (e.g., a single data frame, or a single character vector) can be saved to `.RDS` files using `saveRDS()` and loaded again using `readRDS()`.
-
-
 
 <br>
 __The `saveRDS()` function__:
@@ -1257,7 +1364,7 @@ saveRDS(object, file = "", ascii = FALSE, version = NULL,
 
 ```{r}
 # Save the `mrc` dataframe from earlier
-saveRDS(mrc, file = 'data/mrc.RDS')
+saveRDS(object = mrc, file = file.path(data_dir, 'mrc.RDS'))
 ```
 
 
@@ -1282,12 +1389,12 @@ readRDS(file, refhook = NULL)
 
 ```{r}
 # Load `mrc` dataframe
-mrc_df <- readRDS(file = 'data/mrc.RDS')
+mrc_df <- readRDS(file = file.path(data_dir, 'mrc.RDS'))
 
 mrc_df
 ```
 
-## Saving multiple objects
+## `.RData` files
 
 One or more R objects can be saved to `.RData` files using `save()` and loaded again using `load()`.
 
@@ -1315,7 +1422,7 @@ save(..., list = character(),
 
 ```{r}
 # Save the `iris_dataset` and `quakes_dataset` dataframes from earlier
-save(iris_dataset, quakes_dataset, file = 'data/datasets.RData')
+save(iris_dataset, quakes_dataset, file = file.path(data_dir, 'datasets.RData'))
 ```
 
 
@@ -1340,9 +1447,9 @@ load(file, envir = parent.frame(), verbose = FALSE)
 
 ```{r}
 # Load `iris_dataset` and `quakes_dataset` dataframes
-load(file = 'data/datasets.RData')
+load(file = file.path(data_dir, 'datasets.RData'))
 ```
 
 ```{r, echo = FALSE}
-unlink('data', recursive = TRUE)
+unlink(x = "research_project", recursive = TRUE)
 ```
