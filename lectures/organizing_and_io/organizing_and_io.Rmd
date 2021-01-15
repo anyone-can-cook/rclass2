@@ -589,7 +589,27 @@ Similarly, we can use the file path object anywhere that we would normally input
 list.files(path = output_dir)
 ```
 
-CRYSTAL - ADD AN EXAMPLE (EXPANDABLE) WHERE YOU DOWNLOAD AN IMAGE AND SAVE IT TO THE FIGURES DIRECTORY, USING THE figures_dir object. THEN USING THE figures_dir object you display that picture 
+<br>
+<details><summary>**Example**: Adding a figure to the `figures_dir`</summary>
+
+Let's download an image from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) to the `figures_dir` we created:
+
+```{r}
+# We will introduce the download.file() function in the next section
+download.file(url = 'https://d33wubrfki0l68.cloudfront.net/8b89c5554ed6108359d59909d441dbeb010e8802/9f366/visualize_files/figure-html/unnamed-chunk-7-1.png',
+              destfile = file.path(figures_dir, 'scatterplot.png'))
+```
+
+<br>
+We can use the file path object `figures_dir` to help us refer to the saved image:
+
+```{r, out.width = '80%'}
+# Display image using include_graphics()
+knitr::include_graphics(path = file.path(figures_dir, 'scatterplot.png'))
+```
+
+</details>
+
 # Downloading and unzipping data
 
 There are many functions available to read in various types of data. The most common types that we will cover are:
@@ -1452,5 +1472,5 @@ load(file = file.path(data_dir, 'datasets.RData'))
 ```
 
 ```{r, echo = FALSE}
-unlink(x = "research_project", recursive = TRUE)
+# unlink(x = "research_project", recursive = TRUE)
 ```

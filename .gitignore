@@ -18,8 +18,14 @@ rclass2.Rproj
 
 # ----------
 # MacOS
-# ---------
+# ----------
 
 *.DS_Store
 .DS_Store
 __MACOSX/
+
+# ----------
+# Other
+# ----------
+
+lectures/organizing_and_io/research_project/
