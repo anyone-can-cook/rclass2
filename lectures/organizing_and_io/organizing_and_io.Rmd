@@ -376,7 +376,7 @@ unlink(x, recursive = FALSE, force = FALSE)
 - Function: Deletes files or directories
 - Arguments  
   - `x`: A character vector with the names of the files or directories to be deleted
-  - `recursive`: Should directories be deleted recursively? (i.e., delete content that are nested inside a directory)
+  - `recursive`: Should directories be deleted recursively? (i.e., delete content that's nested inside a directory)
     - If `recursive = FALSE`, you can only delete files. Directories are not deleted, not even empty ones.
     - You must set `recursive = TRUE` in order to delete a directory, including the files/subdirectories inside it
   - `force`: Should permissions be changed (if possible) to allow the file or directory to be removed?
@@ -397,7 +397,7 @@ list.files()
 
 ## Example project directory
 
-Let's create a directory for a hypothetical research project called `research_project`. Inside this directory, we'll create separate subdirectories for `data`, `scripts`, `output`, `output/tables`, `output/figures`:.
+Let's create a directory for a hypothetical research project called `research_project`. Inside this directory, we'll create separate subdirectories for `data`, `scripts`, `output`, `output/tables`, `output/figures`:
 
 ```
 research_project/
