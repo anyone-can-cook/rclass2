@@ -1897,7 +1897,11 @@ div.tocify {
 <hr>
 <p><br> <strong><code>mkdir</code></strong>: Create new directories</p>
 <ul>
-<li>Syntax: <code>mkdir &lt;directory_name(s)&gt;</code></li>
+<li>Syntax: <code>mkdir [&lt;option(s)&gt;] &lt;directory_name(s)&gt;</code></li>
+<li>Options:
+<ul>
+<li><code>-p</code>: Create intermediate directories as required</li>
+</ul></li>
 <li>Arguments:
 <ul>
 <li><code>directory_name(s)</code>: Name of one or more directories to be created</li>
@@ -1905,7 +1909,7 @@ div.tocify {
 <li>Equivalent R function: <code>dir.create()</code></li>
 </ul>
 <details>
-<p><summary><strong>Example</strong>: Using <code>mkdir</code> to create one new directory</summary></p>
+<p><summary><strong>Example</strong>: Using <code>mkdir</code> to create new directory</summary></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># List content of current directory</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## git_and_github.Rmd
@@ -1913,7 +1917,7 @@ div.tocify {
 ## git_and_github_og.Rmd
 ## git_and_github_og.html
 ## render_toc.R</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Create new directories</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Create new directory</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">mkdir</span> my_folder</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## git_and_github.Rmd
@@ -1925,7 +1929,7 @@ div.tocify {
 </details>
 <br>
 <details>
-<p><summary><strong>Example</strong>: Using <code>mkdir</code> to create multiple new directories</summary></p>
+<p><summary><strong>Example</strong>: Using <code>mkdir -p</code> to create new directories including intermediate directories as required</summary></p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># List content of current directory</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## git_and_github.Rmd
@@ -1934,8 +1938,8 @@ div.tocify {
 ## git_and_github_og.html
 ## my_folder
 ## render_toc.R</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Create new directories</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">mkdir</span> folder_a folder_b</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Create new directories (don&#39;t need to explicitly create folder_b before folder_c)</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">mkdir</span> -p folder_a folder_b/folder_c</span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## folder_a
 ## folder_b
@@ -2564,14 +2568,14 @@ div.tocify {
 <span id="cb74-6"><a href="#cb74-6"></a><span class="fu">ls</span> -la</span></code></pre></div>
 <pre><code>## /Users/cyouh95/downloadipeds
 ## total 80
-## drwxr-xr-x    8 cyouh95  staff    272 Jan 18 18:57 .
-## drwxr-xr-x+ 112 cyouh95  staff   3808 Jan 18 18:57 ..
-## drwxr-xr-x   12 cyouh95  staff    408 Jan 18 18:57 .git
-## -rw-r--r--    1 cyouh95  staff     20 Jan 18 18:57 .gitignore
-## -rw-r--r--    1 cyouh95  staff   1073 Jan 18 18:57 LICENSE
-## -rw-r--r--    1 cyouh95  staff   4541 Jan 18 18:57 README.md
-## -rwxr-xr-x    1 cyouh95  staff   5847 Jan 18 18:57 downloadipeds.R
-## -rwxr-xr-x    1 cyouh95  staff  12296 Jan 18 18:57 ipeds_file_list.txt</code></pre>
+## drwxr-xr-x    8 cyouh95  staff    272 Jan 20 18:19 .
+## drwxr-xr-x+ 110 cyouh95  staff   3740 Jan 20 18:19 ..
+## drwxr-xr-x   12 cyouh95  staff    408 Jan 20 18:19 .git
+## -rw-r--r--    1 cyouh95  staff     20 Jan 20 18:19 .gitignore
+## -rw-r--r--    1 cyouh95  staff   1073 Jan 20 18:19 LICENSE
+## -rw-r--r--    1 cyouh95  staff   4541 Jan 20 18:19 README.md
+## -rwxr-xr-x    1 cyouh95  staff   5847 Jan 20 18:19 downloadipeds.R
+## -rwxr-xr-x    1 cyouh95  staff  12296 Jan 20 18:19 ipeds_file_list.txt</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># List out the connected remote, which is named `origin` by default</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="fu">git</span> remote</span></code></pre></div>
 <pre><code>## origin</code></pre>
@@ -2779,7 +2783,7 @@ To create this example, can draw from both of these two tutorials:
 <span id="cb90-5"><a href="#cb90-5"></a><span class="co"># Add R script and make a commit</span></span>
 <span id="cb90-6"><a href="#cb90-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb90-7"><a href="#cb90-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;initial commit&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 1375ce2] initial commit
+<pre><code>## [master (root-commit) 4eb2970] initial commit
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Because this is a new local branch, we get an error if we just use `git push` on the initial push</span></span>
@@ -2838,7 +2842,7 @@ To create this example, can draw from both of these two tutorials:
 <li><a href="#git-diff">git diff</a></li>
 </ul>
 <div id="git-status" class="section level2">
-<h2><span class="header-section-number">5.1</span> git status</h2>
+<h2><span class="header-section-number">5.1</span> <code>git status</code></h2>
 <p><strong><code>git status</code></strong>: Shows the working tree status</p>
 <ul>
 <li>Help: <code>git status --help</code></li>
@@ -2971,7 +2975,7 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 <p><br></p>
 </div>
 <div id="git-log" class="section level2">
-<h2><span class="header-section-number">5.2</span> git log</h2>
+<h2><span class="header-section-number">5.2</span> <code>git log</code></h2>
 <p><strong><code>git log</code></strong>: Show commit logs</p>
 <ul>
 <li>Help: <code>git log --help</code></li>
@@ -3007,7 +3011,7 @@ Date:   Wed Apr 1 22:49:52 2020 -0700
 <p><br></p>
 </div>
 <div id="git-diff" class="section level2">
-<h2><span class="header-section-number">5.3</span> git diff</h2>
+<h2><span class="header-section-number">5.3</span> <code>git diff</code></h2>
 <p><strong><code>git diff</code></strong>: Show changes between files, commits, etc.</p>
 <!--
 FROM HELP FILE:
@@ -3187,9 +3191,9 @@ index c1cff38..8b151a2 100644
 <span id="cb126-5"><a href="#cb126-5"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
 ## total 0
-## drwxr-xr-x    3 cyouh95  staff   102 Jan 18 18:57 .
-## drwxr-xr-x+ 113 cyouh95  staff  3842 Jan 18 18:57 ..
-## drwxr-xr-x    9 cyouh95  staff   306 Jan 18 18:57 .git</code></pre>
+## drwxr-xr-x    3 cyouh95  staff   102 Jan 20 18:19 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
+## drwxr-xr-x    9 cyouh95  staff   306 Jan 20 18:19 .git</code></pre>
 <p><br> What’s inside the <strong><code>.git/</code> directory</strong>?</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1"></a><span class="co"># List out the contents of the .git/ directory (in tree form)</span></span>
 <span id="cb128-2"><a href="#cb128-2"></a><span class="fu">find</span> .git -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
@@ -3369,20 +3373,20 @@ index c1cff38..8b151a2 100644
 <span id="cb144-3"><a href="#cb144-3"></a></span>
 <span id="cb144-4"><a href="#cb144-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb144-5"><a href="#cb144-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) b4b2645] initial commit
+<pre><code>## [master (root-commit) 23504f9] initial commit
 ##  3 files changed, 4 insertions(+)
 ##  create mode 100644 create_dataset.R
 ##  create mode 100644 notes/note_1.txt
 ##  create mode 100644 notes/note_2.txt
 ## |____objects
+## | |____23
+## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____b4
-## | | |____b2645ded9c29da4f9c42dd9158c2308f49e66e
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3417,11 +3421,11 @@ index c1cff38..8b151a2 100644
 <div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1"></a><span class="co">#show files in directory</span></span>
 <span id="cb149-2"><a href="#cb149-2"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Jan 18 18:57 .
-## drwxr-xr-x+ 113 cyouh95  staff  3842 Jan 18 18:57 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Jan 18 18:57 .git
-## -rw-r--r--    1 cyouh95  staff    35 Jan 18 18:57 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Jan 18 18:57 notes</code></pre>
+## drwxr-xr-x    5 cyouh95  staff   170 Jan 20 18:19 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Jan 20 18:19 .git
+## -rw-r--r--    1 cyouh95  staff    35 Jan 20 18:19 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Jan 20 18:19 notes</code></pre>
 <p>Second, show contents of tree using <code>git cat-file</code></p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1"></a><span class="co">#show files in directory</span></span>
 <span id="cb151-2"><a href="#cb151-2"></a><span class="fu">ls</span> -al</span>
@@ -3431,11 +3435,11 @@ index c1cff38..8b151a2 100644
 <span id="cb151-6"><a href="#cb151-6"></a><span class="fu">git</span> cat-file -t f59085d  <span class="co"># type</span></span>
 <span id="cb151-7"><a href="#cb151-7"></a><span class="fu">git</span> cat-file -p f59085d  <span class="co"># content</span></span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Jan 18 18:57 .
-## drwxr-xr-x+ 113 cyouh95  staff  3842 Jan 18 18:57 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Jan 18 18:57 .git
-## -rw-r--r--    1 cyouh95  staff    35 Jan 18 18:57 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Jan 18 18:57 notes
+## drwxr-xr-x    5 cyouh95  staff   170 Jan 20 18:19 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Jan 20 18:19 .git
+## -rw-r--r--    1 cyouh95  staff    35 Jan 20 18:19 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Jan 20 18:19 notes
 ## 
 ## tree
 ## 100644 blob c1cff389562e8bc123e6691a60352fdf839df113 create_dataset.R
@@ -3482,9 +3486,13 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb156-9"><a href="#cb156-9"></a></span>
 <span id="cb156-10"><a href="#cb156-10"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb156-11"><a href="#cb156-11"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master 6e0a4c8] second commit
+<pre><code>## [master 1420365] second commit
 ##  1 file changed, 1 insertion(+)
 ## |____objects
+## | |____14
+## | | |____20365cd3deea87341db2ef2dc866994912b8b1
+## | |____23
+## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
@@ -3495,10 +3503,6 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____6e
-## | | |____0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
-## | |____b4
-## | | |____b2645ded9c29da4f9c42dd9158c2308f49e66e
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3516,10 +3520,10 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb158-3"><a href="#cb158-3"></a></span>
 <span id="cb158-4"><a href="#cb158-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb158-5"><a href="#cb158-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## b4b2645ded9c29da4f9c42dd9158c2308f49e66e
+<pre><code>## 23504f9b1146cc4d561c4e7207577dd6745e73dd
 ## tree f59085df29aed7826a89b23af3f67fc3ab96f643
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025062 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025062 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
 ## 
 ## initial commit</code></pre>
 </details>
@@ -3534,11 +3538,11 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb160-3"><a href="#cb160-3"></a></span>
 <span id="cb160-4"><a href="#cb160-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb160-5"><a href="#cb160-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 6e0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
+<pre><code>## 1420365cd3deea87341db2ef2dc866994912b8b1
 ## tree 524db779f0a3e3b3b353b522285c7da4830e21f1
-## parent b4b2645ded9c29da4f9c42dd9158c2308f49e66e
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025062 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025062 -0800
+## parent 23504f9b1146cc4d561c4e7207577dd6745e73dd
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
 ## 
 ## second commit</code></pre>
 </details>
@@ -3565,22 +3569,22 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb163-4"><a href="#cb163-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb163-5"><a href="#cb163-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
 <pre><code>## |____objects
-## | |____29
-## | | |____6f4240b298ceeb35235d43e699ae5588bf0173
+## | |____14
+## | | |____20365cd3deea87341db2ef2dc866994912b8b1
+## | |____23
+## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
+## | |____59
+## | | |____a14783f3f48845d39021b44007240d1f7c845c
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____6e
-## | | |____0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
-## | |____b4
-## | | |____b2645ded9c29da4f9c42dd9158c2308f49e66e
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3592,23 +3596,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><summary><strong>Example</strong>: Using <code>git cat-file</code> to view tag object</summary></p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1"></a><span class="co"># View content of the tag object</span></span>
 <span id="cb165-2"><a href="#cb165-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> show-ref -s v1<span class="va">)</span>  <span class="co"># retrieves hash for v1 tag</span></span></code></pre></div>
-<pre><code>## object 6e0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
+<pre><code>## object 1420365cd3deea87341db2ef2dc866994912b8b1
 ## type commit
 ## tag v1
-## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025062 -0800
+## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
 ## 
 ## version 1.0</code></pre>
 <div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1"></a><span class="co"># The tagged object was the second commit</span></span>
 <span id="cb167-2"><a href="#cb167-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 6e0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
+<pre><code>## commit 1420365cd3deea87341db2ef2dc866994912b8b1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:42 2021 -0800
+## Date:   Wed Jan 20 18:19:44 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit b4b2645ded9c29da4f9c42dd9158c2308f49e66e
+## commit 23504f9b1146cc4d561c4e7207577dd6745e73dd
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:42 2021 -0800
+## Date:   Wed Jan 20 18:19:44 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </details>
@@ -3616,7 +3620,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 </div>
 </div>
 <div id="head-and-refs" class="section level2">
-<h2><span class="header-section-number">6.3</span> HEAD and refs/</h2>
+<h2><span class="header-section-number">6.3</span> <code>HEAD</code> and <code>refs/</code></h2>
 <p>The <code>HEAD</code> file is a pointer to your current (active) branch – specifically, it points to the latest commit of that branch (whose hash ID is stored in the <code>refs/</code> directory). Especially when we get to working with multiple branches, the <code>HEAD</code> becomes important as it keeps track of which branch you are currently on.</p>
 <p>If we output the contents of <code>HEAD</code>, we see it contains a reference to the <em>master</em> branch:</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1"></a><span class="co"># View content of HEAD</span></span>
@@ -3625,19 +3629,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Following that reference, we can find the hash ID of the latest commit located inside the <code>refs/</code> directory:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1"></a><span class="co"># View content of refs/heads/master</span></span>
 <span id="cb171-2"><a href="#cb171-2"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
-<pre><code>## 6e0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8</code></pre>
+<pre><code>## 1420365cd3deea87341db2ef2dc866994912b8b1</code></pre>
 <p>We can use <code>git log</code> to verify that this is the hash ID of the latest commit:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1"></a><span class="co"># View commit log</span></span>
 <span id="cb173-2"><a href="#cb173-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 6e0a4c8d65ef1d1e17bc6c3c87df07d9b386d1e8
+<pre><code>## commit 1420365cd3deea87341db2ef2dc866994912b8b1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:42 2021 -0800
+## Date:   Wed Jan 20 18:19:44 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit b4b2645ded9c29da4f9c42dd9158c2308f49e66e
+## commit 23504f9b1146cc4d561c4e7207577dd6745e73dd
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:42 2021 -0800
+## Date:   Wed Jan 20 18:19:44 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </div>
@@ -3695,23 +3699,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb187-3"><a href="#cb187-3"></a></span>
 <span id="cb187-4"><a href="#cb187-4"></a><span class="co"># The R script is now no longer listed</span></span>
 <span id="cb187-5"><a href="#cb187-5"></a><span class="fu">git</span> status</span></code></pre></div>
-<pre><code>## [master (root-commit) a63d970] add create_dataset.R
+<pre><code>## [master (root-commit) 5060a1f] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R
 ## On branch master
 ## nothing to commit, working tree clean</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb189-2"><a href="#cb189-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit a63d9709399b5ae7f6344cf205ceebd1d44d93fc
+<pre><code>## commit 5060a1f294ca94bf5771e45fb2efb9ab87600400
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1"></a><span class="co"># Verify that `HEAD` is indeed pointing to the last commit made, which is our initial commit</span></span>
 <span id="cb191-2"><a href="#cb191-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb191-3"><a href="#cb191-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## a63d9709399b5ae7f6344cf205ceebd1d44d93fc</code></pre>
+## 5060a1f294ca94bf5771e45fb2efb9ab87600400</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="#cb193-1"></a><span class="co"># Further modify R script, which is now a tracked file</span></span>
 <span id="cb193-2"><a href="#cb193-2"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
 <span id="cb193-3"><a href="#cb193-3"></a></span>
@@ -3744,10 +3748,10 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## |____objects
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
+## | |____50
+## | | |____60a1f294ca94bf5771e45fb2efb9ab87600400
 ## | |____96
 ## | | |____6cc780d5994bc8a4ed535484cd7f8268e8e874
-## | |____a6
-## | | |____3d9709399b5ae7f6344cf205ceebd1d44d93fc
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____info
@@ -3762,32 +3766,32 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## df &lt;- mpg %&gt;% filter(year == 2008)</code></pre>
 <div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="#cb203-1"></a><span class="co"># Make a commit</span></span>
 <span id="cb203-2"><a href="#cb203-2"></a><span class="fu">git</span> commit -m <span class="st">&quot;modify create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 9629ed5] modify create_dataset.R
+<pre><code>## [master 0f8fa97] modify create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="#cb205-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb205-2"><a href="#cb205-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 9629ed53161848e377e3394318e31976a93e8aef
+<pre><code>## commit 0f8fa9704e072c940b8e8927c381c1ceec7eeac1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     modify create_dataset.R
 ## 
-## commit a63d9709399b5ae7f6344cf205ceebd1d44d93fc
+## commit 5060a1f294ca94bf5771e45fb2efb9ab87600400
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="#cb207-1"></a><span class="co"># Verify that `HEAD` is pointing to the last commit made, which is now our second commit</span></span>
 <span id="cb207-2"><a href="#cb207-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb207-3"><a href="#cb207-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## 9629ed53161848e377e3394318e31976a93e8aef</code></pre>
+## 0f8fa9704e072c940b8e8927c381c1ceec7eeac1</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># View content of commit object for second commit</span></span>
 <span id="cb209-2"><a href="#cb209-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
 <pre><code>## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent a63d9709399b5ae7f6344cf205ceebd1d44d93fc
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025063 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025063 -0800
+## parent 5060a1f294ca94bf5771e45fb2efb9ab87600400
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
 ## 
 ## modify create_dataset.R</code></pre>
 </div>
@@ -3801,7 +3805,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <li><a href="#git-revert">git revert</a></li>
 </ul>
 <div id="git-checkout" class="section level2">
-<h2><span class="header-section-number">7.1</span> git checkout</h2>
+<h2><span class="header-section-number">7.1</span> <code>git checkout</code></h2>
 <p><strong><code>git checkout</code></strong>: Restore working tree files (or switch branches)</p>
 <ul>
 <li>Help: <code>git checkout -help</code></li>
@@ -3823,7 +3827,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb211-6"><a href="#cb211-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb211-7"><a href="#cb211-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) a63d970] add create_dataset.R
+## [master (root-commit) 5060a1f] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb213-1"><a href="#cb213-1"></a><span class="co"># View how create_dataset.R looks when it was committed</span></span>
@@ -3859,7 +3863,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><br></p>
 </div>
 <div id="git-reset" class="section level2">
-<h2><span class="header-section-number">7.2</span> git reset</h2>
+<h2><span class="header-section-number">7.2</span> <code>git reset</code></h2>
 <p><strong><code>git reset</code></strong>: Reset current <code>HEAD</code> to the specified state</p>
 <ul>
 <li>Help: <code>git reset -help</code></li>
@@ -3889,7 +3893,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb221-6"><a href="#cb221-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb221-7"><a href="#cb221-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) a63d970] add create_dataset.R
+## [master (root-commit) 5060a1f] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb223-1"><a href="#cb223-1"></a><span class="co"># Modify R script</span></span>
@@ -3931,7 +3935,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb227-5"><a href="#cb227-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb227-6"><a href="#cb227-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) afd4a69] add 1st line to create_dataset.R
+## [master (root-commit) be681dd] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb229"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb229-1"><a href="#cb229-1"></a><span class="co"># Modify R script</span></span>
@@ -3940,19 +3944,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb229-4"><a href="#cb229-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb229-5"><a href="#cb229-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb229-6"><a href="#cb229-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master a8e6317] add 2nd line to create_dataset.R
+<pre><code>## [master b588379] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb231"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb231-1"><a href="#cb231-1"></a><span class="co"># View commit log</span></span>
 <span id="cb231-2"><a href="#cb231-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit a8e63174ef88e6fcf6f88946f0d8605a3cd63822
+<pre><code>## commit b588379ad4af4bbdbe47dcab28384cd9bc5143b5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit afd4a69f84dfafe80c5f0639c80e7c8f6551f840
+## commit be681dda7f8b7777f6841626a128f754667f4ce1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb233"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb233-1"><a href="#cb233-1"></a><span class="co"># Specify the hash ID of the commit to undo up to</span></span>
@@ -3962,9 +3966,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb233-5"><a href="#cb233-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Unstaged changes after reset:
 ## M    create_dataset.R
-## commit afd4a69f84dfafe80c5f0639c80e7c8f6551f840
+## commit be681dda7f8b7777f6841626a128f754667f4ce1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:45 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb235-1"><a href="#cb235-1"></a><span class="co"># Notice that the changes to the file is still retained in the working directory</span></span>
@@ -3975,7 +3979,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><br></p>
 </div>
 <div id="git-revert" class="section level2">
-<h2><span class="header-section-number">7.3</span> git revert</h2>
+<h2><span class="header-section-number">7.3</span> <code>git revert</code></h2>
 <p><strong><code>git revert</code></strong>: Revert existing commit(s)</p>
 <ul>
 <li>Help: <code>git revert -help</code></li>
@@ -4000,7 +4004,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb237-5"><a href="#cb237-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb237-6"><a href="#cb237-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) afd4a69] add 1st line to create_dataset.R
+## [master (root-commit) 6b1d973] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="#cb239-1"></a><span class="co"># Modify R script</span></span>
@@ -4009,19 +4013,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb239-4"><a href="#cb239-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb239-5"><a href="#cb239-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb239-6"><a href="#cb239-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master a8e6317] add 2nd line to create_dataset.R
+<pre><code>## [master 280ec6b] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb241-1"><a href="#cb241-1"></a><span class="co"># View commit log</span></span>
 <span id="cb241-2"><a href="#cb241-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit a8e63174ef88e6fcf6f88946f0d8605a3cd63822
+<pre><code>## commit 280ec6b332fcab90bea282bf9903adf629d71b2f
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit afd4a69f84dfafe80c5f0639c80e7c8f6551f840
+## commit 6b1d97377f50b8031734a057ef698bf4d3d5dd36
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="#cb243-1"></a><span class="co"># Specify the hash ID of the unwanted commit</span></span>
@@ -4029,25 +4033,25 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb243-3"><a href="#cb243-3"></a></span>
 <span id="cb243-4"><a href="#cb243-4"></a><span class="co"># View commit log</span></span>
 <span id="cb243-5"><a href="#cb243-5"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## [master 2c61d41] Revert &quot;add 2nd line to create_dataset.R&quot;
+<pre><code>## [master 32a226e] Revert &quot;add 2nd line to create_dataset.R&quot;
 ##  1 file changed, 1 deletion(-)
-## commit 2c61d419541f4bdd5c8b29fdaa9a5607e7575a28
+## commit 32a226ea33362ef6d0d4f999c2ce8e703caccefc
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     Revert &quot;add 2nd line to create_dataset.R&quot;
 ##     
-##     This reverts commit a8e63174ef88e6fcf6f88946f0d8605a3cd63822.
+##     This reverts commit 280ec6b332fcab90bea282bf9903adf629d71b2f.
 ## 
-## commit a8e63174ef88e6fcf6f88946f0d8605a3cd63822
+## commit 280ec6b332fcab90bea282bf9903adf629d71b2f
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit afd4a69f84dfafe80c5f0639c80e7c8f6551f840
+## commit 6b1d97377f50b8031734a057ef698bf4d3d5dd36
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:43 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="#cb245-1"></a><span class="co"># The file now only contains the 1st line</span></span>
@@ -4118,7 +4122,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <li>It is good practice to work on branches, then merge back to master at key points</li>
 </ul>
 <div id="git-branch" class="section level2">
-<h2><span class="header-section-number">8.1</span> git branch</h2>
+<h2><span class="header-section-number">8.1</span> <code>git branch</code></h2>
 <p><strong><code>git branch</code></strong>: List, create, or delete branches</p>
 <ul>
 <li>Help: <code>git branch -help</code></li>
@@ -4156,7 +4160,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb249-4"><a href="#cb249-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb249-5"><a href="#cb249-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb249-6"><a href="#cb249-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse in create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 233ae32] import tidyverse in create_dataset.R
+<pre><code>## [master (root-commit) fa29f78] import tidyverse in create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb251"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb251-1"><a href="#cb251-1"></a><span class="co"># Now we can see the `master` branch listed, with an `*` indicating it is our current branch</span></span>
@@ -4164,7 +4168,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## * master</code></pre>
 <div class="sourceCode" id="cb253"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb253-1"><a href="#cb253-1"></a><span class="co"># See detailed branch listing with info about the latest commit</span></span>
 <span id="cb253-2"><a href="#cb253-2"></a><span class="fu">git</span> branch -v</span></code></pre></div>
-<pre><code>## * master 233ae32 import tidyverse in create_dataset.R</code></pre>
+<pre><code>## * master fa29f78 import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb255"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb255-1"><a href="#cb255-1"></a><span class="co"># If the repository is connected to a remote, the `-a` option will list remote branches too</span></span>
 <span id="cb255-2"><a href="#cb255-2"></a><span class="co"># (In the specific example below, the remote is named `origin`)</span></span>
 <span id="cb255-3"><a href="#cb255-3"></a><span class="fu">git</span> branch -a</span></code></pre></div>
@@ -4193,14 +4197,14 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## * master</code></pre>
 <div class="sourceCode" id="cb264"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb264-1"><a href="#cb264-1"></a><span class="co"># Delete branch</span></span>
 <span id="cb264-2"><a href="#cb264-2"></a><span class="fu">git</span> branch -d dev</span></code></pre></div>
-<pre><code>## Deleted branch dev (was 233ae32).</code></pre>
+<pre><code>## Deleted branch dev (was fa29f78).</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb266-1"><a href="#cb266-1"></a><span class="co"># See branch listing</span></span>
 <span id="cb266-2"><a href="#cb266-2"></a><span class="fu">git</span> branch</span></code></pre></div>
 <pre><code>## * master</code></pre>
 </details>
 </div>
 <div id="git-checkout-1" class="section level2">
-<h2><span class="header-section-number">8.2</span> git checkout</h2>
+<h2><span class="header-section-number">8.2</span> <code>git checkout</code></h2>
 <p><strong><code>git checkout</code></strong>: Switch branches</p>
 <ul>
 <li>Help: <code>git checkout -help</code></li>
@@ -4297,7 +4301,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge"><img src="data:image/svg+xml;charset=UTF-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgOTA3Ij48c3R5bGU+LnN0MHtkaXNwbGF5Om5vbmU7fSAuc3Qxe2Rpc3BsYXk6aW5saW5lO30gLnN0MntmaWxsOiNGRkZGRkY7fSAuc3Qze2ZpbGw6bm9uZTtzdHJva2U6Izk4ODJDRTtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDR7ZmlsbDojRkZGRkZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDV7ZmlsbDojRkZGRkZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NntmaWxsOiNCM0UzRkY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q3e2ZpbGw6I0IxOEJFODtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDh7ZmlsbDojRkZGRkZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo2O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0OXtmaWxsOiNCM0UzRkY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjY7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QxMHtmaWxsOiM0MDQwNDA7fSAuc3QxMXtmaWxsOm5vbmU7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MTJ7ZmlsbDojQjE4QkU4O3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDEze2ZpbGw6IzQ0NDQ0NDt9IC5zdDE0e2ZpbGw6bm9uZTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDE1e2ZpbGw6IzRFRDFBMTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDE2e2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QxN3tmaWxsOiNGRkZGRkY7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjc7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MTh7ZmlsbDpub25lO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MTl7ZmlsbDojQjNFM0ZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MjB7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MjF7ZmlsbDpub25lO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MjJ7ZmlsbDojRkZGRkZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDIze2ZpbGw6I0IzRTNGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QyNHtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MjV7ZmlsbDojOTk5OTk5O30gLnN0MjZ7ZmlsbDojNEVEMUExO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDI3e2ZpbGw6IzRDRDNENjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QyOHtmaWxsOm5vbmU7c3Ryb2tlOiM1OUFGRTE7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QyOXtmaWxsOiM1OUFGRTE7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MzB7ZmlsbDpub25lO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2UtZGFzaGFycmF5OjAsMzA7fSAuc3QzMXtmaWxsOiNGRkZGRkY7c3Ryb2tlOiM1OUFGRTE7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QzMntmaWxsOiNGQzgzNjM7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MzN7ZmlsbDojQ0NDQ0NDO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MzR7ZmlsbDojRkZGRkZGO3N0cm9rZTojNjY5M0VEO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MzV7ZmlsbDpub25lO3N0cm9rZTojQTk3Q0REO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDM2e2ZpbGw6bm9uZTtzdHJva2U6I0IzRTNGRjtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QzN3tmaWxsOm5vbmU7c3Ryb2tlOiM0RUQxQTE7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QzOHtmaWxsOm5vbmU7c3Ryb2tlOiM0RUQxQTE7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Mzl7ZmlsbDojRTI0Qjg4O3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDQwe2ZpbGw6bm9uZTtzdHJva2U6I0RFRUZGODtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDQxe2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7fSAuc3Q0MntmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxNC4zMDUxO30gLnN0NDN7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuMTY4OTt9IC5zdDQ0e2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDEzLjk3ODg7fSAuc3Q0NXtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxNC43ODc3O30gLnN0NDZ7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuOTYzMjt9IC5zdDQ3e2ZpbGw6I0IzRTNGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q0OHtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxMi41NDM7fSAuc3Q0OXtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxMy42ODQ0O30gLnN0NTB7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTMuNzcxNzt9IC5zdDUxe2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDEzLjY0OTI7fSAuc3Q1MntmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxMy45MDc7fSAuc3Q1M3tmaWxsOiM0Q0QzRDY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NTR7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuOTg1ODt9IC5zdDU1e2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDE0LjAxMTg7fSAuc3Q1NntmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxNC4xMjQzO30gLnN0NTd7ZmlsbDpub25lO30gLnN0NTh7ZmlsbDojRkZGRkZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDU5e2ZpbGw6IzU5QUZFMTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NztzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q2MHtmaWxsOiNFMjRCODg7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjc7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NjF7ZmlsbDpub25lO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDYye2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q2M3tmaWxsOiNGRkZGRkY7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NjR7ZmlsbDojRjVGNUY1O30gLnN0NjV7ZmlsbDojMzg3M0FFO30gLnN0NjZ7ZmlsbDojNzU3MDZDO30gLnN0Njd7ZmlsbDpub25lO3N0cm9rZTojQjNFM0ZGO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Njh7ZmlsbDojNkY2RjZGO30gLnN0Njl7ZmlsbDpub25lO3N0cm9rZTojNkY2RjZGO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NzB7ZmlsbDpub25lO3N0cm9rZTojNkY2RjZGO3N0cm9rZS13aWR0aDozO3N0cm9rZS1taXRlcmxpbWl0OjEwO308L3N0eWxlPjxnIGlkPSJnaXRfeDVGX2JyYW5jaF94NUZfNiI+PHBhdGggY2xhc3M9InN0MjMiIGQ9Ik0yNzMuNSAxNzYuOWg5Ni4ydjUwaC05Ni4yeiIvPjxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNMzA4LjIgMjA3Ljl2LTguM2wtMy42IDguM2gtMS4zbC0zLjYtOC4zdjguM2gtMS41di0xMC42aDJsMy43IDguNyAzLjgtOC43aDJ2MTAuNmgtMS41em02LjQtNC4ybDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIgMC0xLjMgMS0yIDIuMi0yLjJ6bTIuNSAxLjF2LS4zbC0yLjIuM2MtLjYuMS0xIC40LTEgMS4xIDAgLjUuNCAxIDEuMiAxIDEuMSAwIDItLjUgMi0yLjF6bTUgLjdjLjEuOC43IDEuMyAxLjcgMS4zLjggMCAxLjItLjUgMS4yLTFzLS4zLS44LS45LS45bC0xLjItLjNjLTEuMS0uMi0xLjgtMS0xLjgtMiAwLTEuMiAxLjItMi4zIDIuNi0yLjMgMiAwIDIuNiAxLjMgMi43IDEuOWwtMS4yLjVjLS4xLS40LS40LTEuMi0xLjUtMS4yLS43IDAtMS4yLjUtMS4yIDEgMCAuNC4zLjguOC45bDEuMi4zYzEuMy4zIDIgMS4xIDIgMi4xcy0uOSAyLjItMi42IDIuMmMtMiAwLTIuOC0xLjMtMi45LTIuMWwxLjEtLjR6bTguOC00LjhoMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMS4yaDEuM3YyLjR6bTEwLjQgNS4xYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptOC0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXoiLz48cGF0aCBjbGFzcz0ic3QxMSIgZD0iTTMyMS42IDI3Mi41di0yMy41bTEwLjggMTQuOGwtMTAuOCAxMC45LTEwLjktMTAuOW0zMDUuMi0yOC40aC04MyA0MS4ybS0xNTQuOSA0MWMwIDIyLjYtMTguNCA0MS00MSA0MWgtMjAyLjJtMjQzLjItNDFjMC0yMi42IDE4LjQtNDEgNDEtNDFoMzAuNyIvPjxjaXJjbGUgY2xhc3M9InN0MjkiIGN4PSIzMjEuNiIgY3k9IjMxNy40IiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjUxMS45IiBjeT0iMjM1LjQiIHI9IjIxIi8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iNTk1LjEiIGN5PSIyMzUuNCIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSIyMzguMyIgY3k9IjMxNy40IiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjE1NS4xIiBjeT0iMzE3LjQiIHI9IjIxIi8+PHBhdGggY2xhc3M9InN0MTIiIGQ9Ik01MjQuMyA5OS41aDE0MS42djUwaC0xNDEuNnoiLz48cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTU1Mi4xIDEyMi44Yy0uMS0uOC0uOC0xLjgtMi4yLTEuOC0xLjIgMC0yLjEuOC0yLjEgMS44IDAgLjguNSAxLjMgMS40IDEuNWwxLjYuM2MxLjguNCAyLjggMS41IDIuOCAzIDAgMS42LTEuNCAzLjEtMy43IDMuMS0yLjYgMC0zLjgtMS42LTQtMy4ybDEuNC0uNGMuMSAxLjIuOSAyLjMgMi41IDIuMyAxLjUgMCAyLjItLjggMi4yLTEuNyAwLS44LS41LTEuNC0xLjYtMS43bC0xLjUtLjNjLTEuNS0uMy0yLjYtMS4zLTIuNi0yLjkgMC0xLjcgMS41LTMuMiAzLjUtMy4yIDIuNCAwIDMuNCAxLjUgMy42IDIuNmwtMS4zLjZ6bTEwLjcgNC4xYzAgMi4yLTEuNSAzLjgtMy43IDMuOHMtMy43LTEuNi0zLjctMy44YzAtMi4yIDEuNS0zLjggMy43LTMuOHMzLjcgMS42IDMuNyAzLjh6bS0xLjQgMGMwLTEuNy0xLjEtMi42LTIuMi0yLjZzLTIuMi45LTIuMiAyLjZjMCAxLjcgMS4xIDIuNiAyLjIgMi42czIuMi0uOSAyLjItMi42em0zLjkgMy42di03LjJoMS4zdjFjLjUtLjggMS40LTEuMiAyLjItMS4yLjkgMCAxLjguNCAyLjIgMS40LjYtMSAxLjUtMS40IDIuNC0xLjQgMS4zIDAgMi41LjkgMi41IDIuN3Y0LjdoLTEuNHYtNC41YzAtLjktLjUtMS42LTEuNS0xLjZzLTEuNy44LTEuNyAxLjh2NC40aC0xLjN2LTQuNmMwLS45LS40LTEuNi0xLjUtMS42LTEgMC0xLjcuOC0xLjcgMS44djQuM2gtMS41em0xOS45LTJjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjVoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNHptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjcgNC4zdi0xMC42aDYuNXYxLjRoLTV2My40aDQuNXYxLjRoLTQuNXY0LjVoLTEuNXptMTQuNi0yYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di41aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjR6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptNS43LjJsMS45LS4zYy40LS4xLjYtLjMuNi0uNSAwLS43LS41LTEuMy0xLjYtMS4zLTEgMC0xLjUuNi0xLjYgMS41bC0xLjQtLjNjLjItMS40IDEuNC0yLjMgMy0yLjMgMi4yIDAgMyAxLjIgMyAyLjZ2My42YzAgLjYuMSAxIC4xIDEuMmgtMS40YzAtLjItLjEtLjUtLjEtMS0uMy41LTEgMS4yLTIuMyAxLjItMS41IDAtMi40LTEtMi40LTIuMi4xLTEuMyAxLTIgMi4yLTIuMnptMi41IDEuMXYtLjNsLTIuMi4zYy0uNi4xLTEuMS40LTEuMSAxLjEgMCAuNS40IDEgMS4yIDEgMS4yIDAgMi4xLS42IDIuMS0yLjF6bTYuMy00LjJoMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMS4xaDEuM3YyLjN6bTYuOCA3LjVjLTEuNyAwLTIuNy0xLjMtMi43LTIuOXYtNC41aDEuNHY0LjNjMCAxIC40IDEuOSAxLjYgMS45IDEuMSAwIDEuNy0uOCAxLjctMS44di00LjNoMS40djUuOWMwIC42IDAgMS4xLjEgMS4zaC0xLjRjMC0uMi0uMS0uNi0uMS0uOS0uMy42LTEuMiAxLTIgMXptMTAuNi02aC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTguNSAzLjdjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjVoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNHptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0eiIvPjxwYXRoIGNsYXNzPSJzdDExIiBkPSJNNTk1LjEgMTkyLjd2LTIzLjVtMTAuOSAxNC44bC0xMC45IDEwLjktMTAuOS0xMC45Ii8+PHBhdGggY2xhc3M9InN0MjQiIGQ9Ik0xMjkuMyA0NDEuMWg1NDEuNCIvPjxwYXRoIGNsYXNzPSJzdDI1IiBkPSJNMzQ2LjkgMTcuMWMyIDAgMy4yIDEuMiAzLjIgMi45IDAgMS4xLS43IDItMS42IDIuMyAxLjIuMyAxLjkgMS40IDEuOSAyLjYgMCAxLjctMS4zIDIuOS0zLjMgMi45aC0zLjd2LTEwLjdoMy41em0tLjEgNC43YzEuMiAwIDEuOS0uNyAxLjktMS43cy0uNy0xLjctMS45LTEuN2gtMS44djMuNGgxLjh6bS4yIDQuN2MxLjIgMCAyLS43IDItMS43cy0uNi0xLjctMS45LTEuN2gtMi4xdjMuNGgyem0xMi40LS44Yy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjVjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4yLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptNS45LTEuNnY1LjloLTEuNXYtNS45aC0xLjN2LTEuM2gxLjN2LTEuMmMwLTEuNiAxLjEtMi41IDIuNC0yLjUuNSAwIC44LjEuOC4ydjEuM2MtLjEgMC0uMy0uMS0uNi0uMS0uNSAwLTEuMS4yLTEuMSAxLjJ2MS4xaDEuN3YxLjNoLTEuN3ptMTAuNSAyLjNjMCAyLjItMS41IDMuOC0zLjcgMy44cy0zLjctMS42LTMuNy0zLjhjMC0yLjIgMS41LTMuOCAzLjctMy44czMuNyAxLjYgMy43IDMuOHptLTEuNCAwYzAtMS43LTEuMS0yLjYtMi4yLTIuNnMtMi4yLjktMi4yIDIuNmMwIDEuNyAxLjEgMi42IDIuMiAyLjZzMi4yLS45IDIuMi0yLjZ6bTgtMi4xaC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTguNCAzLjdjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNWMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjIuNXptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em0xOC43IDQuM3YtOC4zbC0zLjYgOC4zaC0xLjNsLTMuNi04LjN2OC4zaC0xLjV2LTEwLjZoMmwzLjcgOC43IDMuOC04LjdoMnYxMC42aC0xLjV6bTExLjEtMmMtLjQgMS4zLTEuNiAyLjMtMy4yIDIuMy0xLjkgMC0zLjYtMS40LTMuNi0zLjkgMC0yLjMgMS42LTMuOCAzLjQtMy44IDIuMiAwIDMuNSAxLjUgMy41IDMuOHYuNGgtNS40YzAgMS4zIDEgMi4yIDIuMiAyLjIgMS4yIDAgMS44LS42IDItMS41bDEuMS41em0tMS41LTIuM2MwLTEtLjctMS44LTItMS44LTEuMiAwLTEuOS45LTIgMS44aDR6bTguMS0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXptMyA1LjhjLjEgMSAuOSAxLjggMiAxLjggMS41IDAgMi4yLS44IDIuMi0yLjN2LTFjLS4zLjctMS4xIDEuMi0yLjIgMS4yLTEuOSAwLTMuMy0xLjUtMy4zLTMuNSAwLTEuOSAxLjMtMy41IDMuMy0zLjUgMS4xIDAgMS45LjQgMi4yIDEuMXYtMWgxLjR2Ni43YzAgMS44LS45IDMuNi0zLjYgMy42LTEuOCAwLTMuMS0xLjEtMy4zLTIuN2wxLjMtLjR6bTQuMi0zLjljMC0xLjQtLjgtMi4zLTIuMS0yLjMtMS4yIDAtMi4xLjktMi4xIDIuM3MuOCAyLjMgMi4xIDIuMyAyLjEtLjkgMi4xLTIuM3ptNS03LjFjLjYgMCAxIC40IDEgMXMtLjQgMS0xIDEtMS0uNS0xLTFjMC0uNi41LTEgMS0xem0tLjcgMTAuOXYtNy4yaDEuNHY3LjJoLTEuNHptNiAwaC0xLjR2LTcuMmgxLjR2MWMuNS0uOSAxLjQtMS4yIDIuMi0xLjIgMS43IDAgMi42IDEuMiAyLjYgMi45djQuNmgtMS40di00LjNjMC0xLS40LTEuOC0xLjctMS44LTEuMSAwLTEuNy45LTEuNyAydjR6bTguNi4xYy4xIDEgLjkgMS44IDIgMS44IDEuNSAwIDIuMi0uOCAyLjItMi4zdi0xYy0uMy43LTEuMSAxLjItMi4yIDEuMi0xLjkgMC0zLjMtMS41LTMuMy0zLjUgMC0xLjkgMS4zLTMuNSAzLjMtMy41IDEuMSAwIDEuOS40IDIuMiAxLjF2LTFoMS40djYuN2MwIDEuOC0uOSAzLjYtMy42IDMuNi0xLjggMC0zLjEtMS4xLTMuMy0yLjdsMS4zLS40em00LjItMy45YzAtMS40LS44LTIuMy0yLjEtMi4zLTEuMiAwLTIuMS45LTIuMSAyLjNzLjggMi4zIDIuMSAyLjMgMi4xLS45IDIuMS0yLjN6Ii8+PC9nPjxnIGlkPSJnaXRfeDVGX2JyYW5jaF94NUZfNyI+PGcgaWQ9ImdpdF94NUZfcHVsbF94NUZfM18xXyI+PHBhdGggY2xhc3M9InN0MjMiIGQ9Ik01NDcuNSA4NDkuNGg5Ni4ydjUwaC05Ni4yeiIvPjxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNNTgyLjIgODgwLjR2LTguM2wtMy42IDguM2gtMS4zbC0zLjYtOC4zdjguM2gtMS41di0xMC42aDJsMy43IDguNyAzLjgtOC43aDJ2MTAuNmgtMS41em02LjQtNC4xbDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIgMC0xLjMgMS0yIDIuMi0yLjJ6bTIuNSAxdi0uM2wtMi4yLjNjLS42LjEtMSAuNC0xIDEuMSAwIC41LjQgMSAxLjIgMSAxLjEuMSAyLS41IDItMi4xem01IC44Yy4xLjguNyAxLjMgMS43IDEuMy44IDAgMS4yLS40IDEuMi0xIDAtLjQtLjMtLjgtLjktLjlsLTEuMi0uM2MtMS4xLS4yLTEuOC0xLTEuOC0yIDAtMS4yIDEuMi0yLjMgMi42LTIuMyAyIDAgMi42IDEuMyAyLjcgMS45bC0xLjIuNWMtLjEtLjQtLjQtMS4yLTEuNS0xLjItLjcgMC0xLjIuNS0xLjIgMSAwIC40LjMuOC44LjlsMS4yLjNjMS4zLjMgMiAxLjEgMiAyLjFzLS45IDIuMi0yLjYgMi4yYy0yIDAtMi44LTEuMy0yLjktMi4xbDEuMS0uNHptOC44LTQuOWgxLjZ2MS4zaC0xLjZ2My44YzAgLjcuMyAxIDEgMSAuMiAwIC40IDAgLjYtLjF2MS4yYy0uMSAwLS41LjEtMSAuMS0xLjIgMC0yLS44LTItMi4xdi00aC0xLjR2LTEuM2guNGMuOCAwIDEuMS0uNSAxLjEtMS4xdi0xLjJoMS4zdjIuNHptMTAuNCA1LjJjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNS0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjEtMS41aC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6Ii8+PHBhdGggY2xhc3M9InN0MTEiIGQ9Ik01OTUuNiA4MDUuOXYyMy41bS0xMC45LTE0LjhsMTAuOS0xMC44IDEwLjggMTAuOG05LTUxaC04MyA0MS4ybS0xNTQuOSA0MWMwIDIyLjYtMTguNCA0MS00MSA0MWgtMjAyLjFtMjQzLjEtNDFjMC0yMi42IDE4LjQtNDEgNDEtNDFoMzAuNyIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjMyMS4xIiBjeT0iODQ1LjYiIHI9IjIxIi8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iMjM3LjkiIGN5PSI4NDUuNiIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDI5IiBjeD0iNTk0LjYiIGN5PSI3NjMuNiIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSI1MTEuNCIgY3k9Ijc2My42IiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjE1NC42IiBjeT0iODQ1LjYiIHI9IjIxIi8+PHBhdGggY2xhc3M9InN0MTEiIGQ9Ik01OTQuNiA3MjAuOXYtMjMuNW0xMC45IDE0LjhsLTEwLjkgMTAuOS0xMC44LTEwLjkiLz48L2c+PHBhdGggY2xhc3M9InN0MjUiIGQ9Ik0zMzEuOSA1NDkuOGgtNC43bC0xLjEgM2gtMS42bDQuMi0xMC42aDEuN2w0LjIgMTAuNmgtMS42bC0xLjEtM3ptLTQuMS0xLjRoMy43bC0xLjgtNC44LTEuOSA0Ljh6bTEwLjktMS42djUuOWgtMS41di01LjloLTEuM3YtMS4zaDEuM3YtMS4yYzAtMS42IDEuMS0yLjUgMi40LTIuNS41IDAgLjguMS44LjJ2MS4zYy0uMSAwLS4zLS4xLS42LS4xLS41IDAtMS4xLjItMS4xIDEuMnYxLjFoMS43djEuM2gtMS43em01LjktMS4zaDEuNnYxLjNoLTEuNnYzLjhjMCAuNy4zIDEgMSAxIC4yIDAgLjQgMCAuNi0uMXYxLjJjLS4xIDAtLjUuMS0xIC4xLTEuMiAwLTItLjgtMi0yLjF2LTRoLTEuNHYtMS4zaC40Yy44IDAgMS4xLS41IDEuMS0xLjF2LTEuMmgxLjN2Mi40em0xMC40IDUuMmMtLjQgMS4zLTEuNiAyLjMtMy4yIDIuMy0xLjkgMC0zLjYtMS40LTMuNi0zLjkgMC0yLjMgMS42LTMuOCAzLjQtMy44IDIuMiAwIDMuNSAxLjUgMy41IDMuOHYuNGgtNS40YzAgMS4zIDEgMi4yIDIuMiAyLjIgMS4yIDAgMS44LS42IDItMS41bDEuMS41em0tMS41LTIuM2MwLTEtLjctMS44LTItMS44LTEuMiAwLTEuOS45LTIgMS44aDR6bTguMS0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXptOC41IDEuNmwxLjktLjNjLjQtLjEuNi0uMy42LS41IDAtLjctLjUtMS4zLTEuNi0xLjMtMSAwLTEuNS42LTEuNiAxLjVsLTEuNC0uM2MuMi0xLjQgMS40LTIuMyAzLTIuMyAyLjIgMCAzIDEuMiAzIDIuNnYzLjZjMCAuNi4xIDEgLjEgMS4yaC0xLjRjMC0uMi0uMS0uNS0uMS0xLS4zLjUtMSAxLjItMi4zIDEuMi0xLjUgMC0yLjQtMS0yLjQtMi4yIDAtMS4zLjktMiAyLjItMi4yem0yLjUgMS4xdi0uM2wtMi4yLjNjLS42LjEtMS4xLjQtMS4xIDEuMSAwIC41LjQgMSAxLjIgMSAxLjEgMCAyLjEtLjYgMi4xLTIuMXptOSAzdi0xMC42aDYuNXYxLjRoLTV2My40aDQuNXYxLjRoLTQuNnY0LjVoLTEuNHptMTAtNC4xbDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIuMS0xLjMgMS0yIDIuMi0yLjJ6bTIuNiAxLjF2LS4zbC0yLjIuM2MtLjYuMS0xIC40LTEgMS4xIDAgLjUuNCAxIDEuMiAxIDEgMCAyLS42IDItMi4xem00LjkuN2MuMS44LjcgMS4zIDEuNyAxLjMuOCAwIDEuMi0uNCAxLjItMSAwLS40LS4zLS44LS45LS45bC0xLjItLjNjLTEuMS0uMi0xLjgtMS0xLjgtMiAwLTEuMiAxLjItMi4zIDIuNi0yLjMgMiAwIDIuNiAxLjMgMi43IDEuOWwtMS4yLjVjLS4xLS40LS40LTEuMi0xLjUtMS4yLS43IDAtMS4yLjUtMS4yIDEgMCAuNC4zLjguOC45bDEuMi4zYzEuMy4zIDIgMS4xIDIgMi4xcy0uOSAyLjItMi42IDIuMmMtMiAwLTIuOC0xLjMtMi45LTIuMWwxLjEtLjR6bTguOC00LjloMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMS4yaDEuM3YyLjR6bTMuNyAzLjZ2LTEuMmg0LjF2MS4yaC00LjF6bTYuOCAzLjZ2LTEwLjZoNi41djEuNGgtNXYzLjRoNC41djEuNGgtNC41djQuNWgtMS41em0xNS4xLTMuNmMwIDIuMi0xLjUgMy44LTMuNyAzLjhzLTMuNy0xLjYtMy43LTMuOGMwLTIuMiAxLjUtMy44IDMuNy0zLjhzMy43IDEuNiAzLjcgMy44em0tMS40IDBjMC0xLjctMS4xLTIuNi0yLjItMi42cy0yLjIuOS0yLjIgMi42YzAgMS43IDEuMSAyLjYgMi4yIDIuNnMyLjItLjkgMi4yLTIuNnptOC0yLjFoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXptNy45LTEuNWwxLjkgNS40IDEuNi01LjRoMS41bC0yLjMgNy4yaC0xLjVsLTEuOS01LjUtMS45IDUuNWgtMS41bC0yLjQtNy4yaDEuNWwxLjYgNS40IDEuOS01LjRoMS41em04LjggMy4xbDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIgMC0xLjMgMS0yIDIuMi0yLjJ6bTIuNSAxLjF2LS4zbC0yLjIuM2MtLjYuMS0xLjEuNC0xLjEgMS4xIDAgLjUuNCAxIDEuMiAxIDEuMiAwIDIuMS0uNiAyLjEtMi4xem04LjQtMi43aC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTcuMiA0LjdjLS4zLjctMS4xIDEuMy0yLjIgMS4zLTIuMSAwLTMuNC0xLjctMy40LTMuOCAwLTIgMS40LTMuOCAzLjQtMy44IDEuMyAwIDIgLjYgMi4yIDEuMnYtNC43aDEuNHY5LjVjMCAuNy4xIDEuMi4xIDEuM2gtMS40YzAtLjItLjEtLjUtLjEtMXptLTIuMSAwYzEuMyAwIDIuMS0xLjEgMi4xLTIuNnMtLjgtMi41LTIuMS0yLjUtMi4xIDEtMi4xIDIuNS43IDIuNiAyLjEgMi42em0yMS4zIDF2LTguM2wtMy42IDguM2gtMS4zbC0zLjYtOC4zdjguM2gtMS41di0xMC42aDJsMy43IDguNyAzLjgtOC43aDJ2MTAuNmgtMS41em0xMS0yYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptOC0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXptMyA1LjhjLjEgMSAuOSAxLjggMiAxLjggMS41IDAgMi4yLS44IDIuMi0yLjN2LTFjLS4zLjctMS4xIDEuMi0yLjIgMS4yLTEuOSAwLTMuMy0xLjUtMy4zLTMuNSAwLTEuOSAxLjMtMy41IDMuMy0zLjUgMS4xIDAgMS45LjQgMi4yIDEuMXYtMWgxLjR2Ni43YzAgMS44LS45IDMuNi0zLjYgMy42LTEuOCAwLTMuMS0xLjEtMy4zLTIuN2wxLjMtLjR6bTQuMy0zLjljMC0xLjQtLjgtMi4zLTIuMS0yLjMtMS4yIDAtMi4xLjktMi4xIDIuM3MuOCAyLjMgMi4xIDIuM2MxLjIgMCAyLjEtLjkgMi4xLTIuM3ptMTAuNiAxLjhjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0eiIvPjxwYXRoIGNsYXNzPSJzdDEyIiBkPSJNNTI0LjggNjI1LjRoMTQxLjZ2NTBoLTE0MS42eiIvPjxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNNTUyLjYgNjQ4LjdjLS4xLS44LS44LTEuOC0yLjItMS44LTEuMiAwLTIuMS44LTIuMSAxLjggMCAuOC41IDEuNCAxLjQgMS41bDEuNi4zYzEuOC40IDIuOCAxLjUgMi44IDMgMCAxLjYtMS40IDMuMS0zLjcgMy4xLTIuNiAwLTMuOC0xLjYtNC0zLjJsMS40LS40Yy4xIDEuMi45IDIuMyAyLjUgMi4zIDEuNSAwIDIuMi0uOCAyLjItMS43IDAtLjgtLjUtMS40LTEuNi0xLjZsLTEuNS0uM2MtMS41LS4zLTIuNi0xLjMtMi42LTIuOSAwLTEuNyAxLjUtMy4yIDMuNS0zLjIgMi40IDAgMy40IDEuNSAzLjYgMi42bC0xLjMuNXptMTAuNyA0LjFjMCAyLjItMS41IDMuOC0zLjcgMy44cy0zLjctMS42LTMuNy0zLjhjMC0yLjIgMS41LTMuOCAzLjctMy44czMuNyAxLjYgMy43IDMuOHptLTEuNSAwYzAtMS43LTEuMS0yLjYtMi4yLTIuNnMtMi4yLjktMi4yIDIuNmMwIDEuNyAxLjEgMi42IDIuMiAyLjZzMi4yLS45IDIuMi0yLjZ6bTQgMy42di03LjJoMS4zdjFjLjUtLjggMS40LTEuMiAyLjItMS4yLjkgMCAxLjguNCAyLjIgMS40LjYtMSAxLjUtMS40IDIuNC0xLjQgMS4zIDAgMi41LjkgMi41IDIuN3Y0LjdoLTEuNHYtNC41YzAtLjktLjUtMS42LTEuNS0xLjZzLTEuNy44LTEuNyAxLjh2NC40aC0xLjR2LTQuNWMwLS45LS40LTEuNi0xLjUtMS42LTEgMC0xLjcuOC0xLjcgMS44djQuM2gtMS40em0xOS45LTJjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjYgNC4zdi0xMC42aDYuNXYxLjRoLTV2My40aDQuNXYxLjRoLTQuNXY0LjVoLTEuNXptMTQuNy0yYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjUtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptNS44LjJsMS45LS4zYy40LS4xLjYtLjMuNi0uNSAwLS43LS41LTEuMy0xLjYtMS4zLTEgMC0xLjUuNi0xLjYgMS41bC0xLjQtLjNjLjItMS40IDEuNC0yLjMgMy0yLjMgMi4yIDAgMyAxLjIgMyAyLjZ2My42YzAgLjYuMSAxIC4xIDEuMmgtMS40YzAtLjItLjEtLjUtLjEtMS0uMy41LTEgMS4yLTIuMyAxLjItMS41IDAtMi40LTEtMi40LTIuMiAwLTEuMyAxLTIgMi4yLTIuMnptMi41IDF2LS4zbC0yLjIuM2MtLjYuMS0xLjEuNC0xLjEgMS4xIDAgLjUuNCAxIDEuMiAxIDEuMi4xIDIuMS0uNSAyLjEtMi4xem02LjItNC4xaDEuNnYxLjNoLTEuNnYzLjhjMCAuNy4zIDEgMSAxIC4yIDAgLjQgMCAuNi0uMXYxLjJjLS4xIDAtLjUuMS0xIC4xLTEuMiAwLTItLjgtMi0yLjF2LTRoLTEuNHYtMS4zaC40Yy44IDAgMS4xLS41IDEuMS0xLjF2LTEuMmgxLjN2Mi40em02LjkgNy41Yy0xLjcgMC0yLjctMS4zLTIuNy0yLjl2LTQuNWgxLjR2NC4zYzAgMSAuNCAxLjkgMS42IDEuOSAxLjEgMCAxLjctLjggMS43LTEuOHYtNC40aDEuNHY1LjljMCAuNiAwIDEuMS4xIDEuM2gtMS40YzAtLjItLjEtLjYtLjEtLjktLjMuNy0xLjIgMS4xLTIgMS4xem0xMC42LTYuMWgtLjZjLTEuMiAwLTIgLjYtMiAyLjJ2My42aC0xLjR2LTcuMmgxLjR2MS4zYy41LTEuMSAxLjQtMS40IDIuMi0xLjRoLjV2MS41em04LjQgMy44Yy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHoiLz48L2c+PC9zdmc+" width="350" /></a> <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge"><img src="data:image/svg+xml;charset=UTF-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTEwMyI+PHN0eWxlPi5zdDB7ZGlzcGxheTpub25lO30gLnN0MXtkaXNwbGF5OmlubGluZTt9IC5zdDJ7ZmlsbDojRkZGRkZGO30gLnN0M3tmaWxsOm5vbmU7c3Ryb2tlOiM5ODgyQ0U7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q0e2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q1e2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDZ7ZmlsbDojQjNFM0ZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0N3tmaWxsOiNCMThCRTg7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q4e2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDl7ZmlsbDojQjNFM0ZGO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo2O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MTB7ZmlsbDojNDA0MDQwO30gLnN0MTF7ZmlsbDpub25lO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDEye2ZpbGw6I0IxOEJFODtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QxM3tmaWxsOiM0NDQ0NDQ7fSAuc3QxNHtmaWxsOm5vbmU7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QxNXtmaWxsOiM0RUQxQTE7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QxNntmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjc7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MTd7ZmlsbDojRkZGRkZGO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDE4e2ZpbGw6bm9uZTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDE5e2ZpbGw6I0IzRTNGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDIwe2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6ODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDIxe2ZpbGw6bm9uZTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6ODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDIye2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QyM3tmaWxsOiNCM0UzRkY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MjR7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDI1e2ZpbGw6Izk5OTk5OTt9IC5zdDI2e2ZpbGw6IzRFRDFBMTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QyN3tmaWxsOiM0Q0QzRDY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Mjh7ZmlsbDpub25lO3N0cm9rZTojNTlBRkUxO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Mjl7ZmlsbDojNTlBRkUxO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDMwe2ZpbGw6bm9uZTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6ODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLWRhc2hhcnJheTowLDMwO30gLnN0MzF7ZmlsbDojRkZGRkZGO3N0cm9rZTojNTlBRkUxO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0MzJ7ZmlsbDojRkM4MzYzO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDMze2ZpbGw6I0NDQ0NDQztzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDM0e2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzY2OTNFRDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDM1e2ZpbGw6bm9uZTtzdHJva2U6I0E5N0NERDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3QzNntmaWxsOm5vbmU7c3Ryb2tlOiNCM0UzRkY7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Mzd7ZmlsbDpub25lO3N0cm9rZTojNEVEMUExO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0Mzh7ZmlsbDpub25lO3N0cm9rZTojNEVEMUExO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDM5e2ZpbGw6I0UyNEI4ODtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q0MHtmaWxsOm5vbmU7c3Ryb2tlOiNERUVGRjg7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q0MXtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30gLnN0NDJ7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuMzA1MTt9IC5zdDQze2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDE0LjE2ODk7fSAuc3Q0NHtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxMy45Nzg4O30gLnN0NDV7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuNzg3Nzt9IC5zdDQ2e2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDE0Ljk2MzI7fSAuc3Q0N3tmaWxsOiNCM0UzRkY7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NDh7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTIuNTQzO30gLnN0NDl7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTMuNjg0NDt9IC5zdDUwe2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDEzLjc3MTc7fSAuc3Q1MXtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxMy42NDkyO30gLnN0NTJ7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTMuOTA3O30gLnN0NTN7ZmlsbDojNENEM0Q2O3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDU0e2ZpbGw6bm9uZTtzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLWRhc2hhcnJheTowLDE0Ljk4NTg7fSAuc3Q1NXtmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1kYXNoYXJyYXk6MCwxNC4wMTE4O30gLnN0NTZ7ZmlsbDpub25lO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtZGFzaGFycmF5OjAsMTQuMTI0Mzt9IC5zdDU3e2ZpbGw6bm9uZTt9IC5zdDU4e2ZpbGw6I0ZGRkZGRjtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q1OXtmaWxsOiM1OUFGRTE7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjc7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NjB7ZmlsbDojRTI0Qjg4O3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDo3O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDYxe2ZpbGw6bm9uZTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6NztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fSAuc3Q2MntmaWxsOm5vbmU7c3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO30gLnN0NjN7ZmlsbDojRkZGRkZGO3N0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDo0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDY0e2ZpbGw6I0Y1RjVGNTt9IC5zdDY1e2ZpbGw6IzM4NzNBRTt9IC5zdDY2e2ZpbGw6Izc1NzA2Qzt9IC5zdDY3e2ZpbGw6bm9uZTtzdHJva2U6I0IzRTNGRjtzdHJva2Utd2lkdGg6NDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDY4e2ZpbGw6IzZGNkY2Rjt9IC5zdDY5e2ZpbGw6bm9uZTtzdHJva2U6IzZGNkY2RjtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9IC5zdDcwe2ZpbGw6bm9uZTtzdHJva2U6IzZGNkY2RjtzdHJva2Utd2lkdGg6MztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9PC9zdHlsZT48ZyBpZD0iZ2l0X3g1Rl9icmFuY2hfeDVGXzkiPjxwYXRoIGNsYXNzPSJzdDI1IiBkPSJNMzMwLjkgNjYwLjNoLTQuN2wtMS4xIDNoLTEuNmw0LjItMTAuNmgxLjdsNC4yIDEwLjZoLTEuNmwtMS4xLTN6bS00LjEtMS40aDMuN2wtMS44LTQuOC0xLjkgNC44em0xMC45LTEuNnY1LjloLTEuNXYtNS45aC0xLjN2LTEuM2gxLjN2LTEuMmMwLTEuNiAxLjEtMi41IDIuNC0yLjUuNSAwIC44LjEuOC4ydjEuM2MtLjEgMC0uMy0uMS0uNi0uMS0uNSAwLTEuMS4yLTEuMSAxLjJ2MS4xaDEuN3YxLjNoLTEuN3ptNS45LTEuM2gxLjZ2MS4zaC0xLjZ2My44YzAgLjcuMyAxIDEgMSAuMiAwIC40IDAgLjYtLjF2MS4yYy0uMSAwLS41LjEtMSAuMS0xLjIgMC0yLS44LTItMi4xdi00aC0xLjR2LTEuMmguNGMuOCAwIDEuMS0uNSAxLjEtMS4xdi0xLjJoMS4zdjIuM3ptMTAuNCA1LjJjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNS0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjEtMS41aC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTguNSAxLjdsMS45LS4zYy40LS4xLjYtLjMuNi0uNSAwLS43LS41LTEuMy0xLjYtMS4zLTEgMC0xLjUuNi0xLjYgMS41bC0xLjQtLjNjLjItMS40IDEuNC0yLjMgMy0yLjMgMi4yIDAgMyAxLjIgMyAyLjZ2My42YzAgLjYuMSAxIC4xIDEuMmgtMS40YzAtLjItLjEtLjUtLjEtMS0uMy41LTEgMS4yLTIuMyAxLjItMS41IDAtMi40LTEtMi40LTIuMiAwLTEuMy45LTIgMi4yLTIuMnptMi41IDF2LS4zbC0yLjIuM2MtLjYuMS0xLjEuNC0xLjEgMS4xIDAgLjUuNCAxIDEuMiAxIDEuMS4xIDIuMS0uNSAyLjEtMi4xem0xMC4zLTIuNmwyLjktMi42aC00LjZ2LTEuNGg2LjZ2MS4zbC0yLjggMi42YzEuNCAwIDMgMSAzIDMgMCAxLjYtMS4zIDMuMS0zLjUgMy4xcy0zLjUtMS41LTMuNi0zLjFsMS40LS4zYy4xIDEuMyAxIDIuMSAyLjIgMi4xIDEuMyAwIDIuMS0uOCAyLjEtMS44IDAtMS4zLTEtMS44LTItMS44LS4zIDAtLjYuMS0uOS4ybC0uOC0xLjN6bTYuOSAydi0xLjJoNC4xdjEuMmgtNC4xem0xMi4xLTMuNWwxLjkgNS40IDEuNi01LjRoMS41bC0yLjMgNy4yaC0xLjVsLTEuOS01LjUtMS45IDUuNWgtMS41bC0yLjQtNy4yaDEuNWwxLjYgNS40IDEuOS01LjRoMS41em04LjggMy4xbDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIgMC0xLjMgMS0yIDIuMi0yLjJ6bTIuNSAxdi0uM2wtMi4yLjNjLS42LjEtMSAuNC0xIDEuMSAwIC41LjQgMSAxLjIgMSAxLjEuMSAyLS41IDItMi4xem00LjUgNi4xbDEuOC0zLjgtMy4xLTYuNGgxLjZsMi4yIDUgMi4yLTVoMS41bC00LjcgMTAuMmgtMS41em0yMy0zdi04LjJsLTMuNiA4LjNoLTEuM2wtMy42LTguM3Y4LjNoLTEuNXYtMTAuNmgybDMuNyA4LjcgMy44LTguN2gydjEwLjZoLTEuNXptMTEtMmMtLjQgMS4zLTEuNiAyLjMtMy4yIDIuMy0xLjkgMC0zLjYtMS40LTMuNi0zLjkgMC0yLjMgMS42LTMuOCAzLjQtMy44IDIuMiAwIDMuNSAxLjUgMy41IDMuOHYuNGgtNS40YzAgMS4zIDEgMi4yIDIuMiAyLjIgMS4yIDAgMS44LS42IDItMS41bDEuMS41em0tMS40LTIuM2MwLTEtLjctMS44LTItMS44LTEuMiAwLTEuOS45LTIgMS44aDR6bTgtMS41aC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTMuMSA1LjljLjEgMSAuOSAxLjggMiAxLjggMS41IDAgMi4yLS44IDIuMi0yLjN2LTFjLS4zLjctMS4xIDEuMi0yLjIgMS4yLTEuOSAwLTMuMy0xLjUtMy4zLTMuNSAwLTEuOSAxLjMtMy41IDMuMy0zLjUgMS4xIDAgMS45LjQgMi4yIDEuMXYtMWgxLjR2Ni43YzAgMS44LS45IDMuNi0zLjYgMy42LTEuOCAwLTMuMS0xLjEtMy4zLTIuN2wxLjMtLjR6bTQuMi0zLjljMC0xLjQtLjgtMi4zLTIuMS0yLjMtMS4yIDAtMi4xLjktMi4xIDIuM3MuOCAyLjMgMi4xIDIuM2MxLjIgMCAyLjEtLjkgMi4xLTIuM3ptMTAuNiAxLjhjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0eiIvPjxwYXRoIGNsYXNzPSJzdDIzIiBkPSJNNjU0LjggMTA0NC4yaDk2LjJ2NTBoLTk2LjJ6Ii8+PHBhdGggY2xhc3M9InN0MTAiIGQ9Ik02ODkuNSAxMDc1LjJ2LTguM2wtMy42IDguM2gtMS4zbC0zLjYtOC4zdjguM2gtMS41di0xMC42aDJsMy43IDguNyAzLjgtOC43aDJ2MTAuNmgtMS41em02LjUtNC4xbDEuOS0uM2MuNC0uMS42LS4zLjYtLjUgMC0uNy0uNS0xLjMtMS42LTEuMy0xIDAtMS41LjYtMS42IDEuNWwtMS40LS4zYy4yLTEuNCAxLjQtMi4zIDMtMi4zIDIuMiAwIDMgMS4yIDMgMi42djMuNmMwIC42LjEgMSAuMSAxLjJoLTEuNGMwLS4yLS4xLS41LS4xLTEtLjMuNS0xIDEuMi0yLjMgMS4yLTEuNSAwLTIuNC0xLTIuNC0yLjIgMC0xLjMuOS0yIDIuMi0yLjJ6bTIuNSAxLjF2LS4zbC0yLjIuM2MtLjYuMS0xIC40LTEgMS4xIDAgLjUuNCAxIDEuMiAxIDEgMCAyLS42IDItMi4xem00LjkuN2MuMS44LjcgMS4zIDEuNyAxLjMuOCAwIDEuMi0uNCAxLjItMSAwLS40LS4zLS44LS45LS45bC0xLjItLjNjLTEuMS0uMi0xLjgtMS0xLjgtMiAwLTEuMiAxLjItMi4zIDIuNi0yLjMgMiAwIDIuNiAxLjMgMi43IDEuOWwtMS4yLjVjLS4xLS40LS40LTEuMi0xLjUtMS4yLS43IDAtMS4yLjUtMS4yIDEgMCAuNC4zLjguOC45bDEuMi4zYzEuMy4zIDIgMS4xIDIgMi4xcy0uOSAyLjItMi42IDIuMmMtMiAwLTIuOC0xLjMtMi45LTIuMWwxLjEtLjR6bTguOC00LjloMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMS4yaDEuM3YyLjR6bTEwLjQgNS4yYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptOC0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXoiLz48cGF0aCBjbGFzcz0ic3QxMSIgZD0iTTcwMi45IDEwMDAuN3YyMy41bS0xMC44LTE0LjhsMTAuOC0xMC44IDEwLjkgMTAuOG0tMTgzLTEzNS4zaC04MyA0MS4ybS0xOTYuMiA4MmgzNjkuMW0tMzI3LjgtNDFjMCAyMi42LTE4LjQgNDEtNDEgNDFoLTIwMi4xbTI0My4xLTQxYzAtMjIuNiAxOC40LTQxIDQxLTQxaDMwLjdtMTk2LjkgNDFjMCAyMi42IDE4LjQgNDEgNDEgNDFoNjAuMm0tMTAxLjItNDFjMC0yMi42LTE4LjQtNDEtNDEtNDFoLTMwLjciLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSIyMzYuNSIgY3k9Ijk1Ni4xIiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjE1My4yIiBjeT0iOTU2LjEiIHI9IjIxIi8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iNTEwIiBjeT0iODc0LjEiIHI9IjIxIi8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iNDI2LjgiIGN5PSI4NzQuMSIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSI0MjYuOCIgY3k9Ijk1Ni4xIiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0MjkiIGN4PSI3MDIuOSIgY3k9Ijk1Ni4xIiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjcwIiBjeT0iOTU2LjEiIHI9IjIxIi8+PHBhdGggY2xhc3M9InN0MTEiIGQ9Ik01MTAgODMxLjR2LTIzLjVtMTAuOSAxNC44bC0xMC45IDEwLjktMTAuOC0xMC45Ii8+PHBhdGggY2xhc3M9InN0MTIiIGQ9Ik00NDAuMSA3MzUuOWgxNDEuNnY1MGgtMTQxLjZ6Ii8+PHBhdGggY2xhc3M9InN0MTAiIGQ9Ik00NjggNzU5LjJjLS4xLS44LS44LTEuOC0yLjItMS44LTEuMiAwLTIuMS44LTIuMSAxLjggMCAuOC41IDEuNCAxLjQgMS41bDEuNi4zYzEuOC40IDIuOCAxLjUgMi44IDMgMCAxLjYtMS40IDMuMS0zLjcgMy4xLTIuNiAwLTMuOC0xLjYtNC0zLjJsMS40LS40Yy4xIDEuMi45IDIuMyAyLjUgMi4zIDEuNSAwIDIuMi0uOCAyLjItMS43IDAtLjgtLjUtMS40LTEuNi0xLjZsLTEuNS0uM2MtMS41LS4zLTIuNi0xLjMtMi42LTIuOSAwLTEuNyAxLjUtMy4yIDMuNS0zLjIgMi40IDAgMy40IDEuNSAzLjYgMi42bC0xLjMuNXptMTAuNiA0LjFjMCAyLjItMS41IDMuOC0zLjcgMy44cy0zLjctMS42LTMuNy0zLjhjMC0yLjIgMS41LTMuOCAzLjctMy44czMuNyAxLjYgMy43IDMuOHptLTEuNCAwYzAtMS43LTEuMS0yLjYtMi4yLTIuNnMtMi4yLjktMi4yIDIuNmMwIDEuNyAxLjEgMi42IDIuMiAyLjZzMi4yLS45IDIuMi0yLjZ6bTQgMy42di03LjJoMS4zdjFjLjUtLjggMS40LTEuMiAyLjItMS4yLjkgMCAxLjguNCAyLjIgMS40LjYtMSAxLjUtMS40IDIuNC0xLjQgMS4zIDAgMi41LjkgMi41IDIuN3Y0LjdoLTEuNHYtNC41YzAtLjktLjUtMS42LTEuNS0xLjZzLTEuNy44LTEuNyAxLjh2NC40aC0xLjR2LTQuNWMwLS45LS40LTEuNi0xLjUtMS42LTEgMC0xLjcuOC0xLjcgMS44djQuM2gtMS40em0xOS45LTJjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNS0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjcgNC4zdi0xMC42aDYuNXYxLjRoLTV2My40aDQuNXYxLjRoLTQuNXY0LjVoLTEuNXptMTQuNi0yYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptNS44LjJsMS45LS4zYy40LS4xLjYtLjMuNi0uNSAwLS43LS41LTEuMy0xLjYtMS4zLTEgMC0xLjUuNi0xLjYgMS41bC0xLjQtLjNjLjItMS40IDEuNC0yLjMgMy0yLjMgMi4yIDAgMyAxLjIgMyAyLjZ2My42YzAgLjYuMSAxIC4xIDEuMmgtMS40YzAtLjItLjEtLjUtLjEtMS0uMy41LTEgMS4yLTIuMyAxLjItMS41IDAtMi40LTEtMi40LTIuMiAwLTEuMy45LTIgMi4yLTIuMnptMi41IDF2LS4zbC0yLjIuM2MtLjYuMS0xLjEuNC0xLjEgMS4xIDAgLjUuNCAxIDEuMiAxIDEuMi4xIDIuMS0uNSAyLjEtMi4xem02LjItNC4xaDEuNnYxLjNoLTEuNnYzLjhjMCAuNy4zIDEgMSAxIC4yIDAgLjQgMCAuNi0uMXYxLjJjLS4xIDAtLjUuMS0xIC4xLTEuMiAwLTItLjgtMi0yLjF2LTRoLTEuNHYtMS4zaC40Yy44IDAgMS4xLS41IDEuMS0xLjF2LTEuMmgxLjN2Mi40em02LjggNy40Yy0xLjcgMC0yLjctMS4zLTIuNy0yLjl2LTQuNWgxLjR2NC4zYzAgMSAuNCAxLjkgMS42IDEuOSAxLjEgMCAxLjctLjggMS43LTEuOHYtNC40aDEuNHY1LjljMCAuNiAwIDEuMS4xIDEuM2gtMS4zYzAtLjItLjEtLjYtLjEtLjktLjMuOC0xLjIgMS4xLTIuMSAxLjF6bTEwLjctNmgtLjZjLTEuMiAwLTIgLjYtMiAyLjJ2My42aC0xLjR2LTcuMmgxLjR2MS4zYy41LTEuMSAxLjQtMS40IDIuMi0xLjRoLjV2MS41em04LjQgMy44Yy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHoiLz48L2c+PGcgaWQ9ImdpdF94NUZfYnJhbmNoX3g1Rl84Ij48cGF0aCBjbGFzcz0ic3QyNSIgZD0iTTM0Ni45IDcuOGMyIDAgMy4yIDEuMiAzLjIgMi45IDAgMS4xLS43IDItMS42IDIuMyAxLjIuMyAxLjkgMS40IDEuOSAyLjYgMCAxLjctMS4zIDIuOS0zLjMgMi45aC0zLjd2LTEwLjdoMy41em0tLjEgNC43YzEuMiAwIDEuOS0uNyAxLjktMS43cy0uNy0xLjctMS45LTEuN2gtMS44djMuNGgxLjh6bS4yIDQuN2MxLjIgMCAyLS43IDItMS43cy0uNi0xLjctMS45LTEuN2gtMi4xdjMuNGgyem0xMi40LS44Yy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di41aC01LjVjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4yLjR6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptNS45LTEuNnY1LjloLTEuNXYtNS45aC0xLjN2LTEuM2gxLjN2LTEuMmMwLTEuNiAxLjEtMi41IDIuNC0yLjUuNSAwIC44LjEuOC4ydjEuM2MtLjEgMC0uMy0uMS0uNi0uMS0uNSAwLTEuMS4yLTEuMSAxLjJ2MS4xaDEuN3YxLjNoLTEuN3ptMTAuNSAyLjNjMCAyLjItMS41IDMuOC0zLjcgMy44cy0zLjctMS42LTMuNy0zLjhjMC0yLjIgMS41LTMuOCAzLjctMy44czMuNyAxLjYgMy43IDMuOHptLTEuNCAwYzAtMS43LTEuMS0yLjYtMi4yLTIuNnMtMi4yLjktMi4yIDIuNmMwIDEuNyAxLjEgMi42IDIuMiAyLjZzMi4yLS45IDIuMi0yLjZ6bTgtMi4xaC0uNmMtMS4yIDAtMiAuNi0yIDIuMnYzLjZoLTEuNHYtNy4yaDEuNHYxLjNjLjUtMS4xIDEuNC0xLjQgMi4yLTEuNGguNXYxLjV6bTguNCAzLjdjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjVoLTUuNWMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjIuNHptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em0xOC43IDQuNHYtOC4zbC0zLjYgOC4zaC0xLjNsLTMuNi04LjN2OC4zaC0xLjV2LTEwLjdoMmwzLjcgOC43IDMuOC04LjdoMnYxMC42aC0xLjV6bTExLjEtMi4xYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di41aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjR6bS0xLjUtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptOC4xLTEuNGgtLjZjLTEuMiAwLTIgLjYtMiAyLjJ2My42aC0xLjR2LTcuMmgxLjR2MS4zYy41LTEuMSAxLjQtMS40IDIuMi0xLjRoLjV2MS41em0zIDUuOGMuMSAxIC45IDEuOCAyIDEuOCAxLjUgMCAyLjItLjggMi4yLTIuM3YtMWMtLjMuNy0xLjEgMS4yLTIuMiAxLjItMS45IDAtMy4zLTEuNS0zLjMtMy41czEuMy0zLjUgMy4zLTMuNWMxLjEgMCAxLjkuNCAyLjIgMS4xdi0xaDEuNHY2LjdjMCAxLjgtLjkgMy42LTMuNiAzLjYtMS44IDAtMy4xLTEuMS0zLjMtMi43bDEuMy0uNHptNC4yLTMuOWMwLTEuNC0uOC0yLjMtMi4xLTIuMy0xLjIgMC0yLjEuOS0yLjEgMi4zcy44IDIuMyAyLjEgMi4zIDIuMS0uOSAyLjEtMi4zem01LTcuMWMuNiAwIDEgLjUgMSAxIDAgLjYtLjQgMS0xIDFzLTEtLjUtMS0xYzAtLjYuNS0xIDEtMXptLS43IDExdi03LjJoMS40djcuMmgtMS40em02IDBoLTEuNHYtNy4yaDEuNHYxYy41LS45IDEuNC0xLjIgMi4yLTEuMiAxLjcgMCAyLjYgMS4yIDIuNiAyLjh2NC42aC0xLjR2LTQuM2MwLTEtLjQtMS44LTEuNy0xLjgtMS4xIDAtMS43LjktMS43IDJ2NC4xem04LjYgMGMuMSAxIC45IDEuOCAyIDEuOCAxLjUgMCAyLjItLjggMi4yLTIuM3YtMWMtLjMuNy0xLjEgMS4yLTIuMiAxLjItMS45IDAtMy4zLTEuNS0zLjMtMy41czEuMy0zLjUgMy4zLTMuNWMxLjEgMCAxLjkuNCAyLjIgMS4xdi0xaDEuNHY2LjdjMCAxLjgtLjkgMy42LTMuNiAzLjYtMS44IDAtMy4xLTEuMS0zLjMtMi43bDEuMy0uNHptNC4yLTMuOWMwLTEuNC0uOC0yLjMtMi4xLTIuMy0xLjIgMC0yLjEuOS0yLjEgMi4zcy44IDIuMyAyLjEgMi4zIDIuMS0uOSAyLjEtMi4zeiIvPjxwYXRoIGNsYXNzPSJzdDIzIiBkPSJNNDYzLjMgMzk4LjhoOTYuMnY1MGgtOTYuMnoiLz48cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTQ5OCA0MjkuOHYtOC4zbC0zLjYgOC4zaC0xLjRsLTMuNi04LjN2OC4zaC0xLjR2LTEwLjZoMmwzLjcgOC43IDMuOC04LjdoMnYxMC42aC0xLjV6bTYuNC00LjJsMS45LS4zYy40LS4xLjYtLjMuNi0uNSAwLS43LS41LTEuMy0xLjYtMS4zLTEgMC0xLjUuNi0xLjYgMS41bC0xLjQtLjNjLjItMS40IDEuNC0yLjMgMy0yLjMgMi4yIDAgMyAxLjIgMyAyLjZ2My42YzAgLjYuMSAxIC4xIDEuMmgtMS40YzAtLjItLjEtLjUtLjEtMS0uMy41LTEgMS4yLTIuMyAxLjItMS41IDAtMi40LTEtMi40LTIuMi4xLTEuMyAxLTIgMi4yLTIuMnptMi41IDEuMXYtLjNsLTIuMi4zYy0uNi4xLTEgLjQtMSAxLjEgMCAuNS40IDEgMS4yIDEgMS4xIDAgMi0uNSAyLTIuMXptNSAuOGMuMS44LjcgMS4zIDEuNyAxLjMuOCAwIDEuMi0uNCAxLjItMSAwLS40LS4zLS44LS45LS45bC0xLjItLjNjLTEuMS0uMi0xLjgtMS0xLjgtMiAwLTEuMiAxLjItMi4zIDIuNi0yLjMgMiAwIDIuNiAxLjMgMi43IDEuOWwtMS4yLjVjLS4xLS40LS40LTEuMi0xLjUtMS4yLS43IDAtMS4yLjUtMS4yIDEgMCAuNC4zLjguOC45bDEuMi4zYzEuMy4zIDIgMS4xIDIgMi4xcy0uOSAyLjItMi42IDIuMmMtMiAwLTIuOC0xLjMtMi45LTIuMWwxLjEtLjR6bTguOC00LjloMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMS4yaDEuM3YyLjR6bTEwLjQgNS4xYy0uNCAxLjMtMS42IDIuMy0zLjIgMi4zLTEuOSAwLTMuNi0xLjQtMy42LTMuOSAwLTIuMyAxLjYtMy44IDMuNC0zLjggMi4yIDAgMy41IDEuNSAzLjUgMy44di40aC01LjRjMCAxLjMgMSAyLjIgMi4yIDIuMiAxLjIgMCAxLjgtLjYgMi0xLjVsMS4xLjV6bS0xLjQtMi4zYzAtMS0uNy0xLjgtMi0xLjgtMS4yIDAtMS45LjktMiAxLjhoNHptOC0xLjRoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXoiLz48cGF0aCBjbGFzcz0ic3QxMSIgZD0iTTUxMS40IDM1NS4zdjIzLjVtLTEwLjktMTQuOGwxMC45LTEwLjkgMTAuOSAxMC45bTkzLjEtMTM1LjRoLTgzIDQxLjJtLTE5Ni4xIDgyaDExMi45bS03MS43LTQxYzAgMjIuNi0xOC40IDQxLTQxIDQxaC0yMDIuMW0yNDMuMS00MWMwLTIyLjYgMTguNC00MSA0MS00MWgzMC43Ii8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iMzIxLjEiIGN5PSIzMTAuNiIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSIyMzcuOSIgY3k9IjMxMC42IiByPSIyMSIvPjxjaXJjbGUgY2xhc3M9InN0NCIgY3g9IjU5NC42IiBjeT0iMjI4LjYiIHI9IjIxIi8+PGNpcmNsZSBjbGFzcz0ic3Q0IiBjeD0iNTExLjQiIGN5PSIyMjguNiIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDI5IiBjeD0iNTExLjQiIGN5PSIzMTAuNiIgcj0iMjEiLz48Y2lyY2xlIGNsYXNzPSJzdDQiIGN4PSIxNTQuNiIgY3k9IjMxMC42IiByPSIyMSIvPjxwYXRoIGNsYXNzPSJzdDExIiBkPSJNNTk0LjYgMTg1Ljl2LTIzLjVtMTAuOSAxNC44bC0xMC45IDEwLjktMTAuOC0xMC45Ii8+PHBhdGggY2xhc3M9InN0MTIiIGQ9Ik01MjQuOCA5MC40aDE0MS42djUwaC0xNDEuNnoiLz48cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTU1Mi42IDExMy43Yy0uMS0uOC0uOC0xLjgtMi4yLTEuOC0xLjIgMC0yLjEuOC0yLjEgMS44IDAgLjguNSAxLjQgMS40IDEuNWwxLjYuM2MxLjguNCAyLjggMS41IDIuOCAzIDAgMS42LTEuNCAzLjEtMy43IDMuMS0yLjYgMC0zLjgtMS42LTQtMy4ybDEuNC0uNGMuMSAxLjIuOSAyLjMgMi41IDIuMyAxLjUgMCAyLjItLjggMi4yLTEuNyAwLS44LS41LTEuNC0xLjYtMS42bC0xLjUtLjNjLTEuNS0uMy0yLjYtMS4zLTIuNi0yLjkgMC0xLjcgMS41LTMuMiAzLjUtMy4yIDIuNCAwIDMuNCAxLjUgMy42IDIuNmwtMS4zLjV6bTEwLjcgNC4xYzAgMi4yLTEuNSAzLjgtMy43IDMuOHMtMy43LTEuNi0zLjctMy44YzAtMi4yIDEuNS0zLjggMy43LTMuOHMzLjcgMS42IDMuNyAzLjh6bS0xLjUgMGMwLTEuNy0xLjEtMi42LTIuMi0yLjZzLTIuMi45LTIuMiAyLjZjMCAxLjcgMS4xIDIuNiAyLjIgMi42czIuMi0uOSAyLjItMi42em00IDMuN3YtNy4yaDEuM3YxYy41LS44IDEuNC0xLjIgMi4yLTEuMi45IDAgMS44LjQgMi4yIDEuNC42LTEgMS41LTEuNCAyLjQtMS40IDEuMyAwIDIuNS45IDIuNSAyLjd2NC43aC0xLjR2LTQuNWMwLS45LS41LTEuNi0xLjUtMS42cy0xLjcuOC0xLjcgMS44djQuNGgtMS40di00LjVjMC0uOS0uNC0xLjYtMS41LTEuNi0xIDAtMS43LjgtMS43IDEuOHY0LjNoLTEuNHptMTkuOS0yLjFjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNC0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em04LjYgNC40di0xMC42aDYuNXYxLjRoLTV2My40aDQuNXYxLjRoLTQuNXY0LjVoLTEuNXptMTQuNy0yLjFjLS40IDEuMy0xLjYgMi4zLTMuMiAyLjMtMS45IDAtMy42LTEuNC0zLjYtMy45IDAtMi4zIDEuNi0zLjggMy40LTMuOCAyLjIgMCAzLjUgMS41IDMuNSAzLjh2LjRoLTUuNGMwIDEuMyAxIDIuMiAyLjIgMi4yIDEuMiAwIDEuOC0uNiAyLTEuNWwxLjEuNXptLTEuNS0yLjNjMC0xLS43LTEuOC0yLTEuOC0xLjIgMC0xLjkuOS0yIDEuOGg0em01LjguMmwxLjktLjNjLjQtLjEuNi0uMy42LS41IDAtLjctLjUtMS4zLTEuNi0xLjMtMSAwLTEuNS42LTEuNiAxLjVsLTEuNC0uM2MuMi0xLjQgMS40LTIuMyAzLTIuMyAyLjIgMCAzIDEuMiAzIDIuNnYzLjZjMCAuNi4xIDEgLjEgMS4yaC0xLjRjMC0uMi0uMS0uNS0uMS0xLS4zLjUtMSAxLjItMi4zIDEuMi0xLjUgMC0yLjQtMS0yLjQtMi4yIDAtMS4zIDEtMiAyLjItMi4yem0yLjUgMS4xdi0uNGwtMi4yLjNjLS42LjEtMS4xLjQtMS4xIDEuMSAwIC41LjQgMSAxLjIgMSAxLjIuMSAyLjEtLjUgMi4xLTJ6bTYuMi00LjJoMS42djEuM2gtMS42djMuOGMwIC43LjMgMSAxIDEgLjIgMCAuNCAwIC42LS4xdjEuMmMtLjEgMC0uNS4xLTEgLjEtMS4yIDAtMi0uOC0yLTIuMXYtNGgtMS40di0xLjNoLjRjLjggMCAxLjEtLjUgMS4xLTEuMXYtMWgxLjN2Mi4yem02LjkgNy41Yy0xLjcgMC0yLjctMS4zLTIuNy0yLjl2LTQuNWgxLjR2NC4zYzAgMSAuNCAxLjkgMS42IDEuOSAxLjEgMCAxLjctLjggMS43LTEuOHYtNC40aDEuNHY1LjljMCAuNiAwIDEuMS4xIDEuM2gtMS40YzAtLjItLjEtLjYtLjEtLjktLjMuNy0xLjIgMS4xLTIgMS4xem0xMC42LTZoLS42Yy0xLjIgMC0yIC42LTIgMi4ydjMuNmgtMS40di03LjJoMS40djEuM2MuNS0xLjEgMS40LTEuNCAyLjItMS40aC41djEuNXptOC40IDMuN2MtLjQgMS4zLTEuNiAyLjMtMy4yIDIuMy0xLjkgMC0zLjYtMS40LTMuNi0zLjkgMC0yLjMgMS42LTMuOCAzLjQtMy44IDIuMiAwIDMuNSAxLjUgMy41IDMuOHYuNGgtNS40YzAgMS4zIDEgMi4yIDIuMiAyLjIgMS4yIDAgMS44LS42IDItMS41bDEuMS41em0tMS40LTIuM2MwLTEtLjctMS44LTItMS44LTEuMiAwLTEuOS45LTIgMS44aDR6Ii8+PHBhdGggY2xhc3M9InN0MjQiIGQ9Ik0xMjkuMyA1NTEuOGg1NDEuNCIvPjwvZz48L3N2Zz4=" width="350" /></a></p>
 <p><em>Credit: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">Atlassian, Git merge</a></em></p>
 <div id="git-merge" class="section level2">
-<h2><span class="header-section-number">9.1</span> git merge</h2>
+<h2><span class="header-section-number">9.1</span> <code>git merge</code></h2>
 <p><strong><code>git merge</code></strong>: Merge branches</p>
 <ul>
 <li>Help: <code>git merge -help</code></li>
@@ -4313,9 +4317,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same initial commit:</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb280-1"><a href="#cb280-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb280-2"><a href="#cb280-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+<pre><code>## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb282"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb282-1"><a href="#cb282-1"></a><span class="co"># Switch to `dev` branch</span></span>
@@ -4324,9 +4328,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb282-4"><a href="#cb282-4"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb282-5"><a href="#cb282-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb284"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb284-1"><a href="#cb284-1"></a><span class="co"># View content of R script, which is the same on both `master` and `dev` branches</span></span>
@@ -4340,19 +4344,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb286-5"><a href="#cb286-5"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb286-6"><a href="#cb286-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb286-7"><a href="#cb286-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;manipulate mpg dataset&quot;</span></span></code></pre></div>
-<pre><code>## [dev 537ca3c] manipulate mpg dataset
+<pre><code>## [dev 4365783] manipulate mpg dataset
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb288-1"><a href="#cb288-1"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb288-2"><a href="#cb288-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s switch back to the <code>master</code> branch and merge in <code>dev</code>. Since the <code>dev</code> branch is ahead of <code>master</code> by 1 commit, the changes can be combined using a fast-forward merge:</p>
@@ -4362,21 +4366,21 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb290-4"><a href="#cb290-4"></a><span class="co"># Merge `dev` branch into `master`</span></span>
 <span id="cb290-5"><a href="#cb290-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating 233ae32..537ca3c
+## Updating fa29f78..4365783
 ## Fast-forward
 ##  create_dataset.R | 2 ++
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb292"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb292-1"><a href="#cb292-1"></a><span class="co"># The commit log for `master` now matches the `dev` branch</span></span>
 <span id="cb292-2"><a href="#cb292-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s examine the git object associated with the commit:</p>
@@ -4385,12 +4389,12 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb294-3"><a href="#cb294-3"></a></span>
 <span id="cb294-4"><a href="#cb294-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb294-5"><a href="#cb294-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+<pre><code>## 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## commit
 ## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent 233ae32a0d9b6f3c841350cb3296ba284bc2d820
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025064 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025064 -0800
+## parent fa29f784f8735472ff142a80503569d10c8204a7
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
 ## 
 ## manipulate mpg dataset</code></pre>
 <p>Examine the “tree” object associated with the commit:</p>
@@ -4411,11 +4415,11 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb300-3"><a href="#cb300-3"></a></span>
 <span id="cb300-4"><a href="#cb300-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb300-5"><a href="#cb300-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+<pre><code>## fa29f784f8735472ff142a80503569d10c8204a7
 ## commit
 ## tree cb70185218351236255cdea1297210ceeaf6e3b5
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025064 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611025064 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
 ## 
 ## import tidyverse in create_dataset.R</code></pre>
 </details>
@@ -4425,15 +4429,15 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same two commits:</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb302-1"><a href="#cb302-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb302-2"><a href="#cb302-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb304"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb304-1"><a href="#cb304-1"></a><span class="fu">git</span> branch</span>
@@ -4455,7 +4459,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb306-6"><a href="#cb306-6"></a><span class="co"># Add and commit changes</span></span>
 <span id="cb306-7"><a href="#cb306-7"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb306-8"><a href="#cb306-8"></a><span class="fu">git</span> commit -m <span class="st">&quot;update head() on line 2&quot;</span> </span></code></pre></div>
-<pre><code>## [master 55819a1] update head() on line 2
+<pre><code>## [master 6c036cb] update head() on line 2
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now shows <code>head(10)</code> instead of <code>head(5)</code>:</p>
 <div class="sourceCode" id="cb308"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb308-1"><a href="#cb308-1"></a><span class="fu">git</span> branch</span>
@@ -4479,7 +4483,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb310-8"><a href="#cb310-8"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb310-9"><a href="#cb310-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;add additional filter() on line 4&quot;</span> </span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## [dev 4abfaa9] add additional filter() on line 4
+## [dev 2fdbaf7] add additional filter() on line 4
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>View updated content of R script on the <code>dev</code> branch, which now has additional <code>filter()</code> line at the end:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb312-1"><a href="#cb312-1"></a><span class="fu">git</span> branch</span>
@@ -4523,34 +4527,34 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb318"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb318-1"><a href="#cb318-1"></a><span class="co"># View commit log - note that a new merge commit was created during the 3-way merge</span></span>
 <span id="cb318-2"><a href="#cb318-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 79882b6f4ff4e855db2b73c4604a901348d08559
-## Merge: 55819a1 4abfaa9
+<pre><code>## commit 56c15a5d9c49e50bc8f374da0324af418a189796
+## Merge: 6c036cb 2fdbaf7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:45 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 55819a192f98821ca07fcb29f5eb14faaaf3cff8
+## commit 6c036cbb3b3036eb36a2a0ba3bd8e8dcae2dc932
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 4abfaa9c5429cc3146d7dd3c52ec2cd47d4c0b79
+## commit 2fdbaf722ecc486904251b21d20cceaccdfa8e10
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb320"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb320-1"><a href="#cb320-1"></a><span class="co"># View merged content of R script</span></span>
@@ -4592,34 +4596,34 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <p>Continuing from previous examples, our <code>master</code> branch currently looks like this:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb325-1"><a href="#cb325-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb325-2"><a href="#cb325-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 79882b6f4ff4e855db2b73c4604a901348d08559
-## Merge: 55819a1 4abfaa9
+<pre><code>## commit 56c15a5d9c49e50bc8f374da0324af418a189796
+## Merge: 6c036cb 2fdbaf7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:45 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 55819a192f98821ca07fcb29f5eb14faaaf3cff8
+## commit 6c036cbb3b3036eb36a2a0ba3bd8e8dcae2dc932
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 4abfaa9c5429cc3146d7dd3c52ec2cd47d4c0b79
+## commit 2fdbaf722ecc486904251b21d20cceaccdfa8e10
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:47 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 537ca3c8a70bd7896d06e11f7598bbe01b62f2cf
+## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 233ae32a0d9b6f3c841350cb3296ba284bc2d820
+## commit fa29f784f8735472ff142a80503569d10c8204a7
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Mon Jan 18 18:57:44 2021 -0800
+## Date:   Wed Jan 20 18:19:46 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb327"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb327-1"><a href="#cb327-1"></a><span class="fu">git</span> branch</span>
@@ -4647,7 +4651,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb329-11"><a href="#cb329-11"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb329-12"><a href="#cb329-12"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for lincoln instead of audi&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;revision&#39;
-## [revision fd9b180] filter for lincoln instead of audi
+## [revision 9fca05a] filter for lincoln instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>revision</code> branch, which now filters for <code>lincoln</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb331-1"><a href="#cb331-1"></a><span class="fu">git</span> branch</span>
@@ -4698,7 +4702,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <div class="sourceCode" id="cb339"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb339-1"><a href="#cb339-1"></a><span class="co"># Add and commit change</span></span>
 <span id="cb339-2"><a href="#cb339-2"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb339-3"><a href="#cb339-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for chevrolet instead of audi&quot;</span></span></code></pre></div>
-<pre><code>## [master d7bcb98] filter for chevrolet instead of audi
+<pre><code>## [master a33650e] filter for chevrolet instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now filters for <code>chevrolet</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb341-1"><a href="#cb341-1"></a><span class="fu">git</span> branch</span>
@@ -4852,7 +4856,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb353-4"><a href="#cb353-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb353-5"><a href="#cb353-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb353-6"><a href="#cb353-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) d6e33a6] import tidyverse library
+<pre><code>## [master (root-commit) d980101] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -4867,7 +4871,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb355-9"><a href="#cb355-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 8235e87] preview mpg dataset
+## [dev ee5d8b7] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to master:</p>
 <div class="sourceCode" id="cb357"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb357-1"><a href="#cb357-1"></a><span class="co"># Switch back to master</span></span>
@@ -4876,7 +4880,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb357-4"><a href="#cb357-4"></a><span class="co"># Merge in changes from the branch</span></span>
 <span id="cb357-5"><a href="#cb357-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating d6e33a6..8235e87
+## Updating d980101..ee5d8b7
 ## Fast-forward
 ##  create_dataset.R | 1 +
 ##  1 file changed, 1 insertion(+)</code></pre>
@@ -4938,7 +4942,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb360-4"><a href="#cb360-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb360-5"><a href="#cb360-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb360-6"><a href="#cb360-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) d6e33a6] import tidyverse library
+<pre><code>## [master (root-commit) d980101] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -4953,7 +4957,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb362-9"><a href="#cb362-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 8235e87] preview mpg dataset
+## [dev ee5d8b7] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote repository. Remember to set the upstream branch if this is the first time you are pushing the branch to remote:</p>
 <div class="sourceCode" id="cb364"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb364-1"><a href="#cb364-1"></a><span class="co"># Push branch to remote (say our remote is called `origin` here)</span></span>

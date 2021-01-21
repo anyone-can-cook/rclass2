@@ -301,12 +301,14 @@ pwd
 <br><hr><br>
 **`mkdir`**: Create new directories
 
-- Syntax: `mkdir <directory_name(s)>`
+- Syntax: `mkdir [<option(s)>] <directory_name(s)>`
+- Options:
+  - `-p`: Create intermediate directories as required
 - Arguments:
   - `directory_name(s)`: Name of one or more directories to be created
 - Equivalent R function: `dir.create()`
 
-<details><summary>**Example**: Using `mkdir` to create one new directory</summary>
+<details><summary>**Example**: Using `mkdir` to create new directory</summary>
 
 ```{bash}
 # List content of current directory
@@ -314,7 +316,7 @@ ls
 ```
 
 ```{bash}
-# Create new directories
+# Create new directory
 mkdir my_folder
 ls
 ```
@@ -322,7 +324,7 @@ ls
 </details>
 
 <br>
-<details><summary>**Example**: Using `mkdir` to create multiple new directories</summary>
+<details><summary>**Example**: Using `mkdir -p` to create new directories including intermediate directories as required</summary>
 
 ```{bash}
 # List content of current directory
@@ -330,8 +332,8 @@ ls
 ```
 
 ```{bash}
-# Create new directories
-mkdir folder_a folder_b
+# Create new directories (don't need to explicitly create folder_b before folder_c)
+mkdir -p folder_a folder_b/folder_c
 ls
 ```
 
@@ -1211,7 +1213,7 @@ Below are some common git commands you might use to **observe your repository**:
 - [git log](#git-log)
 - [git diff](#git-diff)
 
-## git status
+## `git status`
 
 **`git status`**: Shows the working tree status
 
@@ -1357,7 +1359,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 </details>
 <br>
 
-## git log
+## `git log`
 
 **`git log`**: Show commit logs
 
@@ -1391,7 +1393,7 @@ Date:   Wed Apr 1 22:49:52 2020 -0700
 
 <br>
 
-## git diff
+## `git diff`
 
 **`git diff`**: Show changes between files, commits, etc.
 
@@ -1967,7 +1969,7 @@ git log
 </details>
 <br>
 
-## HEAD and refs/
+## `HEAD` and `refs/`
 
 The `HEAD` file is a pointer to your current (active) branch -- specifically, it points to the latest commit of that branch (whose hash ID is stored in the `refs/` directory). Especially when we get to working with multiple branches, the `HEAD` becomes important as it keeps track of which branch you are currently on.
 
@@ -2159,7 +2161,7 @@ Below are some common git commands you might use to **undo changes**:
 - [git reset](#git-reset)
 - [git revert](#git-revert)
 
-## git checkout
+## `git checkout`
 
 **`git checkout`**: Restore working tree files (or switch branches)
 
@@ -2228,7 +2230,7 @@ cat create_dataset.R
 <br>
 
 
-## git reset
+## `git reset`
 
 **`git reset`**: Reset current `HEAD` to the specified state
 
@@ -2341,7 +2343,7 @@ cat create_dataset.R
 </details>
 <br>
 
-## git revert
+## `git revert`
 
 **`git revert`**: Revert existing commit(s)
 
@@ -2462,7 +2464,7 @@ Why use **branches**?
 - Typically, there is one main branch (usually **master**) that contains working or approved changes. All other development and testing is usually done on separate branches.
 - It is good practice to work on branches, then merge back to master at key points
 
-## git branch
+## `git branch`
 
 **`git branch`**: List, create, or delete branches
 
@@ -2585,7 +2587,7 @@ git branch
 
 </details>
 
-## git checkout
+## `git checkout`
 
 **`git checkout`**: Switch branches
 
@@ -2697,7 +2699,7 @@ Types of **merges**:
 
 *Credit: [Atlassian, Git merge](https://www.atlassian.com/git/tutorials/using-branches/git-merge)*
 
-## git merge
+## `git merge`
 
 **`git merge`**: Merge branches
 
