@@ -70,6 +70,7 @@ What is __Git__? (from git [website](https://git-scm.com/))
 > "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency"
 
 - Git is a particular version control software created by _The Git Project_
+  - [Git is free and open source software](https://git-scm.com/about/free-and-open-source), meaning that anyone can use, share, and modify the software
 - Git can be used by:
     - An individual/standalone developer
     - For collaborative projects, where multiple people collaborate on each file
@@ -93,16 +94,31 @@ What is a __Git repository__?
 - Typically, a local git repository is connected to a remote git repository
     - You can make changes to local repository on your machine and then __push__ those changes to the remote repository
     - Other collaborators can also make changes to their local repository, push them to the remote repository, and then you can __pull__ these changes into your local repository
+- Private vs. public repositories
+  - Public repositories: anyone can access the repository
+    - e.g., [rclass2](https://github.com/anyone-can-cook/rclass2), the git repository we created to develop the Rclass2 course is a public repository because we want the public to benefit from this course
+  - Private repositories: only those who have been granted access by a repository "administrator" can access the repository
+    - e.g., [rclass2_student_issues](https://github.com/anyone-can-cook/rclass2_student_issues) is a private repository because we don't want communication between students or communication between students and instructors to be public
+
 
 
 What is __GitHub__?
 
 - [GitHub](https://github.com/) is the industry standard hosting site/service for Git repositories
     - Hosting services allow people/organizations to store files on the internet and make those files available to others
+- Microsoft acquired Github in 2018 for $7.5 billion
 - GitHub stores your local repositories in "the cloud"
     - E.g., if you create a local repository stored on your machine, GitHub enables you to create a "remote" version of this repository
     - Also, you can connect to a remote repository that already exists and create a local version of this respository on your machine
-- More broadly, GitHub enables you to store files, share code, and collaborate with others
+- More broadly, GitHub enables you to store files, share code, and communicate with others
+- Github organizations
+  - Github [organizations](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations) "are shared accounts where businesses and open-source projects can collaborate across many projects [that is, collaborate across many repositories] at once"
+  - e.g., we created the Github organization [anyone-can-cook](https://github.com/anyone-can-cook), which contains the public repositories associated with the [Rclass1](http://anyone-can-cook.github.io/rclass1/) and [Rclass2](http://anyone-can-cook.github.io/rclass2/) courses, and also repositories that enrolled students create to complete problem sets
+- In this course and in [Rclass1](http://anyone-can-cook.github.io/rclass1/) you have already been using github to communicate with instructors and with your classmates:
+  - e.g., we created a private repository called [rclass2_student_issues](https://github.com/anyone-can-cook/rclass2_student_issues) so that students can ask questions about course content
+  - e.g., within the [anyone-can-cook](https://github.com/anyone-can-cook) Github organization, we have created [teams](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams) for each problem set group so that you can communicate with your problem set group
+
+
 
 ## How we will learn Git and GitHub
 
@@ -112,7 +128,8 @@ Understanding and learning how to use Git and GitHub can be intimidating. A lot 
 
 Here is how we will learn Git and GitHub over the course of the quarter:
 
-- Three weeks of the course will be (mostly) devoted to Git and GitHub
+- Three weeks of the course will be devoted to Git and GitHub
+  - Most of this time will be devoted to Git rather than Github because you already have some experience with Github and because learning Git is much harder than learning Github
 - During the Git/GitHub unit, we will:
     - Provide a conceptual overview of concepts and workflow
     - Show you how to accomplish specific tasks by issuing commands on the command line
@@ -179,6 +196,8 @@ We will use the Unix shell called "Bash" to perform Git operations:
 
 </details>
 <br>
+
+__*Why learn the command line and "command-line bullshittery," from Philip J. Guo*__
 
 > "What is wonderful about doing applied computer science research in the modern era is that there are thousands of pieces of free software and other computer-based tools that researchers can leverage to create their research software. With the right set of tools, one can be 10x or even 100x more productive than peers who don't know how to set up those tools."
 
@@ -1054,6 +1073,7 @@ Alternatively, you can create a new git repository on your local machine, and th
 
 ```{bash, echo=-c(1:4)}
 cd ~  # change to root directory
+pwd
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
 
