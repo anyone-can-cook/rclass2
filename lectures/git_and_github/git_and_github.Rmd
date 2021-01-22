@@ -811,10 +811,9 @@ What are **local** and **remote** repositories?
     - If you haven't set up SSH, then choose HTTPS
 
 <br>
-There are **3 basic ways** to get your local repository set up with a remote:
+There are **2 basic ways** to get your local repository set up with a remote:
 
-- [Clone an existing remote repository from GitHub to your local machine](#clone-an-existing-repository-to-your-local-machine) (e.g., [rclass2](https://github.com/anyone-can-cook/rclass2) repo)
-- [Create your own new repo on GitHub and clone to your local machine](#create-new-repository-on-github-and-clone-to-your-local-machine)
+- [Clone a remote repository from GitHub to your local machine](#clone-a-remote-repository-from-github-to-your-local-machine) (e.g., [rclass2](https://github.com/anyone-can-cook/rclass2) repo or a new repo you create)
 - [Initialize a git repo on your local machine and connect to remote repo on GitHub](#create-new-git-repository-on-your-local-machine-and-add-to-github)
 
 <br>
@@ -838,11 +837,13 @@ Understanding how **local** and **remote** repositories are connected:
     - When you clone a repository, your local branch will automatically be set to track the corresponding remote branch
     - When you push a new local branch to the remote, you will need to set the upstream branch the very first time you push
 
-## Clone an existing repository to your local machine
+## Clone a remote repository from GitHub to your local machine
 
 **Obtain the URL of the remote repository on GitHub**:
 
 - In your browser, navigate to the repository on GitHub
+  - This can be an already existing repository (e.g., [rclass2](https://github.com/anyone-can-cook/rclass2) repo) or a new repository you create
+  - To create a new repository, navigate to [GitHub](https://github.com/new) and make sure to check one or more of the `Initialize this repository with` options before creating
 - Click on the green `Code` button
 - Copy either the repository URL to your clipboard (use HTTPS URL if you don't have SSH set up)
 
@@ -928,14 +929,6 @@ git remote -v
 </details>
 <br>
 
-## Create new repository on GitHub and clone to your local machine
-
-The repository you clone to your local machine can also be a new repository that you create:
-
-- Create a new repository on [GitHub](https://github.com/new)
-- Make sure to check the `Initialize this repository with a README` option
-- You will then be able to clone your new repository to your local machine as described in the previous section
-
 ## Create new git repository on your local machine and add to GitHub
 
 <!--
@@ -959,7 +952,7 @@ Alternatively, you can create a new git repository on your local machine, and th
 **Create a remote repository on GitHub**:
 
 - Create a new repository on [GitHub](https://github.com/new)
-- Do **not** check the `Initialize this repository with a README` option
+- Do **not** check any of the `Initialize this repository with` options
 - After creation, you will be able to see the HTTPS/SSH URL of your new repository. Save this URL for later.
 
 **Connect your local repository to the remote**:

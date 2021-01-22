@@ -1631,7 +1631,10 @@ div.tocify {
 <p>“Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency”</p>
 </blockquote>
 <ul>
-<li>Git is a particular version control software created by <em>The Git Project</em></li>
+<li>Git is a particular version control software created by <em>The Git Project</em>
+<ul>
+<li><a href="https://git-scm.com/about/free-and-open-source">Git is free and open source software</a>, meaning that anyone can use, share, and modify the software</li>
+</ul></li>
 <li>Git can be used by:
 <ul>
 <li>An individual/standalone developer</li>
@@ -1667,6 +1670,17 @@ div.tocify {
 <li>You can make changes to local repository on your machine and then <strong>push</strong> those changes to the remote repository</li>
 <li>Other collaborators can also make changes to their local repository, push them to the remote repository, and then you can <strong>pull</strong> these changes into your local repository</li>
 </ul></li>
+<li>Private vs. public repositories
+<ul>
+<li>Public repositories: anyone can access the repository
+<ul>
+<li>e.g., <a href="https://github.com/anyone-can-cook/rclass2">rclass2</a>, the git repository we created to develop the Rclass2 course is a public repository because we want the public to benefit from this course</li>
+</ul></li>
+<li>Private repositories: only those who have been granted access by a repository “administrator” can access the repository
+<ul>
+<li>e.g., <a href="https://github.com/anyone-can-cook/rclass2_student_issues">rclass2_student_issues</a> is a private repository because we don’t want communication between students or communication between students and instructors to be public</li>
+</ul></li>
+</ul></li>
 </ul>
 <p>What is <strong>GitHub</strong>?</p>
 <ul>
@@ -1674,12 +1688,23 @@ div.tocify {
 <ul>
 <li>Hosting services allow people/organizations to store files on the internet and make those files available to others</li>
 </ul></li>
+<li>Microsoft acquired Github in 2018 for $7.5 billion</li>
 <li>GitHub stores your local repositories in “the cloud”
 <ul>
 <li>E.g., if you create a local repository stored on your machine, GitHub enables you to create a “remote” version of this repository</li>
 <li>Also, you can connect to a remote repository that already exists and create a local version of this respository on your machine</li>
 </ul></li>
-<li>More broadly, GitHub enables you to store files, share code, and collaborate with others</li>
+<li>More broadly, GitHub enables you to store files, share code, and communicate with others</li>
+<li>Github organizations
+<ul>
+<li>Github <a href="https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations">organizations</a> “are shared accounts where businesses and open-source projects can collaborate across many projects [that is, collaborate across many repositories] at once”</li>
+<li>e.g., we created the Github organization <a href="https://github.com/anyone-can-cook">anyone-can-cook</a>, which contains the public repositories associated with the <a href="http://anyone-can-cook.github.io/rclass1/">Rclass1</a> and <a href="http://anyone-can-cook.github.io/rclass2/">Rclass2</a> courses, and also repositories that enrolled students create to complete problem sets</li>
+</ul></li>
+<li>In this course and in <a href="http://anyone-can-cook.github.io/rclass1/">Rclass1</a> you have already been using github to communicate with instructors and with your classmates:
+<ul>
+<li>e.g., we created a private repository called <a href="https://github.com/anyone-can-cook/rclass2_student_issues">rclass2_student_issues</a> so that students can ask questions about course content</li>
+<li>e.g., within the <a href="https://github.com/anyone-can-cook">anyone-can-cook</a> Github organization, we have created <a href="https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams">teams</a> for each problem set group so that you can communicate with your problem set group</li>
+</ul></li>
 </ul>
 </div>
 <div id="how-we-will-learn-git-and-github" class="section level2">
@@ -1690,7 +1715,10 @@ div.tocify {
 <p>Understanding and learning how to use Git and GitHub can be intimidating. A lot of tutorials give you recipes for how to accomplish specific tasks (either point-and-click or issuing commands on command line), but don’t provide a conceptual understanding of how things work.</p>
 <p>Here is how we will learn Git and GitHub over the course of the quarter:</p>
 <ul>
-<li>Three weeks of the course will be (mostly) devoted to Git and GitHub</li>
+<li>Three weeks of the course will be devoted to Git and GitHub
+<ul>
+<li>Most of this time will be devoted to Git rather than Github because you already have some experience with Github and because learning Git is much harder than learning Github</li>
+</ul></li>
 <li>During the Git/GitHub unit, we will:
 <ul>
 <li>Provide a conceptual overview of concepts and workflow</li>
@@ -1780,6 +1808,7 @@ div.tocify {
 </ul>
 </details>
 <p><br></p>
+<p><strong><em>Why learn the command line and “command-line bullshittery,” from Philip J. Guo</em></strong></p>
 <blockquote>
 <p>“What is wonderful about doing applied computer science research in the modern era is that there are thousands of pieces of free software and other computer-based tools that researchers can leverage to create their research software. With the right set of tools, one can be 10x or even 100x more productive than peers who don’t know how to set up those tools.”</p>
 </blockquote>
@@ -2468,10 +2497,9 @@ div.tocify {
 <li>If you haven’t set up SSH, then choose HTTPS</li>
 </ul></li>
 </ul>
-<p><br> There are <strong>3 basic ways</strong> to get your local repository set up with a remote:</p>
+<p><br> There are <strong>2 basic ways</strong> to get your local repository set up with a remote:</p>
 <ul>
-<li><a href="#clone-an-existing-repository-to-your-local-machine">Clone an existing remote repository from GitHub to your local machine</a> (e.g., <a href="https://github.com/anyone-can-cook/rclass2">rclass2</a> repo)</li>
-<li><a href="#create-new-repository-on-github-and-clone-to-your-local-machine">Create your own new repo on GitHub and clone to your local machine</a></li>
+<li><a href="#clone-a-remote-repository-from-github-to-your-local-machine">Clone a remote repository from GitHub to your local machine</a> (e.g., <a href="https://github.com/anyone-can-cook/rclass2">rclass2</a> repo or a new repo you create)</li>
 <li><a href="#create-new-git-repository-on-your-local-machine-and-add-to-github">Initialize a git repo on your local machine and connect to remote repo on GitHub</a></li>
 </ul>
 <p><br> <strong><code>git remote</code></strong>: Show list of connected remote repositories</p>
@@ -2499,11 +2527,15 @@ div.tocify {
 <li>When you push a new local branch to the remote, you will need to set the upstream branch the very first time you push</li>
 </ul></li>
 </ul>
-<div id="clone-an-existing-repository-to-your-local-machine" class="section level2">
-<h2><span class="header-section-number">4.1</span> Clone an existing repository to your local machine</h2>
+<div id="clone-a-remote-repository-from-github-to-your-local-machine" class="section level2">
+<h2><span class="header-section-number">4.1</span> Clone a remote repository from GitHub to your local machine</h2>
 <p><strong>Obtain the URL of the remote repository on GitHub</strong>:</p>
 <ul>
-<li>In your browser, navigate to the repository on GitHub</li>
+<li>In your browser, navigate to the repository on GitHub
+<ul>
+<li>This can be an already existing repository (e.g., <a href="https://github.com/anyone-can-cook/rclass2">rclass2</a> repo) or a new repository you create</li>
+<li>To create a new repository, navigate to <a href="https://github.com/new">GitHub</a> and make sure to check one or more of the <code>Initialize this repository with</code> options before creating</li>
+</ul></li>
 <li>Click on the green <code>Code</code> button</li>
 <li>Copy either the repository URL to your clipboard (use HTTPS URL if you don’t have SSH set up)</li>
 </ul>
@@ -2568,14 +2600,14 @@ div.tocify {
 <span id="cb74-6"><a href="#cb74-6"></a><span class="fu">ls</span> -la</span></code></pre></div>
 <pre><code>## /Users/cyouh95/downloadipeds
 ## total 80
-## drwxr-xr-x    8 cyouh95  staff    272 Jan 20 18:19 .
-## drwxr-xr-x+ 110 cyouh95  staff   3740 Jan 20 18:19 ..
-## drwxr-xr-x   12 cyouh95  staff    408 Jan 20 18:19 .git
-## -rw-r--r--    1 cyouh95  staff     20 Jan 20 18:19 .gitignore
-## -rw-r--r--    1 cyouh95  staff   1073 Jan 20 18:19 LICENSE
-## -rw-r--r--    1 cyouh95  staff   4541 Jan 20 18:19 README.md
-## -rwxr-xr-x    1 cyouh95  staff   5847 Jan 20 18:19 downloadipeds.R
-## -rwxr-xr-x    1 cyouh95  staff  12296 Jan 20 18:19 ipeds_file_list.txt</code></pre>
+## drwxr-xr-x    8 cyouh95  staff    272 Jan 22 00:55 .
+## drwxr-xr-x+ 110 cyouh95  staff   3740 Jan 22 00:55 ..
+## drwxr-xr-x   12 cyouh95  staff    408 Jan 22 00:55 .git
+## -rw-r--r--    1 cyouh95  staff     20 Jan 22 00:55 .gitignore
+## -rw-r--r--    1 cyouh95  staff   1073 Jan 22 00:55 LICENSE
+## -rw-r--r--    1 cyouh95  staff   4541 Jan 22 00:55 README.md
+## -rwxr-xr-x    1 cyouh95  staff   5847 Jan 22 00:55 downloadipeds.R
+## -rwxr-xr-x    1 cyouh95  staff  12296 Jan 22 00:55 ipeds_file_list.txt</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># List out the connected remote, which is named `origin` by default</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="fu">git</span> remote</span></code></pre></div>
 <pre><code>## origin</code></pre>
@@ -2586,17 +2618,8 @@ div.tocify {
 </details>
 <p><br></p>
 </div>
-<div id="create-new-repository-on-github-and-clone-to-your-local-machine" class="section level2">
-<h2><span class="header-section-number">4.2</span> Create new repository on GitHub and clone to your local machine</h2>
-<p>The repository you clone to your local machine can also be a new repository that you create:</p>
-<ul>
-<li>Create a new repository on <a href="https://github.com/new">GitHub</a></li>
-<li>Make sure to check the <code>Initialize this repository with a README</code> option</li>
-<li>You will then be able to clone your new repository to your local machine as described in the previous section</li>
-</ul>
-</div>
 <div id="create-new-git-repository-on-your-local-machine-and-add-to-github" class="section level2">
-<h2><span class="header-section-number">4.3</span> Create new git repository on your local machine and add to GitHub</h2>
+<h2><span class="header-section-number">4.2</span> Create new git repository on your local machine and add to GitHub</h2>
 <!--
 To create this example, can draw from both of these two tutorials:
 
@@ -2618,7 +2641,7 @@ To create this example, can draw from both of these two tutorials:
 <p><strong>Create a remote repository on GitHub</strong>:</p>
 <ul>
 <li>Create a new repository on <a href="https://github.com/new">GitHub</a></li>
-<li>Do <strong>not</strong> check the <code>Initialize this repository with a README</code> option</li>
+<li>Do <strong>not</strong> check any of the <code>Initialize this repository with</code> options</li>
 <li>After creation, you will be able to see the HTTPS/SSH URL of your new repository. Save this URL for later.</li>
 </ul>
 <p><strong>Connect your local repository to the remote</strong>:</p>
@@ -2738,16 +2761,18 @@ To create this example, can draw from both of these two tutorials:
 <br>
 <details>
 <p><summary><strong>Example</strong>: Using <code>git remote</code> to add a remote</summary></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="#cb81-1"></a><span class="co"># Initialize a new git repository in `my_git_repo` directory</span></span>
-<span id="cb81-2"><a href="#cb81-2"></a><span class="bu">cd</span> my_git_repo</span>
-<span id="cb81-3"><a href="#cb81-3"></a><span class="fu">git</span> init</span>
-<span id="cb81-4"><a href="#cb81-4"></a></span>
-<span id="cb81-5"><a href="#cb81-5"></a><span class="co"># Add remote (https://github.com/anyone-can-cook/my_git_repo) and name it `origin`</span></span>
-<span id="cb81-6"><a href="#cb81-6"></a><span class="fu">git</span> remote add origin https://github.com/anyone-can-cook/my_git_repo.git</span>
-<span id="cb81-7"><a href="#cb81-7"></a></span>
-<span id="cb81-8"><a href="#cb81-8"></a><span class="co"># Check remote</span></span>
-<span id="cb81-9"><a href="#cb81-9"></a><span class="fu">git</span> remote -v</span></code></pre></div>
-<pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="#cb81-1"></a></span>
+<span id="cb81-2"><a href="#cb81-2"></a><span class="co"># Initialize a new git repository in `my_git_repo` directory</span></span>
+<span id="cb81-3"><a href="#cb81-3"></a><span class="bu">cd</span> my_git_repo</span>
+<span id="cb81-4"><a href="#cb81-4"></a><span class="fu">git</span> init</span>
+<span id="cb81-5"><a href="#cb81-5"></a></span>
+<span id="cb81-6"><a href="#cb81-6"></a><span class="co"># Add remote (https://github.com/anyone-can-cook/my_git_repo) and name it `origin`</span></span>
+<span id="cb81-7"><a href="#cb81-7"></a><span class="fu">git</span> remote add origin https://github.com/anyone-can-cook/my_git_repo.git</span>
+<span id="cb81-8"><a href="#cb81-8"></a></span>
+<span id="cb81-9"><a href="#cb81-9"></a><span class="co"># Check remote</span></span>
+<span id="cb81-10"><a href="#cb81-10"></a><span class="fu">git</span> remote -v</span></code></pre></div>
+<pre><code>## /Users/cyouh95
+## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
 ## origin   https://github.com/anyone-can-cook/my_git_repo.git (fetch)
 ## origin   https://github.com/anyone-can-cook/my_git_repo.git (push)</code></pre>
 <p><br> Note that we could’ve named the remote repository anything - it doesn’t have to be <strong>origin</strong>:</p>
@@ -2783,7 +2808,7 @@ To create this example, can draw from both of these two tutorials:
 <span id="cb90-5"><a href="#cb90-5"></a><span class="co"># Add R script and make a commit</span></span>
 <span id="cb90-6"><a href="#cb90-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb90-7"><a href="#cb90-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;initial commit&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 4eb2970] initial commit
+<pre><code>## [master (root-commit) 0a019fc] initial commit
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Because this is a new local branch, we get an error if we just use `git push` on the initial push</span></span>
@@ -3191,9 +3216,9 @@ index c1cff38..8b151a2 100644
 <span id="cb126-5"><a href="#cb126-5"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
 ## total 0
-## drwxr-xr-x    3 cyouh95  staff   102 Jan 20 18:19 .
-## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
-## drwxr-xr-x    9 cyouh95  staff   306 Jan 20 18:19 .git</code></pre>
+## drwxr-xr-x    3 cyouh95  staff   102 Jan 22 00:55 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 22 00:55 ..
+## drwxr-xr-x    9 cyouh95  staff   306 Jan 22 00:55 .git</code></pre>
 <p><br> What’s inside the <strong><code>.git/</code> directory</strong>?</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1"></a><span class="co"># List out the contents of the .git/ directory (in tree form)</span></span>
 <span id="cb128-2"><a href="#cb128-2"></a><span class="fu">find</span> .git -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
@@ -3373,20 +3398,20 @@ index c1cff38..8b151a2 100644
 <span id="cb144-3"><a href="#cb144-3"></a></span>
 <span id="cb144-4"><a href="#cb144-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb144-5"><a href="#cb144-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 23504f9] initial commit
+<pre><code>## [master (root-commit) 7f38490] initial commit
 ##  3 files changed, 4 insertions(+)
 ##  create mode 100644 create_dataset.R
 ##  create mode 100644 notes/note_1.txt
 ##  create mode 100644 notes/note_2.txt
 ## |____objects
-## | |____23
-## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
+## | |____7f
+## | | |____38490c056f5f9a70cf101a11e814e572df6920
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3421,11 +3446,11 @@ index c1cff38..8b151a2 100644
 <div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1"></a><span class="co">#show files in directory</span></span>
 <span id="cb149-2"><a href="#cb149-2"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Jan 20 18:19 .
-## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Jan 20 18:19 .git
-## -rw-r--r--    1 cyouh95  staff    35 Jan 20 18:19 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Jan 20 18:19 notes</code></pre>
+## drwxr-xr-x    5 cyouh95  staff   170 Jan 22 00:55 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 22 00:55 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Jan 22 00:55 .git
+## -rw-r--r--    1 cyouh95  staff    35 Jan 22 00:55 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Jan 22 00:55 notes</code></pre>
 <p>Second, show contents of tree using <code>git cat-file</code></p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1"></a><span class="co">#show files in directory</span></span>
 <span id="cb151-2"><a href="#cb151-2"></a><span class="fu">ls</span> -al</span>
@@ -3435,11 +3460,11 @@ index c1cff38..8b151a2 100644
 <span id="cb151-6"><a href="#cb151-6"></a><span class="fu">git</span> cat-file -t f59085d  <span class="co"># type</span></span>
 <span id="cb151-7"><a href="#cb151-7"></a><span class="fu">git</span> cat-file -p f59085d  <span class="co"># content</span></span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Jan 20 18:19 .
-## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 20 18:19 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Jan 20 18:19 .git
-## -rw-r--r--    1 cyouh95  staff    35 Jan 20 18:19 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Jan 20 18:19 notes
+## drwxr-xr-x    5 cyouh95  staff   170 Jan 22 00:55 .
+## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 22 00:55 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Jan 22 00:55 .git
+## -rw-r--r--    1 cyouh95  staff    35 Jan 22 00:55 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Jan 22 00:55 notes
 ## 
 ## tree
 ## 100644 blob c1cff389562e8bc123e6691a60352fdf839df113 create_dataset.R
@@ -3486,13 +3511,9 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb156-9"><a href="#cb156-9"></a></span>
 <span id="cb156-10"><a href="#cb156-10"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb156-11"><a href="#cb156-11"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master 1420365] second commit
+<pre><code>## [master e6102c4] second commit
 ##  1 file changed, 1 insertion(+)
 ## |____objects
-## | |____14
-## | | |____20365cd3deea87341db2ef2dc866994912b8b1
-## | |____23
-## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
@@ -3503,8 +3524,12 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
+## | |____7f
+## | | |____38490c056f5f9a70cf101a11e814e572df6920
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
+## | |____e6
+## | | |____102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## | |____f5
 ## | | |____9085df29aed7826a89b23af3f67fc3ab96f643
 ## | |____info
@@ -3520,10 +3545,10 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb158-3"><a href="#cb158-3"></a></span>
 <span id="cb158-4"><a href="#cb158-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb158-5"><a href="#cb158-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## 23504f9b1146cc4d561c4e7207577dd6745e73dd
+<pre><code>## 7f38490c056f5f9a70cf101a11e814e572df6920
 ## tree f59085df29aed7826a89b23af3f67fc3ab96f643
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
 ## 
 ## initial commit</code></pre>
 </details>
@@ -3538,11 +3563,11 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb160-3"><a href="#cb160-3"></a></span>
 <span id="cb160-4"><a href="#cb160-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb160-5"><a href="#cb160-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 1420365cd3deea87341db2ef2dc866994912b8b1
+<pre><code>## e6102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## tree 524db779f0a3e3b3b353b522285c7da4830e21f1
-## parent 23504f9b1146cc4d561c4e7207577dd6745e73dd
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195584 -0800
+## parent 7f38490c056f5f9a70cf101a11e814e572df6920
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
 ## 
 ## second commit</code></pre>
 </details>
@@ -3569,24 +3594,24 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb163-4"><a href="#cb163-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb163-5"><a href="#cb163-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
 <pre><code>## |____objects
-## | |____14
-## | | |____20365cd3deea87341db2ef2dc866994912b8b1
-## | |____23
-## | | |____504f9b1146cc4d561c4e7207577dd6745e73dd
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
-## | |____59
-## | | |____a14783f3f48845d39021b44007240d1f7c845c
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
+## | |____7f
+## | | |____38490c056f5f9a70cf101a11e814e572df6920
+## | |____9b
+## | | |____7cc7f8e1ba3ddb1f09c92db7c95034191ebb0a
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
+## | |____e6
+## | | |____102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## | |____f5
 ## | | |____9085df29aed7826a89b23af3f67fc3ab96f643
 ## | |____info
@@ -3596,23 +3621,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><summary><strong>Example</strong>: Using <code>git cat-file</code> to view tag object</summary></p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1"></a><span class="co"># View content of the tag object</span></span>
 <span id="cb165-2"><a href="#cb165-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> show-ref -s v1<span class="va">)</span>  <span class="co"># retrieves hash for v1 tag</span></span></code></pre></div>
-<pre><code>## object 1420365cd3deea87341db2ef2dc866994912b8b1
+<pre><code>## object e6102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## type commit
 ## tag v1
-## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
+## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
 ## 
 ## version 1.0</code></pre>
 <div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1"></a><span class="co"># The tagged object was the second commit</span></span>
 <span id="cb167-2"><a href="#cb167-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 1420365cd3deea87341db2ef2dc866994912b8b1
+<pre><code>## commit e6102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:44 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 23504f9b1146cc4d561c4e7207577dd6745e73dd
+## commit 7f38490c056f5f9a70cf101a11e814e572df6920
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:44 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </details>
@@ -3629,19 +3654,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Following that reference, we can find the hash ID of the latest commit located inside the <code>refs/</code> directory:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1"></a><span class="co"># View content of refs/heads/master</span></span>
 <span id="cb171-2"><a href="#cb171-2"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
-<pre><code>## 1420365cd3deea87341db2ef2dc866994912b8b1</code></pre>
+<pre><code>## e6102c4405e5b5c4d05f59ca4c86776390abfc8e</code></pre>
 <p>We can use <code>git log</code> to verify that this is the hash ID of the latest commit:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1"></a><span class="co"># View commit log</span></span>
 <span id="cb173-2"><a href="#cb173-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 1420365cd3deea87341db2ef2dc866994912b8b1
+<pre><code>## commit e6102c4405e5b5c4d05f59ca4c86776390abfc8e
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:44 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 23504f9b1146cc4d561c4e7207577dd6745e73dd
+## commit 7f38490c056f5f9a70cf101a11e814e572df6920
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:44 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </div>
@@ -3699,23 +3724,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb187-3"><a href="#cb187-3"></a></span>
 <span id="cb187-4"><a href="#cb187-4"></a><span class="co"># The R script is now no longer listed</span></span>
 <span id="cb187-5"><a href="#cb187-5"></a><span class="fu">git</span> status</span></code></pre></div>
-<pre><code>## [master (root-commit) 5060a1f] add create_dataset.R
+<pre><code>## [master (root-commit) 597e5fb] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R
 ## On branch master
 ## nothing to commit, working tree clean</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb189-2"><a href="#cb189-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 5060a1f294ca94bf5771e45fb2efb9ab87600400
+<pre><code>## commit 597e5fb0e45744a9f67031f573f465768bb175fd
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb191-1"><a href="#cb191-1"></a><span class="co"># Verify that `HEAD` is indeed pointing to the last commit made, which is our initial commit</span></span>
 <span id="cb191-2"><a href="#cb191-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb191-3"><a href="#cb191-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## 5060a1f294ca94bf5771e45fb2efb9ab87600400</code></pre>
+## 597e5fb0e45744a9f67031f573f465768bb175fd</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="#cb193-1"></a><span class="co"># Further modify R script, which is now a tracked file</span></span>
 <span id="cb193-2"><a href="#cb193-2"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
 <span id="cb193-3"><a href="#cb193-3"></a></span>
@@ -3748,8 +3773,8 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## |____objects
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
-## | |____50
-## | | |____60a1f294ca94bf5771e45fb2efb9ab87600400
+## | |____59
+## | | |____7e5fb0e45744a9f67031f573f465768bb175fd
 ## | |____96
 ## | | |____6cc780d5994bc8a4ed535484cd7f8268e8e874
 ## | |____c1
@@ -3766,32 +3791,32 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## df &lt;- mpg %&gt;% filter(year == 2008)</code></pre>
 <div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="#cb203-1"></a><span class="co"># Make a commit</span></span>
 <span id="cb203-2"><a href="#cb203-2"></a><span class="fu">git</span> commit -m <span class="st">&quot;modify create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 0f8fa97] modify create_dataset.R
+<pre><code>## [master b8b8401] modify create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="#cb205-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb205-2"><a href="#cb205-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 0f8fa9704e072c940b8e8927c381c1ceec7eeac1
+<pre><code>## commit b8b8401d32bfd666b9b71673d3a7afaa401e3a20
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     modify create_dataset.R
 ## 
-## commit 5060a1f294ca94bf5771e45fb2efb9ab87600400
+## commit 597e5fb0e45744a9f67031f573f465768bb175fd
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:32 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="#cb207-1"></a><span class="co"># Verify that `HEAD` is pointing to the last commit made, which is now our second commit</span></span>
 <span id="cb207-2"><a href="#cb207-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb207-3"><a href="#cb207-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## 0f8fa9704e072c940b8e8927c381c1ceec7eeac1</code></pre>
+## b8b8401d32bfd666b9b71673d3a7afaa401e3a20</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># View content of commit object for second commit</span></span>
 <span id="cb209-2"><a href="#cb209-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
 <pre><code>## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent 5060a1f294ca94bf5771e45fb2efb9ab87600400
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195585 -0800
+## parent 597e5fb0e45744a9f67031f573f465768bb175fd
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305732 -0800
 ## 
 ## modify create_dataset.R</code></pre>
 </div>
@@ -3827,7 +3852,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb211-6"><a href="#cb211-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb211-7"><a href="#cb211-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 5060a1f] add create_dataset.R
+## [master (root-commit) 146b89e] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb213-1"><a href="#cb213-1"></a><span class="co"># View how create_dataset.R looks when it was committed</span></span>
@@ -3893,7 +3918,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb221-6"><a href="#cb221-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb221-7"><a href="#cb221-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 5060a1f] add create_dataset.R
+## [master (root-commit) 146b89e] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb223-1"><a href="#cb223-1"></a><span class="co"># Modify R script</span></span>
@@ -3935,7 +3960,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb227-5"><a href="#cb227-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb227-6"><a href="#cb227-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) be681dd] add 1st line to create_dataset.R
+## [master (root-commit) 0b9f750] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb229"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb229-1"><a href="#cb229-1"></a><span class="co"># Modify R script</span></span>
@@ -3944,19 +3969,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb229-4"><a href="#cb229-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb229-5"><a href="#cb229-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb229-6"><a href="#cb229-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master b588379] add 2nd line to create_dataset.R
+<pre><code>## [master cf837f1] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb231"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb231-1"><a href="#cb231-1"></a><span class="co"># View commit log</span></span>
 <span id="cb231-2"><a href="#cb231-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit b588379ad4af4bbdbe47dcab28384cd9bc5143b5
+<pre><code>## commit cf837f13da4a1044ed45e8a2e9a98ec45bc68d15
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit be681dda7f8b7777f6841626a128f754667f4ce1
+## commit 0b9f750bcc728eda5e197d2b6c2852f75b907a17
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb233"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb233-1"><a href="#cb233-1"></a><span class="co"># Specify the hash ID of the commit to undo up to</span></span>
@@ -3966,9 +3991,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb233-5"><a href="#cb233-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Unstaged changes after reset:
 ## M    create_dataset.R
-## commit be681dda7f8b7777f6841626a128f754667f4ce1
+## commit 0b9f750bcc728eda5e197d2b6c2852f75b907a17
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:45 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb235-1"><a href="#cb235-1"></a><span class="co"># Notice that the changes to the file is still retained in the working directory</span></span>
@@ -4004,7 +4029,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb237-5"><a href="#cb237-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb237-6"><a href="#cb237-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 6b1d973] add 1st line to create_dataset.R
+## [master (root-commit) 0b9f750] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="#cb239-1"></a><span class="co"># Modify R script</span></span>
@@ -4013,19 +4038,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb239-4"><a href="#cb239-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb239-5"><a href="#cb239-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb239-6"><a href="#cb239-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 280ec6b] add 2nd line to create_dataset.R
+<pre><code>## [master cf837f1] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb241-1"><a href="#cb241-1"></a><span class="co"># View commit log</span></span>
 <span id="cb241-2"><a href="#cb241-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 280ec6b332fcab90bea282bf9903adf629d71b2f
+<pre><code>## commit cf837f13da4a1044ed45e8a2e9a98ec45bc68d15
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit 6b1d97377f50b8031734a057ef698bf4d3d5dd36
+## commit 0b9f750bcc728eda5e197d2b6c2852f75b907a17
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="#cb243-1"></a><span class="co"># Specify the hash ID of the unwanted commit</span></span>
@@ -4033,25 +4058,25 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb243-3"><a href="#cb243-3"></a></span>
 <span id="cb243-4"><a href="#cb243-4"></a><span class="co"># View commit log</span></span>
 <span id="cb243-5"><a href="#cb243-5"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## [master 32a226e] Revert &quot;add 2nd line to create_dataset.R&quot;
+<pre><code>## [master ac415aa] Revert &quot;add 2nd line to create_dataset.R&quot;
 ##  1 file changed, 1 deletion(-)
-## commit 32a226ea33362ef6d0d4f999c2ce8e703caccefc
+## commit ac415aa2b2dbc5afb44d340bfb96002b739693b3
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     Revert &quot;add 2nd line to create_dataset.R&quot;
 ##     
-##     This reverts commit 280ec6b332fcab90bea282bf9903adf629d71b2f.
+##     This reverts commit cf837f13da4a1044ed45e8a2e9a98ec45bc68d15.
 ## 
-## commit 280ec6b332fcab90bea282bf9903adf629d71b2f
+## commit cf837f13da4a1044ed45e8a2e9a98ec45bc68d15
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit 6b1d97377f50b8031734a057ef698bf4d3d5dd36
+## commit 0b9f750bcc728eda5e197d2b6c2852f75b907a17
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="#cb245-1"></a><span class="co"># The file now only contains the 1st line</span></span>
@@ -4070,7 +4095,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <li>A branch can be thought of as a “pointer to a single commit”</li>
 <li>In the figure below, each circle represents a commit. There are three branches - the <strong>master</strong> branch and 2 other branches (<strong>little feature</strong> and <strong>big feature</strong>) that “branched” off <strong>master</strong>.</li>
 </ul>
-<p><a href="https://www.w3docs.com/learn-git/git-branch.html"><img src="data:image/png;base64,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" /></a></p>
+<p><a href="https://www.w3docs.com/learn-git/git-branch.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbgAAAD6CAYAAADTLVJgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxMTBlNGQ2Ny1kYTQ4LTk2NDUtOWEzMS1kMmQyNGM2NDExNDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDU4NTU5RUMxQ0RCMTFFQUFCNUY5RDdFRTJDNzJENEUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDU4NTU5RUIxQ0RCMTFFQUFCNUY5RDdFRTJDNzJENEUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Y2M0NGYyMzUtY2U1OC0yMTRhLTg1NTEtNDdjOWU2NWVkYTFkIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6ZWY3ZWZjYTctM2U1YS04ODQ2LTg2ODIt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" /></a></p>
 <p><em>Credit: <a href="https://www.w3docs.com/learn-git/git-branch.html">W3 docs, Git branch</a></em></p>
 <p><br> Defining <strong>branches</strong> in terms of <strong>commits</strong>:</p>
 <ul>
@@ -4160,7 +4185,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb249-4"><a href="#cb249-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb249-5"><a href="#cb249-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb249-6"><a href="#cb249-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse in create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) fa29f78] import tidyverse in create_dataset.R
+<pre><code>## [master (root-commit) 387e5d1] import tidyverse in create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb251"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb251-1"><a href="#cb251-1"></a><span class="co"># Now we can see the `master` branch listed, with an `*` indicating it is our current branch</span></span>
@@ -4168,7 +4193,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## * master</code></pre>
 <div class="sourceCode" id="cb253"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb253-1"><a href="#cb253-1"></a><span class="co"># See detailed branch listing with info about the latest commit</span></span>
 <span id="cb253-2"><a href="#cb253-2"></a><span class="fu">git</span> branch -v</span></code></pre></div>
-<pre><code>## * master fa29f78 import tidyverse in create_dataset.R</code></pre>
+<pre><code>## * master 387e5d1 import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb255"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb255-1"><a href="#cb255-1"></a><span class="co"># If the repository is connected to a remote, the `-a` option will list remote branches too</span></span>
 <span id="cb255-2"><a href="#cb255-2"></a><span class="co"># (In the specific example below, the remote is named `origin`)</span></span>
 <span id="cb255-3"><a href="#cb255-3"></a><span class="fu">git</span> branch -a</span></code></pre></div>
@@ -4197,7 +4222,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## * master</code></pre>
 <div class="sourceCode" id="cb264"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb264-1"><a href="#cb264-1"></a><span class="co"># Delete branch</span></span>
 <span id="cb264-2"><a href="#cb264-2"></a><span class="fu">git</span> branch -d dev</span></code></pre></div>
-<pre><code>## Deleted branch dev (was fa29f78).</code></pre>
+<pre><code>## Deleted branch dev (was 387e5d1).</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb266-1"><a href="#cb266-1"></a><span class="co"># See branch listing</span></span>
 <span id="cb266-2"><a href="#cb266-2"></a><span class="fu">git</span> branch</span></code></pre></div>
 <pre><code>## * master</code></pre>
@@ -4317,9 +4342,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same initial commit:</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb280-1"><a href="#cb280-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb280-2"><a href="#cb280-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit fa29f784f8735472ff142a80503569d10c8204a7
+<pre><code>## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb282"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb282-1"><a href="#cb282-1"></a><span class="co"># Switch to `dev` branch</span></span>
@@ -4328,9 +4353,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb282-4"><a href="#cb282-4"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb282-5"><a href="#cb282-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb284"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb284-1"><a href="#cb284-1"></a><span class="co"># View content of R script, which is the same on both `master` and `dev` branches</span></span>
@@ -4344,19 +4369,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb286-5"><a href="#cb286-5"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb286-6"><a href="#cb286-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb286-7"><a href="#cb286-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;manipulate mpg dataset&quot;</span></span></code></pre></div>
-<pre><code>## [dev 4365783] manipulate mpg dataset
+<pre><code>## [dev 60cf31c] manipulate mpg dataset
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb288-1"><a href="#cb288-1"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb288-2"><a href="#cb288-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+<pre><code>## commit 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s switch back to the <code>master</code> branch and merge in <code>dev</code>. Since the <code>dev</code> branch is ahead of <code>master</code> by 1 commit, the changes can be combined using a fast-forward merge:</p>
@@ -4366,21 +4391,21 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb290-4"><a href="#cb290-4"></a><span class="co"># Merge `dev` branch into `master`</span></span>
 <span id="cb290-5"><a href="#cb290-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating fa29f78..4365783
+## Updating 387e5d1..60cf31c
 ## Fast-forward
 ##  create_dataset.R | 2 ++
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb292"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb292-1"><a href="#cb292-1"></a><span class="co"># The commit log for `master` now matches the `dev` branch</span></span>
 <span id="cb292-2"><a href="#cb292-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+<pre><code>## commit 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s examine the git object associated with the commit:</p>
@@ -4389,12 +4414,12 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb294-3"><a href="#cb294-3"></a></span>
 <span id="cb294-4"><a href="#cb294-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb294-5"><a href="#cb294-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+<pre><code>## 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## commit
 ## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent fa29f784f8735472ff142a80503569d10c8204a7
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
+## parent 387e5d1073474d463a3611428121e085040c3e31
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305734 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305734 -0800
 ## 
 ## manipulate mpg dataset</code></pre>
 <p>Examine the “tree” object associated with the commit:</p>
@@ -4415,11 +4440,11 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb300-3"><a href="#cb300-3"></a></span>
 <span id="cb300-4"><a href="#cb300-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb300-5"><a href="#cb300-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## fa29f784f8735472ff142a80503569d10c8204a7
+<pre><code>## 387e5d1073474d463a3611428121e085040c3e31
 ## commit
 ## tree cb70185218351236255cdea1297210ceeaf6e3b5
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611195586 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305733 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611305733 -0800
 ## 
 ## import tidyverse in create_dataset.R</code></pre>
 </details>
@@ -4429,15 +4454,15 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same two commits:</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb302-1"><a href="#cb302-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb302-2"><a href="#cb302-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+<pre><code>## commit 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb304"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb304-1"><a href="#cb304-1"></a><span class="fu">git</span> branch</span>
@@ -4459,7 +4484,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb306-6"><a href="#cb306-6"></a><span class="co"># Add and commit changes</span></span>
 <span id="cb306-7"><a href="#cb306-7"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb306-8"><a href="#cb306-8"></a><span class="fu">git</span> commit -m <span class="st">&quot;update head() on line 2&quot;</span> </span></code></pre></div>
-<pre><code>## [master 6c036cb] update head() on line 2
+<pre><code>## [master 4a9d708] update head() on line 2
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now shows <code>head(10)</code> instead of <code>head(5)</code>:</p>
 <div class="sourceCode" id="cb308"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb308-1"><a href="#cb308-1"></a><span class="fu">git</span> branch</span>
@@ -4483,7 +4508,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb310-8"><a href="#cb310-8"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb310-9"><a href="#cb310-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;add additional filter() on line 4&quot;</span> </span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## [dev 2fdbaf7] add additional filter() on line 4
+## [dev 351d428] add additional filter() on line 4
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>View updated content of R script on the <code>dev</code> branch, which now has additional <code>filter()</code> line at the end:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb312-1"><a href="#cb312-1"></a><span class="fu">git</span> branch</span>
@@ -4527,34 +4552,34 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb318"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb318-1"><a href="#cb318-1"></a><span class="co"># View commit log - note that a new merge commit was created during the 3-way merge</span></span>
 <span id="cb318-2"><a href="#cb318-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 56c15a5d9c49e50bc8f374da0324af418a189796
-## Merge: 6c036cb 2fdbaf7
+<pre><code>## commit 08640e24c979b2289c3bf3380a906e5836e75422
+## Merge: 4a9d708 351d428
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 6c036cbb3b3036eb36a2a0ba3bd8e8dcae2dc932
+## commit 4a9d70862babd9360121c06944417ea6af3f5c7b
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 2fdbaf722ecc486904251b21d20cceaccdfa8e10
+## commit 351d428307434b18f0902e252085cc524b1593ca
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+## commit 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb320"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb320-1"><a href="#cb320-1"></a><span class="co"># View merged content of R script</span></span>
@@ -4596,34 +4621,34 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <p>Continuing from previous examples, our <code>master</code> branch currently looks like this:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb325-1"><a href="#cb325-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb325-2"><a href="#cb325-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 56c15a5d9c49e50bc8f374da0324af418a189796
-## Merge: 6c036cb 2fdbaf7
+<pre><code>## commit 08640e24c979b2289c3bf3380a906e5836e75422
+## Merge: 4a9d708 351d428
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 6c036cbb3b3036eb36a2a0ba3bd8e8dcae2dc932
+## commit 4a9d70862babd9360121c06944417ea6af3f5c7b
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 2fdbaf722ecc486904251b21d20cceaccdfa8e10
+## commit 351d428307434b18f0902e252085cc524b1593ca
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:47 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 43657834ee5380a8e605bd811e37eeaab7a7e1ad
+## commit 60cf31cf6090d706d0327e5131f9b2f7025720bb
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:34 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit fa29f784f8735472ff142a80503569d10c8204a7
+## commit 387e5d1073474d463a3611428121e085040c3e31
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 20 18:19:46 2021 -0800
+## Date:   Fri Jan 22 00:55:33 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb327"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb327-1"><a href="#cb327-1"></a><span class="fu">git</span> branch</span>
@@ -4651,7 +4676,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb329-11"><a href="#cb329-11"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb329-12"><a href="#cb329-12"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for lincoln instead of audi&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;revision&#39;
-## [revision 9fca05a] filter for lincoln instead of audi
+## [revision 1da23fe] filter for lincoln instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>revision</code> branch, which now filters for <code>lincoln</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb331-1"><a href="#cb331-1"></a><span class="fu">git</span> branch</span>
@@ -4702,7 +4727,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <div class="sourceCode" id="cb339"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb339-1"><a href="#cb339-1"></a><span class="co"># Add and commit change</span></span>
 <span id="cb339-2"><a href="#cb339-2"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb339-3"><a href="#cb339-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for chevrolet instead of audi&quot;</span></span></code></pre></div>
-<pre><code>## [master a33650e] filter for chevrolet instead of audi
+<pre><code>## [master 4703e37] filter for chevrolet instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now filters for <code>chevrolet</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb341-1"><a href="#cb341-1"></a><span class="fu">git</span> branch</span>
@@ -4856,7 +4881,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb353-4"><a href="#cb353-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb353-5"><a href="#cb353-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb353-6"><a href="#cb353-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) d980101] import tidyverse library
+<pre><code>## [master (root-commit) 1323b3d] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -4871,7 +4896,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb355-9"><a href="#cb355-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev ee5d8b7] preview mpg dataset
+## [dev 068a226] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to master:</p>
 <div class="sourceCode" id="cb357"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb357-1"><a href="#cb357-1"></a><span class="co"># Switch back to master</span></span>
@@ -4880,7 +4905,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb357-4"><a href="#cb357-4"></a><span class="co"># Merge in changes from the branch</span></span>
 <span id="cb357-5"><a href="#cb357-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating d980101..ee5d8b7
+## Updating 1323b3d..068a226
 ## Fast-forward
 ##  create_dataset.R | 1 +
 ##  1 file changed, 1 insertion(+)</code></pre>
@@ -4942,7 +4967,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb360-4"><a href="#cb360-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb360-5"><a href="#cb360-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb360-6"><a href="#cb360-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) d980101] import tidyverse library
+<pre><code>## [master (root-commit) 1323b3d] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -4957,7 +4982,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb362-9"><a href="#cb362-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev ee5d8b7] preview mpg dataset
+## [dev 068a226] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote repository. Remember to set the upstream branch if this is the first time you are pushing the branch to remote:</p>
 <div class="sourceCode" id="cb364"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb364-1"><a href="#cb364-1"></a><span class="co"># Push branch to remote (say our remote is called `origin` here)</span></span>
