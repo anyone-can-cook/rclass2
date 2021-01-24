@@ -208,7 +208,7 @@ _[Helping my students overcome __command-line bullshittery__](http://www.pgbovin
 
 ## Installation and running shell commands from RStudio
 
-If you have a **Windows** computer, you will need to [follow these steps](https://anyone-can-cook.github.io/rclass2/assets/resources/bash_on_windows.html) to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. If you have a **Mac**, you won't need to worry about installing anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/).
+If you have a **Windows** computer, you will need to [follow these steps](https://anyone-can-cook.github.io/rclass2/assets/resources/bash_on_windows.html) to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. If you have a **Mac**, you won't need to download anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/). However, if you have a newer version of Mac, you may need to run `xcode-select --install` in your Terminal before you're able to use Git commands (see [here](https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a) for more info).
 
 <br>
 In **RStudio**, there is a **Terminal** tab (next to the **Console** tab) where you can run Bash commands and perform Git operations:
