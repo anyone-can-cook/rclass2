@@ -1209,7 +1209,7 @@ Once a directory is initialized as a git repository, you can choose to **track**
 - As described in more detail in the next section, `git status` can be used to check which files are tracked and which are not. Untracked files, except those listed in your `.gitignore` file, will be listed under `Untracked files`.
 
 <br>
-What is a `.gitignore` file?
+What is a `.gitignore` file? (see [below](#gitignore-file) for more details)
 
 - It is a special file that tells Git what files in the repository to ignore, or not track
 - These files will no longer be listed under `Untracked files` when you check `git status`
@@ -3509,7 +3509,391 @@ Under the `Files` tab, you can also make comments to specific lines of a file:
 
 ## `.gitignore` file
 
-TBD
+What is a `.gitignore` file? ([gitignore documentation](https://git-scm.com/docs/gitignore))
+
+- It is a special file that tells Git what files in the repository to ignore, or not track
+  - More specifically, each line in the `.gitignore` file specifies a _pattern_ to ignore (more below)
+  - It does not support regular expression patterns, but supports [unix `fnmatch`](http://man7.org/linux/man-pages/man3/fnmatch.3.html) style patterns
+- These files will no longer be listed under `Untracked files` when you check `git status`
+  - Note that `.gitignore` does not affect files already being tracked
+  - To stop tracking a file that is already being tracked, use `git rm --cached`
+- The `.gitignore` file is usually in your project root directory
+  - However, you can also have multiple `.gitignore` or `.gitignore` in various subdirectories if you need to ignore different files in different locations
+- You can either create a `.gitignore` file yourself or click `Add .gitignore` when you are creating a new repository on GitHub and select the `R` template from the dropdown menu
+  - Templates for `.gitignore` can be found [here](https://github.com/github/gitignore) (e.g., the [`R` template](https://github.com/github/gitignore/blob/master/R.gitignore))
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/gitignore.png)
+  
+*Credit: [How to Make Git Forget Tracked Files Now In gitignore](https://ardalis.com/how-to-make-git-forget-tracked-files-in-gitignore)*
+
+<br>
+**Pattern formats** in `.gitignore` file:
+
+- Lines starting with `#` are treated as comments
+- Lines starting with `!` means do not ignore this pattern
+- Use `\` to escape literal `#`, `!`, or trailing spaces
+- `*` matches anything except `/`
+- `?` matches any one character except `/`
+- Range notation (e.g., `[a-z]`, `[0-9]`) can be used to match one of the characters in a range
+- Patterns with `/` at the end will only match directories and not files
+- Patterns with `/` in the beginning or middle will only match relative to the directory the `.gitignore` file is in and not any subdirectories
+  - To match in subdirectories as well, add leading `**/` to the start of the pattern
+  - `/**/` in the middle of the path matches zero or more directories
+
+
+<br>
+<details><summary>**Example**: Ignoring files by name patterns</summary>
+
+Let's say we have a git repository with the following files and directory structure:
+
+```{bash, echo=FALSE, results = 'hide'}
+cd ~  # change to root directory
+rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
+mkdir my_git_repo  # make directory `my_git_repo`
+cd my_git_repo
+git init
+mkdir ABC
+touch A1.{png,csv,tsv} B2.csv ABC/README.md de.csv
+```
+
+```{bash, echo=F}
+cd ~/my_git_repo
+
+# List out the contents of the directory (in tree form)
+find . -not -path "./.git*" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
+
+When we check `git status`, all the files are untracked:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Let's create a `.gitignore` file in the root directory. In `.gitignore`, we can specify which files to ignore:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv`, `A1.png`, and `A1.tsv`
+echo "A1.csv" > .gitignore
+echo "A1.png" >> .gitignore
+echo "A1.tsv" >> .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+We can use the wildcard `*` to match any characters that's not a `/`. For example, `A*` matches all files and directories that starts with an `A`:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv`, `A1.png`, `A1.tsv`, and `ABC/` directory using `*`
+echo "A*" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+To specify a file or pattern _not_ to match (i.e., not ignore), put `!` at the start of the line:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores all files and directories starting with `A` except `A1.png`
+echo "A*" > .gitignore
+echo "!A1.png" >> .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+To only match directories, add a trailing `/` to your pattern:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `ABC/` directory only and not files starting with `A`
+echo "A*/" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+The `?` can be used to match any _one_ character that's not a `/`:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv` and `A1.tsv` using `?`
+echo "A1.?sv" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Square brackets `[]` can be used to specify specific characters to match:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv` and `A1.tsv` using `[]`
+echo "A1.[ct]sv" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Ranges can also be specified using square brackets `[]` to match a range of characters (e.g., alphabet or numeric):
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv` and `B2.csv` using ranges
+echo "[a-z][0-9].csv" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Ranges can also be alphanumeric:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `A1.csv`, `B2.csv`, and `de.csv` using ranges
+echo "[a-z][a-z0-9].csv" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Ignoring files and nested files</summary>
+
+Let's say we have a git repository with the following files and directory structure:
+
+```{bash, echo=FALSE, results = 'hide'}
+cd ~  # change to root directory
+rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
+mkdir my_git_repo  # make directory `my_git_repo`
+cd my_git_repo
+git init
+mkdir -p {,intput/,output/,output/plots/}doc
+touch {,doc/,intput/doc/,output/doc/,output/plots/doc/}README.md
+```
+
+```{bash, echo=F}
+cd ~/my_git_repo
+
+# List out the contents of the directory (in tree form)
+find . -not -path "./.git*" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
+
+When we check `git status`, all the `README.md` files are untracked:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Let's create a `.gitignore` file in the root directory. If we add `README.md` to `.gitignore`, all the `README.md` files will be ignored:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores all `README.md`
+echo "README.md" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+If we add `doc/README.md` to the `.gitignore` file, only the `doc/README.md` in the project root directory (i.e., where the `.gitignore` file is located) will be ignored because there's a `/` in the middle of the pattern:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `doc/README.md` in the root directory where `.gitignore` is located
+echo "doc/README.md" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Similarly, if we start a pattern with `/` like `/doc`, it will only match things in the directory where the `.gitignore` file is located (i.e., not the `/doc` folders nested within the subdirectories):
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `doc/` in the root directory where `.gitignore` is located
+echo "/doc" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+In order to match things in subdirectories, we need to add `**/` to the start of the pattern. So `**/doc` will match `/doc` in both the directory where `.gitignore` is located as well as in subdirectories:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores all `doc/` in both the root directory and within subdirectories
+echo "**/doc" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Having `/**/` in the middle of the path will match zero or more directories:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `output/doc` and `output/plots/doc`
+echo "output/**/doc" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+Having just `*` in the path will match any _one_ directory:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `output/plots/doc`
+echo "output/*/doc" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+<br>
+This matches all `doc/` folders that's inside some arbitrary folder (indicated by `*`) that's located in the root directory (i.e., directory where `.gitignore` is located):
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Ignores `output/doc` and `input/doc`
+echo "*/doc" > .gitignore
+
+cat .gitignore
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Check status
+git status -u
+```
+
+</details>
 
 ## Models for collaborative development
 

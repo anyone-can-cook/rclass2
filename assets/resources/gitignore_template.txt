@@ -1,0 +1,66 @@
+# Link to .gitignore doc: https://git-scm.com/docs/gitignore
+# Link to .gitignore R template: https://github.com/github/gitignore/blob/master/R.gitignore
+#
+# The .gitignore file specifies which files in a git repo to intentionally ignore, or not track.
+#
+# Common pattern format rules:
+# - Lines starting with `#` are treated as comments
+# - Lines starting with `!` means do not ignore this pattern
+#   - E.g., `!important.txt` means do not ignore the `important.txt` file
+# - `*` matches anything except `/`
+#   - E.g., `file.*` matches `file.csv` and `file.png`
+# - `?` matches any one character except `/`
+#   - E.g., `file?.csv` matches `file1.csv`, `fileA.csv`, and `file_.csv`
+# - `[]` can be used to match specific characters or range of characters
+#   - E.g., `file[1A].csv` matches `file1.csv` and `fileA.csv`
+#   - E.g., `file[A-Z0-9].csv` matches `file2.csv` and `fileB.csv` but not `file_.csv`
+# - If there is a `/` at the start or middle of the pattern, it only matches within the directory that .gitignore is located (and not within subdirectories), unless `**/` is added at the very beginning
+#   - E.g., `/doc` or `doc/foo` matches these folders at the directory where .gitignore is located
+#   - E.g., `**/doc`` or `**/doc/foo` matches these folders within subdirectories as well
+
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+
+# User-specific files
+.Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
