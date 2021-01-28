@@ -2000,7 +2000,7 @@ cd ~/my_git_repo
 cat .git/HEAD
 ```
 
-Following that reference, we can find the hash ID of the latest commit located inside the `refs/` directory:
+Following that reference, we can find the hash ID of the latest commit stored inside `refs/heads/master`:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -2017,6 +2017,36 @@ cd ~/my_git_repo
 # View commit log
 git log
 ```
+
+<br>
+More generally, the `refs/` directory stores references to all branches. In particular, `refs/heads/` stores all your local branches:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# View local branches
+ls .git/refs/heads
+```
+
+On the other hand, `refs/remotes/` contains the remote `HEAD` and your remote-tracking branches. In other words, it is a local copy of your remote repository.
+
+Inside `refs/remotes/`, There will be a folder for each of your remotes. For example, to view all references for the remote repository named _origin_, you can look under `refs/remotes/origin`:
+
+```{bash, echo=-c(1:2), eval=F}
+cd ~/my_git_repo
+
+# View remote HEAD and remote-tracking branches for origin
+ls .git/refs/remotes/origin
+```
+
+```
+## HEAD
+## master
+```
+
+When you run `git fetch`, it will update the references in `refs/remotes/` (i.e., your local copy of the remote repository), but it will not change anything in `refs/heads/` (i.e., your local repository). Thus, `git fetch` is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don't actually want to merge these changes into your local repository yet.
+
+On the other hand, `git pull` is effectively a `git fetch` followed by a `git merge` (discussed more later). It will not only update `refs/remotes/` but `refs/heads` as well to bring your local repository up-to-date with the remote.
 
 ## Full example
 
