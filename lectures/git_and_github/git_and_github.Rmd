@@ -222,6 +222,16 @@ If you are working from an **R markdown file**, you can also create `bash` code 
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/bash_chunk.png)
 
+## RStudio Console vs. Terminal
+
+What is the difference between the RStudio **Console** and **Terminal**?
+
+- The **Console** is for running R code
+  - You can run a line of R code in the Console by typing it and hitting enter. Separate lines using semicolons if you want to write multiple lines before running them.
+  - Running R code in the Console is equivalent to running R code within an R script
+- The **Terminal** is for running shell commands (e.g., bash commands)
+  - You can run a command in the Terminal by typing it and hitting enter. Separate lines using semicolons if you want to write multiple lines before running them.
+  - Running shell commands from the Terminal is equivalent to running them in your **Git Bash** (Windows) or **Terminal app** (Mac)
 
 # Command line
 
@@ -2356,11 +2366,12 @@ cat create_dataset.R
 
 - Help: `git revert --help`
 - Syntax:
-  - `git revert <commit_hash>`: Revert all commits up to and including the specified `commit_hash`
+  - `git revert --no-edit <commit_hash>`: Revert all commits up to and including the specified `commit_hash`
     - The difference between `git revert` and `git reset` is that the former does not completely remove all past commits, but creates a new one that reverts those changes
-    - When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permenantly erase history
+    - When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permanently erase history
     - When you are working locally and want to undo commits that you have not yet pushed to a remote, then `git reset` may also be an option
-    - _**Note**: After entering this command, you'll be given a chance to edit the commit message of the new commit. Just enter `:q` to use the default message._
+    - The `--no-edit` option means that you will use the default message for the revert commit
+    - _**Note**: If you run this command without `--no-edit`, you'll be taken to a screen where you have a chance to edit the commit message of the new commit. Just enter `:q` to use the default message._
 
 <br>
 <details><summary>**Example**: Using `git revert` to revert a commit</summary>
@@ -2402,7 +2413,7 @@ git log
 cd ~/my_git_repo
 
 # Specify the hash ID of the unwanted commit
-git revert $(git rev-parse --short HEAD)  # git rev-parse retrieves latest commit hash
+git revert --no-edit $(git rev-parse --short HEAD)  # git rev-parse retrieves latest commit hash
 
 # View commit log
 git log
