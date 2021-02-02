@@ -2594,14 +2594,14 @@ div.tocify {
 <span id="cb74-6"><a href="#cb74-6"></a><span class="fu">ls</span> -la</span></code></pre></div>
 <pre><code>## /Users/cyouh95/downloadipeds
 ## total 80
-## drwxr-xr-x    8 cyouh95  staff    272 Feb  2 11:52 .
-## drwxr-xr-x+ 111 cyouh95  staff   3774 Feb  2 11:52 ..
-## drwxr-xr-x   12 cyouh95  staff    408 Feb  2 11:52 .git
-## -rw-r--r--    1 cyouh95  staff     20 Feb  2 11:52 .gitignore
-## -rw-r--r--    1 cyouh95  staff   1073 Feb  2 11:52 LICENSE
-## -rw-r--r--    1 cyouh95  staff   4541 Feb  2 11:52 README.md
-## -rwxr-xr-x    1 cyouh95  staff   5847 Feb  2 11:52 downloadipeds.R
-## -rwxr-xr-x    1 cyouh95  staff  12296 Feb  2 11:52 ipeds_file_list.txt</code></pre>
+## drwxr-xr-x    8 cyouh95  staff    272 Feb  2 12:31 .
+## drwxr-xr-x+ 111 cyouh95  staff   3774 Feb  2 12:31 ..
+## drwxr-xr-x   12 cyouh95  staff    408 Feb  2 12:31 .git
+## -rw-r--r--    1 cyouh95  staff     20 Feb  2 12:31 .gitignore
+## -rw-r--r--    1 cyouh95  staff   1073 Feb  2 12:31 LICENSE
+## -rw-r--r--    1 cyouh95  staff   4541 Feb  2 12:31 README.md
+## -rwxr-xr-x    1 cyouh95  staff   5847 Feb  2 12:31 downloadipeds.R
+## -rwxr-xr-x    1 cyouh95  staff  12296 Feb  2 12:31 ipeds_file_list.txt</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># List out the connected remote, which is named `origin` by default</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="fu">git</span> remote</span></code></pre></div>
 <pre><code>## origin</code></pre>
@@ -2802,7 +2802,7 @@ To create this example, can draw from both of these two tutorials:
 <span id="cb90-5"><a href="#cb90-5"></a><span class="co"># Add R script and make a commit</span></span>
 <span id="cb90-6"><a href="#cb90-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb90-7"><a href="#cb90-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;initial commit&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 28b88e3] initial commit
+<pre><code>## [master (root-commit) f93fdaf] initial commit
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Because this is a new local branch, we get an error if we just use `git push` on the initial push</span></span>
@@ -3210,9 +3210,9 @@ index c1cff38..8b151a2 100644
 <span id="cb126-5"><a href="#cb126-5"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
 ## total 0
-## drwxr-xr-x    3 cyouh95  staff   102 Feb  2 11:52 .
-## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 11:52 ..
-## drwxr-xr-x    9 cyouh95  staff   306 Feb  2 11:52 .git</code></pre>
+## drwxr-xr-x    3 cyouh95  staff   102 Feb  2 12:31 .
+## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 12:31 ..
+## drwxr-xr-x    9 cyouh95  staff   306 Feb  2 12:31 .git</code></pre>
 <p><br> What’s inside the <strong><code>.git/</code> directory</strong>?</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1"></a><span class="co"># List out the contents of the .git/ directory (in tree form)</span></span>
 <span id="cb128-2"><a href="#cb128-2"></a><span class="fu">find</span> .git -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
@@ -3391,7 +3391,7 @@ index c1cff38..8b151a2 100644
 <span id="cb144-3"><a href="#cb144-3"></a></span>
 <span id="cb144-4"><a href="#cb144-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb144-5"><a href="#cb144-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 4ea2b34] initial commit
+<pre><code>## [master (root-commit) ae4de45] initial commit
 ##  3 files changed, 4 insertions(+)
 ##  create mode 100644 create_dataset.R
 ##  create mode 100644 notes/note_1.txt
@@ -3399,12 +3399,12 @@ index c1cff38..8b151a2 100644
 ## |____objects
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
-## | |____4e
-## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
+## | |____ae
+## | | |____4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3439,11 +3439,11 @@ index c1cff38..8b151a2 100644
 <div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1"></a><span class="co"># Show files in directory</span></span>
 <span id="cb149-2"><a href="#cb149-2"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Feb  2 11:52 .
-## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 11:52 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Feb  2 11:52 .git
-## -rw-r--r--    1 cyouh95  staff    35 Feb  2 11:52 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Feb  2 11:52 notes</code></pre>
+## drwxr-xr-x    5 cyouh95  staff   170 Feb  2 12:31 .
+## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 12:31 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Feb  2 12:31 .git
+## -rw-r--r--    1 cyouh95  staff    35 Feb  2 12:31 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Feb  2 12:31 notes</code></pre>
 <p>Second, show contents of tree using <code>git cat-file</code>:</p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1"></a><span class="co"># View type and content of my_git_repo/ tree object</span></span>
 <span id="cb151-2"><a href="#cb151-2"></a><span class="fu">git</span> cat-file -t f59085d  <span class="co"># type</span></span>
@@ -3490,25 +3490,25 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb156-9"><a href="#cb156-9"></a></span>
 <span id="cb156-10"><a href="#cb156-10"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb156-11"><a href="#cb156-11"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master 020a509] second commit
+<pre><code>## [master da8acdd] second commit
 ##  1 file changed, 1 insertion(+)
 ## |____objects
-## | |____02
-## | | |____0a509bd626d49ec5505132d5e6531b6c415611
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
-## | |____4e
-## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
+## | |____ae
+## | | |____4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
+## | |____da
+## | | |____8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## | |____f5
 ## | | |____9085df29aed7826a89b23af3f67fc3ab96f643
 ## | |____info
@@ -3524,10 +3524,10 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb158-3"><a href="#cb158-3"></a></span>
 <span id="cb158-4"><a href="#cb158-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb158-5"><a href="#cb158-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## 4ea2b34d18a8e33de484a4ff39e96fef937695f4
+<pre><code>## ae4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## tree f59085df29aed7826a89b23af3f67fc3ab96f643
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297909 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297909 -0800
 ## 
 ## initial commit</code></pre>
 </details>
@@ -3542,11 +3542,11 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb160-3"><a href="#cb160-3"></a></span>
 <span id="cb160-4"><a href="#cb160-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb160-5"><a href="#cb160-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 020a509bd626d49ec5505132d5e6531b6c415611
+<pre><code>## da8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## tree 524db779f0a3e3b3b353b522285c7da4830e21f1
-## parent 4ea2b34d18a8e33de484a4ff39e96fef937695f4
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
+## parent ae4de45e0757cac0cbabdc22a72a2ac4f323ef60
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297909 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297909 -0800
 ## 
 ## second commit</code></pre>
 </details>
@@ -3573,24 +3573,24 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb163-4"><a href="#cb163-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb163-5"><a href="#cb163-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
 <pre><code>## |____objects
-## | |____02
-## | | |____0a509bd626d49ec5505132d5e6531b6c415611
+## | |____12
+## | | |____ebe8018f05610adb1da1d1f5627fa4fc8f880f
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
-## | |____4e
-## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____a8
-## | | |____bf8301aad1f00373260866b36504d894891539
+## | |____ae
+## | | |____4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
+## | |____da
+## | | |____8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## | |____f5
 ## | | |____9085df29aed7826a89b23af3f67fc3ab96f643
 ## | |____info
@@ -3600,23 +3600,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><summary><strong>Example</strong>: Using <code>git cat-file</code> to view tag object</summary></p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1"></a><span class="co"># View content of the tag object</span></span>
 <span id="cb165-2"><a href="#cb165-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> show-ref -s v1<span class="va">)</span>  <span class="co"># retrieves hash for v1 tag</span></span></code></pre></div>
-<pre><code>## object 020a509bd626d49ec5505132d5e6531b6c415611
+<pre><code>## object da8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## type commit
 ## tag v1
-## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
+## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297909 -0800
 ## 
 ## version 1.0</code></pre>
 <div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1"></a><span class="co"># The tagged object was the second commit</span></span>
 <span id="cb167-2"><a href="#cb167-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 020a509bd626d49ec5505132d5e6531b6c415611
+<pre><code>## commit da8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 4ea2b34d18a8e33de484a4ff39e96fef937695f4
+## commit ae4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </details>
@@ -3633,19 +3633,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Following that reference, we can find the hash ID of the latest commit stored inside <code>refs/heads/master</code>:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1"></a><span class="co"># View content of refs/heads/master</span></span>
 <span id="cb171-2"><a href="#cb171-2"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
-<pre><code>## 020a509bd626d49ec5505132d5e6531b6c415611</code></pre>
+<pre><code>## da8acdd0a60adca0fc6b49390a0b5cb57f08a469</code></pre>
 <p>We can use <code>git log</code> to verify that this is the hash ID of the latest commit:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1"></a><span class="co"># View commit log</span></span>
 <span id="cb173-2"><a href="#cb173-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 020a509bd626d49ec5505132d5e6531b6c415611
+<pre><code>## commit da8acdd0a60adca0fc6b49390a0b5cb57f08a469
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 4ea2b34d18a8e33de484a4ff39e96fef937695f4
+## commit ae4de45e0757cac0cbabdc22a72a2ac4f323ef60
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     initial commit</code></pre>
 <p><br> More generally, the <code>refs/</code> directory stores references to all branches. In particular, <code>refs/heads/</code> stores all your local branches:</p>
@@ -3715,23 +3715,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb191-3"><a href="#cb191-3"></a></span>
 <span id="cb191-4"><a href="#cb191-4"></a><span class="co"># The R script is now no longer listed</span></span>
 <span id="cb191-5"><a href="#cb191-5"></a><span class="fu">git</span> status</span></code></pre></div>
-<pre><code>## [master (root-commit) 49fe4a5] add create_dataset.R
+<pre><code>## [master (root-commit) 540f026] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R
 ## On branch master
 ## nothing to commit, working tree clean</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="#cb193-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb193-2"><a href="#cb193-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 49fe4a5ef30044b1a7549d2d438983bf75af34cf
+<pre><code>## commit 540f026ebfe6a19ca764cfb37309c568611c659c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb195-1"><a href="#cb195-1"></a><span class="co"># Verify that `HEAD` is indeed pointing to the last commit made, which is our initial commit</span></span>
 <span id="cb195-2"><a href="#cb195-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb195-3"><a href="#cb195-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## 49fe4a5ef30044b1a7549d2d438983bf75af34cf</code></pre>
+## 540f026ebfe6a19ca764cfb37309c568611c659c</code></pre>
 <div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="#cb197-1"></a><span class="co"># Further modify R script, which is now a tracked file</span></span>
 <span id="cb197-2"><a href="#cb197-2"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
 <span id="cb197-3"><a href="#cb197-3"></a></span>
@@ -3764,7 +3764,8 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## |____objects
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
-## | | |____fe4a5ef30044b1a7549d2d438983bf75af34cf
+## | |____54
+## | | |____0f026ebfe6a19ca764cfb37309c568611c659c
 ## | |____96
 ## | | |____6cc780d5994bc8a4ed535484cd7f8268e8e874
 ## | |____c1
@@ -3781,32 +3782,32 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## df &lt;- mpg %&gt;% filter(year == 2008)</code></pre>
 <div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="#cb207-1"></a><span class="co"># Make a commit</span></span>
 <span id="cb207-2"><a href="#cb207-2"></a><span class="fu">git</span> commit -m <span class="st">&quot;modify create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 5dc1bc8] modify create_dataset.R
+<pre><code>## [master 3431d56] modify create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb209-2"><a href="#cb209-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 5dc1bc8155106e267062301d123c5516927c361d
+<pre><code>## commit 3431d565fbca55eeb690416fa8b166da51d92fc4
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     modify create_dataset.R
 ## 
-## commit 49fe4a5ef30044b1a7549d2d438983bf75af34cf
+## commit 540f026ebfe6a19ca764cfb37309c568611c659c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:15 2021 -0800
+## Date:   Tue Feb 2 12:31:49 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb211"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb211-1"><a href="#cb211-1"></a><span class="co"># Verify that `HEAD` is pointing to the last commit made, which is now our second commit</span></span>
 <span id="cb211-2"><a href="#cb211-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb211-3"><a href="#cb211-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## 5dc1bc8155106e267062301d123c5516927c361d</code></pre>
+## 3431d565fbca55eeb690416fa8b166da51d92fc4</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb213-1"><a href="#cb213-1"></a><span class="co"># View content of commit object for second commit</span></span>
 <span id="cb213-2"><a href="#cb213-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
 <pre><code>## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent 49fe4a5ef30044b1a7549d2d438983bf75af34cf
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295536 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295536 -0800
+## parent 540f026ebfe6a19ca764cfb37309c568611c659c
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297910 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297910 -0800
 ## 
 ## modify create_dataset.R</code></pre>
 </div>
@@ -3842,7 +3843,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb215-6"><a href="#cb215-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb215-7"><a href="#cb215-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 65837b4] add create_dataset.R
+## [master (root-commit) 72fa30c] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb217"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb217-1"><a href="#cb217-1"></a><span class="co"># View how create_dataset.R looks when it was committed</span></span>
@@ -3908,7 +3909,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb225-6"><a href="#cb225-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb225-7"><a href="#cb225-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 65837b4] add create_dataset.R
+## [master (root-commit) 72fa30c] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb227"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb227-1"><a href="#cb227-1"></a><span class="co"># Modify R script</span></span>
@@ -3950,7 +3951,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb231-5"><a href="#cb231-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb231-6"><a href="#cb231-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 84e641b] add 1st line to create_dataset.R
+## [master (root-commit) c5c41d5] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb233"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb233-1"><a href="#cb233-1"></a><span class="co"># Modify R script</span></span>
@@ -3959,19 +3960,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb233-4"><a href="#cb233-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb233-5"><a href="#cb233-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb233-6"><a href="#cb233-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 29af9ad] add 2nd line to create_dataset.R
+<pre><code>## [master 438f3e8] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb235-1"><a href="#cb235-1"></a><span class="co"># View commit log</span></span>
 <span id="cb235-2"><a href="#cb235-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
+<pre><code>## commit 438f3e83636a355587600c6367758c90c6add18c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
+## commit c5c41d5c19436a7b76e3257a01189490ea31d965
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb237"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb237-1"><a href="#cb237-1"></a><span class="co"># Specify the hash ID of the commit to undo up to</span></span>
@@ -3981,9 +3982,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb237-5"><a href="#cb237-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Unstaged changes after reset:
 ## M    create_dataset.R
-## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
+## commit c5c41d5c19436a7b76e3257a01189490ea31d965
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="#cb239-1"></a><span class="co"># Notice that the changes to the file is still retained in the working directory</span></span>
@@ -4002,7 +4003,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <ul>
 <li><code>git revert --no-edit &lt;commit_hash&gt;</code>: Revert all commits up to and including the specified <code>commit_hash</code>
 <ul>
-<li>The difference between <code>git revert</code> and <code>git reset</code> is that the former does not completely remove all past commits, but creates a new one that reverts those changes</li>
+<li>The difference between <code>git revert</code> and <code>git reset</code> is that the former does not actually remove any past commits, but instead creates a new commit that reverts changes (see figure below)</li>
 <li>When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use <code>git revert</code> so that it does not permanently erase history</li>
 <li>When you are working locally and want to undo commits that you have not yet pushed to a remote, then <code>git reset</code> may also be an option</li>
 <li>The <code>--no-edit</code> option means that you will use the default message for the revert commit</li>
@@ -4010,6 +4011,10 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 </ul></li>
 </ul></li>
 </ul>
+<center>
+<img src="data:image/jpeg;base64,/9j/2wCEAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRQBAwQEBQQFCQUFCRQNCw0UFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFP/AABEIAhsCmwMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AP1TooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAMHxn4y0f4feGNQ8Q+ILv7Bo1hH5tzcmNpPLUkL91AWPJ7CvNPB/wC2J8HfHGu22i6R43tpdRuWCQxXVtcWqyMSAEV5o0UsSeBn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gAooooAK57Xvh/4X8Vtu1vw3pOsMep1Cwin/APQ1NdDRQBwtp8C/hvYS+ba/D7wrayjkPDotsjfmErsbKyt9Pt1gtreO2gT7scSBEH0AqzRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABWbrnh/S/E1g9hq+m2mq2T8tbX0CzRt9VYEVpUUAeff8ADPfwt/6Jr4Q/8ENr/wDG6P8Ahnv4W/8ARNfCH/ghtf8A43XoNFAHn3/DPfwt/wCia+EP/BDa/wDxuj/hnv4W/wDRNfCH/ghtf/jdeg0UAeff8M9/C3/omvhD/wAENr/8bo/4Z7+Fv/RNfCH/AIIbX/43XoNFAHn3/DPfwt/6Jr4Q/wDBDa//ABunW/wD+GNrMssHw58Jwypyrx6Haqyn2Ijrv6KAIYII7aFIoo1jiQAKiLgKB0AAqaiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAMzWfDuk+IofJ1bS7LU4f+ed5bpMv5MDXLf8AChPhl53m/wDCufCXm/3/AOw7Xd+eyu8ooAzNG8O6T4dh8nSdLstMh/552dukK/koFadFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBy+ufDDwd4mkaXWfCeharIer32mwzH83U1S034K/D3RpRLYeA/DNjKOj2+j28Z/NUFdrRQBDDBHbxLHFGscaDCogwAPYCpqKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooATaPSjaPSlooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArh9W+Nnw70HUbjT9U8e+GdN1C2fZPaXmsW8U0TDsys4IP1ruK+CNF8f8AwK8J/Eb4z2vxVstHu9Zm8U3b2gvtDa9na32qMJIsTbPm3Y+ZeeaAPu+2uYb23Se3lWaCRdySRsCrA9wRVivnn9izwnrPhH4XasdSsbnRdE1DW7rUdC0q9b99Z6fJtMauCTtz8x2/j/FXC3X7XPibxbcXGreD9c+FGkeHYp5EgsvF3iHydVvI0bG4IjBIN+1tok/2SaAPsCivGNP/AGjrHVP2a7j4tW2lSSRQ6fNcvpiyBiJo2MbR7wMFd6/fx935sdqj+DXi/wCLXii7stR8V6f4Nu/COrWv2q0vPC97M8toSAyrN5nyy5ztzH0K0Ae10V89/HD9ou/8I+N4/BPhe/8AB2k64lml9d6r461T7FYwIz4SJVUh5ZGAY/Lwvy5+9V79n34/X3xM1/xB4W1yTw3ea/pMEd2NR8I3/wBt0y7hclco2SysrDlW5+agD3asvT/EOl6vfX9jZajaXl7p7rHeW8E6ySWzkZVZFBJUkcjNfFXwrk+PTftBfGZdGb4ef8JJ5mlf22t/9v8AsWfsz+R9l2fP9zO/f36U/wCDf/C+v+FufGH+wf8AhXX9t/2paf2z/aP9ofZ/N8k7Ps2z5tu3rv70AfXvhX4jeHfGur+IdK0XUVvtQ0C5FnqcIikTyJTn5csoDdDyuRXU189fs0eM/Emt+P8A4qaB4r0Twnpeu6JeWbXd34UtJYo72WeKRi8jSEvIwCqMkCs5fjP8XvGfxC8eeEvA3hnw03/CO6n5A1zXpZ47WOIxIyxMkZLySkl+V2oBtoA+lqK8o/Z9+LWpfFbw3rH9v6XDo3ibQNVn0bVbO3k3wrPHtO6MnPykN615PrPx7+Mvivwx4r8bfD/QfB8XgvQ5ruNF12W4fULtLYsJZFWNkRPusdrH86APq+ivPPgV4q8R+O/hVoPiPxP/AGP/AGjqsAvY/wCwlmS38lxui4ly4bafm9+leh0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXz/wDA3wJJdal8b9O8TaDP/ZOt+K7qRINStGSK8tnjQbl3DDoeeRXuGsf2gNJvf7LFs2qiB/sgvCwgM207N5XnbuxnHOK8g8/9pH/nz+Fn/gXqX/xqgCh+y9o/iDwl4e8W/DXxFYaitj4a1CW10nVLiCRIb3TpctD5cjDDsnzBsE7flFeL+A/CumfBPQh4K8bfs63PjvVbG4misvEuh+GLXUYtShZy0bzSvgxN8wU7s8LXu/n/ALSP/Pn8LP8AwL1L/wCNUef+0j/z5/Cz/wAC9S/+NUAbdteXHhT4Hrd6T8L1tJfK3nwNYCCPbHJNiRAFXy92xmkK45OVrxP4NaJc3Px20fWfh38PvF/wv8GeRdHxNYeIbc2NneylAIPJtDIwEgbHzLgY/wCBbvUfP/aR/wCfP4Wf+Bepf/GqPP8A2kf+fP4Wf+Bepf8AxqgDgPjF4D/4RH47aj481j4WP8V/CeuaZb2s8FlpcOo3mm3MJ2hkgl5Ksh52/j935vQ/gBNo+p3esahofwZl+Fun7I0iur7SbfTru+5fcrQxjeoUqpG487qj8/8AaR/58/hZ/wCBepf/ABqjz/2kf+fP4Wf+Bepf/GqAOP026174P/tUfEG9l8EeJPEWkeOv7JNjqeh2Qmt7Z4Ymik+0uWAiALZye1HhXUNf+Ef7SHxCt5/A/iTXNN8a6lYXFhrOj2gms4FEflyG5kJAi2lm6/3a7Dz/ANpH/nz+Fn/gXqX/AMao8/8AaR/58/hZ/wCBepf/ABqgCn8E/Der6R+0F8dtSv8AS7u00/U7zS2srqeBkiugltIHMTEYfaTg4q98CNA1TSPiP8Z7q+027sba/wDEMc1pNcQtGlxGLdBujJHzLnjIpvn/ALSP/Pn8LP8AwL1L/wCNUef+0j/z5/Cz/wAC9S/+NUAM/Zy0DVNC8UfGOfU9Ou9Pjv8AxhcXVq91A0YuITHGBKhYDcpx1HFfIngWPQNd0bV5PEOi/GLVrO81fUJNaPgRTJ4X1DNzIS+EI+ULtzt/u19bXcX7Rl7bS281h8LJIZUKSD7bqY3AjB6RV4v4Y/Z0/ai8DeGV8N+GviP4Z0jw5HvWGyWZpHgRmJKpM9iXXrxzxQB9W/CXxd4X8b/D3RdU8GSRv4aMCwWaRqU8pI/k8sqeVKbcY9q7KvDv2Zfhv46+EnheHwr4ig8MLoNnEzW02j3dzPdz3DyF3kmMyIvOW+7/ACr3GgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKyNf8AEumeGLMXWqX0NlATtDytjcfQDqT9KTaSuy4QlUkoQV2+i3NeivPP+F9+A/8AoOn/AMBJ/wD4ij/hffgP/oOn/wABJ/8A4isPrFH+dfej1P7HzL/oGn/4BL/I9DoqhpuoW+sada31q/mW9xEssTkEblIyDg89DV+ui99jyWmm01qgoornfFfjjRPBdn5+r30dsGHyR/ekf/dUcmplJRV5OxpSpVK01TpRbk9ktWdFRXy/4y/aQ1TW5/s+hI2kWOeZmwZ3H8l/D869U/4aF8E/9BGb/wABZP8ACuKGOoTbSlsfR1+Gszw9OE3Sbcr6JNtWtvba/wCh6ZRXmf8Aw0L4J/6CM3/gLJ/hV/w98ZvC/ifWLfTNNvZJr6fdsRoHQHapY8kegrdYijJqKmrvzPNqZRmFKDnOhNJat8r0S+R3tFFFdB5IUVzvivxxonguz8/V76O2DD5I/vSP/uqOTXgPjL9pDVNbn+z6EjaRY55mbBncfyX8Pzrjr4ulh/ievY9/LMjxuau9CFo/zPRf8H5H1BRXmf8Aw0L4J/6CM3/gLJ/hR/w0L4J/6CM3/gLJ/hV/WaH86+9GX9i5n/0Dz/8AAX/kemUVwXh74zeF/E+sW+mabeyTX0+7YjQOgO1Sx5I9BXe1tCcKi5oO6POxGGr4SfJiIOL3s1bQKKKydf8AEeneGdPa91O8jsrcfxyN1PoB1J9hVNpK7MYQlUkoQV2+i3Naivm7x5+0rdXO+z8MQm2j6G+uFBdv91eg/H9K7bQPj54Rg0WwivtWla+jtoxOTbyklwo3c7eea4Y42hKTjzbdeh9HV4czOjRjVdJvm6JNtebtset0V5xH8f8AwNK4X+1mTPdrWXH/AKDXb6Tq9nrdlHd6fdR3drIPllhYMp/KuqFWnUdoSTPHxGBxWESeIpSgn3TX5mhRRRWpwhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAV8Z/FvxHe+MPiJfxEs6W1y1naxdlCtt4/3iM19mV8S6x/yVS9/wCwy3/o814maN8kI92fpHBMI/WK1Zq7jHT5nax/sw+KGjVjqGkoxXlGll4/JKf/AMMueJ/+gnpP/fyX/wCN19RUVt/ZmH7P72ef/rlm380f/AUYnhTS5ND8L6Tp0xRprOzht5CmdrMiBTjPbituiivUSUUkj4qpN1Juct3qFeV/Eb4FaZ43uJdQtriTT9Vccy5Lxuf9pT0/CvVKKzqUoVo8tRXR1YPG4jAVVWw03GX9aPuj4h8W/DbXvBN2sWqWbLA7hEvIvmhbPo39DzXqX/DKl5/0McH/AICH/wCKr6EubaK8gaGaNZonGGRwCCPcGrFebDK6MW+bVH2GI4zzGrCCpWhJXu0k09raNO3XY+c/+GVLz/oY4P8AwEP/AMVW/wDD/wDZ+uPBHi+w1ptajvFtjJmIWxQtujZOu4/3q9toreOAw8JKSjqvM8uvxPmuIpyo1Kt4yTT92Oz0fQKKKK9A+WPK/iN8CtM8b3EuoW1xJp+quOZcl43P+0p6fhXzr4t+G2veCbtYtUs2WB3CJeRfNC2fRv6Hmvt6q9zbRXkDQzRrNE4wyOAQR7g15mIy+lXfMtGfZ5VxTjctiqU/3lNdHuvR/o7nz3/wypef9DHB/wCAh/8AiqP+GVLz/oY4P/AQ/wDxVfRlFP8As7Dfy/iyP9bc4/5+r/wGP+R4l8P/ANn648EeL7DWm1qO8W2MmYhbFC26Nk67j/er22iiuujRhQjy01ZHgY7MMTmVRVsVLmklbZLTV9PUK85+JPwd034ibbl7mey1FF2xzqxdMehQnH5Yr0airqU41YuE1dGOFxVfBVVXw8uWS6nxL41+GGv+A5SdQtTJZ5wt7AN0R/w/Gu40n9mrU9X0qyvU1m0RLmFZgjRNlQyg4/WvpueCO6haKVFkidcMjjII9CDSWttFaW8cMMaxRRqEVFGAo6AAV5kcroqTctV+R9tW40zCpRhGmlGa3drpr0ex8veI/wBnLVvD2hXuo/2raXItIWmaMIwLKoJbGfYVH+zj4lu9O8dJpActZaij7o+yyKpcN9cKwr6K8ff8iL4k/wCwZc/+imr5e+An/JWNB/7b/wDoiSuKtRhhcTS9lpc9/AZhXzrJsa8a1LlTa0S2i2tvNXPsSiiivpD8fCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigDhPiv4q1rwX4c/tbSLW2vEhcC5S4DHah4DDaR0PWvkW51iW58QS6syKs8l0bsqudu4tux9K+6b/T4NSsZ7O6RZreeMxyRt0ZSMEV8g3Xwnv4/iaPCibtsk25Lhl/5dzz5n4L/49xXz+Z0qkpRlHVP8z9V4NxmDp0q8KqUZpNt949fu/U+ifhH4y1vxzoc2q6rZ2tpbu+y2FurAuB95juJ4zwK9BqhpGk2+iabbWFpGIrW3QRog7KBir9e5TjKMEpO77n5ri6tOtXnUow5Yt6LsugUUUVocgUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBznj7/kRfEn/AGDLn/0U1fL3wE/5KxoP/bf/ANESV9Q+Pv8AkRfEn/YMuf8A0U1fL3wE/wCSsaD/ANt//REleFjv95o+v6n6fw3/AMiXMP8ADL/0hn2JRRRXun5gFFFFABRRRQAUUUUAFYvinxbo/gfRbjWNf1O10jTIBmS6vJRGi+2T3PYVwX7QP7QHh39n7wbJrOsv9qvp90en6VCwE13KB/46q/xP2+uBX5NfGf47+Lvjv4kfVPE2oNJErH7LpsORa2insifzc8nuaAPuP4n/APBTjwvodxNZ+B/D9z4mlTj+0L5ja231VcGRh9QlfPniH/go38YdYdjZXWjaCh6JY2CvtH1mL1D8E/2BfiB8WLWDVNX2+DNDlXKT6jEWupVPdLfIOP8AfKe1fV/hP/gmx8KtDij/ALXl1nxJcfxm4u/IjY+yxBWH/fRoA+PLP9v/AOONrJul8WQXS5+5NpNoB/45EDXp3gj/AIKgeMNOljj8VeF9L1q3zzLp7PaS49eS6n8hX0/dfsBfA+e32J4RmtX/AOekOrXhb/x6Uj9K8l+IX/BMDw7f28k/gnxTfaVdY3La6wi3EDH03oFZR74egD3T4Lfte/Dr44SQ2elam2l64/TSNVUQzsePuHJWT/gLZ9q9vr8SPi58BfHfwF1iOHxRpMtmjSf6Lqlq2+1nI5+SQd++Dh/avqj9kX9vG6tLyx8F/E7UGurSVhDY+Irlv3kR6BLlj95T/wA9DyP4+OQAfofRTVYOoZTkHoadQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFeV/GH9pTwF8Dbb/iqNaVNRZN8Wk2S+ddyDt8gPyg+rED3r57/bF/bl/4QG5vPBHw+uI5vESZj1DWFw6WB7xRg8NL6non16fn9oHhvxV8XvGH2TS7PUPFHiO/cyybczTSEnmR3bt6uxxQB9g+Pv8AgqLrl1NJF4N8I2WnwdFudaleeRh67Iyiqf8AgT15LqX/AAUD+N17MzweKLbT1P8Ayyt9LtSF/wC/iMf1r2P4Xf8ABMK9vLeG8+IHiU6cX5bTNEUSSL7NO4Kg/RGHvXvmjf8ABPb4KaZCqXHh+91Zh/y0vNUnDH/v0yD9KAPizRf+Cifxo0uZXutU0vWFH/LO+06JQ3/fnYa91+Gv/BUHTry4itfHXhSXTQ3B1DRpfORfcwvhgPozfSvVfEH/AATs+DOsxNHZ6XqmhuekljqMrkf9/vMFfOfxc/4JmeJfD9vLf+A9aj8TQp839m3yi3useitny3P12UAfoB4C+JXhf4o6Gur+FNatdasG+UyWz/NG3911OGRv9lgDXUV+G/hLxn44+APjlrnTJ9Q8NeIbGTy7i0mjKFscmKWNvvKfQiv1P/Zb/ao0b9ozw80Mkcek+LbGMG/0rfww6edDnkxk/ip4PYsAe80UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFYPjHxjo/gDw3qHiDXb2PTtLsIjLPcSdFHYAdSSeAB1NAGvNNHbQySyyLHEgLM7NgKBySSa+YPi/wD8FC/hz8Obiew0Pz/G+qx5BXTXCWisOxuDkH/gCvXxj+07+2R4l+POoXOl6ZJPoPghWxHpsbYkuwOklwR1z18v7g/2jzXkngn4Xa948bfYW/k2Qba15cfJH+HdvwqJzjTXNN2R0UMPWxVRUqEXKT6I+ifFn/BS/wCJ2szSLoun6J4et/4dts1zMv1aRtp/74rgv+G5vjP/AGsupt4pga6ERhD/ANj2WdhOSufJzjI9a2tD/Zj0S1jVtU1C71CXuIcQx/1b9a6RfgH4HSPb/Y7M39/7XNn/ANCry5Zph07av5H2tDgzNZx5m4xv0cnf8E1+InhP/gpf8TtGmjXWtP0TxDb/AMW62a2mb6NG20f98V9QfCD/AIKF/Dn4jXEFhrnn+CNVkwAupOHtGY9hcDAH/A1SvkPWf2avDt7Gzadc3mmy9vmEyfkef/Hq8g8cfBjxB4ISS4eNdQ01et1a5O0f7a9V/lXTSxtCs+WMtezPJx/DeZZfF1KkLxXWLv8Ahv8Agft1DNHcwxyxSLJE4DK6tkMDyCCKnr8i/wBmP9sjxJ8BtQt9L1OSfXvBDNiTTZGzLaA9ZLcnpjr5f3T/ALJ+av1W8HeMdH8f+G9P8QaFex6jpd/EJYLiPow7gjqCDwQehruPmDeooooAKKKKACiiigAooooAKKKKACiiigAooooA+Tf2vP21Y/gZqK+FfDFpb6p4uMSy3MlySYLFWGV3KpBZ2HIGeBzXxrcft8fHOaZnTxmturNxFHpNltH03Qk/rXDftJ6hPqn7QfxInuZGkkTxBfQhm/uxzvGg/BVUV9Jf8K/8Lf8AQt6T/wCAEX/xNcGKxccLy8yvc+oyTIaud+09nNR5Lb+d/wDI8j/4b0+Ov/Q9f+Umw/8AjFH/AA3p8df+h6/8pNh/8Yr1z/hX/hb/AKFvSf8AwAi/+Jo/4V/4W/6FvSf/AAAi/wDia4f7Wh/I/wAD6f8A1ExP/P8Aj9zPG9Q/bi+Nuq2VxZXXjXzbW5ieGRP7JshlWGCMiAHoa5XQf2lfiR4Z1WDU9M8Ri2vIM7JPsVq+NylTw0RHQ19Hf8K/8Lf9C3pP/gBF/wDE0f8ACv8Awt/0Lek/+AEX/wATWcsyoyak6d2ttjppcHZhRhKnSxVoy3Suk+mtnqeR/wDDenx1/wCh6/8AKTYf/GKP+G9Pjr/0PX/lJsP/AIxXrn/Cv/C3/Qt6T/4ARf8AxNH/AAr/AMLf9C3pP/gBF/8AE1p/a0P5H+Bzf6iYn/n/AB+5nkv/AA3r8df+h4H/AIKbD/4xXuX7O/8AwUY1i78S2Og/E5bSewvJBDHrtvGIHgdjgGVF+Qp6kAY/2qx/+Ff+Fv8AoW9J/wDACL/4mvlv41afa6X8S9YtbK1gs7VPJ2w28QRFzDGTgDA6muvDY6OJm4Ri0eDnPDVbJsOsRUqKSbtpfs3+h+49FcN8DtRm1X4J/D++upGlurrw/p80rt1Z3t4yT+Zrua9I+OCsXxb4p07wP4a1PX9YuFtdM063e5uJT/CiAk49T6CtqviX/gpv8UpNE8CaD4GtJtsuuTm7vQv/AD7wkbVPs0hz/wBsqAPh347/ABn1j47/ABF1DxNqjukTt5VjZFtyWlsD8kQ/mx7nca+5/wBi79i2z8GabY+OvHmnrdeJbhRNYaZdLuTTkPKyOp/5bd+fuf733fnH9gX4JQfFf4w/2vqkHn6F4ZVL6ZGXKS3JJ+zofbKtJ/2yxX6x0AFFFFABRRRQBh+LPCOj+OdAvNF17ToNW0q6TZLa3KZRh/QjsRyK/J/9rn9li+/Z58UR3WntLe+DNTkP2G8k+Z4H6mCQ/wB4D7p/jH+61fr5XEfGD4Y6Z8Y/hzrfhLVVUQ38LLFMVyYJhzHKPdWwf0oA+Yv+CeX7SE/jbQH+HXiG6M+saPB5mmTzN889ouAYyT1aPK4/2f8Adr7Ur8QPAvibWPgB8aNP1J42t9W8N6oYryBf4gjGOeL/AIEu9a/bXT7631Wxt721kWa1uYlmikXoysMg/iDQBaooooAKKKKACiiigAooooAKKKKACiiigAr5p/bh/aLk+CHw7XTdFuPJ8W68rw2ci9bSEcST/UZwvvz/AA19LV+NH7XvxSk+K/x78Tags3mabYTnTNPXssMJK5Hs775P+BUAcf8ACP4VeIPjh4/sfDOhx+Ze3TGWe5mz5cEQPzzSH0GfxPHVq/Xr4HfATwt8AvCkekeHrUPcuqm81OZB9ovJB/Ex9P7qjgV5N/wT/wDgnD8M/g/beJLy3xr/AIpVLyRyvMdr/wAsEH1B3n/f9q+pqACiiigAooooA8O/aW/Ze8O/tEeHJfNij03xVbIf7P1lU+ZSOkUuOWiJ/LqPf8r7G88Yfs4/FlZVWTRfFPh67xJG33Wx1U4+8kin8Uav3Br4a/4KWfBKDVfC1h8S9Ogxf6YyWOpsv8ds5xG590c7f+2v+zQB9V/Bz4paZ8ZfhzovizSsJDfxfvYC2WgmHEkR/wB1gfqOa7qvzn/4Jh/FKSw8UeIvAF1N/od/B/adkjdFmTCyAe7oVP8A2yr9GKACiiigAooooAKKKKACiiigAooooAKKKKACvyt/b0/aPn+KXj2bwfo10R4U0CcxuEf5Ly7X5XkPqqfMq/8AAj/FX3v+1R8T3+EPwK8Ua/ayeTqRg+x2DL95biY7Fce6ZZ/+AV+OvhHw7P4v8TafpMTfPdS4d+u1erN+ChjUykopyeyNKdOVacacFdt2Xqzv/gt8IP8AhMZl1fVY2XRo22xxdDcuO3+6O9fTkFvFZW8cMESwwxLtSKNcBQOwAqPStNttG063sbSLybWCMRRov8KjirdfFYrEzxM23t0R/SOTZPRyjDqnBXm/ifd/5IKKKK4z6AKayh12t8yt1WnUUAfPHxt+C8WnQzeIdBh8u3X57yzj+7GP76D09R2rt/2C/wBo+f4W+PYfB+s3RPhTxBOIlDvxZ3bfKko9Ff5Vb/gJ/hr06SNJY2R1VkddpVuQwNfG3xT8H/8ACDeM7yyj3LaPtuLY/wDTNug/4CQwr6fLsU6i9lN6rb0PxTi7I4YOSx2HVoSdmlsn3Xr+fqfudRXkn7K/xPf4vfArwvr91J52pCD7Hfs33muITsZz7vhX/wCB163XuH5qFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfiB+0J/yXz4lf9jNqf8A6VyV9eV8h/tCf8l8+JX/AGM2p/8ApXJX15Xz2b/8u/n+h+t8A/8AMV/25/7cFWLvSL2ws7W5uLWaG3ulLwSSKQJQDg7TUNpOLe4hmMUdwI3DmKXlXwc4OMcGvrPRNQ8OfHDwU1o8SJtVVltRgSWrgYUpx09D/wDqry8Nh44nmSlaXTzPtM5zeplPsqjpOVNu0muny/z9N2fJVFdJ4+8A6j8PNZayvV8yB8m3uwvyzL/QjuKxdJ0m71zUbexsbc3N1OdqInUmuSUJRlyNanuUsVRrUViISTg1e/SwzT9Lu9YvYrOwt5Lq5kOEiiXJaoZEaN2R1ZHVsENwVIr6v8B+A9H+Dfhq41TVLiL7b5e66vW6IP8AnmnfGfxJr5z+I3iu38aeLLvVbayXT4HG0KvDPj+N+24967K2F9hTi5v3n08j5/Lc7eaYurDD070Y/b7vt/l+O5zdfIfx5/5Kvrn/AGw/9ER19eV8h/Hn/kq+uf8AbD/0RHXXlX8Z+n+R4vHP/Iup/wDXxf8ApMj9fv2e/wDkgnw1/wCxZ0z/ANJI69Brz79nv/kgnw1/7FnTP/SSOvQa+pPw4K/KH/go34ik1n9pO8si26PSdNtLRB/d3KZj/wCjq/V6vyK/b/tXt/2qfFzt0nhsZV+gtIl/mtAH2J/wTZ8Jx6J+z/Jq/l/6RreqTzmXu0ceIlH0DJJ/31X1jXzt+wFdRT/sreEUT78Et9E/+8byZv5MtfRNABRRRQAUUUUAFFFFAH5H/wDBQHwnH4X/AGl9cnhj8uLV7a31IBemWj8tz+Lxsa+3f2Zfj94Wf4BeB4tW1fyNQtdNS0lQ28z48kmIcqhB4QV8l/8ABTO6jn/aE0xE27oPD1vFJ9TPcN/Jlruv2dPgz4w1z4MeGr6y0j7TZ3Ecskbm5hXIM0nZmBrixdWrSgpUo3d+1z6LI8HgcdiJU8fV9nFK6d0tbrTX5n2V/wAL78B/9B0/+Ak//wARR/wvvwH/ANB0/wDgJP8A/EV8/f8AChPHf/QB/wDJuD/4uj/hQnjv/oA/+TcH/wAXXl/XcZ/z7/B/5n3P+rvDf/Qb/wCVKf8AkfQP/C+/Af8A0HT/AOAk/wD8RR/wvvwH/wBB0/8AgJP/APEV8/f8KE8d/wDQB/8AJuD/AOLo/wCFCeO/+gD/AOTcH/xdH13Gf8+/wf8AmH+rvDf/AEG/+VKf+R9A/wDC+/Af/QdP/gJP/wDEUf8AC+/Af/QdP/gJP/8AEV8/f8KE8d/9AH/ybg/+Lo/4UJ47/wCgD/5Nwf8AxdH13Gf8+/wf+Yf6u8N/9Bv/AJUp/wCR9A/8L78B/wDQdP8A4CT/APxFH/C+/Af/AEHT/wCAk/8A8RXz9/woTx3/ANAH/wAm4P8A4uj/AIUJ47/6AP8A5Nwf/F0fXcZ/z7/B/wCYf6u8N/8AQb/5Up/5H0D/AML78B/9B0/+Ak//AMRR/wAL78B/9B0/+Ak//wARXz9/woTx3/0Af/JuD/4uj/hQnjv/AKAP/k3B/wDF0fXcZ/z7/B/5h/q7w3/0G/8AlSn/AJH0D/wvvwH/ANB0/wDgJP8A/EUf8L78B/8AQdP/AICT/wDxFfP3/ChPHf8A0Af/ACbg/wDi6P8AhQnjv/oA/wDk3B/8XR9dxn/Pv8H/AJh/q7w3/wBBv/lSn/kez+MP2jPBuj+Etcv7PWvMu7WxnnhQ2k43SJGWUcp6ivx38J6HJ4t8XaLpCs3m6pfQWgbvmSQL/Wvv/wCIfwK8bweAPE0kuibYk0y6ZiLqA7R5T54D5r4e+Bd1FYfGz4e3U/ywQ+ItOlkZvRbqMmvSwlatWi3WjZ/M+Lz3AYDAVIRwFb2iad/ejKz+SVj9vbGxg0yytrS1iWG2t41iijXoqKMAD6AVaoorvPmAooooAKKKKACuM+MPhOPx18KvF3h+WPzPt+l3ECD0kMZ2H6htprs6qapdxWGnXNxPt8mGJ5X3dMKMmgD8Y/2VvGKeAf2g/BGszy+RbJffZ532k7UlUxNwMk8PX6yf8L78B/8AQdP/AICT/wDxFfjl8I9Gu/EPxR8KWFjF593PqduI41YDcd4PU4FfoZ/woTx3/wBAH/ybg/8Ai68zF169GSVGF16P9D7TIcsyvH0pyzCv7Np6e9GN1b+8nf5H0D/wvvwH/wBB0/8AgJP/APEUf8L78B/9B0/+Ak//AMRXz9/woTx3/wBAH/ybg/8Ai6P+FCeO/wDoA/8Ak3B/8XXD9dxn/Pv8H/mfT/6u8N/9Bv8A5Up/5H0D/wAL78B/9B0/+Ak//wARR/wvvwH/ANB0/wDgJP8A/EV8/f8AChPHf/QB/wDJuD/4uj/hQnjv/oA/+TcH/wAXR9dxn/Pv8H/mH+rvDf8A0G/+VKf+R9A/8L78B/8AQdP/AICT/wDxFH/C+/Af/QdP/gJP/wDEV8/f8KE8d/8AQB/8m4P/AIuj/hQnjv8A6AP/AJNwf/F0fXcZ/wA+/wAH/mH+rvDf/Qb/AOVKf+R9A/8AC+/Af/QdP/gJP/8AEUf8L78B/wDQdP8A4CT/APxFfP3/AAoTx3/0Af8Aybg/+Lo/4UJ47/6AP/k3B/8AF0fXcZ/z7/B/5h/q7w3/ANBv/lSn/kfQP/C+/Af/AEHT/wCAk/8A8RR/wvvwH/0HT/4CT/8AxFfP3/ChPHf/AEAf/JuD/wCLo/4UJ47/AOgD/wCTcH/xdH13Gf8APv8AB/5h/q7w3/0G/wDlSn/kfQP/AAvvwH/0HT/4CT//ABFH/C+/Af8A0HT/AOAk/wD8RXz9/wAKE8d/9AH/AMm4P/i6P+FCeO/+gD/5Nwf/ABdH13Gf8+/wf+Yf6u8N/wDQb/5Up/5HA/8ABRz4w6L4s8AeE9D0PUjeJLqUl3ODDJHt8uLav31Gf9a1fNH7MWkpdeKtUv2Xd9ktAi/7Jduv5K1d9+2j8OPEPguw8KXGtWBtI5pLqNCZo5NxxEf4GNcp+yxMiz+JIv8AloVt2H0Bkz/OuqtUqTwUpTVm/wDM8PLcJhcPxHToYafPTTundO75L7q3U+g6KKK+TP3YKKKKACiiigArwj9qPSkey0TUVH7yOaS3c/3gw3D/ANBavd68b/aedE8GadF/G2oKw+gikz/Ou7AtrEwsfMcTQU8prp9En800ey/8E4/jDovhPwB4s0PXNSNmkWpR3cCiF5P9ZFtb7inH+qWvr/8A4X34D/6Dp/8AASf/AOIr85/2Lvhx4i8Z2fi640Ww+1xwyWsbkTRx4OJT/Gwr6X/4UJ47/wCgD/5Nwf8Axde5iMTiqdRxhC69GfmuU5NkuLwcK2MxPJUd7rngratbNNo+gf8AhffgP/oOn/wEn/8AiKP+F9+A/wDoOn/wEn/+Ir5+/wCFCeO/+gD/AOTcH/xdH/ChPHf/AEAf/JuD/wCLrn+u4z/n3+D/AMz1/wDV3hv/AKDf/KlP/I+gf+F9+A/+g6f/AAEn/wDiKP8AhffgP/oOn/wEn/8AiK+fv+FCeO/+gD/5Nwf/ABdH/ChPHf8A0Af/ACbg/wDi6PruM/59/g/8w/1d4b/6Df8AypT/AMj6B/4X34D/AOg6f/ASf/4ij/hffgP/AKDp/wDASf8A+Ir5+/4UJ47/AOgD/wCTcH/xdH/ChPHf/QB/8m4P/i6PruM/59/g/wDMP9XeG/8AoN/8qU/8j6B/4X34D/6Dp/8AASf/AOIo/wCF9+A/+g6f/ASf/wCIr5+/4UJ47/6AP/k3B/8AF0f8KE8d/wDQB/8AJuD/AOLo+u4z/n3+D/zD/V3hv/oN/wDKlP8AyPoH/hffgP8A6Dp/8BJ//iKP+F9+A/8AoOn/AMBJ/wD4ivn7/hQnjv8A6AP/AJNwf/F0f8KE8d/9AH/ybg/+Lo+u4z/n3+D/AMw/1d4b/wCg3/ypT/yPoH/hffgP/oOn/wABJ/8A4ij/AIX34D/6Dp/8BJ//AIivn7/hQnjv/oA/+TcH/wAXR/woTx3/ANAH/wAm4P8A4uj67jP+ff4P/MP9XeG/+g3/AMqU/wDI/Pv45ahb6t8aviDe2r+ba3PiLUJo32kbla5kIODg9DX2LXxV8UdPuNJ+J3i6yuo/JurbV7uGRNwO1lmcEZGR1FfatRmrbjTb31/Q14HjGFTGRg7xTjb0vOwVp+F/FGo+ENZh1LTZvKlj+Uq33HXurDuDWZVrSdJu9c1G3sbG3NzdTnaiJ1JrwouSknHc/Tq8aUqUo10uSzvfa3mfV+lar4d+PXguSGaPDjHnQFh51rLjhlP54PeofBfgHRPgzoN5qV5dJJchSZ7+Qbdq54RB+XHc03wH4F0f4NeG7jVNTuI/tpTdd3rcBR/cT2z+JNXLLV/DPx08KXVr8xQN80UmBNbuM7XHp7H8K+wgrqMqiXtbaH4DWnyOrSwk5/UudczS/L+tdLq588/FL4pXvxE1MgFrbSIG/wBHtT/6G/qx/SuIrpPH3gHUfh5rLWV6vmQPk292F+WZf6EdxXN18nWdR1H7X4j9zy6GFhhYLBW9nbS39b9+t9wr5D+PP/JV9c/7Yf8AoiOvryvkP48/8lX1z/th/wCiI69TKv4z9P8AI+N45/5F1P8A6+L/ANJkfr9+z3/yQT4a/wDYs6Z/6SR16DXn37Pf/JBPhr/2LOmf+kkdeg19SfhwV+av/BUDwRJp3xL8MeKUj/0XVNNNk7r/AM9oXJ5+qSp/3xX6VV4h+178Fn+OHwY1PSrOHzNcsGGo6YO7TIDmP/gaF1+pWgDwv/gmB8Q4tQ8FeJ/BU8n+maddrqcCP1aGVVRseyunP/XSvuOvxI+A3xc1D4C/FjSfFEMcrJbSG31Cz6Ge2biSPnv3Gf41Wv2b8JeK9K8ceG9O13RbyO+0rUIlnt54zkMh/kR0I7GgDcooooAKKKKACiivmr9tv9oyD4KfDe50rTbkL4v16F7ezVG+e2iPyyXB9MDhP9v/AHTQB+e37Vvj0fFf9ofxZqlg32q1+1jT7Ly/m8yOECJSv++V3D/er9b/AISeDv8AhXvwv8J+Gjt83S9Mt7WXb/FIsYDn8W3GvzG/YL+CUvxU+MtrrV5Bu8PeGGTULh2X5JLgHNvF/wB9DcfaL/ar9aKACiiigAooooAKKKKACiiigAooooAKKKKAK19ZQ6lZXFpcJ5lvOjROnqpGCK/C3xd4fv8A4aePtW0aVmh1DRNQkt9/fdFIQGH1xkV+7dfmt/wUo+CMvh7xrZ/EfT4M6brQW21AovEV2i4Vj/vxr+cTf3qAPv74ZeOLT4mfD7w94osivkapZx3Wxf8Alm5Hzp9Vbcp+ldXX52f8E5P2ioNIuJvhdr90sEN1KbjQ5pGwqyty9vn/AG/vL77u7Cv0ToAKKKKACiiigArxz9rf4iRfDX9nzxhqRk8u6urRtMtF/iaaceWMe6hmb/gNex1+V37fP7RcHxZ8c2/hbQblZ/DPh93UzxvuS6uz8ruD3VB8qn/ePRqAMf8A4J8eB5PFv7SGk37R7rPQrafUZj2zt8qP8d8in/gNfrTXyr/wT6+CEvw0+E7+I9UtzDrnidkutjrh4rRQfIU/725n/wCBr6V9VUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfKn/BR7wQ/if9n3+1YE3T6BqUN6xXr5L5hf8AWRCf92vz4/Z58RJonxAjt5W2xahEbb5um/hl/wDQcf8AAq/ZnxZ4asfGfhnVdC1OITadqdtJaXCf3o3Uqce/PFfiV8TfAGsfBj4k6t4b1DdDqGk3f7qdV2+YoO6OZfZl2sKyrU1Vpyg+p34DFywOKp4mO8Xf17/gfZdFcl8M/Hlt498MQ3qMi3kWI7uBf+Wb/wCDdRXW18JOEqcnCS1R/T2HxFPFUY16TvGSugoooqDoCiiigAr5w/ad8QJda5pmjxNu+yRNPL/vvjA/ALn/AIFXuvi/xRZeDdButUv22wwr8qd5HPRR7mvlrwV4U134/fFux0a0/eaprd3+8k27kgj6vIf9lEH/AI7XtZXRc6ntXsvzPzbjTMoUcKsFB+9PV+UVr+LX4H6L/wDBODwRJ4X/AGfv7Vnj2z6/qU16pbr5KYhT9Y3P/Aq+q6xvCXhqx8GeGNK0LTIxDp2mWsdpbp/djRQoz78c1s19SfiYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB+IH7Qn/JfPiV/wBjNqf/AKVyV9eV8h/tCf8AJfPiV/2M2p/+lclfXlfPZv8A8u/n+h+t8A/8xX/bn/tw+0tpL+6gt4trSzOI1DMAMscDk8Cvq3wH4D0f4N+GrjVNUuIvtvl7rq9bog/55p3xn8Sa+T62tb8ba34i0rT9O1DUJLizslxFG36Fv7xA4Ga8vC1qeHbm43l0Pss7yzE5oqdCnV5KV/fXVrpZ/p8+hu/FL4pXvxE1MgFrbSIG/wBHtT/6G/qx/Sub8L+KNR8IazDqWmzeVLH8pVvuOvdWHcGsyiuaVWcp+0b1PZo4DDUMN9UhBezta3f1736n1zpWq+Hfj14Lkhmjw4x50BYeday44ZT+eD3r5l8deDLrwJ4gm0u6eOXC745Ub76HocdvpVTwz4n1Lwjqqajplw1vcJ8p7q4PVWHcVR1HUbrWNQuL29uGurmc73kfkkmuvEYmOJpx5l7669LHz+U5NXynFVFRqXw71UXdtP8A4Hfrp2Ia+Q/jz/yVfXP+2H/oiOvryvkP48/8lX1z/th/6Ijrqyr+M/T/ACPK45/5F1P/AK+L/wBJkfr9+z3/AMkE+Gv/AGLOmf8ApJHXoNeffs9/8kE+Gv8A2LOmf+kkdeg19SfhwUUUUAfnh+3j+yJcW1/ffE3wZYtNaXGZ9b023XLRP1a5QDqrdX9D8/TdjxL9lj9rjWv2d9UbTrqOXWvBl1JvudN3fPAx4MsBPAb1To/+z96v16ZQy4PSvi39pH/gnlpXji6u/EPw6e28PaxJmSbSJfksp265QjPlMfTG3/doA+nfhj8YPCPxj0NdV8Ja3b6rCFBlhV9s8BPaSM/Mh+o+ldvX4geJvAvxF/Z/8SRy6lp+s+D9UhbbDfws0Ib/AK5zxna3/AWr0/wn/wAFAfjL4Xijhn1y016JOi6tZK5x7vHsc/iaAP1wor8t7z/gpr8WJ4diaX4XtW2482GynJ+vzTkfpXlPjz9qz4tfFcNYap4s1BradvL/ALP0tRaxyZ42FYgC/wBGzQB+hP7Rn7bPg/4K2dzpukXMHijxgoKJp9rJmG2b1uHXgY/uD5/93rX50aRo/wAQP2s/i7Jhpda8Q6nJvuLqTiC0hHG5scJGg4A/Ac16J8Ev2C/iH8VLi3u9bs28F+HjgtdapERcyL/0ztzhvxbYP96v0l+DvwQ8J/AvwtHo/hbTvJD4a5vZsPc3Tj+OR+/sBwOwoAPgd8HNG+BXw/0/wvoy+Z5Y827u2XD3c7Ab5W/LAHYBRXodFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXNeP/AmkfEzwfqnhnXrYXWl6hEYpU7jurKezKcEH1FdLRQB+Kvx9+AviT9nXxy2m6gJJbF5DLpesQqUS5jU5BBH3XX+Jex9trV9e/st/8FBrHUrKz8L/ABRuhZahHiK38Rv/AKmcdALjH3G/6adD329W+w/iJ8NvDvxV8MXGgeJ9Mi1PTp+dknDIw6OjDlWHqK/OP46/8E7vGfgS4uNS8Eeb4x0HlhbR4GoQD0KDAl+qcn+4KAP07sL+21SyhvLO4ju7aZQ8c8Dh0dT0IYcEVbr8QvBfxe+JHwP1Caz0PXtX8MzxSfvtNkz5av8A7dvKCmfqte2aP/wUp+LulwqlxD4d1Zh/y1vLCQFv+/UqD9KAP1RrL1/xDpfhTSZ9U1nUrbStNt13S3d5MIo0HuzECvy517/go/8AGHWbdktZtE0Nj/y10+w3Mv8A3+aQfpXkV1q3xR/aQ8RRwSza/wCN9S3blgXzJkgz3Cj5Ih+QoA+l/wBrH9vb/hMbG88H/DeaaDSJQ0N7rzKY5LlDwUhBwyoe7nk/7P8AFyP7E/7I1z8XNetfGHiqzaHwTYS74oZlx/akqn7oB/5ZA/fPf7n97b6j+zz/AME4Gtbm1174qTRzbMPH4cs5N65/6eJF4P8Aup/332r7ysLC20qzt7O0t4rW0gQRwwQqESNQMBVUcAAUAWFUIoVRtA4AFPoooAKKKKACiiigAooooAKKKKACiiigAooooAK+ZP20f2WE+O/hdNb0KOOLxtpMRFuWwFvoepgY+ueUJ78fxbl+m6KAPwn8P+INd+FviqZhHJY6jbSG3u7G6Up904aN1OCOfyr6e8CfFjRPHkESQTJZ6lt/eWEzYfP+yf4h9K+tv2kP2PfCn7QMD6iv/Eg8XKmI9Xt48iXAwEmTjePf7w+nFfnD8W/2WviR8ErqZ9a0Ge40uJty6zpuZ7VgO5dRmP8A4GAa4MVg6eJ1eku59Tk3EOKyd8sffpv7L/R9D6for460P40eMNBjWKLVpLqFekd4om/Vvm/WulX9prxX5e37LpbN/f8AJkz/AOh14csrrp+60z9Mo8bZbON6ilF9rX/U+oK5jxl8RND8DWjS6ldIJiu6O1j+aWT6L/U8V81a18dPGOsxsn9qfYYj1WziEZ/765b9a3/hR+zB8S/jrfRXGlaLcx6fO2X1vVt0Nrg/xb2GZP8AgAJroo5VJu9WWnkeVmHHFNQccDTbfeWy+S3+85jxj40134ueJrW3itZJmllENjplqpkbexwAAOWZq/Sz9i79lhPgR4XfW9djjl8batEBcFcFbGHqIFPrnlyO/H8O5tf9m79j3wp+z9bx6i3/ABP/ABcyYk1e4iwIuMFIU58se/3j9OK+hK+ghCNOKjBWR+T4jEVcVVlWrS5pPdsKKKKs5wooooAKKKKACiiigAooooAKKKKACiiigD8QP2hP+S+fEr/sZtT/APSuSvryvEf25/g1qnw2+Nmta29vK3h/xLcvqNneBfk81/mliJ7Mrljj021yH/DTnir/AKB+k/8AfmX/AOO15GYYapiOX2fS/X0PvuFc5wmUe3+tN+9y2sr7c1/zPp2ivmL/AIac8Vf9A/Sf+/Mv/wAdo/4ac8Vf9A/Sf+/Mv/x2vI/szEdl96Pvv9c8p/ml/wCA/wDBPp2ivmL/AIac8Vf9A/Sf+/Mv/wAdo/4ac8Vf9A/Sf+/Mv/x2j+zMR2X3oP8AXPKf5pf+A/8ABPp2ivmL/hpzxV/0D9J/78y//HaP+GnPFX/QP0n/AL8y/wDx2j+zMR2X3oP9c8p/ml/4D/wT6dr5D+PP/JV9c/7Yf+iI63/+GnPFX/QP0n/vzL/8drndF0PxL+0L8Ubey0vT45tc1Z40KW6kQwoqBTI2Sdqqq5Y5r0cBhKuHqOU7bdz5DifiDA5rg4UMM3zKSeqtpZr9T9gf2e/+SCfDX/sWdM/9JI69BrF8HeHIPBnhHRPD9qxe20qxgsYmbqyxRhB+i1tV7p+ZBRRRQAUUUUAVb+wttTtJLW7t4rq2kXa8MyB0Ye4PFeVeIf2SPg94odnvvh9o8bvyWsY2tOf+2JSvX6KAPBrL9hr4HWMokj8Bwuw5xNqF5IPyeYivSvB3wm8F/D458N+FNI0R+81nZRxyN9XA3H8TXX0UAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAHOeK/h94Y8eW4g8R+HdL16IDAXULSOfb9CwOPwry3Uf2IPgjqkxln8B20bHqLe9uoB+UcoFe60UAeL6H+xx8GPD0qva/D/AE2Yj/n+aW7H5TM4r1fR9C07w5YrZaTp9ppdmn3bezgWGNfoqgCtGigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA838V/s5/DHxvLJPrXgXRLm5f71ytosUzfV48N+tcX/wwn8DfO8z/hBY8+n9qXuPy87Fe+UUAeb+FP2c/hj4Iljn0XwLoltcp925a0WWZfo8mW/WvSKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAxvE3hXSPGejT6VrumWmr6bP/rLW8hWSNvfDdx2NeNXH7CXwMuJWlfwKqseSI9UvUH4BZwBXv1FAHgH/AAwZ8Cv+hF/8q19/8fo/4YM+BX/Qi/8AlWvv/j9e/wBFAHgH/DBnwK/6EX/yrX3/AMfo/wCGDPgV/wBCL/5Vr7/4/Xv9FAHgH/DBnwK/6EX/AMq19/8AH6P+GDPgV/0Iv/lWvv8A4/Xv9FAHgH/DBnwK/wChF/8AKtff/H69K+HXwf8ABnwmtJLXwj4cstEjl/1kkC5llx03SMS7fia7WigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z" width="500" />
+</center>
+<p><em>Credit: <a href="https://blog.nakulrajput.com/git-revert/">NUKE Designs, Git revert</a></em></p>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Using <code>git revert</code> to revert a commit</summary></p>
@@ -4020,7 +4025,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb241-5"><a href="#cb241-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb241-6"><a href="#cb241-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 84e641b] add 1st line to create_dataset.R
+## [master (root-commit) c5c41d5] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="#cb243-1"></a><span class="co"># Modify R script</span></span>
@@ -4029,19 +4034,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb243-4"><a href="#cb243-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb243-5"><a href="#cb243-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb243-6"><a href="#cb243-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 29af9ad] add 2nd line to create_dataset.R
+<pre><code>## [master 438f3e8] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="#cb245-1"></a><span class="co"># View commit log</span></span>
 <span id="cb245-2"><a href="#cb245-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
+<pre><code>## commit 438f3e83636a355587600c6367758c90c6add18c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
+## commit c5c41d5c19436a7b76e3257a01189490ea31d965
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb247-1"><a href="#cb247-1"></a><span class="co"># Specify the hash ID of the unwanted commit</span></span>
@@ -4049,25 +4054,25 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb247-3"><a href="#cb247-3"></a></span>
 <span id="cb247-4"><a href="#cb247-4"></a><span class="co"># View commit log</span></span>
 <span id="cb247-5"><a href="#cb247-5"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## [master f05104b] Revert &quot;add 2nd line to create_dataset.R&quot;
+<pre><code>## [master 97a31ec] Revert &quot;add 2nd line to create_dataset.R&quot;
 ##  1 file changed, 1 deletion(-)
-## commit f05104b47637a4ead9c74c138cff49ddaa5bed65
+## commit 97a31ec8a7638f2566aa535d5eefedbed546fd6a
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     Revert &quot;add 2nd line to create_dataset.R&quot;
 ##     
-##     This reverts commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2.
+##     This reverts commit 438f3e83636a355587600c6367758c90c6add18c.
 ## 
-## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
+## commit 438f3e83636a355587600c6367758c90c6add18c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
+## commit c5c41d5c19436a7b76e3257a01189490ea31d965
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:16 2021 -0800
+## Date:   Tue Feb 2 12:31:50 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb249"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb249-1"><a href="#cb249-1"></a><span class="co"># The file now only contains the 1st line</span></span>
@@ -4176,7 +4181,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb253-4"><a href="#cb253-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb253-5"><a href="#cb253-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb253-6"><a href="#cb253-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse in create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) acee594] import tidyverse in create_dataset.R
+<pre><code>## [master (root-commit) 6653897] import tidyverse in create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb255"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb255-1"><a href="#cb255-1"></a><span class="co"># Now we can see the `master` branch listed, with an `*` indicating it is our current branch</span></span>
@@ -4184,7 +4189,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## * master</code></pre>
 <div class="sourceCode" id="cb257"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb257-1"><a href="#cb257-1"></a><span class="co"># See detailed branch listing with info about the latest commit</span></span>
 <span id="cb257-2"><a href="#cb257-2"></a><span class="fu">git</span> branch -v</span></code></pre></div>
-<pre><code>## * master acee594 import tidyverse in create_dataset.R</code></pre>
+<pre><code>## * master 6653897 import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb259"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb259-1"><a href="#cb259-1"></a><span class="co"># If the repository is connected to a remote, the `-a` option will list remote branches too</span></span>
 <span id="cb259-2"><a href="#cb259-2"></a><span class="co"># (In the specific example below, the remote is named `origin`)</span></span>
 <span id="cb259-3"><a href="#cb259-3"></a><span class="fu">git</span> branch -a</span></code></pre></div>
@@ -4213,7 +4218,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## * master</code></pre>
 <div class="sourceCode" id="cb268"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb268-1"><a href="#cb268-1"></a><span class="co"># Delete branch</span></span>
 <span id="cb268-2"><a href="#cb268-2"></a><span class="fu">git</span> branch -d dev</span></code></pre></div>
-<pre><code>## Deleted branch dev (was acee594).</code></pre>
+<pre><code>## Deleted branch dev (was 6653897).</code></pre>
 <div class="sourceCode" id="cb270"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb270-1"><a href="#cb270-1"></a><span class="co"># See branch listing</span></span>
 <span id="cb270-2"><a href="#cb270-2"></a><span class="fu">git</span> branch</span></code></pre></div>
 <pre><code>## * master</code></pre>
@@ -4230,6 +4235,8 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <li><code>git checkout -b &lt;branch_name&gt;</code>: Creates a new branch named <code>branch_name</code> and switches to it</li>
 </ul></li>
 </ul>
+<p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBYRXhpZgAATU0AKgAAAAgAAgESAAMAAAABAAEAAIdpAAQAAAABAAAAJgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAACfqADAAQAAAABAAAA/gAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8IAEQgA/gJ+AwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAMCBAEFAAYHCAkKC//EAMMQAAEDAwIEAwQGBAcGBAgGcwECAAMRBBIhBTETIhAGQVEyFGFxIweBIJFCFaFSM7EkYjAWwXLRQ5I0ggjhU0AlYxc18JNzolBEsoPxJlQ2ZJR0wmDShKMYcOInRTdls1V1pJXDhfLTRnaA40dWZrQJChkaKCkqODk6SElKV1hZWmdoaWp3eHl6hoeIiYqQlpeYmZqgpaanqKmqsLW2t7i5usDExcbHyMnK0NTV1tfY2drg5OXm5+jp6vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAQIAAwQFBgcICQoL/8QAwxEAAgIBAwMDAgMFAgUCBASHAQACEQMQEiEEIDFBEwUwIjJRFEAGMyNhQhVxUjSBUCSRoUOxFgdiNVPw0SVgwUThcvEXgmM2cCZFVJInotIICQoYGRooKSo3ODk6RkdISUpVVldYWVpkZWZnaGlqc3R1dnd4eXqAg4SFhoeIiYqQk5SVlpeYmZqgo6SlpqeoqaqwsrO0tba3uLm6wMLDxMXGx8jJytDT1NXW19jZ2uDi4+Tl5ufo6ery8/T19vf4+fr/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/2gAMAwEAAhEDEQAAAfv7bVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21Dpb1tVam0mmKnCqYpslVSFs5ppaBNW21bbVttW21bbVttW21bbVttW21bbVttW21bBoa6TUGq/wBz5au9Siq/1A4q33OqroNQ3NF21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttUIJqHK9TYy9Q5XqRl6kJLqGudW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW25Wuq3zSTrf6S3zbo/SW+bdX0lvm3G+kZ+fPoLmSdsg22rbattq22rbattq22rbattq22rbattq22raNU7attq22raNU7attq22rbattq22rbattq22rbattq22rbattq22reael+a14rMV36J6lzPPFU2Z6GAOh1G4cuPrb5K+tfjuCdt5mO21bbVttW21bbVttW21bbVttW21bbVttW21ee/P3u3jnudLDN97fQ4yA05wYo/sXl/o3kYez7b5/l22rbattq22rbattq22rbattq22rbattq22rbatw3cxXyMX603pbfJe+tcb5K31W5r5L31pq+WPqfTw57bZLttW21bbVttW21bbVttW21bbVttW21bbVttXmXjf0z5t6e3l0+o709vL96fq8u3qWrzP0U/eefj0m28nHbattq22rbattq22rbattq22rbattq22rbattq22rbatV2nIVwns/zx9E1O2rbattq22rbattq22rbattq22rbattq22rbattq22rbattqpweZM69421bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVtoqcFtT/mXXnFPfT0eRV7Ptq22rbattq22rbattq22rbattq22rbattq22rbattq20VOipqwT8gi9XxfsueR63yvZnbR22rbattq22rbattq22rbattq22rbattq22rbattqjyC07GuBd+mzXkb703zyvQ/Gzeh1ebattq22rbattq22rbattq22rbattq22rbattq22rRPHUzo+g7mvK+B+kg18lEv2v2HwfX+5Vlp8j9ztsr7bVttW21bbVttW21bahq+3nvoFK21bVnE16TgHrbNadbzTvafbattFeS+teP+w1ttW0UtXU+beikE2wO21bbVttW21bbVttW2qqtdz3QVO0VOpNV3omto56ui1Va1ttW8n9X8lr1qdq20VtUAq/0TW21bbVttW21bbVttW21VPmfbNKuPPvX/AK97T5ciqf13zj1yvFPZ/EbuvU/Fberr1jyH3HxqvYd5Zq9G8hfFrvrryzV6nvLNXo/x17d4h7PgWfa8w+9bxPqjbfIfdbbVttW21bbVttW21UHBXt/XPx3fz/X0LxlDxdd1u+iub7L567Sn6/OfoGvJ++R5LXvYfNGtL63jXdepby7V6jzHK8fXW2PWWFcX3nlHq9bbVttW21bbVttW21bbVHl3qUV5B6FezW21ed0vrs1yPXRNbie21eQ9D3urbattq22rbak+RevIZPm/wBtZ9i+attlvttW21bbVttW21bbVHlvqeryP1NxNZC9Xk29YmkL2pt5Z65FeXeo6a22rbattq0Tq8qD3VZXWn2rbattq22rbattq22rbattq22rbattq22rbattq22rbattq20VPDdzFfLf07zPW1OjVO2rbattq22rbattq22rbattq22rbattq22rbattq22raNXnPJe3MKtdGqdE1ttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW8Z9l8B357bX0ej5dDPQzXOda257l6/Z9tw+jttW21bbVttW21bbVttW21bbVttW21bbVttW21bbV85WQem9jw+f1iTTOq5/0PkFb6CKA/i+9ttW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttUeA+/fN/Tyd3yU71PIIdpo95z1J0XJ2ewbbzfV22rbattq22rbattq22rbattq22rbattq22rbattq+fuzqN6fkFW3zrZ8V0TMH2o6F+V7G21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21RCoradUadUbTW21bbVttW21bbVttW21bbVttW21bbVttW21bbVttW21RO1bbVttW21bbVttW21f/aAAgBAQABBQL/AJZhLJyo/wBJ3UUf6fsyqTe0Im/TEGZ3EzRRbxGpE27KitrfxBEt/p2F2u6RXa/+RGjsrOJ+5Wdfc7SlxYWtzGLK1Ft7pa5+7W+CrK0URZ2gEVvBAP8AVc8hhgk3ee3Qd+hzj3nOX+kEGF1uMsNwN4Quebd1W95Jv0aBHuqZ3DvSkOLfo5VL32FKYZRNF/yIYijD5UbwQ5bO3mJQknlxhmNBOCHggPBB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" /></p>
+<p><em>Credit: <a href="https://www.slideshare.net/psquy/git-tutorial-50870667">Pham Quy, Git tutorial</a></em></p>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Using <code>git checkout</code> to create a new branch and switch to it</summary></p>
@@ -4333,9 +4340,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same initial commit:</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb284-1"><a href="#cb284-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb284-2"><a href="#cb284-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+<pre><code>## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb286"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb286-1"><a href="#cb286-1"></a><span class="co"># Switch to `dev` branch</span></span>
@@ -4344,9 +4351,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb286-4"><a href="#cb286-4"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb286-5"><a href="#cb286-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb288-1"><a href="#cb288-1"></a><span class="co"># View content of R script, which is the same on both `master` and `dev` branches</span></span>
@@ -4360,19 +4367,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb290-5"><a href="#cb290-5"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb290-6"><a href="#cb290-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb290-7"><a href="#cb290-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;manipulate mpg dataset&quot;</span></span></code></pre></div>
-<pre><code>## [dev 230abb2] manipulate mpg dataset
+<pre><code>## [dev dcdf93f] manipulate mpg dataset
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb292"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb292-1"><a href="#cb292-1"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb292-2"><a href="#cb292-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
+<pre><code>## commit dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s switch back to the <code>master</code> branch and merge in <code>dev</code>. Since the <code>dev</code> branch is ahead of <code>master</code> by 1 commit, the changes can be combined using a <strong>fast-forward merge</strong>:</p>
@@ -4382,21 +4389,21 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb294-4"><a href="#cb294-4"></a><span class="co"># Merge `dev` branch into `master`</span></span>
 <span id="cb294-5"><a href="#cb294-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating acee594..230abb2
+## Updating 6653897..dcdf93f
 ## Fast-forward
 ##  create_dataset.R | 2 ++
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb296"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb296-1"><a href="#cb296-1"></a><span class="co"># The commit log for `master` now matches the `dev` branch</span></span>
 <span id="cb296-2"><a href="#cb296-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
+<pre><code>## commit dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s examine the git object associated with the commit:</p>
@@ -4405,12 +4412,12 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb298-3"><a href="#cb298-3"></a></span>
 <span id="cb298-4"><a href="#cb298-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb298-5"><a href="#cb298-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 230abb2252349c963a88e03b6bd73fede5f1718d
+<pre><code>## dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## commit
 ## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent acee5944b93fae7bfdaad00d8866ee35c68f42d5
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
+## parent 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297911 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297911 -0800
 ## 
 ## manipulate mpg dataset</code></pre>
 <p>Examine the “tree” object associated with the commit:</p>
@@ -4431,11 +4438,11 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb304-3"><a href="#cb304-3"></a></span>
 <span id="cb304-4"><a href="#cb304-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb304-5"><a href="#cb304-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## acee5944b93fae7bfdaad00d8866ee35c68f42d5
+<pre><code>## 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## commit
 ## tree cb70185218351236255cdea1297210ceeaf6e3b5
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297911 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612297911 -0800
 ## 
 ## import tidyverse in create_dataset.R</code></pre>
 </details>
@@ -4445,15 +4452,15 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same two commits:</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb306-1"><a href="#cb306-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb306-2"><a href="#cb306-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
+<pre><code>## commit dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb308"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb308-1"><a href="#cb308-1"></a><span class="fu">git</span> branch</span>
@@ -4475,7 +4482,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb310-6"><a href="#cb310-6"></a><span class="co"># Add and commit changes</span></span>
 <span id="cb310-7"><a href="#cb310-7"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb310-8"><a href="#cb310-8"></a><span class="fu">git</span> commit -m <span class="st">&quot;update head() on line 2&quot;</span> </span></code></pre></div>
-<pre><code>## [master 0495a65] update head() on line 2
+<pre><code>## [master a81539b] update head() on line 2
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now shows <code>head(10)</code> instead of <code>head(5)</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb312-1"><a href="#cb312-1"></a><span class="fu">git</span> branch</span>
@@ -4499,7 +4506,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb314-8"><a href="#cb314-8"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb314-9"><a href="#cb314-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;add additional filter() on line 4&quot;</span> </span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## [dev 09b76fa] add additional filter() on line 4
+## [dev 20d026b] add additional filter() on line 4
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>View updated content of R script on the <code>dev</code> branch, which now has additional <code>filter()</code> line at the end:</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb316-1"><a href="#cb316-1"></a><span class="fu">git</span> branch</span>
@@ -4542,34 +4549,34 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb322"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb322-1"><a href="#cb322-1"></a><span class="co"># View commit log - note that a new merge commit was created during the 3-way merge</span></span>
 <span id="cb322-2"><a href="#cb322-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit b66f08d071349bdbc5a1ab779409b027a07ee525
-## Merge: 0495a65 09b76fa
+<pre><code>## commit 851a417db577c060957243b9df27790ff1f60813
+## Merge: a81539b 20d026b
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 0495a656ab9dc6bc6d8a6c66f0dc32b2ca5ad57c
+## commit a81539b8235967940de75714fa517af96be8a8c0
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 09b76faddeaa050d163c5fccf925f632dae38631
+## commit 20d026b00949fc663469bd51b18effc0911846fe
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 230abb2252349c963a88e03b6bd73fede5f1718d
+## commit dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb324"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb324-1"><a href="#cb324-1"></a><span class="co"># View merged content of R script</span></span>
@@ -4717,34 +4724,34 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <p>Continuing from previous examples, our <code>master</code> branch currently looks like this:</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb342-1"><a href="#cb342-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb342-2"><a href="#cb342-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit b66f08d071349bdbc5a1ab779409b027a07ee525
-## Merge: 0495a65 09b76fa
+<pre><code>## commit 851a417db577c060957243b9df27790ff1f60813
+## Merge: a81539b 20d026b
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 0495a656ab9dc6bc6d8a6c66f0dc32b2ca5ad57c
+## commit a81539b8235967940de75714fa517af96be8a8c0
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 09b76faddeaa050d163c5fccf925f632dae38631
+## commit 20d026b00949fc663469bd51b18effc0911846fe
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit 230abb2252349c963a88e03b6bd73fede5f1718d
+## commit dcdf93fe4364bcdb22e61e9afdf8543c5da66982
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## commit 66538975b18d9d1aa3f41090c49fd74fb8c65bc5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Tue Feb 2 11:52:17 2021 -0800
+## Date:   Tue Feb 2 12:31:51 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb344"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb344-1"><a href="#cb344-1"></a><span class="fu">git</span> branch</span>
@@ -4772,7 +4779,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb346-11"><a href="#cb346-11"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb346-12"><a href="#cb346-12"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for lincoln instead of audi&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;revision&#39;
-## [revision 010d61e] filter for lincoln instead of audi
+## [revision 04f8b71] filter for lincoln instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>revision</code> branch, which now filters for <code>lincoln</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb348"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb348-1"><a href="#cb348-1"></a><span class="fu">git</span> branch</span>
@@ -4823,7 +4830,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <div class="sourceCode" id="cb356"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb356-1"><a href="#cb356-1"></a><span class="co"># Add and commit change</span></span>
 <span id="cb356-2"><a href="#cb356-2"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb356-3"><a href="#cb356-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for chevrolet instead of audi&quot;</span></span></code></pre></div>
-<pre><code>## [master 62185a5] filter for chevrolet instead of audi
+<pre><code>## [master 36347d6] filter for chevrolet instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now filters for <code>chevrolet</code> instead of <code>audi</code> on the last line:</p>
 <div class="sourceCode" id="cb358"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb358-1"><a href="#cb358-1"></a><span class="fu">git</span> branch</span>
@@ -4946,7 +4953,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb370-4"><a href="#cb370-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb370-5"><a href="#cb370-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb370-6"><a href="#cb370-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 5e3eff4] import tidyverse library
+<pre><code>## [master (root-commit) 6a31d75] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -4961,7 +4968,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb372-9"><a href="#cb372-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 9537fbe] preview mpg dataset
+## [dev f4277ab] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to <strong>master</strong>:</p>
 <div class="sourceCode" id="cb374"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb374-1"><a href="#cb374-1"></a><span class="co"># Switch back to master</span></span>
@@ -4970,7 +4977,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb374-4"><a href="#cb374-4"></a><span class="co"># Merge in changes from the branch</span></span>
 <span id="cb374-5"><a href="#cb374-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating 5e3eff4..9537fbe
+## Updating 6a31d75..f4277ab
 ## Fast-forward
 ##  create_dataset.R | 1 +
 ##  1 file changed, 1 insertion(+)</code></pre>
@@ -5032,7 +5039,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb377-4"><a href="#cb377-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb377-5"><a href="#cb377-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb377-6"><a href="#cb377-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 5e3eff4] import tidyverse library
+<pre><code>## [master (root-commit) 6a31d75] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
@@ -5047,7 +5054,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <span id="cb379-9"><a href="#cb379-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 9537fbe] preview mpg dataset
+## [dev f4277ab] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote repository. Remember to set the upstream branch if this is the first time you are pushing the branch to remote:</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb381-1"><a href="#cb381-1"></a><span class="co"># Push branch to remote (say our remote is called `origin` here)</span></span>

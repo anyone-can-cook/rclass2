@@ -2397,11 +2397,15 @@ cat create_dataset.R
 - Help: `git revert --help`
 - Syntax:
   - `git revert --no-edit <commit_hash>`: Revert all commits up to and including the specified `commit_hash`
-    - The difference between `git revert` and `git reset` is that the former does not completely remove all past commits, but creates a new one that reverts those changes
+    - The difference between `git revert` and `git reset` is that the former does not actually remove any past commits, but instead creates a new commit that reverts changes (see figure below)
     - When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permanently erase history
     - When you are working locally and want to undo commits that you have not yet pushed to a remote, then `git reset` may also be an option
     - The `--no-edit` option means that you will use the default message for the revert commit
     - _**Note**: If you run this command without `--no-edit`, you'll be taken to a screen where you have a chance to edit the commit message of the new commit. Just enter `:q` to use the default message._
+
+<center>![](https://miro.medium.com/max/667/1*gwwLoCvrGdTPk6QfX7PZfQ.jpeg){width=500px}</center>
+
+*Credit: [NUKE Designs, Git revert](https://blog.nakulrajput.com/git-revert/)*
 
 <br>
 <details><summary>**Example**: Using `git revert` to revert a commit</summary>
@@ -2643,6 +2647,10 @@ git branch
 - Syntax: 
     - `git checkout <branch_name>`: Switches to an existing branch named `branch_name`
     - `git checkout -b <branch_name>`: Creates a new branch named `branch_name` and switches to it
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git-checkout.jpg)
+
+*Credit: [Pham Quy, Git tutorial](https://www.slideshare.net/psquy/git-tutorial-50870667)*
 
 <br>
 <details><summary>**Example**: Using `git checkout` to create a new branch and switch to it</summary>
