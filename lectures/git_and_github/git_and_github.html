@@ -2594,14 +2594,14 @@ div.tocify {
 <span id="cb74-6"><a href="#cb74-6"></a><span class="fu">ls</span> -la</span></code></pre></div>
 <pre><code>## /Users/cyouh95/downloadipeds
 ## total 80
-## drwxr-xr-x    8 cyouh95  staff    272 Jan 27 22:27 .
-## drwxr-xr-x+ 110 cyouh95  staff   3740 Jan 27 22:27 ..
-## drwxr-xr-x   12 cyouh95  staff    408 Jan 27 22:27 .git
-## -rw-r--r--    1 cyouh95  staff     20 Jan 27 22:27 .gitignore
-## -rw-r--r--    1 cyouh95  staff   1073 Jan 27 22:27 LICENSE
-## -rw-r--r--    1 cyouh95  staff   4541 Jan 27 22:27 README.md
-## -rwxr-xr-x    1 cyouh95  staff   5847 Jan 27 22:27 downloadipeds.R
-## -rwxr-xr-x    1 cyouh95  staff  12296 Jan 27 22:27 ipeds_file_list.txt</code></pre>
+## drwxr-xr-x    8 cyouh95  staff    272 Feb  2 11:52 .
+## drwxr-xr-x+ 111 cyouh95  staff   3774 Feb  2 11:52 ..
+## drwxr-xr-x   12 cyouh95  staff    408 Feb  2 11:52 .git
+## -rw-r--r--    1 cyouh95  staff     20 Feb  2 11:52 .gitignore
+## -rw-r--r--    1 cyouh95  staff   1073 Feb  2 11:52 LICENSE
+## -rw-r--r--    1 cyouh95  staff   4541 Feb  2 11:52 README.md
+## -rwxr-xr-x    1 cyouh95  staff   5847 Feb  2 11:52 downloadipeds.R
+## -rwxr-xr-x    1 cyouh95  staff  12296 Feb  2 11:52 ipeds_file_list.txt</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># List out the connected remote, which is named `origin` by default</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="fu">git</span> remote</span></code></pre></div>
 <pre><code>## origin</code></pre>
@@ -2802,7 +2802,7 @@ To create this example, can draw from both of these two tutorials:
 <span id="cb90-5"><a href="#cb90-5"></a><span class="co"># Add R script and make a commit</span></span>
 <span id="cb90-6"><a href="#cb90-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb90-7"><a href="#cb90-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;initial commit&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) f7b6bbd] initial commit
+<pre><code>## [master (root-commit) 28b88e3] initial commit
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Because this is a new local branch, we get an error if we just use `git push` on the initial push</span></span>
@@ -3210,9 +3210,9 @@ index c1cff38..8b151a2 100644
 <span id="cb126-5"><a href="#cb126-5"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
 ## total 0
-## drwxr-xr-x    3 cyouh95  staff   102 Jan 27 22:27 .
-## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 27 22:27 ..
-## drwxr-xr-x    9 cyouh95  staff   306 Jan 27 22:27 .git</code></pre>
+## drwxr-xr-x    3 cyouh95  staff   102 Feb  2 11:52 .
+## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 11:52 ..
+## drwxr-xr-x    9 cyouh95  staff   306 Feb  2 11:52 .git</code></pre>
 <p><br> What’s inside the <strong><code>.git/</code> directory</strong>?</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1"></a><span class="co"># List out the contents of the .git/ directory (in tree form)</span></span>
 <span id="cb128-2"><a href="#cb128-2"></a><span class="fu">find</span> .git -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
@@ -3391,7 +3391,7 @@ index c1cff38..8b151a2 100644
 <span id="cb144-3"><a href="#cb144-3"></a></span>
 <span id="cb144-4"><a href="#cb144-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb144-5"><a href="#cb144-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 840a8db] initial commit
+<pre><code>## [master (root-commit) 4ea2b34] initial commit
 ##  3 files changed, 4 insertions(+)
 ##  create mode 100644 create_dataset.R
 ##  create mode 100644 notes/note_1.txt
@@ -3399,12 +3399,12 @@ index c1cff38..8b151a2 100644
 ## |____objects
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
+## | |____4e
+## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____84
-## | | |____0a8dbb30c7f24e4ad68afabc3b05cb93734937
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3439,11 +3439,11 @@ index c1cff38..8b151a2 100644
 <div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1"></a><span class="co"># Show files in directory</span></span>
 <span id="cb149-2"><a href="#cb149-2"></a><span class="fu">ls</span> -al</span></code></pre></div>
 <pre><code>## total 8
-## drwxr-xr-x    5 cyouh95  staff   170 Jan 27 22:27 .
-## drwxr-xr-x+ 111 cyouh95  staff  3774 Jan 27 22:27 ..
-## drwxr-xr-x   12 cyouh95  staff   408 Jan 27 22:27 .git
-## -rw-r--r--    1 cyouh95  staff    35 Jan 27 22:27 create_dataset.R
-## drwxr-xr-x    4 cyouh95  staff   136 Jan 27 22:27 notes</code></pre>
+## drwxr-xr-x    5 cyouh95  staff   170 Feb  2 11:52 .
+## drwxr-xr-x+ 112 cyouh95  staff  3808 Feb  2 11:52 ..
+## drwxr-xr-x   12 cyouh95  staff   408 Feb  2 11:52 .git
+## -rw-r--r--    1 cyouh95  staff    35 Feb  2 11:52 create_dataset.R
+## drwxr-xr-x    4 cyouh95  staff   136 Feb  2 11:52 notes</code></pre>
 <p>Second, show contents of tree using <code>git cat-file</code>:</p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1"></a><span class="co"># View type and content of my_git_repo/ tree object</span></span>
 <span id="cb151-2"><a href="#cb151-2"></a><span class="fu">git</span> cat-file -t f59085d  <span class="co"># type</span></span>
@@ -3490,23 +3490,23 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb156-9"><a href="#cb156-9"></a></span>
 <span id="cb156-10"><a href="#cb156-10"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb156-11"><a href="#cb156-11"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
-<pre><code>## [master 2ab4bda] second commit
+<pre><code>## [master 020a509] second commit
 ##  1 file changed, 1 insertion(+)
 ## |____objects
-## | |____2a
-## | | |____b4bda656110492b944aa9d69e439f43f608d7d
+## | |____02
+## | | |____0a509bd626d49ec5505132d5e6531b6c415611
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
+## | |____4e
+## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____84
-## | | |____0a8dbb30c7f24e4ad68afabc3b05cb93734937
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3524,10 +3524,10 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb158-3"><a href="#cb158-3"></a></span>
 <span id="cb158-4"><a href="#cb158-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb158-5"><a href="#cb158-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## 840a8dbb30c7f24e4ad68afabc3b05cb93734937
+<pre><code>## 4ea2b34d18a8e33de484a4ff39e96fef937695f4
 ## tree f59085df29aed7826a89b23af3f67fc3ab96f643
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
 ## 
 ## initial commit</code></pre>
 </details>
@@ -3542,11 +3542,11 @@ committer &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb160-3"><a href="#cb160-3"></a></span>
 <span id="cb160-4"><a href="#cb160-4"></a><span class="co"># View content of the commit object</span></span>
 <span id="cb160-5"><a href="#cb160-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## 2ab4bda656110492b944aa9d69e439f43f608d7d
+<pre><code>## 020a509bd626d49ec5505132d5e6531b6c415611
 ## tree 524db779f0a3e3b3b353b522285c7da4830e21f1
-## parent 840a8dbb30c7f24e4ad68afabc3b05cb93734937
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
+## parent 4ea2b34d18a8e33de484a4ff39e96fef937695f4
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
 ## 
 ## second commit</code></pre>
 </details>
@@ -3573,22 +3573,22 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb163-4"><a href="#cb163-4"></a><span class="co"># View .git/objects directory</span></span>
 <span id="cb163-5"><a href="#cb163-5"></a><span class="fu">find</span> .git/objects -print <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s;[^/]*/;|____;g;s;____|; |;g&#39;</span></span></code></pre></div>
 <pre><code>## |____objects
-## | |____2a
-## | | |____b4bda656110492b944aa9d69e439f43f608d7d
+## | |____02
+## | | |____0a509bd626d49ec5505132d5e6531b6c415611
 ## | |____47
 ## | | |____6fb98775843929ca6c55b16b04752d973b3d2a
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
+## | |____4e
+## | | |____a2b34d18a8e33de484a4ff39e96fef937695f4
 ## | |____52
 ## | | |____4db779f0a3e3b3b353b522285c7da4830e21f1
 ## | |____61
 ## | | |____08458417308ddc15d7390a2f8db50cf65ec399
 ## | |____6c
 ## | | |____f7bbf49af4f9fd5103cf9f0a3fa25226b12336
-## | |____84
-## | | |____0a8dbb30c7f24e4ad68afabc3b05cb93734937
-## | |____ba
-## | | |____df9814b37bc2a7f4fb29bb23c5e644bc9b3b1f
+## | |____a8
+## | | |____bf8301aad1f00373260866b36504d894891539
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____f5
@@ -3600,23 +3600,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p><summary><strong>Example</strong>: Using <code>git cat-file</code> to view tag object</summary></p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1"></a><span class="co"># View content of the tag object</span></span>
 <span id="cb165-2"><a href="#cb165-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> show-ref -s v1<span class="va">)</span>  <span class="co"># retrieves hash for v1 tag</span></span></code></pre></div>
-<pre><code>## object 2ab4bda656110492b944aa9d69e439f43f608d7d
+<pre><code>## object 020a509bd626d49ec5505132d5e6531b6c415611
 ## type commit
 ## tag v1
-## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
+## tagger cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295535 -0800
 ## 
 ## version 1.0</code></pre>
 <div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1"></a><span class="co"># The tagged object was the second commit</span></span>
 <span id="cb167-2"><a href="#cb167-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 2ab4bda656110492b944aa9d69e439f43f608d7d
+<pre><code>## commit 020a509bd626d49ec5505132d5e6531b6c415611
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 840a8dbb30c7f24e4ad68afabc3b05cb93734937
+## commit 4ea2b34d18a8e33de484a4ff39e96fef937695f4
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     initial commit</code></pre>
 </details>
@@ -3633,19 +3633,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Following that reference, we can find the hash ID of the latest commit stored inside <code>refs/heads/master</code>:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1"></a><span class="co"># View content of refs/heads/master</span></span>
 <span id="cb171-2"><a href="#cb171-2"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
-<pre><code>## 2ab4bda656110492b944aa9d69e439f43f608d7d</code></pre>
+<pre><code>## 020a509bd626d49ec5505132d5e6531b6c415611</code></pre>
 <p>We can use <code>git log</code> to verify that this is the hash ID of the latest commit:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1"></a><span class="co"># View commit log</span></span>
 <span id="cb173-2"><a href="#cb173-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 2ab4bda656110492b944aa9d69e439f43f608d7d
+<pre><code>## commit 020a509bd626d49ec5505132d5e6531b6c415611
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     second commit
 ## 
-## commit 840a8dbb30c7f24e4ad68afabc3b05cb93734937
+## commit 4ea2b34d18a8e33de484a4ff39e96fef937695f4
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     initial commit</code></pre>
 <p><br> More generally, the <code>refs/</code> directory stores references to all branches. In particular, <code>refs/heads/</code> stores all your local branches:</p>
@@ -3715,23 +3715,23 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb191-3"><a href="#cb191-3"></a></span>
 <span id="cb191-4"><a href="#cb191-4"></a><span class="co"># The R script is now no longer listed</span></span>
 <span id="cb191-5"><a href="#cb191-5"></a><span class="fu">git</span> status</span></code></pre></div>
-<pre><code>## [master (root-commit) b945a06] add create_dataset.R
+<pre><code>## [master (root-commit) 49fe4a5] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R
 ## On branch master
 ## nothing to commit, working tree clean</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="#cb193-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb193-2"><a href="#cb193-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit b945a06b6a6608c4d71f1ea0330f0de7e7ca0e40
+<pre><code>## commit 49fe4a5ef30044b1a7549d2d438983bf75af34cf
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb195-1"><a href="#cb195-1"></a><span class="co"># Verify that `HEAD` is indeed pointing to the last commit made, which is our initial commit</span></span>
 <span id="cb195-2"><a href="#cb195-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb195-3"><a href="#cb195-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## b945a06b6a6608c4d71f1ea0330f0de7e7ca0e40</code></pre>
+## 49fe4a5ef30044b1a7549d2d438983bf75af34cf</code></pre>
 <div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="#cb197-1"></a><span class="co"># Further modify R script, which is now a tracked file</span></span>
 <span id="cb197-2"><a href="#cb197-2"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
 <span id="cb197-3"><a href="#cb197-3"></a></span>
@@ -3764,10 +3764,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## |____objects
 ## | |____49
 ## | | |____0ec1c138021b8d5c196c26a2a7b3de69afc2d1
+## | | |____fe4a5ef30044b1a7549d2d438983bf75af34cf
 ## | |____96
 ## | | |____6cc780d5994bc8a4ed535484cd7f8268e8e874
-## | |____b9
-## | | |____45a06b6a6608c4d71f1ea0330f0de7e7ca0e40
 ## | |____c1
 ## | | |____cff389562e8bc123e6691a60352fdf839df113
 ## | |____info
@@ -3782,32 +3781,32 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## df &lt;- mpg %&gt;% filter(year == 2008)</code></pre>
 <div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="#cb207-1"></a><span class="co"># Make a commit</span></span>
 <span id="cb207-2"><a href="#cb207-2"></a><span class="fu">git</span> commit -m <span class="st">&quot;modify create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master dd6bcf2] modify create_dataset.R
+<pre><code>## [master 5dc1bc8] modify create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># Check the commit history</span></span>
 <span id="cb209-2"><a href="#cb209-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit dd6bcf269b37e9c9102d100197be84d6ab0f5f5f
+<pre><code>## commit 5dc1bc8155106e267062301d123c5516927c361d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     modify create_dataset.R
 ## 
-## commit b945a06b6a6608c4d71f1ea0330f0de7e7ca0e40
+## commit 49fe4a5ef30044b1a7549d2d438983bf75af34cf
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:51 2021 -0800
+## Date:   Tue Feb 2 11:52:15 2021 -0800
 ## 
 ##     add create_dataset.R</code></pre>
 <div class="sourceCode" id="cb211"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb211-1"><a href="#cb211-1"></a><span class="co"># Verify that `HEAD` is pointing to the last commit made, which is now our second commit</span></span>
 <span id="cb211-2"><a href="#cb211-2"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb211-3"><a href="#cb211-3"></a><span class="fu">cat</span> .git/refs/heads/master</span></code></pre></div>
 <pre><code>## ref: refs/heads/master
-## dd6bcf269b37e9c9102d100197be84d6ab0f5f5f</code></pre>
+## 5dc1bc8155106e267062301d123c5516927c361d</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb213-1"><a href="#cb213-1"></a><span class="co"># View content of commit object for second commit</span></span>
 <span id="cb213-2"><a href="#cb213-2"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
 <pre><code>## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent b945a06b6a6608c4d71f1ea0330f0de7e7ca0e40
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815271 -0800
+## parent 49fe4a5ef30044b1a7549d2d438983bf75af34cf
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295536 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295536 -0800
 ## 
 ## modify create_dataset.R</code></pre>
 </div>
@@ -3843,7 +3842,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb215-6"><a href="#cb215-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb215-7"><a href="#cb215-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 55c128f] add create_dataset.R
+## [master (root-commit) 65837b4] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb217"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb217-1"><a href="#cb217-1"></a><span class="co"># View how create_dataset.R looks when it was committed</span></span>
@@ -3909,7 +3908,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb225-6"><a href="#cb225-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb225-7"><a href="#cb225-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;add create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) 55c128f] add create_dataset.R
+## [master (root-commit) 65837b4] add create_dataset.R
 ##  1 file changed, 2 insertions(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb227"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb227-1"><a href="#cb227-1"></a><span class="co"># Modify R script</span></span>
@@ -3951,7 +3950,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb231-5"><a href="#cb231-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb231-6"><a href="#cb231-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) bf38a05] add 1st line to create_dataset.R
+## [master (root-commit) 84e641b] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb233"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb233-1"><a href="#cb233-1"></a><span class="co"># Modify R script</span></span>
@@ -3960,19 +3959,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb233-4"><a href="#cb233-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb233-5"><a href="#cb233-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb233-6"><a href="#cb233-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 1741fab] add 2nd line to create_dataset.R
+<pre><code>## [master 29af9ad] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb235-1"><a href="#cb235-1"></a><span class="co"># View commit log</span></span>
 <span id="cb235-2"><a href="#cb235-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 1741fab3302b6d5105c909d0dc4d90f6fe770938
+<pre><code>## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit bf38a05510f7c25f9a8bb2ceb76d3b9da13eed24
+## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb237"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb237-1"><a href="#cb237-1"></a><span class="co"># Specify the hash ID of the commit to undo up to</span></span>
@@ -3982,9 +3981,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb237-5"><a href="#cb237-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Unstaged changes after reset:
 ## M    create_dataset.R
-## commit bf38a05510f7c25f9a8bb2ceb76d3b9da13eed24
+## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="#cb239-1"></a><span class="co"># Notice that the changes to the file is still retained in the working directory</span></span>
@@ -4021,7 +4020,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb241-5"><a href="#cb241-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb241-6"><a href="#cb241-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 1st line to create_dataset.R&quot;</span></span></code></pre></div>
 <pre><code>## Initialized empty Git repository in /Users/cyouh95/my_git_repo/.git/
-## [master (root-commit) bf38a05] add 1st line to create_dataset.R
+## [master (root-commit) 84e641b] add 1st line to create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="#cb243-1"></a><span class="co"># Modify R script</span></span>
@@ -4030,19 +4029,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb243-4"><a href="#cb243-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb243-5"><a href="#cb243-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb243-6"><a href="#cb243-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;add 2nd line to create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master 1741fab] add 2nd line to create_dataset.R
+<pre><code>## [master 29af9ad] add 2nd line to create_dataset.R
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="#cb245-1"></a><span class="co"># View commit log</span></span>
 <span id="cb245-2"><a href="#cb245-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 1741fab3302b6d5105c909d0dc4d90f6fe770938
+<pre><code>## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit bf38a05510f7c25f9a8bb2ceb76d3b9da13eed24
+## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb247-1"><a href="#cb247-1"></a><span class="co"># Specify the hash ID of the unwanted commit</span></span>
@@ -4050,25 +4049,25 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb247-3"><a href="#cb247-3"></a></span>
 <span id="cb247-4"><a href="#cb247-4"></a><span class="co"># View commit log</span></span>
 <span id="cb247-5"><a href="#cb247-5"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## [master da92bae] Revert &quot;add 2nd line to create_dataset.R&quot;
+<pre><code>## [master f05104b] Revert &quot;add 2nd line to create_dataset.R&quot;
 ##  1 file changed, 1 deletion(-)
-## commit da92baebefeb792b58684e01fbb3ffa206b26ad3
+## commit f05104b47637a4ead9c74c138cff49ddaa5bed65
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     Revert &quot;add 2nd line to create_dataset.R&quot;
 ##     
-##     This reverts commit 1741fab3302b6d5105c909d0dc4d90f6fe770938.
+##     This reverts commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2.
 ## 
-## commit 1741fab3302b6d5105c909d0dc4d90f6fe770938
+## commit 29af9ad20adaa6598c2bd64428f8e9fc437510d2
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 2nd line to create_dataset.R
 ## 
-## commit bf38a05510f7c25f9a8bb2ceb76d3b9da13eed24
+## commit 84e641b06a9903234de0d4f76abc5cbb4998c4f1
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:16 2021 -0800
 ## 
 ##     add 1st line to create_dataset.R</code></pre>
 <div class="sourceCode" id="cb249"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb249-1"><a href="#cb249-1"></a><span class="co"># The file now only contains the 1st line</span></span>
@@ -4177,7 +4176,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb253-4"><a href="#cb253-4"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb253-5"><a href="#cb253-5"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb253-6"><a href="#cb253-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse in create_dataset.R&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) 796a28b] import tidyverse in create_dataset.R
+<pre><code>## [master (root-commit) acee594] import tidyverse in create_dataset.R
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <div class="sourceCode" id="cb255"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb255-1"><a href="#cb255-1"></a><span class="co"># Now we can see the `master` branch listed, with an `*` indicating it is our current branch</span></span>
@@ -4185,7 +4184,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <pre><code>## * master</code></pre>
 <div class="sourceCode" id="cb257"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb257-1"><a href="#cb257-1"></a><span class="co"># See detailed branch listing with info about the latest commit</span></span>
 <span id="cb257-2"><a href="#cb257-2"></a><span class="fu">git</span> branch -v</span></code></pre></div>
-<pre><code>## * master 796a28b import tidyverse in create_dataset.R</code></pre>
+<pre><code>## * master acee594 import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb259"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb259-1"><a href="#cb259-1"></a><span class="co"># If the repository is connected to a remote, the `-a` option will list remote branches too</span></span>
 <span id="cb259-2"><a href="#cb259-2"></a><span class="co"># (In the specific example below, the remote is named `origin`)</span></span>
 <span id="cb259-3"><a href="#cb259-3"></a><span class="fu">git</span> branch -a</span></code></pre></div>
@@ -4214,7 +4213,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## * master</code></pre>
 <div class="sourceCode" id="cb268"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb268-1"><a href="#cb268-1"></a><span class="co"># Delete branch</span></span>
 <span id="cb268-2"><a href="#cb268-2"></a><span class="fu">git</span> branch -d dev</span></code></pre></div>
-<pre><code>## Deleted branch dev (was 796a28b).</code></pre>
+<pre><code>## Deleted branch dev (was acee594).</code></pre>
 <div class="sourceCode" id="cb270"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb270-1"><a href="#cb270-1"></a><span class="co"># See branch listing</span></span>
 <span id="cb270-2"><a href="#cb270-2"></a><span class="fu">git</span> branch</span></code></pre></div>
 <pre><code>## * master</code></pre>
@@ -4334,9 +4333,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same initial commit:</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb284-1"><a href="#cb284-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb284-2"><a href="#cb284-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+<pre><code>## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb286"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb286-1"><a href="#cb286-1"></a><span class="co"># Switch to `dev` branch</span></span>
@@ -4345,9 +4344,9 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb286-4"><a href="#cb286-4"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb286-5"><a href="#cb286-5"></a><span class="fu">git</span> log</span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb288-1"><a href="#cb288-1"></a><span class="co"># View content of R script, which is the same on both `master` and `dev` branches</span></span>
@@ -4361,19 +4360,19 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb290-5"><a href="#cb290-5"></a><span class="co"># Add/commit R script</span></span>
 <span id="cb290-6"><a href="#cb290-6"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb290-7"><a href="#cb290-7"></a><span class="fu">git</span> commit -m <span class="st">&quot;manipulate mpg dataset&quot;</span></span></code></pre></div>
-<pre><code>## [dev eb32922] manipulate mpg dataset
+<pre><code>## [dev 230abb2] manipulate mpg dataset
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb292"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb292-1"><a href="#cb292-1"></a><span class="co"># View commit log for `dev` branch</span></span>
 <span id="cb292-2"><a href="#cb292-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit eb3292216a9136e5adce0938472208809ec09eee
+<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s switch back to the <code>master</code> branch and merge in <code>dev</code>. Since the <code>dev</code> branch is ahead of <code>master</code> by 1 commit, the changes can be combined using a <strong>fast-forward merge</strong>:</p>
@@ -4383,21 +4382,21 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb294-4"><a href="#cb294-4"></a><span class="co"># Merge `dev` branch into `master`</span></span>
 <span id="cb294-5"><a href="#cb294-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating 796a28b..eb32922
+## Updating acee594..230abb2
 ## Fast-forward
 ##  create_dataset.R | 2 ++
 ##  1 file changed, 2 insertions(+)</code></pre>
 <div class="sourceCode" id="cb296"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb296-1"><a href="#cb296-1"></a><span class="co"># The commit log for `master` now matches the `dev` branch</span></span>
 <span id="cb296-2"><a href="#cb296-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit eb3292216a9136e5adce0938472208809ec09eee
+<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <p><br> Let’s examine the git object associated with the commit:</p>
@@ -4406,12 +4405,12 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb298-3"><a href="#cb298-3"></a></span>
 <span id="cb298-4"><a href="#cb298-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb298-5"><a href="#cb298-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-parse HEAD<span class="va">)</span></span></code></pre></div>
-<pre><code>## eb3292216a9136e5adce0938472208809ec09eee
+<pre><code>## 230abb2252349c963a88e03b6bd73fede5f1718d
 ## commit
 ## tree 6de1187f46bbf4d76cafca7c0e5d3d61db6b5a53
-## parent 796a28bc24b54871a9ec2346c3e98a443fcefe9f
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815273 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815273 -0800
+## parent acee5944b93fae7bfdaad00d8866ee35c68f42d5
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
 ## 
 ## manipulate mpg dataset</code></pre>
 <p>Examine the “tree” object associated with the commit:</p>
@@ -4432,11 +4431,11 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb304-3"><a href="#cb304-3"></a></span>
 <span id="cb304-4"><a href="#cb304-4"></a><span class="fu">git</span> cat-file -t <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span> <span class="co"># type = commit</span></span>
 <span id="cb304-5"><a href="#cb304-5"></a><span class="fu">git</span> cat-file -p <span class="va">$(</span><span class="fu">git</span> rev-list HEAD <span class="kw">|</span> <span class="fu">tail</span> -n 1<span class="va">)</span></span></code></pre></div>
-<pre><code>## 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+<pre><code>## acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## commit
 ## tree cb70185218351236255cdea1297210ceeaf6e3b5
-## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815272 -0800
-## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1611815272 -0800
+## author cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
+## committer cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt; 1612295537 -0800
 ## 
 ## import tidyverse in create_dataset.R</code></pre>
 </details>
@@ -4446,15 +4445,15 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <p>Continuing from previous examples, we have the <code>master</code> and <code>dev</code> branches, which are even with the same two commits:</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb306-1"><a href="#cb306-1"></a><span class="co"># View commit log for `master` branch</span></span>
 <span id="cb306-2"><a href="#cb306-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit eb3292216a9136e5adce0938472208809ec09eee
+<pre><code>## commit 230abb2252349c963a88e03b6bd73fede5f1718d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb308"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb308-1"><a href="#cb308-1"></a><span class="fu">git</span> branch</span>
@@ -4476,7 +4475,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb310-6"><a href="#cb310-6"></a><span class="co"># Add and commit changes</span></span>
 <span id="cb310-7"><a href="#cb310-7"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb310-8"><a href="#cb310-8"></a><span class="fu">git</span> commit -m <span class="st">&quot;update head() on line 2&quot;</span> </span></code></pre></div>
-<pre><code>## [master 9450450] update head() on line 2
+<pre><code>## [master 0495a65] update head() on line 2
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now shows <code>head(10)</code> instead of <code>head(5)</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb312-1"><a href="#cb312-1"></a><span class="fu">git</span> branch</span>
@@ -4500,7 +4499,7 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 <span id="cb314-8"><a href="#cb314-8"></a><span class="fu">git</span> add create_dataset.R</span>
 <span id="cb314-9"><a href="#cb314-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;add additional filter() on line 4&quot;</span> </span></code></pre></div>
 <pre><code>## Switched to branch &#39;dev&#39;
-## [dev 61ecfb4] add additional filter() on line 4
+## [dev 09b76fa] add additional filter() on line 4
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>View updated content of R script on the <code>dev</code> branch, which now has additional <code>filter()</code> line at the end:</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb316-1"><a href="#cb316-1"></a><span class="fu">git</span> branch</span>
@@ -4543,34 +4542,34 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ##  1 file changed, 1 insertion(+)</code></pre>
 <div class="sourceCode" id="cb322"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb322-1"><a href="#cb322-1"></a><span class="co"># View commit log - note that a new merge commit was created during the 3-way merge</span></span>
 <span id="cb322-2"><a href="#cb322-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 8b2300fc882ab13ce3916b5263df3fd36e6ba862
-## Merge: 9450450 61ecfb4
+<pre><code>## commit b66f08d071349bdbc5a1ab779409b027a07ee525
+## Merge: 0495a65 09b76fa
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 94504503d53d287da222e409e208c4770b70fd67
+## commit 0495a656ab9dc6bc6d8a6c66f0dc32b2ca5ad57c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 61ecfb422b2d4596e3c4c7e7dee8b620d3d54b96
+## commit 09b76faddeaa050d163c5fccf925f632dae38631
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit eb3292216a9136e5adce0938472208809ec09eee
+## commit 230abb2252349c963a88e03b6bd73fede5f1718d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
 <div class="sourceCode" id="cb324"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb324-1"><a href="#cb324-1"></a><span class="co"># View merged content of R script</span></span>
@@ -4581,8 +4580,114 @@ tagger &lt;username&gt; &lt;email&gt; &lt;time&gt;
 ## df &lt;- df %&gt;% filter(manufacturer == &#39;audi&#39;)</code></pre>
 </details>
 </div>
+<div id="git-pull" class="section level2">
+<h2><span class="header-section-number">9.2</span> <code>git pull</code></h2>
+<p><strong><code>git pull</code></strong>: Incorporate remote changes into your current branch</p>
+<ul>
+<li>Help: <code>git pull --help</code></li>
+<li>Syntax:
+<ul>
+<li><code>git pull</code>: This is equivalent to a <code>git fetch</code> followed by a <code>git merge</code> to incorporate remote changes to your current branch</li>
+</ul></li>
+<li>Notes:
+<ul>
+<li><code>git fetch</code> is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don’t actually want to merge these changes into your local repository yet. On the other hand, running <code>git pull</code> will directly incorporate the changes.</li>
+<li>More specifically, <code>git fetch</code> will incorporate changes into your remote-tracking branch (e.g., <code>origin/master</code>, your local copy of the remote <code>master</code> branch) but not your local branch (e.g., your local <code>master</code> branch). Then, <code>git merge</code> can merge the change from your remote-tracking branch into your local branch.</li>
+</ul></li>
+</ul>
+<p><img src="data:image/png;base64,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" /></p>
+<p><em>Credit: <a href="https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239">Medium, Git Fetch vs Git Pull</a></em></p>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Using <code>git pull</code> to incorporate remote changes</summary></p>
+<p>Let’s say your remote branch is ahead of your local branch by some commits. You can run <code>git pull</code> to incorporate those changes:</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb326-1"><a href="#cb326-1"></a><span class="co"># Incorporate remote changes to current branch</span></span>
+<span id="cb326-2"><a href="#cb326-2"></a><span class="fu">git</span> pull</span></code></pre></div>
+<p><br> After you run the command, you may see some output indicating the progress as remote changes are being fetched:</p>
+<pre><code>remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.</code></pre>
+<p><br> Then, the output will look something like the below:</p>
+<ul>
+<li>The 1st line indicates which remote repository it is fetching from</li>
+<li>The 2nd line displays the hash IDs of your latest commit before and after the fetch, as well as which branch you are updating with the fetch
+<ul>
+<li>In the example below, the fetch has updated our <code>origin/master</code> branch, which is our local copy of the remote <code>master</code> branch</li>
+</ul></li>
+<li>The 3rd line again displays the latest commit hash before and after the update</li>
+<li>The 4th line indicates what kind of merge was performed (since <code>git pull</code> is just <code>git fetch</code> followed by <code>git merge</code>)</li>
+<li>The next lines list out which files were changed and what changes were made (i.e., how many lines were added, how many lines were deleted)</li>
+<li>The final line shows a summary of the total number of files changed, the total number of lines added (i.e., insertions), and the total number of lines deleted (i.e., deletions)</li>
+</ul>
+<pre><code>From github.com:anyone-can-cook/student_lastname_firstname
+   1eeaff7..6c3e46f  master     -&gt; origin/master
+Updating 1eeaff7..6c3e46f
+Fast-forward
+ README.md | 2 ++
+ my_script.R | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)</code></pre>
+<p>As we’ll see in the next example, the first 2 lines of the output comes from <code>git fetch</code> being run and the remaining lines come from <code>git merge</code>.</p>
+</details>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Using <code>git fetch</code> and <code>git merge</code> to incorporate remote changes</summary></p>
+<p>Running <code>git pull</code> essentially performs a <code>git fetch</code> followed by <code>git merge</code>. If we only want to fetch the remote changes to our local repository but not incorporate them into our current branch, we can use <code>git fetch</code>:</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb329-1"><a href="#cb329-1"></a><span class="co"># Fetch remote changes</span></span>
+<span id="cb329-2"><a href="#cb329-2"></a><span class="fu">git</span> fetch</span></code></pre></div>
+<pre><code>From github.com:anyone-can-cook/student_lastname_firstname
+   1eeaff7..6c3e46f  master     -&gt; origin/master</code></pre>
+<p><br> We can verify that the fetch only updated our remote-tracking branch <code>origin/master</code> (i.e., our local copy of the remote <code>master</code> branch) and not our local <code>master</code> branch by checking the commit history of the branches.</p>
+<p>Assuming we are currently on our local <code>master</code> branch, we can run <code>git log</code> to view the commit history. In the output, we see <code>HEAD -&gt; master</code> next to the most recent commit, indicating that <code>HEAD</code> is pointing to this commit on the <code>master</code> branch:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb331-1"><a href="#cb331-1"></a><span class="co"># Check commit history of local `master` branch</span></span>
+<span id="cb331-2"><a href="#cb331-2"></a><span class="fu">git</span> log</span></code></pre></div>
+<pre><code>commit e329908682dfefba0417bd7337cc660d0d5f133d (HEAD -&gt; master)
+Author: username &lt;email@example.com&gt;
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit</code></pre>
+<p>Next, we can check the commit log of the remote-tracking branch <code>origin/master</code>. In the output below, we can see that the changes have indeed been fetched to this branch, as indicated by the presence of the second commit. In parentheses next to the commits, we can again see that our local <code>master</code> branch still only contains the first commit while <code>origin/master</code> and <code>origin/HEAD</code> has been updated with the second. <code>HEAD</code> always points to the latest commit on your current (active) branch, so it also appears next to the second commit:</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb333-1"><a href="#cb333-1"></a><span class="co"># Check commit history of `origin/master`</span></span>
+<span id="cb333-2"><a href="#cb333-2"></a><span class="fu">git</span> log origin/master</span></code></pre></div>
+<pre><code>commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD, origin/master, origin/HEAD)
+Author: username &lt;email@example.com&gt;
+Date:   Fri Jan 22 11:27:40 2021 -0800
+
+    second commit
+
+commit e329908682dfefba0417bd7337cc660d0d5f133d (master)
+Author: username &lt;email@example.com&gt;
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit</code></pre>
+<p><br> After we are satisfied with the fetched changes, we can manually merge them into our local <code>master</code> branch:</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb335-1"><a href="#cb335-1"></a><span class="co"># Merge changes from `origin/master` into local `master`</span></span>
+<span id="cb335-2"><a href="#cb335-2"></a><span class="fu">git</span> merge origin/master</span></code></pre></div>
+<pre><code>Updating 1eeaff7..6c3e46f
+Fast-forward
+ README.md | 2 ++
+ my_script.R | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)</code></pre>
+<p>Alternatively, we could have just run <code>git pull</code> instead of <code>git merge origin/master</code> and it would’ve also merged in the changes (after performing <code>git fetch</code> again).</p>
+<p><br> If we check the commit history on our local <code>master</code> branch again, we can see it has now been updated:</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb337-1"><a href="#cb337-1"></a><span class="co"># Check commit history of local `master` branch</span></span>
+<span id="cb337-2"><a href="#cb337-2"></a><span class="fu">git</span> log</span></code></pre></div>
+<pre><code>commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD -&gt; master, origin/master, origin/HEAD)
+Author: username &lt;email@example.com&gt;
+Date:   Fri Jan 22 11:27:40 2021 -0800
+
+    second commit
+
+commit e329908682dfefba0417bd7337cc660d0d5f133d
+Author: username &lt;email@example.com&gt;
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit</code></pre>
+</details>
+</div>
 <div id="merge-conflicts" class="section level2">
-<h2><span class="header-section-number">9.2</span> Merge conflicts</h2>
+<h2><span class="header-section-number">9.3</span> Merge conflicts</h2>
 <p>When attempting a <code>git merge</code>, conflict can arise <strong>when starting</strong> a merge or <strong>during</strong> the merge. (From <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">Git merge conflicts</a>)</p>
 <p><br> <strong>When starting</strong> a merge, Git will first check if you have any changes in either the working directory or staging area. If so, Git will abort the merge completely and display an error message that looks like this:</p>
 <pre><code>error: Your local changes to the following files would be overwritten by merge:
@@ -4610,42 +4715,42 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <details>
 <p><summary><strong>Example</strong>: Merge conflict when starting a merge</summary></p>
 <p>Continuing from previous examples, our <code>master</code> branch currently looks like this:</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb329-1"><a href="#cb329-1"></a><span class="co"># View commit log for `master` branch</span></span>
-<span id="cb329-2"><a href="#cb329-2"></a><span class="fu">git</span> log</span></code></pre></div>
-<pre><code>## commit 8b2300fc882ab13ce3916b5263df3fd36e6ba862
-## Merge: 9450450 61ecfb4
+<div class="sourceCode" id="cb342"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb342-1"><a href="#cb342-1"></a><span class="co"># View commit log for `master` branch</span></span>
+<span id="cb342-2"><a href="#cb342-2"></a><span class="fu">git</span> log</span></code></pre></div>
+<pre><code>## commit b66f08d071349bdbc5a1ab779409b027a07ee525
+## Merge: 0495a65 09b76fa
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     Merge branch &#39;dev&#39;
 ## 
-## commit 94504503d53d287da222e409e208c4770b70fd67
+## commit 0495a656ab9dc6bc6d8a6c66f0dc32b2ca5ad57c
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     update head() on line 2
 ## 
-## commit 61ecfb422b2d4596e3c4c7e7dee8b620d3d54b96
+## commit 09b76faddeaa050d163c5fccf925f632dae38631
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     add additional filter() on line 4
 ## 
-## commit eb3292216a9136e5adce0938472208809ec09eee
+## commit 230abb2252349c963a88e03b6bd73fede5f1718d
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:53 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     manipulate mpg dataset
 ## 
-## commit 796a28bc24b54871a9ec2346c3e98a443fcefe9f
+## commit acee5944b93fae7bfdaad00d8866ee35c68f42d5
 ## Author: cyouh95 &lt;25449416+cyouh95@users.noreply.github.com&gt;
-## Date:   Wed Jan 27 22:27:52 2021 -0800
+## Date:   Tue Feb 2 11:52:17 2021 -0800
 ## 
 ##     import tidyverse in create_dataset.R</code></pre>
-<div class="sourceCode" id="cb331"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb331-1"><a href="#cb331-1"></a><span class="fu">git</span> branch</span>
-<span id="cb331-2"><a href="#cb331-2"></a></span>
-<span id="cb331-3"><a href="#cb331-3"></a><span class="co"># View content of R script</span></span>
-<span id="cb331-4"><a href="#cb331-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb344-1"><a href="#cb344-1"></a><span class="fu">git</span> branch</span>
+<span id="cb344-2"><a href="#cb344-2"></a></span>
+<span id="cb344-3"><a href="#cb344-3"></a><span class="co"># View content of R script</span></span>
+<span id="cb344-4"><a href="#cb344-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
 <pre><code>##   dev
 ## * master
 ## 
@@ -4654,26 +4759,26 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## df &lt;- mpg %&gt;% filter(year == 2008)
 ## df &lt;- df %&gt;% filter(manufacturer == &#39;audi&#39;)</code></pre>
 <p><br> Let’s create a new branch called <code>revision</code> that branches off <code>master</code>, then make a new commit on this branch:</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb333-1"><a href="#cb333-1"></a><span class="co"># Create and switch to new branch</span></span>
-<span id="cb333-2"><a href="#cb333-2"></a><span class="fu">git</span> checkout -b revision</span>
-<span id="cb333-3"><a href="#cb333-3"></a></span>
-<span id="cb333-4"><a href="#cb333-4"></a><span class="co"># Modify R script</span></span>
-<span id="cb333-5"><a href="#cb333-5"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
-<span id="cb333-6"><a href="#cb333-6"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(10)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb333-7"><a href="#cb333-7"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb333-8"><a href="#cb333-8"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- df %&gt;% filter(manufacturer == &#39;lincoln&#39;)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R  <span class="co"># this line is modified</span></span>
-<span id="cb333-9"><a href="#cb333-9"></a></span>
-<span id="cb333-10"><a href="#cb333-10"></a><span class="co"># Add and commit change</span></span>
-<span id="cb333-11"><a href="#cb333-11"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb333-12"><a href="#cb333-12"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for lincoln instead of audi&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb346-1"><a href="#cb346-1"></a><span class="co"># Create and switch to new branch</span></span>
+<span id="cb346-2"><a href="#cb346-2"></a><span class="fu">git</span> checkout -b revision</span>
+<span id="cb346-3"><a href="#cb346-3"></a></span>
+<span id="cb346-4"><a href="#cb346-4"></a><span class="co"># Modify R script</span></span>
+<span id="cb346-5"><a href="#cb346-5"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
+<span id="cb346-6"><a href="#cb346-6"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(10)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb346-7"><a href="#cb346-7"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb346-8"><a href="#cb346-8"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- df %&gt;% filter(manufacturer == &#39;lincoln&#39;)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R  <span class="co"># this line is modified</span></span>
+<span id="cb346-9"><a href="#cb346-9"></a></span>
+<span id="cb346-10"><a href="#cb346-10"></a><span class="co"># Add and commit change</span></span>
+<span id="cb346-11"><a href="#cb346-11"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb346-12"><a href="#cb346-12"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for lincoln instead of audi&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;revision&#39;
-## [revision 1aa7a59] filter for lincoln instead of audi
+## [revision 010d61e] filter for lincoln instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>revision</code> branch, which now filters for <code>lincoln</code> instead of <code>audi</code> on the last line:</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb335-1"><a href="#cb335-1"></a><span class="fu">git</span> branch</span>
-<span id="cb335-2"><a href="#cb335-2"></a></span>
-<span id="cb335-3"><a href="#cb335-3"></a><span class="co"># View content of R script</span></span>
-<span id="cb335-4"><a href="#cb335-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb348-1"><a href="#cb348-1"></a><span class="fu">git</span> branch</span>
+<span id="cb348-2"><a href="#cb348-2"></a></span>
+<span id="cb348-3"><a href="#cb348-3"></a><span class="co"># View content of R script</span></span>
+<span id="cb348-4"><a href="#cb348-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
 <pre><code>##   dev
 ##   master
 ## * revision
@@ -4683,18 +4788,18 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## df &lt;- mpg %&gt;% filter(year == 2008)
 ## df &lt;- df %&gt;% filter(manufacturer == &#39;lincoln&#39;)</code></pre>
 <p><br> Back on the <code>master</code> branch, let’s modify the same line in the R script:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb337-1"><a href="#cb337-1"></a><span class="co"># Switch back to `master` branch</span></span>
-<span id="cb337-2"><a href="#cb337-2"></a><span class="fu">git</span> checkout master</span>
-<span id="cb337-3"><a href="#cb337-3"></a></span>
-<span id="cb337-4"><a href="#cb337-4"></a><span class="co"># Modify R script</span></span>
-<span id="cb337-5"><a href="#cb337-5"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
-<span id="cb337-6"><a href="#cb337-6"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(10)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb337-7"><a href="#cb337-7"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb337-8"><a href="#cb337-8"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- df %&gt;% filter(manufacturer == &#39;chevrolet&#39;)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R  <span class="co"># this line is modified</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb350-1"><a href="#cb350-1"></a><span class="co"># Switch back to `master` branch</span></span>
+<span id="cb350-2"><a href="#cb350-2"></a><span class="fu">git</span> checkout master</span>
+<span id="cb350-3"><a href="#cb350-3"></a></span>
+<span id="cb350-4"><a href="#cb350-4"></a><span class="co"># Modify R script</span></span>
+<span id="cb350-5"><a href="#cb350-5"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
+<span id="cb350-6"><a href="#cb350-6"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(10)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb350-7"><a href="#cb350-7"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- mpg %&gt;% filter(year == 2008)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb350-8"><a href="#cb350-8"></a><span class="bu">echo</span> <span class="st">&quot;df &lt;- df %&gt;% filter(manufacturer == &#39;chevrolet&#39;)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R  <span class="co"># this line is modified</span></span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;</code></pre>
 <p><br> Notice that we have uncommitted changes in the working directory:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb339-1"><a href="#cb339-1"></a><span class="co"># Check status</span></span>
-<span id="cb339-2"><a href="#cb339-2"></a><span class="fu">git</span> status</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb352-1"><a href="#cb352-1"></a><span class="co"># Check status</span></span>
+<span id="cb352-2"><a href="#cb352-2"></a><span class="fu">git</span> status</span></code></pre></div>
 <pre><code>## On branch master
 ## Changes not staged for commit:
 ##   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
@@ -4704,8 +4809,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
 <p><br> If we try to merge changes from <code>revision</code> into <code>master</code> now, there will be a merge conflict because we have uncommited changes. The merge will be aborted:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb341-1"><a href="#cb341-1"></a><span class="co"># Merge changes from `revision` into `master`</span></span>
-<span id="cb341-2"><a href="#cb341-2"></a><span class="fu">git</span> merge revision</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb354-1"><a href="#cb354-1"></a><span class="co"># Merge changes from `revision` into `master`</span></span>
+<span id="cb354-2"><a href="#cb354-2"></a><span class="fu">git</span> merge revision</span></code></pre></div>
 <pre><code>## error: Your local changes to the following files would be overwritten by merge:
 ##  create_dataset.R
 ## Please commit your changes or stash them before you merge.
@@ -4715,16 +4820,16 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <details>
 <p><summary><strong>Example</strong>: Merge conflict during a merge</summary></p>
 <p>Continuing from the previous example, let’s say we commited our change to <code>create_dataset.R</code> on the <code>master</code> branch:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb343-1"><a href="#cb343-1"></a><span class="co"># Add and commit change</span></span>
-<span id="cb343-2"><a href="#cb343-2"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb343-3"><a href="#cb343-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for chevrolet instead of audi&quot;</span></span></code></pre></div>
-<pre><code>## [master 7744c57] filter for chevrolet instead of audi
+<div class="sourceCode" id="cb356"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb356-1"><a href="#cb356-1"></a><span class="co"># Add and commit change</span></span>
+<span id="cb356-2"><a href="#cb356-2"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb356-3"><a href="#cb356-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;filter for chevrolet instead of audi&quot;</span></span></code></pre></div>
+<pre><code>## [master 62185a5] filter for chevrolet instead of audi
 ##  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>View updated content of R script on the <code>master</code> branch, which now filters for <code>chevrolet</code> instead of <code>audi</code> on the last line:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb345-1"><a href="#cb345-1"></a><span class="fu">git</span> branch</span>
-<span id="cb345-2"><a href="#cb345-2"></a></span>
-<span id="cb345-3"><a href="#cb345-3"></a><span class="co"># View content of R script</span></span>
-<span id="cb345-4"><a href="#cb345-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb358-1"><a href="#cb358-1"></a><span class="fu">git</span> branch</span>
+<span id="cb358-2"><a href="#cb358-2"></a></span>
+<span id="cb358-3"><a href="#cb358-3"></a><span class="co"># View content of R script</span></span>
+<span id="cb358-4"><a href="#cb358-4"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
 <pre><code>##   dev
 ## * master
 ##   revision
@@ -4739,8 +4844,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## df &lt;- mpg %&gt;% filter(year == 2008)
 ## df &lt;- df %&gt;% filter(manufacturer == &#39;lincoln&#39;)</code></pre>
 <p><br> If we try to merge changes from <code>revision</code> into <code>master</code> now, there will be a merge conflict because both branches modified the same line of the same file:</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb348-1"><a href="#cb348-1"></a><span class="co"># Merge changes from `revision` into `master`</span></span>
-<span id="cb348-2"><a href="#cb348-2"></a><span class="fu">git</span> merge revision</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb361-1"><a href="#cb361-1"></a><span class="co"># Merge changes from `revision` into `master`</span></span>
+<span id="cb361-2"><a href="#cb361-2"></a><span class="fu">git</span> merge revision</span></code></pre></div>
 <pre><code>## Auto-merging create_dataset.R
 ## CONFLICT (content): Merge conflict in create_dataset.R
 ## Automatic merge failed; fix conflicts and then commit the result.</code></pre>
@@ -4757,8 +4862,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
 <p><br> The file(s) that failed to merge will contain markings by Git that indicates which line(s) are conflicted:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb351-1"><a href="#cb351-1"></a><span class="co"># View content of R script</span></span>
-<span id="cb351-2"><a href="#cb351-2"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb364-1"><a href="#cb364-1"></a><span class="co"># View content of R script</span></span>
+<span id="cb364-2"><a href="#cb364-2"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
 <pre><code>## library(tidyverse)
 ## mpg %&gt;% head(10)
 ## df &lt;- mpg %&gt;% filter(year == 2008)
@@ -4770,7 +4875,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 </details>
 </div>
 <div id="resolving-merge-conflicts" class="section level2">
-<h2><span class="header-section-number">9.3</span> Resolving merge conflicts</h2>
+<h2><span class="header-section-number">9.4</span> Resolving merge conflicts</h2>
 <p>What to do when you encounter a <strong>merge conflict</strong>?</p>
 <ul>
 <li>As introduced earlier, you can use <code>git merge --abort</code> to abort the merge and restore the branches back to their original states</li>
@@ -4784,8 +4889,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Resolving a merge conflict</summary></p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb353-1"><a href="#cb353-1"></a><span class="co"># View content of R script</span></span>
-<span id="cb353-2"><a href="#cb353-2"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb366-1"><a href="#cb366-1"></a><span class="co"># View content of R script</span></span>
+<span id="cb366-2"><a href="#cb366-2"></a><span class="fu">cat</span> create_dataset.R</span></code></pre></div>
 <pre><code>## library(tidyverse)
 ## mpg %&gt;% head(10)
 ## df &lt;- mpg %&gt;% filter(year == 2008)
@@ -4800,9 +4905,9 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## df &lt;- mpg %&gt;% filter(year == 2008)
 ## df &lt;- df %&gt;% filter(manufacturer == &#39;volkswagen&#39;)</code></pre>
 <p><br> Finally, we can add and commit the file to complete the merge:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb356-1"><a href="#cb356-1"></a><span class="co"># Add/commit R script</span></span>
-<span id="cb356-2"><a href="#cb356-2"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb356-3"><a href="#cb356-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;merge revision branch&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb369-1"><a href="#cb369-1"></a><span class="co"># Add/commit R script</span></span>
+<span id="cb369-2"><a href="#cb369-2"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb369-3"><a href="#cb369-3"></a><span class="fu">git</span> commit -m <span class="st">&quot;merge revision branch&quot;</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -4835,43 +4940,43 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <details>
 <p><summary><strong>Example</strong>: Alternative to pull request: Merging changes directly into <strong>master</strong></summary></p>
 <p>Let’s say we create a new R script and add/commit that to the <strong>master</strong> branch:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb357-1"><a href="#cb357-1"></a><span class="co"># Create new R script</span></span>
-<span id="cb357-2"><a href="#cb357-2"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
-<span id="cb357-3"><a href="#cb357-3"></a></span>
-<span id="cb357-4"><a href="#cb357-4"></a><span class="co"># Add/commit R script</span></span>
-<span id="cb357-5"><a href="#cb357-5"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb357-6"><a href="#cb357-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) c7756db] import tidyverse library
+<div class="sourceCode" id="cb370"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb370-1"><a href="#cb370-1"></a><span class="co"># Create new R script</span></span>
+<span id="cb370-2"><a href="#cb370-2"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
+<span id="cb370-3"><a href="#cb370-3"></a></span>
+<span id="cb370-4"><a href="#cb370-4"></a><span class="co"># Add/commit R script</span></span>
+<span id="cb370-5"><a href="#cb370-5"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb370-6"><a href="#cb370-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
+<pre><code>## [master (root-commit) 5e3eff4] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb359-1"><a href="#cb359-1"></a><span class="co"># Create and switch to new branch</span></span>
-<span id="cb359-2"><a href="#cb359-2"></a><span class="fu">git</span> checkout -b dev</span>
-<span id="cb359-3"><a href="#cb359-3"></a></span>
-<span id="cb359-4"><a href="#cb359-4"></a><span class="co"># Modify R script</span></span>
-<span id="cb359-5"><a href="#cb359-5"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(5)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb359-6"><a href="#cb359-6"></a></span>
-<span id="cb359-7"><a href="#cb359-7"></a><span class="co"># Add/commit R script</span></span>
-<span id="cb359-8"><a href="#cb359-8"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb359-9"><a href="#cb359-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb372-1"><a href="#cb372-1"></a><span class="co"># Create and switch to new branch</span></span>
+<span id="cb372-2"><a href="#cb372-2"></a><span class="fu">git</span> checkout -b dev</span>
+<span id="cb372-3"><a href="#cb372-3"></a></span>
+<span id="cb372-4"><a href="#cb372-4"></a><span class="co"># Modify R script</span></span>
+<span id="cb372-5"><a href="#cb372-5"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(5)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb372-6"><a href="#cb372-6"></a></span>
+<span id="cb372-7"><a href="#cb372-7"></a><span class="co"># Add/commit R script</span></span>
+<span id="cb372-8"><a href="#cb372-8"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb372-9"><a href="#cb372-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 4973dfc] preview mpg dataset
+## [dev 9537fbe] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to <strong>master</strong>:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb361-1"><a href="#cb361-1"></a><span class="co"># Switch back to master</span></span>
-<span id="cb361-2"><a href="#cb361-2"></a><span class="fu">git</span> checkout master</span>
-<span id="cb361-3"><a href="#cb361-3"></a></span>
-<span id="cb361-4"><a href="#cb361-4"></a><span class="co"># Merge in changes from the branch</span></span>
-<span id="cb361-5"><a href="#cb361-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb374-1"><a href="#cb374-1"></a><span class="co"># Switch back to master</span></span>
+<span id="cb374-2"><a href="#cb374-2"></a><span class="fu">git</span> checkout master</span>
+<span id="cb374-3"><a href="#cb374-3"></a></span>
+<span id="cb374-4"><a href="#cb374-4"></a><span class="co"># Merge in changes from the branch</span></span>
+<span id="cb374-5"><a href="#cb374-5"></a><span class="fu">git</span> merge dev</span></code></pre></div>
 <pre><code>## Switched to branch &#39;master&#39;
-## Updating c7756db..4973dfc
+## Updating 5e3eff4..9537fbe
 ## Fast-forward
 ##  create_dataset.R | 1 +
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>Then, we can push the changes to the remote’s <strong>master</strong> branch, which would also be the ultimate goal of a pull request:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb363-1"><a href="#cb363-1"></a><span class="co"># Push to remote&#39;s master</span></span>
-<span id="cb363-2"><a href="#cb363-2"></a><span class="fu">git</span> push</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb376-1"><a href="#cb376-1"></a><span class="co"># Push to remote&#39;s master</span></span>
+<span id="cb376-2"><a href="#cb376-2"></a><span class="fu">git</span> push</span></code></pre></div>
 </details>
 <p><br></p>
 <div id="creating-a-pull-request" class="section level2">
@@ -4921,32 +5026,32 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <details>
 <p><summary><strong>Example</strong>: Creating a pull request</summary></p>
 <p>Similar to the previous example, let’s say we create a new R script and added/committed that to the <strong>master</strong> branch:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb364-1"><a href="#cb364-1"></a><span class="co"># Create new R script</span></span>
-<span id="cb364-2"><a href="#cb364-2"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
-<span id="cb364-3"><a href="#cb364-3"></a></span>
-<span id="cb364-4"><a href="#cb364-4"></a><span class="co"># Add/commit R script</span></span>
-<span id="cb364-5"><a href="#cb364-5"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb364-6"><a href="#cb364-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
-<pre><code>## [master (root-commit) c7756db] import tidyverse library
+<div class="sourceCode" id="cb377"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb377-1"><a href="#cb377-1"></a><span class="co"># Create new R script</span></span>
+<span id="cb377-2"><a href="#cb377-2"></a><span class="bu">echo</span> <span class="st">&quot;library(tidyverse)&quot;</span> <span class="op">&gt;</span> create_dataset.R</span>
+<span id="cb377-3"><a href="#cb377-3"></a></span>
+<span id="cb377-4"><a href="#cb377-4"></a><span class="co"># Add/commit R script</span></span>
+<span id="cb377-5"><a href="#cb377-5"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb377-6"><a href="#cb377-6"></a><span class="fu">git</span> commit -m <span class="st">&quot;import tidyverse library&quot;</span></span></code></pre></div>
+<pre><code>## [master (root-commit) 5e3eff4] import tidyverse library
 ##  1 file changed, 1 insertion(+)
 ##  create mode 100644 create_dataset.R</code></pre>
 <p>Then, we create a new branch and make further changes to the R script on the branch:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb366-1"><a href="#cb366-1"></a><span class="co"># Create and switch to new branch</span></span>
-<span id="cb366-2"><a href="#cb366-2"></a><span class="fu">git</span> checkout -b dev</span>
-<span id="cb366-3"><a href="#cb366-3"></a></span>
-<span id="cb366-4"><a href="#cb366-4"></a><span class="co"># Modify R script</span></span>
-<span id="cb366-5"><a href="#cb366-5"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(5)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
-<span id="cb366-6"><a href="#cb366-6"></a></span>
-<span id="cb366-7"><a href="#cb366-7"></a><span class="co"># Add/commit R script</span></span>
-<span id="cb366-8"><a href="#cb366-8"></a><span class="fu">git</span> add create_dataset.R</span>
-<span id="cb366-9"><a href="#cb366-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb379-1"><a href="#cb379-1"></a><span class="co"># Create and switch to new branch</span></span>
+<span id="cb379-2"><a href="#cb379-2"></a><span class="fu">git</span> checkout -b dev</span>
+<span id="cb379-3"><a href="#cb379-3"></a></span>
+<span id="cb379-4"><a href="#cb379-4"></a><span class="co"># Modify R script</span></span>
+<span id="cb379-5"><a href="#cb379-5"></a><span class="bu">echo</span> <span class="st">&quot;mpg %&gt;% head(5)&quot;</span> <span class="op">&gt;&gt;</span> create_dataset.R</span>
+<span id="cb379-6"><a href="#cb379-6"></a></span>
+<span id="cb379-7"><a href="#cb379-7"></a><span class="co"># Add/commit R script</span></span>
+<span id="cb379-8"><a href="#cb379-8"></a><span class="fu">git</span> add create_dataset.R</span>
+<span id="cb379-9"><a href="#cb379-9"></a><span class="fu">git</span> commit -m <span class="st">&quot;preview mpg dataset&quot;</span></span></code></pre></div>
 <pre><code>## Switched to a new branch &#39;dev&#39;
 ## 
-## [dev 4973dfc] preview mpg dataset
+## [dev 9537fbe] preview mpg dataset
 ##  1 file changed, 1 insertion(+)</code></pre>
 <p>At this point, we can push this new branch to the remote repository. Remember to set the upstream branch if this is the first time you are pushing the branch to remote:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb368-1"><a href="#cb368-1"></a><span class="co"># Push branch to remote (say our remote is called `origin` here)</span></span>
-<span id="cb368-2"><a href="#cb368-2"></a><span class="fu">git</span> push --set-upstream origin dev</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb381-1"><a href="#cb381-1"></a><span class="co"># Push branch to remote (say our remote is called `origin` here)</span></span>
+<span id="cb381-2"><a href="#cb381-2"></a><span class="fu">git</span> push --set-upstream origin dev</span></code></pre></div>
 <p>All the subsequent steps to open the pull request will be performed on GitHub.</p>
 </details>
 <p><br></p>
@@ -5079,8 +5184,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## |____B2.csv
 ## |____de.csv</code></pre>
 <p>When we check <code>git status</code>, all the files are untracked:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb370-1"><a href="#cb370-1"></a><span class="co"># Check status</span></span>
-<span id="cb370-2"><a href="#cb370-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb383-1"><a href="#cb383-1"></a><span class="co"># Check status</span></span>
+<span id="cb383-2"><a href="#cb383-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5097,17 +5202,17 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Let’s create a <code>.gitignore</code> file in the root directory. In <code>.gitignore</code>, we can specify which files to ignore:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb372-1"><a href="#cb372-1"></a><span class="co"># Ignores `A1.csv`, `A1.png`, and `A1.tsv`</span></span>
-<span id="cb372-2"><a href="#cb372-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb372-3"><a href="#cb372-3"></a><span class="bu">echo</span> <span class="st">&quot;A1.png&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
-<span id="cb372-4"><a href="#cb372-4"></a><span class="bu">echo</span> <span class="st">&quot;A1.tsv&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
-<span id="cb372-5"><a href="#cb372-5"></a></span>
-<span id="cb372-6"><a href="#cb372-6"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb385-1"><a href="#cb385-1"></a><span class="co"># Ignores `A1.csv`, `A1.png`, and `A1.tsv`</span></span>
+<span id="cb385-2"><a href="#cb385-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb385-3"><a href="#cb385-3"></a><span class="bu">echo</span> <span class="st">&quot;A1.png&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
+<span id="cb385-4"><a href="#cb385-4"></a><span class="bu">echo</span> <span class="st">&quot;A1.tsv&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
+<span id="cb385-5"><a href="#cb385-5"></a></span>
+<span id="cb385-6"><a href="#cb385-6"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A1.csv
 ## A1.png
 ## A1.tsv</code></pre>
-<div class="sourceCode" id="cb374"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb374-1"><a href="#cb374-1"></a><span class="co"># Check status</span></span>
-<span id="cb374-2"><a href="#cb374-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb387-1"><a href="#cb387-1"></a><span class="co"># Check status</span></span>
+<span id="cb387-2"><a href="#cb387-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5122,13 +5227,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> We can use the wildcard <code>*</code> to match any characters that’s not a <code>/</code>. For example, <code>A*</code> matches all files and directories that starts with an <code>A</code>:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb376-1"><a href="#cb376-1"></a><span class="co"># Ignores `A1.csv`, `A1.png`, `A1.tsv`, and `ABC/` directory using `*`</span></span>
-<span id="cb376-2"><a href="#cb376-2"></a><span class="bu">echo</span> <span class="st">&quot;A*&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb376-3"><a href="#cb376-3"></a></span>
-<span id="cb376-4"><a href="#cb376-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb389-1"><a href="#cb389-1"></a><span class="co"># Ignores `A1.csv`, `A1.png`, `A1.tsv`, and `ABC/` directory using `*`</span></span>
+<span id="cb389-2"><a href="#cb389-2"></a><span class="bu">echo</span> <span class="st">&quot;A*&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb389-3"><a href="#cb389-3"></a></span>
+<span id="cb389-4"><a href="#cb389-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A*</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb378-1"><a href="#cb378-1"></a><span class="co"># Check status</span></span>
-<span id="cb378-2"><a href="#cb378-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb391-1"><a href="#cb391-1"></a><span class="co"># Check status</span></span>
+<span id="cb391-2"><a href="#cb391-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5142,15 +5247,15 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> To specify a file or pattern <em>not</em> to match (i.e., not ignore), put <code>!</code> at the start of the line:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb380-1"><a href="#cb380-1"></a><span class="co"># Ignores all files and directories starting with `A` except `A1.png`</span></span>
-<span id="cb380-2"><a href="#cb380-2"></a><span class="bu">echo</span> <span class="st">&quot;A*&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb380-3"><a href="#cb380-3"></a><span class="bu">echo</span> <span class="st">&quot;!A1.png&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
-<span id="cb380-4"><a href="#cb380-4"></a></span>
-<span id="cb380-5"><a href="#cb380-5"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb393-1"><a href="#cb393-1"></a><span class="co"># Ignores all files and directories starting with `A` except `A1.png`</span></span>
+<span id="cb393-2"><a href="#cb393-2"></a><span class="bu">echo</span> <span class="st">&quot;A*&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb393-3"><a href="#cb393-3"></a><span class="bu">echo</span> <span class="st">&quot;!A1.png&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span>
+<span id="cb393-4"><a href="#cb393-4"></a></span>
+<span id="cb393-5"><a href="#cb393-5"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A*
 ## !A1.png</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb382-1"><a href="#cb382-1"></a><span class="co"># Check status</span></span>
-<span id="cb382-2"><a href="#cb382-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb395-1"><a href="#cb395-1"></a><span class="co"># Check status</span></span>
+<span id="cb395-2"><a href="#cb395-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5165,13 +5270,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> To only match directories, add a trailing <code>/</code> to your pattern:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb384-1"><a href="#cb384-1"></a><span class="co"># Ignores `ABC/` directory only and not files starting with `A`</span></span>
-<span id="cb384-2"><a href="#cb384-2"></a><span class="bu">echo</span> <span class="st">&quot;A*/&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb384-3"><a href="#cb384-3"></a></span>
-<span id="cb384-4"><a href="#cb384-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb397-1"><a href="#cb397-1"></a><span class="co"># Ignores `ABC/` directory only and not files starting with `A`</span></span>
+<span id="cb397-2"><a href="#cb397-2"></a><span class="bu">echo</span> <span class="st">&quot;A*/&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb397-3"><a href="#cb397-3"></a></span>
+<span id="cb397-4"><a href="#cb397-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A*/</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb386-1"><a href="#cb386-1"></a><span class="co"># Check status</span></span>
-<span id="cb386-2"><a href="#cb386-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb399-1"><a href="#cb399-1"></a><span class="co"># Check status</span></span>
+<span id="cb399-2"><a href="#cb399-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5188,13 +5293,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> The <code>?</code> can be used to match any <em>one</em> character that’s not a <code>/</code>:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb388-1"><a href="#cb388-1"></a><span class="co"># Ignores `A1.csv` and `A1.tsv` using `?`</span></span>
-<span id="cb388-2"><a href="#cb388-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.?sv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb388-3"><a href="#cb388-3"></a></span>
-<span id="cb388-4"><a href="#cb388-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb401-1"><a href="#cb401-1"></a><span class="co"># Ignores `A1.csv` and `A1.tsv` using `?`</span></span>
+<span id="cb401-2"><a href="#cb401-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.?sv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb401-3"><a href="#cb401-3"></a></span>
+<span id="cb401-4"><a href="#cb401-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A1.?sv</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb390-1"><a href="#cb390-1"></a><span class="co"># Check status</span></span>
-<span id="cb390-2"><a href="#cb390-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb403-1"><a href="#cb403-1"></a><span class="co"># Check status</span></span>
+<span id="cb403-2"><a href="#cb403-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5210,13 +5315,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Square brackets <code>[]</code> can be used to specify specific characters to match:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb392-1"><a href="#cb392-1"></a><span class="co"># Ignores `A1.csv` and `A1.tsv` using `[]`</span></span>
-<span id="cb392-2"><a href="#cb392-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.[ct]sv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb392-3"><a href="#cb392-3"></a></span>
-<span id="cb392-4"><a href="#cb392-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb405-1"><a href="#cb405-1"></a><span class="co"># Ignores `A1.csv` and `A1.tsv` using `[]`</span></span>
+<span id="cb405-2"><a href="#cb405-2"></a><span class="bu">echo</span> <span class="st">&quot;A1.[ct]sv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb405-3"><a href="#cb405-3"></a></span>
+<span id="cb405-4"><a href="#cb405-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## A1.[ct]sv</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb394-1"><a href="#cb394-1"></a><span class="co"># Check status</span></span>
-<span id="cb394-2"><a href="#cb394-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb407-1"><a href="#cb407-1"></a><span class="co"># Check status</span></span>
+<span id="cb407-2"><a href="#cb407-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5232,13 +5337,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Ranges can also be specified using square brackets <code>[]</code> to match a range of characters (e.g., alphabet or numeric):</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb396-1"><a href="#cb396-1"></a><span class="co"># Ignores `A1.csv` and `B2.csv` using ranges</span></span>
-<span id="cb396-2"><a href="#cb396-2"></a><span class="bu">echo</span> <span class="st">&quot;[a-z][0-9].csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb396-3"><a href="#cb396-3"></a></span>
-<span id="cb396-4"><a href="#cb396-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb409-1"><a href="#cb409-1"></a><span class="co"># Ignores `A1.csv` and `B2.csv` using ranges</span></span>
+<span id="cb409-2"><a href="#cb409-2"></a><span class="bu">echo</span> <span class="st">&quot;[a-z][0-9].csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb409-3"><a href="#cb409-3"></a></span>
+<span id="cb409-4"><a href="#cb409-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## [a-z][0-9].csv</code></pre>
-<div class="sourceCode" id="cb398"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb398-1"><a href="#cb398-1"></a><span class="co"># Check status</span></span>
-<span id="cb398-2"><a href="#cb398-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb411-1"><a href="#cb411-1"></a><span class="co"># Check status</span></span>
+<span id="cb411-2"><a href="#cb411-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5254,13 +5359,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Ranges can also be alphanumeric:</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb400-1"><a href="#cb400-1"></a><span class="co"># Ignores `A1.csv`, `B2.csv`, and `de.csv` using ranges</span></span>
-<span id="cb400-2"><a href="#cb400-2"></a><span class="bu">echo</span> <span class="st">&quot;[a-z][a-z0-9].csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb400-3"><a href="#cb400-3"></a></span>
-<span id="cb400-4"><a href="#cb400-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb413-1"><a href="#cb413-1"></a><span class="co"># Ignores `A1.csv`, `B2.csv`, and `de.csv` using ranges</span></span>
+<span id="cb413-2"><a href="#cb413-2"></a><span class="bu">echo</span> <span class="st">&quot;[a-z][a-z0-9].csv&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb413-3"><a href="#cb413-3"></a></span>
+<span id="cb413-4"><a href="#cb413-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## [a-z][a-z0-9].csv</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb402-1"><a href="#cb402-1"></a><span class="co"># Check status</span></span>
-<span id="cb402-2"><a href="#cb402-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb415-1"><a href="#cb415-1"></a><span class="co"># Check status</span></span>
+<span id="cb415-2"><a href="#cb415-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5293,8 +5398,8 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## | | | |____README.md
 ## |____README.md</code></pre>
 <p>When we check <code>git status</code>, all the <code>README.md</code> files are untracked:</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb405-1"><a href="#cb405-1"></a><span class="co"># Check status</span></span>
-<span id="cb405-2"><a href="#cb405-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb418-1"><a href="#cb418-1"></a><span class="co"># Check status</span></span>
+<span id="cb418-2"><a href="#cb418-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5310,13 +5415,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Let’s create a <code>.gitignore</code> file in the root directory. If we add <code>README.md</code> to <code>.gitignore</code>, all the <code>README.md</code> files will be ignored:</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb407-1"><a href="#cb407-1"></a><span class="co"># Ignores all `README.md`</span></span>
-<span id="cb407-2"><a href="#cb407-2"></a><span class="bu">echo</span> <span class="st">&quot;README.md&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb407-3"><a href="#cb407-3"></a></span>
-<span id="cb407-4"><a href="#cb407-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb420-1"><a href="#cb420-1"></a><span class="co"># Ignores all `README.md`</span></span>
+<span id="cb420-2"><a href="#cb420-2"></a><span class="bu">echo</span> <span class="st">&quot;README.md&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb420-3"><a href="#cb420-3"></a></span>
+<span id="cb420-4"><a href="#cb420-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## README.md</code></pre>
-<div class="sourceCode" id="cb409"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb409-1"><a href="#cb409-1"></a><span class="co"># Check status</span></span>
-<span id="cb409-2"><a href="#cb409-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb422-1"><a href="#cb422-1"></a><span class="co"># Check status</span></span>
+<span id="cb422-2"><a href="#cb422-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5328,13 +5433,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> If we add <code>doc/README.md</code> to the <code>.gitignore</code> file, only the <code>doc/README.md</code> in the project root directory (i.e., where the <code>.gitignore</code> file is located) will be ignored because there’s a <code>/</code> in the middle of the pattern:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb411-1"><a href="#cb411-1"></a><span class="co"># Ignores `doc/README.md` in the root directory where `.gitignore` is located</span></span>
-<span id="cb411-2"><a href="#cb411-2"></a><span class="bu">echo</span> <span class="st">&quot;doc/README.md&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb411-3"><a href="#cb411-3"></a></span>
-<span id="cb411-4"><a href="#cb411-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb424-1"><a href="#cb424-1"></a><span class="co"># Ignores `doc/README.md` in the root directory where `.gitignore` is located</span></span>
+<span id="cb424-2"><a href="#cb424-2"></a><span class="bu">echo</span> <span class="st">&quot;doc/README.md&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb424-3"><a href="#cb424-3"></a></span>
+<span id="cb424-4"><a href="#cb424-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## doc/README.md</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb413-1"><a href="#cb413-1"></a><span class="co"># Check status</span></span>
-<span id="cb413-2"><a href="#cb413-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb426-1"><a href="#cb426-1"></a><span class="co"># Check status</span></span>
+<span id="cb426-2"><a href="#cb426-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5350,13 +5455,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Similarly, if we start a pattern with <code>/</code> like <code>/doc</code>, it will only match things in the directory where the <code>.gitignore</code> file is located (i.e., not the <code>/doc</code> folders nested within the subdirectories):</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb415-1"><a href="#cb415-1"></a><span class="co"># Ignores `doc/` in the root directory where `.gitignore` is located</span></span>
-<span id="cb415-2"><a href="#cb415-2"></a><span class="bu">echo</span> <span class="st">&quot;/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb415-3"><a href="#cb415-3"></a></span>
-<span id="cb415-4"><a href="#cb415-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb428-1"><a href="#cb428-1"></a><span class="co"># Ignores `doc/` in the root directory where `.gitignore` is located</span></span>
+<span id="cb428-2"><a href="#cb428-2"></a><span class="bu">echo</span> <span class="st">&quot;/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb428-3"><a href="#cb428-3"></a></span>
+<span id="cb428-4"><a href="#cb428-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## /doc</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb417-1"><a href="#cb417-1"></a><span class="co"># Check status</span></span>
-<span id="cb417-2"><a href="#cb417-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb430-1"><a href="#cb430-1"></a><span class="co"># Check status</span></span>
+<span id="cb430-2"><a href="#cb430-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5372,13 +5477,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> In order to match things in subdirectories, we need to add <code>**/</code> to the start of the pattern. So <code>**/doc</code> will match <code>/doc</code> in both the directory where <code>.gitignore</code> is located as well as in subdirectories:</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb419-1"><a href="#cb419-1"></a><span class="co"># Ignores all `doc/` in both the root directory and within subdirectories</span></span>
-<span id="cb419-2"><a href="#cb419-2"></a><span class="bu">echo</span> <span class="st">&quot;**/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb419-3"><a href="#cb419-3"></a></span>
-<span id="cb419-4"><a href="#cb419-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb432-1"><a href="#cb432-1"></a><span class="co"># Ignores all `doc/` in both the root directory and within subdirectories</span></span>
+<span id="cb432-2"><a href="#cb432-2"></a><span class="bu">echo</span> <span class="st">&quot;**/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb432-3"><a href="#cb432-3"></a></span>
+<span id="cb432-4"><a href="#cb432-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## **/doc</code></pre>
-<div class="sourceCode" id="cb421"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb421-1"><a href="#cb421-1"></a><span class="co"># Check status</span></span>
-<span id="cb421-2"><a href="#cb421-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb434-1"><a href="#cb434-1"></a><span class="co"># Check status</span></span>
+<span id="cb434-2"><a href="#cb434-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5391,13 +5496,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Having <code>/**/</code> in the middle of the path will match zero or more directories:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb423-1"><a href="#cb423-1"></a><span class="co"># Ignores `output/doc` and `output/plots/doc`</span></span>
-<span id="cb423-2"><a href="#cb423-2"></a><span class="bu">echo</span> <span class="st">&quot;output/**/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb423-3"><a href="#cb423-3"></a></span>
-<span id="cb423-4"><a href="#cb423-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb436-1"><a href="#cb436-1"></a><span class="co"># Ignores `output/doc` and `output/plots/doc`</span></span>
+<span id="cb436-2"><a href="#cb436-2"></a><span class="bu">echo</span> <span class="st">&quot;output/**/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb436-3"><a href="#cb436-3"></a></span>
+<span id="cb436-4"><a href="#cb436-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## output/**/doc</code></pre>
-<div class="sourceCode" id="cb425"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb425-1"><a href="#cb425-1"></a><span class="co"># Check status</span></span>
-<span id="cb425-2"><a href="#cb425-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb438-1"><a href="#cb438-1"></a><span class="co"># Check status</span></span>
+<span id="cb438-2"><a href="#cb438-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5412,13 +5517,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> Having just <code>*</code> in the path will match any <em>one</em> directory:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb427-1"><a href="#cb427-1"></a><span class="co"># Ignores `output/plots/doc`</span></span>
-<span id="cb427-2"><a href="#cb427-2"></a><span class="bu">echo</span> <span class="st">&quot;output/*/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb427-3"><a href="#cb427-3"></a></span>
-<span id="cb427-4"><a href="#cb427-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb440-1"><a href="#cb440-1"></a><span class="co"># Ignores `output/plots/doc`</span></span>
+<span id="cb440-2"><a href="#cb440-2"></a><span class="bu">echo</span> <span class="st">&quot;output/*/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb440-3"><a href="#cb440-3"></a></span>
+<span id="cb440-4"><a href="#cb440-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## output/*/doc</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb429-1"><a href="#cb429-1"></a><span class="co"># Check status</span></span>
-<span id="cb429-2"><a href="#cb429-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb442-1"><a href="#cb442-1"></a><span class="co"># Check status</span></span>
+<span id="cb442-2"><a href="#cb442-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet
@@ -5434,13 +5539,13 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 ## 
 ## nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p><br> This matches all <code>doc/</code> folders that’s inside some arbitrary folder (indicated by <code>*</code>) that’s located in the root directory (i.e., directory where <code>.gitignore</code> is located):</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb431-1"><a href="#cb431-1"></a><span class="co"># Ignores `output/doc` and `input/doc`</span></span>
-<span id="cb431-2"><a href="#cb431-2"></a><span class="bu">echo</span> <span class="st">&quot;*/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
-<span id="cb431-3"><a href="#cb431-3"></a></span>
-<span id="cb431-4"><a href="#cb431-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb444-1"><a href="#cb444-1"></a><span class="co"># Ignores `output/doc` and `input/doc`</span></span>
+<span id="cb444-2"><a href="#cb444-2"></a><span class="bu">echo</span> <span class="st">&quot;*/doc&quot;</span> <span class="op">&gt;</span> .gitignore</span>
+<span id="cb444-3"><a href="#cb444-3"></a></span>
+<span id="cb444-4"><a href="#cb444-4"></a><span class="fu">cat</span> .gitignore</span></code></pre></div>
 <pre><code>## */doc</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb433-1"><a href="#cb433-1"></a><span class="co"># Check status</span></span>
-<span id="cb433-2"><a href="#cb433-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb446-1"><a href="#cb446-1"></a><span class="co"># Check status</span></span>
+<span id="cb446-2"><a href="#cb446-2"></a><span class="fu">git</span> status -u</span></code></pre></div>
 <pre><code>## On branch master
 ## 
 ## No commits yet

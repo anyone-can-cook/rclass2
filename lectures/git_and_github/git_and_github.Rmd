@@ -2993,6 +2993,163 @@ cat create_dataset.R
 
 </details>
 
+## `git pull`
+
+**`git pull`**: Incorporate remote changes into your current branch
+
+- Help: `git pull --help`
+- Syntax:
+  - `git pull`: This is equivalent to a `git fetch` followed by a `git merge` to incorporate remote changes to your current branch
+- Notes:
+  - `git fetch` is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don't actually want to merge these changes into your local repository yet. On the other hand, running `git pull` will directly incorporate the changes.
+  - More specifically, `git fetch` will incorporate changes into your remote-tracking branch (e.g., `origin/master`, your local copy of the remote `master` branch) but not your local branch (e.g., your  local `master` branch). Then, `git merge` can merge the change from your remote-tracking branch into your local branch.
+
+![](https://miro.medium.com/max/600/1*SKR0Zz4S0M_0Rp-aPsZw0Q.png)
+
+*Credit: [Medium, Git Fetch vs Git Pull](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239)*
+
+<br>
+<details><summary>**Example**: Using `git pull` to incorporate remote changes</summary>
+
+Let's say your remote branch is ahead of your local branch by some commits. You can run `git pull` to incorporate those changes:
+
+```{bash, eval=F}
+# Incorporate remote changes to current branch
+git pull
+```
+
+<br>
+After you run the command, you may see some output indicating the progress as remote changes are being fetched:
+
+```
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+```
+
+<br>
+Then, the output will look something like the below:
+
+- The 1st line indicates which remote repository it is fetching from
+- The 2nd line displays the hash IDs of your latest commit before and after the fetch, as well as which branch you are updating with the fetch
+  - In the example below, the fetch has updated our `origin/master` branch, which is our local copy of the remote `master` branch
+- The 3rd line again displays the latest commit hash before and after the update
+- The 4th line indicates what kind of merge was performed (since `git pull` is just `git fetch` followed by `git merge`)
+- The next lines list out which files were changed and what changes were made (i.e., how many lines were added, how many lines were deleted)
+- The final line shows a summary of the total number of files changed, the total number of lines added (i.e., insertions), and the total number of lines deleted (i.e., deletions)
+
+```
+From github.com:anyone-can-cook/student_lastname_firstname
+   1eeaff7..6c3e46f  master     -> origin/master
+Updating 1eeaff7..6c3e46f
+Fast-forward
+ README.md | 2 ++
+ my_script.R | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+```
+
+As we'll see in the next example, the first 2 lines of the output comes from `git fetch` being run and the remaining lines come from `git merge`.
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `git fetch` and `git merge` to incorporate remote changes</summary>
+
+Running `git pull` essentially performs a `git fetch` followed by `git merge`. If we only want to fetch the remote changes to our local repository but not incorporate them into our current branch, we can use `git fetch`:
+
+```{bash, eval=F}
+# Fetch remote changes
+git fetch
+```
+
+```
+From github.com:anyone-can-cook/student_lastname_firstname
+   1eeaff7..6c3e46f  master     -> origin/master
+```
+
+<br>
+We can verify that the fetch only updated our remote-tracking branch `origin/master` (i.e., our local copy of the remote `master` branch) and not our local `master` branch by checking the commit history of the branches. 
+
+Assuming we are currently on our local `master` branch, we can run `git log` to view the commit history. In the output, we see `HEAD -> master` next to the most recent commit, indicating that `HEAD` is pointing to this commit on the `master` branch:
+
+```{bash, eval=F}
+# Check commit history of local `master` branch
+git log
+```
+
+```
+commit e329908682dfefba0417bd7337cc660d0d5f133d (HEAD -> master)
+Author: username <email@example.com>
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit
+```
+
+Next, we can check the commit log of the remote-tracking branch `origin/master`. In the output below, we can see that the changes have indeed been fetched to this branch, as indicated by the presence of the second commit. In parentheses next to the commits, we can again see that our local `master` branch still only contains the first commit while `origin/master` and `origin/HEAD` has been updated with the second. `HEAD` always points to the latest commit on your current (active) branch, so it also appears next to the second commit:
+
+```{bash, eval=F}
+# Check commit history of `origin/master`
+git log origin/master
+```
+
+```
+commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD, origin/master, origin/HEAD)
+Author: username <email@example.com>
+Date:   Fri Jan 22 11:27:40 2021 -0800
+
+    second commit
+
+commit e329908682dfefba0417bd7337cc660d0d5f133d (master)
+Author: username <email@example.com>
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit
+```
+
+<br>
+After we are satisfied with the fetched changes, we can manually merge them into our local `master` branch:
+
+```{bash, eval=F}
+# Merge changes from `origin/master` into local `master`
+git merge origin/master
+```
+
+```
+Updating 1eeaff7..6c3e46f
+Fast-forward
+ README.md | 2 ++
+ my_script.R | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+```
+
+Alternatively, we could have just run `git pull` instead of `git merge origin/master` and it would've also merged in the changes (after performing `git fetch` again).
+
+<br>
+If we check the commit history on our local `master` branch again, we can see it has now been updated:
+
+```{bash, eval=F}
+# Check commit history of local `master` branch
+git log
+```
+
+```
+commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD -> master, origin/master, origin/HEAD)
+Author: username <email@example.com>
+Date:   Fri Jan 22 11:27:40 2021 -0800
+
+    second commit
+
+commit e329908682dfefba0417bd7337cc660d0d5f133d
+Author: username <email@example.com>
+Date:   Fri Jan 22 11:15:50 2021 -0800
+
+    initial commit
+```
+
+</details>
+
 ## Merge conflicts
 
 When attempting a `git merge`, conflict can arise **when starting** a merge or **during** the merge. (From [Git merge conflicts](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
