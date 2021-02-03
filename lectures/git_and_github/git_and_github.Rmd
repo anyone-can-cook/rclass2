@@ -2525,7 +2525,8 @@ Why use **branches**?
   - `git branch [<option(s)>]`: List existing branches (default: only local branches)
     - There will be a `*` next to your current branch
     - Options:
-      - `-a`: List all branches, both local and remote
+      - `-a`: List all branches, both local and remote (remote branches will start with `remotes/`)
+      - `-r`: List only remote branches
       - `-v`: Display details about latest commits next to each branch
   - `git branch <branch_name>`: Create new local branch
   - `git branch -d <branch_name>`: Delete local branch
@@ -2533,6 +2534,8 @@ Why use **branches**?
 
 <br>
 <details><summary>**Example**: Using `git branch` to list branches</summary>
+
+Let's create a new git repository in the example below. Note that we will not be able to list branches until we've made at least 1 commit:
 
 ```{bash, echo=-c(1:4)}
 cd ~  # change to root directory
@@ -2565,24 +2568,45 @@ cd ~/my_git_repo
 git branch
 ```
 
+<br>
+We can use the `-v` option to list branches with more details about the latest commit on each branch:
+
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# See detailed branch listing with info about the latest commit
+# See detailed branch listing
 git branch -v
 ```
+
+<br>
+The `-a` option will list both local and remote branches. Remote branches will start with `remotes/` in the output. They will also include both the remote repository name and the branch name (e.g., `origin/master` in the example below). In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `master` branch in the example below):
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
 
-# If the repository is connected to a remote, the `-a` option will list remote branches too
-# (In the specific example below, the remote is named `origin`)
+# List local and remote branches
 git branch -a
 ```
 
 ```
 ## * master
 ##   remotes/origin/HEAD -> origin/master
+##   remotes/origin/master
+```
+
+<br>
+To list only information on remote branches, we can use the `-r` option. Notice that the names do not have `remotes/` prepended, as that only appears when listing all branches using `-a` to be able to distinguish between local and remote branches:
+
+```{bash, echo=-c(1:2), eval=FALSE}
+cd ~/my_git_repo
+
+# List only remote branches
+git branch -r
+```
+
+```
+##   origin/HEAD -> origin/master
+##   origin/master
 ```
 
 </details>
@@ -2703,6 +2727,37 @@ git branch
 ```
 
 </details>
+
+## Pushing new local branch
+
+What is an **upstream branch**?
+
+- An **upstream** branch is the remote branch that your local branch is tracking (i.e., where it will push to and pull from)
+- When you push a new local branch to the remote for the first time, you will need to set the upstream branch using `git push --set-upstream <remote_name> <branch_name>` (or equivalently, `git push -u <remote_name> <branch_name>`)
+  - We've seen this before [earlier in the lecture](#create-new-git-repository-on-your-local-machine-and-add-to-github), when we initialized a new git repository on our local machine and wanted to push our `master` branch to GitHub for the first time
+- The figure below summarizes the connection between a local and remote branch. We see that the local `dev` branch is tracking the remote `dev` branch (i.e., the **upstream branch**). Recall that [under the hood](#head-and-refs), we also have a local copy of the remote repository, so `origin/dev` here is this local, remote-tracking branch.
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/upstream_branch.png){width=600px}
+
+*Credit: [devconnected, How To Set Upstream Branch on Git](https://devconnected.com/how-to-set-upstream-branch-on-git/)*
+
+<br>
+**Example**: Pushing a new local branch to the remote
+
+When you create a new local branch, you may choose to push it to the remote if you want a copy of it on GitHub, or if you want others to be able to contribute to it. When you push a local branch for the first time, you are required to set the upstream branch, otherwise it won't let you push. Then, all subsequent pushes after this first one can just be `git push`.
+
+In the example below, let's say we created a new branch `dev` that we want to push to a remote named `origin`:
+
+```{bash, eval=F}
+# Create and switch to new branch
+git checkout -b dev
+
+# Push branch to remote for the first time
+git push -u origin dev
+
+# Any subsequent pushes
+git push
+```
 
 # Merging
 
