@@ -35,7 +35,7 @@ library(lubridate)
 
 ## Lecture overview
 
-The **programming unit** will introduce you to tools that tell the computer to do the same or similar things over and over, without writing code over and over. And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify. 
+The **programming unit** will introduce you to tools that tell your computer to do the same or similar things over and over, without having to write the code over and over (e.g., iteration). And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify. 
 
 Paraphrasing **Will Doyle**:
 
