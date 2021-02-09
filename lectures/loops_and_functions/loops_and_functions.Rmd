@@ -1,5 +1,5 @@
 ---
-title: "Programming"
+title: "Programming in R"
 author: 
 date: 
 urlcolor: blue
@@ -24,423 +24,37 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
 
 # Introduction
 
+## Libraries we will use
+
 Load packages:
 
 ```{r, message=FALSE}
 library(tidyverse)
-library(ggplot2)
 library(lubridate)
 ```
 
+## Lecture overview
 
-The "programming" unit will introduce you to tools that tell the computer to do the same or similar things over and over, without writing code over and over. And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify. 
+The **programming unit** will introduce you to tools that tell the computer to do the same or similar things over and over, without writing code over and over. And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify. 
 
-Paraphrasing Will Doyle
+Paraphrasing **Will Doyle**:
 
 > "Computers love to do the same thing over and over. It's their favorite thing to do. Learn to make your computer happy."
 
-The core foci of this unit are:
+The **3 core foci** of this unit are:
 
-- iteration (loops)
-- conditionals (if, if else)
-- functions
+- Iteration (loops)
+- Conditionals (if, if/else)
+- Functions
 
-But more than learning these things, this unit is about developing a more formal, rigorous understanding of programming concepts so that you can become a more powerful programmer. Towards that end, we will be reading chapters from Wickhams free text book [_Advanced R_](https://adv-r.hadley.nz/)
+But more than learning these things, this unit is about developing a more formal, rigorous understanding of programming concepts so that you can become a more powerful programmer. Towards that end, we will be reading chapters from Wickham's free text book [_Advanced R_](https://adv-r.hadley.nz/).
 
   
 In fact, please spend 10 minutes reading the [Chapter 1](https://adv-r.hadley.nz/introduction.html) (sections 1.1 through 1.5)
 
 # Foundational concepts
 
-## Data structures and types
-
-What is an **object**?
-
-- Everything in R is an object
-- We can classify objects based on their _class_ and _type_
-- The _class_ of the object determines what kind of functions we can apply to it
-  - E.g., "Date" functions usually only work on objects with a `Date` class
-  - E.g., "String" functions usually only work with on objects with a `character` class
-  - E.g., Functions that do mathematical computation usually work on objects with a `numeric` class
-- Objects may be combined to form data structures
-
-<br>
-<details><summary>Class and object-oriented programming</summary>
-
-> "Object-oriented programming (OOP) refers to a type of computer programming in which programmers define not only the data type of a data structure, but also the types of operations (functions) that can be applied to the data structure."
-
-*Source: [Webopedia](https://www.webopedia.com/TERM/O/object_oriented_programming_OOP.html)*
-
-<br>
-R is an **object-oriented programming language**:
-
-- The _class_ of an object is fundamental to object-oriented programming because:
-  - It determines which functions can be applied to the object
-  - It also determines what those functions do to the object
-    - E.g., A specific function might do one thing to objects of __class__ A and another thing to objects of __class__ B
-    - What a function does to objects of different class is determined by whoever wrote the function
-- Many different object classes exist in R
-- You can also create our own classes
-    - E.g., The `labelled` class is an object class created by Hadley Wickham when he created the `haven` package
-- In this course we will work with classes that have been created by others
-
-</details>
-<br>
-
-[![](https://d33wubrfki0l68.cloudfront.net/1d1b4e1cf0dc5f6e80f621b0225354b0addb9578/6ee1c/diagrams/data-structures-overview.png){width=400px}](https://r4ds.had.co.nz/vectors.html)
-
-*Credit: [R for Data Science](https://r4ds.had.co.nz/vectors.html)*
-
-<br>
-Basic **data structures**:
-
-- [Atomic vectors](#atomtic-vectors)
-- [Lists](#lists)
-  - [Dataframes](#dataframes)
-  
-Basic **data types**:
-
-- Logical (`TRUE`, `FALSE`)
-- Numeric (e.g., `5`, `2.5`)
-- Integer (e.g., `1L`, `4L`, where `L` tells R to store as `integer` type)
-- Character (e.g., `"R is fun"`)
-
-Functions for investigating R objects (From [Data Types and Structures](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/))
-
-- `str()`: Compactly display the internal structure of an R object
-- `class()`: What kind of object is it (high-level)?
-- `typeof()`: What is the object's data type (low-level)?
-
-### Atomtic vectors
-
-What are **atomic vectors**?
-
-- **Atomic vectors** are objects that contains elements
-- Elements must be of the same data type (i.e., _homogeneous_)
-- Elements can be named to form a _named atomic vector_
-- The `class()` and `typeof()` a vector describes the elements it contains
-
-<br>
-<details><summary>**Example**: Investigating logical vectors</summary>
-
-```{r}
-v <- c(TRUE, FALSE, FALSE, TRUE)
-str(v)
-class(v)
-typeof(v)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Investigating numeric vectors</summary>
-
-```{r}
-v <- c(1, 3, 5, 7)
-str(v)
-class(v)
-typeof(v)
-```
-</details>
-
-<br>
-<details><summary>**Example**: Investigating integer vectors</summary>
-
-```{r}
-v <- c(1L, 3L, 5L, 7L)
-str(v)
-class(v)
-typeof(v)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Investigating character vectors</summary>
-
-Each element in a `character` vector is a **string** (covered in next section):
-
-```{r}
-v <- c("a", "b", "c", "d")
-str(v)
-class(v)
-typeof(v)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Investigating named vectors</summary>
-
-```{r}
-v <- c(v1 = 1, v2 = 2, v3 = 3)
-v
-str(v)
-class(v)
-typeof(v)
-```
-
-</details>
-
-
-### Lists
-
-What are **lists**?
-
-- **Lists** are objects that contains elements
-- Elements do not need to be of the same type (i.e., _heterogeneous_)
-  - Elements can be atomic vectors or even other lists
-- Elements can be named to form a _named list_
-- The `class()` and `typeof()` a list is `list`
-
-<br>
-<details><summary>**Example**: Investigating heterogeneous lists</summary>
-
-```{r}
-l <- list(2.5, "abc", TRUE, c(1L, 2L, 3L))
-str(l)
-class(l)
-typeof(l)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Investigating nested lists</summary>
-
-```{r}
-l <- list(list(TRUE, c(1, 2, 3), list(c("a", "b", "c"))), FALSE, 10L)
-str(l)
-class(l)
-typeof(l)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Investigating named lists</summary>
-
-```{r}
-l <- list(l1 = 1, l2 = c("apple", "orange"), l3 = list(1, 2, 3))
-str(l)
-class(l)
-typeof(l)
-```
-
-</details>
-
-
-#### Dataframes
-
-What are **dataframes**?
-
-- **Dataframes** are a special kind of **list** with the following characteristics:
-  - Each element is a **vector** (i.e., _a column in the dataframe_)
-  - The element should be named (i.e., _column name in the dataframe_)
-  - Each of the vectors must be the same length (i.e., _same number of rows in the dataframe_)
-  - The data type of each vector may be different
-- Dataframes can be created using the function `data.frame()`
-- The `class()` of  a dataframe is `data.frame`
-- The `typeof()` a dataframe is `list`
-
-
-<br>
-<details><summary>**Example**: Investigating dataframe</summary>
-
-```{r}
-df <- data.frame(
-  colA = c(1, 2, 3),
-  colB = c("a", "b", "c"),
-  colC = c(TRUE, FALSE, TRUE),
-  stringsAsFactors = FALSE
-)
-df
-str(df)
-class(df)
-typeof(df)
-```
-
-</details>
-
-### Identifying object types
-
-Functions for identifying object types (_returns `TRUE` or `FALSE`_):
-
-- `is.logical()`: Is object of type `logical`?
-- `is.integer()`: Is object of type `integer`?
-- `is.double()`: Is object of type `double`?
-- `is.numeric()`: Is object of type `numeric`?
-- `is.character()`: Is object of type `character`?
-- `is.atomic()`: Is object of type `atomic`?
-- `is.list()`: Is object of type `list`?
-- `is.vector()`: Is object of type `vector`?
-
-
-Function | logical | int | dbl | chr | list
----------|---------|-----|-----|-----|-----
-`is.logical()` | X | | | |
-`is.integer()` |  |X | | |
-`is.double()` |  | |X | |
-`is.numeric()` |  |X |X | |
-`is.character()` |  | | |X |
-`is.atomic()` |X  |X |X |X |
-`is.list()` |  | | | | X
-`is.vector()` |X  |X |X |X |X
-
-<br>
-<details><summary>**Example**: Identifying object types</summary>
-
-```{r}
-v <- c(5, 6, 7)
-is.logical(v)
-is.integer(v)
-is.double(v)
-is.numeric(v)
-is.character(v)
-is.atomic(v)
-is.list(v)
-is.vector(v)
-```
-
-</details>
-
-
-### Converting between classes
-
-Functions for converting between classes:
-
-- `as.logical()`: Convert to `logical`
-- `as.numeric()`: Convert to `numeric`
-- `as.integer()`: Convert to `integer`
-- `as.character()`: Convert to `character`
-- `as.list()`: Convert to `list`
-- `as.data.frame()`: Convert to `data.frame`
-
-
-<br>
-<details><summary>**Example**: Using `as.logical()` to convert to `logical`</summary>
-
-Character vector coerced to logical vector:
-
-```{r}
-# Only "TRUE"/"FALSE", "True"/"False", "T"/"F", "true"/"false" are able to be coerced to logical type
-as.logical(c("TRUE", "FALSE", "True", "False", "true", "false", "T", "F", "t", "f", ""))
-```
-
-Numeric vector coerced to logical vector:
-
-```{r}
-# 0 is treated as FALSE, while all other numeric values are treated as TRUE
-as.logical(c(0, 0.0, 1, -1, 20, 5.5))
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `as.numeric()` to convert to `numeric`</summary>
-
-Logical vector coerced to numeric vector:
-
-```{r}
-# FALSE is mapped to 0 and TRUE is mapped to 1
-as.numeric(c(FALSE, TRUE))
-```
-
-Character vector coerced to numeric vector:
-
-```{r, warning = FALSE}
-# Strings containing numeric values can be coerced to numeric (leading 0's are dropped) 
-# All other characters become NA
-as.numeric(c("0", "007", "2.5", "abc", "."))
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `as.integer()` to convert to `integer`</summary>
-
-Logical vector coerced to integer vector:
-
-```{r}
-# FALSE is mapped to 0 and TRUE is mapped to 1
-as.integer(c(FALSE, TRUE))
-```
-
-Character vector coerced to integer vector:
-
-```{r, warning = FALSE}
-# Strings containing numeric values can be coerced to integer (leading 0's are dropped, decimals are truncated) 
-# All other characters become NA
-as.integer(c("0", "007", "2.5", "abc", "."))
-```
-
-Numeric vector coerced to integer vector:
-
-```{r, warning = FALSE}
-# All decimal places are truncated
-as.integer(c(0, 2.1, 10.5, 8.8, -1.8))
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `as.character()` to convert to `character`</summary>
-
-Logical vector coerced to character vector:
-
-```{r}
-as.character(c(FALSE, TRUE))
-```
-
-Numeric vector coerced to character vector:
-
-```{r, warning = FALSE}
-as.character(c(-5, 0, 2.5))
-```
-
-Integer vector coerced to character vector:
-
-```{r, warning = FALSE}
-as.character(c(-2L, 0L, 10L))
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `as.list()` to convert to `list`</summary>
-
-Atomic vectors coerced to list:
-
-```{r}
-# Logical vector
-as.list(c(TRUE, FALSE))
-
-# Character vector
-as.list(c("a", "b", "c"))
-
-# Numeric vector
-as.list(1:3)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `as.data.frame()` to convert to `data.frame`</summary>
-
-Lists coerced to dataframe:
-
-```{r}
-# Create a list
-l <- list(A = c("x", "y", "z"), B = c(1, 2, 3))
-str(l)
-
-# Convert to class `data.frame`
-df <- as.data.frame(l, stringsAsFactors = F)
-str(df)
-```
-
-</details>
-
+See [here](https://anyone-can-cook.github.io/rclass1/lectures/strings_dates_time/strings_dates_time.html#2_Data_structures_and_types) for a review of data structures and types.
 
 ## Subsetting elements
 
@@ -454,21 +68,21 @@ What is **subsetting**?
 <br>
 For the examples in the next few subsections, we will be working with the following named atomic vector, named list, and dataframe:
 
-- Create named atomic vector called `v` with 4 elements
+- Create **named atomic vector** called `v` with 4 elements
 
     ```{r}
     v <- c(a = 10, b = 20, c = 30, d = 40)
     v
     ```
 
-- Create named list called `l` with 4 elements
+- Create **named list** called `l` with 4 elements
 
     ```{r}
     l <- list(a = TRUE, b = c("a", "b", "c"), c = list(1, 2), d = 10L)
     l
     ```
 
-- Create dataframe called `df` with 4 columns and 3 rows
+- Create **dataframe** called `df` with 4 columns and 3 rows
 
     ```{r}
     df <- data.frame(
@@ -479,6 +93,8 @@ For the examples in the next few subsections, we will be working with the follow
     )
     df
     ```
+
+<br>
     
 ### Subsetting using `[]`
 
@@ -487,9 +103,9 @@ The `[]` operator:
 - Subsetting an object using `[]` returns an object of the same type
   - E.g., Using `[]` on an atomic vector returns an atomic vector, using `[]` on a list returns a list, etc.
 - The returned object will contain the element(s) you selected
-- Object attributes are retained when using `[]` (e.g., _name_)
+- Object attributes are retained when using `[]` (e.g., _name_ attribute)
 
-Six ways to subset using `[]`:
+**Six ways** to subset using `[]`:
 
 1. Use positive integers to return elements at specified index positions
 2. Use negative integers to exclude elements at specified index positions
@@ -504,13 +120,13 @@ Six ways to subset using `[]`:
 **Selecting a single element**: Specify the index of the element to subset
 
 ```{r}
-# Select 1st element from numeric vector (note that names attribute is retained)
+# Select 1st element from numeric vector (note that `names` attribute is retained)
 v[1]
 
 # Subsetted object will be of type `numeric`
 class(v[1])
 
-# Select 1st element from list (note that names attribute is retained)
+# Select 1st element from list (note that `names` attribute is retained)
 l[1]
 
 # Subsetted object will be a `list` containing the element
@@ -542,7 +158,7 @@ class(l[c(1,1,1)])
 **Excluding a single element**: Specify the index of the element to exclude
 
 ```{r}
-# Exclude 1st element from numeric vector (note that names are retained)
+# Exclude 1st element from numeric vector
 v[-1]
 
 # Subsetted object will be of type `numeric`
@@ -587,7 +203,8 @@ class(l[c(FALSE, TRUE)])
 ```
 
 <br>
-We can also write expressions that evaluates to either `TRUE` or `FALSE`:
+We can also write expressions that evaluate to either `TRUE` or `FALSE`:
+
 ```{r}
 # This expression is recycled and evaluates to be equivalent to `l[c(FALSE, FALSE, TRUE, TRUE)]`
 v[v > 20]
@@ -645,6 +262,7 @@ l[c("a", "c")]
 ```
 
 </details>
+<br>
 
 ### Subsetting using `[[]]`
 
@@ -652,18 +270,18 @@ The `[[]]` operator:
 
 - We can only use `[[]]` to extract a single element rather than multiple elements
 - Subsetting an object using `[[]]` returns the selected element itself, which might not be of the same type as the original object
-  - E.g., Using `[[]]` to select an element from a list that is a numeric vector will return that numeric vector and not a list containing that numeric vector, like what `[]` would return
+  - E.g., Using `[[]]` to select a list element that is a numeric vector will return that numeric vector and not a list containing that numeric vector, like what `[]` would return
     - Let `x` be a list with 3 elements (_Think of it as a train with 3 cars_)
-    [![](https://d33wubrfki0l68.cloudfront.net/1f648d451974f0ed313347b78ba653891cf59b21/8185b/diagrams/subsetting/train.png)](https://adv-r.hadley.nz/subsetting.html#subset-single)
+    ![](https://d33wubrfki0l68.cloudfront.net/1f648d451974f0ed313347b78ba653891cf59b21/8185b/diagrams/subsetting/train.png)
     - `x[1]` will be a list containing the 1st element, which is a numeric vector (i.e., _train with the 1st car_)
     - `x[[1]]` will be the numeric vector itself (i.e., _the objects within the 1st car_)
-    [![](https://d33wubrfki0l68.cloudfront.net/aea9600956ff6fbbc29d8bd49124cca46c5cb95c/28eaa/diagrams/subsetting/train-single.png)](https://adv-r.hadley.nz/subsetting.html#subset-single)
+    ![](https://d33wubrfki0l68.cloudfront.net/aea9600956ff6fbbc29d8bd49124cca46c5cb95c/28eaa/diagrams/subsetting/train-single.png)
     - *Source: Subsetting from [R for Data Science](https://adv-r.hadley.nz/subsetting.html)*
 - Object attributes are removed when using `[[]]`
   - E.g., Using `[[]]` on a named object returns just the selected element itself without the name attribute
 
 <br>
-Two ways to subset using `[[]]`:
+**Two ways** to subset using `[[]]`:
 
 1. Use a positive integer to return an element at the specified index position
 2. If object is named, using a character to return an element with the specified name
@@ -672,13 +290,13 @@ Two ways to subset using `[[]]`:
 <details><summary>**Example**: Using positive integer with `[[]]`</summary>
 
 ```{r}
-# Select 1st element from numeric vector (note that names attribute is gone)
+# Select 1st element from numeric vector (note that `names` attribute is gone)
 v[[1]]
 
 # Subsetted element is `numeric`
 class(v[[1]])
 
-# Select 1st element from list (note that names attribute is gone)
+# Select 1st element from list (note that `names` attribute is gone)
 l[[1]]
 
 # Subsetted element is `logical`
@@ -705,7 +323,7 @@ class(l[["b"]])
 ```
 
 </details>
-
+<br>
 
 ### Subsetting using `$`
 
@@ -728,7 +346,7 @@ class(l$b)
 ```
 
 <br>
-Since dataframes is just a special kind of named list, it would work the same way:
+Since dataframes are just a special kind of named list, it would work the same way:
 
 ```{r}
 # Equivalent to df[["d"]]
@@ -736,6 +354,7 @@ df$d
 ```
 
 </details>
+<br>
 
 ### Subsetting dataframes
 
@@ -749,6 +368,7 @@ Subsetting dataframes with `[]`, `[[]]`, and `$`:
     - If a single cell is selected, or cells from the same column, then these would be returned as an object of the same type as that column (similar to how `[[]]` normally works)
     - Otherwise, the subsetted object would be a dataframe, as we'd normally expect when using `[]`
   - `df_name[[<row>, <column>]]` returns the selected cell
+    - This is equivalent to selecting a single cell using `df_name[<row(s)>, <column(s)>]`
 
 <br>
 <details><summary>**Example**: Subsetting dataframe column(s) with `[]`</summary>
@@ -756,13 +376,13 @@ Subsetting dataframes with `[]`, `[[]]`, and `$`:
 We can subset dataframe column(s) the same way we have subsetted atomic vector or list element(s):
 
 ```{r}
-# Select 1st column from dataframe (note that names attribute is retained)
+# Select 1st column from dataframe (note that `names` attribute is retained)
 df[1]
 
 # Subsetted object will be a `data.frame` containing the column
 class(df[1])
 
-# Exclude 1st and 3rd columns from dataframe (note that names attribute is retained)
+# Exclude 1st and 3rd columns from dataframe (note that `names` attribute is retained)
 df[-c(1,3)]
 
 # Subsetted object will be a `data.frame` containing the remaining columns
@@ -777,7 +397,7 @@ class(df[-c(1,3)])
 We can select a single dataframe column the same way we have subsetted a single atomic vector or list element:
 
 ```{r}
-# Select 1st column from dataframe by its index (note that names attribute is gone)
+# Select 1st column from dataframe by its index (note that `names` attribute is gone)
 df[[1]]
 
 # Subsetted column is `numeric` vector
@@ -867,264 +487,7 @@ df[1, 2]
 ```
 
 </details>
-
-## Attributes [SKIP]
-
-### Augmented vectors
-
-What are **augmented vectors** and **attributes**?
-
-- Atomic vectors can be thought of as "just the data", while **augmented vectors** are atomic vectors with additional attributes attached
-- **Attributes** are additional "metadata" that can be attached to any object (e.g., vector or list)
-  - E.g., __Value labels__: Character labels (e.g., "Charter School") attached to numeric values
-  - E.g., __Object class__: Specifies how object is treated by object oriented programming language
-- Recall that when we subset by `[]`, all the attributes are retained. When we subset by `[[]]`, we get back "just the data" without any of the attributes.
-
-**Example**: Variables of a dataset
-
-- A data frame is a list
-- Each element in the list is a variable (i.e., column), which consists of:
-    - Atomic vector ("just the data")
-    - Variable _name_, which is an attribute we attach to the element/variable
-    - Any other attributes we want to attach to element/variable
-
-__Main takaway__:
-
-- Augmented vectors are atomic vectors (just the data) with additional attributes attached
-- Description of attributes from [Wickham and Grolemund](https://r4ds.had.co.nz/vectors.html#attributes):
-  - "Any vector can contain arbitrary additional __metadata__ through its __attributes__"
-  - "You can think of __attributes__ as named list of vectors that can be attached to any object"
-- Functions to identify and modify attributes
-  - `attributes()`: View all attributes of an object or set/change all attributes of an object
-  - `attr()`: View individual attribute of an object or set/change an individual attribute of an object
-
-### `attributes()` function
-
-__The `attributes()` function__:
-
-```{r, eval=FALSE}
-?attributes
-
-# SYNTAX
-attributes(x)  # Get attributes
-attributes(x) <- value  # Set attributes
-```
-
-- Function: Get or set all attributes of an object
-- Arguments
-  - `x`: The object whose attributes we want to view or modify
-  - `value`: In the assignment form, the value we want to set all attributes to be
-
 <br>
-<details><summary>**Example**: Using `attributes()` to get attributes of object</summary>
-
-Recall our dataframe `df` from the previous examples, which has multiple attributes:
-
-```{r}
-df
-
-# View attributes of dataframe
-attributes(df)
-```
-
-<br>
-When we subset by `[]`, attributes are retained:
-
-```{r}
-# Subset 1st column using `[]`
-df[1]
-
-# Attributes are retained when we subset by `[]`
-attributes(df[1])
-```
-
-<br>
-When we subset by `[[]]`, attributes are removed and we are left with "just the data":
-
-```{r}
-# Subset 1st column using `[[]]`
-df[[1]]
-
-# Attributes are gone when we subset by `[[]]`
-attributes(df[[1]])
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `attributes()` to set attributes of object</summary>
-
-Recall our named atomic vector `v` from the previous examples, which has the _name_ attribute:
-
-```{r}
-v
-
-# View attributes of atomic vector
-attributes(v)
-```
-
-<br>
-Remove all attributes from the vector:
-
-```{r}
-# Set all attributes to NULL
-attributes(v) <- NULL
-
-# The atomic vector is no longer named
-v
-
-# Confirm that the names attribute is no longer there
-attributes(v)
-```
-
-</details>
-
-### `attr()` function
-
-__The `attr()` function__:
-
-```{r, eval=FALSE}
-?attr
-
-# SYNTAX AND DEFAULT VALUES
-attr(x, which, exact = FALSE)  # Get attribute
-attr(x, which) <- value  # Set attribute
-```
-
-- Function: Get or set a specific attribute of an object
-- Arguments
-  - `x`: The object whose attribute we want to view or modify
-  - `which`: A non-empty string specifying which attribute is to be accessed
-  - `exact`: If set to `TRUE`, the attribute specified by `which` needs to be matched exactly
-  - `value`: In the assignment form, the value we want to set the attribute to be
-
-<br>
-<details><summary>**Example**: Using `attr()` to get attribute of object</summary>
-
-Recall our dataframe `df` from the previous examples, which has multiple attributes:
-
-```{r}
-df
-
-# View attributes of dataframe
-attributes(df)
-```
-
-<br>
-We can use `attr()` to fetch individual attributes:
-
-```{r}
-# Get the names attribute
-attr(df, "names")
-
-# Note that we don't have to provide the full name of attribute for it to be recognized
-attr(df, "nam")
-
-# If we specify `exact = TRUE`, then we do have to provide exact attribute name
-attr(df, "names", exact = TRUE)
-
-# This no longer works
-attr(df, "nam", exact = TRUE)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `attr()` to set attribute of object</summary>
-
-Recall the atomic vector `v` that we've removed all attributes from in the previous example:
-
-```{r}
-v
-
-# View attributes of atomic vector
-attributes(v)
-```
-
-<br>
-We can add back the `names` attributes using `attr()`:
-
-```{r}
-# Add back names attribute
-attr(v, "names") <- c("a", "b", "c", "d")
-
-# View attributes
-attributes(v)
-```
-
-<br>
-We can also create any other attributes we want:
-
-```{r}
-# Create new attribute called `greeting`
-attr(x = v, which = "greeting") <- "Hi!"
-
-# View `greeting` attribute
-attr(x = v, which = "greeting")
-
-# View all attributes
-attributes(v)
-```
-
-<br>
-We can use `NULL` to remove attributes:
-
-```{r}
-# Remove `greeting` attribute
-attr(x = v, which = "greeting") <- NULL
-
-# Try viewing `greeting` attribute
-attr(x = v, which = "greeting")
-
-# View all attributes
-attributes(v)
-```
-
-</details>
-
-<br>
-<details><summary>**Example**: Using `attr()` to set attribute of dataframe variable</summary>
-
-Unlike atomic vectors, we can also set attributes of individual elements of lists (which include dataframes). Recall our dataframe `df`:
-
-```{r}
-df
-
-# View attributes of dataframe
-attributes(df)
-```
-
-<br>
-We can also add attributes to an individual column (i.e., variable) of the dataframe using `[[]]` or `$`:
-
-```{r}
-# Equivalent to df[["a"]] - Remember this usually starts off as "just the data" with no attributes
-attributes(df$a)
-
-# Add an attribute
-attr(df$a, "description") <- "A is for Apple"
-
-# View attributes
-attributes(df$a)
-```
-
-<br>
-We can use `NULL` to remove attribute:
-
-```{r}
-# Remove `description` attribute
-attr(df$a, "description") <- NULL
-
-# Try viewing `description` attribute
-attr(df$a, "description")
-
-# View attributes
-attributes(df$a)
-```
-
-</details>
-
-## Names and values [EMPTY]
 
 ## Prerequisite concepts
 
@@ -1168,7 +531,7 @@ seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
 
 ```{r}
 # Sequence from 10 to 15, by increment of 1 (default)
-seq(10,15)
+seq(from=10, to=15)
 
 # Explicitly specify increment of 1 (equivalent to above)
 seq(from=10, to=15, by=1)
@@ -1176,6 +539,8 @@ seq(from=10, to=15, by=1)
 # Sequence from 100 to 150, by increment of 10
 seq(from=100, to=150, by=10)
 ```
+
+<br>
 
 ### Length
 
@@ -1189,7 +554,7 @@ length(x)
 ```
 
 - Function: Returns the number of elements in the object
-- Arguments:
+- Arguments
   - `x`: The object to find the length of
 
 <br>
@@ -1244,10 +609,11 @@ df[[2]]
 length(df[[2]])
 ```
 
+<br>
 
 ### Sequences and length
 
-When writing loops, it is very common to create a sequence from 1 to the length (i.e., number of elements) of an object.
+When writing loops, it is very common to create a sequence from 1 to the length (i.e., _number of elements_) of an object.
 
 <br>
 **Example**: Generating a sequence from 1 to length of `v`
@@ -1291,150 +657,13 @@ df
 seq_along(df)
 ```
 
-### Directories and paths [SKIP]
-
-<br>
-
-#### Current working directory
-
-When you run R code in an `.Rmd` file, the working directory is the directory that your `.Rmd` file is in:
-
-```{r}
-getwd()
-```
-
-<br>
-When you run an `.R` script, the working directory is the directory indicated at the top of your console in RStudio:
-
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/r_console.png)
-
-- This is typically your home directory if you are not working from an RStudio project
-- If you are working from an RStudio project, your working directory would be the project directory
-
-<br>
-
-#### Checking if a file or directory exists
-
-<br>
-__The `file.exists()` function__:
-
-```{r, eval = FALSE}
-?file.exists
-
-# SYNTAX
-file.exists(...)
-```
-
-- Function: Checks if a file exists
-- Argument(s): filename(s)
-
-<br>
-__The `dir.exists()` function__:
-
-```{r, eval = FALSE}
-?dir.exists
-
-# SYNTAX
-dir.exists(paths)
-```
-
-- Function: Checks if a directory exists
-- Argument(s): path(s)
-
-<br>
-
-#### Creating and deleting directories
-
-<br>
-__The `dir.create()` function__:
-
-```{r, eval = FALSE}
-?dir.create
-
-# SYNTAX AND DEFAULT VALUES
-dir.create(path, showWarnings = TRUE, recursive = FALSE, mode = "0777")
-```
-
-- Function: Creates new directories
-- Arguments  
-  - `path`: A character vector containing a single path name
-  - `showWarnings`: Should the warnings on failure be shown?
-    - If directory you want to create already exists, you will get a warning, but this won't cause the code to stop running
-  - `recursive`: Should elements of the path other than the last be created?
-    - That is, will `dir.create()` create the file path `new_directory/new_sub_directory` if neither `new_directory` nor `new_sub_directory` exist?
-
-<br>
-**Example**: Creating a new directory within current working directory
-
-```{r}
-# Check current working directory
-getwd()
-
-# Create new directory called `my_folder`
-dir.create(path = "my_folder")
-
-# Check that `my_folder` has been created
-list.files()
-```
-
-<br>
-__The `unlink()` function__:
-
-```{r, eval = FALSE}
-?unlink
-
-# SYNTAX AND DEFAULT VALUES
-unlink(x, recursive = FALSE, force = FALSE)
-```
-
-- Function: Deletes files or directories
-- Arguments  
-  - `x`: A character vector with the names of the files or directories to be deleted
-  - `recursive`: Should directories be deleted recursively?
-    - If recursive = `FALSE`, directories are not deleted, not even empty ones.
-  - `force`: Should permissions be changed (if possible) to allow the file or directory to be removed?
-
-<br>
-**Example**: Deleting a directory within current working directory
-
-```{r}
-# Delete `my_folder` we just created
-unlink(x = "my_folder", recursive = TRUE) 
-
-# Check that `my_folder` has been deleted
-list.files()
-```
-
-<br>
-
-#### File paths
-
-> We use the `file.path()` command because it is smart. Some computer operating systems use forward slashes, `/`, for their file paths; others use backslashes, `\`. Rather than try to guess or assume what operating system future users will use, we can use R's function, `file.path()`, to check the current operating system and build the paths correctly for us.
-
-*Credit: [Organizing Lecture](https://edquant.github.io/edh7916/lessons/organizing.html) by Ben Skinner*
-
-<br>
-__The `file.path()` function__:
-
-```{r, eval = FALSE}
-?file.path
-
-# SYNTAX AND DEFAULT VALUES
-file.path(..., fsep = .Platform$file.sep)
-```
-
-- Pass in each section of the file path as a separate argument
-  - Example: `file.path('.', 'lectures', 'week_1')` returns `'./lectures/week_1'`
-- You can also save this file path object in a variable
-  - Example: `lec_dir <- file.path('.', 'lectures', 'week_1')`
-
 
 # Iteration
 
 What is **iteration**?
 
 - Iteration is the repetition of some process or operation
-  - Example: Iteration can help with "repeating the same operation on different columns, or on different datasets" (From [R for Data Science](https://r4ds.had.co.nz/iteration.html))
+  - E.g., Iteration can help with "repeating the same operation on different columns, or on different datasets" (From [R for Data Science](https://r4ds.had.co.nz/iteration.html))
 - Looping is the most common way to iterate
 
 ## Loop basics
@@ -1449,9 +678,11 @@ What are **loops**?
 __Example__: Printing each element of the vector `c(1,2,3,4)` using a loop
 
 ```{r}
-c(1,2,3,4)  # There are 4 elements in the vector
+# There are 4 elements in the vector
+c(1,2,3,4)
 
-for(i in c(1,2,3,4)) {  # Iterate over each element of the vector
+# Iterate over each element of the vector
+for(i in c(1,2,3,4)) {
   print(i)  # Print out each element
 }
 ```
@@ -1496,12 +727,12 @@ Components of a **loop**:
         - In the second iteration, the value of `i` is `2`, etc.
 2. __Body__: What commands to execute for each iteration of the loop
     - In the above example, the body is `print(i)`
-    - Each time through the loop (i.e., iteration), body prints the value of object `i`
+    - Each time through the loop (i.e., _iteration_), body prints the value of object `i`
     
 
 ### Ways to write loop sequence
 
-You may see the loop sequence being written in slightly different ways. For example, these three loops all do the same thing:
+You may see the **loop sequence** being written in slightly different ways. For example, these three loops all do the same thing:
 
 - Looping over the vector `c(1,2,3)`
 
@@ -1534,7 +765,7 @@ When building a loop, it is useful to print out information to understand what t
 
 For example, the two loops below are essentially the same, but the second approach is preferable because it more clearly prints out what object we are working with inside the loop:
 
-- Using `print()` to print a single object `z`:
+- Using `print()` to print a single object `z` (_`print()` also outputs element number `[1]` while `writeLines()` does not_)
 
     ```{r}
     for(z in c(1,2,3)) {
@@ -1542,7 +773,7 @@ For example, the two loops below are essentially the same, but the second approa
     }
     ```
 
-- Using `str_c()` and `writeLines()` to concatenate and print multiple items:
+- Using `str_c()` and `writeLines()` to concatenate and print multiple items
 
     ```{r}
     for(z in c(1,2,3)) {
@@ -1553,13 +784,13 @@ For example, the two loops below are essentially the same, but the second approa
 ### Student exercise
 
 
-1. Create a numeric vector that contains the year of birth of your family members
-    - Example: `birth_years <- c(1944,1950,1981,2016)`
+1. Create a numeric vector that contains the birth years of your family members
+    - E.g., `birth_years <- c(1944,1950,1981,2016)`
 2. Write a loop that calculates the current year minus birth year and prints this number for each member of your family
     - Within this loop, you will create a new variable that calculates current year minus birth year
 
 <br>
-<details><summary>**Solution**</summary>
+<details><summary>**Solutions**</summary>
 
 ```{r}
 birth_years <- c(1944,1950,1981,2016)
@@ -1567,8 +798,8 @@ birth_years
 
 for(y in birth_years) {  # Loop sequence
   writeLines(str_c("object y=", y))  # Loop body
-  z <- 2020 - y
-  writeLines(str_c("value of ", y, " minus ", 2018, " is ", z))
+  z <- 2021 - y
+  writeLines(str_c("value of 2021 minus ", y, " is ", z))
 }
 ```
 </details>
@@ -1658,7 +889,7 @@ for (i in df) {
 - The value of `i` is equal to the element's _name_ (rather than its _content_ or _index position_)
 - But note that it is still possible to access the element's content inside the loop:
     - Access element contents using `object_name[i]`
-        - Same object type as `object_name`; retains attributes (e.g., _name_)
+        - Same object type as `object_name`; retains attributes (e.g., _name_ attribute)
     - Access element contents using `object_name[[i]]`
         - Removes level of hierarchy, thereby removing attributes
         - Approach recommended by Wickham because it isolates value of element
@@ -1733,7 +964,7 @@ for (i in names(df)) {
 - The value of `i` is equal to the element's _index position_ (rather than its _content_ or _name_)
 - But note that it is still possible to access the element's content inside the loop:
     - Access element contents using `object_name[i]`
-        - Same object type as `object_name`; retains attributes (e.g., _name_)
+        - Same object type as `object_name`; retains attributes (e.g., _name_ attribute)
     - Access element contents using `object_name[[i]]`
         - Removes level of hierarchy, thereby removing attributes
         - Approach recommended by Wickham because it isolates value of element
@@ -1801,7 +1032,7 @@ for (i in seq_along(df)) {
 
 ### Summary
 
-There are 3 ways to loop over elements of an object:
+There are **3 ways** to loop over elements of an object:
 
 1. [Looping over the elements](#looping-over-elements)
 2. [Looping over names of the elements](#looping-over-names)
@@ -1811,38 +1042,38 @@ There are 3 ways to loop over elements of an object:
 
 ```{r}
 for (i in seq_along(df)) {
-  writeLines(str_c("i=", i))  # element's index position
+  writeLines(str_c("\n", "i=", i))  # element's index position
   
   name <- names(df)[[i]]  # element's name (what we looped over in approach #2)
   writeLines(str_c("name=", name))
   
   value <- df[[i]]  # element's value (what we looped over in approach #1)
-  writeLines(str_c("value=", value, "\n"))
+  writeLines(str_c("value=", value))
 }
 ```
 
 
 ## Modifying vs. creating object
 
-Grolemund and Wickham differentiate between two types of tasks loops accomplish:
+Grolemund and Wickham differentiate between **two types** of tasks loops accomplish:
 
 1. __Modifying an existing object__
-    - Example: Looping through a set of variables in a dataframe to:
+    - E.g., Looping through a set of variables in a dataframe to:
         - Modify these variables OR
         - Create new variables (within the existing dataframe object)
     - When writing loops in Stata/SAS/SPSS, we are usually modifying an existing object because these programs typically only have one object (a dataset) open at a time
 2. __Creating a new object__
-    - Example: Creating an object that has summary statistics for each variable, which can be the basis for a table or graph, etc.
+    - E.g., Creating an object that has summary statistics for each variable, which can be the basis for a table or graph, etc.
     - The new object will often be a vector of results based on looping through elements of a dataframe
     - In R (as opposed to Stata/SAS/SPSS), creating a new object is very common because R can hold many objects at the same time
 
 
 ### Modifying an existing object
 
-How to modify an existing object?
+How to modify an **existing object**?
 
 - Recall that we can directly access elements in an object (e.g., atomic vector, lists) using `[[]]`. We can use this same notation to _modify_ the object.
-- Even though atomic vectors can also be modified with `[]`, Wickhams recommends using `[[]]` in all cases to make it clear we are working with a single element (from [R for Data Science](https://r4ds.had.co.nz/iteration.html#modifying-an-existing-object))
+- Even though atomic vectors can also be modified with `[]`, Wickhams recommends using `[[]]` in all cases to make it clear we are working with a single element (From [R for Data Science](https://r4ds.had.co.nz/iteration.html#modifying-an-existing-object))
 
 <br>
 <details><summary>**Example**: Modifying an existing atomic vector</summary>
@@ -1889,12 +1120,12 @@ df
 
 ### Creating a new object
 
-So far our loops have two components: 
+So far our loops have **two components**: 
 
 1. Sequence
 1. Body
 
-When we create a new object to store the results of a loop, our loops have three components:
+When we create a **new object** to store the results of a loop, our loops have **three components**:
 
 1. Sequence
 1. Body
@@ -1916,7 +1147,7 @@ vector(mode = "logical", length = 0)
 ```
 
 - Function: Creates a new vector object of the given length and mode
-- Arguments:
+- Arguments
   - `mode`: Type of vector to create (e.g., `"logical"`, `"numeric"`, `"list"`)
   - `length`: Length of the vector
 
@@ -1961,16 +1192,16 @@ The general recipe for how to write a loop:
 
 1. Complete the task for one instance outside a loop (this is akin to writing the __body__ of the loop)
 
-2. Write the __sequence__ 
+2. Write the __sequence__ of the loop
 
-3. Which parts of the body need to change with each iteration
+3. Modify the parts of the loop body that need to change with each iteration
 
-4. _If_ you are creating a new object to store output of the loop, create this outside of the loop
+4. _If_ you are creating a new object to store output of the loop, create this object outside of the loop
 
 5. Construct the loop
 
 <br>
-<details><summary>**When to write a loop vs a function [SKIP]**</summary>
+<details><summary>**When to write a loop vs a function**</summary>
 
 It's usually obvious when you are duplicating code, but unclear whether you should write a loop or whether you should write a function.
 
@@ -1993,203 +1224,6 @@ __Note__:
 
 </details>
 
-
-## Practice: Download IPEDS 
-
-Link to Ben Skinner's [downloadipeds.R](https://github.com/btskinner/downloadipeds/blob/master/downloadipeds.R)
-
-```{r}
-#load libraries
-library(tidyverse)
-
-## -----------------------------------------------------------------------------
-## Part I - Create objects for later use
-## -----------------------------------------------------------------------------
-
-url <- "https://nces.ed.gov/ipeds/datacenter/data/"
-url
-
-# suffix of file names
-data_suffix <- ".zip" # suffix for csv data files [not stata data]
-dict_suffix <- "_Dict.zip" # data dictionary
-stata_do_suffix <- "_Stata.zip" # Stata do file w/ variable labels and value labels
-
-
-# Read in string that has names of IPEDS files
-ipeds <- readLines(url('https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/ipeds/ipeds_file_list.txt'))
-#str(ipeds)
-writeLines(ipeds[1:30])
-
-# Use regular expressions to remove blank lines and lines that start with #
-
-#Blank lines
-str_view_all(string = ipeds[18:30], pattern ="^\\s*$") # blank lines
-str_detect(string = ipeds[18:30], pattern ="^\\s*$") # blank lines
-
-str_view_all(string = ipeds[18:30], pattern ="^[^(\\s*$)]") # NOT blank lines
-str_detect(string = ipeds[18:30], pattern ="^[^(\\s*$)]") # NOT blank lines
-
-length(str_subset(string = ipeds, pattern ="^[^(\\s*$)]"))
-length(ipeds)
-
-#remove blank lines
-ipeds <- str_subset(string = ipeds, pattern ="^[^(\\s*$)]") # overwrite object to remove blanks
-length(ipeds)
-
-# lines that start with # (or do not start with #)
-
-str_view_all(string = ipeds[1:30], pattern ="^#") # starts with "#"
-str_detect(string = ipeds[1:30], pattern ="^#") # starts with "#"
-
-
-str_view_all(string = ipeds[1:30], pattern ="^[^#]") # starts with anything but #
-str_detect(string = ipeds[1:30], pattern ="^[^#]") # does not start with "#"
-
-str_subset(string = ipeds, pattern ="^[^#]") # does not start with "#"
-length(str_subset(string = ipeds, pattern ="^[^#]")) # does not start with "#"
-
-#Remove lines that start with a "#"
-ipeds <- str_subset(string = ipeds, pattern ="^[^#]") # does not start with "#"
-
-ipeds[1:50]
-
-# Create new character vector "hd" that contains names of all "HD" files
-str_subset(string = ipeds, pattern = "^HD")
-hd <- str_subset(string = ipeds, pattern = "^HD")
-
-hd
-hd[2]
-hd[1:5]
-
-length(hd)
-seq(from = 1, to = length(hd))
-
-## -----------------------------------------------------------------------------
-## Part 2 - Creating loops
-## -----------------------------------------------------------------------------
-
-## -----------------------------------------------------------------------------
-## LOOP 1: Create loop that prints URL for each dataset
-## -----------------------------------------------------------------------------
-
-# First, just work on creating loop without body and showing the value of object i and hd[i]
-for (i in 1:length(hd)) {
-  
-  writeLines(str_c(i))
-  #writeLines(str_c("object i=",i, "; hd[i]=",hd[i], sep = ""))
-  #writeLines(str_c("i=",i, "; hd[",i,"]=",hd[i], sep = ""))
-}
-
-```
-
-
-## Practice: IPEDS data & rvest package
-
-```{r, message=FALSE, eval=FALSE}
-## -----------------------------------------------------------------------------
-## MODIFY HD 2018 DATASET
-## -----------------------------------------------------------------------------
-
-#data directory path
-data_dir <- file.path(".", "data")
-data_dir
-
-#Create a sub-folder for data inside your group repository
-dir.create(path = "data", showWarnings = FALSE) # showWarnings = FALSE omits warnings if directory already exists
-
-#Read in HD2018 data
-hd2018 <- read_csv(file = file.path(data_dir,"hd2018.csv"))
-#glimpse(hd2018)
-
-#change column names to lowercase
-names(hd2018) <- hd2018 %>% 
-  names() %>%
-  str_to_lower()
-  
-# Keep only subset of variables (including latitude and longitude, univerisity url, unitid, ) 
-# and keep relatively small subset of institutions (e.g., a few UCs)
-
-hd2018_uc <- hd2018 %>%
-  dplyr::select(unitid, instnm, addr, stabbr, city, zip, latitude, longitud, webaddr) %>%
-  filter(stabbr=="CA" & unitid %in% c(110644, 110662, 110671))
-  
-#typeof(hd2018_uc$webaddr)
-
-# Create a character vector from the webaddr field and use that to create loop 
-web <- str_to_lower(hd2018_uc$webaddr)
-
-web <- str_extract(web, "www\\.\\w+\\.\\w+")
-
-library(rvest) #load rvest package
-
-web <- str_c("https://", web) #add https:// to web address
-
-#str_extract(string = web, pattern = "\\.(w\\+)\\.")
-
-#for loop to create xml_document/xml_node object
-for(i in seq_along(web)) {
-  
-  url <- web[i] #grab url for each iteration
-  
-  name <- str_match(string = web[i], pattern = 'https://.+\\.([\\w]+)\\..+') #grab uni. name
-  name <- name[,2] #get uni name on website
-  
-  html <- read_html(url) #use rvest function read_html to create xml_document/xml_node object
-  
-  assign(name, html) #assign name of uni. to object
-  
-  writeLines(str_c("web name: ", name, " url: ", url, sep = ""))
-}
-
-ucla_sm <- ucla %>%
-  html_nodes('#social-media') #search for social-media ID
-
-ucla_sm <- as.character(ucla_sm) #change to character
-
-
-# Use `writeLines()` and `head()` to preview the first few rows of the data
-writeLines(head(ucla_sm))
-
-ucla_sm <- str_match(string = ucla_sm, pattern = '<a href="(http://twitter.+)"\\sclass.+</a>') #grab twitter url
-
-
-
-ucr_sm <- UCR %>%
-  html_nodes('.social-link') #search for social-link class
-
-ucr_sm <- as.character(ucr_sm) #change to character
-
-# Use `writeLines()` and `head()` to preview the first few rows of the data
-writeLines(head(ucr_sm))
-
-ucr_sm <- str_match(string = ucr_sm, pattern = '<a href="(https://twitter.+)"\\starget.+</a>') #grab twitter url
-
-
-
-ucd_sm <- ucdavis %>%
-  html_nodes('ul.pack') 
-
-ucd_sm <- as.character(ucd_sm)
-
-# Use `writeLines()` and `head()` to preview the first few rows of the data
-writeLines(head(ucd_sm))
-
-ucd_sm <- str_match(string = ucd_sm, pattern = '<a class=".+ href="(https://twitter.+)">.+</a>')
-
-
-
-twitter_ucla <- ucla_sm[,2] #grab twitter urls
-twitter_ucd <- ucd_sm[,2]
-twitter_ucr <- ucr_sm[,2]
-
-vec <- as_vector(c(twitter_ucd, twitter_ucla, twitter_ucr)) #create a vector of urls
-
-hd2018_t <- bind_cols(hd2018_uc, data.frame(twitter = vec)) #add column to df
-
-hd2018_t %>%
-  select(instnm, webaddr, twitter)
-
-```
 
 # Conditional execution
 
@@ -2217,7 +1251,7 @@ if (TRUE) {
 }
 ```
 
-The block of code is not executed if condition evaluates to `FALSE`:
+The block of code is not executed if the condition evaluates to `FALSE`:
 
 ```{r}
 if (FALSE) {
@@ -2254,17 +1288,17 @@ if (2 + 2 == 4) {
 Recall that some functions return a `logical`, so you might also see a function call being used as the condition:
 
 ```{r}
-# This function call returns `FALSE` because there is no digit in the string "Fourth of July"
-str_detect(string = "Fourth of July", pattern = "\\d")
+# This function call returns `FALSE` because the string "NA" is not the missing value `NA`
+is.na("NA")
 
 # It is of type `logical`
-typeof(str_detect(string = "Fourth of July", pattern = "\\d"))
+typeof(is.na("NA"))
 
 # It has length of `1`
-length(str_detect(string = "Fourth of July", pattern = "\\d"))
+length(is.na("NA"))
 
 # We can use it as the if statement condition
-if (str_detect(string = "Fourth of July", pattern = "\\d")) {
+if (is.na("NA")) {
   writeLines("This block is not executed because the condition evaluates to `FALSE`.")
 }
 ```
@@ -2275,7 +1309,7 @@ if (str_detect(string = "Fourth of July", pattern = "\\d")) {
 
 How to combine **multiple logical expressions** in a condition?
 
-- Recall that a logical expression is of type `logical` and has a length of `1`
+- Recall that a **logical expression** is of type `logical` and has a length of `1`
 - An `if` statement condition can be made up of multiple logical expressions
 - We can use `||` (or) and `&&` (and) to combine multiple logical expressions
 - "Never use `|` or `&` in an if statement: these are _vectorised_ operations that apply to multiple values (that's why you use them in `filter()`)" (From [R for Data Science](https://r4ds.had.co.nz/functions.html#conditional-execution))
@@ -2309,29 +1343,37 @@ if (condition1 && condition2 && condition3) {
 ```
 
 <br>
-<details><summary>**Example**: Using multiple logical expressions in a condition</summary>
+<details><summary>**Example**: Combining multiple logical expressions using `||`</summary>
 
 When using `||` (or), the block of code is executed if any of the conditions evaluates to `TRUE`:
 
 ```{r}
+# This block is executed because at least 1 condition is `TRUE`
 if (TRUE || FALSE) {
   writeLines("This block is executed.")
 }
 
-if (str_detect(string = "ABC", pattern = "\\d") || str_detect(string = "123", pattern = "[A-Z]")) {
+# This block is not executed because both logical expressions evaluate to `FALSE`
+if (is.na("NA") || 2 + 2 == 5) {
   writeLines("This block is not executed.")
 }
 ```
 
+</details>
+
 <br>
+<details><summary>**Example**: Combining multiple logical expressions using `&&`</summary>
+
 When using `&&` (and), the block of code is executed if all of the conditions evaluate to `TRUE`:
 
 ```{r}
+# This block is not executed because not all conditions are `TRUE`
 if (TRUE && FALSE) {
   writeLines("This block is not executed.")
 }
 
-if (str_detect(string = "ABC", pattern = "[A-Z]") && str_detect(string = "123", pattern = "\\d")) {
+# This block is executed because all logical expressions evaluate to `TRUE`
+if (!is.na("NA") && 2 + 2 == 4) {
   writeLines("This block is executed.")
 }
 ```
@@ -2356,7 +1398,7 @@ if (condition) {
 <br>
 <details><summary>**Example**: Using if-else statement</summary>
 
-Recall the function [`dir.exists()`](#checking-if-a-file-or-directory-exists) that checks if a directory exists:
+Recall the function [`dir.exists()`](https://anyone-can-cook.github.io/rclass2/lectures/organizing_and_io/organizing_and_io.html#244_Checking_if_filedirectory_exists) that checks if a directory exists:
 
 ```{r}
 directory <- "my_new_directory"
@@ -2364,7 +1406,7 @@ dir.exists(directory)
 ```
 
 <br>
-Let's take a look at using if-else statement to create the directory (using [`dir.create()`](#creating-and-deleting-directories)) only if it doesn't currently exist:
+Let's take a look at using an if-else statement to create the directory (using [`dir.create()`](https://anyone-can-cook.github.io/rclass2/lectures/organizing_and_io/organizing_and_io.html#243_Creating_directories)) only if it doesn't currently exist:
 
 ```{r}
 if (dir.exists(directory)) {
@@ -2379,7 +1421,7 @@ list.files()
 ```
 
 <br>
-If we try creating the directory again, the `if` block would be executed because the directory already exists:
+If we try running this code again, the `if` block would be executed because the directory already exists:
 
 ```{r}
 dir.exists(directory)
@@ -2421,7 +1463,7 @@ list.files()
 ```
 
 <br>
-If we try creating the directories again, the `if` block would be executed because they already exist:
+If we try running the code again, the `if` block would be executed during each iteration of the loop because all the directories already exist:
 
 ```{r}
 for (i in directories) {
@@ -2463,7 +1505,7 @@ if (condition) {
 <br>
 <details><summary>**Example**: Using `else if` statement</summary>
 
-Using the `diamonds` dataset from `ggplot2`, let's create a vector of 5 diamond prices:
+Using the `diamonds` dataset available from `ggplot2` (part of `tidyverse`), let's create a vector of 5 diamond prices:
 
 ```{r}
 prices <- unique(diamonds$price)[23:27]
@@ -2514,12 +1556,12 @@ __The `system.time()` function__:
 system.time(expr, gcFirst = TRUE)
 ```
 
-- Function: Returns CPU (and other) times that expr used
-- Arguments:
+- Function: Returns CPU (and other) times that `expr` used
+- Arguments
     - `expr`: Valid R expression to be timed
 
 <br>
-For the below examples, we'll create a numeric atomic vector called `prices` that is equal to the price of each diamond in the `diamonds` dataframe:
+For the below examples, we'll use this numeric atomic vector called `prices` that is equal to the price of each diamond in the `diamonds` dataframe:
 
 ```{r}
 prices <- diamonds$price
@@ -2539,7 +1581,7 @@ s <- sd(prices, na.rm=TRUE)
 <br>
 **[Method 1]** Growing the vector inside the loop using `c()`
 
-- "Whenever you use `c()`, `append()`, `cbind()`, `rbind()`, or `paste()` to create a bigger object, R must first allocate space for the new object and then copy the old object to its new home. If you’re repeating this many times, like in a for loop, this can be quite expensive." ([Advanced R](http://adv-r.had.co.nz/Profiling.html#avoid-copies))
+- "Whenever you use `c()`, `append()`, `cbind()`, `rbind()`, or `paste()` to create a bigger object, R must first allocate space for the new object and then copy the old object to its new home. If you’re repeating this many times, like in a for loop, this can be quite expensive." (From [Advanced R](http://adv-r.had.co.nz/Profiling.html#avoid-copies))
 
 ```{r}
 z_prices <- c()
@@ -2554,7 +1596,7 @@ system.time(
 <br>
 **[Method 2]** Creating the output vector before loop (_Recommended_)
 
-- "Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency" ([R for Data Science](https://r4ds.had.co.nz/iteration.html#for-loops))
+- "Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency" (From [R for Data Science](https://r4ds.had.co.nz/iteration.html#for-loops))
 - As seen, we can do that by first creating the `z_prices` object using `vector()` before the loop
 
 ```{r}
@@ -2573,10 +1615,10 @@ system.time(
 <br>
 <details><summary>**Example**: Vectorising your code</summary>
 
-What does it mean to "vectorise your code"? ([Advanced R](http://adv-r.had.co.nz/Profiling.html#vectorise))
+What does it mean to "vectorise your code"?
 
-- "Vectorising is about taking a 'whole object' approach to a problem, thinking about vectors, not scalars."
-- Often, this means avoiding loops and using vectorised functions instead (e.g., use `ifelse()` function instead of if-else statement inside a for loop)
+- "Vectorising is about taking a 'whole object' approach to a problem, thinking about vectors, not scalars." (From [Advanced R](http://adv-r.had.co.nz/Profiling.html#vectorise))
+- Often, this means avoiding loops and using vectorised functions instead (e.g., use `if_else()` function instead of if-else statement inside a for loop)
 
 To see the difference, let's look at the example of classifying diamond prices as affordable or expensive.
 
@@ -2598,11 +1640,11 @@ system.time(
 ```
 
 <br>
-**[Method 2]** Using the vectorised `ifelse()` function (_Recommended_)
+**[Method 2]** Using the vectorised `if_else()` function (_Recommended_)
 
 ```{r}
 system.time(
-  output <- ifelse(prices < 500,
+  output <- if_else(prices < 500,
                    str_c("This diamond costs $", prices, " and is affordable."),
                    str_c("This diamond costs $", prices, " and is too expensive!")
                    )
@@ -2685,10 +1727,10 @@ system.time(
 ```
 
 <br>
-**[Method 3]** Using the vectorised `ifelse()` function
+**[Method 3]** Using the vectorised `if_else()` function
 
 - Note that using a vectorised function when possible would still be the fastest
-- But there can be a "trade-off between code speed and code readability", as nested `ifelse()` statements are hard to read ([Efficient R programming](https://csgillespie.github.io/efficientR/performance.html))
+- But there can be a "trade-off between code speed and code readability", as nested `if_else()` statements are hard to read (From [Efficient R programming](https://csgillespie.github.io/efficientR/performance.html))
 
 ```{r}
 system.time(
