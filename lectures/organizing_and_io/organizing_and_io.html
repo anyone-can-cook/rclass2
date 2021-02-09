@@ -1969,8 +1969,61 @@ list.files()
 #&gt; [3] &quot;organizing_and_io.Rmd&quot;  &quot;research_project&quot;</code></pre>
 </details>
 </div>
+<div id="checking-if-filedirectory-exists" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Checking if file/directory exists</h3>
+<p><br> <strong>The <code>file.exists()</code> function</strong>:</p>
+<pre class="r"><code>?file.exists
+
+# SYNTAX
+file.exists(...)</code></pre>
+<ul>
+<li>Function: Checks if a file exists</li>
+<li>Argument(s): filename(s)</li>
+</ul>
+<p><br> <strong>The <code>dir.exists()</code> function</strong>:</p>
+<pre class="r"><code>?dir.exists
+
+# SYNTAX
+dir.exists(paths)</code></pre>
+<ul>
+<li>Function: Checks if a directory exists</li>
+<li>Argument(s): path(s)</li>
+</ul>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Checking if file exists using <code>file.exists()</code></summary></p>
+<pre class="r"><code># List files and folders in current directory
+list.files()
+#&gt; [1] &quot;my_folder&quot;              &quot;organizing_and_io.html&quot;
+#&gt; [3] &quot;organizing_and_io.Rmd&quot;  &quot;research_project&quot;
+
+# Checks if file `organizing_and_io.Rmd` exists
+file.exists(&quot;organizing_and_io.Rmd&quot;)
+#&gt; [1] TRUE
+
+# Checks if file `organizing_and_io.pdf` exists
+file.exists(&quot;organizing_and_io.pdf&quot;)
+#&gt; [1] FALSE</code></pre>
+</details>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Checking if directory exists using <code>dir.exists()</code></summary></p>
+<pre class="r"><code># List files and folders in current directory
+list.files()
+#&gt; [1] &quot;my_folder&quot;              &quot;organizing_and_io.html&quot;
+#&gt; [3] &quot;organizing_and_io.Rmd&quot;  &quot;research_project&quot;
+
+# Checks if directory `my_folder` exists
+dir.exists(&quot;my_folder&quot;)
+#&gt; [1] TRUE
+
+# Checks if directory `nonexistent_folder` exists
+dir.exists(&quot;nonexistent_folder&quot;)
+#&gt; [1] FALSE</code></pre>
+</details>
+</div>
 <div id="deleting-files-and-directories" class="section level3">
-<h3><span class="header-section-number">2.4.4</span> Deleting files and directories</h3>
+<h3><span class="header-section-number">2.4.5</span> Deleting files and directories</h3>
 <p><br> <strong>The <code>unlink()</code> function</strong>:</p>
 <pre class="r"><code>?unlink
 
@@ -3196,6 +3249,31 @@ load(file, envir = parent.frame(), verbose = FALSE)</code></pre>
 <p><br> <strong>Example</strong>: Loading multiple R objects from <code>.RData</code> file using <code>load()</code></p>
 <pre class="r"><code># Load `iris_dataset` and `quakes_dataset` dataframes
 load(file = file.path(data_dir, &#39;datasets.RData&#39;))</code></pre>
+</div>
+<div id="loading-from-urls" class="section level2">
+<h2><span class="header-section-number">8.3</span> Loading from URLs</h2>
+<p>Besides loading local data files, we can also load them in directly from the web using <code>url()</code>.</p>
+<p><br> <strong>The <code>url()</code> function</strong>:</p>
+<pre class="r"><code>?url
+
+# SYNTAX AND DEFAULT VALUES
+url(description, open = &quot;&quot;, blocking = TRUE,
+    encoding = getOption(&quot;encoding&quot;),
+    method = getOption(&quot;url.method&quot;, &quot;default&quot;),
+    headers = NULL)</code></pre>
+<ul>
+<li>Function: Open connection to URL</li>
+<li>Arguments
+<ul>
+<li><code>description</code>: Character string containing the URL</li>
+</ul></li>
+</ul>
+<p><br> <strong>Example</strong>: Loading <code>.RDS</code> file from URL using <code>url()</code> and <code>readRDS()</code></p>
+<pre class="r"><code># Load `recruit_school_somevars.RDS` file from URL
+df_school &lt;- readRDS(file = url(description = &#39;https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RDS&#39;))</code></pre>
+<p><br> <strong>Example</strong>: Loading <code>.RData</code> file from URL using <code>url()</code> and <code>load()</code></p>
+<pre class="r"><code># Load `recruit_school_somevars.RData` file from URL
+load(file = url(description = &#39;https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RData&#39;))</code></pre>
 </div>
 </div>
 

@@ -361,6 +361,66 @@ list.files()
 
 </details>
 
+### Checking if file/directory exists
+
+<br>
+__The `file.exists()` function__:
+
+```{r, eval = FALSE}
+?file.exists
+
+# SYNTAX
+file.exists(...)
+```
+
+- Function: Checks if a file exists
+- Argument(s): filename(s)
+
+<br>
+__The `dir.exists()` function__:
+
+```{r, eval = FALSE}
+?dir.exists
+
+# SYNTAX
+dir.exists(paths)
+```
+
+- Function: Checks if a directory exists
+- Argument(s): path(s)
+
+<br>
+<details><summary>**Example**: Checking if file exists using `file.exists()`</summary>
+
+```{r}
+# List files and folders in current directory
+list.files()
+
+# Checks if file `organizing_and_io.Rmd` exists
+file.exists("organizing_and_io.Rmd")
+
+# Checks if file `organizing_and_io.pdf` exists
+file.exists("organizing_and_io.pdf")
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Checking if directory exists using `dir.exists()`</summary>
+
+```{r}
+# List files and folders in current directory
+list.files()
+
+# Checks if directory `my_folder` exists
+dir.exists("my_folder")
+
+# Checks if directory `nonexistent_folder` exists
+dir.exists("nonexistent_folder")
+```
+
+</details>
+
 ### Deleting files and directories
 
 <br>
@@ -1469,6 +1529,43 @@ load(file, envir = parent.frame(), verbose = FALSE)
 ```{r}
 # Load `iris_dataset` and `quakes_dataset` dataframes
 load(file = file.path(data_dir, 'datasets.RData'))
+```
+
+## Loading from URLs
+
+Besides loading local data files, we can also load them in directly from the web using `url()`.
+
+<br>
+__The `url()` function__:
+
+```{r, eval = FALSE}
+?url
+
+# SYNTAX AND DEFAULT VALUES
+url(description, open = "", blocking = TRUE,
+    encoding = getOption("encoding"),
+    method = getOption("url.method", "default"),
+    headers = NULL)
+```
+
+- Function: Open connection to URL
+- Arguments
+  - `description`: Character string containing the URL
+
+<br>
+**Example**: Loading `.RDS` file from URL using `url()` and `readRDS()`
+
+```{r}
+# Load `recruit_school_somevars.RDS` file from URL
+df_school <- readRDS(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RDS'))
+```
+
+<br>
+**Example**: Loading `.RData` file from URL using `url()` and `load()`
+
+```{r}
+# Load `recruit_school_somevars.RData` file from URL
+load(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RData'))
 ```
 
 ```{r, echo = FALSE}
