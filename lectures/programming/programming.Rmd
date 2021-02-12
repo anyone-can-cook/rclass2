@@ -2339,7 +2339,7 @@ We can apply our function to a "real" dataset too:
 
 ```{r}
 #load dataset with one obs per recruiting event
-load(url("https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_event_somevars.RData"))
+load(url("https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/recruit_event_somevars.RData"))
 
 df_event_small <- df_event[1:10,] %>% # keep first 10 observations
   select(instnm,univ_id,event_type,med_inc) # keep 4 vars

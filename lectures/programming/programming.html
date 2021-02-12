@@ -1598,7 +1598,7 @@ div.tocify {
 </div>
 <div id="lecture-overview" class="section level2">
 <h2><span class="header-section-number">1.2</span> Lecture overview</h2>
-<p>The <strong>programming unit</strong> will introduce you to tools that tell the computer to do the same or similar things over and over, without writing code over and over. And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify.</p>
+<p>The <strong>programming unit</strong> will introduce you to tools that tell your computer to do the same or similar things over and over, without having to write the code over and over (e.g., iteration). And the code you write to do things over and over, will be able to do things differently depending on conditions of the data or depending on things you specify.</p>
 <p>Paraphrasing <strong>Will Doyle</strong>:</p>
 <blockquote>
 <p>“Computers love to do the same thing over and over. It’s their favorite thing to do. Learn to make your computer happy.”</p>
@@ -2499,28 +2499,36 @@ div.tocify {
 <span id="cb47-7"><a href="#cb47-7"></a><span class="co">#&gt; 3 -0.109  0.630 -0.116</span></span>
 <span id="cb47-8"><a href="#cb47-8"></a><span class="co">#&gt; 4 -0.453 -0.276  1.82</span></span>
 <span id="cb47-9"><a href="#cb47-9"></a></span>
-<span id="cb47-10"><a href="#cb47-10"></a><span class="cf">for</span> (i <span class="cf">in</span> df) {</span>
-<span id="cb47-11"><a href="#cb47-11"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;value of object i=&quot;</span>,i))</span>
-<span id="cb47-12"><a href="#cb47-12"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;object i has: type=&quot;</span>, <span class="kw">typeof</span>(i), <span class="st">&quot;; length=&quot;</span>, <span class="kw">length</span>(i), <span class="st">&quot;; class=&quot;</span>, <span class="kw">class</span>(i),</span>
-<span id="cb47-13"><a href="#cb47-13"></a>      <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))  <span class="co"># &quot;\n&quot; adds line break</span></span>
-<span id="cb47-14"><a href="#cb47-14"></a>}</span>
-<span id="cb47-15"><a href="#cb47-15"></a><span class="co">#&gt; value of object i=0.585528817843856</span></span>
-<span id="cb47-16"><a href="#cb47-16"></a><span class="co">#&gt; value of object i=0.709466017509524</span></span>
-<span id="cb47-17"><a href="#cb47-17"></a><span class="co">#&gt; value of object i=-0.109303314681054</span></span>
-<span id="cb47-18"><a href="#cb47-18"></a><span class="co">#&gt; value of object i=-0.453497173462763</span></span>
-<span id="cb47-19"><a href="#cb47-19"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span>
-<span id="cb47-20"><a href="#cb47-20"></a><span class="co">#&gt; </span></span>
-<span id="cb47-21"><a href="#cb47-21"></a><span class="co">#&gt; value of object i=0.605887455840394</span></span>
-<span id="cb47-22"><a href="#cb47-22"></a><span class="co">#&gt; value of object i=-1.81795596770373</span></span>
-<span id="cb47-23"><a href="#cb47-23"></a><span class="co">#&gt; value of object i=0.630098551068391</span></span>
-<span id="cb47-24"><a href="#cb47-24"></a><span class="co">#&gt; value of object i=-0.276184105225216</span></span>
-<span id="cb47-25"><a href="#cb47-25"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span>
-<span id="cb47-26"><a href="#cb47-26"></a><span class="co">#&gt; </span></span>
-<span id="cb47-27"><a href="#cb47-27"></a><span class="co">#&gt; value of object i=-0.284159743943371</span></span>
-<span id="cb47-28"><a href="#cb47-28"></a><span class="co">#&gt; value of object i=-0.919322002474128</span></span>
-<span id="cb47-29"><a href="#cb47-29"></a><span class="co">#&gt; value of object i=-0.116247806352002</span></span>
-<span id="cb47-30"><a href="#cb47-30"></a><span class="co">#&gt; value of object i=1.81731204370422</span></span>
-<span id="cb47-31"><a href="#cb47-31"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span></code></pre></div>
+<span id="cb47-10"><a href="#cb47-10"></a><span class="co"># show contents of element, outside of a loop</span></span>
+<span id="cb47-11"><a href="#cb47-11"></a>  <span class="co"># each element of the dataframe is a vector that contains one element for each observation</span></span>
+<span id="cb47-12"><a href="#cb47-12"></a>  <span class="kw">str</span>(df[<span class="dv">1</span>]) <span class="co"># single bracket</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb47-15"><a href="#cb47-15"></a>  <span class="kw">str</span>(df[[<span class="dv">1</span>]]) <span class="co"># double bracket</span></span>
+<span id="cb47-16"><a href="#cb47-16"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb47-17"><a href="#cb47-17"></a></span>
+<span id="cb47-18"><a href="#cb47-18"></a><span class="cf">for</span> (i <span class="cf">in</span> df) {</span>
+<span id="cb47-19"><a href="#cb47-19"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;value of object i=&quot;</span>,i))</span>
+<span id="cb47-20"><a href="#cb47-20"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;object i has: type=&quot;</span>, <span class="kw">typeof</span>(i), <span class="st">&quot;; length=&quot;</span>, <span class="kw">length</span>(i), <span class="st">&quot;; class=&quot;</span>, <span class="kw">class</span>(i),</span>
+<span id="cb47-21"><a href="#cb47-21"></a>      <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))  <span class="co"># &quot;\n&quot; adds line break</span></span>
+<span id="cb47-22"><a href="#cb47-22"></a>}</span>
+<span id="cb47-23"><a href="#cb47-23"></a><span class="co">#&gt; value of object i=0.585528817843856</span></span>
+<span id="cb47-24"><a href="#cb47-24"></a><span class="co">#&gt; value of object i=0.709466017509524</span></span>
+<span id="cb47-25"><a href="#cb47-25"></a><span class="co">#&gt; value of object i=-0.109303314681054</span></span>
+<span id="cb47-26"><a href="#cb47-26"></a><span class="co">#&gt; value of object i=-0.453497173462763</span></span>
+<span id="cb47-27"><a href="#cb47-27"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span>
+<span id="cb47-28"><a href="#cb47-28"></a><span class="co">#&gt; </span></span>
+<span id="cb47-29"><a href="#cb47-29"></a><span class="co">#&gt; value of object i=0.605887455840394</span></span>
+<span id="cb47-30"><a href="#cb47-30"></a><span class="co">#&gt; value of object i=-1.81795596770373</span></span>
+<span id="cb47-31"><a href="#cb47-31"></a><span class="co">#&gt; value of object i=0.630098551068391</span></span>
+<span id="cb47-32"><a href="#cb47-32"></a><span class="co">#&gt; value of object i=-0.276184105225216</span></span>
+<span id="cb47-33"><a href="#cb47-33"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span>
+<span id="cb47-34"><a href="#cb47-34"></a><span class="co">#&gt; </span></span>
+<span id="cb47-35"><a href="#cb47-35"></a><span class="co">#&gt; value of object i=-0.284159743943371</span></span>
+<span id="cb47-36"><a href="#cb47-36"></a><span class="co">#&gt; value of object i=-0.919322002474128</span></span>
+<span id="cb47-37"><a href="#cb47-37"></a><span class="co">#&gt; value of object i=-0.116247806352002</span></span>
+<span id="cb47-38"><a href="#cb47-38"></a><span class="co">#&gt; value of object i=1.81731204370422</span></span>
+<span id="cb47-39"><a href="#cb47-39"></a><span class="co">#&gt; object i has: type=double; length=4; class=numeric</span></span></code></pre></div>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over columns</summary></p>
@@ -2617,26 +2625,33 @@ div.tocify {
 <span id="cb50-9"><a href="#cb50-9"></a><span class="kw">names</span>(df)  <span class="co"># View names of dataframe object (i.e., column names)</span></span>
 <span id="cb50-10"><a href="#cb50-10"></a><span class="co">#&gt; [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</span></span>
 <span id="cb50-11"><a href="#cb50-11"></a></span>
-<span id="cb50-12"><a href="#cb50-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
-<span id="cb50-13"><a href="#cb50-13"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">value of object i=&quot;</span>, i, <span class="st">&quot;; type=&quot;</span>, <span class="kw">typeof</span>(i)))</span>
-<span id="cb50-14"><a href="#cb50-14"></a>  <span class="kw">str</span>(df[i])  <span class="co"># Access element contents using []</span></span>
-<span id="cb50-15"><a href="#cb50-15"></a>  <span class="kw">str</span>(df[[i]])  <span class="co"># Access element contents using [[]]</span></span>
-<span id="cb50-16"><a href="#cb50-16"></a>}</span>
-<span id="cb50-17"><a href="#cb50-17"></a><span class="co">#&gt; </span></span>
-<span id="cb50-18"><a href="#cb50-18"></a><span class="co">#&gt; value of object i=a; type=character</span></span>
-<span id="cb50-19"><a href="#cb50-19"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
-<span id="cb50-20"><a href="#cb50-20"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb50-21"><a href="#cb50-21"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb50-22"><a href="#cb50-22"></a><span class="co">#&gt; </span></span>
-<span id="cb50-23"><a href="#cb50-23"></a><span class="co">#&gt; value of object i=b; type=character</span></span>
-<span id="cb50-24"><a href="#cb50-24"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
-<span id="cb50-25"><a href="#cb50-25"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt; </span></span>
-<span id="cb50-28"><a href="#cb50-28"></a><span class="co">#&gt; value of object i=c; type=character</span></span>
-<span id="cb50-29"><a href="#cb50-29"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
-<span id="cb50-30"><a href="#cb50-30"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
-<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
+<span id="cb50-12"><a href="#cb50-12"></a><span class="co"># show using name to print contents, outside of a loop</span></span>
+<span id="cb50-13"><a href="#cb50-13"></a><span class="kw">str</span>(df[<span class="st">&quot;a&quot;</span>]) <span class="co"># single bracket</span></span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-16"><a href="#cb50-16"></a><span class="kw">str</span>(df[[<span class="st">&quot;a&quot;</span>]]) <span class="co"># double bracket</span></span>
+<span id="cb50-17"><a href="#cb50-17"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-18"><a href="#cb50-18"></a></span>
+<span id="cb50-19"><a href="#cb50-19"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
+<span id="cb50-20"><a href="#cb50-20"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">value of object i=&quot;</span>, i, <span class="st">&quot;; type=&quot;</span>, <span class="kw">typeof</span>(i)))</span>
+<span id="cb50-21"><a href="#cb50-21"></a>  <span class="kw">str</span>(df[i])  <span class="co"># Access element contents using []</span></span>
+<span id="cb50-22"><a href="#cb50-22"></a>  <span class="kw">str</span>(df[[i]])  <span class="co"># Access element contents using [[]]</span></span>
+<span id="cb50-23"><a href="#cb50-23"></a>}</span>
+<span id="cb50-24"><a href="#cb50-24"></a><span class="co">#&gt; </span></span>
+<span id="cb50-25"><a href="#cb50-25"></a><span class="co">#&gt; value of object i=a; type=character</span></span>
+<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-28"><a href="#cb50-28"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-29"><a href="#cb50-29"></a><span class="co">#&gt; </span></span>
+<span id="cb50-30"><a href="#cb50-30"></a><span class="co">#&gt; value of object i=b; type=character</span></span>
+<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-32"><a href="#cb50-32"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb50-33"><a href="#cb50-33"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb50-34"><a href="#cb50-34"></a><span class="co">#&gt; </span></span>
+<span id="cb50-35"><a href="#cb50-35"></a><span class="co">#&gt; value of object i=c; type=character</span></span>
+<span id="cb50-36"><a href="#cb50-36"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-37"><a href="#cb50-37"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb50-38"><a href="#cb50-38"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over column names</summary></p>
@@ -2647,11 +2662,11 @@ div.tocify {
 <span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <p><br> Remember that we can use <code>[[]]</code> to access element contents by their name:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
-<span id="cb52-2"><a href="#cb52-2"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element named&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
+<span id="cb52-2"><a href="#cb52-2"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element named &quot;</span>, i, <span class="st">&quot; = &quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
 <span id="cb52-3"><a href="#cb52-3"></a>}</span>
-<span id="cb52-4"><a href="#cb52-4"></a><span class="co">#&gt; mean of element nameda=0.183048586802391</span></span>
-<span id="cb52-5"><a href="#cb52-5"></a><span class="co">#&gt; mean of element namedb=-0.21453851650504</span></span>
-<span id="cb52-6"><a href="#cb52-6"></a><span class="co">#&gt; mean of element namedc=0.124395622733679</span></span></code></pre></div>
+<span id="cb52-4"><a href="#cb52-4"></a><span class="co">#&gt; mean of element named a = 0.183048586802391</span></span>
+<span id="cb52-5"><a href="#cb52-5"></a><span class="co">#&gt; mean of element named b = -0.21453851650504</span></span>
+<span id="cb52-6"><a href="#cb52-6"></a><span class="co">#&gt; mean of element named c = 0.124395622733679</span></span></code></pre></div>
 <p><br> If we tried completing the task using <code>[]</code> to access the element contents, we would get an error because <code>mean()</code> only takes numeric or logical vectors as input, and <code>df[i]</code> returns a dataframe object:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
 <span id="cb53-2"><a href="#cb53-2"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element named&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[i], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -3150,8 +3165,7 @@ div.tocify {
 <span id="cb80-8"><a href="#cb80-8"></a></span>
 <span id="cb80-9"><a href="#cb80-9"></a><span class="co"># Check that directory is created</span></span>
 <span id="cb80-10"><a href="#cb80-10"></a><span class="kw">list.files</span>()</span>
-<span id="cb80-11"><a href="#cb80-11"></a><span class="co">#&gt; [1] &quot;loops_and_functions.html&quot; &quot;loops_and_functions.Rmd&quot; </span></span>
-<span id="cb80-12"><a href="#cb80-12"></a><span class="co">#&gt; [3] &quot;my_new_directory&quot;</span></span></code></pre></div>
+<span id="cb80-11"><a href="#cb80-11"></a><span class="co">#&gt; [1] &quot;my_new_directory&quot; &quot;programming.Rmd&quot;</span></span></code></pre></div>
 <p><br> If we try running this code again, the <code>if</code> block would be executed because the directory already exists:</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="kw">dir.exists</span>(directory)</span>
 <span id="cb81-2"><a href="#cb81-2"></a><span class="co">#&gt; [1] TRUE</span></span>
@@ -3184,9 +3198,7 @@ div.tocify {
 <span id="cb82-14"><a href="#cb82-14"></a></span>
 <span id="cb82-15"><a href="#cb82-15"></a><span class="co"># Check that directories are created</span></span>
 <span id="cb82-16"><a href="#cb82-16"></a><span class="kw">list.files</span>()</span>
-<span id="cb82-17"><a href="#cb82-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;             &quot;loops_and_functions.html&quot;</span></span>
-<span id="cb82-18"><a href="#cb82-18"></a><span class="co">#&gt; [3] &quot;loops_and_functions.Rmd&quot;  &quot;output&quot;                  </span></span>
-<span id="cb82-19"><a href="#cb82-19"></a><span class="co">#&gt; [5] &quot;scripts&quot;</span></span></code></pre></div>
+<span id="cb82-17"><a href="#cb82-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;    &quot;output&quot;          &quot;programming.Rmd&quot; &quot;scripts&quot;</span></span></code></pre></div>
 <p><br> If we try running the code again, the <code>if</code> block would be executed during each iteration of the loop because all the directories already exist:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="cf">for</span> (i <span class="cf">in</span> directories) {</span>
 <span id="cb83-2"><a href="#cb83-2"></a>  <span class="cf">if</span> (<span class="kw">dir.exists</span>(i)) {</span>
@@ -3293,7 +3305,7 @@ div.tocify {
 <span id="cb91-6"><a href="#cb91-6"></a>  }</span>
 <span id="cb91-7"><a href="#cb91-7"></a>)</span>
 <span id="cb91-8"><a href="#cb91-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb91-9"><a href="#cb91-9"></a><span class="co">#&gt;   6.576   4.495  11.321</span></span></code></pre></div>
+<span id="cb91-9"><a href="#cb91-9"></a><span class="co">#&gt;   6.690   4.638  11.662</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (From <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -3307,7 +3319,7 @@ div.tocify {
 <span id="cb92-6"><a href="#cb92-6"></a>  }</span>
 <span id="cb92-7"><a href="#cb92-7"></a>)</span>
 <span id="cb92-8"><a href="#cb92-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb92-9"><a href="#cb92-9"></a><span class="co">#&gt;   0.009   0.000   0.009</span></span></code></pre></div>
+<span id="cb92-9"><a href="#cb92-9"></a><span class="co">#&gt;   0.010   0.001   0.010</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3331,7 +3343,7 @@ div.tocify {
 <span id="cb93-10"><a href="#cb93-10"></a>  }</span>
 <span id="cb93-11"><a href="#cb93-11"></a>)</span>
 <span id="cb93-12"><a href="#cb93-12"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb93-13"><a href="#cb93-13"></a><span class="co">#&gt;   0.377   0.007   0.391</span></span></code></pre></div>
+<span id="cb93-13"><a href="#cb93-13"></a><span class="co">#&gt;   0.330   0.004   0.336</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="kw">system.time</span>(</span>
 <span id="cb94-2"><a href="#cb94-2"></a>  output &lt;-<span class="st"> </span><span class="kw">if_else</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>,</span>
@@ -3340,7 +3352,7 @@ div.tocify {
 <span id="cb94-5"><a href="#cb94-5"></a>                   )</span>
 <span id="cb94-6"><a href="#cb94-6"></a>)</span>
 <span id="cb94-7"><a href="#cb94-7"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;   0.050   0.002   0.052</span></span></code></pre></div>
+<span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;   0.048   0.002   0.050</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3381,7 +3393,7 @@ div.tocify {
 <span id="cb95-29"><a href="#cb95-29"></a>  }</span>
 <span id="cb95-30"><a href="#cb95-30"></a>)</span>
 <span id="cb95-31"><a href="#cb95-31"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb95-32"><a href="#cb95-32"></a><span class="co">#&gt;   0.038   0.001   0.040</span></span></code></pre></div>
+<span id="cb95-32"><a href="#cb95-32"></a><span class="co">#&gt;   0.039   0.000   0.040</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -3411,7 +3423,7 @@ div.tocify {
 <span id="cb96-22"><a href="#cb96-22"></a>  }</span>
 <span id="cb96-23"><a href="#cb96-23"></a>)</span>
 <span id="cb96-24"><a href="#cb96-24"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-25"><a href="#cb96-25"></a><span class="co">#&gt;   0.023   0.000   0.023</span></span></code></pre></div>
+<span id="cb96-25"><a href="#cb96-25"></a><span class="co">#&gt;   0.024   0.000   0.025</span></span></code></pre></div>
 <p><br> <strong>[Method 3]</strong> Using the vectorised <code>if_else()</code> function</p>
 <ul>
 <li>Note that using a vectorised function when possible would still be the fastest</li>
@@ -3423,7 +3435,7 @@ div.tocify {
 <span id="cb97-4"><a href="#cb97-4"></a>                   <span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb97-5"><a href="#cb97-5"></a>)</span>
 <span id="cb97-6"><a href="#cb97-6"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb97-7"><a href="#cb97-7"></a><span class="co">#&gt;   0.011   0.007   0.019</span></span></code></pre></div>
+<span id="cb97-7"><a href="#cb97-7"></a><span class="co">#&gt;   0.012   0.007   0.018</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -3677,22 +3689,22 @@ div.tocify {
 <span id="cb110-7"><a href="#cb110-7"></a><span class="co">#&gt;  Date[1:1], format: &quot;1979-01-16&quot;</span></span></code></pre></div>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate an age given a birthdate:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="kw">today</span>()</span>
-<span id="cb111-2"><a href="#cb111-2"></a><span class="co">#&gt; [1] &quot;2021-02-09&quot;</span></span>
+<span id="cb111-2"><a href="#cb111-2"></a><span class="co">#&gt; [1] &quot;2021-02-11&quot;</span></span>
 <span id="cb111-3"><a href="#cb111-3"></a></span>
 <span id="cb111-4"><a href="#cb111-4"></a><span class="co"># Calculate difference</span></span>
 <span id="cb111-5"><a href="#cb111-5"></a><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)</span>
-<span id="cb111-6"><a href="#cb111-6"></a><span class="co">#&gt; Time difference of 15365 days</span></span>
+<span id="cb111-6"><a href="#cb111-6"></a><span class="co">#&gt; Time difference of 15367 days</span></span>
 <span id="cb111-7"><a href="#cb111-7"></a><span class="kw">str</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb111-8"><a href="#cb111-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15365</span></span>
+<span id="cb111-8"><a href="#cb111-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15367</span></span>
 <span id="cb111-9"><a href="#cb111-9"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb111-10"><a href="#cb111-10"></a></span>
 <span id="cb111-11"><a href="#cb111-11"></a><span class="co"># Convert to duration</span></span>
 <span id="cb111-12"><a href="#cb111-12"></a><span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb111-13"><a href="#cb111-13"></a><span class="co">#&gt; [1] &quot;1327536000s (~42.07 years)&quot;</span></span>
+<span id="cb111-13"><a href="#cb111-13"></a><span class="co">#&gt; [1] &quot;1327708800s (~42.07 years)&quot;</span></span>
 <span id="cb111-14"><a href="#cb111-14"></a></span>
 <span id="cb111-15"><a href="#cb111-15"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb111-16"><a href="#cb111-16"></a><span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb111-17"><a href="#cb111-17"></a><span class="co">#&gt; [1] 42.06708</span></span>
+<span id="cb111-17"><a href="#cb111-17"></a><span class="co">#&gt; [1] 42.07255</span></span>
 <span id="cb111-18"><a href="#cb111-18"></a><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
 <span id="cb111-19"><a href="#cb111-19"></a><span class="co">#&gt; [1] 42</span></span>
 <span id="cb111-20"><a href="#cb111-20"></a></span>
@@ -4022,7 +4034,7 @@ div.tocify {
 <p><summary><strong>Example 2</strong>: Creating a new z-score variable for the recruiting dataset</summary></p>
 <p>We can apply our function to a “real” dataset too:</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a><span class="co">#load dataset with one obs per recruiting event</span></span>
-<span id="cb131-2"><a href="#cb131-2"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_event_somevars.RData&quot;</span>))</span>
+<span id="cb131-2"><a href="#cb131-2"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/recruit_event_somevars.RData&quot;</span>))</span>
 <span id="cb131-3"><a href="#cb131-3"></a></span>
 <span id="cb131-4"><a href="#cb131-4"></a>df_event_small &lt;-<span class="st"> </span>df_event[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep first 10 observations</span></span>
 <span id="cb131-5"><a href="#cb131-5"></a><span class="st">  </span><span class="kw">select</span>(instnm,univ_id,event_type,med_inc) <span class="co"># keep 4 vars</span></span>
