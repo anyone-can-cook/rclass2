@@ -857,6 +857,11 @@ for (i in vec) {
 ```{r}
 df  # View dataframe object
 
+# show contents of element, outside of a loop
+  # each element of the dataframe is a vector that contains one element for each observation
+  str(df[1]) # single bracket
+  str(df[[1]]) # double bracket
+
 for (i in df) {
   writeLines(str_c("value of object i=",i))
   writeLines(str_c("object i has: type=", typeof(i), "; length=", length(i), "; class=", class(i),
@@ -915,6 +920,10 @@ for (i in names(vec)) {
 df  # View dataframe object
 names(df)  # View names of dataframe object (i.e., column names)
 
+# show using name to print contents, outside of a loop
+str(df["a"]) # single bracket
+str(df[["a"]]) # double bracket
+
 for (i in names(df)) {
   writeLines(str_c("\nvalue of object i=", i, "; type=", typeof(i)))
   str(df[i])  # Access element contents using []
@@ -935,7 +944,7 @@ Remember that we can use `[[]]` to access element contents by their name:
 
 ```{r}
 for (i in names(df)) {
-  writeLines(str_c("mean of element named", i, "=", mean(df[[i]], na.rm = TRUE)))
+  writeLines(str_c("mean of element named ", i, " = ", mean(df[[i]], na.rm = TRUE)))
 }
 ```
 
