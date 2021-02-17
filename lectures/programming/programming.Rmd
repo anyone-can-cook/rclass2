@@ -1802,7 +1802,7 @@ Like all functions, user-written functions usually follow **three steps**:
 
 1. Take in one or more __input__ object(s)
 2. __Process__ the input
-    - This may include utilizing exsting functions from other packages, for example `sum()` or `length()`
+    - This may include utilizing existing functions from other packages, for example `sum()` or `length()`
 3. __Return__ a new object
 
 **Examples** of what we might want to write a function for:
@@ -1851,9 +1851,9 @@ __How to approach writing functions__? (_broad recipe_)
 
 Often, the functions we write will utilize existing functions from Base R and other R packages. For example, create a function named `z_score()` that calculates how many standard deviations an observation is from the mean. Our `z_score()` function will use the existing Base R `mean()` and `sd()` functions.
 
-We will avoid creating user-written functions that utilize `Tidyverse` functions, particularly functions from the `dplyr` package such as `group_by()`. The reason is that including certain `Tidyverse`/`dplyr` functions in a user-written function (or `loo`) requires knowledge of some advanced programming skills that we have not introduced yet. For more explanation, see [here](https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/) and [here](https://adv-r.hadley.nz/quasiquotation.html#unquoting). 
+We will avoid creating user-written functions that utilize `Tidyverse` functions, particularly functions from the `dplyr` package such as `group_by()`. The reason is that including certain `Tidyverse`/`dplyr` functions in a user-written function requires knowledge of some advanced programming skills that we have not introduced yet. For more explanation, see [here](https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/) and [here](https://adv-r.hadley.nz/quasiquotation.html#unquoting). 
 
-Therefore, when teaching how to write funtions that perform data manipulation tasks, we will use a "Base R approach" rather than a "Tidyverse approach."
+Therefore, when teaching how to write functions that perform data manipulation tasks, we will use a "Base R approach" rather than a "Tidyverse approach."
 
 ### Components of a function
 
@@ -2067,17 +2067,17 @@ print_hello <- function(x, y) {  # This function takes 2 arguments
 }
 
 # Call function
-print_hello(x = "Ozan Jaquette", "01/16/1979")
-print_hello(x = "Kartal Jaquette", "01/24/1983")
-print_hello(x = "Sumru Erkut", "06/15/1944")
-print_hello(x = "Sumru Jaquette-Nasiali", "04/05/2019")
+print_hello(x = "Ozan Jaquette", y = "01/16/1979")
+print_hello(x = "Kartal Jaquette", y = "01/24/1983")
+print_hello(x = "Sumru Erkut", y = "06/15/1944")
+print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019")
 ```
 
 1. __Function name__
-    - Function name is `print_hello()`
-2. __Function arguments__ (sometimes called "inputs")
+    - Function name is `print_hello`
+2. __Function arguments__
     - `print_hello()` function takes a name and birthdate as inputs
-3. __Function body__ (what the function does to the inputs)
+3. __Function body__
     - Body of `print_hello()` prints `"Hello, world. My name is <name> and I am <age> years old"`
 
 </details>
@@ -2087,14 +2087,14 @@ print_hello(x = "Sumru Jaquette-Nasiali", "04/05/2019")
 
 __Task__: Test/break `print_hello()` by passing in birthdate using a different format
 
-```{r, eval = FALSE}
-print_hello(x = "Sumru Jaquette-Nasiali", "04/05/2019") # this works
+```{r, eval = FALSE, warning = FALSE}
+print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019") # this works
 
-print_hello(x = "Sumru Jaquette-Nasiali", "2019/04/05") # this breaks
+print_hello(x = "Sumru Jaquette-Nasiali", y = "2019/04/05") # this does not
 ```
 
 <br>
-If we wanted to make additional improvements to `print_hello()`, we could modify the function to allow date of birth to be entered using several alternative formats (e.g., `"04/05/2019"` or `"2019/04/05"`)
+If we wanted to make additional improvements to `print_hello()`, we could modify the function to allow date of birth to be entered using several alternative formats (e.g., `"04/05/2019"` or `"2019/04/05"`). Alternatively, we could throw a custom error to warn users to use correct inputs ([see below](#checking-values)).
 
 
 ### `z_score()` function
@@ -2119,13 +2119,15 @@ z_score(c(1, 2, 3, 4, 5))
 Create a vector of numbers we'll use to calculate z-score:
 
 ```{r}
-v=seq(5,15)
+v <- c(1, 2, 3, 4, 5)
 v
-typeof(v) # type == integer vector
-class(v) # class == integer
-length(v) # number of elements in object v
-v[1] # 1st element of v
-v[10] # 10th element of v
+
+typeof(v)
+class(v)
+length(v)
+
+v[1]  # 1st element of v
+v[4]  # 4th element of v
 ```
 
 <br>
@@ -2142,8 +2144,8 @@ sd(v)
 Calculate z-score for some value:
 
 ```{r}
-(5-mean(v))/sd(v)
-(10-mean(v))/sd(v)
+(1-mean(v))/sd(v)
+(4-mean(v))/sd(v)
 ```
 
 <br>
@@ -2152,16 +2154,17 @@ Calculate z-score for particular elements of vector `v`:
 ```{r}
 v[1]
 (v[1]-mean(v))/sd(v)
-v[8]
-(v[8]-mean(v))/sd(v)
+
+v[4]
+(v[4]-mean(v))/sd(v)
 ```
 
 <br>
-Calculate `z_i` for multiple elements of vector `v`:
+Calculate `z_i` for all elements of vector `v`:
 
 ```{r}
-c(v[1],v[8],v[11])
-c((v[1]-mean(v))/sd(v),(v[8]-mean(v))/sd(v),(v[11]-mean(v))/sd(v))
+v
+(v-mean(v))/sd(v)
 ```
 
 </details>
@@ -2169,7 +2172,7 @@ c((v[1]-mean(v))/sd(v),(v[8]-mean(v))/sd(v),(v[11]-mean(v))/sd(v))
 <br>
 <details><summary>**Step 2**: Write the function</summary>
 
-Write function to calculate z-score for each element of the vector:
+Write function to calculate z-score for all elements of the vector:
 
 ```{r}
 z_score <- function(x) {
@@ -2177,22 +2180,24 @@ z_score <- function(x) {
 }
 ```
 
-1. __Function name__: `z_score`
-2. __Function arguments__: Takes one input, which we named `x`
-    - Inputs can be vectors, dataframes, logical statements, etc.
-3. __Function body__: What function does to the inputs
-    - For each element of `x`, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements
+1. __Function name__
+    - Function name is `z_score`
+2. __Function arguments__
+    - `z_score()` function takes an object `x` as input to calculate the z-score for
+3. __Function body__
+    - Body of `z_score()` calculates z-score of input (e.g., For each element of `x`, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements)
 
 <br>
 Test/call the function:
 
 ```{r}
-z_score(x = c(5,6,7,8,9,10,11,12,13,14,15))
+z_score(x = c(1, 2, 3, 4, 5))
 
 v
 z_score(x = v)
 
-z_score(x = c(seq(20,25)))
+seq(20, 25)
+z_score(x = seq(20, 25))
 ```
 
 </details>
@@ -2237,8 +2242,8 @@ df <- tibble(
   b = c(NA,rnorm(5)),
   c = c(NA,rnorm(5))
 )
-class(df) # class of object df
-df # print data frame
+class(df)
+df
 
 # subset a data frame w/ one element, using []
 df["a"] 
@@ -2248,27 +2253,27 @@ str(df["a"])
 df[["a"]]
 str(df[["a"]])
 
-df$a # print element "a" (i.e., variable "a") of object df (dataframe)
-str(df$a) # structure of element "a" of df: a numeric vector
+df$a
+str(df$a)
 ```
 
 <br>
 Experiment with components of z-score, outside of a function:
 
 ```{r}
-mean(df[["a"]], na.rm=TRUE) # mean of variable "a"
-sd(df[["a"]], na.rm=TRUE) # std dev of variable "a"
+mean(df[["a"]], na.rm=TRUE)  # mean of variable "a"
+sd(df[["a"]], na.rm=TRUE)  # std dev of variable "a"
 
-mean(df$a, na.rm=TRUE) # mean of variable "a"
-sd(df$a, na.rm=TRUE) # std dev of variable "a"
+mean(df$a, na.rm=TRUE)  # mean of variable "a"
+sd(df$a, na.rm=TRUE)  # std dev of variable "a"
 
-#would these work?
-  #mean(df["a"], na.rm=TRUE) # mean of variable "a"
-  #sd(df["a"], na.rm=TRUE) # std dev of variable "a"
+# Would these work?
+  # mean(df["a"], na.rm=TRUE)  # mean of variable "a"
+  # sd(df["a"], na.rm=TRUE)  # std dev of variable "a"
 
-#manually calculate z score for second observation in variable "a"
+# Manually calculate z-score for second observation in variable "a"
 df$a[2]
-(df$a[2] - mean(df$a, na.rm=TRUE))/sd(df$a, na.rm=TRUE) # check result
+(df$a[2] - mean(df$a, na.rm=TRUE))/sd(df$a, na.rm=TRUE)
 ```
 
 <br>
@@ -2276,15 +2281,15 @@ Apply `z_score()` function to variables in dataframe:
 
 ```{r}
 # z_score() function to calculate z-score for each obs of variable "a"
-df$a # print variable "a"
+df$a
 z_score(x = df$a)
 z_score(x = df[["a"]])
 
-#this approach doesn't work:
-  #z_score(x = df["a"]) 
+# This approach doesn't work:
+  # z_score(x = df["a"]) 
   # Why?:
     # df["a"] is a dataframe with one variable
-    # you can't apply mean() or sd() functions to a list/data frame object, only a numeric atomic vector
+    # you can't apply mean() or sd() functions to list/data frame object, only numeric atomic vector
 
 # z-score for each obs of variable "b"
 z_score(x = df$b) 
@@ -2301,11 +2306,12 @@ __Task__: Use the `z_score()` function to create a new variable that is the z-sc
 First, briefly review how to create and delete variables using Base R approach:
 
 ```{r}
-df # print data frame df
-
-df$c_plus2 <- df$c+2 #create variable equal to "c" plus 2
 df
-df$c_plus2 <- NULL # remove variable "c_plus2"
+
+df$c_plus2 <- df$c + 2  # create variable equal to "c" plus 2
+df
+
+df$c_plus2 <- NULL  # remove variable "c_plus2"
 df
 ```
 
@@ -2380,7 +2386,7 @@ z_score <- function(x) {
 <br>
 What kind of input is our current function limited to?
 
-- `z_score()` function does simple arithmatic and utilizes the `mean()` and `sd()` functions
+- `z_score()` function does simple arithmetic and utilizes the `mean()` and `sd()` functions
 - `mean()` and `sd()` functions require `x` to be a numeric (or logical) atomic vector
   - `z_score()` function will break if the input `x` is not an atomic vector
   - `z_score()` function will break if the input `x` is not a numeric/logical atomic vector
@@ -2549,7 +2555,7 @@ __Task__: Write function called `num_negative()`
 __Recommended steps__:
 
 - Perform task outside of function
-    - HINT: `sum(data_frame_name$var_name< %in% c(-4,-5))`
+    - HINT: `sum(data_frame_name$var_name %in% c(-4,-5))`
 - Write function
 - Apply/test function on variables
 
@@ -2681,14 +2687,11 @@ z_score(w, TRUE) # override default value
 ```
 
 </details>
+<br>
 
 ### Dot-dot-dot (`...`)
 
-<br>
-
-#### What is dot-dot-dot (`...`)?
-
-Many functions take an arbitrary number of arguments/inputs, including:
+Many functions take an **arbitrary number of arguments**, including:
 
 - `select()`
 
@@ -2720,7 +2723,7 @@ Many functions take an arbitrary number of arguments/inputs, including:
     ```
     
 <br>
-All of these functions rely on a special argument `...` (pronounced "dot-dot-dot")  
+All of these functions rely on a **special argument** `...` (pronounced "dot-dot-dot")  
 
 - Dot-dot-dot (`...`) allows a function to take an arbitrary number of arguments
 - Wickham and Grolemund [chapter 19.5.3](https://r4ds.had.co.nz/functions.html#dot-dot-dot) states:
@@ -2728,10 +2731,7 @@ All of these functions rely on a special argument `...` (pronounced "dot-dot-dot
   > "`...` captures any number of arguments that aren’t otherwise matched."
 
 <br>
-
-#### Writing functions with dot-dot-dot (`...`) arguments
-
-When writing functions, there are two primary uses of including `...` arguments:
+When writing functions, there are **two primary uses** of including `...` arguments:
 
 1. A means of allowing the function to take an arbitrary number of arguments, as in the `select()` and `sum()` functions
 1. When we write our own function with the special argument `...`, we can pass those inputs into another function that takes `...` (e.g., `str_c()`)
@@ -2746,10 +2746,12 @@ Recall the first iteration of our `print_hello()` function, which basically just
 - Function that only took one argument
 
     ```{r}
+    # Define function
     print_hello1 <- function(x) {  
       str_c("Hello ", x, "!") 
     }
     
+    # Call function
     print_hello1("Ozan")
     ```
 
@@ -2770,7 +2772,7 @@ Recall the first iteration of our `print_hello()` function, which basically just
 
 ### Checking values
 
-How to handle invalid inputs?
+How to handle **invalid inputs**?
 
 - As seen previously in the [`z_score()` example](#z_score-function), one way to check for invalid inputs is using conditional statements
 - "It's good practice to check important preconditions, and throw an error (with `stop()`), if they are not true" ([R for Data Science](https://r4ds.had.co.nz/functions.html#checking-values))
@@ -2787,13 +2789,13 @@ stop(..., call. = TRUE, domain = NULL)
 ```
 
 <br>
-<details><summary>**Example**: Using `stop()` inside function</summary>
+<details><summary>**Example**: Using `stop()` to check invalid name input to `print_hello()` function</summary>
 
-Recall the `print_hello()` function. It will not print a greeting if `NA` is supplied as the input:
+Recall the original `print_hello()` function. It will not print a greeting if `NA` is supplied as the input:
 
 ```{r}
 print_hello <- function(x) {
-  str_c("Hello ", x, "!")
+  str_c("Hello, world. My name is", x, sep = " ", collapse = NULL)
 }
 
 print_hello(NA)
@@ -2808,10 +2810,67 @@ print_hello <- function(x) {
     stop("`x` must not be `NA`")
   }
   
-  str_c("Hello ", x, "!")
+  str_c("Hello, world. My name is", x, sep = " ", collapse = NULL)
 }
 
 print_hello(NA)
+```
+
+</details>
+<br>
+
+<details><summary>**Example**: Using `stop()` to check invalid date input to `print_hello()` function</summary>
+
+Recall the version of `print_hello()` function that prints both the user's name and age. It will not work properly if the birthdate input is not supplied in month-day-year format:
+
+```{r}
+print_hello <- function(x, y) {
+  age <- floor(as.numeric(as.duration(today() - mdy(y)), "years"))
+  
+  str_c("Hello, world. My name is", x, "and I am", age, "years old", sep = " ", collapse = NULL)
+}
+
+print_hello(x = "Sumru Jaquette-Nasiali", "04/05/2019") # this works
+
+print_hello(x = "Sumru Jaquette-Nasiali", "2019/04/05") # this does not
+```
+
+<br>
+We can raise an error with a custom message if the birthdate is not in the right format:
+
+```{r, eval=FALSE}
+print_hello <- function(x, y) {
+  if (is.na(mdy(y))) {
+    stop("`y` must be in month-day-year format")
+  }
+  
+  age <- floor(as.numeric(as.duration(today() - mdy(y)), "years"))
+  
+  str_c("Hello, world. My name is", x, "and I am", age, "years old", sep = " ", collapse = NULL)
+}
+
+print_hello(x = "Sumru Jaquette-Nasiali", y = "2019/04/05")
+```
+
+<br>
+We can also add the check for the name input as well:
+
+```{r, eval=FALSE}
+print_hello <- function(x, y) {
+  # Check name input `x`
+  if (is.na(x)) {
+    stop("`x` must not be `NA`")
+  }
+  
+  # Check birthdate input `y`
+  if (is.na(mdy(y))) {
+    stop("`y` must be in month-day-year format")
+  }
+  
+  age <- floor(as.numeric(as.duration(today() - mdy(y)), "years"))
+  
+  str_c("Hello, world. My name is", x, "and I am", age, "years old", sep = " ", collapse = NULL)
+}
 ```
 
 </details>
@@ -2934,5 +2993,57 @@ for (i in prices) {
   writeLines(assess_price(i))
 }
 ```
+
+</details>
+
+### Returning multiple values
+
+How can we return **multiple values** from a function?
+
+- R can only return 1 value or object from a function
+- To return multiple values, one workaround is to create a list containing these items and return the list
+
+<br>
+<details><summary>**Example**: Returning multiple values from a function using a list</summary>
+
+Let's say we have the following function that filters the `diamonds` dataset by color, then generates some information on multiple characteristics (i.e., `cut` and `clarity`). For now, it is printing a frequency table for each characteristic to the screen:
+
+```{r}
+diamond_info_by_color <- function(color) {
+  df <- diamonds %>% filter(color == color)
+  
+  print(table(df$cut))
+  print(table(df$clarity))
+}
+
+diamond_info_by_color('E')
+```
+
+<br>
+If we want to return the frequency tables from the function (i.e., return multiple objects), we can do so by combining them together into a single list and returning that list:
+
+```{r}
+diamond_info_by_color <- function(color) {
+  df <- diamonds %>% filter(color == color)
+  
+  list(cut_table = table(df$cut), clarity_table = table(df$clarity))  # implicitly return list
+}
+```
+
+<br>
+We can then store the returned list in an object using `<-`, and access the individual elements within the list using `[[]]` or `$`:
+
+```{r}
+# Store returned list in `info`
+info <- diamond_info_by_color('E')
+
+# Access individual elements of the list
+info[['cut_table']]
+
+# Can also store individual elements in new objects
+clarity_table <- info$clarity_table
+clarity_table
+```
+
 
 </details>

@@ -3165,7 +3165,7 @@ div.tocify {
 <span id="cb80-8"><a href="#cb80-8"></a></span>
 <span id="cb80-9"><a href="#cb80-9"></a><span class="co"># Check that directory is created</span></span>
 <span id="cb80-10"><a href="#cb80-10"></a><span class="kw">list.files</span>()</span>
-<span id="cb80-11"><a href="#cb80-11"></a><span class="co">#&gt; [1] &quot;my_new_directory&quot; &quot;programming.Rmd&quot;</span></span></code></pre></div>
+<span id="cb80-11"><a href="#cb80-11"></a><span class="co">#&gt; [1] &quot;my_new_directory&quot; &quot;programming.html&quot; &quot;programming.Rmd&quot;</span></span></code></pre></div>
 <p><br> If we try running this code again, the <code>if</code> block would be executed because the directory already exists:</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="kw">dir.exists</span>(directory)</span>
 <span id="cb81-2"><a href="#cb81-2"></a><span class="co">#&gt; [1] TRUE</span></span>
@@ -3198,7 +3198,8 @@ div.tocify {
 <span id="cb82-14"><a href="#cb82-14"></a></span>
 <span id="cb82-15"><a href="#cb82-15"></a><span class="co"># Check that directories are created</span></span>
 <span id="cb82-16"><a href="#cb82-16"></a><span class="kw">list.files</span>()</span>
-<span id="cb82-17"><a href="#cb82-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;    &quot;output&quot;          &quot;programming.Rmd&quot; &quot;scripts&quot;</span></span></code></pre></div>
+<span id="cb82-17"><a href="#cb82-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;output&quot;           &quot;programming.html&quot;</span></span>
+<span id="cb82-18"><a href="#cb82-18"></a><span class="co">#&gt; [4] &quot;programming.Rmd&quot;  &quot;scripts&quot;</span></span></code></pre></div>
 <p><br> If we try running the code again, the <code>if</code> block would be executed during each iteration of the loop because all the directories already exist:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="cf">for</span> (i <span class="cf">in</span> directories) {</span>
 <span id="cb83-2"><a href="#cb83-2"></a>  <span class="cf">if</span> (<span class="kw">dir.exists</span>(i)) {</span>
@@ -3305,7 +3306,7 @@ div.tocify {
 <span id="cb91-6"><a href="#cb91-6"></a>  }</span>
 <span id="cb91-7"><a href="#cb91-7"></a>)</span>
 <span id="cb91-8"><a href="#cb91-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb91-9"><a href="#cb91-9"></a><span class="co">#&gt;   6.690   4.638  11.662</span></span></code></pre></div>
+<span id="cb91-9"><a href="#cb91-9"></a><span class="co">#&gt;   6.998   5.214  12.682</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (From <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -3319,7 +3320,7 @@ div.tocify {
 <span id="cb92-6"><a href="#cb92-6"></a>  }</span>
 <span id="cb92-7"><a href="#cb92-7"></a>)</span>
 <span id="cb92-8"><a href="#cb92-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb92-9"><a href="#cb92-9"></a><span class="co">#&gt;   0.010   0.001   0.010</span></span></code></pre></div>
+<span id="cb92-9"><a href="#cb92-9"></a><span class="co">#&gt;   0.013   0.001   0.015</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3343,7 +3344,7 @@ div.tocify {
 <span id="cb93-10"><a href="#cb93-10"></a>  }</span>
 <span id="cb93-11"><a href="#cb93-11"></a>)</span>
 <span id="cb93-12"><a href="#cb93-12"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb93-13"><a href="#cb93-13"></a><span class="co">#&gt;   0.330   0.004   0.336</span></span></code></pre></div>
+<span id="cb93-13"><a href="#cb93-13"></a><span class="co">#&gt;   0.380   0.009   0.400</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="kw">system.time</span>(</span>
 <span id="cb94-2"><a href="#cb94-2"></a>  output &lt;-<span class="st"> </span><span class="kw">if_else</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>,</span>
@@ -3352,7 +3353,7 @@ div.tocify {
 <span id="cb94-5"><a href="#cb94-5"></a>                   )</span>
 <span id="cb94-6"><a href="#cb94-6"></a>)</span>
 <span id="cb94-7"><a href="#cb94-7"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;   0.048   0.002   0.050</span></span></code></pre></div>
+<span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;   0.053   0.002   0.056</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3393,7 +3394,7 @@ div.tocify {
 <span id="cb95-29"><a href="#cb95-29"></a>  }</span>
 <span id="cb95-30"><a href="#cb95-30"></a>)</span>
 <span id="cb95-31"><a href="#cb95-31"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb95-32"><a href="#cb95-32"></a><span class="co">#&gt;   0.039   0.000   0.040</span></span></code></pre></div>
+<span id="cb95-32"><a href="#cb95-32"></a><span class="co">#&gt;   0.044   0.001   0.047</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -3423,7 +3424,7 @@ div.tocify {
 <span id="cb96-22"><a href="#cb96-22"></a>  }</span>
 <span id="cb96-23"><a href="#cb96-23"></a>)</span>
 <span id="cb96-24"><a href="#cb96-24"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-25"><a href="#cb96-25"></a><span class="co">#&gt;   0.024   0.000   0.025</span></span></code></pre></div>
+<span id="cb96-25"><a href="#cb96-25"></a><span class="co">#&gt;   0.026   0.001   0.031</span></span></code></pre></div>
 <p><br> <strong>[Method 3]</strong> Using the vectorised <code>if_else()</code> function</p>
 <ul>
 <li>Note that using a vectorised function when possible would still be the fastest</li>
@@ -3435,7 +3436,7 @@ div.tocify {
 <span id="cb97-4"><a href="#cb97-4"></a>                   <span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb97-5"><a href="#cb97-5"></a>)</span>
 <span id="cb97-6"><a href="#cb97-6"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb97-7"><a href="#cb97-7"></a><span class="co">#&gt;   0.012   0.007   0.018</span></span></code></pre></div>
+<span id="cb97-7"><a href="#cb97-7"></a><span class="co">#&gt;   0.012   0.007   0.020</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -3483,7 +3484,7 @@ div.tocify {
 <li>Take in one or more <strong>input</strong> object(s)</li>
 <li><strong>Process</strong> the input
 <ul>
-<li>This may include utilizing exsting functions from other packages, for example <code>sum()</code> or <code>length()</code></li>
+<li>This may include utilizing existing functions from other packages, for example <code>sum()</code> or <code>length()</code></li>
 </ul></li>
 <li><strong>Return</strong> a new object</li>
 </ol>
@@ -3542,8 +3543,8 @@ div.tocify {
 <div id="basics-of-writing-functions" class="section level2">
 <h2><span class="header-section-number">5.2</span> Basics of writing functions</h2>
 <p>Often, the functions we write will utilize existing functions from Base R and other R packages. For example, create a function named <code>z_score()</code> that calculates how many standard deviations an observation is from the mean. Our <code>z_score()</code> function will use the existing Base R <code>mean()</code> and <code>sd()</code> functions.</p>
-<p>We will avoid creating user-written functions that utilize <code>Tidyverse</code> functions, particularly functions from the <code>dplyr</code> package such as <code>group_by()</code>. The reason is that including certain <code>Tidyverse</code>/<code>dplyr</code> functions in a user-written function (or <code>loo</code>) requires knowledge of some advanced programming skills that we have not introduced yet. For more explanation, see <a href="https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/">here</a> and <a href="https://adv-r.hadley.nz/quasiquotation.html#unquoting">here</a>.</p>
-<p>Therefore, when teaching how to write funtions that perform data manipulation tasks, we will use a “Base R approach” rather than a “Tidyverse approach.”</p>
+<p>We will avoid creating user-written functions that utilize <code>Tidyverse</code> functions, particularly functions from the <code>dplyr</code> package such as <code>group_by()</code>. The reason is that including certain <code>Tidyverse</code>/<code>dplyr</code> functions in a user-written function requires knowledge of some advanced programming skills that we have not introduced yet. For more explanation, see <a href="https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/">here</a> and <a href="https://adv-r.hadley.nz/quasiquotation.html#unquoting">here</a>.</p>
+<p>Therefore, when teaching how to write functions that perform data manipulation tasks, we will use a “Base R approach” rather than a “Tidyverse approach.”</p>
 <div id="components-of-a-function" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Components of a function</h3>
 <p>The <code>function()</code> function tells R that you are writing a function:</p>
@@ -3689,22 +3690,22 @@ div.tocify {
 <span id="cb110-7"><a href="#cb110-7"></a><span class="co">#&gt;  Date[1:1], format: &quot;1979-01-16&quot;</span></span></code></pre></div>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate an age given a birthdate:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="kw">today</span>()</span>
-<span id="cb111-2"><a href="#cb111-2"></a><span class="co">#&gt; [1] &quot;2021-02-11&quot;</span></span>
+<span id="cb111-2"><a href="#cb111-2"></a><span class="co">#&gt; [1] &quot;2021-02-16&quot;</span></span>
 <span id="cb111-3"><a href="#cb111-3"></a></span>
 <span id="cb111-4"><a href="#cb111-4"></a><span class="co"># Calculate difference</span></span>
 <span id="cb111-5"><a href="#cb111-5"></a><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)</span>
-<span id="cb111-6"><a href="#cb111-6"></a><span class="co">#&gt; Time difference of 15367 days</span></span>
+<span id="cb111-6"><a href="#cb111-6"></a><span class="co">#&gt; Time difference of 15372 days</span></span>
 <span id="cb111-7"><a href="#cb111-7"></a><span class="kw">str</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb111-8"><a href="#cb111-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15367</span></span>
+<span id="cb111-8"><a href="#cb111-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15372</span></span>
 <span id="cb111-9"><a href="#cb111-9"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb111-10"><a href="#cb111-10"></a></span>
 <span id="cb111-11"><a href="#cb111-11"></a><span class="co"># Convert to duration</span></span>
 <span id="cb111-12"><a href="#cb111-12"></a><span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb111-13"><a href="#cb111-13"></a><span class="co">#&gt; [1] &quot;1327708800s (~42.07 years)&quot;</span></span>
+<span id="cb111-13"><a href="#cb111-13"></a><span class="co">#&gt; [1] &quot;1328140800s (~42.09 years)&quot;</span></span>
 <span id="cb111-14"><a href="#cb111-14"></a></span>
 <span id="cb111-15"><a href="#cb111-15"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb111-16"><a href="#cb111-16"></a><span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb111-17"><a href="#cb111-17"></a><span class="co">#&gt; [1] 42.07255</span></span>
+<span id="cb111-17"><a href="#cb111-17"></a><span class="co">#&gt; [1] 42.08624</span></span>
 <span id="cb111-18"><a href="#cb111-18"></a><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
 <span id="cb111-19"><a href="#cb111-19"></a><span class="co">#&gt; [1] 42</span></span>
 <span id="cb111-20"><a href="#cb111-20"></a></span>
@@ -3732,24 +3733,24 @@ div.tocify {
 <span id="cb113-8"><a href="#cb113-8"></a>}</span>
 <span id="cb113-9"><a href="#cb113-9"></a></span>
 <span id="cb113-10"><a href="#cb113-10"></a><span class="co"># Call function</span></span>
-<span id="cb113-11"><a href="#cb113-11"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>, <span class="st">&quot;01/16/1979&quot;</span>)</span>
+<span id="cb113-11"><a href="#cb113-11"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/16/1979&quot;</span>)</span>
 <span id="cb113-12"><a href="#cb113-12"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Ozan Jaquette and I am 42 years old&quot;</span></span>
-<span id="cb113-13"><a href="#cb113-13"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Kartal Jaquette&quot;</span>, <span class="st">&quot;01/24/1983&quot;</span>)</span>
+<span id="cb113-13"><a href="#cb113-13"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Kartal Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/24/1983&quot;</span>)</span>
 <span id="cb113-14"><a href="#cb113-14"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Kartal Jaquette and I am 38 years old&quot;</span></span>
-<span id="cb113-15"><a href="#cb113-15"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Erkut&quot;</span>, <span class="st">&quot;06/15/1944&quot;</span>)</span>
+<span id="cb113-15"><a href="#cb113-15"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Erkut&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;06/15/1944&quot;</span>)</span>
 <span id="cb113-16"><a href="#cb113-16"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Erkut and I am 76 years old&quot;</span></span>
-<span id="cb113-17"><a href="#cb113-17"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="st">&quot;04/05/2019&quot;</span>)</span>
+<span id="cb113-17"><a href="#cb113-17"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;04/05/2019&quot;</span>)</span>
 <span id="cb113-18"><a href="#cb113-18"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Jaquette-Nasiali and I am 1 years old&quot;</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><strong>Function name</strong>
 <ul>
-<li>Function name is <code>print_hello()</code></li>
+<li>Function name is <code>print_hello</code></li>
 </ul></li>
-<li><strong>Function arguments</strong> (sometimes called “inputs”)
+<li><strong>Function arguments</strong>
 <ul>
 <li><code>print_hello()</code> function takes a name and birthdate as inputs</li>
 </ul></li>
-<li><strong>Function body</strong> (what the function does to the inputs)
+<li><strong>Function body</strong>
 <ul>
 <li>Body of <code>print_hello()</code> prints <code>&quot;Hello, world. My name is &lt;name&gt; and I am &lt;age&gt; years old&quot;</code></li>
 </ul></li>
@@ -3757,10 +3758,10 @@ div.tocify {
 </details>
 <p><br></p>
 <p><strong>Task</strong>: Test/break <code>print_hello()</code> by passing in birthdate using a different format</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="st">&quot;04/05/2019&quot;</span>) <span class="co"># this works</span></span>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;04/05/2019&quot;</span>) <span class="co"># this works</span></span>
 <span id="cb114-2"><a href="#cb114-2"></a></span>
-<span id="cb114-3"><a href="#cb114-3"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="st">&quot;2019/04/05&quot;</span>) <span class="co"># this breaks</span></span></code></pre></div>
-<p><br> If we wanted to make additional improvements to <code>print_hello()</code>, we could modify the function to allow date of birth to be entered using several alternative formats (e.g., <code>&quot;04/05/2019&quot;</code> or <code>&quot;2019/04/05&quot;</code>)</p>
+<span id="cb114-3"><a href="#cb114-3"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;2019/04/05&quot;</span>) <span class="co"># this does not</span></span></code></pre></div>
+<p><br> If we wanted to make additional improvements to <code>print_hello()</code>, we could modify the function to allow date of birth to be entered using several alternative formats (e.g., <code>&quot;04/05/2019&quot;</code> or <code>&quot;2019/04/05&quot;</code>). Alternatively, we could throw a custom error to warn users to use correct inputs (<a href="#checking-values">see below</a>).</p>
 </div>
 <div id="z_score-function" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> <code>z_score()</code> function</h3>
@@ -3775,77 +3776,83 @@ div.tocify {
 <details>
 <p><summary><strong>Step 1</strong>: Perform task outside of function</summary></p>
 <p>Create a vector of numbers we’ll use to calculate z-score:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a>v=<span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">15</span>)</span>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb116-2"><a href="#cb116-2"></a>v</span>
-<span id="cb116-3"><a href="#cb116-3"></a><span class="co">#&gt;  [1]  5  6  7  8  9 10 11 12 13 14 15</span></span>
-<span id="cb116-4"><a href="#cb116-4"></a><span class="kw">typeof</span>(v) <span class="co"># type == integer vector</span></span>
-<span id="cb116-5"><a href="#cb116-5"></a><span class="co">#&gt; [1] &quot;integer&quot;</span></span>
-<span id="cb116-6"><a href="#cb116-6"></a><span class="kw">class</span>(v) <span class="co"># class == integer</span></span>
-<span id="cb116-7"><a href="#cb116-7"></a><span class="co">#&gt; [1] &quot;integer&quot;</span></span>
-<span id="cb116-8"><a href="#cb116-8"></a><span class="kw">length</span>(v) <span class="co"># number of elements in object v</span></span>
-<span id="cb116-9"><a href="#cb116-9"></a><span class="co">#&gt; [1] 11</span></span>
-<span id="cb116-10"><a href="#cb116-10"></a>v[<span class="dv">1</span>] <span class="co"># 1st element of v</span></span>
-<span id="cb116-11"><a href="#cb116-11"></a><span class="co">#&gt; [1] 5</span></span>
-<span id="cb116-12"><a href="#cb116-12"></a>v[<span class="dv">10</span>] <span class="co"># 10th element of v</span></span>
-<span id="cb116-13"><a href="#cb116-13"></a><span class="co">#&gt; [1] 14</span></span></code></pre></div>
+<span id="cb116-3"><a href="#cb116-3"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span id="cb116-4"><a href="#cb116-4"></a></span>
+<span id="cb116-5"><a href="#cb116-5"></a><span class="kw">typeof</span>(v)</span>
+<span id="cb116-6"><a href="#cb116-6"></a><span class="co">#&gt; [1] &quot;double&quot;</span></span>
+<span id="cb116-7"><a href="#cb116-7"></a><span class="kw">class</span>(v)</span>
+<span id="cb116-8"><a href="#cb116-8"></a><span class="co">#&gt; [1] &quot;numeric&quot;</span></span>
+<span id="cb116-9"><a href="#cb116-9"></a><span class="kw">length</span>(v)</span>
+<span id="cb116-10"><a href="#cb116-10"></a><span class="co">#&gt; [1] 5</span></span>
+<span id="cb116-11"><a href="#cb116-11"></a></span>
+<span id="cb116-12"><a href="#cb116-12"></a>v[<span class="dv">1</span>]  <span class="co"># 1st element of v</span></span>
+<span id="cb116-13"><a href="#cb116-13"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb116-14"><a href="#cb116-14"></a>v[<span class="dv">4</span>]  <span class="co"># 4th element of v</span></span>
+<span id="cb116-15"><a href="#cb116-15"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
 <p><br> We can calculate the z-score using the Base R <code>mean()</code> and <code>sd()</code> functions:</p>
 <ul>
 <li><span class="math inline">\(z_i = \frac{x_i - \bar{x}}{sd(x)}\)</span></li>
 </ul>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a><span class="kw">mean</span>(v)</span>
-<span id="cb117-2"><a href="#cb117-2"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb117-2"><a href="#cb117-2"></a><span class="co">#&gt; [1] 3</span></span>
 <span id="cb117-3"><a href="#cb117-3"></a><span class="kw">sd</span>(v)</span>
-<span id="cb117-4"><a href="#cb117-4"></a><span class="co">#&gt; [1] 3.316625</span></span></code></pre></div>
+<span id="cb117-4"><a href="#cb117-4"></a><span class="co">#&gt; [1] 1.581139</span></span></code></pre></div>
 <p><br> Calculate z-score for some value:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>(<span class="dv">5</span><span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
-<span id="cb118-2"><a href="#cb118-2"></a><span class="co">#&gt; [1] -1.507557</span></span>
-<span id="cb118-3"><a href="#cb118-3"></a>(<span class="dv">10</span><span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
-<span id="cb118-4"><a href="#cb118-4"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>(<span class="dv">1</span><span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
+<span id="cb118-2"><a href="#cb118-2"></a><span class="co">#&gt; [1] -1.264911</span></span>
+<span id="cb118-3"><a href="#cb118-3"></a>(<span class="dv">4</span><span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
+<span id="cb118-4"><a href="#cb118-4"></a><span class="co">#&gt; [1] 0.6324555</span></span></code></pre></div>
 <p><br> Calculate z-score for particular elements of vector <code>v</code>:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a>v[<span class="dv">1</span>]</span>
-<span id="cb119-2"><a href="#cb119-2"></a><span class="co">#&gt; [1] 5</span></span>
+<span id="cb119-2"><a href="#cb119-2"></a><span class="co">#&gt; [1] 1</span></span>
 <span id="cb119-3"><a href="#cb119-3"></a>(v[<span class="dv">1</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
-<span id="cb119-4"><a href="#cb119-4"></a><span class="co">#&gt; [1] -1.507557</span></span>
-<span id="cb119-5"><a href="#cb119-5"></a>v[<span class="dv">8</span>]</span>
-<span id="cb119-6"><a href="#cb119-6"></a><span class="co">#&gt; [1] 12</span></span>
-<span id="cb119-7"><a href="#cb119-7"></a>(v[<span class="dv">8</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
-<span id="cb119-8"><a href="#cb119-8"></a><span class="co">#&gt; [1] 0.6030227</span></span></code></pre></div>
-<p><br> Calculate <code>z_i</code> for multiple elements of vector <code>v</code>:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="kw">c</span>(v[<span class="dv">1</span>],v[<span class="dv">8</span>],v[<span class="dv">11</span>])</span>
-<span id="cb120-2"><a href="#cb120-2"></a><span class="co">#&gt; [1]  5 12 15</span></span>
-<span id="cb120-3"><a href="#cb120-3"></a><span class="kw">c</span>((v[<span class="dv">1</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v),(v[<span class="dv">8</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v),(v[<span class="dv">11</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v))</span>
-<span id="cb120-4"><a href="#cb120-4"></a><span class="co">#&gt; [1] -1.5075567  0.6030227  1.5075567</span></span></code></pre></div>
+<span id="cb119-4"><a href="#cb119-4"></a><span class="co">#&gt; [1] -1.264911</span></span>
+<span id="cb119-5"><a href="#cb119-5"></a></span>
+<span id="cb119-6"><a href="#cb119-6"></a>v[<span class="dv">4</span>]</span>
+<span id="cb119-7"><a href="#cb119-7"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb119-8"><a href="#cb119-8"></a>(v[<span class="dv">4</span>]<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
+<span id="cb119-9"><a href="#cb119-9"></a><span class="co">#&gt; [1] 0.6324555</span></span></code></pre></div>
+<p><br> Calculate <code>z_i</code> for all elements of vector <code>v</code>:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>v</span>
+<span id="cb120-2"><a href="#cb120-2"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span id="cb120-3"><a href="#cb120-3"></a>(v<span class="op">-</span><span class="kw">mean</span>(v))<span class="op">/</span><span class="kw">sd</span>(v)</span>
+<span id="cb120-4"><a href="#cb120-4"></a><span class="co">#&gt; [1] -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span></code></pre></div>
 </details>
 <br>
 <details>
 <p><summary><strong>Step 2</strong>: Write the function</summary></p>
-<p>Write function to calculate z-score for each element of the vector:</p>
+<p>Write function to calculate z-score for all elements of the vector:</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>z_score &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
 <span id="cb121-2"><a href="#cb121-2"></a>  (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x))<span class="op">/</span><span class="kw">sd</span>(x)</span>
 <span id="cb121-3"><a href="#cb121-3"></a>}</span></code></pre></div>
 <ol style="list-style-type: decimal">
-<li><strong>Function name</strong>: <code>z_score</code></li>
-<li><strong>Function arguments</strong>: Takes one input, which we named <code>x</code>
+<li><strong>Function name</strong>
 <ul>
-<li>Inputs can be vectors, dataframes, logical statements, etc.</li>
+<li>Function name is <code>z_score</code></li>
 </ul></li>
-<li><strong>Function body</strong>: What function does to the inputs
+<li><strong>Function arguments</strong>
 <ul>
-<li>For each element of <code>x</code>, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements</li>
+<li><code>z_score()</code> function takes an object <code>x</code> as input to calculate the z-score for</li>
+</ul></li>
+<li><strong>Function body</strong>
+<ul>
+<li>Body of <code>z_score()</code> calculates z-score of input (e.g., For each element of <code>x</code>, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements)</li>
 </ul></li>
 </ol>
 <p><br> Test/call the function:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a><span class="kw">z_score</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>))</span>
-<span id="cb122-2"><a href="#cb122-2"></a><span class="co">#&gt;  [1] -1.5075567 -1.2060454 -0.9045340 -0.6030227 -0.3015113  0.0000000</span></span>
-<span id="cb122-3"><a href="#cb122-3"></a><span class="co">#&gt;  [7]  0.3015113  0.6030227  0.9045340  1.2060454  1.5075567</span></span>
-<span id="cb122-4"><a href="#cb122-4"></a></span>
-<span id="cb122-5"><a href="#cb122-5"></a>v</span>
-<span id="cb122-6"><a href="#cb122-6"></a><span class="co">#&gt;  [1]  5  6  7  8  9 10 11 12 13 14 15</span></span>
-<span id="cb122-7"><a href="#cb122-7"></a><span class="kw">z_score</span>(<span class="dt">x =</span> v)</span>
-<span id="cb122-8"><a href="#cb122-8"></a><span class="co">#&gt;  [1] -1.5075567 -1.2060454 -0.9045340 -0.6030227 -0.3015113  0.0000000</span></span>
-<span id="cb122-9"><a href="#cb122-9"></a><span class="co">#&gt;  [7]  0.3015113  0.6030227  0.9045340  1.2060454  1.5075567</span></span>
-<span id="cb122-10"><a href="#cb122-10"></a></span>
-<span id="cb122-11"><a href="#cb122-11"></a><span class="kw">z_score</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">20</span>,<span class="dv">25</span>)))</span>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a><span class="kw">z_score</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb122-2"><a href="#cb122-2"></a><span class="co">#&gt; [1] -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb122-3"><a href="#cb122-3"></a></span>
+<span id="cb122-4"><a href="#cb122-4"></a>v</span>
+<span id="cb122-5"><a href="#cb122-5"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span id="cb122-6"><a href="#cb122-6"></a><span class="kw">z_score</span>(<span class="dt">x =</span> v)</span>
+<span id="cb122-7"><a href="#cb122-7"></a><span class="co">#&gt; [1] -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb122-8"><a href="#cb122-8"></a></span>
+<span id="cb122-9"><a href="#cb122-9"></a><span class="kw">seq</span>(<span class="dv">20</span>, <span class="dv">25</span>)</span>
+<span id="cb122-10"><a href="#cb122-10"></a><span class="co">#&gt; [1] 20 21 22 23 24 25</span></span>
+<span id="cb122-11"><a href="#cb122-11"></a><span class="kw">z_score</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">20</span>, <span class="dv">25</span>))</span>
 <span id="cb122-12"><a href="#cb122-12"></a><span class="co">#&gt; [1] -1.3363062 -0.8017837 -0.2672612  0.2672612  0.8017837  1.3363062</span></span></code></pre></div>
 </details>
 <p><br><br></p>
@@ -3879,9 +3886,9 @@ div.tocify {
 <span id="cb125-4"><a href="#cb125-4"></a>  <span class="dt">b =</span> <span class="kw">c</span>(<span class="ot">NA</span>,<span class="kw">rnorm</span>(<span class="dv">5</span>)),</span>
 <span id="cb125-5"><a href="#cb125-5"></a>  <span class="dt">c =</span> <span class="kw">c</span>(<span class="ot">NA</span>,<span class="kw">rnorm</span>(<span class="dv">5</span>))</span>
 <span id="cb125-6"><a href="#cb125-6"></a>)</span>
-<span id="cb125-7"><a href="#cb125-7"></a><span class="kw">class</span>(df) <span class="co"># class of object df</span></span>
+<span id="cb125-7"><a href="#cb125-7"></a><span class="kw">class</span>(df)</span>
 <span id="cb125-8"><a href="#cb125-8"></a><span class="co">#&gt; [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span>
-<span id="cb125-9"><a href="#cb125-9"></a>df <span class="co"># print data frame</span></span>
+<span id="cb125-9"><a href="#cb125-9"></a>df</span>
 <span id="cb125-10"><a href="#cb125-10"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
 <span id="cb125-11"><a href="#cb125-11"></a><span class="co">#&gt;        a      b      c</span></span>
 <span id="cb125-12"><a href="#cb125-12"></a><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
@@ -3913,44 +3920,44 @@ div.tocify {
 <span id="cb125-38"><a href="#cb125-38"></a><span class="kw">str</span>(df[[<span class="st">&quot;a&quot;</span>]])</span>
 <span id="cb125-39"><a href="#cb125-39"></a><span class="co">#&gt;  num [1:6] NA 0.586 0.709 -0.109 -0.453 ...</span></span>
 <span id="cb125-40"><a href="#cb125-40"></a></span>
-<span id="cb125-41"><a href="#cb125-41"></a>df<span class="op">$</span>a <span class="co"># print element &quot;a&quot; (i.e., variable &quot;a&quot;) of object df (dataframe)</span></span>
+<span id="cb125-41"><a href="#cb125-41"></a>df<span class="op">$</span>a</span>
 <span id="cb125-42"><a href="#cb125-42"></a><span class="co">#&gt; [1]         NA  0.5855288  0.7094660 -0.1093033 -0.4534972  0.6058875</span></span>
-<span id="cb125-43"><a href="#cb125-43"></a><span class="kw">str</span>(df<span class="op">$</span>a) <span class="co"># structure of element &quot;a&quot; of df: a numeric vector</span></span>
+<span id="cb125-43"><a href="#cb125-43"></a><span class="kw">str</span>(df<span class="op">$</span>a)</span>
 <span id="cb125-44"><a href="#cb125-44"></a><span class="co">#&gt;  num [1:6] NA 0.586 0.709 -0.109 -0.453 ...</span></span></code></pre></div>
 <p><br> Experiment with components of z-score, outside of a function:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a><span class="kw">mean</span>(df[[<span class="st">&quot;a&quot;</span>]], <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="co"># mean of variable &quot;a&quot;</span></span>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a><span class="kw">mean</span>(df[[<span class="st">&quot;a&quot;</span>]], <span class="dt">na.rm=</span><span class="ot">TRUE</span>)  <span class="co"># mean of variable &quot;a&quot;</span></span>
 <span id="cb126-2"><a href="#cb126-2"></a><span class="co">#&gt; [1] 0.2676164</span></span>
-<span id="cb126-3"><a href="#cb126-3"></a><span class="kw">sd</span>(df[[<span class="st">&quot;a&quot;</span>]], <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="co"># std dev of variable &quot;a&quot;</span></span>
+<span id="cb126-3"><a href="#cb126-3"></a><span class="kw">sd</span>(df[[<span class="st">&quot;a&quot;</span>]], <span class="dt">na.rm=</span><span class="ot">TRUE</span>)  <span class="co"># std dev of variable &quot;a&quot;</span></span>
 <span id="cb126-4"><a href="#cb126-4"></a><span class="co">#&gt; [1] 0.5178803</span></span>
 <span id="cb126-5"><a href="#cb126-5"></a></span>
-<span id="cb126-6"><a href="#cb126-6"></a><span class="kw">mean</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="co"># mean of variable &quot;a&quot;</span></span>
+<span id="cb126-6"><a href="#cb126-6"></a><span class="kw">mean</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)  <span class="co"># mean of variable &quot;a&quot;</span></span>
 <span id="cb126-7"><a href="#cb126-7"></a><span class="co">#&gt; [1] 0.2676164</span></span>
-<span id="cb126-8"><a href="#cb126-8"></a><span class="kw">sd</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="co"># std dev of variable &quot;a&quot;</span></span>
+<span id="cb126-8"><a href="#cb126-8"></a><span class="kw">sd</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)  <span class="co"># std dev of variable &quot;a&quot;</span></span>
 <span id="cb126-9"><a href="#cb126-9"></a><span class="co">#&gt; [1] 0.5178803</span></span>
 <span id="cb126-10"><a href="#cb126-10"></a></span>
-<span id="cb126-11"><a href="#cb126-11"></a><span class="co">#would these work?</span></span>
-<span id="cb126-12"><a href="#cb126-12"></a>  <span class="co">#mean(df[&quot;a&quot;], na.rm=TRUE) # mean of variable &quot;a&quot;</span></span>
-<span id="cb126-13"><a href="#cb126-13"></a>  <span class="co">#sd(df[&quot;a&quot;], na.rm=TRUE) # std dev of variable &quot;a&quot;</span></span>
+<span id="cb126-11"><a href="#cb126-11"></a><span class="co"># Would these work?</span></span>
+<span id="cb126-12"><a href="#cb126-12"></a>  <span class="co"># mean(df[&quot;a&quot;], na.rm=TRUE)  # mean of variable &quot;a&quot;</span></span>
+<span id="cb126-13"><a href="#cb126-13"></a>  <span class="co"># sd(df[&quot;a&quot;], na.rm=TRUE)  # std dev of variable &quot;a&quot;</span></span>
 <span id="cb126-14"><a href="#cb126-14"></a></span>
-<span id="cb126-15"><a href="#cb126-15"></a><span class="co">#manually calculate z score for second observation in variable &quot;a&quot;</span></span>
+<span id="cb126-15"><a href="#cb126-15"></a><span class="co"># Manually calculate z-score for second observation in variable &quot;a&quot;</span></span>
 <span id="cb126-16"><a href="#cb126-16"></a>df<span class="op">$</span>a[<span class="dv">2</span>]</span>
 <span id="cb126-17"><a href="#cb126-17"></a><span class="co">#&gt; [1] 0.5855288</span></span>
-<span id="cb126-18"><a href="#cb126-18"></a>(df<span class="op">$</span>a[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))<span class="op">/</span><span class="kw">sd</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="co"># check result</span></span>
+<span id="cb126-18"><a href="#cb126-18"></a>(df<span class="op">$</span>a[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))<span class="op">/</span><span class="kw">sd</span>(df<span class="op">$</span>a, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span>
 <span id="cb126-19"><a href="#cb126-19"></a><span class="co">#&gt; [1] 0.6138725</span></span></code></pre></div>
 <p><br> Apply <code>z_score()</code> function to variables in dataframe:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a><span class="co"># z_score() function to calculate z-score for each obs of variable &quot;a&quot;</span></span>
-<span id="cb127-2"><a href="#cb127-2"></a>df<span class="op">$</span>a <span class="co"># print variable &quot;a&quot;</span></span>
+<span id="cb127-2"><a href="#cb127-2"></a>df<span class="op">$</span>a</span>
 <span id="cb127-3"><a href="#cb127-3"></a><span class="co">#&gt; [1]         NA  0.5855288  0.7094660 -0.1093033 -0.4534972  0.6058875</span></span>
 <span id="cb127-4"><a href="#cb127-4"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df<span class="op">$</span>a)</span>
 <span id="cb127-5"><a href="#cb127-5"></a><span class="co">#&gt; [1]         NA  0.6138725  0.8531888 -0.7278124 -1.3924329  0.6531840</span></span>
 <span id="cb127-6"><a href="#cb127-6"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df[[<span class="st">&quot;a&quot;</span>]])</span>
 <span id="cb127-7"><a href="#cb127-7"></a><span class="co">#&gt; [1]         NA  0.6138725  0.8531888 -0.7278124 -1.3924329  0.6531840</span></span>
 <span id="cb127-8"><a href="#cb127-8"></a></span>
-<span id="cb127-9"><a href="#cb127-9"></a><span class="co">#this approach doesn&#39;t work:</span></span>
-<span id="cb127-10"><a href="#cb127-10"></a>  <span class="co">#z_score(x = df[&quot;a&quot;]) </span></span>
+<span id="cb127-9"><a href="#cb127-9"></a><span class="co"># This approach doesn&#39;t work:</span></span>
+<span id="cb127-10"><a href="#cb127-10"></a>  <span class="co"># z_score(x = df[&quot;a&quot;]) </span></span>
 <span id="cb127-11"><a href="#cb127-11"></a>  <span class="co"># Why?:</span></span>
 <span id="cb127-12"><a href="#cb127-12"></a>    <span class="co"># df[&quot;a&quot;] is a dataframe with one variable</span></span>
-<span id="cb127-13"><a href="#cb127-13"></a>    <span class="co"># you can&#39;t apply mean() or sd() functions to a list/data frame object, only a numeric atomic vector</span></span>
+<span id="cb127-13"><a href="#cb127-13"></a>    <span class="co"># you can&#39;t apply mean() or sd() functions to list/data frame object, only numeric atomic vector</span></span>
 <span id="cb127-14"><a href="#cb127-14"></a></span>
 <span id="cb127-15"><a href="#cb127-15"></a><span class="co"># z-score for each obs of variable &quot;b&quot;</span></span>
 <span id="cb127-16"><a href="#cb127-16"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df<span class="op">$</span>b) </span>
@@ -3961,7 +3968,7 @@ div.tocify {
 <details>
 <p><summary><strong>Example 1</strong>: Creating a new z-score variable for the <code>df</code> dataframe</summary></p>
 <p>First, briefly review how to create and delete variables using Base R approach:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>df <span class="co"># print data frame df</span></span>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>df</span>
 <span id="cb128-2"><a href="#cb128-2"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
 <span id="cb128-3"><a href="#cb128-3"></a><span class="co">#&gt;        a      b      c</span></span>
 <span id="cb128-4"><a href="#cb128-4"></a><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
@@ -3972,7 +3979,7 @@ div.tocify {
 <span id="cb128-9"><a href="#cb128-9"></a><span class="co">#&gt; 5 -0.453 -0.284  0.520</span></span>
 <span id="cb128-10"><a href="#cb128-10"></a><span class="co">#&gt; 6  0.606 -0.919 -0.751</span></span>
 <span id="cb128-11"><a href="#cb128-11"></a></span>
-<span id="cb128-12"><a href="#cb128-12"></a>df<span class="op">$</span>c_plus2 &lt;-<span class="st"> </span>df<span class="op">$</span>c<span class="op">+</span><span class="dv">2</span> <span class="co">#create variable equal to &quot;c&quot; plus 2</span></span>
+<span id="cb128-12"><a href="#cb128-12"></a>df<span class="op">$</span>c_plus2 &lt;-<span class="st"> </span>df<span class="op">$</span>c <span class="op">+</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># create variable equal to &quot;c&quot; plus 2</span></span>
 <span id="cb128-13"><a href="#cb128-13"></a>df</span>
 <span id="cb128-14"><a href="#cb128-14"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
 <span id="cb128-15"><a href="#cb128-15"></a><span class="co">#&gt;        a      b      c c_plus2</span></span>
@@ -3983,17 +3990,18 @@ div.tocify {
 <span id="cb128-20"><a href="#cb128-20"></a><span class="co">#&gt; 4 -0.109 -0.276  0.371    2.37</span></span>
 <span id="cb128-21"><a href="#cb128-21"></a><span class="co">#&gt; 5 -0.453 -0.284  0.520    2.52</span></span>
 <span id="cb128-22"><a href="#cb128-22"></a><span class="co">#&gt; 6  0.606 -0.919 -0.751    1.25</span></span>
-<span id="cb128-23"><a href="#cb128-23"></a>df<span class="op">$</span>c_plus2 &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># remove variable &quot;c_plus2&quot;</span></span>
-<span id="cb128-24"><a href="#cb128-24"></a>df</span>
-<span id="cb128-25"><a href="#cb128-25"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
-<span id="cb128-26"><a href="#cb128-26"></a><span class="co">#&gt;        a      b      c</span></span>
-<span id="cb128-27"><a href="#cb128-27"></a><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb128-28"><a href="#cb128-28"></a><span class="co">#&gt; 1 NA     NA     NA    </span></span>
-<span id="cb128-29"><a href="#cb128-29"></a><span class="co">#&gt; 2  0.586 -1.82  -0.116</span></span>
-<span id="cb128-30"><a href="#cb128-30"></a><span class="co">#&gt; 3  0.709  0.630  1.82 </span></span>
-<span id="cb128-31"><a href="#cb128-31"></a><span class="co">#&gt; 4 -0.109 -0.276  0.371</span></span>
-<span id="cb128-32"><a href="#cb128-32"></a><span class="co">#&gt; 5 -0.453 -0.284  0.520</span></span>
-<span id="cb128-33"><a href="#cb128-33"></a><span class="co">#&gt; 6  0.606 -0.919 -0.751</span></span></code></pre></div>
+<span id="cb128-23"><a href="#cb128-23"></a></span>
+<span id="cb128-24"><a href="#cb128-24"></a>df<span class="op">$</span>c_plus2 &lt;-<span class="st"> </span><span class="ot">NULL</span>  <span class="co"># remove variable &quot;c_plus2&quot;</span></span>
+<span id="cb128-25"><a href="#cb128-25"></a>df</span>
+<span id="cb128-26"><a href="#cb128-26"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
+<span id="cb128-27"><a href="#cb128-27"></a><span class="co">#&gt;        a      b      c</span></span>
+<span id="cb128-28"><a href="#cb128-28"></a><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb128-29"><a href="#cb128-29"></a><span class="co">#&gt; 1 NA     NA     NA    </span></span>
+<span id="cb128-30"><a href="#cb128-30"></a><span class="co">#&gt; 2  0.586 -1.82  -0.116</span></span>
+<span id="cb128-31"><a href="#cb128-31"></a><span class="co">#&gt; 3  0.709  0.630  1.82 </span></span>
+<span id="cb128-32"><a href="#cb128-32"></a><span class="co">#&gt; 4 -0.109 -0.276  0.371</span></span>
+<span id="cb128-33"><a href="#cb128-33"></a><span class="co">#&gt; 5 -0.453 -0.284  0.520</span></span>
+<span id="cb128-34"><a href="#cb128-34"></a><span class="co">#&gt; 6  0.606 -0.919 -0.751</span></span></code></pre></div>
 <p><br> Use <code>z_score()</code> function to create a new variable that equals the z-score of another variable.</p>
 <ul>
 <li>Simply calling the <code>z_score()</code> function does not create a new variable:</li>
@@ -4090,7 +4098,7 @@ div.tocify {
 <span id="cb132-5"><a href="#cb132-5"></a><span class="co">#?sd</span></span></code></pre></div>
 <p><br> What kind of input is our current function limited to?</p>
 <ul>
-<li><code>z_score()</code> function does simple arithmatic and utilizes the <code>mean()</code> and <code>sd()</code> functions</li>
+<li><code>z_score()</code> function does simple arithmetic and utilizes the <code>mean()</code> and <code>sd()</code> functions</li>
 <li><code>mean()</code> and <code>sd()</code> functions require <code>x</code> to be a numeric (or logical) atomic vector
 <ul>
 <li><code>z_score()</code> function will break if the input <code>x</code> is not an atomic vector</li>
@@ -4254,7 +4262,7 @@ div.tocify {
 <ul>
 <li>Perform task outside of function
 <ul>
-<li>HINT: <code>sum(data_frame_name$var_name&lt; %in% c(-4,-5))</code></li>
+<li>HINT: <code>sum(data_frame_name$var_name %in% c(-4,-5))</code></li>
 </ul></li>
 <li>Write function</li>
 <li>Apply/test function on variables</li>
@@ -4390,13 +4398,11 @@ div.tocify {
 <span id="cb147-13"><a href="#cb147-13"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
 <span id="cb147-14"><a href="#cb147-14"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 </details>
+<p><br></p>
 </div>
 <div id="dot-dot-dot-..." class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Dot-dot-dot (<code>...</code>)</h3>
-<p><br></p>
-<div id="what-is-dot-dot-dot-..." class="section level4">
-<h4><span class="header-section-number">5.3.2.1</span> What is dot-dot-dot (<code>...</code>)?</h4>
-<p>Many functions take an arbitrary number of arguments/inputs, including:</p>
+<p>Many functions take an <strong>arbitrary number of arguments</strong>, including:</p>
 <ul>
 <li><p><code>select()</code></p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a><span class="co">#?select</span></span>
@@ -4421,7 +4427,7 @@ div.tocify {
 <span id="cb150-12"><a href="#cb150-12"></a><span class="kw">str_c</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot; is for &quot;</span>, <span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;coffee&quot;</span>))</span>
 <span id="cb150-13"><a href="#cb150-13"></a><span class="co">#&gt; [1] &quot;a is for apple&quot;  &quot;b is for banana&quot; &quot;c is for coffee&quot;</span></span></code></pre></div></li>
 </ul>
-<p><br> All of these functions rely on a special argument <code>...</code> (pronounced “dot-dot-dot”)</p>
+<p><br> All of these functions rely on a <strong>special argument</strong> <code>...</code> (pronounced “dot-dot-dot”)</p>
 <ul>
 <li><p>Dot-dot-dot (<code>...</code>) allows a function to take an arbitrary number of arguments</p></li>
 <li><p>Wickham and Grolemund <a href="https://r4ds.had.co.nz/functions.html#dot-dot-dot">chapter 19.5.3</a> states:</p>
@@ -4429,11 +4435,7 @@ div.tocify {
 <p>“<code>...</code> captures any number of arguments that aren’t otherwise matched.”</p>
 </blockquote></li>
 </ul>
-<p><br></p>
-</div>
-<div id="writing-functions-with-dot-dot-dot-...-arguments" class="section level4">
-<h4><span class="header-section-number">5.3.2.2</span> Writing functions with dot-dot-dot (<code>...</code>) arguments</h4>
-<p>When writing functions, there are two primary uses of including <code>...</code> arguments:</p>
+<p><br> When writing functions, there are <strong>two primary uses</strong> of including <code>...</code> arguments:</p>
 <ol style="list-style-type: decimal">
 <li>A means of allowing the function to take an arbitrary number of arguments, as in the <code>select()</code> and <code>sum()</code> functions</li>
 <li>When we write our own function with the special argument <code>...</code>, we can pass those inputs into another function that takes <code>...</code> (e.g., <code>str_c()</code>)</li>
@@ -4444,12 +4446,14 @@ div.tocify {
 <p>Recall the first iteration of our <code>print_hello()</code> function, which basically just printed a name that we specified in function call. Let’s modify the function to make it take an arbitrary number of names to greet:</p>
 <ul>
 <li><p>Function that only took one argument</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a>print_hello1 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {  </span>
-<span id="cb151-2"><a href="#cb151-2"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello &quot;</span>, x, <span class="st">&quot;!&quot;</span>) </span>
-<span id="cb151-3"><a href="#cb151-3"></a>}</span>
-<span id="cb151-4"><a href="#cb151-4"></a></span>
-<span id="cb151-5"><a href="#cb151-5"></a><span class="kw">print_hello1</span>(<span class="st">&quot;Ozan&quot;</span>)</span>
-<span id="cb151-6"><a href="#cb151-6"></a><span class="co">#&gt; [1] &quot;Hello Ozan!&quot;</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a><span class="co"># Define function</span></span>
+<span id="cb151-2"><a href="#cb151-2"></a>print_hello1 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {  </span>
+<span id="cb151-3"><a href="#cb151-3"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello &quot;</span>, x, <span class="st">&quot;!&quot;</span>) </span>
+<span id="cb151-4"><a href="#cb151-4"></a>}</span>
+<span id="cb151-5"><a href="#cb151-5"></a></span>
+<span id="cb151-6"><a href="#cb151-6"></a><span class="co"># Call function</span></span>
+<span id="cb151-7"><a href="#cb151-7"></a><span class="kw">print_hello1</span>(<span class="st">&quot;Ozan&quot;</span>)</span>
+<span id="cb151-8"><a href="#cb151-8"></a><span class="co">#&gt; [1] &quot;Hello Ozan!&quot;</span></span></code></pre></div></li>
 <li><p>Modify function to take an arbitrary number of names to greet</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1"></a><span class="co"># Define function</span></span>
 <span id="cb152-2"><a href="#cb152-2"></a>print_hello2 &lt;-<span class="st"> </span><span class="cf">function</span>(...) {  <span class="co"># The function accepts an arbitrary number of inputs</span></span>
@@ -4464,10 +4468,9 @@ div.tocify {
 </ul>
 </details>
 </div>
-</div>
 <div id="checking-values" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Checking values</h3>
-<p>How to handle invalid inputs?</p>
+<p>How to handle <strong>invalid inputs</strong>?</p>
 <ul>
 <li>As seen previously in the <a href="#z_score-function"><code>z_score()</code> example</a>, one way to check for invalid inputs is using conditional statements</li>
 <li>“It’s good practice to check important preconditions, and throw an error (with <code>stop()</code>), if they are not true” (<a href="https://r4ds.had.co.nz/functions.html#checking-values">R for Data Science</a>)
@@ -4482,10 +4485,10 @@ div.tocify {
 <span id="cb153-4"><a href="#cb153-4"></a><span class="kw">stop</span>(..., <span class="dt">call. =</span> <span class="ot">TRUE</span>, <span class="dt">domain =</span> <span class="ot">NULL</span>)</span></code></pre></div>
 <br>
 <details>
-<p><summary><strong>Example</strong>: Using <code>stop()</code> inside function</summary></p>
-<p>Recall the <code>print_hello()</code> function. It will not print a greeting if <code>NA</code> is supplied as the input:</p>
+<p><summary><strong>Example</strong>: Using <code>stop()</code> to check invalid name input to <code>print_hello()</code> function</summary></p>
+<p>Recall the original <code>print_hello()</code> function. It will not print a greeting if <code>NA</code> is supplied as the input:</p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb154-2"><a href="#cb154-2"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello &quot;</span>, x, <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb154-2"><a href="#cb154-2"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello, world. My name is&quot;</span>, x, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>)</span>
 <span id="cb154-3"><a href="#cb154-3"></a>}</span>
 <span id="cb154-4"><a href="#cb154-4"></a></span>
 <span id="cb154-5"><a href="#cb154-5"></a><span class="kw">print_hello</span>(<span class="ot">NA</span>)</span>
@@ -4496,10 +4499,55 @@ div.tocify {
 <span id="cb155-3"><a href="#cb155-3"></a>    <span class="kw">stop</span>(<span class="st">&quot;`x` must not be `NA`&quot;</span>)</span>
 <span id="cb155-4"><a href="#cb155-4"></a>  }</span>
 <span id="cb155-5"><a href="#cb155-5"></a>  </span>
-<span id="cb155-6"><a href="#cb155-6"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello &quot;</span>, x, <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb155-6"><a href="#cb155-6"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello, world. My name is&quot;</span>, x, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>)</span>
 <span id="cb155-7"><a href="#cb155-7"></a>}</span>
 <span id="cb155-8"><a href="#cb155-8"></a></span>
 <span id="cb155-9"><a href="#cb155-9"></a><span class="kw">print_hello</span>(<span class="ot">NA</span>)</span></code></pre></div>
+</details>
+<p><br></p>
+<details>
+<p><summary><strong>Example</strong>: Using <code>stop()</code> to check invalid date input to <code>print_hello()</code> function</summary></p>
+<p>Recall the version of <code>print_hello()</code> function that prints both the user’s name and age. It will not work properly if the birthdate input is not supplied in month-day-year format:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb156-2"><a href="#cb156-2"></a>  age &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
+<span id="cb156-3"><a href="#cb156-3"></a>  </span>
+<span id="cb156-4"><a href="#cb156-4"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello, world. My name is&quot;</span>, x, <span class="st">&quot;and I am&quot;</span>, age, <span class="st">&quot;years old&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>)</span>
+<span id="cb156-5"><a href="#cb156-5"></a>}</span>
+<span id="cb156-6"><a href="#cb156-6"></a></span>
+<span id="cb156-7"><a href="#cb156-7"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="st">&quot;04/05/2019&quot;</span>) <span class="co"># this works</span></span>
+<span id="cb156-8"><a href="#cb156-8"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Jaquette-Nasiali and I am 1 years old&quot;</span></span>
+<span id="cb156-9"><a href="#cb156-9"></a></span>
+<span id="cb156-10"><a href="#cb156-10"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="st">&quot;2019/04/05&quot;</span>) <span class="co"># this does not</span></span>
+<span id="cb156-11"><a href="#cb156-11"></a><span class="co">#&gt; Warning: All formats failed to parse. No formats found.</span></span>
+<span id="cb156-12"><a href="#cb156-12"></a><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<p><br> We can raise an error with a custom message if the birthdate is not in the right format:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb157-2"><a href="#cb157-2"></a>  <span class="cf">if</span> (<span class="kw">is.na</span>(<span class="kw">mdy</span>(y))) {</span>
+<span id="cb157-3"><a href="#cb157-3"></a>    <span class="kw">stop</span>(<span class="st">&quot;`y` must be in month-day-year format&quot;</span>)</span>
+<span id="cb157-4"><a href="#cb157-4"></a>  }</span>
+<span id="cb157-5"><a href="#cb157-5"></a>  </span>
+<span id="cb157-6"><a href="#cb157-6"></a>  age &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
+<span id="cb157-7"><a href="#cb157-7"></a>  </span>
+<span id="cb157-8"><a href="#cb157-8"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello, world. My name is&quot;</span>, x, <span class="st">&quot;and I am&quot;</span>, age, <span class="st">&quot;years old&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>)</span>
+<span id="cb157-9"><a href="#cb157-9"></a>}</span>
+<span id="cb157-10"><a href="#cb157-10"></a></span>
+<span id="cb157-11"><a href="#cb157-11"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;2019/04/05&quot;</span>)</span></code></pre></div>
+<p><br> We can also add the check for the name input as well:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb158-2"><a href="#cb158-2"></a>  <span class="co"># Check name input `x`</span></span>
+<span id="cb158-3"><a href="#cb158-3"></a>  <span class="cf">if</span> (<span class="kw">is.na</span>(x)) {</span>
+<span id="cb158-4"><a href="#cb158-4"></a>    <span class="kw">stop</span>(<span class="st">&quot;`x` must not be `NA`&quot;</span>)</span>
+<span id="cb158-5"><a href="#cb158-5"></a>  }</span>
+<span id="cb158-6"><a href="#cb158-6"></a>  </span>
+<span id="cb158-7"><a href="#cb158-7"></a>  <span class="co"># Check birthdate input `y`</span></span>
+<span id="cb158-8"><a href="#cb158-8"></a>  <span class="cf">if</span> (<span class="kw">is.na</span>(<span class="kw">mdy</span>(y))) {</span>
+<span id="cb158-9"><a href="#cb158-9"></a>    <span class="kw">stop</span>(<span class="st">&quot;`y` must be in month-day-year format&quot;</span>)</span>
+<span id="cb158-10"><a href="#cb158-10"></a>  }</span>
+<span id="cb158-11"><a href="#cb158-11"></a>  </span>
+<span id="cb158-12"><a href="#cb158-12"></a>  age &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>))</span>
+<span id="cb158-13"><a href="#cb158-13"></a>  </span>
+<span id="cb158-14"><a href="#cb158-14"></a>  <span class="kw">str_c</span>(<span class="st">&quot;Hello, world. My name is&quot;</span>, x, <span class="st">&quot;and I am&quot;</span>, age, <span class="st">&quot;years old&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>)</span>
+<span id="cb158-15"><a href="#cb158-15"></a>}</span></code></pre></div>
 </details>
 <p><br></p>
 </div>
@@ -4521,15 +4569,15 @@ div.tocify {
 <li>We can use the assignment operator <code>&lt;-</code> to store returned values in a new object for future use</li>
 </ul>
 <p>Recall the <code>print_hello()</code> function:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1"></a><span class="co"># Define function</span></span>
-<span id="cb156-2"><a href="#cb156-2"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb156-3"><a href="#cb156-3"></a>  <span class="st">&quot;Hello!&quot;</span>  <span class="co"># The last statement in the function is returned</span></span>
-<span id="cb156-4"><a href="#cb156-4"></a>}</span>
-<span id="cb156-5"><a href="#cb156-5"></a></span>
-<span id="cb156-6"><a href="#cb156-6"></a><span class="co"># Call function</span></span>
-<span id="cb156-7"><a href="#cb156-7"></a>h &lt;-<span class="st"> </span><span class="kw">print_hello</span>()  <span class="co"># We can show that `print_hello()` returns a value by storing it in `h`</span></span>
-<span id="cb156-8"><a href="#cb156-8"></a>h                   <span class="co"># `h` stores the value &quot;Hello!&quot;</span></span>
-<span id="cb156-9"><a href="#cb156-9"></a><span class="co">#&gt; [1] &quot;Hello!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1"></a><span class="co"># Define function</span></span>
+<span id="cb159-2"><a href="#cb159-2"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb159-3"><a href="#cb159-3"></a>  <span class="st">&quot;Hello!&quot;</span>  <span class="co"># The last statement in the function is returned</span></span>
+<span id="cb159-4"><a href="#cb159-4"></a>}</span>
+<span id="cb159-5"><a href="#cb159-5"></a></span>
+<span id="cb159-6"><a href="#cb159-6"></a><span class="co"># Call function</span></span>
+<span id="cb159-7"><a href="#cb159-7"></a>h &lt;-<span class="st"> </span><span class="kw">print_hello</span>()  <span class="co"># We can show that `print_hello()` returns a value by storing it in `h`</span></span>
+<span id="cb159-8"><a href="#cb159-8"></a>h                   <span class="co"># `h` stores the value &quot;Hello!&quot;</span></span>
+<span id="cb159-9"><a href="#cb159-9"></a><span class="co">#&gt; [1] &quot;Hello!&quot;</span></span></code></pre></div>
 </div>
 <div id="explicit-returns" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Explicit returns</h3>
@@ -4541,83 +4589,132 @@ div.tocify {
 <li>Returning from a function means exiting the function, so no other code below the point of return would be run</li>
 </ul>
 <p>Recall the <code>print_hello()</code> function:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1"></a><span class="co"># Define function</span></span>
-<span id="cb157-2"><a href="#cb157-2"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb157-3"><a href="#cb157-3"></a>  <span class="kw">return</span>(<span class="st">&quot;Hello!&quot;</span>)   <span class="co"># Explicitly return &quot;Hello!&quot;</span></span>
-<span id="cb157-4"><a href="#cb157-4"></a>  <span class="kw">print</span>(<span class="st">&quot;Goodbye!&quot;</span>)  <span class="co"># Since this is after `return()`, it never gets run</span></span>
-<span id="cb157-5"><a href="#cb157-5"></a>}</span>
-<span id="cb157-6"><a href="#cb157-6"></a></span>
-<span id="cb157-7"><a href="#cb157-7"></a><span class="co"># Call function</span></span>
-<span id="cb157-8"><a href="#cb157-8"></a>h &lt;-<span class="st"> </span><span class="kw">print_hello</span>()  <span class="co"># `print_hello()` returns &quot;Hello!&quot;</span></span>
-<span id="cb157-9"><a href="#cb157-9"></a>h</span>
-<span id="cb157-10"><a href="#cb157-10"></a><span class="co">#&gt; [1] &quot;Hello!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1"></a><span class="co"># Define function</span></span>
+<span id="cb160-2"><a href="#cb160-2"></a>print_hello &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb160-3"><a href="#cb160-3"></a>  <span class="kw">return</span>(<span class="st">&quot;Hello!&quot;</span>)   <span class="co"># Explicitly return &quot;Hello!&quot;</span></span>
+<span id="cb160-4"><a href="#cb160-4"></a>  <span class="kw">print</span>(<span class="st">&quot;Goodbye!&quot;</span>)  <span class="co"># Since this is after `return()`, it never gets run</span></span>
+<span id="cb160-5"><a href="#cb160-5"></a>}</span>
+<span id="cb160-6"><a href="#cb160-6"></a></span>
+<span id="cb160-7"><a href="#cb160-7"></a><span class="co"># Call function</span></span>
+<span id="cb160-8"><a href="#cb160-8"></a>h &lt;-<span class="st"> </span><span class="kw">print_hello</span>()  <span class="co"># `print_hello()` returns &quot;Hello!&quot;</span></span>
+<span id="cb160-9"><a href="#cb160-9"></a>h</span>
+<span id="cb160-10"><a href="#cb160-10"></a><span class="co">#&gt; [1] &quot;Hello!&quot;</span></span></code></pre></div>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Writing a function with multiple returns</summary></p>
 <p>Recall the previous example where we assess the prices of diamonds from the <code>diamonds</code> dataset from <code>ggplot2</code>. Let’s move the <code>if</code>/<code>else if</code>/<code>else</code> blocks inside of a function, then call the function from inside the loop.</p>
 <p>As seen below, the last statement that the function evaluates (i.e., whichever <code>if</code>/<code>else if</code>/<code>else</code> block is run) will be implicitly returned:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
-<span id="cb158-2"><a href="#cb158-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
-<span id="cb158-3"><a href="#cb158-3"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>)</span>
-<span id="cb158-4"><a href="#cb158-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
-<span id="cb158-5"><a href="#cb158-5"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>)</span>
-<span id="cb158-6"><a href="#cb158-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb158-7"><a href="#cb158-7"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>)</span>
-<span id="cb158-8"><a href="#cb158-8"></a>  }</span>
-<span id="cb158-9"><a href="#cb158-9"></a>}</span>
-<span id="cb158-10"><a href="#cb158-10"></a></span>
-<span id="cb158-11"><a href="#cb158-11"></a>prices &lt;-<span class="st"> </span><span class="kw">unique</span>(diamonds<span class="op">$</span>price)[<span class="dv">23</span><span class="op">:</span><span class="dv">27</span>]</span>
-<span id="cb158-12"><a href="#cb158-12"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
-<span id="cb158-13"><a href="#cb158-13"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
-<span id="cb158-14"><a href="#cb158-14"></a>}</span>
-<span id="cb158-15"><a href="#cb158-15"></a><span class="co">#&gt; This diamond costs $405 and is affordable.</span></span>
-<span id="cb158-16"><a href="#cb158-16"></a><span class="co">#&gt; This diamond costs $552 and is pricey...</span></span>
-<span id="cb158-17"><a href="#cb158-17"></a><span class="co">#&gt; This diamond costs $553 and is pricey...</span></span>
-<span id="cb158-18"><a href="#cb158-18"></a><span class="co">#&gt; This diamond costs $554 and is pricey...</span></span>
-<span id="cb158-19"><a href="#cb158-19"></a><span class="co">#&gt; This diamond costs $2757 and is too expensive!</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
+<span id="cb161-2"><a href="#cb161-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
+<span id="cb161-3"><a href="#cb161-3"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>)</span>
+<span id="cb161-4"><a href="#cb161-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
+<span id="cb161-5"><a href="#cb161-5"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>)</span>
+<span id="cb161-6"><a href="#cb161-6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb161-7"><a href="#cb161-7"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>)</span>
+<span id="cb161-8"><a href="#cb161-8"></a>  }</span>
+<span id="cb161-9"><a href="#cb161-9"></a>}</span>
+<span id="cb161-10"><a href="#cb161-10"></a></span>
+<span id="cb161-11"><a href="#cb161-11"></a>prices &lt;-<span class="st"> </span><span class="kw">unique</span>(diamonds<span class="op">$</span>price)[<span class="dv">23</span><span class="op">:</span><span class="dv">27</span>]</span>
+<span id="cb161-12"><a href="#cb161-12"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
+<span id="cb161-13"><a href="#cb161-13"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
+<span id="cb161-14"><a href="#cb161-14"></a>}</span>
+<span id="cb161-15"><a href="#cb161-15"></a><span class="co">#&gt; This diamond costs $405 and is affordable.</span></span>
+<span id="cb161-16"><a href="#cb161-16"></a><span class="co">#&gt; This diamond costs $552 and is pricey...</span></span>
+<span id="cb161-17"><a href="#cb161-17"></a><span class="co">#&gt; This diamond costs $553 and is pricey...</span></span>
+<span id="cb161-18"><a href="#cb161-18"></a><span class="co">#&gt; This diamond costs $554 and is pricey...</span></span>
+<span id="cb161-19"><a href="#cb161-19"></a><span class="co">#&gt; This diamond costs $2757 and is too expensive!</span></span></code></pre></div>
 <p><br> But if we were to have another line after the conditional part, then that would be implicitly returned instead, since it is now the last statement in the function:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
-<span id="cb159-2"><a href="#cb159-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
-<span id="cb159-3"><a href="#cb159-3"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>)</span>
-<span id="cb159-4"><a href="#cb159-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
-<span id="cb159-5"><a href="#cb159-5"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>)</span>
-<span id="cb159-6"><a href="#cb159-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb159-7"><a href="#cb159-7"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>)</span>
-<span id="cb159-8"><a href="#cb159-8"></a>  }</span>
-<span id="cb159-9"><a href="#cb159-9"></a>  </span>
-<span id="cb159-10"><a href="#cb159-10"></a>  <span class="st">&quot;I can&#39;t afford that.&quot;</span>  <span class="co"># This is now the last statement in the function that will be returned</span></span>
-<span id="cb159-11"><a href="#cb159-11"></a>}</span>
-<span id="cb159-12"><a href="#cb159-12"></a></span>
-<span id="cb159-13"><a href="#cb159-13"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
-<span id="cb159-14"><a href="#cb159-14"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
-<span id="cb159-15"><a href="#cb159-15"></a>}</span>
-<span id="cb159-16"><a href="#cb159-16"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
-<span id="cb159-17"><a href="#cb159-17"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
-<span id="cb159-18"><a href="#cb159-18"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
-<span id="cb159-19"><a href="#cb159-19"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
-<span id="cb159-20"><a href="#cb159-20"></a><span class="co">#&gt; I can&#39;t afford that.</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
+<span id="cb162-2"><a href="#cb162-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
+<span id="cb162-3"><a href="#cb162-3"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>)</span>
+<span id="cb162-4"><a href="#cb162-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
+<span id="cb162-5"><a href="#cb162-5"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>)</span>
+<span id="cb162-6"><a href="#cb162-6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb162-7"><a href="#cb162-7"></a>    <span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>)</span>
+<span id="cb162-8"><a href="#cb162-8"></a>  }</span>
+<span id="cb162-9"><a href="#cb162-9"></a>  </span>
+<span id="cb162-10"><a href="#cb162-10"></a>  <span class="st">&quot;I can&#39;t afford that.&quot;</span>  <span class="co"># This is now the last statement in the function that will be returned</span></span>
+<span id="cb162-11"><a href="#cb162-11"></a>}</span>
+<span id="cb162-12"><a href="#cb162-12"></a></span>
+<span id="cb162-13"><a href="#cb162-13"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
+<span id="cb162-14"><a href="#cb162-14"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
+<span id="cb162-15"><a href="#cb162-15"></a>}</span>
+<span id="cb162-16"><a href="#cb162-16"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
+<span id="cb162-17"><a href="#cb162-17"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
+<span id="cb162-18"><a href="#cb162-18"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
+<span id="cb162-19"><a href="#cb162-19"></a><span class="co">#&gt; I can&#39;t afford that.</span></span>
+<span id="cb162-20"><a href="#cb162-20"></a><span class="co">#&gt; I can&#39;t afford that.</span></span></code></pre></div>
 <p><br> We can use <code>return()</code> to explicitly return early from the function:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
-<span id="cb160-2"><a href="#cb160-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
-<span id="cb160-3"><a href="#cb160-3"></a>    <span class="kw">return</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>))  <span class="co"># Return early</span></span>
-<span id="cb160-4"><a href="#cb160-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
-<span id="cb160-5"><a href="#cb160-5"></a>    <span class="kw">return</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>))  <span class="co"># Return early</span></span>
-<span id="cb160-6"><a href="#cb160-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb160-7"><a href="#cb160-7"></a>    <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>))</span>
-<span id="cb160-8"><a href="#cb160-8"></a>  }</span>
-<span id="cb160-9"><a href="#cb160-9"></a>  </span>
-<span id="cb160-10"><a href="#cb160-10"></a>  <span class="st">&quot;I can&#39;t afford that.&quot;</span></span>
-<span id="cb160-11"><a href="#cb160-11"></a>}</span>
-<span id="cb160-12"><a href="#cb160-12"></a></span>
-<span id="cb160-13"><a href="#cb160-13"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
-<span id="cb160-14"><a href="#cb160-14"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
-<span id="cb160-15"><a href="#cb160-15"></a>}</span>
-<span id="cb160-16"><a href="#cb160-16"></a><span class="co">#&gt; This diamond costs $405 and is affordable.</span></span>
-<span id="cb160-17"><a href="#cb160-17"></a><span class="co">#&gt; This diamond costs $552 and is pricey...</span></span>
-<span id="cb160-18"><a href="#cb160-18"></a><span class="co">#&gt; This diamond costs $553 and is pricey...</span></span>
-<span id="cb160-19"><a href="#cb160-19"></a><span class="co">#&gt; This diamond costs $554 and is pricey...</span></span>
-<span id="cb160-20"><a href="#cb160-20"></a><span class="co">#&gt; This diamond costs $2757 and is too expensive!</span></span>
-<span id="cb160-21"><a href="#cb160-21"></a><span class="co">#&gt; I can&#39;t afford that.</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1"></a>assess_price &lt;-<span class="st"> </span><span class="cf">function</span>(price) {</span>
+<span id="cb163-2"><a href="#cb163-2"></a>  <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>) {</span>
+<span id="cb163-3"><a href="#cb163-3"></a>    <span class="kw">return</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is affordable.&quot;</span>))  <span class="co"># Return early</span></span>
+<span id="cb163-4"><a href="#cb163-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (price <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>) {</span>
+<span id="cb163-5"><a href="#cb163-5"></a>    <span class="kw">return</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is pricey...&quot;</span>))  <span class="co"># Return early</span></span>
+<span id="cb163-6"><a href="#cb163-6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb163-7"><a href="#cb163-7"></a>    <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;This diamond costs $&quot;</span>, price, <span class="st">&quot; and is too expensive!&quot;</span>))</span>
+<span id="cb163-8"><a href="#cb163-8"></a>  }</span>
+<span id="cb163-9"><a href="#cb163-9"></a>  </span>
+<span id="cb163-10"><a href="#cb163-10"></a>  <span class="st">&quot;I can&#39;t afford that.&quot;</span></span>
+<span id="cb163-11"><a href="#cb163-11"></a>}</span>
+<span id="cb163-12"><a href="#cb163-12"></a></span>
+<span id="cb163-13"><a href="#cb163-13"></a><span class="cf">for</span> (i <span class="cf">in</span> prices) {</span>
+<span id="cb163-14"><a href="#cb163-14"></a>  <span class="kw">writeLines</span>(<span class="kw">assess_price</span>(i))</span>
+<span id="cb163-15"><a href="#cb163-15"></a>}</span>
+<span id="cb163-16"><a href="#cb163-16"></a><span class="co">#&gt; This diamond costs $405 and is affordable.</span></span>
+<span id="cb163-17"><a href="#cb163-17"></a><span class="co">#&gt; This diamond costs $552 and is pricey...</span></span>
+<span id="cb163-18"><a href="#cb163-18"></a><span class="co">#&gt; This diamond costs $553 and is pricey...</span></span>
+<span id="cb163-19"><a href="#cb163-19"></a><span class="co">#&gt; This diamond costs $554 and is pricey...</span></span>
+<span id="cb163-20"><a href="#cb163-20"></a><span class="co">#&gt; This diamond costs $2757 and is too expensive!</span></span>
+<span id="cb163-21"><a href="#cb163-21"></a><span class="co">#&gt; I can&#39;t afford that.</span></span></code></pre></div>
+</details>
+</div>
+<div id="returning-multiple-values" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Returning multiple values</h3>
+<p>How can we return <strong>multiple values</strong> from a function?</p>
+<ul>
+<li>R can only return 1 value or object from a function</li>
+<li>To return multiple values, one workaround is to create a list containing these items and return the list</li>
+</ul>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Returning multiple values from a function using a list</summary></p>
+<p>Let’s say we have the following function that filters the <code>diamonds</code> dataset by color, then generates some information on multiple characteristics (i.e., <code>cut</code> and <code>clarity</code>). For now, it is printing a frequency table for each characteristic to the screen:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1"></a>diamond_info_by_color &lt;-<span class="st"> </span><span class="cf">function</span>(color) {</span>
+<span id="cb164-2"><a href="#cb164-2"></a>  df &lt;-<span class="st"> </span>diamonds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(color <span class="op">==</span><span class="st"> </span>color)</span>
+<span id="cb164-3"><a href="#cb164-3"></a>  </span>
+<span id="cb164-4"><a href="#cb164-4"></a>  <span class="kw">print</span>(<span class="kw">table</span>(df<span class="op">$</span>cut))</span>
+<span id="cb164-5"><a href="#cb164-5"></a>  <span class="kw">print</span>(<span class="kw">table</span>(df<span class="op">$</span>clarity))</span>
+<span id="cb164-6"><a href="#cb164-6"></a>}</span>
+<span id="cb164-7"><a href="#cb164-7"></a></span>
+<span id="cb164-8"><a href="#cb164-8"></a><span class="kw">diamond_info_by_color</span>(<span class="st">&#39;E&#39;</span>)</span>
+<span id="cb164-9"><a href="#cb164-9"></a><span class="co">#&gt; </span></span>
+<span id="cb164-10"><a href="#cb164-10"></a><span class="co">#&gt;      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb164-11"><a href="#cb164-11"></a><span class="co">#&gt;      1610      4906     12082     13791     21551 </span></span>
+<span id="cb164-12"><a href="#cb164-12"></a><span class="co">#&gt; </span></span>
+<span id="cb164-13"><a href="#cb164-13"></a><span class="co">#&gt;    I1   SI2   SI1   VS2   VS1  VVS2  VVS1    IF </span></span>
+<span id="cb164-14"><a href="#cb164-14"></a><span class="co">#&gt;   741  9194 13065 12258  8171  5066  3655  1790</span></span></code></pre></div>
+<p><br> If we want to return the frequency tables from the function (i.e., return multiple objects), we can do so by combining them together into a single list and returning that list:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1"></a>diamond_info_by_color &lt;-<span class="st"> </span><span class="cf">function</span>(color) {</span>
+<span id="cb165-2"><a href="#cb165-2"></a>  df &lt;-<span class="st"> </span>diamonds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(color <span class="op">==</span><span class="st"> </span>color)</span>
+<span id="cb165-3"><a href="#cb165-3"></a>  </span>
+<span id="cb165-4"><a href="#cb165-4"></a>  <span class="kw">list</span>(<span class="dt">cut_table =</span> <span class="kw">table</span>(df<span class="op">$</span>cut), <span class="dt">clarity_table =</span> <span class="kw">table</span>(df<span class="op">$</span>clarity))  <span class="co"># implicitly return list</span></span>
+<span id="cb165-5"><a href="#cb165-5"></a>}</span></code></pre></div>
+<p><br> We can then store the returned list in an object using <code>&lt;-</code>, and access the individual elements within the list using <code>[[]]</code> or <code>$</code>:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1"></a><span class="co"># Store returned list in `info`</span></span>
+<span id="cb166-2"><a href="#cb166-2"></a>info &lt;-<span class="st"> </span><span class="kw">diamond_info_by_color</span>(<span class="st">&#39;E&#39;</span>)</span>
+<span id="cb166-3"><a href="#cb166-3"></a></span>
+<span id="cb166-4"><a href="#cb166-4"></a><span class="co"># Access individual elements of the list</span></span>
+<span id="cb166-5"><a href="#cb166-5"></a>info[[<span class="st">&#39;cut_table&#39;</span>]]</span>
+<span id="cb166-6"><a href="#cb166-6"></a><span class="co">#&gt; </span></span>
+<span id="cb166-7"><a href="#cb166-7"></a><span class="co">#&gt;      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb166-8"><a href="#cb166-8"></a><span class="co">#&gt;      1610      4906     12082     13791     21551</span></span>
+<span id="cb166-9"><a href="#cb166-9"></a></span>
+<span id="cb166-10"><a href="#cb166-10"></a><span class="co"># Can also store individual elements in new objects</span></span>
+<span id="cb166-11"><a href="#cb166-11"></a>clarity_table &lt;-<span class="st"> </span>info<span class="op">$</span>clarity_table</span>
+<span id="cb166-12"><a href="#cb166-12"></a>clarity_table</span>
+<span id="cb166-13"><a href="#cb166-13"></a><span class="co">#&gt; </span></span>
+<span id="cb166-14"><a href="#cb166-14"></a><span class="co">#&gt;    I1   SI2   SI1   VS2   VS1  VVS2  VVS1    IF </span></span>
+<span id="cb166-15"><a href="#cb166-15"></a><span class="co">#&gt;   741  9194 13065 12258  8171  5066  3655  1790</span></span></code></pre></div>
 </details>
 </div>
 </div>
