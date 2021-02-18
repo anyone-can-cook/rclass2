@@ -220,7 +220,7 @@ _Credit: [RStudio Terminal blog post](https://blog.rstudio.com/2017/08/11/rstudi
 <br>
 If you are working from an **R markdown file**, you can also create `bash` code chunks (similar to `R` code chunks) for running shell commands. All you need to do is indicate `{bash}` for the code chunk:
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/bash_chunk.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/bash_chunk.png)
 
 ## RStudio Console vs. Terminal
 
@@ -719,12 +719,12 @@ What is a __commit__?
         - ***Commit*** changes from _staging area_ to _repository_
     - Each **commit** to the repository is a different version of the file that represents a snapshot of the file at a particular time
     - Commits are made to **branches** in the repo
-        - By default, a git repository comes with one main branch (typically called **master** or **main**)
+        - By default, a git repository comes with one main branch (typically called **main**)
         - But we can also create other branches (discussed more later)
     - **Local** vs. **remote** repository
         - When you add a change to the _staging area_ and then commit the change to your _repository_, this changes your _local repository_ (i.e., on your computer) rather than your _remote repository_ (i.e., on GitHub)
         - If you want to change the _remote repository_ (typically named **origin**), you must ***push*** the change from your _local repository_ to your _remote repository_
-        - As seen below, each circle represents a **commit**. After you make commits on a branch in your _local repository_ (i.e., **master**), you need to ***push*** them in order for the corresponding branch on the _remote repository_ (i.e., **origin/master**) to be up-to-date with your changes.
+        - As seen below, each circle represents a **commit**. After you make commits on a branch in your _local repository_ (i.e., **main**), you need to ***push*** them in order for the corresponding branch on the _remote repository_ (i.e., **origin/main**) to be up-to-date with your changes.
 
 <center>![](https://wac-cdn.atlassian.com/dam/jcr:f148974e-7d4d-4c0e-bd31-8ac5467d1e6a/04.svg?cdnVersion=1410){width=400px}</center>
 
@@ -841,7 +841,7 @@ Understanding how **local** and **remote** repositories are connected:
     - By convention, the remote repository is named **origin**, but you could call it anything
     - When you clone a repository, it will by default be given the name **origin**, but you could change it afterwards if you wanted to
     - When you add a remote, you could name it anything
-- Each local branch can be set to track a remote branch (e.g., _your local **master** branch tracks the remote **master** branch_)
+- Each local branch can be set to track a remote branch (e.g., _your local **main** branch tracks the remote **main** branch_)
     - The remote branch that you are tracking is known as the **upstream branch**
     - Once the upstream branch is set for a local branch, git will know where to push to and pull from
     - When you clone a repository, your local branch will automatically be set to track the corresponding remote branch
@@ -854,6 +854,7 @@ Understanding how **local** and **remote** repositories are connected:
 - In your browser, navigate to the repository on GitHub
   - This can be an already existing repository (e.g., [rclass2](https://github.com/anyone-can-cook/rclass2) repo) or a new repository you create
   - To create a new repository, navigate to [GitHub](https://github.com/new) and make sure to check one or more of the `Initialize this repository with` options before creating
+    - If you need to change the default branch that your new repo will have, see [here](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/)
 - Click on the green `Code` button
 - Copy either the repository URL to your clipboard (use HTTPS URL if you don't have SSH set up)
 
@@ -956,12 +957,14 @@ Alternatively, you can create a new git repository on your local machine, and th
 - Turn this directory into a git repository using `git init`
 - In this directory, you can use any git commands and start tracking files
   - For example, create/change one or more file(s)
-  - `git commit -m "commit message"` changes to file(s) from the _local working directory_ to the _staging area_
-  - `git commit` all staged changes to the _local repository_
+  - `git add` changes to file(s) from the _local working directory_ to the _staging area_
+  - `git commit -m "commit message"` all staged changes to the _local repository_
+  - If you need to rename default branch, use `git branch -M main`
 
 **Create a remote repository on GitHub**:
 
 - Create a new repository on [GitHub](https://github.com/new)
+  - If you need to change the default branch that your new repo will have, see [here](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/)
 - Do **not** check any of the `Initialize this repository with` options
 - After creation, you will be able to see the HTTPS/SSH URL of your new repository. Save this URL for later.
 
@@ -970,11 +973,11 @@ Alternatively, you can create a new git repository on your local machine, and th
 - In your Terminal/Git Bash, use `git remote add` to add a new remote for your local repository
   - This will allow you to start pushing to and pulling from the remote repository
 - The very first time you push to the remote, you'll need to use the `--set-upstream` option with the `git push` command
-  - All new repositories start off with the default **master** branch
+  - All new repositories start off with the default **main** branch
   - If you are pushing a new local branch to the remote for the first time, you need to set the upstream branch so Git knows which remote branch to track
-  - For example, we'll want to set our local **master** branch to track the remote repository's **master** branch
+  - For example, we'll want to set our local **main** branch to track the remote repository's **main** branch
   
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git-push.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git-push.png)
 
 *Credit: [Java T Point, Git Push](https://www.javatpoint.com/git-push)*
 
@@ -1061,13 +1064,15 @@ Alternatively, you can create a new git repository on your local machine, and th
   git status
   
 # CONNECT AND PUSH TO REMOTE REPOSITORY
+  # rename default branch name
+  git branch -M main
   
   # provide the path for the repository you created on GitHub in the first step
   #git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
   git remote add origin https://github.com/ozanj/gitr_practice.git
 
   # push changes to GitHub
-  git push --set-upstream origin master
+  git push --set-upstream origin main
 ```
 </details>
     
@@ -1076,7 +1081,6 @@ Alternatively, you can create a new git repository on your local machine, and th
 
 ```{bash, echo=-c(1:4)}
 cd ~  # change to root directory
-pwd
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
 
@@ -1135,7 +1139,7 @@ git remote -v
 <br>
 <details><summary>**Example**: Using `git push` to push a new branch</summary>
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2, 10), results='hide'}
 cd ~/my_git_repo
 
 # Create new R script
@@ -1145,6 +1149,7 @@ echo "mpg %>% head(5)" >> create_dataset.R
 # Add R script and make a commit
 git add create_dataset.R
 git commit -m "initial commit"
+git branch -M main
 ```
 
 ```{bash, echo=-c(1:2), eval=FALSE}
@@ -1155,10 +1160,10 @@ git push
 ```
 
 ```
-## fatal: The current branch master has no upstream branch.
+## fatal: The current branch main has no upstream branch.
 ## To push the current branch and set the remote as upstream, use
 ## 
-##     git push --set-upstream my_remote master
+##     git push --set-upstream my_remote main
 ```
 
 <br>
@@ -1174,9 +1179,9 @@ git remote -v
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# We can check status to see that we are currently on the `master` branch
+# We can check status to see that we are currently on the `main` branch
 # (Note that because we have yet to set an upstream branch,
-# it does not say our master branch is ahead of remote by 1 commit)
+# it does not say our main branch is ahead of remote by 1 commit)
 git status
 ```
 
@@ -1184,13 +1189,13 @@ git status
 cd ~/my_git_repo
 
 # Use the `--set-upstream` option with the remote and branch names to push new local branch
-git push --set-upstream my_remote master
+git push --set-upstream my_remote main
 ```
 
 ```
 ## To https://github.com/anyone-can-cook/my_git_repo_2.git
-##  * [new branch]      master -> master
-## Branch master set up to track remote branch master from my_remote.
+##  * [new branch]      main -> main
+## Branch main set up to track remote branch main from my_remote.
 ```
 
 ```{bash, echo=-c(1:2), eval=FALSE}
@@ -1198,13 +1203,13 @@ cd ~/my_git_repo
 
 # Check status
 # (Now that we have set the upstream branch, 
-# it says our master branch is up-to-date with the remote's master branch)
+# it says our main branch is up-to-date with the remote's main branch)
 git status
 ```
 
 ```
-## On branch master
-## Your branch is up-to-date with 'my_remote/master'.
+## On branch main
+## Your branch is up-to-date with 'my_remote/main'.
 ## 
 ## nothing to commit, working tree clean
 ```
@@ -1225,7 +1230,7 @@ What is a `.gitignore` file? (see [below](#gitignore-file) for more details)
 - These files will no longer be listed under `Untracked files` when you check `git status`
 - You can either create a `.gitignore` file yourself or click `Add .gitignore` when you are creating a new repository on GitHub and select the `R` template from the dropdown menu:
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/gitignore.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/gitignore.png)
   
 *Credit: [How to Make Git Forget Tracked Files Now In gitignore](https://ardalis.com/how-to-make-git-forget-tracked-files-in-gitignore)*
 
@@ -1261,8 +1266,8 @@ Below are some common git commands you might use to **observe your repository**:
 Below is a sample output of `git status`:
 
 ```
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
@@ -1296,8 +1301,8 @@ git status
 ```
 
 ```
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -1321,8 +1326,8 @@ git status
 ```
 
 ```
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
@@ -1346,8 +1351,8 @@ git status
 ```
 
 ```
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 nothing to commit, working tree clean
@@ -1367,8 +1372,8 @@ git status
 ```
 
 ```
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 Changes not staged for commit:
@@ -1388,7 +1393,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 - Help: `git log --help`
 - Syntax: `git log [<option(s)>]`
-  - Commonly used without any options, but see help file for possible options
+  - `-n <int>`: Show the latest `<int>` commits
 - Output: List of commits in reverse chronological order (i.e., newest first)
   - `commit <commit_hash>`: Each commit can be uniquely identified by their hash ID (SHA-1)
     - _Note_: Only the first 7 characters of this hash is needed to uniquely identify it
@@ -1400,7 +1405,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Below is a sample output of `git log`:
 
 ```
-commit 2e525e4b1c40f6cffb78438285a00cd7eed54ae0 (HEAD -> master)
+commit 2e525e4b1c40f6cffb78438285a00cd7eed54ae0 (HEAD -> main)
 Author: username <email@example.com>
 Date:   Thu Apr 2 23:53:30 2020 -0700
 
@@ -1559,7 +1564,7 @@ git log
 ```
 
 ```
-commit aa89efba9adddf8547b3743ba81a421dd2a28881 (HEAD -> master)
+commit aa89efba9adddf8547b3743ba81a421dd2a28881 (HEAD -> main)
 Author: cyouh95 <25449416+cyouh95@users.noreply.github.com>
 Date:   Sat Apr 4 03:20:15 2020 -0700
 
@@ -1796,11 +1801,16 @@ git cat-file -p 6108458
 <br>
 After the files have been committed, tree objects will be created for any sub-directories as well as for the root directory of the repository:
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Make a commit
 git commit -m "initial commit"
+```
+
+```{bash, echo=-c(1:3)}
+cd ~/my_git_repo
+git branch -M main
 
 # View .git/objects directory
 find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
@@ -1991,7 +2001,7 @@ git log
 The `HEAD` file is a pointer to your current (active) branch -- specifically, it points to the latest commit of that branch (whose hash ID is stored in the `refs/` directory). Especially when we get to working with multiple branches, the `HEAD` becomes important as it keeps track of which branch you are currently on.
 
 
-If we output the contents of `HEAD`, we see it contains a reference to the _master_ branch:
+If we output the contents of `HEAD`, we see it contains a reference to the _main_ branch:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -2000,13 +2010,13 @@ cd ~/my_git_repo
 cat .git/HEAD
 ```
 
-Following that reference, we can find the hash ID of the latest commit stored inside `refs/heads/master`:
+Following that reference, we can find the hash ID of the latest commit stored inside `refs/heads/main`:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View content of refs/heads/master
-cat .git/refs/heads/master
+# View content of refs/heads/main
+cat .git/refs/heads/main
 ```
 
 We can use `git log` to verify that this is the hash ID of the latest commit:
@@ -2041,7 +2051,7 @@ ls .git/refs/remotes/origin
 
 ```
 ## HEAD
-## master
+## main
 ```
 
 When you run `git fetch`, it will update the references in `refs/remotes/` (i.e., your local copy of the remote repository), but it will not change anything in `refs/heads/` (i.e., your local repository). Thus, `git fetch` is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don't actually want to merge these changes into your local repository yet.
@@ -2060,7 +2070,7 @@ cd my_git_repo
 git init
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Create new R script
@@ -2071,7 +2081,20 @@ echo "mpg %>% head(5)" >> create_dataset.R
 git status
 ```
 
-```{bash, echo=-c(1:2)}
+```
+## On branch main
+## 
+## No commits yet
+## 
+## Untracked files:
+##   (use "git add <file>..." to include in what will be committed)
+## 
+##  create_dataset.R
+## 
+## nothing added to commit but untracked files present (use "git add" to track)
+```
+
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Add R script
@@ -2079,6 +2102,17 @@ git add create_dataset.R
 
 # R script moves to `Changes to be committed`
 git status
+```
+
+```
+## On branch main
+## 
+## No commits yet
+## 
+## Changes to be committed:
+##   (use "git rm --cached <file>..." to unstage)
+## 
+##  new file:   create_dataset.R
 ```
 
 ```{bash, echo=-c(1:2)}
@@ -2102,11 +2136,16 @@ cd ~/my_git_repo
 git cat-file -p c1cff38
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2, 5), results='hide'}
 cd ~/my_git_repo
 
 # Make a commit
 git commit -m "add create_dataset.R"
+git branch -M main
+```
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
 
 # The R script is now no longer listed
 git status
@@ -2124,7 +2163,7 @@ cd ~/my_git_repo
 
 # Verify that `HEAD` is indeed pointing to the last commit made, which is our initial commit
 cat .git/HEAD
-cat .git/refs/heads/master
+cat .git/refs/heads/main
 ```
 
 ```{bash, echo=-c(1:2)}
@@ -2188,7 +2227,7 @@ cd ~/my_git_repo
 
 # Verify that `HEAD` is pointing to the last commit made, which is now our second commit
 cat .git/HEAD
-cat .git/refs/heads/master
+cat .git/refs/heads/main
 ```
 
 ```{bash, echo=-c(1:2)}
@@ -2222,7 +2261,7 @@ Below are some common git commands you might use to **undo changes**:
 <details><summary>**Example**: Using `git checkout` to discard changes to a tracked, unstaged file</summary>
 
 
-```{bash, echo=-c(1:6)}
+```{bash, echo=-c(1:6), results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2238,8 +2277,9 @@ git add create_dataset.R
 git commit -m "add create_dataset.R"
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
+git branch -M main
 
 # View how create_dataset.R looks when it was committed
 cat create_dataset.R
@@ -2294,7 +2334,7 @@ cat create_dataset.R
 <br>
 <details><summary>**Example**: Using `git reset` to unstage a file</summary>
   
-```{bash, echo=-c(1:6)}
+```{bash, echo=-c(1:6), results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2310,8 +2350,9 @@ git add create_dataset.R
 git commit -m "add create_dataset.R"
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
+git branch -M main
 
 # Modify R script
 echo "df <- mpg %>% filter(year == 2008)" >> create_dataset.R
@@ -2337,7 +2378,7 @@ git status
 <br>
 <details><summary>**Example**: Using `git reset` to undo a commit</summary>
 
-```{bash, echo=-c(1:6)}
+```{bash, echo=-c(1:6), results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2352,8 +2393,9 @@ git add create_dataset.R
 git commit -m "add 1st line to create_dataset.R"
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
+git branch -M main
 
 # Modify R script
 echo "mpg %>% head(5)" >> create_dataset.R
@@ -2410,7 +2452,7 @@ cat create_dataset.R
 <br>
 <details><summary>**Example**: Using `git revert` to revert a commit</summary>
 
-```{bash, echo=-c(1:6)}
+```{bash, echo=-c(1:6), results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2425,8 +2467,9 @@ git add create_dataset.R
 git commit -m "add 1st line to create_dataset.R"
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
+git branch -M main
 
 # Modify R script
 echo "mpg %>% head(5)" >> create_dataset.R
@@ -2467,10 +2510,10 @@ cat create_dataset.R
 What is a __branch__?
 
 - A branch is an "independent line of development" that "isolates your work from that of other team members" ([Using branches](https://backlog.com/git-tutorial/using-branches/) tutorial)
-- By default, a git repository "has one branch named __master__ which is considered to be the definitive branch. We use [other] branches to experiment and make edits before committing them to __master__" ([Hello World](https://guides.github.com/activities/hello-world/) tutorial)
-- "When you create a branch off the __master__ branch, you're making a copy, or snapshot, of master as it was at that point in time"
+- By default, a git repository "has one branch named [__main__] which is considered to be the definitive branch. We use [other] branches to experiment and make edits before committing them to [__main__]" ([Hello World](https://guides.github.com/activities/hello-world/) tutorial)
+- "When you create a branch off the [__main__] branch, you're making a copy, or snapshot, of [main] as it was at that point in time"
 - A branch can be thought of as a "pointer to a single commit"
-- In the figure below, each circle represents a commit. There are three branches - the **master** branch and 2 other branches (**little feature** and **big feature**) that "branched" off **master**.
+- In the figure below, each circle represents a commit. There are three branches - the **main** branch and 2 other branches (**little feature** and **big feature**) that "branched" off **main**.
 
 [![](https://www.w3docs.com/uploads/media/default/0001/03/1e5d7590562b3b214008617211b2539ce2bddfaf.png)](https://www.w3docs.com/learn-git/git-branch.html)
 
@@ -2484,9 +2527,9 @@ Defining **branches** in terms of **commits**:
 - Recall that a **commit** is a snapshot of a repository at a particular point in time
     - Each commit also stores connections (referred to as "references") between the current commit and previous commits (referred to as "ancestors")
 - The figure below shows the relationship between commits, references, and branches
-- Below, **commits 1**, **2**, **3**, and **4** are made to the __master__ branch, prior to the creation of **branch 1**
+- Below, **commits 1**, **2**, **3**, and **4** are made to the __main__ branch, prior to the creation of **branch 1**
     - When we make **commit 2**, we create _reference 1_, which is a pointer from **commit 2** to **commit 1**
-- **commit 4** is the last commit made to the master branch prior to the creation of **branch 1**
+- **commit 4** is the last commit made to the main branch prior to the creation of **branch 1**
 - We can think of **branch 1** as a pointer to **commit 4**
 - When we make additional commits to **branch 1** (e.g., **commit 5**, **commit 7**) we also create references to the previous commit
     - For example, **commit 5** creates _reference 4_, which is a pointer from **commit 5** to **commit 4**
@@ -2510,11 +2553,11 @@ Why use **branches**?
     - "With so much going on, there needs to be a system in place for managing different versions of the same code base."
 - Example from social science research world:
     - In the [Unrollment Project](https://github.com/eddatasci/unrollment_proj) we are exploring potential bias in alternative algorithms to predict student success
-    - We have a file [predict_grad.Rmd](https://github.com/eddatasci/unrollment_proj/blob/master/scripts/rmd/predict_grad.Rmd) that reads in secondary data, creates analysis variables, runs alternative models for predicting the probability of obtaining a BA
+    - We have a file [predict_grad.Rmd](https://github.com/eddatasci/unrollment_proj/blob/main/scripts/rmd/predict_grad.Rmd) that reads in secondary data, creates analysis variables, runs alternative models for predicting the probability of obtaining a BA
     - Several collaborators are working on different parts of `predict_grad.Rmd`. For example, one person writing functions to clean data and create analysis variables and another person writing functions to run models and store model results.
     - Need a way for multiple people to work on `predict_grad.Rmd` at the same time
-- Typically, there is one main branch (usually **master**) that contains working or approved changes. All other development and testing is usually done on separate branches.
-- It is good practice to work on branches, then merge back to master at key points
+- Typically, there is one main branch (usually **main**) that contains working or approved changes. All other development and testing is usually done on separate branches.
+- It is good practice to work on branches, then merge back to main at key points
 
 ## `git branch`
 
@@ -2550,7 +2593,7 @@ git init
 git branch
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Create new R script
@@ -2561,10 +2604,11 @@ git add create_dataset.R
 git commit -m "import tidyverse in create_dataset.R"
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
+git branch -M main
 
-# Now we can see the `master` branch listed, with an `*` indicating it is our current branch
+# Now we can see the `main` branch listed, with an `*` indicating it is our current branch
 git branch
 ```
 
@@ -2579,7 +2623,7 @@ git branch -v
 ```
 
 <br>
-The `-a` option will list both local and remote branches. Remote branches will start with `remotes/` in the output. They will also include both the remote repository name and the branch name (e.g., `origin/master` in the example below). In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `master` branch in the example below):
+The `-a` option will list both local and remote branches. Remote branches will start with `remotes/` in the output. They will also include both the remote repository name and the branch name (e.g., `origin/main` in the example below). In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `main` branch in the example below):
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
@@ -2589,9 +2633,9 @@ git branch -a
 ```
 
 ```
-## * master
-##   remotes/origin/HEAD -> origin/master
-##   remotes/origin/master
+## * main
+##   remotes/origin/HEAD -> origin/main
+##   remotes/origin/main
 ```
 
 <br>
@@ -2605,8 +2649,8 @@ git branch -r
 ```
 
 ```
-##   origin/HEAD -> origin/master
-##   origin/master
+##   origin/HEAD -> origin/main
+##   origin/main
 ```
 
 </details>
@@ -2672,7 +2716,7 @@ git branch
     - `git checkout <branch_name>`: Switches to an existing branch named `branch_name`
     - `git checkout -b <branch_name>`: Creates a new branch named `branch_name` and switches to it
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git-checkout.jpg)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git-checkout.jpg)
 
 *Credit: [Pham Quy, Git tutorial](https://www.slideshare.net/psquy/git-tutorial-50870667)*
 
@@ -2716,7 +2760,7 @@ git branch
 cd ~/my_git_repo
 
 # Switch to an existing branch
-git checkout master
+git checkout main
 ```
 
 ```{bash, echo=-c(1:2)}
@@ -2734,10 +2778,10 @@ What is an **upstream branch**?
 
 - An **upstream** branch is the remote branch that your local branch is tracking (i.e., where it will push to and pull from)
 - When you push a new local branch to the remote for the first time, you will need to set the upstream branch using `git push --set-upstream <remote_name> <branch_name>` (or equivalently, `git push -u <remote_name> <branch_name>`)
-  - We've seen this before [earlier in the lecture](#create-new-git-repository-on-your-local-machine-and-add-to-github), when we initialized a new git repository on our local machine and wanted to push our `master` branch to GitHub for the first time
+  - We've seen this before [earlier in the lecture](#create-new-git-repository-on-your-local-machine-and-add-to-github), when we initialized a new git repository on our local machine and wanted to push our `main` branch to GitHub for the first time
 - The figure below summarizes the connection between a local and remote branch. We see that the local `dev` branch is tracking the remote `dev` branch (i.e., the **upstream branch**). Recall that [under the hood](#head-and-refs), we also have a local copy of the remote repository, so `origin/dev` here is this local, remote-tracking branch.
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/upstream_branch.png){width=600px}
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/upstream_branch.png){width=600px}
 
 *Credit: [devconnected, How To Set Upstream Branch on Git](https://devconnected.com/how-to-set-upstream-branch-on-git/)*
 
@@ -2765,7 +2809,7 @@ What is a __merge__?
 
 - The goal of a merge is to "integrate changes from multiple branches into one [branch]" ([An introduction to Git merge and rebase](https://www.freecodecamp.org/news/an-introduction-to-git-merge-and-rebase-what-they-are-and-how-to-use-them-131b863785f/))
 - Changes from a "target branch" can be merged into your "current branch"
-- It is good practice to make changes on separate branches (e.g., **develop** branch), then once they look good, merge them back into the main branch (e.g., **master** branch)
+- It is good practice to make changes on separate branches (e.g., **develop** branch), then once they look good, merge them back into the main branch (e.g., **main** branch)
 
 ![](https://community.intersystems.com/sites/default/files/inline/images/risunok4.png)
 
@@ -2777,7 +2821,7 @@ What is a __merge__?
 - "Current branch"
     - Branch you are currently working with
     - The branch will be updated/modified by the merge with the "target branch"
-    - In the figure above, the __master__ branch is the "current branch"
+    - In the figure above, the __main__ branch is the "current branch"
 - "Target branch"
     - Branch that will be merged into the "current branch"
     - Target branch will be unaffected by the merge
@@ -2787,11 +2831,11 @@ What is a __merge__?
 <br>
 How programmers use **branches** and **merges** in day-to-day work:
 
-- Typically, programmers do all work on branches rather than the __master__ branch
-    - For example, in the [Unrollment Project](https://github.com/eddatasci/unrollment_proj), project co-founders [Will Doyle](https://github.com/wdoyle42) and [Ben Skinner](https://github.com/btskinner) stated that all project work should be done on branches rather than the master
+- Typically, programmers do all work on branches rather than the __main__ branch
+    - For example, in the [Unrollment Project](https://github.com/eddatasci/unrollment_proj), project co-founders [Will Doyle](https://github.com/wdoyle42) and [Ben Skinner](https://github.com/btskinner) stated that all project work should be done on branches rather than the main
 - Branches are created for specific tasks (e.g., fixing a bug, adding a new feature)
     - "Short-lived topic branches, in particular, keep teams focused" ([Git Handbook](https://guides.github.com/introduction/git-handbook/))
-    - Once the specific task is completed, the topic branch is merged into the __master__ branch and then the topic branch is often deleted
+    - Once the specific task is completed, the topic branch is merged into the __main__ branch and then the topic branch is often deleted
 
 
 <br>
@@ -2822,12 +2866,12 @@ Types of **merges**:
 <br>
 <details><summary>**Example**: Using `git merge` for fast-forward merge</summary>
 
-Continuing from previous examples, we have the `master` and `dev` branches, which are even with the same initial commit:
+Continuing from previous examples, we have the `main` and `dev` branches, which are even with the same initial commit:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View commit log for `master` branch
+# View commit log for `main` branch
 git log
 ```
 
@@ -2844,7 +2888,7 @@ git log
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View content of R script, which is the same on both `master` and `dev` branches
+# View content of R script, which is the same on both `main` and `dev` branches
 cat create_dataset.R
 ```
 
@@ -2871,22 +2915,22 @@ git log
 ```
 
 <br>
-Let's switch back to the `master` branch and merge in `dev`. Since the `dev` branch is ahead of `master` by 1 commit, the changes can be combined using a **fast-forward merge**:
+Let's switch back to the `main` branch and merge in `dev`. Since the `dev` branch is ahead of `main` by 1 commit, the changes can be combined using a **fast-forward merge**:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Switch to `master` branch
-git checkout master
+# Switch to `main` branch
+git checkout main
 
-# Merge `dev` branch into `master`
+# Merge `dev` branch into `main`
 git merge dev
 ```
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# The commit log for `master` now matches the `dev` branch
+# The commit log for `main` now matches the `dev` branch
 git log
 ```
 
@@ -2938,12 +2982,12 @@ git cat-file -p $(git rev-list HEAD | tail -n 1)
 <br>
 <details><summary>**Example**: Using `git merge` for 3-way merge</summary>
 
-Continuing from previous examples, we have the `master` and `dev` branches, which are even with the same two commits:
+Continuing from previous examples, we have the `main` and `dev` branches, which are even with the same two commits:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View commit log for `master` branch
+# View commit log for `main` branch
 git log
 ```
 
@@ -2953,7 +2997,7 @@ cd ~/my_git_repo
 git branch
 echo ""
 
-# View content of R script on the `master` branch
+# View content of R script on the `main` branch
 cat create_dataset.R
 ```
 
@@ -2973,7 +3017,7 @@ git add create_dataset.R
 git commit -m "update head() on line 2" 
 ```
 
-View updated content of R script on the `master` branch, which now shows `head(10)` instead of `head(5)`:
+View updated content of R script on the `main` branch, which now shows `head(10)` instead of `head(5)`:
 
 ```{bash, echo=-c(1:2,4)}
 cd ~/my_git_repo
@@ -3015,28 +3059,28 @@ cat create_dataset.R
 ```
 
 <br>
-Before we attempt to merge `master` and `dev` branches, we can use `git diff` to compare the two branches:
+Before we attempt to merge `main` and `dev` branches, we can use `git diff` to compare the two branches:
 
 - Syntax: `git diff <branch1_name> <branch2_name>`
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View diff between `master` and `dev` branches
-git diff master dev
+# View diff between `main` and `dev` branches
+git diff main dev
 ```
 
 
 <br>
-Let's switch back to the `master` branch and merge in `dev`. Since both branches made changes to the R script on different lines, the changes can be combined without any conflicts via a **3-way merge**:
+Let's switch back to the `main` branch and merge in `dev`. Since both branches made changes to the R script on different lines, the changes can be combined without any conflicts via a **3-way merge**:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Switch to `master` branch
-git checkout master
+# Switch to `main` branch
+git checkout main
 
-# Merge changes from `dev` into `master`
+# Merge changes from `dev` into `main`
 git merge dev
 ```
 
@@ -3065,7 +3109,7 @@ cat create_dataset.R
   - `git pull`: This is equivalent to a `git fetch` followed by a `git merge` to incorporate remote changes to your current branch
 - Notes:
   - `git fetch` is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don't actually want to merge these changes into your local repository yet. On the other hand, running `git pull` will directly incorporate the changes.
-  - More specifically, `git fetch` will incorporate changes into your remote-tracking branch (e.g., `origin/master`, your local copy of the remote `master` branch) but not your local branch (e.g., your  local `master` branch). Then, `git merge` can merge the change from your remote-tracking branch into your local branch.
+  - More specifically, `git fetch` will incorporate changes into your remote-tracking branch (e.g., `origin/main`, your local copy of the remote `main` branch) but not your local branch (e.g., your  local `main` branch). Then, `git merge` can merge the change from your remote-tracking branch into your local branch.
 
 ![](https://miro.medium.com/max/600/1*SKR0Zz4S0M_0Rp-aPsZw0Q.png)
 
@@ -3097,7 +3141,7 @@ Then, the output will look something like the below:
 
 - The 1st line indicates which remote repository it is fetching from
 - The 2nd line displays the hash IDs of your latest commit before and after the fetch, as well as which branch you are updating with the fetch
-  - In the example below, the fetch has updated our `origin/master` branch, which is our local copy of the remote `master` branch
+  - In the example below, the fetch has updated our `origin/main` branch, which is our local copy of the remote `main` branch
 - The 3rd line again displays the latest commit hash before and after the update
 - The 4th line indicates what kind of merge was performed (since `git pull` is just `git fetch` followed by `git merge`)
 - The next lines list out which files were changed and what changes were made (i.e., how many lines were added, how many lines were deleted)
@@ -3105,7 +3149,7 @@ Then, the output will look something like the below:
 
 ```
 From github.com:anyone-can-cook/student_lastname_firstname
-   1eeaff7..6c3e46f  master     -> origin/master
+   1eeaff7..6c3e46f  main     -> origin/main
 Updating 1eeaff7..6c3e46f
 Fast-forward
  README.md | 2 ++
@@ -3129,42 +3173,42 @@ git fetch
 
 ```
 From github.com:anyone-can-cook/student_lastname_firstname
-   1eeaff7..6c3e46f  master     -> origin/master
+   1eeaff7..6c3e46f  main     -> origin/main
 ```
 
 <br>
-We can verify that the fetch only updated our remote-tracking branch `origin/master` (i.e., our local copy of the remote `master` branch) and not our local `master` branch by checking the commit history of the branches. 
+We can verify that the fetch only updated our remote-tracking branch `origin/main` (i.e., our local copy of the remote `main` branch) and not our local `main` branch by checking the commit history of the branches. 
 
-Assuming we are currently on our local `master` branch, we can run `git log` to view the commit history. In the output, we see `HEAD -> master` next to the most recent commit, indicating that `HEAD` is pointing to this commit on the `master` branch:
+Assuming we are currently on our local `main` branch, we can run `git log` to view the commit history. In the output, we see `HEAD -> main` next to the most recent commit, indicating that `HEAD` is pointing to this commit on the `main` branch:
 
 ```{bash, eval=F}
-# Check commit history of local `master` branch
+# Check commit history of local `main` branch
 git log
 ```
 
 ```
-commit e329908682dfefba0417bd7337cc660d0d5f133d (HEAD -> master)
+commit e329908682dfefba0417bd7337cc660d0d5f133d (HEAD -> main)
 Author: username <email@example.com>
 Date:   Fri Jan 22 11:15:50 2021 -0800
 
     initial commit
 ```
 
-Next, we can check the commit log of the remote-tracking branch `origin/master`. In the output below, we can see that the changes have indeed been fetched to this branch, as indicated by the presence of the second commit. In parentheses next to the commits, we can again see that our local `master` branch still only contains the first commit while `origin/master` and `origin/HEAD` has been updated with the second. `HEAD` always points to the latest commit on your current (active) branch, so it also appears next to the second commit:
+Next, we can check the commit log of the remote-tracking branch `origin/main`. In the output below, we can see that the changes have indeed been fetched to this branch, as indicated by the presence of the second commit. In parentheses next to the commits, we can again see that our local `main` branch still only contains the first commit while `origin/main` and `origin/HEAD` has been updated with the second. `HEAD` always points to the latest commit on your current (active) branch, so it also appears next to the second commit:
 
 ```{bash, eval=F}
-# Check commit history of `origin/master`
-git log origin/master
+# Check commit history of `origin/main`
+git log origin/main
 ```
 
 ```
-commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD, origin/master, origin/HEAD)
+commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD, origin/main, origin/HEAD)
 Author: username <email@example.com>
 Date:   Fri Jan 22 11:27:40 2021 -0800
 
     second commit
 
-commit e329908682dfefba0417bd7337cc660d0d5f133d (master)
+commit e329908682dfefba0417bd7337cc660d0d5f133d (main)
 Author: username <email@example.com>
 Date:   Fri Jan 22 11:15:50 2021 -0800
 
@@ -3172,11 +3216,11 @@ Date:   Fri Jan 22 11:15:50 2021 -0800
 ```
 
 <br>
-After we are satisfied with the fetched changes, we can manually merge them into our local `master` branch:
+After we are satisfied with the fetched changes, we can manually merge them into our local `main` branch:
 
 ```{bash, eval=F}
-# Merge changes from `origin/master` into local `master`
-git merge origin/master
+# Merge changes from `origin/main` into local `main`
+git merge origin/main
 ```
 
 ```
@@ -3187,18 +3231,18 @@ Fast-forward
  2 files changed, 4 insertions(+), 2 deletions(-)
 ```
 
-Alternatively, we could have just run `git pull` instead of `git merge origin/master` and it would've also merged in the changes (after performing `git fetch` again).
+Alternatively, we could have just run `git pull` instead of `git merge origin/main` and it would've also merged in the changes (after performing `git fetch` again).
 
 <br>
-If we check the commit history on our local `master` branch again, we can see it has now been updated:
+If we check the commit history on our local `main` branch again, we can see it has now been updated:
 
 ```{bash, eval=F}
-# Check commit history of local `master` branch
+# Check commit history of local `main` branch
 git log
 ```
 
 ```
-commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD -> master, origin/master, origin/HEAD)
+commit 1eeaff75a681213890e5ce4850d17a1672a4ada6 (HEAD -> main, origin/main, origin/HEAD)
 Author: username <email@example.com>
 Date:   Fri Jan 22 11:27:40 2021 -0800
 
@@ -3257,12 +3301,12 @@ These conflicts will need to be resolved manually (described in next section), o
 <br>
 <details><summary>**Example**: Merge conflict when starting a merge</summary>
 
-Continuing from previous examples, our `master` branch currently looks like this:
+Continuing from previous examples, our `main` branch currently looks like this:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View commit log for `master` branch
+# View commit log for `main` branch
 git log
 ```
 
@@ -3277,7 +3321,7 @@ cat create_dataset.R
 ```
 
 <br>
-Let's create a new branch called `revision` that branches off `master`, then make a new commit on this branch:
+Let's create a new branch called `revision` that branches off `main`, then make a new commit on this branch:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -3309,13 +3353,13 @@ cat create_dataset.R
 ```
 
 <br>
-Back on the `master` branch, let's modify the same line in the R script:
+Back on the `main` branch, let's modify the same line in the R script:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Switch back to `master` branch
-git checkout master
+# Switch back to `main` branch
+git checkout main
 
 # Modify R script
 echo "library(tidyverse)" > create_dataset.R
@@ -3335,12 +3379,12 @@ git status
 ```
 
 <br>
-If we try to merge changes from `revision` into `master` now, there will be a merge conflict because we have uncommited changes. The merge will be aborted:
+If we try to merge changes from `revision` into `main` now, there will be a merge conflict because we have uncommited changes. The merge will be aborted:
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
 
-# Merge changes from `revision` into `master`
+# Merge changes from `revision` into `main`
 git merge revision
 ```
 
@@ -3356,7 +3400,7 @@ git merge revision
 <br>
 <details><summary>**Example**: Merge conflict during a merge</summary>
 
-Continuing from the previous example, let's say we commited our change to `create_dataset.R` on the `master` branch:
+Continuing from the previous example, let's say we commited our change to `create_dataset.R` on the `main` branch:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -3366,7 +3410,7 @@ git add create_dataset.R
 git commit -m "filter for chevrolet instead of audi"
 ```
 
-View updated content of R script on the `master` branch, which now filters for `chevrolet` instead of `audi` on the last line:
+View updated content of R script on the `main` branch, which now filters for `chevrolet` instead of `audi` on the last line:
 
 ```{bash, echo=-c(1:2,4)}
 cd ~/my_git_repo
@@ -3389,12 +3433,12 @@ Recall that `create_dataset.R` on the `revision` branch looks like this:
 ```
 
 <br>
-If we try to merge changes from `revision` into `master` now, there will be a merge conflict because both branches modified the same line of the same file:
+If we try to merge changes from `revision` into `main` now, there will be a merge conflict because both branches modified the same line of the same file:
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
 
-# Merge changes from `revision` into `master`
+# Merge changes from `revision` into `main`
 git merge revision
 ```
 
@@ -3408,7 +3452,7 @@ git merge revision
 You can also tell which file(s) failed to merge by checking `git status`:
 
 ```
-## On branch master
+## On branch main
 ## You have unmerged paths.
 ##   (fix conflicts and run "git commit")
 ##   (use "git merge --abort" to abort the merge)
@@ -3504,9 +3548,9 @@ What is a **pull request**?
 
 > "Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch." -- [GitHub Help](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
 
-- As mentioned in the [branching](#branching) section, there is typically one base branch (usually **master**) that contains all working or approved changes
-- Any development or testing is usually done on separate branches, then merged back into **master** once changes are finalized
-- Pull requests are essentially requests to have one branch (e.g., **development** branch) merged into another (e.g., **master** branch)
+- As mentioned in the [branching](#branching) section, there is typically one base branch (usually **main**) that contains all working or approved changes
+- Any development or testing is usually done on separate branches, then merged back into **main** once changes are finalized
+- Pull requests are essentially requests to have one branch (e.g., **development** branch) merged into another (e.g., **main** branch)
 - Pull requests are opened on GitHub
   - This creates a pull request page (similar to an issues page), where collaborators can comment and discuss the changes that are to be merged
 - The alternative to a pull request is to directly merge in the branch yourself (example below), but this bypasses the review and approval process that a pull request offers
@@ -3520,9 +3564,9 @@ Why make a **pull request**?
 - Pull requests can also be a way to keep a history of the major revisions and decisions made to the project
 
 <br>
-<details><summary>**Example**: Alternative to pull request: Merging changes directly into **master**</summary>
+<details><summary>**Example**: Alternative to pull request: Merging changes directly into **main**</summary>
 
-Let's say we create a new R script and add/commit that to the **master** branch:
+Let's say we create a new R script and add/commit that to the **main** branch:
 
 ```{bash, echo=FALSE, results = 'hide'}
 cd ~  # change to root directory
@@ -3532,7 +3576,7 @@ cd my_git_repo
 git init
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Create new R script
@@ -3545,8 +3589,9 @@ git commit -m "import tidyverse library"
 
 Then, we create a new branch and make further changes to the R script on the branch:
 
-```{bash, echo=-c(1:2, 5)}
+```{bash, echo=-c(1:3, 6)}
 cd ~/my_git_repo
+git branch -M main
 
 # Create and switch to new branch
 git checkout -b dev
@@ -3560,24 +3605,24 @@ git add create_dataset.R
 git commit -m "preview mpg dataset"
 ```
 
-At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to **master**:
+At this point, we can push this new branch to the remote if we wanted to open a pull request. But the alternative is to directly merge the changes to **main**:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Switch back to master
-git checkout master
+# Switch back to main
+git checkout main
 
 # Merge in changes from the branch
 git merge dev
 ```
 
-Then, we can push the changes to the remote's **master** branch, which would also be the ultimate goal of a pull request:
+Then, we can push the changes to the remote's **main** branch, which would also be the ultimate goal of a pull request:
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
 
-# Push to remote's master
+# Push to remote's main
 git push
 ```
 
@@ -3592,8 +3637,8 @@ git push
 **Creating a topical branch**:
 
 - Create a new local branch and make your changes to it
-- After you are done, it is good practice to merge in any changes from master that your branch doesn't have
-  - This makes it easier later down the road when you are merging your branch back into master after the pull request is complete
+- After you are done, it is good practice to merge in any changes from main that your branch doesn't have
+  - This makes it easier later down the road when you are merging your branch back into main after the pull request is complete
 - Push your branch to the remote repository
 
 <br>
@@ -3620,7 +3665,7 @@ git push
 
 - On the right-hand side of the pull request, you are also able to assign **Reviewers** or **Assignees**, similar to an issue:
 
-  ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer.png)
+  ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer.png)
 
 - **Reviewers** should be someone who you want to review the changes you made, while **Assignees** could be anyone else more generally involved in the pull request
   - Reviewers will get a notification that their review is requested
@@ -3630,16 +3675,16 @@ git push
 
   [![](https://help.github.com/assets/images/help/pull_requests/request-re-review.png)](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review)
 
-  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_yellow.png): Pending review from reviewer
-  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_gray.png): Reviewer has left comments
-  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_green.png): Reviewer has approved changes
-  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_red.png): Reviewer has requested additional changes
-  - For any of the last three statuses, you can click ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_request.png) to re-request a review from the reviewer
+  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_yellow.png): Pending review from reviewer
+  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_gray.png): Reviewer has left comments
+  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_green.png): Reviewer has approved changes
+  - ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_red.png): Reviewer has requested additional changes
+  - For any of the last three statuses, you can click ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_request.png) to re-request a review from the reviewer
 
 <br>
 <details><summary>**Example**: Creating a pull request</summary>
 
-Similar to the previous example, let's say we create a new R script and added/committed that to the **master** branch:
+Similar to the previous example, let's say we create a new R script and added/committed that to the **main** branch:
 
 ```{bash, echo=FALSE, results = 'hide'}
 cd ~  # change to root directory
@@ -3649,7 +3694,7 @@ cd my_git_repo
 git init
 ```
 
-```{bash, echo=-c(1:2)}
+```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
 
 # Create new R script
@@ -3662,8 +3707,9 @@ git commit -m "import tidyverse library"
 
 Then, we create a new branch and make further changes to the R script on the branch:
 
-```{bash, echo=-c(1:2, 5)}
+```{bash, echo=-c(1:3, 6)}
 cd ~/my_git_repo
+git branch -M main
 
 # Create and switch to new branch
 git checkout -b dev
@@ -3720,7 +3766,7 @@ There, you will also see a button called `Review changes` that contains three op
 
 - Select this option to leave general feedback on the changes
   - You must write something in the comment box in order to click `Submit review`
-- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_gray.png)
+- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_gray.png)
 - Note that simply leaving a comment on the main pull request page will not trigger this status change
 
 <br>
@@ -3728,14 +3774,14 @@ There, you will also see a button called `Review changes` that contains three op
 
 - Select this option to approve merging the changes
   - You do not need to write anything in the comment box in order to click `Submit review`
-- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_green.png)
+- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_green.png)
 
 <br>
 **Request changes**:
 
 - Select this option to request further changes before merging
   - You must write something in the comment box in order to click `Submit review`
-- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_red.png)
+- The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_red.png)
 - You will see that the merge box on the main pull request page is outlined in orange, along with a list of reviewers who requested changes:
 
   [![](https://help.github.com/assets/images/help/pull_requests/merge_box/pr-reviews-in-merge-box.png){width=500px}](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews)
@@ -3746,15 +3792,15 @@ There, you will also see a button called `Review changes` that contains three op
   
   - `Approve changes`: The reviewer can select this to resolve the change request
     - This will turn the merge box outline from orange back to green
-    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_green.png)
+    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_green.png)
     - For anyone other than the reviewer, they will see the option `See review` instead
   - `Dismiss review`: The review can be dismissed by anyone
     - You will be asked to enter a reason why you want to dismiss the review, which will appear as a comment on the pull request page
     - This will turn the merge box outline from orange back to green
-    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_gray.png)
+    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_gray.png)
   - `Re-request review`: Another review from the reviewer can be requested
     - The merge box outline will remain orange
-    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/reviewer_status_yellow.png)
+    - The reviewer status will be changed to ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/reviewer_status_yellow.png)
 
 - Note that the merge box outline color and reviewer status do not affect the ability to merge the pull request
 
@@ -3781,9 +3827,9 @@ What is a `.gitignore` file? ([gitignore documentation](https://git-scm.com/docs
 - The `.gitignore` file is usually in your project root directory
   - However, you can also have multiple `.gitignore` or `.gitignore` in various subdirectories if you need to ignore different files in different locations
 - You can either create a `.gitignore` file yourself or click `Add .gitignore` when you are creating a new repository on GitHub and select the `R` template from the dropdown menu
-  - Templates for `.gitignore` can be found [here](https://github.com/github/gitignore) (e.g., the [`R` template](https://github.com/github/gitignore/blob/master/R.gitignore))
+  - Templates for `.gitignore` can be found [here](https://github.com/github/gitignore) (e.g., the [`R` template](https://github.com/github/gitignore/blob/main/R.gitignore))
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/gitignore.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/gitignore.png)
   
 *Credit: [How to Make Git Forget Tracked Files Now In gitignore](https://ardalis.com/how-to-make-git-forget-tracked-files-in-gitignore)*
 
@@ -3814,7 +3860,10 @@ mkdir my_git_repo  # make directory `my_git_repo`
 cd my_git_repo
 git init
 mkdir ABC
-touch A1.{png,csv,tsv} B2.csv ABC/README.md de.csv
+touch A1.{png,csv,tsv} B2.csv ABC/README.md de.csv blank.txt
+git add blank.txt
+git commit -m "initial commit"
+git branch -M main
 ```
 
 ```{bash, echo=F}
@@ -4002,7 +4051,10 @@ mkdir my_git_repo  # make directory `my_git_repo`
 cd my_git_repo
 git init
 mkdir -p {,intput/,output/,output/plots/}doc
-touch {,doc/,intput/doc/,output/doc/,output/plots/doc/}README.md
+touch {,doc/,intput/doc/,output/doc/,output/plots/doc/}README.md blank.txt
+git add blank.txt
+git commit -m "initial commit"
+git branch -M main
 ```
 
 ```{bash, echo=F}
@@ -4189,22 +4241,22 @@ Overview of **shared repository** workflow:
     - Administrator access
 - As an individual team member, you work on specific tasks (e.g., fix a bug, add a new feature, write a lecture on a topic)
     - Work on tasks in your local working directory on your local machine
-        - Often, work on tasks in a branch other than __master__
+        - Often, work on tasks in a branch other than __main__
     - Once you complete a task, `commit` changes to your local repository
     - `push` changes from local repository on your machine to remote repository shared with collaborators
 - Other team members will also work on specific tasks that they `commit` to their local repository and then `push` to the remote repository
     - After your team members `push` a change to remote respository, you may `pull` those changes to your local repository and local working directory
 - Issuing a **pull request**
-    - For most collaborative projects, users do not simply `push` their changes to the master branch of the shared remote repository
+    - For most collaborative projects, users do not simply `push` their changes to the main branch of the shared remote repository
     - Why? Before pushing final changes to shared repository, those changes should be reviewed by other team members. This can be done by issuing a **pull request**
-    - A pull request is an announcement to team members that you have made changes and you want those changes to be reviewed before they become final (e.g., merged to the **master** branch)
+    - A pull request is an announcement to team members that you have made changes and you want those changes to be reviewed before they become final (e.g., merged to the **main** branch)
     - Once you issue a pull request, "the person or team reviewing your changes may have questions or comments. Perhaps the coding style doesn't match project guidelines, the change is missing unit tests, or maybe everything looks great and props are in order" ([Understanding the GitHub flow](https://guides.github.com/introduction/flow/))
       - Process:
-        - Create a new local branch off master to make changes to
+        - Create a new local branch off main to make changes to
         - Push the branch to the remote repository
-        - Open a pull request on GitHub to have the branch merged to master
+        - Open a pull request on GitHub to have the branch merged to main
       - Alternative to pull request:
-        - Merge your changes on the local branch directly into local master, then push to remote
+        - Merge your changes on the local branch directly into local main, then push to remote
         - This bypasses the review and approval process that a pull request offers
 
 ### Fork and pull
