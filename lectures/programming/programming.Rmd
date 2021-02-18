@@ -2888,7 +2888,7 @@ Recall that functions generally follow **three sequential steps**:
 
 What are **return values**?
 
-- Just like how it can take inputs (i.e., arguments), functions can also return values as output
+- Just how functions can take inputs (i.e., arguments), functions can also return values as output
 - The last statement that the function evaluates will be automatically (i.e., implicitly) returned
 - We can use the assignment operator `<-` to store returned values in a new object for future use
 
