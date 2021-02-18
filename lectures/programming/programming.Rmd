@@ -2531,7 +2531,7 @@ df_event_small %>% head(5)
 </details>
 <br>
 
-### Student exercise [SKIP]
+### Student exercise [OPTIONAL]
 
 Some common tasks when working with survey data:
 
