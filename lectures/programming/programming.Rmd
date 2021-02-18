@@ -1236,6 +1236,36 @@ __Note__:
 
 # Conditional execution
 
+## Conditions
+
+CRYSTAL - DEFINE WHAT A CONDITION IS
+
+Any statement that has a length of `1` and can evaluate to either `TRUE` or `FALSE` can be used as the condition:
+
+```{r}
+# This statement evaluates to `TRUE`
+2 + 2 == 4
+
+# It is of type `logical`
+typeof(2 + 2 == 4)
+
+# It has length of `1`
+length(2 + 2 == 4)
+```
+Some functions return a `logical`, so you might also see a function call being used as the condition:
+
+```{r}
+# This function call returns `FALSE` because the string "NA" is not the missing value `NA`
+is.na("NA")
+
+# It is of type `logical`
+typeof(is.na("NA"))
+
+# It has length of `1`
+length(is.na("NA"))
+
+```
+
 ## `if` statement conditions
 
 What are **`if` statement conditions**?
@@ -2068,7 +2098,11 @@ print_hello <- function(x, y) {  # This function takes 2 arguments
 
 # Call function
 print_hello(x = "Ozan Jaquette", y = "01/16/1979")
+
+  print_hello(x = "Ozan Jaquette", y = "01/16/1979") %>% str() # investigate what the function returns
+
 print_hello(x = "Kartal Jaquette", y = "01/24/1983")
+print_hello(x = "Dan Jaquette", y = "10/29/1950")
 print_hello(x = "Sumru Erkut", y = "06/15/1944")
 print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019")
 ```
@@ -2193,11 +2227,22 @@ Test/call the function:
 ```{r}
 z_score(x = c(1, 2, 3, 4, 5))
 
+  # investigate what function returns
+  z_score(x = c(1, 2, 3, 4, 5)) %>% str()
+
 v
 z_score(x = v)
 
 seq(20, 25)
 z_score(x = seq(20, 25))
+  
+  # investigate what function returns
+  z_score(x = c(1, 2, 3, 4, 5)) %>% str()
+  
+  #you could even create a new object whose values are the output/return of the function
+  z_object <- z_score(x = c(1, 2, 3, 4, 5))
+  z_object
+  z_object %>% str()
 ```
 
 </details>
@@ -2274,6 +2319,11 @@ sd(df$a, na.rm=TRUE)  # std dev of variable "a"
 # Manually calculate z-score for second observation in variable "a"
 df$a[2]
 (df$a[2] - mean(df$a, na.rm=TRUE))/sd(df$a, na.rm=TRUE)
+
+# Manually calculate z-score for all observations in variable "a"
+df$a
+df$a %>% length()
+(df$a - mean(df$a, na.rm=TRUE))/sd(df$a, na.rm=TRUE)
 ```
 
 <br>
@@ -2285,6 +2335,7 @@ df$a
 z_score(x = df$a)
 z_score(x = df[["a"]])
 
+
 # This approach doesn't work:
   # z_score(x = df["a"]) 
   # Why?:
@@ -2292,7 +2343,24 @@ z_score(x = df[["a"]])
     # you can't apply mean() or sd() functions to list/data frame object, only numeric atomic vector
 
 # z-score for each obs of variable "b"
-z_score(x = df$b) 
+z_score(x = df[["b"]])
+
+  # investigate the object returned by the function call
+  z_score(x = df[["b"]]) %>% str()
+  
+  # could create a new object whose values are the output/return of the function
+  z_object <- z_score(x = df[["b"]])
+  z_object %>% str()
+  
+  # could even create new object that is a new variable in data frame
+  df[["b_z"]] <- z_score(x = df[["b"]])
+  df$b_z <- z_score(x = df[["b"]]) # same same
+  
+  df %>% glimpse()
+  df$b_z %>% str()
+  
+  df$b_z <- NULL # delet variable b_z
+
 ```
 
 </details>
@@ -2393,17 +2461,20 @@ What kind of input is our current function limited to?
 
 ```{r, eval=FALSE}
 #function works on below numeric atomic vector
-str(df_event_small$med_inc)
+
+  str(df_event_small$med_inc)
+  str(df_event_small[["med_inc"]]) # same same
 
 #function doesn't work if input is a list/dataframe
-str(df_event_small["med_inc"])
 
-z_score(x = df_event_small["med_inc"])
+  str(df_event_small["med_inc"]) # investigate object
+
+  z_score(x = df_event_small["med_inc"]) # try applying z_score function to object
 
 #function doesn't work if x is not a numeric vector
-str(df_event_small$instnm)
-
-z_score(x = df_event_small$instnm)
+  str(df_event_small$instnm)
+  
+  z_score(x = df_event_small$instnm)
 ```
 
 </details>
@@ -2430,10 +2501,17 @@ str(df_event_small["med_inc"])
 
 z_score(x = df_event_small["med_inc"])
 
+  #investigate what this function call returns
+  z_score(x = df_event_small["med_inc"]) %>% str()
+  
 # Test with character vector input
 str(df_event_small$instnm)
 
 z_score(x = df_event_small$instnm)
+
+  #investigate what this function call returns
+  z_score(x = df_event_small$instnm) %>% str()
+
 ```
 
 <br>
