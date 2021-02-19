@@ -1236,14 +1236,30 @@ __Note__:
 
 # Conditional execution
 
+What is **conditional execution**?
+
+- **Conditional execution** is the running of specific blocks of code based on some **condition**
+  - E.g., If the number is even, run this block of code. Otherwise, run the other block of code, etc.
+- We can write `if`-(`else if`)-`else` statements to run code conditionally (covered in upcoming sections)
+- This is useful because it allows for decision-making in the code
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/decision-making-c-4.png){width=500px}
+
+*Credit: [Decision Making in C / C++](https://www.geeksforgeeks.org/decision-making-c-c-else-nested-else/), GeeksforGeeks*
+
 ## Conditions
 
-CRYSTAL - DEFINE WHAT A CONDITION IS
+What is a **condition**?
 
-Any statement that has a length of `1` and can evaluate to either `TRUE` or `FALSE` can be used as the condition:
+- A condition is any expression that can evaluate to `TRUE` or `FALSE`
+- Your condition should have a length of `1` (otherwise R will warn you that it'll only look at the first element)
+- Based on the condition, different blocks of your code will be run
+
+<br>
+Any expression that has a length of `1` and can evaluate to either `TRUE` or `FALSE` can be used as the condition:
 
 ```{r}
-# This statement evaluates to `TRUE`
+# This expression evaluates to `TRUE`
 2 + 2 == 4
 
 # It is of type `logical`
@@ -1252,6 +1268,7 @@ typeof(2 + 2 == 4)
 # It has length of `1`
 length(2 + 2 == 4)
 ```
+
 Some functions return a `logical`, so you might also see a function call being used as the condition:
 
 ```{r}
@@ -1273,7 +1290,7 @@ What are **`if` statement conditions**?
 - `if` statements allow you to conditionally execute certain blocks of code depending on whether some condition(s) is `TRUE`
 - The condition goes inside of the parentheses in `if()` and the block of code to execute goes between the curly brackets (`{}`)
 - The condition must evaluate to either `TRUE` or `FALSE` (i.e., be of type `logical`)
-- The condition must have length of `1`
+- The condition should have length of `1`
 
 ```{r, eval=FALSE}
 if (condition) {
@@ -1301,10 +1318,10 @@ if (FALSE) {
 <br>
 <details><summary>**Example**: Condition that evaluates to `TRUE`</summary>
 
-Remember that any statement that has a length of `1` and can evaluate to either `TRUE` or `FALSE` can be used as the condition:
+Remember that any expression that has a length of `1` and can evaluate to either `TRUE` or `FALSE` can be used as the condition:
 
 ```{r}
-# This statement evaluates to `TRUE`
+# This expression evaluates to `TRUE`
 2 + 2 == 4
 
 # It is of type `logical`
@@ -1813,6 +1830,7 @@ __Example__: The `sum()` function
 1. __Input__: Takes in a vector of elements (_class_ must be `numeric` or `logical`)
 2. __Processing__: Calculates the sum of elements
 3. __Return__: Returns a numeric vector of length `1` whose value is the sum of the input vector
+    - You can use `str()` to investigate the return value of the function
 
 ```{r}
 # Apply sum() to atomic vector
@@ -1912,7 +1930,7 @@ function_name <- function(arg1, arg2, arg3) {
 3. __Function body__
     - What the function does to the inputs
     - Function body goes inside the pair of curly brackets (`{}`) that follows `function()`
-    - Above hypothetical function doesn't do anything
+    - Above hypothetical function doesn't do anything, but your function can **return a value** (covered in [later section](#return-values))
 
 ### `print_hello()` function
 
@@ -1959,6 +1977,9 @@ print_hello <- function() {  # This function takes no arguments
 
 # Call function
 print_hello()
+
+# Investigate return value
+print_hello() %>% str()
 ```
 
 1. __Function name__
@@ -1967,6 +1988,7 @@ print_hello()
     - `print_hello()` function doesn't take any arguments
 3. __Function body__ (what the function does to the inputs)
     - Body of `print_hello()` simply prints "Hello, world"
+    - **Return value**: The character value, `"Hello, world!"`
 
 </details>
 
@@ -2013,6 +2035,9 @@ print_hello <- function(x) {  # This function takes 1 argument
 # Call function
 print_hello(x = "Ozan Jaquette")
 print_hello("Ozan Jaquette")
+
+# Investigate return value
+print_hello(x = "Ozan Jaquette") %>% str()
 ```
 
 1. __Function name__
@@ -2021,6 +2046,7 @@ print_hello("Ozan Jaquette")
     - `print_hello()` function takes a name as input
 3. __Function body__ (what the function does to the inputs)
     - Body of `print_hello()` prints `"Hello, world. My name is <name>"`
+    - **Return value**: The character value, `"Hello, world. My name is <name>"`
 
 </details>
 
@@ -2098,13 +2124,13 @@ print_hello <- function(x, y) {  # This function takes 2 arguments
 
 # Call function
 print_hello(x = "Ozan Jaquette", y = "01/16/1979")
-
-  print_hello(x = "Ozan Jaquette", y = "01/16/1979") %>% str() # investigate what the function returns
-
 print_hello(x = "Kartal Jaquette", y = "01/24/1983")
 print_hello(x = "Dan Jaquette", y = "10/29/1950")
 print_hello(x = "Sumru Erkut", y = "06/15/1944")
 print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019")
+
+# Investigate return value
+print_hello(x = "Ozan Jaquette", y = "01/16/1979") %>% str()
 ```
 
 1. __Function name__
@@ -2113,6 +2139,7 @@ print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019")
     - `print_hello()` function takes a name and birthdate as inputs
 3. __Function body__
     - Body of `print_hello()` prints `"Hello, world. My name is <name> and I am <age> years old"`
+    - **Return value**: The character value, `"Hello, world. My name is <name> and I am <age> years old"`
 
 </details>
 
@@ -2220,6 +2247,7 @@ z_score <- function(x) {
     - `z_score()` function takes an object `x` as input to calculate the z-score for
 3. __Function body__
     - Body of `z_score()` calculates z-score of input (e.g., For each element of `x`, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements)
+    - **Return value**: A numeric vector containing z-scores calculated from input
 
 <br>
 Test/call the function:

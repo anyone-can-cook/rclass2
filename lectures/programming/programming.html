@@ -1280,77 +1280,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      code.sourceCode > span { display: inline-block; line-height: 1.25; }
-  code.sourceCode > span { color: inherit; text-decoration: inherit; }
-  code.sourceCode > span:empty { height: 1.2em; }
-  .sourceCode { overflow: visible; }
-  code.sourceCode { white-space: pre; position: relative; }
-  div.sourceCode { margin: 1em 0; }
-  pre.sourceCode { margin: 0; }
-  @media screen {
-  div.sourceCode { overflow: auto; }
-  }
-  @media print {
-  code.sourceCode { white-space: pre-wrap; }
-  code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-  }
-  pre.numberSource code
-    { counter-reset: source-line 0; }
-  pre.numberSource code > span
-    { position: relative; left: -4em; counter-increment: source-line; }
-  pre.numberSource code > span > a:first-child::before
-    { content: counter(source-line);
-      position: relative; left: -1em; text-align: right; vertical-align: baseline;
-      border: none; display: inline-block;
-      -webkit-touch-callout: none; -webkit-user-select: none;
-      -khtml-user-select: none; -moz-user-select: none;
-      -ms-user-select: none; user-select: none;
-      padding: 0 4px; width: 4em;
-      color: #aaaaaa;
-    }
-  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-  div.sourceCode
-    {  background-color: #f8f8f8; }
-  @media screen {
-  code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-  }
-  code span.al { color: #ef2929; } /* Alert */
-  code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-  code span.at { color: #c4a000; } /* Attribute */
-  code span.bn { color: #0000cf; } /* BaseN */
-  code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-  code span.ch { color: #4e9a06; } /* Char */
-  code span.cn { color: #000000; } /* Constant */
-  code span.co { color: #8f5902; font-style: italic; } /* Comment */
-  code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-  code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-  code span.dt { color: #204a87; } /* DataType */
-  code span.dv { color: #0000cf; } /* DecVal */
-  code span.er { color: #a40000; font-weight: bold; } /* Error */
-  code span.ex { } /* Extension */
-  code span.fl { color: #0000cf; } /* Float */
-  code span.fu { color: #000000; } /* Function */
-  code span.im { } /* Import */
-  code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-  code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-  code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-  code span.ot { color: #8f5902; } /* Other */
-  code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-  code span.sc { color: #000000; } /* SpecialChar */
-  code span.ss { color: #4e9a06; } /* SpecialString */
-  code span.st { color: #4e9a06; } /* String */
-  code span.va { color: #000000; } /* Variable */
-  code span.vs { color: #4e9a06; } /* VerbatimString */
-  code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-    </style>
-
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -2530,10 +2459,10 @@ div.tocify {
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">set.seed</span>(<span class="dv">12345</span>) <span class="co"># so we all get the same variable values</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">a =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>))</span>
 <span id="cb45-3"><a href="#cb45-3"></a><span class="kw">str</span>(df)</span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb45-7"><a href="#cb45-7"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div></li>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb45-5"><a href="#cb45-5"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span></code></pre></div></li>
 </ul>
 <div id="looping-over-elements" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Looping over elements</h3>
@@ -2573,8 +2502,8 @@ div.tocify {
 <span id="cb47-10"><a href="#cb47-10"></a><span class="co"># show contents of element, outside of a loop</span></span>
 <span id="cb47-11"><a href="#cb47-11"></a>  <span class="co"># each element of the dataframe is a vector that contains one element for each observation</span></span>
 <span id="cb47-12"><a href="#cb47-12"></a>  <span class="kw">str</span>(df[<span class="dv">1</span>]) <span class="co"># single bracket</span></span>
-<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb47-15"><a href="#cb47-15"></a>  <span class="kw">str</span>(df[[<span class="dv">1</span>]]) <span class="co"># double bracket</span></span>
 <span id="cb47-16"><a href="#cb47-16"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb47-17"><a href="#cb47-17"></a></span>
@@ -2698,8 +2627,8 @@ div.tocify {
 <span id="cb50-11"><a href="#cb50-11"></a></span>
 <span id="cb50-12"><a href="#cb50-12"></a><span class="co"># show using name to print contents, outside of a loop</span></span>
 <span id="cb50-13"><a href="#cb50-13"></a><span class="kw">str</span>(df[<span class="st">&quot;a&quot;</span>]) <span class="co"># single bracket</span></span>
-<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-16"><a href="#cb50-16"></a><span class="kw">str</span>(df[[<span class="st">&quot;a&quot;</span>]]) <span class="co"># double bracket</span></span>
 <span id="cb50-17"><a href="#cb50-17"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-18"><a href="#cb50-18"></a></span>
@@ -2710,27 +2639,27 @@ div.tocify {
 <span id="cb50-23"><a href="#cb50-23"></a>}</span>
 <span id="cb50-24"><a href="#cb50-24"></a><span class="co">#&gt; </span></span>
 <span id="cb50-25"><a href="#cb50-25"></a><span class="co">#&gt; value of object i=a; type=character</span></span>
-<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-28"><a href="#cb50-28"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-29"><a href="#cb50-29"></a><span class="co">#&gt; </span></span>
 <span id="cb50-30"><a href="#cb50-30"></a><span class="co">#&gt; value of object i=b; type=character</span></span>
-<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-32"><a href="#cb50-32"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-32"><a href="#cb50-32"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb50-33"><a href="#cb50-33"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb50-34"><a href="#cb50-34"></a><span class="co">#&gt; </span></span>
 <span id="cb50-35"><a href="#cb50-35"></a><span class="co">#&gt; value of object i=c; type=character</span></span>
-<span id="cb50-36"><a href="#cb50-36"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-37"><a href="#cb50-37"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb50-36"><a href="#cb50-36"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-37"><a href="#cb50-37"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb50-38"><a href="#cb50-38"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over column names</summary></p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="kw">str</span>(df)  <span class="co"># View structure of dataframe object</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <p><br> Remember that we can use <code>[[]]</code> to access element contents by their name:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
 <span id="cb52-2"><a href="#cb52-2"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element named &quot;</span>, i, <span class="st">&quot; = &quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -2822,18 +2751,18 @@ div.tocify {
 <span id="cb55-16"><a href="#cb55-16"></a>}</span>
 <span id="cb55-17"><a href="#cb55-17"></a><span class="co">#&gt; </span></span>
 <span id="cb55-18"><a href="#cb55-18"></a><span class="co">#&gt; value of object i=1; type=integer</span></span>
-<span id="cb55-19"><a href="#cb55-19"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-20"><a href="#cb55-20"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb55-19"><a href="#cb55-19"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-20"><a href="#cb55-20"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb55-21"><a href="#cb55-21"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb55-22"><a href="#cb55-22"></a><span class="co">#&gt; </span></span>
 <span id="cb55-23"><a href="#cb55-23"></a><span class="co">#&gt; value of object i=2; type=integer</span></span>
-<span id="cb55-24"><a href="#cb55-24"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-25"><a href="#cb55-25"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb55-24"><a href="#cb55-24"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-25"><a href="#cb55-25"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb55-26"><a href="#cb55-26"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb55-27"><a href="#cb55-27"></a><span class="co">#&gt; </span></span>
 <span id="cb55-28"><a href="#cb55-28"></a><span class="co">#&gt; value of object i=3; type=integer</span></span>
-<span id="cb55-29"><a href="#cb55-29"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-30"><a href="#cb55-30"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb55-29"><a href="#cb55-29"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-30"><a href="#cb55-30"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb55-31"><a href="#cb55-31"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <p><br> We could also access the element’s name by its index:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="kw">names</span>(df)  <span class="co"># View names of dataframe object (i.e., column names)</span></span>
@@ -2853,10 +2782,10 @@ div.tocify {
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over column indices</summary></p>
 <p>Use <code>i in seq_along(df)</code> to loop over the column indices and <code>[[]]</code> to access column contents:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="kw">str</span>(df)  <span class="co"># View structure of dataframe object</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb57-4"><a href="#cb57-4"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb57-6"><a href="#cb57-6"></a></span>
 <span id="cb57-7"><a href="#cb57-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(df)) {</span>
 <span id="cb57-8"><a href="#cb57-8"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element at index position&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -3014,10 +2943,10 @@ div.tocify {
 <p><summary><strong>Example</strong>: Creating a new object to store dataframe column averages</summary></p>
 <p>Recall the previous example where we calculated the mean value of each column in dataframe <code>df</code>:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="kw">str</span>(df)</span>
-<span id="cb64-2"><a href="#cb64-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb64-3"><a href="#cb64-3"></a><span class="co">#&gt;  $ a: num [1:4] 1.171 1.419 -0.219 -0.907</span></span>
-<span id="cb64-4"><a href="#cb64-4"></a><span class="co">#&gt;  $ b: num [1:4] 1.212 -3.636 1.26 -0.552</span></span>
-<span id="cb64-5"><a href="#cb64-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.568 -1.839 -0.232 3.635</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a><span class="co">#&gt;  $ a: num  1.171 1.419 -0.219 -0.907</span></span>
+<span id="cb64-4"><a href="#cb64-4"></a><span class="co">#&gt;  $ b: num  1.212 -3.636 1.26 -0.552</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a><span class="co">#&gt;  $ c: num  -0.568 -1.839 -0.232 3.635</span></span>
 <span id="cb64-6"><a href="#cb64-6"></a></span>
 <span id="cb64-7"><a href="#cb64-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(df)) {</span>
 <span id="cb64-8"><a href="#cb64-8"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element at index position&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -3080,11 +3009,27 @@ div.tocify {
 </div>
 <div id="conditional-execution" class="section level1">
 <h1><span class="header-section-number">4</span> Conditional execution</h1>
+<p>What is <strong>conditional execution</strong>?</p>
+<ul>
+<li><strong>Conditional execution</strong> is the running of specific blocks of code based on some <strong>condition</strong>
+<ul>
+<li>E.g., If the number is even, run this block of code. Otherwise, run the other block of code, etc.</li>
+</ul></li>
+<li>We can write <code>if</code>-(<code>else if</code>)-<code>else</code> statements to run code conditionally (covered in upcoming sections)</li>
+<li>This is useful because it allows for decision-making in the code</li>
+</ul>
+<p><img src="data:image/png;base64,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qEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnCRJapUwI6hCCSucJElqlTAjqEIJK5wkSWqVMCOoQgkrnNRdhlhITnLp82WIhXVXNWkCCTOCKpSwwkndJULLiEvfL6nuqiZNIGFGUIUSVjipu4yG0mXU0YLnMrdLxvmGUvWIhBlBFUpY4aTuMhpKU91F0RzIOci/r3pEwoygCiWscFJ3MZT2N0OpekfCjKAKJaxwUncxlPY3Q6l6R8KMoAolrHBSdzGU9jdDqXpHwoygCiWscFJ3MZT2N0OpekfC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" width="500" /></p>
+<p><em>Credit: <a href="https://www.geeksforgeeks.org/decision-making-c-c-else-nested-else/">Decision Making in C / C++</a>, GeeksforGeeks</em></p>
 <div id="conditions" class="section level2">
 <h2><span class="header-section-number">4.1</span> Conditions</h2>
-<p>CRYSTAL - DEFINE WHAT A CONDITION IS</p>
-<p>Any statement that has a length of <code>1</code> and can evaluate to either <code>TRUE</code> or <code>FALSE</code> can be used as the condition:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># This statement evaluates to `TRUE`</span></span>
+<p>What is a <strong>condition</strong>?</p>
+<ul>
+<li>A condition is any expression that can evaluate to <code>TRUE</code> or <code>FALSE</code></li>
+<li>Your condition should have a length of <code>1</code> (otherwise R will warn you that it’ll only look at the first element)</li>
+<li>Based on the condition, different blocks of your code will be run</li>
+</ul>
+<p><br> Any expression that has a length of <code>1</code> and can evaluate to either <code>TRUE</code> or <code>FALSE</code> can be used as the condition:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># This expression evaluates to `TRUE`</span></span>
 <span id="cb67-2"><a href="#cb67-2"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span></span>
 <span id="cb67-3"><a href="#cb67-3"></a><span class="co">#&gt; [1] TRUE</span></span>
 <span id="cb67-4"><a href="#cb67-4"></a></span>
@@ -3115,7 +3060,7 @@ div.tocify {
 <li><code>if</code> statements allow you to conditionally execute certain blocks of code depending on whether some condition(s) is <code>TRUE</code></li>
 <li>The condition goes inside of the parentheses in <code>if()</code> and the block of code to execute goes between the curly brackets (<code>{}</code>)</li>
 <li>The condition must evaluate to either <code>TRUE</code> or <code>FALSE</code> (i.e., be of type <code>logical</code>)</li>
-<li>The condition must have length of <code>1</code></li>
+<li>The condition should have length of <code>1</code></li>
 </ul>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="cf">if</span> (condition) {</span>
 <span id="cb69-2"><a href="#cb69-2"></a>  <span class="co"># code executed when condition is TRUE</span></span>
@@ -3132,8 +3077,8 @@ div.tocify {
 <br>
 <details>
 <p><summary><strong>Example</strong>: Condition that evaluates to <code>TRUE</code></summary></p>
-<p>Remember that any statement that has a length of <code>1</code> and can evaluate to either <code>TRUE</code> or <code>FALSE</code> can be used as the condition:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># This statement evaluates to `TRUE`</span></span>
+<p>Remember that any expression that has a length of <code>1</code> and can evaluate to either <code>TRUE</code> or <code>FALSE</code> can be used as the condition:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># This expression evaluates to `TRUE`</span></span>
 <span id="cb72-2"><a href="#cb72-2"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span></span>
 <span id="cb72-3"><a href="#cb72-3"></a><span class="co">#&gt; [1] TRUE</span></span>
 <span id="cb72-4"><a href="#cb72-4"></a></span>
@@ -3297,8 +3242,8 @@ div.tocify {
 <span id="cb84-14"><a href="#cb84-14"></a></span>
 <span id="cb84-15"><a href="#cb84-15"></a><span class="co"># Check that directories are created</span></span>
 <span id="cb84-16"><a href="#cb84-16"></a><span class="kw">list.files</span>()</span>
-<span id="cb84-17"><a href="#cb84-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;output&quot;           &quot;programming.html&quot; &quot;programming.Rmd&quot; </span></span>
-<span id="cb84-18"><a href="#cb84-18"></a><span class="co">#&gt; [5] &quot;scripts&quot;</span></span></code></pre></div>
+<span id="cb84-17"><a href="#cb84-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;output&quot;           &quot;programming.html&quot;</span></span>
+<span id="cb84-18"><a href="#cb84-18"></a><span class="co">#&gt; [4] &quot;programming.Rmd&quot;  &quot;scripts&quot;</span></span></code></pre></div>
 <p><br> If we try running the code again, the <code>if</code> block would be executed during each iteration of the loop because all the directories already exist:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="cf">for</span> (i <span class="cf">in</span> directories) {</span>
 <span id="cb85-2"><a href="#cb85-2"></a>  <span class="cf">if</span> (<span class="kw">dir.exists</span>(i)) {</span>
@@ -3405,7 +3350,7 @@ div.tocify {
 <span id="cb93-6"><a href="#cb93-6"></a>  }</span>
 <span id="cb93-7"><a href="#cb93-7"></a>)</span>
 <span id="cb93-8"><a href="#cb93-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb93-9"><a href="#cb93-9"></a><span class="co">#&gt;    2.87    0.00    2.88</span></span></code></pre></div>
+<span id="cb93-9"><a href="#cb93-9"></a><span class="co">#&gt;   6.825   4.699  11.664</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (From <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -3419,7 +3364,7 @@ div.tocify {
 <span id="cb94-6"><a href="#cb94-6"></a>  }</span>
 <span id="cb94-7"><a href="#cb94-7"></a>)</span>
 <span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb94-9"><a href="#cb94-9"></a><span class="co">#&gt;    0.02    0.00    0.02</span></span></code></pre></div>
+<span id="cb94-9"><a href="#cb94-9"></a><span class="co">#&gt;    0.01    0.00    0.01</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3443,7 +3388,7 @@ div.tocify {
 <span id="cb95-10"><a href="#cb95-10"></a>  }</span>
 <span id="cb95-11"><a href="#cb95-11"></a>)</span>
 <span id="cb95-12"><a href="#cb95-12"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb95-13"><a href="#cb95-13"></a><span class="co">#&gt;    0.27    0.00    0.26</span></span></code></pre></div>
+<span id="cb95-13"><a href="#cb95-13"></a><span class="co">#&gt;   0.325   0.004   0.333</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="kw">system.time</span>(</span>
 <span id="cb96-2"><a href="#cb96-2"></a>  output &lt;-<span class="st"> </span><span class="kw">if_else</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>,</span>
@@ -3452,7 +3397,7 @@ div.tocify {
 <span id="cb96-5"><a href="#cb96-5"></a>                   )</span>
 <span id="cb96-6"><a href="#cb96-6"></a>)</span>
 <span id="cb96-7"><a href="#cb96-7"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-8"><a href="#cb96-8"></a><span class="co">#&gt;    0.05    0.00    0.05</span></span></code></pre></div>
+<span id="cb96-8"><a href="#cb96-8"></a><span class="co">#&gt;   0.049   0.002   0.052</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3493,7 +3438,7 @@ div.tocify {
 <span id="cb97-29"><a href="#cb97-29"></a>  }</span>
 <span id="cb97-30"><a href="#cb97-30"></a>)</span>
 <span id="cb97-31"><a href="#cb97-31"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb97-32"><a href="#cb97-32"></a><span class="co">#&gt;    0.03    0.00    0.04</span></span></code></pre></div>
+<span id="cb97-32"><a href="#cb97-32"></a><span class="co">#&gt;   0.041   0.000   0.042</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -3523,7 +3468,7 @@ div.tocify {
 <span id="cb98-22"><a href="#cb98-22"></a>  }</span>
 <span id="cb98-23"><a href="#cb98-23"></a>)</span>
 <span id="cb98-24"><a href="#cb98-24"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb98-25"><a href="#cb98-25"></a><span class="co">#&gt;    0.03    0.00    0.03</span></span></code></pre></div>
+<span id="cb98-25"><a href="#cb98-25"></a><span class="co">#&gt;   0.026   0.000   0.027</span></span></code></pre></div>
 <p><br> <strong>[Method 3]</strong> Using the vectorised <code>if_else()</code> function</p>
 <ul>
 <li>Note that using a vectorised function when possible would still be the fastest</li>
@@ -3535,7 +3480,7 @@ div.tocify {
 <span id="cb99-4"><a href="#cb99-4"></a>                   <span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb99-5"><a href="#cb99-5"></a>)</span>
 <span id="cb99-6"><a href="#cb99-6"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb99-7"><a href="#cb99-7"></a><span class="co">#&gt;       0       0       0</span></span></code></pre></div>
+<span id="cb99-7"><a href="#cb99-7"></a><span class="co">#&gt;   0.010   0.005   0.017</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -3563,7 +3508,10 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li><strong>Input</strong>: Takes in a vector of elements (<em>class</em> must be <code>numeric</code> or <code>logical</code>)</li>
 <li><strong>Processing</strong>: Calculates the sum of elements</li>
-<li><strong>Return</strong>: Returns a numeric vector of length <code>1</code> whose value is the sum of the input vector</li>
+<li><strong>Return</strong>: Returns a numeric vector of length <code>1</code> whose value is the sum of the input vector
+<ul>
+<li>You can use <code>str()</code> to investigate the return value of the function</li>
+</ul></li>
 </ol>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="co"># Apply sum() to atomic vector</span></span>
 <span id="cb101-2"><a href="#cb101-2"></a><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
@@ -3676,7 +3624,7 @@ div.tocify {
 <ul>
 <li>What the function does to the inputs</li>
 <li>Function body goes inside the pair of curly brackets (<code>{}</code>) that follows <code>function()</code></li>
-<li>Above hypothetical function doesn’t do anything</li>
+<li>Above hypothetical function doesn’t do anything, but your function can <strong>return a value</strong> (covered in <a href="#return-values">later section</a>)</li>
 </ul></li>
 </ol>
 </div>
@@ -3712,7 +3660,11 @@ div.tocify {
 <span id="cb106-5"><a href="#cb106-5"></a></span>
 <span id="cb106-6"><a href="#cb106-6"></a><span class="co"># Call function</span></span>
 <span id="cb106-7"><a href="#cb106-7"></a><span class="kw">print_hello</span>()</span>
-<span id="cb106-8"><a href="#cb106-8"></a><span class="co">#&gt; [1] &quot;Hello, world&quot;</span></span></code></pre></div>
+<span id="cb106-8"><a href="#cb106-8"></a><span class="co">#&gt; [1] &quot;Hello, world&quot;</span></span>
+<span id="cb106-9"><a href="#cb106-9"></a></span>
+<span id="cb106-10"><a href="#cb106-10"></a><span class="co"># Investigate return value</span></span>
+<span id="cb106-11"><a href="#cb106-11"></a><span class="kw">print_hello</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
+<span id="cb106-12"><a href="#cb106-12"></a><span class="co">#&gt;  chr &quot;Hello, world&quot;</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><strong>Function name</strong>
 <ul>
@@ -3725,6 +3677,7 @@ div.tocify {
 <li><strong>Function body</strong> (what the function does to the inputs)
 <ul>
 <li>Body of <code>print_hello()</code> simply prints “Hello, world”</li>
+<li><strong>Return value</strong>: The character value, <code>&quot;Hello, world!&quot;</code></li>
 </ul></li>
 </ol>
 </details>
@@ -3756,7 +3709,11 @@ div.tocify {
 <span id="cb110-8"><a href="#cb110-8"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>)</span>
 <span id="cb110-9"><a href="#cb110-9"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Ozan Jaquette&quot;</span></span>
 <span id="cb110-10"><a href="#cb110-10"></a><span class="kw">print_hello</span>(<span class="st">&quot;Ozan Jaquette&quot;</span>)</span>
-<span id="cb110-11"><a href="#cb110-11"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Ozan Jaquette&quot;</span></span></code></pre></div>
+<span id="cb110-11"><a href="#cb110-11"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Ozan Jaquette&quot;</span></span>
+<span id="cb110-12"><a href="#cb110-12"></a></span>
+<span id="cb110-13"><a href="#cb110-13"></a><span class="co"># Investigate return value</span></span>
+<span id="cb110-14"><a href="#cb110-14"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
+<span id="cb110-15"><a href="#cb110-15"></a><span class="co">#&gt;  chr &quot;Hello, world. My name is Ozan Jaquette&quot;</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><strong>Function name</strong>
 <ul>
@@ -3769,6 +3726,7 @@ div.tocify {
 <li><strong>Function body</strong> (what the function does to the inputs)
 <ul>
 <li>Body of <code>print_hello()</code> prints <code>&quot;Hello, world. My name is &lt;name&gt;&quot;</code></li>
+<li><strong>Return value</strong>: The character value, <code>&quot;Hello, world. My name is &lt;name&gt;&quot;</code></li>
 </ul></li>
 </ol>
 </details>
@@ -3834,18 +3792,18 @@ div.tocify {
 <span id="cb115-10"><a href="#cb115-10"></a><span class="co"># Call function</span></span>
 <span id="cb115-11"><a href="#cb115-11"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/16/1979&quot;</span>)</span>
 <span id="cb115-12"><a href="#cb115-12"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Ozan Jaquette and I am 42 years old&quot;</span></span>
-<span id="cb115-13"><a href="#cb115-13"></a></span>
-<span id="cb115-14"><a href="#cb115-14"></a>  <span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/16/1979&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>() <span class="co"># investigate what the function returns</span></span>
-<span id="cb115-15"><a href="#cb115-15"></a><span class="co">#&gt;  chr &quot;Hello, world. My name is Ozan Jaquette and I am 42 years old&quot;</span></span>
-<span id="cb115-16"><a href="#cb115-16"></a></span>
-<span id="cb115-17"><a href="#cb115-17"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Kartal Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/24/1983&quot;</span>)</span>
-<span id="cb115-18"><a href="#cb115-18"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Kartal Jaquette and I am 38 years old&quot;</span></span>
-<span id="cb115-19"><a href="#cb115-19"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Dan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;10/29/1950&quot;</span>)</span>
-<span id="cb115-20"><a href="#cb115-20"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Dan Jaquette and I am 70 years old&quot;</span></span>
-<span id="cb115-21"><a href="#cb115-21"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Erkut&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;06/15/1944&quot;</span>)</span>
-<span id="cb115-22"><a href="#cb115-22"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Erkut and I am 76 years old&quot;</span></span>
-<span id="cb115-23"><a href="#cb115-23"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;04/05/2019&quot;</span>)</span>
-<span id="cb115-24"><a href="#cb115-24"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Jaquette-Nasiali and I am 1 years old&quot;</span></span></code></pre></div>
+<span id="cb115-13"><a href="#cb115-13"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Kartal Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/24/1983&quot;</span>)</span>
+<span id="cb115-14"><a href="#cb115-14"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Kartal Jaquette and I am 38 years old&quot;</span></span>
+<span id="cb115-15"><a href="#cb115-15"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Dan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;10/29/1950&quot;</span>)</span>
+<span id="cb115-16"><a href="#cb115-16"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Dan Jaquette and I am 70 years old&quot;</span></span>
+<span id="cb115-17"><a href="#cb115-17"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Erkut&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;06/15/1944&quot;</span>)</span>
+<span id="cb115-18"><a href="#cb115-18"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Erkut and I am 76 years old&quot;</span></span>
+<span id="cb115-19"><a href="#cb115-19"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Sumru Jaquette-Nasiali&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;04/05/2019&quot;</span>)</span>
+<span id="cb115-20"><a href="#cb115-20"></a><span class="co">#&gt; [1] &quot;Hello, world. My name is Sumru Jaquette-Nasiali and I am 1 years old&quot;</span></span>
+<span id="cb115-21"><a href="#cb115-21"></a></span>
+<span id="cb115-22"><a href="#cb115-22"></a><span class="co"># Investigate return value</span></span>
+<span id="cb115-23"><a href="#cb115-23"></a><span class="kw">print_hello</span>(<span class="dt">x =</span> <span class="st">&quot;Ozan Jaquette&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;01/16/1979&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
+<span id="cb115-24"><a href="#cb115-24"></a><span class="co">#&gt;  chr &quot;Hello, world. My name is Ozan Jaquette and I am 42 years old&quot;</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><strong>Function name</strong>
 <ul>
@@ -3858,6 +3816,7 @@ div.tocify {
 <li><strong>Function body</strong>
 <ul>
 <li>Body of <code>print_hello()</code> prints <code>&quot;Hello, world. My name is &lt;name&gt; and I am &lt;age&gt; years old&quot;</code></li>
+<li><strong>Return value</strong>: The character value, <code>&quot;Hello, world. My name is &lt;name&gt; and I am &lt;age&gt; years old&quot;</code></li>
 </ul></li>
 </ol>
 </details>
@@ -3944,6 +3903,7 @@ div.tocify {
 <li><strong>Function body</strong>
 <ul>
 <li>Body of <code>z_score()</code> calculates z-score of input (e.g., For each element of <code>x</code>, calculate difference between value of element and mean value of elements, then divide by standard deviation of elements)</li>
+<li><strong>Return value</strong>: A numeric vector containing z-scores calculated from input</li>
 </ul></li>
 </ol>
 <p><br> Test/call the function:</p>
@@ -3993,7 +3953,8 @@ div.tocify {
 <span id="cb126-5"><a href="#cb126-5"></a>w</span>
 <span id="cb126-6"><a href="#cb126-6"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb126-7"><a href="#cb126-7"></a><span class="kw">z_score</span>(w)</span>
-<span id="cb126-8"><a href="#cb126-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb126-8"><a href="#cb126-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb126-9"><a href="#cb126-9"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4030,8 +3991,8 @@ div.tocify {
 <span id="cb127-29"><a href="#cb127-29"></a><span class="co">#&gt; 5 -0.453</span></span>
 <span id="cb127-30"><a href="#cb127-30"></a><span class="co">#&gt; 6  0.606</span></span>
 <span id="cb127-31"><a href="#cb127-31"></a><span class="kw">str</span>(df[<span class="st">&quot;a&quot;</span>])</span>
-<span id="cb127-32"><a href="#cb127-32"></a><span class="co">#&gt; tibble [6 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb127-33"><a href="#cb127-33"></a><span class="co">#&gt;  $ a: num [1:6] NA 0.586 0.709 -0.109 -0.453 ...</span></span>
+<span id="cb127-32"><a href="#cb127-32"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    6 obs. of  1 variable:</span></span>
+<span id="cb127-33"><a href="#cb127-33"></a><span class="co">#&gt;  $ a: num  NA 0.586 0.709 -0.109 -0.453 ...</span></span>
 <span id="cb127-34"><a href="#cb127-34"></a></span>
 <span id="cb127-35"><a href="#cb127-35"></a><span class="co"># subset values of an element using [[]] or $</span></span>
 <span id="cb127-36"><a href="#cb127-36"></a>df[[<span class="st">&quot;a&quot;</span>]]</span>
@@ -4105,8 +4066,8 @@ div.tocify {
 <span id="cb129-31"><a href="#cb129-31"></a>  df<span class="op">$</span>b_z &lt;-<span class="st"> </span><span class="kw">z_score</span>(<span class="dt">x =</span> df[[<span class="st">&quot;b&quot;</span>]]) <span class="co"># same same</span></span>
 <span id="cb129-32"><a href="#cb129-32"></a>  </span>
 <span id="cb129-33"><a href="#cb129-33"></a>  df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</span>
-<span id="cb129-34"><a href="#cb129-34"></a><span class="co">#&gt; Rows: 6</span></span>
-<span id="cb129-35"><a href="#cb129-35"></a><span class="co">#&gt; Columns: 4</span></span>
+<span id="cb129-34"><a href="#cb129-34"></a><span class="co">#&gt; Observations: 6</span></span>
+<span id="cb129-35"><a href="#cb129-35"></a><span class="co">#&gt; Variables: 4</span></span>
 <span id="cb129-36"><a href="#cb129-36"></a><span class="co">#&gt; $ a   &lt;dbl&gt; NA, 0.5855288, 0.7094660, -0.1093033, -0.4534972, 0.6058875</span></span>
 <span id="cb129-37"><a href="#cb129-37"></a><span class="co">#&gt; $ b   &lt;dbl&gt; NA, -1.8179560, 0.6300986, -0.2761841, -0.2841597, -0.9193220</span></span>
 <span id="cb129-38"><a href="#cb129-38"></a><span class="co">#&gt; $ c   &lt;dbl&gt; NA, -0.1162478, 1.8173120, 0.3706279, 0.5202165, -0.7505320</span></span>
@@ -4217,13 +4178,13 @@ div.tocify {
 <span id="cb133-21"><a href="#cb133-21"></a></span>
 <span id="cb133-22"><a href="#cb133-22"></a><span class="co">#show observations for variable med_inc</span></span>
 <span id="cb133-23"><a href="#cb133-23"></a>df_event_small<span class="op">$</span>med_inc</span>
-<span id="cb133-24"><a href="#cb133-24"></a><span class="co">#&gt;  [1] 71713.5 89121.5 70136.5 70136.5 71023.5 71023.5 71023.5 97225.0 97225.0</span></span>
-<span id="cb133-25"><a href="#cb133-25"></a><span class="co">#&gt; [10] 77799.5</span></span>
+<span id="cb133-24"><a href="#cb133-24"></a><span class="co">#&gt;  [1] 71713.5 89121.5 70136.5 70136.5 71023.5 71023.5 71023.5 97225.0</span></span>
+<span id="cb133-25"><a href="#cb133-25"></a><span class="co">#&gt;  [9] 97225.0 77799.5</span></span>
 <span id="cb133-26"><a href="#cb133-26"></a></span>
 <span id="cb133-27"><a href="#cb133-27"></a><span class="co">#calculate z-score of variable med_inc (without assignment)</span></span>
 <span id="cb133-28"><a href="#cb133-28"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small<span class="op">$</span>med_inc)</span>
-<span id="cb133-29"><a href="#cb133-29"></a><span class="co">#&gt;  [1] -0.60825958  0.91982879 -0.74668992 -0.74668992 -0.66882834 -0.66882834</span></span>
-<span id="cb133-30"><a href="#cb133-30"></a><span class="co">#&gt;  [7] -0.66882834  1.63116060  1.63116060 -0.07402556</span></span>
+<span id="cb133-29"><a href="#cb133-29"></a><span class="co">#&gt;  [1] -0.60825958  0.91982879 -0.74668992 -0.74668992 -0.66882834</span></span>
+<span id="cb133-30"><a href="#cb133-30"></a><span class="co">#&gt;  [6] -0.66882834 -0.66882834  1.63116060  1.63116060 -0.07402556</span></span>
 <span id="cb133-31"><a href="#cb133-31"></a></span>
 <span id="cb133-32"><a href="#cb133-32"></a><span class="co">#assign new variable equal to the z-score of med_inc</span></span>
 <span id="cb133-33"><a href="#cb133-33"></a>df_event_small<span class="op">$</span>med_inc_z &lt;-<span class="st"> </span><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small<span class="op">$</span>med_inc)</span>
@@ -4286,8 +4247,8 @@ div.tocify {
 <p><br> We no longer run into errors if we supply an invalid input:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a><span class="co"># Test with list/dataframe input</span></span>
 <span id="cb137-2"><a href="#cb137-2"></a><span class="kw">str</span>(df_event_small[<span class="st">&quot;med_inc&quot;</span>])</span>
-<span id="cb137-3"><a href="#cb137-3"></a><span class="co">#&gt; tibble [10 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb137-4"><a href="#cb137-4"></a><span class="co">#&gt;  $ med_inc: num [1:10] 71714 89122 70137 70137 71024 ...</span></span>
+<span id="cb137-3"><a href="#cb137-3"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    10 obs. of  1 variable:</span></span>
+<span id="cb137-4"><a href="#cb137-4"></a><span class="co">#&gt;  $ med_inc: num  71714 89122 70136 70136 71024 ...</span></span>
 <span id="cb137-5"><a href="#cb137-5"></a></span>
 <span id="cb137-6"><a href="#cb137-6"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small[<span class="st">&quot;med_inc&quot;</span>])</span>
 <span id="cb137-7"><a href="#cb137-7"></a></span>
@@ -4326,8 +4287,8 @@ div.tocify {
 </details>
 <p><br></p>
 </div>
-<div id="student-exercise-skip" class="section level3">
-<h3><span class="header-section-number">5.2.4</span> Student exercise [SKIP]</h3>
+<div id="student-exercise-optional" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Student exercise [OPTIONAL]</h3>
 <p>Some common tasks when working with survey data:</p>
 <ul>
 <li>Identify number of observations with <code>NA</code> values for a specific variable</li>
@@ -4358,7 +4319,7 @@ div.tocify {
 <span id="cb139-13"><a href="#cb139-13"></a><span class="co">#&gt;  8     8   -97     10     55</span></span>
 <span id="cb139-14"><a href="#cb139-14"></a><span class="co">#&gt;  9     9    16      6     51</span></span>
 <span id="cb139-15"><a href="#cb139-15"></a><span class="co">#&gt; 10    10    16    -99     -8</span></span>
-<span id="cb139-16"><a href="#cb139-16"></a><span class="co">#&gt; # ... with 90 more rows</span></span></code></pre></div>
+<span id="cb139-16"><a href="#cb139-16"></a><span class="co">#&gt; # … with 90 more rows</span></span></code></pre></div>
 <p><br> <strong>Recommended steps</strong>:</p>
 <ul>
 <li>Perform task outside of function
@@ -4374,12 +4335,12 @@ div.tocify {
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a><span class="kw">names</span>(df) <span class="co"># identify variable names</span></span>
 <span id="cb140-2"><a href="#cb140-2"></a><span class="co">#&gt; [1] &quot;id&quot;     &quot;age&quot;    &quot;sibage&quot; &quot;parage&quot;</span></span>
 <span id="cb140-3"><a href="#cb140-3"></a>df<span class="op">$</span>age <span class="co"># print observations for a variable</span></span>
-<span id="cb140-4"><a href="#cb140-4"></a><span class="co">#&gt;   [1]  17  15 -97  13 -97  12 -99 -97  16  16 -98  20 -99  20  11  20  12  17</span></span>
-<span id="cb140-5"><a href="#cb140-5"></a><span class="co">#&gt;  [19]  19  17 -97 -99  12  13  11  15  20  14 -99  11  20 -98  11 -98  12  16</span></span>
-<span id="cb140-6"><a href="#cb140-6"></a><span class="co">#&gt;  [37]  12  18  12  19  12 -97  20  17  11  19  19  12 -98  11  15  18  15 -98</span></span>
-<span id="cb140-7"><a href="#cb140-7"></a><span class="co">#&gt;  [55]  15  19 -97  13 -98  16  13  12  16  19 -99  19 -98  13 -97  20  15  19</span></span>
-<span id="cb140-8"><a href="#cb140-8"></a><span class="co">#&gt;  [73]  15  12  18 -99  18 -98 -98 -98 -97  12  14  19 -97  11  20  18  14 -99</span></span>
-<span id="cb140-9"><a href="#cb140-9"></a><span class="co">#&gt;  [91]  15  20 -97  14  14  19  18  17  20  15</span></span>
+<span id="cb140-4"><a href="#cb140-4"></a><span class="co">#&gt;   [1]  17  15 -97  13 -97  12 -99 -97  16  16 -98  20 -99  20  11  20  12</span></span>
+<span id="cb140-5"><a href="#cb140-5"></a><span class="co">#&gt;  [18]  17  19  17 -97 -99  12  13  11  15  20  14 -99  11  20 -98  11 -98</span></span>
+<span id="cb140-6"><a href="#cb140-6"></a><span class="co">#&gt;  [35]  12  16  12  18  12  19  12 -97  20  17  11  19  19  12 -98  11  15</span></span>
+<span id="cb140-7"><a href="#cb140-7"></a><span class="co">#&gt;  [52]  18  15 -98  15  19 -97  13 -98  16  13  12  16  19 -99  19 -98  13</span></span>
+<span id="cb140-8"><a href="#cb140-8"></a><span class="co">#&gt;  [69] -97  20  15  19  15  12  18 -99  18 -98 -98 -98 -97  12  14  19 -97</span></span>
+<span id="cb140-9"><a href="#cb140-9"></a><span class="co">#&gt;  [86]  11  20  18  14 -99  15  20 -97  14  14  19  18  17  20  15</span></span>
 <span id="cb140-10"><a href="#cb140-10"></a></span>
 <span id="cb140-11"><a href="#cb140-11"></a><span class="co">#BaseR</span></span>
 <span id="cb140-12"><a href="#cb140-12"></a><span class="kw">sum</span>(df<span class="op">$</span>age<span class="op">&lt;</span><span class="dv">0</span>) <span class="co"># count number of obs w/ negative values for variable &quot;age&quot;</span></span>
@@ -4531,7 +4492,8 @@ div.tocify {
 <span id="cb147-6"><a href="#cb147-6"></a>w</span>
 <span id="cb147-7"><a href="#cb147-7"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb147-8"><a href="#cb147-8"></a><span class="kw">z_score</span>(w)</span>
-<span id="cb147-9"><a href="#cb147-9"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb147-9"><a href="#cb147-9"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb147-10"><a href="#cb147-10"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 <p><br> We could add an argument (named <code>na</code>) that specifies whether <code>NA</code>s should be removed prior to calculating z-scores:</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a>z_score &lt;-<span class="st"> </span><span class="cf">function</span>(x, na) {</span>
 <span id="cb148-2"><a href="#cb148-2"></a>  (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm=</span>na))<span class="op">/</span><span class="kw">sd</span>(x, <span class="dt">na.rm=</span>na)</span>
@@ -4540,10 +4502,11 @@ div.tocify {
 <span id="cb148-5"><a href="#cb148-5"></a>w</span>
 <span id="cb148-6"><a href="#cb148-6"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb148-7"><a href="#cb148-7"></a><span class="kw">z_score</span>(w, <span class="ot">TRUE</span>)</span>
-<span id="cb148-8"><a href="#cb148-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span>
-<span id="cb148-9"><a href="#cb148-9"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>)</span>
-<span id="cb148-10"><a href="#cb148-10"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
-<span id="cb148-11"><a href="#cb148-11"></a><span class="co">#z_score(w) # error: argument &quot;na&quot; is missing, with no default</span></span></code></pre></div>
+<span id="cb148-8"><a href="#cb148-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb148-9"><a href="#cb148-9"></a><span class="co">#&gt; [7]         NA</span></span>
+<span id="cb148-10"><a href="#cb148-10"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>)</span>
+<span id="cb148-11"><a href="#cb148-11"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
+<span id="cb148-12"><a href="#cb148-12"></a><span class="co">#z_score(w) # error: argument &quot;na&quot; is missing, with no default</span></span></code></pre></div>
 <p><br> We could also add a default value for the <code>na</code> argument. Following conservative approach, we’ll specify default value as <code>FALSE</code> which means that any <code>NA</code> values in input vector <code>x</code> will result in z-score of <code>NA</code> for all observations:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>z_score &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na =</span> <span class="ot">FALSE</span>) {</span>
 <span id="cb149-2"><a href="#cb149-2"></a>  (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm=</span>na))<span class="op">/</span><span class="kw">sd</span>(x, <span class="dt">na.rm=</span>na)</span>
@@ -4557,7 +4520,8 @@ div.tocify {
 <span id="cb149-10"><a href="#cb149-10"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>) <span class="co"># manually specify default value</span></span>
 <span id="cb149-11"><a href="#cb149-11"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
 <span id="cb149-12"><a href="#cb149-12"></a><span class="kw">z_score</span>(w, <span class="ot">TRUE</span>) <span class="co"># override default value</span></span>
-<span id="cb149-13"><a href="#cb149-13"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb149-13"><a href="#cb149-13"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb149-14"><a href="#cb149-14"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 </details>
 <p><br></p>
 </div>
