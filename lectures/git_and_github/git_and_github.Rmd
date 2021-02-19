@@ -2327,6 +2327,7 @@ cat create_dataset.R
     - This only applies to staged files (i.e., files listed under `Changes to be committed` when you check `git status`) and will move them back under `Changes not staged for commit` or `Untracked files`
     - `HEAD` is a pointer to the latest commit and will restore the _staging area_/"index" to that state
     - Any changes made to the file in the _working directory_ are still retained
+    - _**Note**: In newer versions of git, you can also use `git restore --staged <file_name(s)>` to unstage files_
   - `git reset <commit_hash>`: Undo all commits up to (but not including) the specified `commit_hash`
     - The `HEAD` pointer will be set to the specified commit
     - The undone changes will be retained in the _working directory_
