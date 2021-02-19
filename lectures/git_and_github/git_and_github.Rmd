@@ -726,9 +726,9 @@ What is a __commit__?
         - If you want to change the _remote repository_ (typically named **origin**), you must ***push*** the change from your _local repository_ to your _remote repository_
         - As seen below, each circle represents a **commit**. After you make commits on a branch in your _local repository_ (i.e., **main**), you need to ***push*** them in order for the corresponding branch on the _remote repository_ (i.e., **origin/main**) to be up-to-date with your changes.
 
-<center>![](https://wac-cdn.atlassian.com/dam/jcr:f148974e-7d4d-4c0e-bd31-8ac5467d1e6a/04.svg?cdnVersion=1410){width=400px}</center>
+<center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_push.png){width=400px}</center>
 
-*Credit: [Atlassian, Git push](https://www.atlassian.com/git/tutorials/syncing/git-push)*
+*Credit: Modified from [Atlassian, Git push](https://www.atlassian.com/git/tutorials/syncing/git-push)*
 
 ## Git/GitHub workflow
 
@@ -977,7 +977,7 @@ Alternatively, you can create a new git repository on your local machine, and th
   - If you are pushing a new local branch to the remote for the first time, you need to set the upstream branch so Git knows which remote branch to track
   - For example, we'll want to set our local **main** branch to track the remote repository's **main** branch
   
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git-push.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_push_pull.png)
 
 *Credit: [Java T Point, Git Push](https://www.javatpoint.com/git-push)*
 
@@ -2513,11 +2513,11 @@ What is a __branch__?
 - By default, a git repository "has one branch named [__main__] which is considered to be the definitive branch. We use [other] branches to experiment and make edits before committing them to [__main__]" ([Hello World](https://guides.github.com/activities/hello-world/) tutorial)
 - "When you create a branch off the [__main__] branch, you're making a copy, or snapshot, of [main] as it was at that point in time"
 - A branch can be thought of as a "pointer to a single commit"
-- In the figure below, each circle represents a commit. There are three branches - the **main** branch and 2 other branches (**little feature** and **big feature**) that "branched" off **main**.
+- In the figure below, each circle represents a commit. There are three branches - the **main** branch and 2 other branches (**little feature** and **big feature**) that "branched" off **main**. 
 
-[![](https://www.w3docs.com/uploads/media/default/0001/03/1e5d7590562b3b214008617211b2539ce2bddfaf.png)](https://www.w3docs.com/learn-git/git-branch.html)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_branch.png)
 
-*Credit: [W3 docs, Git branch](https://www.w3docs.com/learn-git/git-branch.html)*
+*Credit: Modified from [W3 docs, Git branch](https://www.w3docs.com/learn-git/git-branch.html)*
 
 <br>
 Defining **branches** in terms of **commits**:
@@ -2536,9 +2536,9 @@ Defining **branches** in terms of **commits**:
 
 <br>
 
-![](https://miro.medium.com/max/626/1*IkZTYrKIf8E3chEvgIiOxA.jpeg)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_branch_ref.jpg)
 
-*Credit: [Mastering git branches](https://geeks.uniplaces.com/mastering-branches-in-git-f20cb2d0c51f) by Henrique Mota*
+*Credit: Modified from [Mastering git branches](https://geeks.uniplaces.com/mastering-branches-in-git-f20cb2d0c51f) by Henrique Mota*
 
 <br>
 Why use **branches**?
@@ -2716,9 +2716,9 @@ git branch
     - `git checkout <branch_name>`: Switches to an existing branch named `branch_name`
     - `git checkout -b <branch_name>`: Creates a new branch named `branch_name` and switches to it
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git-checkout.jpg)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_checkout.jpg)
 
-*Credit: [Pham Quy, Git tutorial](https://www.slideshare.net/psquy/git-tutorial-50870667)*
+*Credit: Modified from [Pham Quy, Git tutorial](https://www.slideshare.net/psquy/git-tutorial-50870667)*
 
 <br>
 <details><summary>**Example**: Using `git checkout` to create a new branch and switch to it</summary>
@@ -2811,9 +2811,9 @@ What is a __merge__?
 - Changes from a "target branch" can be merged into your "current branch"
 - It is good practice to make changes on separate branches (e.g., **develop** branch), then once they look good, merge them back into the main branch (e.g., **main** branch)
 
-![](https://community.intersystems.com/sites/default/files/inline/images/risunok4.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_merge.png)
 
-*Credit: [Eduard Lebedyuk](https://community.intersystems.com/post/continuous-delivery-your-intersystems-solution-using-gitlab-part-i-git)*
+*Credit: Modified from [Eduard Lebedyuk](https://community.intersystems.com/post/continuous-delivery-your-intersystems-solution-using-gitlab-part-i-git)*
 
 <br>
 **Merge** terminology:
@@ -2850,9 +2850,9 @@ Types of **merges**:
   - Git is able to combine changes made to the same file if the changes are not made to the same line
   - Otherwise, a **merge conflict** occurs and would have to be resolved manually
 
-[![](https://wac-cdn.atlassian.com/dam/jcr:b87df050-2a3a-4f17-bb80-43c5217b4947/07%20(1).svg?cdnVersion=949){width=350px}](https://www.atlassian.com/git/tutorials/using-branches/git-merge) [![](https://wac-cdn.atlassian.com/dam/jcr:91b1bdf5-fda3-4d20-b108-0bb9eea402b2/08.svg?cdnVersion=949){width=350px}](https://www.atlassian.com/git/tutorials/using-branches/git-merge)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_merge_ff.png){width=350px} ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_merge_3w.png){width=350px}
 
-*Credit: [Atlassian, Git merge](https://www.atlassian.com/git/tutorials/using-branches/git-merge)*
+*Credit: Modified from [Atlassian, Git merge](https://www.atlassian.com/git/tutorials/using-branches/git-merge)*
 
 ## `git merge`
 
@@ -3111,9 +3111,9 @@ cat create_dataset.R
   - `git fetch` is useful if you want a local copy of the most up-to-date changes in the remote repository (e.g., to preview changes), but don't actually want to merge these changes into your local repository yet. On the other hand, running `git pull` will directly incorporate the changes.
   - More specifically, `git fetch` will incorporate changes into your remote-tracking branch (e.g., `origin/main`, your local copy of the remote `main` branch) but not your local branch (e.g., your  local `main` branch). Then, `git merge` can merge the change from your remote-tracking branch into your local branch.
 
-![](https://miro.medium.com/max/600/1*SKR0Zz4S0M_0Rp-aPsZw0Q.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_pull.png)
 
-*Credit: [Medium, Git Fetch vs Git Pull](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239)*
+*Credit: Modified from [Medium, Git Fetch vs Git Pull](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239)*
 
 <br>
 <details><summary>**Example**: Using `git pull` to incorporate remote changes</summary>
