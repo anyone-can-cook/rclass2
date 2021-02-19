@@ -2036,6 +2036,7 @@ print_hello <- function(x) {  # This function takes 1 argument
 print_hello(x = "Ozan Jaquette")
 print_hello("Ozan Jaquette")
 
+
 # Investigate return value
 print_hello(x = "Ozan Jaquette") %>% str()
 ```
@@ -2071,8 +2072,10 @@ Use `mdy()` from the `lubridate` package to help handle birthdates:
 ```{r}
 y <- "01/16/1979"
 y
+y %>% str()
+
 mdy(y)
-str(mdy(y))
+mdy(y) %>% str()
 ```
 
 <br>
@@ -2087,9 +2090,12 @@ str(today() - mdy(y))
 
 # Convert to duration
 as.duration(today() - mdy(y))
+as.duration(today() - mdy(y)) %>% str()
 
 # Create age in years as numeric vector
 as.numeric(as.duration(today() - mdy(y)), "years")
+as.numeric(as.duration(today() - mdy(y)), "years") %>% str()
+
 floor(as.numeric(as.duration(today() - mdy(y)), "years"))
 
 str(floor(as.numeric(as.duration(today() - mdy(y)), "years")))
@@ -2286,7 +2292,8 @@ Let's see what happens when we try passing in a vector containing `NA` to our `z
 ```{r}
 w <- c(NA, seq(1:5), NA)
 w
-z_score(w)
+z_score(x=w)
+
 ```
 
 <br>
@@ -2381,8 +2388,10 @@ z_score(x = df[["b"]])
   z_object %>% str()
   
   # could even create new object that is a new variable in data frame
-  df[["b_z"]] <- z_score(x = df[["b"]])
   df$b_z <- z_score(x = df[["b"]]) # same same
+  
+  df[["b_z"]] <- z_score(x = df[["b"]])
+  
   
   df %>% glimpse()
   df$b_z %>% str()
