@@ -1,5 +1,5 @@
 ---
-title: "EDUC 263: Fundamentals of Programming"
+title: "EDUC 260B: Fundamentals of Programming"
 subtitle: "Winter 2021"
 author: 
 date: 
@@ -38,7 +38,9 @@ kable(info,col.names = c("Resource","Link"), escape = T) %>%
 
 # Course description
 
-EDUC 263: Fundamentals of Programming is the second course in "Anyone Can Cook," a data science sequence designed for students who never thought they would become "coders" or "programmers" (the first course in the sequence is [EDUC 260A: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/.)) Although EDUC 263 primarily uses the R programming language, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; reading (importing) and writing (exporting) data; using Git and GitHub for version control and collaboration; writing functions; iteration (e.g., "loops"); conditional execution; strings and regular expressions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, streaming and analyzing social media data, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups. Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom.
+EDUC 260B: Fundamentals of Programming is the second course in "Anyone Can Cook," a programming/data science sequence explicitly designed for students who do not have a programming background (the first course in the sequence is [EDUC 260A: Introduction to Programming and Data Management](https://anyone-can-cook.github.io/rclass1/)). EDUC 260B primarily uses the R programming language. However, the course is organized around practical programming skills/concepts that are fundamental across modern object-oriented programming languages (e.g., Python, Javascript). Course topics include the following: organizing files, folders, and scripts; reading (importing) and writing (exporting) data; using Git and GitHub for version control and collaboration; iteration (e.g., "loops"); conditional execution; writing functions; strings and regular expressions. These general programming skills are prerequisite for flashier data science applications (e.g., web-scraping, interactive maps). Students will become proficient in programming skills/concepts through weekly problem sets, which will be completed in groups.
+
+<!-- Course format consists of weekly asynchronous lectures and weekly synchronous workshop-style class sessions on Zoom. -->
 
 The course primarily use data and examples from education research. However, the course is designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
 
