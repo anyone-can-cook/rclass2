@@ -3160,5 +3160,56 @@ clarity_table <- info$clarity_table
 clarity_table
 ```
 
+</details>
+
+### Pipeable functions
+
+What are **pipeable functions**?
+
+- **Pipeable functions** return an object that is of the same type as the first argument it accepts
+- This allow us to chain functions that accept/return objects of the same type using pipes (`%>%`)
+  - E.g., The `filter()` and `select()` functions from `tidyverse` both accept a dataframe as the first argument and return a modified dataframe, so they can be chained together
+    
+    ```r
+    df %>% filter(...) %>% select(...)
+    ```
+
+Wickham distinguishes between **2 types** of pipeable functions ([Chapter 19.6.2](https://r4ds.had.co.nz/functions.html#writing-pipeable-functions))
+
+- **Transformation**: Function modifies the first argument that is passed in and returns that
+  - E.g., `filter()` or `select()` functions from `tidyverse`
+- **Side-effects**: Function does not modify the first argument
+  - E.g., Functions that "performs an action on the object, like drawing a plot or saving a file"
+  - The first argument should still be returned from these functions so that they remain pipeable
+
+
+<br>
+<details><summary>**Example**: Writing a pipeable function</summary>
+
+Pipeable functions do not only work with dataframes, but with any objects like an atomic vector. For example:
+
+```{r}
+vec <- c(1, 2, 3, 4)
+vec
+
+
+#  These functions accept a vector as the first argument, modify it, then return it
+add_two <- function(v) {
+  v + 2
+}
+
+times_three <- function(v) {
+  v * 3
+}
+```
+
+<br>
+We can chain together the functions to perform the operations in order:
+
+```{r}
+vec %>% add_two() %>% times_three()
+
+vec %>% times_three() %>% add_two()
+```
 
 </details>

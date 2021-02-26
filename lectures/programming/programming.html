@@ -1280,77 +1280,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      code.sourceCode > span { display: inline-block; line-height: 1.25; }
-  code.sourceCode > span { color: inherit; text-decoration: inherit; }
-  code.sourceCode > span:empty { height: 1.2em; }
-  .sourceCode { overflow: visible; }
-  code.sourceCode { white-space: pre; position: relative; }
-  div.sourceCode { margin: 1em 0; }
-  pre.sourceCode { margin: 0; }
-  @media screen {
-  div.sourceCode { overflow: auto; }
-  }
-  @media print {
-  code.sourceCode { white-space: pre-wrap; }
-  code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-  }
-  pre.numberSource code
-    { counter-reset: source-line 0; }
-  pre.numberSource code > span
-    { position: relative; left: -4em; counter-increment: source-line; }
-  pre.numberSource code > span > a:first-child::before
-    { content: counter(source-line);
-      position: relative; left: -1em; text-align: right; vertical-align: baseline;
-      border: none; display: inline-block;
-      -webkit-touch-callout: none; -webkit-user-select: none;
-      -khtml-user-select: none; -moz-user-select: none;
-      -ms-user-select: none; user-select: none;
-      padding: 0 4px; width: 4em;
-      color: #aaaaaa;
-    }
-  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-  div.sourceCode
-    {  background-color: #f8f8f8; }
-  @media screen {
-  code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-  }
-  code span.al { color: #ef2929; } /* Alert */
-  code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-  code span.at { color: #c4a000; } /* Attribute */
-  code span.bn { color: #0000cf; } /* BaseN */
-  code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-  code span.ch { color: #4e9a06; } /* Char */
-  code span.cn { color: #000000; } /* Constant */
-  code span.co { color: #8f5902; font-style: italic; } /* Comment */
-  code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-  code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-  code span.dt { color: #204a87; } /* DataType */
-  code span.dv { color: #0000cf; } /* DecVal */
-  code span.er { color: #a40000; font-weight: bold; } /* Error */
-  code span.ex { } /* Extension */
-  code span.fl { color: #0000cf; } /* Float */
-  code span.fu { color: #000000; } /* Function */
-  code span.im { } /* Import */
-  code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-  code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-  code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-  code span.ot { color: #8f5902; } /* Other */
-  code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-  code span.sc { color: #000000; } /* SpecialChar */
-  code span.ss { color: #4e9a06; } /* SpecialString */
-  code span.st { color: #4e9a06; } /* String */
-  code span.va { color: #000000; } /* Variable */
-  code span.vs { color: #4e9a06; } /* VerbatimString */
-  code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-    </style>
-
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -2530,10 +2459,10 @@ div.tocify {
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">set.seed</span>(<span class="dv">12345</span>) <span class="co"># so we all get the same variable values</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">a =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>))</span>
 <span id="cb45-3"><a href="#cb45-3"></a><span class="kw">str</span>(df)</span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb45-7"><a href="#cb45-7"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div></li>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb45-5"><a href="#cb45-5"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span></code></pre></div></li>
 </ul>
 <div id="looping-over-elements" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Looping over elements</h3>
@@ -2573,8 +2502,8 @@ div.tocify {
 <span id="cb47-10"><a href="#cb47-10"></a><span class="co"># show contents of element, outside of a loop</span></span>
 <span id="cb47-11"><a href="#cb47-11"></a>  <span class="co"># each element of the dataframe is a vector that contains one element for each observation</span></span>
 <span id="cb47-12"><a href="#cb47-12"></a>  <span class="kw">str</span>(df[<span class="dv">1</span>]) <span class="co"># single bracket</span></span>
-<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb47-15"><a href="#cb47-15"></a>  <span class="kw">str</span>(df[[<span class="dv">1</span>]]) <span class="co"># double bracket</span></span>
 <span id="cb47-16"><a href="#cb47-16"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb47-17"><a href="#cb47-17"></a></span>
@@ -2698,8 +2627,8 @@ div.tocify {
 <span id="cb50-11"><a href="#cb50-11"></a></span>
 <span id="cb50-12"><a href="#cb50-12"></a><span class="co"># show using name to print contents, outside of a loop</span></span>
 <span id="cb50-13"><a href="#cb50-13"></a><span class="kw">str</span>(df[<span class="st">&quot;a&quot;</span>]) <span class="co"># single bracket</span></span>
-<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-16"><a href="#cb50-16"></a><span class="kw">str</span>(df[[<span class="st">&quot;a&quot;</span>]]) <span class="co"># double bracket</span></span>
 <span id="cb50-17"><a href="#cb50-17"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-18"><a href="#cb50-18"></a></span>
@@ -2710,27 +2639,27 @@ div.tocify {
 <span id="cb50-23"><a href="#cb50-23"></a>}</span>
 <span id="cb50-24"><a href="#cb50-24"></a><span class="co">#&gt; </span></span>
 <span id="cb50-25"><a href="#cb50-25"></a><span class="co">#&gt; value of object i=a; type=character</span></span>
-<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb50-26"><a href="#cb50-26"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-27"><a href="#cb50-27"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-28"><a href="#cb50-28"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb50-29"><a href="#cb50-29"></a><span class="co">#&gt; </span></span>
 <span id="cb50-30"><a href="#cb50-30"></a><span class="co">#&gt; value of object i=b; type=character</span></span>
-<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-32"><a href="#cb50-32"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb50-31"><a href="#cb50-31"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-32"><a href="#cb50-32"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb50-33"><a href="#cb50-33"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb50-34"><a href="#cb50-34"></a><span class="co">#&gt; </span></span>
 <span id="cb50-35"><a href="#cb50-35"></a><span class="co">#&gt; value of object i=c; type=character</span></span>
-<span id="cb50-36"><a href="#cb50-36"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb50-37"><a href="#cb50-37"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb50-36"><a href="#cb50-36"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb50-37"><a href="#cb50-37"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb50-38"><a href="#cb50-38"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <br>
 <details>
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over column names</summary></p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="kw">str</span>(df)  <span class="co"># View structure of dataframe object</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <p><br> Remember that we can use <code>[[]]</code> to access element contents by their name:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">names</span>(df)) {</span>
 <span id="cb52-2"><a href="#cb52-2"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element named &quot;</span>, i, <span class="st">&quot; = &quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -2822,18 +2751,18 @@ div.tocify {
 <span id="cb55-16"><a href="#cb55-16"></a>}</span>
 <span id="cb55-17"><a href="#cb55-17"></a><span class="co">#&gt; </span></span>
 <span id="cb55-18"><a href="#cb55-18"></a><span class="co">#&gt; value of object i=1; type=integer</span></span>
-<span id="cb55-19"><a href="#cb55-19"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-20"><a href="#cb55-20"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb55-19"><a href="#cb55-19"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-20"><a href="#cb55-20"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb55-21"><a href="#cb55-21"></a><span class="co">#&gt;  num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
 <span id="cb55-22"><a href="#cb55-22"></a><span class="co">#&gt; </span></span>
 <span id="cb55-23"><a href="#cb55-23"></a><span class="co">#&gt; value of object i=2; type=integer</span></span>
-<span id="cb55-24"><a href="#cb55-24"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-25"><a href="#cb55-25"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb55-24"><a href="#cb55-24"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-25"><a href="#cb55-25"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb55-26"><a href="#cb55-26"></a><span class="co">#&gt;  num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
 <span id="cb55-27"><a href="#cb55-27"></a><span class="co">#&gt; </span></span>
 <span id="cb55-28"><a href="#cb55-28"></a><span class="co">#&gt; value of object i=3; type=integer</span></span>
-<span id="cb55-29"><a href="#cb55-29"></a><span class="co">#&gt; tibble [4 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb55-30"><a href="#cb55-30"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb55-29"><a href="#cb55-29"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  1 variable:</span></span>
+<span id="cb55-30"><a href="#cb55-30"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb55-31"><a href="#cb55-31"></a><span class="co">#&gt;  num [1:4] -0.284 -0.919 -0.116 1.817</span></span></code></pre></div>
 <p><br> We could also access the element’s name by its index:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="kw">names</span>(df)  <span class="co"># View names of dataframe object (i.e., column names)</span></span>
@@ -2853,10 +2782,10 @@ div.tocify {
 <p><summary><strong>Example</strong>: Calculating column averages for <code>df</code> by looping over column indices</summary></p>
 <p>Use <code>i in seq_along(df)</code> to loop over the column indices and <code>[[]]</code> to access column contents:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="kw">str</span>(df)  <span class="co"># View structure of dataframe object</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a><span class="co">#&gt;  $ a: num [1:4] 0.586 0.709 -0.109 -0.453</span></span>
-<span id="cb57-4"><a href="#cb57-4"></a><span class="co">#&gt;  $ b: num [1:4] 0.606 -1.818 0.63 -0.276</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.284 -0.919 -0.116 1.817</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a><span class="co">#&gt;  $ a: num  0.586 0.709 -0.109 -0.453</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co">#&gt;  $ b: num  0.606 -1.818 0.63 -0.276</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="co">#&gt;  $ c: num  -0.284 -0.919 -0.116 1.817</span></span>
 <span id="cb57-6"><a href="#cb57-6"></a></span>
 <span id="cb57-7"><a href="#cb57-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(df)) {</span>
 <span id="cb57-8"><a href="#cb57-8"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element at index position&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -3014,10 +2943,10 @@ div.tocify {
 <p><summary><strong>Example</strong>: Creating a new object to store dataframe column averages</summary></p>
 <p>Recall the previous example where we calculated the mean value of each column in dataframe <code>df</code>:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="kw">str</span>(df)</span>
-<span id="cb64-2"><a href="#cb64-2"></a><span class="co">#&gt; tibble [4 x 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb64-3"><a href="#cb64-3"></a><span class="co">#&gt;  $ a: num [1:4] 1.171 1.419 -0.219 -0.907</span></span>
-<span id="cb64-4"><a href="#cb64-4"></a><span class="co">#&gt;  $ b: num [1:4] 1.212 -3.636 1.26 -0.552</span></span>
-<span id="cb64-5"><a href="#cb64-5"></a><span class="co">#&gt;  $ c: num [1:4] -0.568 -1.839 -0.232 3.635</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  3 variables:</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a><span class="co">#&gt;  $ a: num  1.171 1.419 -0.219 -0.907</span></span>
+<span id="cb64-4"><a href="#cb64-4"></a><span class="co">#&gt;  $ b: num  1.212 -3.636 1.26 -0.552</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a><span class="co">#&gt;  $ c: num  -0.568 -1.839 -0.232 3.635</span></span>
 <span id="cb64-6"><a href="#cb64-6"></a></span>
 <span id="cb64-7"><a href="#cb64-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(df)) {</span>
 <span id="cb64-8"><a href="#cb64-8"></a>  <span class="kw">writeLines</span>(<span class="kw">str_c</span>(<span class="st">&quot;mean of element at index position&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="kw">mean</span>(df[[i]], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
@@ -3313,8 +3242,8 @@ div.tocify {
 <span id="cb84-14"><a href="#cb84-14"></a></span>
 <span id="cb84-15"><a href="#cb84-15"></a><span class="co"># Check that directories are created</span></span>
 <span id="cb84-16"><a href="#cb84-16"></a><span class="kw">list.files</span>()</span>
-<span id="cb84-17"><a href="#cb84-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;output&quot;           &quot;programming.html&quot; &quot;programming.Rmd&quot; </span></span>
-<span id="cb84-18"><a href="#cb84-18"></a><span class="co">#&gt; [5] &quot;scripts&quot;</span></span></code></pre></div>
+<span id="cb84-17"><a href="#cb84-17"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;output&quot;           &quot;programming.html&quot;</span></span>
+<span id="cb84-18"><a href="#cb84-18"></a><span class="co">#&gt; [4] &quot;programming.Rmd&quot;  &quot;scripts&quot;</span></span></code></pre></div>
 <p><br> If we try running the code again, the <code>if</code> block would be executed during each iteration of the loop because all the directories already exist:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="cf">for</span> (i <span class="cf">in</span> directories) {</span>
 <span id="cb85-2"><a href="#cb85-2"></a>  <span class="cf">if</span> (<span class="kw">dir.exists</span>(i)) {</span>
@@ -3421,7 +3350,7 @@ div.tocify {
 <span id="cb93-6"><a href="#cb93-6"></a>  }</span>
 <span id="cb93-7"><a href="#cb93-7"></a>)</span>
 <span id="cb93-8"><a href="#cb93-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb93-9"><a href="#cb93-9"></a><span class="co">#&gt;    3.85    0.02    3.92</span></span></code></pre></div>
+<span id="cb93-9"><a href="#cb93-9"></a><span class="co">#&gt;   6.736   4.789  11.731</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (From <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -3435,7 +3364,7 @@ div.tocify {
 <span id="cb94-6"><a href="#cb94-6"></a>  }</span>
 <span id="cb94-7"><a href="#cb94-7"></a>)</span>
 <span id="cb94-8"><a href="#cb94-8"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb94-9"><a href="#cb94-9"></a><span class="co">#&gt;    0.02    0.00    0.01</span></span></code></pre></div>
+<span id="cb94-9"><a href="#cb94-9"></a><span class="co">#&gt;   0.017   0.001   0.020</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3459,7 +3388,7 @@ div.tocify {
 <span id="cb95-10"><a href="#cb95-10"></a>  }</span>
 <span id="cb95-11"><a href="#cb95-11"></a>)</span>
 <span id="cb95-12"><a href="#cb95-12"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb95-13"><a href="#cb95-13"></a><span class="co">#&gt;    0.39    0.00    0.39</span></span></code></pre></div>
+<span id="cb95-13"><a href="#cb95-13"></a><span class="co">#&gt;   0.394   0.004   0.410</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="kw">system.time</span>(</span>
 <span id="cb96-2"><a href="#cb96-2"></a>  output &lt;-<span class="st"> </span><span class="kw">if_else</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>,</span>
@@ -3468,7 +3397,7 @@ div.tocify {
 <span id="cb96-5"><a href="#cb96-5"></a>                   )</span>
 <span id="cb96-6"><a href="#cb96-6"></a>)</span>
 <span id="cb96-7"><a href="#cb96-7"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-8"><a href="#cb96-8"></a><span class="co">#&gt;    0.06    0.00    0.06</span></span></code></pre></div>
+<span id="cb96-8"><a href="#cb96-8"></a><span class="co">#&gt;   0.049   0.002   0.050</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3509,7 +3438,7 @@ div.tocify {
 <span id="cb97-29"><a href="#cb97-29"></a>  }</span>
 <span id="cb97-30"><a href="#cb97-30"></a>)</span>
 <span id="cb97-31"><a href="#cb97-31"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb97-32"><a href="#cb97-32"></a><span class="co">#&gt;    0.05    0.00    0.05</span></span></code></pre></div>
+<span id="cb97-32"><a href="#cb97-32"></a><span class="co">#&gt;   0.058   0.001   0.059</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -3539,7 +3468,7 @@ div.tocify {
 <span id="cb98-22"><a href="#cb98-22"></a>  }</span>
 <span id="cb98-23"><a href="#cb98-23"></a>)</span>
 <span id="cb98-24"><a href="#cb98-24"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb98-25"><a href="#cb98-25"></a><span class="co">#&gt;    0.03    0.00    0.03</span></span></code></pre></div>
+<span id="cb98-25"><a href="#cb98-25"></a><span class="co">#&gt;   0.025   0.000   0.025</span></span></code></pre></div>
 <p><br> <strong>[Method 3]</strong> Using the vectorised <code>if_else()</code> function</p>
 <ul>
 <li>Note that using a vectorised function when possible would still be the fastest</li>
@@ -3551,7 +3480,7 @@ div.tocify {
 <span id="cb99-4"><a href="#cb99-4"></a>                   <span class="kw">ifelse</span>(prices <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb99-5"><a href="#cb99-5"></a>)</span>
 <span id="cb99-6"><a href="#cb99-6"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb99-7"><a href="#cb99-7"></a><span class="co">#&gt;    0.01    0.00    0.01</span></span></code></pre></div>
+<span id="cb99-7"><a href="#cb99-7"></a><span class="co">#&gt;   0.015   0.009   0.031</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -3822,25 +3751,25 @@ div.tocify {
 <span id="cb112-10"><a href="#cb112-10"></a><span class="co">#&gt;  Date[1:1], format: &quot;1979-01-16&quot;</span></span></code></pre></div>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate an age given a birthdate:</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a><span class="kw">today</span>()</span>
-<span id="cb113-2"><a href="#cb113-2"></a><span class="co">#&gt; [1] &quot;2021-02-19&quot;</span></span>
+<span id="cb113-2"><a href="#cb113-2"></a><span class="co">#&gt; [1] &quot;2021-02-25&quot;</span></span>
 <span id="cb113-3"><a href="#cb113-3"></a></span>
 <span id="cb113-4"><a href="#cb113-4"></a><span class="co"># Calculate difference</span></span>
 <span id="cb113-5"><a href="#cb113-5"></a><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)</span>
-<span id="cb113-6"><a href="#cb113-6"></a><span class="co">#&gt; Time difference of 15375 days</span></span>
+<span id="cb113-6"><a href="#cb113-6"></a><span class="co">#&gt; Time difference of 15381 days</span></span>
 <span id="cb113-7"><a href="#cb113-7"></a><span class="kw">str</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb113-8"><a href="#cb113-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15375</span></span>
+<span id="cb113-8"><a href="#cb113-8"></a><span class="co">#&gt;  &#39;difftime&#39; num 15381</span></span>
 <span id="cb113-9"><a href="#cb113-9"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb113-10"><a href="#cb113-10"></a></span>
 <span id="cb113-11"><a href="#cb113-11"></a><span class="co"># Convert to duration</span></span>
 <span id="cb113-12"><a href="#cb113-12"></a><span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y))</span>
-<span id="cb113-13"><a href="#cb113-13"></a><span class="co">#&gt; [1] &quot;1328400000s (~42.09 years)&quot;</span></span>
+<span id="cb113-13"><a href="#cb113-13"></a><span class="co">#&gt; [1] &quot;1328918400s (~42.11 years)&quot;</span></span>
 <span id="cb113-14"><a href="#cb113-14"></a><span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
 <span id="cb113-15"><a href="#cb113-15"></a><span class="co">#&gt; Formal class &#39;Duration&#39; [package &quot;lubridate&quot;] with 1 slot</span></span>
 <span id="cb113-16"><a href="#cb113-16"></a><span class="co">#&gt;   ..@ .Data: num 1.33e+09</span></span>
 <span id="cb113-17"><a href="#cb113-17"></a></span>
 <span id="cb113-18"><a href="#cb113-18"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb113-19"><a href="#cb113-19"></a><span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb113-20"><a href="#cb113-20"></a><span class="co">#&gt; [1] 42.09446</span></span>
+<span id="cb113-20"><a href="#cb113-20"></a><span class="co">#&gt; [1] 42.11088</span></span>
 <span id="cb113-21"><a href="#cb113-21"></a><span class="kw">as.numeric</span>(<span class="kw">as.duration</span>(<span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">mdy</span>(y)), <span class="st">&quot;years&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</span>
 <span id="cb113-22"><a href="#cb113-22"></a><span class="co">#&gt;  num 42.1</span></span>
 <span id="cb113-23"><a href="#cb113-23"></a></span>
@@ -4034,7 +3963,8 @@ div.tocify {
 <span id="cb126-5"><a href="#cb126-5"></a>w</span>
 <span id="cb126-6"><a href="#cb126-6"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb126-7"><a href="#cb126-7"></a><span class="kw">z_score</span>(w)</span>
-<span id="cb126-8"><a href="#cb126-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb126-8"><a href="#cb126-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb126-9"><a href="#cb126-9"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4071,8 +4001,8 @@ div.tocify {
 <span id="cb127-29"><a href="#cb127-29"></a><span class="co">#&gt; 5 -0.453</span></span>
 <span id="cb127-30"><a href="#cb127-30"></a><span class="co">#&gt; 6  0.606</span></span>
 <span id="cb127-31"><a href="#cb127-31"></a><span class="kw">str</span>(df[<span class="st">&quot;a&quot;</span>])</span>
-<span id="cb127-32"><a href="#cb127-32"></a><span class="co">#&gt; tibble [6 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb127-33"><a href="#cb127-33"></a><span class="co">#&gt;  $ a: num [1:6] NA 0.586 0.709 -0.109 -0.453 ...</span></span>
+<span id="cb127-32"><a href="#cb127-32"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    6 obs. of  1 variable:</span></span>
+<span id="cb127-33"><a href="#cb127-33"></a><span class="co">#&gt;  $ a: num  NA 0.586 0.709 -0.109 -0.453 ...</span></span>
 <span id="cb127-34"><a href="#cb127-34"></a></span>
 <span id="cb127-35"><a href="#cb127-35"></a><span class="co"># subset values of an element using [[]] or $</span></span>
 <span id="cb127-36"><a href="#cb127-36"></a>df[[<span class="st">&quot;a&quot;</span>]]</span>
@@ -4148,8 +4078,8 @@ div.tocify {
 <span id="cb129-33"><a href="#cb129-33"></a>  </span>
 <span id="cb129-34"><a href="#cb129-34"></a>  </span>
 <span id="cb129-35"><a href="#cb129-35"></a>  df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</span>
-<span id="cb129-36"><a href="#cb129-36"></a><span class="co">#&gt; Rows: 6</span></span>
-<span id="cb129-37"><a href="#cb129-37"></a><span class="co">#&gt; Columns: 4</span></span>
+<span id="cb129-36"><a href="#cb129-36"></a><span class="co">#&gt; Observations: 6</span></span>
+<span id="cb129-37"><a href="#cb129-37"></a><span class="co">#&gt; Variables: 4</span></span>
 <span id="cb129-38"><a href="#cb129-38"></a><span class="co">#&gt; $ a   &lt;dbl&gt; NA, 0.5855288, 0.7094660, -0.1093033, -0.4534972, 0.6058875</span></span>
 <span id="cb129-39"><a href="#cb129-39"></a><span class="co">#&gt; $ b   &lt;dbl&gt; NA, -1.8179560, 0.6300986, -0.2761841, -0.2841597, -0.9193220</span></span>
 <span id="cb129-40"><a href="#cb129-40"></a><span class="co">#&gt; $ c   &lt;dbl&gt; NA, -0.1162478, 1.8173120, 0.3706279, 0.5202165, -0.7505320</span></span>
@@ -4260,13 +4190,13 @@ div.tocify {
 <span id="cb133-21"><a href="#cb133-21"></a></span>
 <span id="cb133-22"><a href="#cb133-22"></a><span class="co">#show observations for variable med_inc</span></span>
 <span id="cb133-23"><a href="#cb133-23"></a>df_event_small<span class="op">$</span>med_inc</span>
-<span id="cb133-24"><a href="#cb133-24"></a><span class="co">#&gt;  [1] 71713.5 89121.5 70136.5 70136.5 71023.5 71023.5 71023.5 97225.0 97225.0</span></span>
-<span id="cb133-25"><a href="#cb133-25"></a><span class="co">#&gt; [10] 77799.5</span></span>
+<span id="cb133-24"><a href="#cb133-24"></a><span class="co">#&gt;  [1] 71713.5 89121.5 70136.5 70136.5 71023.5 71023.5 71023.5 97225.0</span></span>
+<span id="cb133-25"><a href="#cb133-25"></a><span class="co">#&gt;  [9] 97225.0 77799.5</span></span>
 <span id="cb133-26"><a href="#cb133-26"></a></span>
 <span id="cb133-27"><a href="#cb133-27"></a><span class="co">#calculate z-score of variable med_inc (without assignment)</span></span>
 <span id="cb133-28"><a href="#cb133-28"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small<span class="op">$</span>med_inc)</span>
-<span id="cb133-29"><a href="#cb133-29"></a><span class="co">#&gt;  [1] -0.60825958  0.91982879 -0.74668992 -0.74668992 -0.66882834 -0.66882834</span></span>
-<span id="cb133-30"><a href="#cb133-30"></a><span class="co">#&gt;  [7] -0.66882834  1.63116060  1.63116060 -0.07402556</span></span>
+<span id="cb133-29"><a href="#cb133-29"></a><span class="co">#&gt;  [1] -0.60825958  0.91982879 -0.74668992 -0.74668992 -0.66882834</span></span>
+<span id="cb133-30"><a href="#cb133-30"></a><span class="co">#&gt;  [6] -0.66882834 -0.66882834  1.63116060  1.63116060 -0.07402556</span></span>
 <span id="cb133-31"><a href="#cb133-31"></a></span>
 <span id="cb133-32"><a href="#cb133-32"></a><span class="co">#assign new variable equal to the z-score of med_inc</span></span>
 <span id="cb133-33"><a href="#cb133-33"></a>df_event_small<span class="op">$</span>med_inc_z &lt;-<span class="st"> </span><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small<span class="op">$</span>med_inc)</span>
@@ -4329,8 +4259,8 @@ div.tocify {
 <p><br> We no longer run into errors if we supply an invalid input:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a><span class="co"># Test with list/dataframe input</span></span>
 <span id="cb137-2"><a href="#cb137-2"></a><span class="kw">str</span>(df_event_small[<span class="st">&quot;med_inc&quot;</span>])</span>
-<span id="cb137-3"><a href="#cb137-3"></a><span class="co">#&gt; tibble [10 x 1] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb137-4"><a href="#cb137-4"></a><span class="co">#&gt;  $ med_inc: num [1:10] 71714 89122 70137 70137 71024 ...</span></span>
+<span id="cb137-3"><a href="#cb137-3"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    10 obs. of  1 variable:</span></span>
+<span id="cb137-4"><a href="#cb137-4"></a><span class="co">#&gt;  $ med_inc: num  71714 89122 70136 70136 71024 ...</span></span>
 <span id="cb137-5"><a href="#cb137-5"></a></span>
 <span id="cb137-6"><a href="#cb137-6"></a><span class="kw">z_score</span>(<span class="dt">x =</span> df_event_small[<span class="st">&quot;med_inc&quot;</span>])</span>
 <span id="cb137-7"><a href="#cb137-7"></a></span>
@@ -4401,7 +4331,7 @@ div.tocify {
 <span id="cb139-13"><a href="#cb139-13"></a><span class="co">#&gt;  8     8   -97     10     55</span></span>
 <span id="cb139-14"><a href="#cb139-14"></a><span class="co">#&gt;  9     9    16      6     51</span></span>
 <span id="cb139-15"><a href="#cb139-15"></a><span class="co">#&gt; 10    10    16    -99     -8</span></span>
-<span id="cb139-16"><a href="#cb139-16"></a><span class="co">#&gt; # ... with 90 more rows</span></span></code></pre></div>
+<span id="cb139-16"><a href="#cb139-16"></a><span class="co">#&gt; # … with 90 more rows</span></span></code></pre></div>
 <p><br> <strong>Recommended steps</strong>:</p>
 <ul>
 <li>Perform task outside of function
@@ -4417,12 +4347,12 @@ div.tocify {
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a><span class="kw">names</span>(df) <span class="co"># identify variable names</span></span>
 <span id="cb140-2"><a href="#cb140-2"></a><span class="co">#&gt; [1] &quot;id&quot;     &quot;age&quot;    &quot;sibage&quot; &quot;parage&quot;</span></span>
 <span id="cb140-3"><a href="#cb140-3"></a>df<span class="op">$</span>age <span class="co"># print observations for a variable</span></span>
-<span id="cb140-4"><a href="#cb140-4"></a><span class="co">#&gt;   [1]  17  15 -97  13 -97  12 -99 -97  16  16 -98  20 -99  20  11  20  12  17</span></span>
-<span id="cb140-5"><a href="#cb140-5"></a><span class="co">#&gt;  [19]  19  17 -97 -99  12  13  11  15  20  14 -99  11  20 -98  11 -98  12  16</span></span>
-<span id="cb140-6"><a href="#cb140-6"></a><span class="co">#&gt;  [37]  12  18  12  19  12 -97  20  17  11  19  19  12 -98  11  15  18  15 -98</span></span>
-<span id="cb140-7"><a href="#cb140-7"></a><span class="co">#&gt;  [55]  15  19 -97  13 -98  16  13  12  16  19 -99  19 -98  13 -97  20  15  19</span></span>
-<span id="cb140-8"><a href="#cb140-8"></a><span class="co">#&gt;  [73]  15  12  18 -99  18 -98 -98 -98 -97  12  14  19 -97  11  20  18  14 -99</span></span>
-<span id="cb140-9"><a href="#cb140-9"></a><span class="co">#&gt;  [91]  15  20 -97  14  14  19  18  17  20  15</span></span>
+<span id="cb140-4"><a href="#cb140-4"></a><span class="co">#&gt;   [1]  17  15 -97  13 -97  12 -99 -97  16  16 -98  20 -99  20  11  20  12</span></span>
+<span id="cb140-5"><a href="#cb140-5"></a><span class="co">#&gt;  [18]  17  19  17 -97 -99  12  13  11  15  20  14 -99  11  20 -98  11 -98</span></span>
+<span id="cb140-6"><a href="#cb140-6"></a><span class="co">#&gt;  [35]  12  16  12  18  12  19  12 -97  20  17  11  19  19  12 -98  11  15</span></span>
+<span id="cb140-7"><a href="#cb140-7"></a><span class="co">#&gt;  [52]  18  15 -98  15  19 -97  13 -98  16  13  12  16  19 -99  19 -98  13</span></span>
+<span id="cb140-8"><a href="#cb140-8"></a><span class="co">#&gt;  [69] -97  20  15  19  15  12  18 -99  18 -98 -98 -98 -97  12  14  19 -97</span></span>
+<span id="cb140-9"><a href="#cb140-9"></a><span class="co">#&gt;  [86]  11  20  18  14 -99  15  20 -97  14  14  19  18  17  20  15</span></span>
 <span id="cb140-10"><a href="#cb140-10"></a></span>
 <span id="cb140-11"><a href="#cb140-11"></a><span class="co">#BaseR</span></span>
 <span id="cb140-12"><a href="#cb140-12"></a><span class="kw">sum</span>(df<span class="op">$</span>age<span class="op">&lt;</span><span class="dv">0</span>) <span class="co"># count number of obs w/ negative values for variable &quot;age&quot;</span></span>
@@ -4574,7 +4504,8 @@ div.tocify {
 <span id="cb147-6"><a href="#cb147-6"></a>w</span>
 <span id="cb147-7"><a href="#cb147-7"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb147-8"><a href="#cb147-8"></a><span class="kw">z_score</span>(w)</span>
-<span id="cb147-9"><a href="#cb147-9"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb147-9"><a href="#cb147-9"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb147-10"><a href="#cb147-10"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 <p><br> We could add an argument (named <code>na</code>) that specifies whether <code>NA</code>s should be removed prior to calculating z-scores:</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a>z_score &lt;-<span class="st"> </span><span class="cf">function</span>(x, na) {</span>
 <span id="cb148-2"><a href="#cb148-2"></a>  (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm=</span>na))<span class="op">/</span><span class="kw">sd</span>(x, <span class="dt">na.rm=</span>na)</span>
@@ -4583,10 +4514,11 @@ div.tocify {
 <span id="cb148-5"><a href="#cb148-5"></a>w</span>
 <span id="cb148-6"><a href="#cb148-6"></a><span class="co">#&gt; [1] NA  1  2  3  4  5 NA</span></span>
 <span id="cb148-7"><a href="#cb148-7"></a><span class="kw">z_score</span>(w, <span class="ot">TRUE</span>)</span>
-<span id="cb148-8"><a href="#cb148-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span>
-<span id="cb148-9"><a href="#cb148-9"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>)</span>
-<span id="cb148-10"><a href="#cb148-10"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
-<span id="cb148-11"><a href="#cb148-11"></a><span class="co">#z_score(w) # error: argument &quot;na&quot; is missing, with no default</span></span></code></pre></div>
+<span id="cb148-8"><a href="#cb148-8"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb148-9"><a href="#cb148-9"></a><span class="co">#&gt; [7]         NA</span></span>
+<span id="cb148-10"><a href="#cb148-10"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>)</span>
+<span id="cb148-11"><a href="#cb148-11"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
+<span id="cb148-12"><a href="#cb148-12"></a><span class="co">#z_score(w) # error: argument &quot;na&quot; is missing, with no default</span></span></code></pre></div>
 <p><br> We could also add a default value for the <code>na</code> argument. Following conservative approach, we’ll specify default value as <code>FALSE</code> which means that any <code>NA</code> values in input vector <code>x</code> will result in z-score of <code>NA</code> for all observations:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>z_score &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na =</span> <span class="ot">FALSE</span>) {</span>
 <span id="cb149-2"><a href="#cb149-2"></a>  (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm=</span>na))<span class="op">/</span><span class="kw">sd</span>(x, <span class="dt">na.rm=</span>na)</span>
@@ -4600,7 +4532,8 @@ div.tocify {
 <span id="cb149-10"><a href="#cb149-10"></a><span class="kw">z_score</span>(w, <span class="ot">FALSE</span>) <span class="co"># manually specify default value</span></span>
 <span id="cb149-11"><a href="#cb149-11"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span>
 <span id="cb149-12"><a href="#cb149-12"></a><span class="kw">z_score</span>(w, <span class="ot">TRUE</span>) <span class="co"># override default value</span></span>
-<span id="cb149-13"><a href="#cb149-13"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111         NA</span></span></code></pre></div>
+<span id="cb149-13"><a href="#cb149-13"></a><span class="co">#&gt; [1]         NA -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111</span></span>
+<span id="cb149-14"><a href="#cb149-14"></a><span class="co">#&gt; [7]         NA</span></span></code></pre></div>
 </details>
 <p><br></p>
 </div>
@@ -4919,6 +4852,54 @@ div.tocify {
 <span id="cb168-13"><a href="#cb168-13"></a><span class="co">#&gt; </span></span>
 <span id="cb168-14"><a href="#cb168-14"></a><span class="co">#&gt;    I1   SI2   SI1   VS2   VS1  VVS2  VVS1    IF </span></span>
 <span id="cb168-15"><a href="#cb168-15"></a><span class="co">#&gt;   741  9194 13065 12258  8171  5066  3655  1790</span></span></code></pre></div>
+</details>
+</div>
+<div id="pipeable-functions" class="section level3">
+<h3><span class="header-section-number">5.4.4</span> Pipeable functions</h3>
+<p>What are <strong>pipeable functions</strong>?</p>
+<ul>
+<li><strong>Pipeable functions</strong> return an object that is of the same type as the first argument it accepts</li>
+<li>This allow us to chain functions that accept/return objects of the same type using pipes (<code>%&gt;%</code>)
+<ul>
+<li><p>E.g., The <code>filter()</code> and <code>select()</code> functions from <code>tidyverse</code> both accept a dataframe as the first argument and return a modified dataframe, so they can be chained together</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(...) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(...)</span></code></pre></div></li>
+</ul></li>
+</ul>
+<p>Wickham distinguishes between <strong>2 types</strong> of pipeable functions (<a href="https://r4ds.had.co.nz/functions.html#writing-pipeable-functions">Chapter 19.6.2</a>)</p>
+<ul>
+<li><strong>Transformation</strong>: Function modifies the first argument that is passed in and returns that
+<ul>
+<li>E.g., <code>filter()</code> or <code>select()</code> functions from <code>tidyverse</code></li>
+</ul></li>
+<li><strong>Side-effects</strong>: Function does not modify the first argument
+<ul>
+<li>E.g., Functions that “performs an action on the object, like drawing a plot or saving a file”</li>
+<li>The first argument should still be returned from these functions so that they remain pipeable</li>
+</ul></li>
+</ul>
+<br>
+<details>
+<p><summary><strong>Example</strong>: Writing a pipeable function</summary></p>
+<p>Pipeable functions do not only work with dataframes, but with any objects like an atomic vector. For example:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb170-2"><a href="#cb170-2"></a>vec</span>
+<span id="cb170-3"><a href="#cb170-3"></a><span class="co">#&gt; [1] 1 2 3 4</span></span>
+<span id="cb170-4"><a href="#cb170-4"></a></span>
+<span id="cb170-5"><a href="#cb170-5"></a></span>
+<span id="cb170-6"><a href="#cb170-6"></a><span class="co">#  These functions accept a vector as the first argument, modify it, then return it</span></span>
+<span id="cb170-7"><a href="#cb170-7"></a>add_two &lt;-<span class="st"> </span><span class="cf">function</span>(v) {</span>
+<span id="cb170-8"><a href="#cb170-8"></a>  v <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb170-9"><a href="#cb170-9"></a>}</span>
+<span id="cb170-10"><a href="#cb170-10"></a></span>
+<span id="cb170-11"><a href="#cb170-11"></a>times_three &lt;-<span class="st"> </span><span class="cf">function</span>(v) {</span>
+<span id="cb170-12"><a href="#cb170-12"></a>  v <span class="op">*</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb170-13"><a href="#cb170-13"></a>}</span></code></pre></div>
+<p><br> We can chain together the functions to perform the operations in order:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1"></a>vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_two</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">times_three</span>()</span>
+<span id="cb171-2"><a href="#cb171-2"></a><span class="co">#&gt; [1]  9 12 15 18</span></span>
+<span id="cb171-3"><a href="#cb171-3"></a></span>
+<span id="cb171-4"><a href="#cb171-4"></a>vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">times_three</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_two</span>()</span>
+<span id="cb171-5"><a href="#cb171-5"></a><span class="co">#&gt; [1]  5  8 11 14</span></span></code></pre></div>
 </details>
 </div>
 </div>
