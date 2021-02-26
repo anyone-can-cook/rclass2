@@ -3132,6 +3132,7 @@ diamond_info_by_color <- function(color) {
 }
 
 diamond_info_by_color('E')
+diamond_info_by_color('E') %>% str() # what is returned
 ```
 
 <br>
@@ -3143,6 +3144,9 @@ diamond_info_by_color <- function(color) {
   
   list(cut_table = table(df$cut), clarity_table = table(df$clarity))  # implicitly return list
 }
+
+diamond_info_by_color('E')
+diamond_info_by_color('E') %>% str()
 ```
 
 <br>
@@ -3151,6 +3155,8 @@ We can then store the returned list in an object using `<-`, and access the indi
 ```{r}
 # Store returned list in `info`
 info <- diamond_info_by_color('E')
+
+info %>% str()
 
 # Access individual elements of the list
 info[['cut_table']]
@@ -3198,17 +3204,25 @@ add_two <- function(v) {
   v + 2
 }
 
+vec
+add_two(v=vec)
+
 times_three <- function(v) {
   v * 3
 }
+
+vec
+times_three(v=vec)
 ```
 
 <br>
 We can chain together the functions to perform the operations in order:
 
 ```{r}
+vec
 vec %>% add_two() %>% times_three()
 
+vec
 vec %>% times_three() %>% add_two()
 ```
 
