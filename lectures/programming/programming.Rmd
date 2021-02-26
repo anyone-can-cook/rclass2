@@ -2781,8 +2781,8 @@ z_score <- function(x, na) {
 }
 
 w
-z_score(w, TRUE)
-z_score(w, FALSE)
+z_score(x=w, na=TRUE)
+z_score(x=w, na=FALSE)
 #z_score(w) # error: argument "na" is missing, with no default
 ```
 
@@ -2796,9 +2796,9 @@ z_score <- function(x, na = FALSE) {
 
 w
 
-z_score(w) # uses default value of FALSE
-z_score(w, FALSE) # manually specify default value
-z_score(w, TRUE) # override default value
+z_score(x=w) # uses default value of FALSE
+z_score(w, na= FALSE) # manually specify default value
+z_score(w, na = TRUE) # override default value
 ```
 
 </details>
@@ -2867,7 +2867,7 @@ Recall the first iteration of our `print_hello()` function, which basically just
     }
     
     # Call function
-    print_hello1("Ozan")
+    print_hello1(x="Ozan")
     ```
 
 - Modify function to take an arbitrary number of names to greet
@@ -2880,7 +2880,7 @@ Recall the first iteration of our `print_hello()` function, which basically just
     
     # Call function
     print_hello2("Dasher", "Dancer", "Prancer", "Vixen")
-    print_hello2("Rudolf")
+
     ```
 
 </details>
@@ -2913,6 +2913,7 @@ print_hello <- function(x) {
   str_c("Hello, world. My name is", x, sep = " ", collapse = NULL)
 }
 
+print_hello("ozan")
 print_hello(NA)
 ```
 
@@ -2928,7 +2929,8 @@ print_hello <- function(x) {
   str_c("Hello, world. My name is", x, sep = " ", collapse = NULL)
 }
 
-print_hello(NA)
+print_hello(x="ozan")
+print_hello(x=NA)
 ```
 
 </details>
@@ -2945,9 +2947,9 @@ print_hello <- function(x, y) {
   str_c("Hello, world. My name is", x, "and I am", age, "years old", sep = " ", collapse = NULL)
 }
 
-print_hello(x = "Sumru Jaquette-Nasiali", "04/05/2019") # this works
+print_hello(x = "Sumru Jaquette-Nasiali", y="04/05/2019") # this works
 
-print_hello(x = "Sumru Jaquette-Nasiali", "2019/04/05") # this does not
+print_hello(x = "Sumru Jaquette-Nasiali", y="2019/04/05") # this does not
 ```
 
 <br>
@@ -3016,6 +3018,7 @@ print_hello <- function() {
 }
 
 # Call function
+print_hello() %>% str()
 h <- print_hello()  # We can show that `print_hello()` returns a value by storing it in `h`
 h                   # `h` stores the value "Hello!"
 ```
@@ -3039,6 +3042,7 @@ print_hello <- function() {
 }
 
 # Call function
+print_hello()
 h <- print_hello()  # `print_hello()` returns "Hello!"
 h
 ```
@@ -3061,7 +3065,11 @@ assess_price <- function(price) {
   }
 }
 
+assess_price(price=450)
+assess_price(price=1050) %>% str()
+
 prices <- unique(diamonds$price)[23:27]
+prices
 for (i in prices) {
   writeLines(assess_price(i))
 }
@@ -3107,6 +3115,7 @@ assess_price <- function(price) {
 for (i in prices) {
   writeLines(assess_price(i))
 }
+
 ```
 
 </details>
@@ -3131,7 +3140,7 @@ diamond_info_by_color <- function(color) {
   print(table(df$clarity))
 }
 
-diamond_info_by_color('E')
+diamond_info_by_color(color = 'E')
 diamond_info_by_color('E') %>% str() # what is returned
 ```
 
@@ -3160,6 +3169,7 @@ info %>% str()
 
 # Access individual elements of the list
 info[['cut_table']]
+
 
 # Can also store individual elements in new objects
 clarity_table <- info$clarity_table
