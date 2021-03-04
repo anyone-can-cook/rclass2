@@ -27,15 +27,14 @@ Load packages:
 ```{r, message=FALSE}
 library(tidyverse)
 library(stringr)  # package for manipulating strings (part of tidyverse)
+library(rtweet)
 ```
 
 ## Dataset we will use
 
-We used `rtweet` to pull Twitter data from the PAC-12 universities. We used the university admissions Twitter handle if there is one, or the main Twitter handle for the university if there isn't one:
+We used the `rtweet` package to pull Twitter data from the PAC-12 universities. Specifically, we used the university's admissions Twitter handle if there was one, or the main Twitter handle for the university if there wasn't one:
 
 ```{r}
-# library(rtweet)
-# 
 # p12 <- c("uaadmissions", "FutureSunDevils", "caladmissions", "UCLAAdmission",
 #          "futurebuffs", "uoregon", "BeaverVIP", "USCAdmission",
 #          "engagestanford", "UtahAdmissions", "UW", "WSUPullman")
@@ -84,15 +83,13 @@ Yes, learning regular expressions is painful. So why are we making you do this? 
 
 - Excerpts from a 2014 New York Times article, ["For Big-Data Scientists, 'Janitor Work' Is Key Hurdle to Insights"](https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html):
 
-> Much handcrafted work — what data scientists call "data wrangling," "data munging" and "data janitor work" — is still required. Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in this more mundane labor of collecting and preparing unruly digital data, before it can be explored for useful nuggets.
+> Much handcrafted work — what data scientists call "data wrangling," and "data munging" — is still required. Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in this more mundane labor of collecting and preparing unruly digital data, before it can be explored for useful nuggets.
 
 > "Data wrangling is a huge — and surprisingly so — part of the job," said Monica Rogati, vice president for data science at Jawbone, whose sensor-filled wristband and software track activity, sleep and food consumption, and suggest dietary and health tips based on the numbers. "It’s something that is not appreciated by data civilians. At times, it feels like everything we do."
 
 > "It’s an absolute myth that you can send an algorithm over raw data and have insights pop up," said Jeffrey Heer, a professor of computer science at the University of Washington and a co-founder of Trifacta, a start-up based in San Francisco.
 
 > But if the value [of data science] comes from combining different data sets, so does the headache. Data from sensors, documents, the web and conventional databases all come in different formats. Before a software algorithm can go looking for answers, the data must be cleaned up and converted into a unified form that the algorithm can understand.
-
-> "Practically, because of the diversity of data, you spend a lot of your time being a data janitor, before you can get to the cool, sexy things that got you into the field in the first place," said Matt Mohebbi, a data scientist and co-founder of Iodine.
 
 <br>
 
@@ -150,7 +147,7 @@ str_view_all(string, pattern, match = NA)
 Let's use these functions to match the exact string `"Co"` from one of the tweets in our `p12_df` dataframe. `str_view()` will show us the first pattern match. Notice that the pattern is case-sensitive, as the `"co"` in `"colleagues"` was not matched:
 
 ```{r}
-str_view(string = p12_df$text[119], pattern = 'Co')
+str_view(string = p12_df$text[119], pattern = 'Co') 
 ```
 
 <br>
@@ -517,14 +514,14 @@ str_view_all(string = p12_df$text[119], pattern = "\\s\\w{3,5}\\s")
 
 String     Character  Description     
 ---------- ---------- ----------------------------------------------------------  
- &nbsp;     `^`       Start of string, or start of line in multi-line pattern         
- &nbsp;     `$`           End of string, or end of line in multi-line pattern    
+ `"^"`      `^`       Start of string, or start of line in multi-line pattern         
+ `"$"`      `$`           End of string, or end of line in multi-line pattern    
  `"\\b"`    `\b`                                                Word boundary
  `"\\B"`    `\B`                                            Non-word boundary
 
  
 <br>
-We can use **anchors** to indicate which part of the string to match. For example, `^` matches the start of the string, `$` matches the end of the string, `\b` can be used to help detect word boundaries, and `\B` can be used to help match characters within a word.
+We can use **anchors** to indicate which part of the string to match. For example, `^` matches the start of the string, `$` matches the end of the string (*Notice how we do not need to escape these characters*). `\b` can be used to help detect word boundaries, and `\B` can be used to help match characters within a word.
 
 <br>
 <details><summary>**Example**: Using `^` & `$` to match start & end of string</summary> 
@@ -674,13 +671,13 @@ Notice that `[...]` only matches a single character (see second to last example 
 
 ## Groups and backreferences
 
-String  Character  Description     
-------- ---------- ----------------------------------------------------------
-&nbsp;  `(...)`      Capturing group
-&nbsp;  `(?:...)`    Non-capturing group
-`"\\1"` `\1`         Part of the string matched by capturing group 1
-`"\\2"` `\2`         Part of the string matched by capturing group 2
-...     ...          ...
+String      Character  Description     
+-------     ---------- ----------------------------------------------------------
+`"(...)"`   `(...)`      Capturing group
+`"(?:...)"` `(?:...)`    Non-capturing group
+`"\\1"`     `\1`         Part of the string matched by capturing group 1
+`"\\2"`     `\2`         Part of the string matched by capturing group 2
+...         ...          ...
 
 <br>
 Parentheses can be used to group parts of our regular expression together. Normal parentheses `(...)` creates what is called a numbered **capturing group**. "A capturing group stores the part of the string matched by the part of the regular expression inside the parentheses". For example, if we have `(\d)`, we can refer back to the digit matched by this capturing group using backreferences, like `\1`.
