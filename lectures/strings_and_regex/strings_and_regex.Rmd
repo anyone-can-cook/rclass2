@@ -368,26 +368,19 @@ writeLines(my_string)
 <br>
 When we print `my_string` using the `print()` function, the output looks different than printing it using `writeLines()`.
 
-- **Print using the `print()` function**
-    - This shows how the string text is stored by _R_ ("underlying string")
-    - We can see the enclosing double quotes (`"`) that _R_ uses to store the string
-    - Special characters like `\n` are printed literally (i.e., prints a literal backslash `\` followed by the letter `n`) rather than being interpreted as a newline character and displaying a line break
+**Print using the `print()` function**
+
+- This shows how the string text is stored by _R_ ("underlying string")
+- We can see the enclosing double quotes (`"`) that _R_ uses to store the string
+- Special characters like `\n` are printed literally (i.e., prints a literal backslash `\` followed by the letter `n`) rather than being interpreted as a newline character and displaying a line break
 
     ```{r}
     print(my_string) 
     my_string # same as printing my_string object using print()
     ```
 
-- **Print using the `writeLines()` function**
-    - This shows the string text as it is meant to be read by the end user
-    - This does not show the enclosing double quotes (`"`) around the string
-    - Special characters like `\n` are interpreted so that the end user sees a new line inserted rather than seeing a literal `\n`
+**Print using the `writeLines()` function**
 
-    ```{r}
-    writeLines(my_string)
-    ```
-
-<br>
 __The `writeLines()` function__:
 
 ```{r, eval = FALSE}
@@ -398,29 +391,67 @@ writeLines(text, con = stdout(), sep = "\n", useBytes = FALSE)
 ```
 
 - Function: "`writeLines()` displays quotes and backslashes as they would be read, rather than as R stores them." (From [writeLines](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/writeLines) documentation)
-  - When we include **escape sequences** in the string, it is helpful to use `writeLines()` to see how the escaped string looks
-  - `writeLines()` will also output the string without showing the outer pair of double quotes that R uses to store it, so we only see the content of the string
 - Arguments:
   - `text`: Character vector containing the text you want to display
 
+    ```{r}
+    writeLines(my_string)
+    ```
 
-## Backslashes in regular expressions
+Commentary on `writeLines()` function
+
+- What it does: shows the string text as it is meant to be read by the end user
+- Special characters like `\n` are interpreted so that the end user sees a new line inserted rather than seeing a literal `\n`
+- Does not show the enclosing double (`"`) or single (`'`) quotes around the string, so we only see the content of the string
+- Utility:
+  - when we include **escape sequences** in the string, it is helpful to use `writeLines()` to see how the escaped string looks
+
+
+<br>
+
+
+## Backslashes and regular expressions
+
+<!-- THIS QUOTE IS CONFUSING
 
 > If `\` is used as an escape character in regular expressions, how do you match a literal `\`? Well you need to escape it, creating the regular expression `\\`. To create that regular expression, you need to use a string, which also needs to escape `\`. That means to match a literal `\` you need to write `\\\\` — you need four backslashes to match one!
+your comment 
 
 *Credit: [R for Data Science](https://r4ds.had.co.nz/strings.html#basic-matches) Strings Chapter*
 
+-->
+
+
 <br>
-In regular expressions, the backslash `\` also serves as an escape character, so in order to match a literal `\`, we need to use the regular expression `\\`. For example, let's say we want to match the `\` in the following string:
+
+Regular expressions utilize special characters to match to text patterns. Many regular expression special characters start with a backslash `\`. For example, the regular expresion `\d` matches to any digit (e.g., `0`,`5`) in the text. 
+
+Because `\` is an escape character in _R_, if we want to use the regular expression `\d` to match to any digit, we must write the regular expression out as `\\d`
+
+<br>
+
+For example, consider a string that is printed out like this by `writeLines()`:
+
+- `The executable is located in C:\Program Files\Git\bin`
+- This is like the text we would see on Twitter as an end user
+
+
+But is stored internally in *R* like this, which is the way it is printed out by the `print()` function:
+
+- `The executable is located in C:\\Program Files\\Git\\bin`
+- This is how the Tweet is stored internally
+
+Imagine our goal is to match the `\` (as it is seen on Twitter by the end user)
 
 ```{r}
 my_string <- "The executable is located in C:\\Program Files\\Git\\bin"
 
-# Use writeLines() to see escaped string
-writeLines(my_string)
+my_string # printing an object shows how it is stored internally
+
+writeLines(my_string) # Use writeLines() to see escaped string
 ```
 
-The regular expression we need is `\\`. But this doesn't work:
+The the pattern we need to match to in the (internally stored) text is `\\`. But this doesn't work:
 
 ```{r, eval=FALSE}
 # This will give an error if we try to run it
@@ -445,7 +476,11 @@ str_view_all(string = my_string, pattern = "\\\\")
 ```
 
 <br>
-**Summary**: Whenever we need to use backslash in our regular expression, we'll need to escape the backslash (by using another backslash) in the string that we provide as the regex `pattern`. For example, to match a newline character `\n` we need to use `"\\n"`, to match a tab character `\t` we need to use `"\\t"`, etc.
+**Summary**: 
+
+- Whenever we need to use backslash in our regular expression, we'll need to escape the backslash (by using another backslash) in the string that we provide as the regex `pattern`. 
+- For example, to match a newline character `\n` we need to specify `"\\n"`, to match a tab character `\t` we need to specify `"\\t"`, etc.
+
 <br>
 
 
@@ -454,16 +489,9 @@ str_view_all(string = my_string, pattern = "\\\\")
 
 Example of using **regular expression** in action:
 
-- How can we **match all occurrences of times** in the following string? (i.e., `10 AM` & `1 PM`)
+- How can we **match all occurrences of times** in the following string? (i.e., `10 AM` and `1 PM`)
   - `"Class starts at 10 AM and ends at 1 PM."`
 - The **regular expression** `\d+ [AP]M` can!
-  - `\d+` matches 1 or more digits in a row
-    - `\d` means match all numeric digits (i.e., `0`-`9`)
-    - `+` means match 1 or more of
-  - ` ` matches a literal space
-  - `[AP]M` matches either `AM` or `PM`
-    - `[AP]` means match either an `A` or `P` at that position
-    - `M` means match a literal `M`
 
 ```{r}
 my_string = "Class starts at 10 AM and ends at 1 PM."
@@ -476,6 +504,14 @@ writeLines(my_regex)
 str_view_all(string = my_string, pattern = my_regex)
 ```
 
+- How the regular expression `\d+ [AP]M` works:
+  - `\d+` matches 1 or more digits in a row
+    - `\d` means match all numeric digits (i.e., `0`-`9`)
+    - `+` means match 1 or more of
+  - ` ` matches a literal space
+  - `[AP]M` matches either `AM` or `PM`
+    - `[AP]` means match either an `A` or `P` at that position
+    - `M` means match a literal `M`
 
 <br>
 Some common **regular expression patterns** include (not inclusive):  
@@ -518,16 +554,30 @@ Some common **regular expression patterns** include (not inclusive):
 <br>
 There are certain **character classes** in regular expression that have special meaning. For example, `\d` is used to match any digit (i.e., _number_), `\s` is used to match any whitespace (i.e., _space, tab, or newline character_), and `\w` is used to match any word character (i.e., _alphanumeric character or underscore_). 
 
-"But wait... there's more! Before a regex is interpreted as a regular expression, it is also interpreted by R as a string. And backslash is used to escape there as well. So, in the end, you need to preprend two backslashes..." This means in R, you would write out the regex patterns as `"\\d"`, `"\\s"`, `"\\w"`, etc.
+"But wait... there's more! Before a regex is interpreted as a regular expression, it is also interpreted by R as a string. And backslash is used to escape there as well. So, in the end, you need to preprend two backslashes..."  
 
 *Credit: [Escaping sequences](https://stat545.com/character-vectors.html#escaping) from Stat 545*
 
+This means in R, when we want to use regular expression patterns `"\d"`,`"\s"`, `"\w"`, etc. to match to strings, we must write out the regex patterns as `"\\d"`,`"\\s"`, `"\\w"`, etc.
+
 <br>
-<details><summary>**Example**: Using `\d` & `\D` to match digits & non-digits</summary>
+**Example**: Using `\d` & `\D` to match digits & non-digits
+
+Goal: write a regular expression pattern that matches to any digit in the string `p12_df$text[119]`
+```{r}
+# print string
+p12_df$text[119]
+
+# writeLines string
+writeLines(p12_df$text[119])
+```
+
 
 We can use `\d` to match all instances of a digit (i.e., _number_):
 
 ```{r}
+print("\\d")
+
 # The escaped string "\\d" results in the regex \d
 writeLines("\\d")
 
@@ -535,8 +585,53 @@ writeLines("\\d")
 str_view_all(string = p12_df$text[119], pattern = "\\d")
 ```
 
+What if we defined our our regex pattern as `"\d"` instead of `"\\d"`?
+```{r, eval = FALSE}
+# Error: '\d' is an unrecognized escape in character string starting ""\d"
+print("\d")
+
+writeLines("\d") # Error: '\d' is an unrecognized escape in character string starting ""\d"
+
+# Error: '\d' is an unrecognized escape in character string starting ""\d"
+str_view_all(string = p12_df$text[119], pattern = "\d")
+```
+The correct regular expression pattern to match any digits
+```{r}
+str_view_all(string = p12_df$text[119], pattern = "\\d")
+```
+
+__KEY POINT__
+
+- Our regular expression is the value we specify for the `pattern` argument above; this is our "regex object"
+- We want our regex object to include the regular expression `\d`, which matches to any digit
+- We specify our regex object as `"\\d"` rather than `"\d"`
+
+
+__EXPLAINING WHY THIS KEY POINT IS TRUE__
+
+- our regex object is first interpreted by _R_ as a string before it is interpreted as a regular expression
+- In *R*, a backslash `\` is an escape character
+- we want our regex object to include a singled backslash `\` after it is interpreted by _R_, 
+- So the specification of our regex object must include two backslashes in a row `\\` 
+  - the purpose of the first backslash is to escape the second backslash, because a backslash is a special character in _R_
+
+__TAKEAWAY__
+
+- write your regex object the way it be printed by the `print()` function
+- because before the regex object is interpreted as a regular expression, it is interpreted by *R* the way it would be printed by the `writeLines()` function
+
+```{r}
+# so, write your regex object like this
+print("\\d")
+
+#so it will be interpreted like this
+writeLines("\\d")
+```
+
+
+
 <br>
-We can use `\D` to match all instances of a non-digit character:
+__Example__: use regular expression `\D` to match all instances of a non-digit character:
 
 ```{r}
 # The escaped string "\\D" results in the regex \D
@@ -547,7 +642,7 @@ str_view_all(string = p12_df$text[119], pattern = "\\D")
 ```
 
 <br>
-This matches all instances of a digit followed by a non-digit character:
+__Example__: match to all instances of a digit followed by a non-digit character:
 
 ```{r}
 str_view_all(string = p12_df$text[119], pattern = "\\d\\D")
@@ -667,7 +762,8 @@ We can use `+` to match 1 or more of a pattern:
 # Matches all instances of `s` followed by 1 or more non-word character
 str_view_all(string = p12_df$text[119], pattern = "s\\W+")
 
-# Matches all hashtags
+# Matche all twitter hashtags
+  # hashtag defined as hashtag character # followed by 1 or more word characters
 str_view_all(string = p12_df$text[119], pattern = "#\\w+")
 ```
 
@@ -745,6 +841,11 @@ str_view_all(string = p12_df$text[119], pattern = "\\d$")
 <details><summary>**Example**: Using `\b` & `\B` to match word boundary & non-word boundary</summary> 
 
 We can use `\b` to help detect word boundary: 
+```{r}
+# Match to all word bounraries
+str_view_all(string = p12_df$text[119], pattern = "\\b")
+```
+
 
 ```{r}
 # Matches words with 3 or more letters using \b
@@ -756,6 +857,11 @@ Notice how this is much flexible than trying to use whitespace (`\s`) to determi
 ```{r}
 # Matches words with 3 or more letters using \s
 str_view_all(string = p12_df$text[119], pattern = "\\s\\w{3,}\\s")
+```
+
+Regular expression `\B` matches to "non-word boundary"; what does that mean?
+```{r}
+str_view_all(string = p12_df$text[119], pattern = "\\B")
 ```
 
 
@@ -799,10 +905,12 @@ str_view_all(string = p12_df$text[119], pattern = ".")
 ```
 
 <br>
-We can confirm there is a newline in the tweet above by using `writeLines()`:
+We can confirm there is a newline in the tweet above by using `writeLines()` or `print()`:
 
 ```{r}
 writeLines(p12_df$text[119])
+
+print(p12_df$text[119])
 ```
 
 </details>
@@ -851,6 +959,9 @@ str_view_all(string = p12_df$text[119], pattern = "[1-4#]")
 We can use `[^...]` to indicate we do not want to match the provided set or range of characters:
 
 ```{r}
+# Matches any vowels
+str_view_all(string = p12_df$text[119], pattern = "[aeiouAEIOU]")
+
 # Matches anything except vowels
 str_view_all(string = p12_df$text[119], pattern = "[^aeiouAEIOU]")
 
