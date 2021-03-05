@@ -57,14 +57,14 @@ head(p12_df)
 
 ## Cheat sheets
 
-Here are two useful "cheat sheets" about working with strings and regular expressions
+Here are two useful **cheat sheets** about working with strings and regular expressions
 
 - [stringr package and regular expressions](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf)
-  - two pages, assumes _R_ programming language; first page = functions from stringr package; second page = regular expressions
+  - Two pages, assumes _R_ programming language; first page = functions from stringr package; second page = regular expressions
 - [regular expressions cheat sheet](https://cheatography.com/davechild/cheat-sheets/regular-expressions/pdf/)
-  - one page; just focuses on regular expressions, which are used across programming languages
+  - One page; just focuses on regular expressions, which are used across programming languages
 
-__Print these cheat sheets. Make one of them  your "go to" cheat sheet__
+__Print these cheat sheets. Make one of them  your "go to" cheat sheet.__
 
 
 ## Lecture overview 
@@ -74,7 +74,7 @@ __Print these cheat sheets. Make one of them  your "go to" cheat sheet__
 
 *Credit: Regex Humor ([Rex Egg](https://www.rexegg.com/regex-humor.html))*
 
-In [rclass1](https://anyone-can-cook.github.io/rclass1/), we introduced strings and some basic functions for working with springs
+In [rclass1](https://anyone-can-cook.github.io/rclass1/), we introduced strings and some basic functions for working with strings.
 
 - For a review of string basics, see the [first strings lecture](https://anyone-can-cook.github.io/rclass1/lectures/strings_dates_time/strings_dates_time.html).
 
@@ -196,19 +196,21 @@ We can use `str_view_all()` to show all matches, not just the first match:
 str_view_all(string = p12_df$text[119], pattern = 'Co')
 ```
 
-We can also apply `str_view()` and `str_view_all()` to vectors with more than one element
+We can also apply `str_view()` and `str_view_all()` to vectors with more than one element:
+
 ```{r}
 p12_df$text[119] %>% length() # one element
 p12_df$text %>% length() # many elements
 ```
 
+When applying `str_view()` to a character vector with more then one element, `str_view()` shows us the first pattern match for each element (output omitted):
 
-when applying `str_view()` to a character vector with more then one element, `str_view()` shows us the first pattern match for each element (output omitted)
 ```{r, eval = FALSE}
 str_view(string = p12_df$text, pattern = 'Co')
 ```
 
-when applying `str_view_all()` to a character vector with more then one element, `str_view_a;;()` shows all pattern matches for each element (output omitted)
+When applying `str_view_all()` to a character vector with more then one element, `str_view_all()` shows all pattern matches for each element (output omitted):
+
 ```{r, eval = FALSE}
 str_view_all(string = p12_df$text, pattern = 'Co')
 ```
@@ -216,7 +218,7 @@ str_view_all(string = p12_df$text, pattern = 'Co')
 
 ## Special characters and (`\`) escape
 
-The concepts "special characters" and "escape sequence" are essential for a deeper understanding of strings and for working with regular expressions. But these concepts are tricky to get your head around, in part because you cannot understand one concept without understanding the other.
+The concepts **special characters** and **escape sequence** are essential for a deeper understanding of strings and for working with regular expressions. But these concepts are tricky to get your head around, in part because you cannot understand one concept without understanding the other.
 
 __Special characters__
 
@@ -224,11 +226,11 @@ The literal definition of special characters are characters that are not alphanu
 
 But usually, when the programming world talks about special characters in relation to working with strings, special characters are defined as:
 
-- a character or sequence of characters that will not be interpreted literally because they have a special meaning (e.g., they represent some symbol or some function)
+- A character or sequence of characters that will not be interpreted literally because they have a special meaning (e.g., they represent some symbol or some function)
 
 For example, here are two common special characters
 
-- `\n` represents a new line (sometimes called "carriage return")
+- `\n` represents a new line
 - `\t` represents a tab
 
 These characters followed by a backslash `\` take on a new meaning. The `n` by itself is just an `n`. When you add a backslash to the `\n` you are "escaping it" and making it a special character where `\n` now represents a newline.
@@ -253,7 +255,7 @@ Definition of escape sequence
 
 <br>
 
-This [Wikipedia quote] about the _C_ programing language is also true for _R_ and most other programming languages:
+This [Wikipedia quote] about the _C_ programming language is also true for _R_ and most other programming languages:
 
 > In C, all escape sequences consist of two or more characters, the first of which is the backslash, `\` (called the "Escape character"); the remaining characters determine the interpretation of the escape sequence. For example, `\n` is an escape sequence that denotes a newline character
 
@@ -261,50 +263,59 @@ This [Wikipedia quote] about the _C_ programing language is also true for _R_ an
 Usually, we use the backslash (`\`) escape character for one of two broad purposes:
 
 1. To enable our string to include a literal character that would otherwise be interpreted by the programming language as a special character (e.g., to include a quote character in our string)
-1. To include a special character in our string (e.g., using `\n` in our string to insert a newline/carriage return in our string)
+1. To include a special character in our string (e.g., using `\n` in our string to insert a newline character in our string)
 
 <br>
 
-__Using escape backslash escape cahracter `\` to enable our string to include a literal character that would otherwise be interpreted by the programming language as a special character__
+__Using backslash escape character (`\`) to enable our string to include a literal character that would otherwise be interpreted by the programming language as a special character__
 
 
-Example: what if we wanted to include quote characters (e.g., single quote `'`, or double quote `"`) in our string
+**Example**: What if we wanted to include quote characters (e.g., single quote `'`, or double quote `"`) in our string
 
-If we enclose our string using single quotation marks `'`, we cannot insert a single quotation mark within the string (code not run)
+- If we enclose our string using single quotation marks `'`, we cannot insert a single quotation mark within the string (code not run):
+
 ```{r, eval = FALSE}
 x <- 'I am trying to include a single quote ' within my string'
 x
 ```
-Similarly, if we enclose our string using double quotation marks `"`, we cannot insert a double quotation mark within the string (code not run)
+
+- Similarly, if we enclose our string using double quotation marks `"`, we cannot insert a double quotation mark within the string (code not run):
+
 ```{r, eval = FALSE}
 x <- "I am trying to include a double quote " within my string"
 x
 ```
 
-Solution, without using backslash (`\`) escape character
+**Solution**, without using backslash (`\`) escape character
 
-- If we want to include a single quote `'` in our string then enclose the entire string using double quotes `"`
+- If we want to include a single quote `'` in our string, then enclose the entire string using double quotes `"`:
+
 ```{r}
 x <- "I am trying to include a single quote ' within my string"
 writeLines(x)
 ```
-- If we want to include a double quote `"` in our string then enclose the entire string using double quotes `'`
+
+- If we want to include a double quote `"` in our string, then enclose the entire string using single quotes `'`:
+
 ```{r}
 x <- 'I am trying to include a double quote " within my string'
 writeLines(x)
 ```
-Solution, using backslash (`\`) escape character
 
-- To include a literal single quote `'` within our string we can use `\'` to "escape" a single quotation mark
+**Solution**, using backslash (`\`) escape character
+
+- To include a literal single quote `'` within our string we can use `\'` to "escape" a single quotation mark:
 
 ```{r}
-my_string <- 'Escaping single quote \' within single quotes'
+my_string <- 'Escaping a single quote \' within single quotes'
 writeLines(my_string)
 ```
+
 ```{r}
 my_string <- "Escaping a double quote \" within double quotes"
 writeLines(my_string)
 ```
+
 <br>
 Similarly, to include a literal backslash `\` in the string, we need to escape the backslash with another backslash:
 
@@ -314,9 +325,11 @@ my_string
 writeLines(my_string)
 ```
 
-__Using escape backslash escape cahracter `\` to include a special character in our string__
+<br>
+__Using backslash escape character (`\`) to include a special character in our string__
 
-We create different versions of an object named `my_string` that contains special character `\t` for tab and special character `\n` for new line
+We create different versions of an object named `my_string` that contains special character `\t` for tab and special character `\n` for newline:
+
 ```{r}
 my_string <- "A\tB" # contains \t tab
 #my_string
@@ -325,7 +338,7 @@ writeLines(my_string)
 my_string <- "B\nC" # contains \n newline
 writeLines(my_string)
 
-my_string <- "A\tB\nC\tD" # contains \tab and \n newline
+my_string <- "A\tB\nC\tD" # contains \t tab and \n newline
 writeLines(my_string)
 ```
 
@@ -333,10 +346,10 @@ writeLines(my_string)
 <br>
 **Summary**: We can use the backslash (`\`) escape character for:
 
-- to refer to special characters, e.g.:
+- Referring to special characters, e.g.:
   - `\n`: newline
   - `\t`: tab
-- to include a literal character in our string that would otherwise be interpreted as a special character
+- Including a literal character in our string that would otherwise be interpreted as a special character:
   - `\'`: include literal single quote
   - `\"`: include literal double quote
   - `\\`: include literal backslash
@@ -345,50 +358,34 @@ writeLines(my_string)
 
 ## Functions for printing strings
 
-Let's examine the object `my_string` (created below) which contains special characters `\t` for tab and `\n` for newline
+Let's examine the object `my_string` (created below) which contains special characters `\t` for tab and `\n` for newline:
+
 ```{r}
-my_string <- "A\tB\nC\tD" # contains \tab and \n newline
+my_string <- "A\tB\nC\tD" # contains \t tab and \n newline
 writeLines(my_string)
 ```
 
-When we print `my_string()` using the `print()` function, the output looks different than printing it using the `writeLines()` function
+<br>
+When we print `my_string` using the `print()` function, the output looks different than printing it using `writeLines()`.
 
-- print using the `print()` function
-```{r}
-print(my_string) 
-my_string # same as printing my_string object using print()
-```
+- **Print using the `print()` function**
+    - This shows how the string text is stored by _R_ ("underlying string")
+    - We can see the enclosing double quotes (`"`) that _R_ uses to store the string
+    - Special characters like `\n` are printed literally (i.e., prints a literal backslash `\` followed by the letter `n`) rather than being interpreted as a newline character and displaying a line break
 
-- print using the `writeLines()` function
-```{r}
-writeLines(my_string)
-```
-[CRYSTAL - CAN YOU REFINE/MODIFY THIS TEXT AS YOU SEE FIT]
-Let's differentiate (A) string text as it is stored within _R_ from (B) string text as it would be read once special characters (e.g., `\n`) are compiled
+    ```{r}
+    print(my_string) 
+    my_string # same as printing my_string object using print()
+    ```
 
-- string text as it is stored by _R_; sometimes I call this the "underlying string" (my term)
-```{r}
-print(my_string) 
-  #my_string # same as printing my_string object using print()
-```
-- string text as it is meant to be read by end user
-```{r}
-writeLines(my_string)
-```
+- **Print using the `writeLines()` function**
+    - This shows the string text as it is meant to be read by the end user
+    - This does not show the enclosing double quotes (`"`) around the string
+    - Special characters like `\n` are interpreted so that the end user sees a new line inserted rather than seeing a literal `\n`
 
-DEFINE WHAT WE MEAN BY "INCLUDE A LITERAL X" VS. WHAT 
-
-We can use `writeLines()` to see the escaped string:
-
-```{r}
-writeLines(my_string)
-```
-
-
-`print(my_string)` prints the object `my_string` as it is stored within _R_; that is, it prints enclosing quotes and literally prints special characters like `\n` rather than just inserting a new line
-
-by contrast, `writeLines(my_string)` prints the object as an end-user would read it, excluding enclosing quotes and compiling special characters like `\n` so the end-user sees a new line inserted rather than seeing a literal `\n`
-
+    ```{r}
+    writeLines(my_string)
+    ```
 
 <br>
 __The `writeLines()` function__:
@@ -405,22 +402,6 @@ writeLines(text, con = stdout(), sep = "\n", useBytes = FALSE)
   - `writeLines()` will also output the string without showing the outer pair of double quotes that R uses to store it, so we only see the content of the string
 - Arguments:
   - `text`: Character vector containing the text you want to display
-
-<br>
-The **backslash** (`\`) can also be used to form **special characters**, such as `\n` (newline character) and `\t` (tab character).
-
-These characters following a backslash `\` take on new meaning. For example, the `n` by itself is just a literal `n`. When you add a backslash to `n`, you are making it a special character where `\n` now represents a newline.
-
-```{r}
-my_string <- "A\tB\nC\tD"
-my_string
-```
-
-Use `writeLines()` to see the escaped string:
-
-```{r}
-writeLines(my_string)
-```
 
 
 ## Backslashes in regular expressions
@@ -469,10 +450,34 @@ str_view_all(string = my_string, pattern = "\\\\")
 
 
 
-# Regular expression characters {.tabset .tabset-fade .tabset-pills}
+# Regular expression basics {.tabset .tabset-fade .tabset-pills}
 
-CRYSTAL - MAYBE HERE PROVIDE AN EXAMPLE OR IMAGE OF REGULAR EXPRESSIONS IN ACTION; GIVES A SENSE OF HOW THEY ARE USED BEFORE WE GET INTO MECHANICS OF THEM
+Example of using **regular expression** in action:
 
+- How can we **match all occurrences of times** in the following string? (i.e., `10 AM` & `1 PM`)
+  - `"Class starts at 10 AM and ends at 1 PM."`
+- The **regular expression** `\d+ [AP]M` can!
+  - `\d+` matches 1 or more digits in a row
+    - `\d` means match all numeric digits (i.e., `0`-`9`)
+    - `+` means match 1 or more of
+  - ` ` matches a literal space
+  - `[AP]M` matches either `AM` or `PM`
+    - `[AP]` means match either an `A` or `P` at that position
+    - `M` means match a literal `M`
+
+```{r}
+my_string = "Class starts at 10 AM and ends at 1 PM."
+my_regex = "\\d+ [AP]M"
+
+# The escaped string "\\d" results in the regex \d
+writeLines(my_regex)
+
+# View matches for our regular expression
+str_view_all(string = my_string, pattern = my_regex)
+```
+
+
+<br>
 Some common **regular expression patterns** include (not inclusive):  
 
 * Character classes
