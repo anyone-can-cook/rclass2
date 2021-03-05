@@ -18,6 +18,10 @@ output:
 
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
+```
+
 # Introduction
 
 ## Libraries we will use
@@ -51,14 +55,46 @@ p12_df <- p12_full_df %>% select("user_id", "created_at", "screen_name", "text",
 head(p12_df)
 ```
 
+## Cheat sheets
 
-# Lecture overview 
+Here are two useful "cheat sheets" about working with strings and regular expressions
 
-For a review of string basics, see the [first strings lecture](https://anyone-can-cook.github.io/rclass1/lectures/strings_dates_time/strings_dates_time.html).
+- [stringr package and regular expressions](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf)
+  - two pages, assumes _R_ programming language; first page = functions from stringr package; second page = regular expressions
+- [regular expressions cheat sheet](https://cheatography.com/davechild/cheat-sheets/regular-expressions/pdf/)
+  - one page; just focuses on regular expressions, which are used across programming languages
+
+__Print these cheat sheets. Make one of them  your "go to" cheat sheet__
+
+
+## Lecture overview 
+
 
 ![](http://a.yu8.us/xkcd-208-regular_expressions.png)
 
 *Credit: Regex Humor ([Rex Egg](https://www.rexegg.com/regex-humor.html))*
+
+In [rclass1](https://anyone-can-cook.github.io/rclass1/), we introduced strings and some basic functions for working with springs
+
+- For a review of string basics, see the [first strings lecture](https://anyone-can-cook.github.io/rclass1/lectures/strings_dates_time/strings_dates_time.html).
+
+In [rclass2](https://anyone-can-cook.github.io/rclass2/), this "Strings and Regular Expressions" lecture provides deeper knowledge about strings, string functions, and -- most importantly -- regular expressions. 
+
+- This lecture focuses mostly on regular expressions because regular expressions are the most useful tool for working with strings and also the most difficult to learn.
+
+<br>
+
+What are **regular expressions**? ([Geeks for Geeks](https://www.geeksforgeeks.org/write-regular-expressions/))
+
+- **Regular expressions** are an efficient way to match different patterns in strings, similar to the <kbd>ctrl</kbd>+<kbd>f</kbd> or <kbd>cmd</kbd>+<kbd>f</kbd> function you use to find text in a pdf or word document
+- For example, regex can be used to match all cases of the exact text `"out-of-state"`. But what makes it so powerful is that we could also have it match different variations or patterns, like `"Out-of-state"`, `"out of state"`, etc.
+
+    
+    ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/command_f.png){width=60%}
+
+*Credit: Crystal Han, Ozan Jaquette, & Karina Salazar ([Recruiting the Out-Of-State University](https://emraresearch.org/sites/default/files/2019-03/joyce_report.pdf))*
+
+<br>
 
 
 In her popular [STAT545 class](https://stat545.com/character-vectors.html#regular-expressions-resources) Jenny Bryan, professor of statistics at University of British Columbia, describes regular expressions (regex) as:
@@ -68,8 +104,9 @@ In her popular [STAT545 class](https://stat545.com/character-vectors.html#regula
 Yes, learning regular expressions is painful. So why are we making you do this? Because regular expressions are a  fundamental building block of data science.
 
 <br>
+<br>
 
-**An annoying thing people say is that data science is about trying to find the "*signal* in the *noise*"**
+**A thing people say is that data science is about trying to find the "*signal* in the *noise*"**
 
 - *Noisy data* "is data with a large amount of additional meaningless information in it called noise" ([Wikipedia](https://en.wikipedia.org/wiki/Noisy_data))
 - Prior to data science revolution, quant people thought of "data" as something in columns and rows
@@ -79,7 +116,7 @@ Yes, learning regular expressions is painful. So why are we making you do this? 
 <br>
 
 
-**Another annoying thing people say is that "data science is 80% data cleaning and 20% analysis."** 
+**Another thing people say is that "data science is 80% data cleaning and 20% analysis."** 
 
 - Excerpts from a 2014 New York Times article, ["For Big-Data Scientists, 'Janitor Work' Is Key Hurdle to Insights"](https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html):
 
@@ -102,21 +139,14 @@ Yes, learning regular expressions is painful. So why are we making you do this? 
 
 <br>
 
-# What are regular expressions? 
+# Prerequisites to regex
 
-What are **regular expressions**? ([Geeks for Geeks](https://www.geeksforgeeks.org/write-regular-expressions/))
+This section introduces some prerequisite functions and concepts that will help us learn regular expressions.
 
-- **Regular expressions** are an efficient way to match different patterns in strings, similar to the <kbd>ctrl</kbd>+<kbd>f</kbd> or <kbd>cmd</kbd>+<kbd>f</kbd> function you use to find text in a pdf or word document
-- For example, regex can be used to match all cases of the exact text `"out-of-state"`. But what makes it so powerful is that we could also have it match different variations or patterns, like `"Out-of-state"`, `"out of state"`, etc.
-- In the next subsection, we'll introduce the `str_view()` & `str_view_all()` functions from the `stringr` package (part of `tidyverse`) to help us visualize what is being matched with our regular expressions
-    
-    ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/command_f.png){width=60%}
 
-*Credit: Crystal Han, Ozan Jaquette, & Karina Salazar ([Recruiting the Out-Of-State University](https://emraresearch.org/sites/default/files/2019-03/joyce_report.pdf))*
+## `str_view()` and `str_view_all()`
 
-<br>
-
-## `str_view()` & `str_view_all()`
+We introduce the `str_view()` & `str_view_all()` functions from the `stringr` package (part of `tidyverse`) to help us visualize what is being matched with our regular expressions
 
 <style>.str_view { width: inherit !important; }</style>
 
@@ -144,10 +174,19 @@ str_view_all(string, pattern, match = NA)
 <br>
 **Example**: Using `str_view()` & `str_view_all()` to match literal text
 
+We'll match text from this string vector:
+```{r}
+#p12_df$text[119]
+writeLines(p12_df$text[119])
+
+p12_df$text[119] %>% length() # our string has length==1 (i.e., it is a one-element character vector)
+```
+
+
 Let's use these functions to match the exact string `"Co"` from one of the tweets in our `p12_df` dataframe. `str_view()` will show us the first pattern match. Notice that the pattern is case-sensitive, as the `"co"` in `"colleagues"` was not matched:
 
 ```{r}
-str_view(string = p12_df$text[119], pattern = 'Co') 
+str_view(string = p12_df$text[119], pattern = 'Co')
 ```
 
 <br>
@@ -157,40 +196,199 @@ We can use `str_view_all()` to show all matches, not just the first match:
 str_view_all(string = p12_df$text[119], pattern = 'Co')
 ```
 
-## Backslash (`\`) escape character
+We can also apply `str_view()` and `str_view_all()` to vectors with more than one element
+```{r}
+p12_df$text[119] %>% length() # one element
+p12_df$text %>% length() # many elements
+```
 
-> "A sequence in a string that starts with a `\` is called an **escape sequence** and allows us to include special characters in our strings."
 
-*Credit: [Escape sequences](https://campus.datacamp.com/courses/string-manipulation-with-stringr-in-r/string-basics?ex=4) from DataCamp*
+when applying `str_view()` to a character vector with more then one element, `str_view()` shows us the first pattern match for each element (output omitted)
+```{r, eval = FALSE}
+str_view(string = p12_df$text, pattern = 'Co')
+```
+
+when applying `str_view_all()` to a character vector with more then one element, `str_view_a;;()` shows all pattern matches for each element (output omitted)
+```{r, eval = FALSE}
+str_view_all(string = p12_df$text, pattern = 'Co')
+```
+
+
+## Special characters and (`\`) escape
+
+The concepts "special characters" and "escape sequence" are essential for a deeper understanding of strings and for working with regular expressions. But these concepts are tricky to get your head around, in part because you cannot understand one concept without understanding the other.
+
+__Special characters__
+
+The literal definition of special characters are characters that are not alphanumeric characters (e.g., `\`,`?`, `(`)
+
+But usually, when the programming world talks about special characters in relation to working with strings, special characters are defined as:
+
+- a character or sequence of characters that will not be interpreted literally because they have a special meaning (e.g., they represent some symbol or some function)
+
+For example, here are two common special characters
+
+- `\n` represents a new line (sometimes called "carriage return")
+- `\t` represents a tab
+
+These characters followed by a backslash `\` take on a new meaning. The `n` by itself is just an `n`. When you add a backslash to the `\n` you are "escaping it" and making it a special character where `\n` now represents a newline.
+
+
+```{r}
+x <- "Hi!\nMy name is\nWhat?\nMy name is\nWho?\nMy name is\nChika-chika\nSlim Shady"
+#print(x) # print 
+writeLines(x)
+
+#Hi!\nMy name is\nWhat?\nMy name is\nWho?\nMy name is\nChika-chika\nSlim Shady
+```
+
+__Escape sequences__
+
+Definition of escape sequence
+
+- From [DataCamp](https://campus.datacamp.com/courses/string-manipulation-with-stringr-in-r/string-basics?ex=4)
+  - "A sequence in a string that starts with a `\` is called an **escape sequence** and allows us to include special characters in our strings."
+- From [Wikipedia](https://en.wikipedia.org/wiki/Escape_sequences_in_C)
+  - "An escape sequence is a sequence of characters that does not represent itself when used inside a character or string literal, but is translated into another character or a sequence of characters that may be difficult or impossible to represent directly"
 
 <br>
-The **backslash** (`\`) is an escape character, where it makes the character(s) that follow it have special meaning. For example, recall how we can use `\` to escape quotes in a string:
+
+This [Wikipedia quote] about the _C_ programing language is also true for _R_ and most other programming languages:
+
+> In C, all escape sequences consist of two or more characters, the first of which is the backslash, `\` (called the "Escape character"); the remaining characters determine the interpretation of the escape sequence. For example, `\n` is an escape sequence that denotes a newline character
+
+
+Usually, we use the backslash (`\`) escape character for one of two broad purposes:
+
+1. To enable our string to include a literal character that would otherwise be interpreted by the programming language as a special character (e.g., to include a quote character in our string)
+1. To include a special character in our string (e.g., using `\n` in our string to insert a newline/carriage return in our string)
+
+<br>
+
+__Using escape backslash escape cahracter `\` to enable our string to include a literal character that would otherwise be interpreted by the programming language as a special character__
+
+
+Example: what if we wanted to include quote characters (e.g., single quote `'`, or double quote `"`) in our string
+
+If we enclose our string using single quotation marks `'`, we cannot insert a single quotation mark within the string (code not run)
+```{r, eval = FALSE}
+x <- 'I am trying to include a single quote ' within my string'
+x
+```
+Similarly, if we enclose our string using double quotation marks `"`, we cannot insert a double quotation mark within the string (code not run)
+```{r, eval = FALSE}
+x <- "I am trying to include a double quote " within my string"
+x
+```
+
+Solution, without using backslash (`\`) escape character
+
+- If we want to include a single quote `'` in our string then enclose the entire string using double quotes `"`
+```{r}
+x <- "I am trying to include a single quote ' within my string"
+writeLines(x)
+```
+- If we want to include a double quote `"` in our string then enclose the entire string using double quotes `'`
+```{r}
+x <- 'I am trying to include a double quote " within my string'
+writeLines(x)
+```
+Solution, using backslash (`\`) escape character
+
+- To include a literal single quote `'` within our string we can use `\'` to "escape" a single quotation mark
 
 ```{r}
 my_string <- 'Escaping single quote \' within single quotes'
-my_string
+writeLines(my_string)
 ```
-
-The alternative would be to create the string using double quotes:
-
 ```{r}
-my_string <- "Single quote ' within double quotes does not need escaping"
-my_string
+my_string <- "Escaping a double quote \" within double quotes"
+writeLines(my_string)
 ```
-
 <br>
-Similarly, to include a literal backslash in the string, we need to escape the backslash with another backslash:
+Similarly, to include a literal backslash `\` in the string, we need to escape the backslash with another backslash:
 
 ```{r}
 my_string <- "The executable is located in C:\\Program Files\\Git\\bin"
 my_string
+writeLines(my_string)
 ```
+
+__Using escape backslash escape cahracter `\` to include a special character in our string__
+
+We create different versions of an object named `my_string` that contains special character `\t` for tab and special character `\n` for new line
+```{r}
+my_string <- "A\tB" # contains \t tab
+#my_string
+writeLines(my_string)
+
+my_string <- "B\nC" # contains \n newline
+writeLines(my_string)
+
+my_string <- "A\tB\nC\tD" # contains \tab and \n newline
+writeLines(my_string)
+```
+
+
+<br>
+**Summary**: We can use the backslash (`\`) escape character for:
+
+- to refer to special characters, e.g.:
+  - `\n`: newline
+  - `\t`: tab
+- to include a literal character in our string that would otherwise be interpreted as a special character
+  - `\'`: include literal single quote
+  - `\"`: include literal double quote
+  - `\\`: include literal backslash
+
+
+
+## Functions for printing strings
+
+Let's examine the object `my_string` (created below) which contains special characters `\t` for tab and `\n` for newline
+```{r}
+my_string <- "A\tB\nC\tD" # contains \tab and \n newline
+writeLines(my_string)
+```
+
+When we print `my_string()` using the `print()` function, the output looks different than printing it using the `writeLines()` function
+
+- print using the `print()` function
+```{r}
+print(my_string) 
+my_string # same as printing my_string object using print()
+```
+
+- print using the `writeLines()` function
+```{r}
+writeLines(my_string)
+```
+[CRYSTAL - CAN YOU REFINE/MODIFY THIS TEXT AS YOU SEE FIT]
+Let's differentiate (A) string text as it is stored within _R_ from (B) string text as it would be read once special characters (e.g., `\n`) are compiled
+
+- string text as it is stored by _R_; sometimes I call this the "underlying string" (my term)
+```{r}
+print(my_string) 
+  #my_string # same as printing my_string object using print()
+```
+- string text as it is meant to be read by end user
+```{r}
+writeLines(my_string)
+```
+
+DEFINE WHAT WE MEAN BY "INCLUDE A LITERAL X" VS. WHAT 
 
 We can use `writeLines()` to see the escaped string:
 
 ```{r}
 writeLines(my_string)
 ```
+
+
+`print(my_string)` prints the object `my_string` as it is stored within _R_; that is, it prints enclosing quotes and literally prints special characters like `\n` rather than just inserting a new line
+
+by contrast, `writeLines(my_string)` prints the object as an end-user would read it, excluding enclosing quotes and compiling special characters like `\n` so the end-user sees a new line inserted rather than seeing a literal `\n`
+
 
 <br>
 __The `writeLines()` function__:
@@ -224,15 +422,6 @@ Use `writeLines()` to see the escaped string:
 writeLines(my_string)
 ```
 
-<br>
-**Summary**: We can use the backslash (`\`) escape character for:
-
-- `\`: escaping purposes
-  - `\'`: literal single quote
-  - `\"`: literal double quote
-  - `\\`: literal backslash
-- `\n`: newline
-- `\t`: tab
 
 ## Backslashes in regular expressions
 
@@ -281,6 +470,8 @@ str_view_all(string = my_string, pattern = "\\\\")
 
 
 # Regular expression characters {.tabset .tabset-fade .tabset-pills}
+
+CRYSTAL - MAYBE HERE PROVIDE AN EXAMPLE OR IMAGE OF REGULAR EXPRESSIONS IN ACTION; GIVES A SENSE OF HOW THEY ARE USED BEFORE WE GET INTO MECHANICS OF THEM
 
 Some common **regular expression patterns** include (not inclusive):  
 
