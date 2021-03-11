@@ -1390,20 +1390,20 @@ str_replace_all(string = "Thanks for the Memories", pattern = "[aeiou]", replace
 <br>
 <details><summary>**Example**: Using backreferences with `str_replace()` & `str_replace_all()`</summary>
 
-**[`str_replace()`]** Reorders the first date that is matched:
+**[`str_replace()`]** Change first word that is matched to pig latin:
 
 ```{r}
-# Use \\1, \\2, and \\3 to refer to the capturing groups (ie. month, day, year)
-str_replace(string = "12/31/19 to 01/01/20", pattern = "(\\d+)/(\\d+)/(\\d+)",
-            replacement = "20\\3-\\1-\\2")
+# Use \\1 and \\2 to refer to the capturing groups
+str_replace(string = "pig latin", pattern = "(\\w{1})(\\w+)",
+            replacement = "\\2\\1ay")
 ```
 
-**[`str_replace_all()`]** Reorders all dates that are matched:
+**[`str_replace_all()`]** Change all words to pig latin:
 
 ```{r}
-# Use \\1, \\2, and \\3 to refer to the capturing groups (ie. month, day, year)
-str_replace_all(string = "12/31/19 to 01/01/20", pattern = "(\\d+)/(\\d+)/(\\d+)",
-                replacement = "20\\3-\\1-\\2")
+# Use \\1 and \\2 to refer to the capturing groups
+str_replace_all(string = "pig latin", pattern = "(\\w{1})(\\w+)",
+                replacement = "\\2\\1ay")
 ```
 
 </details>
