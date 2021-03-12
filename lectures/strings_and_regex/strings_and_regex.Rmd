@@ -1303,12 +1303,12 @@ How `str_extract()` differs from `str_subset()`
 - `str_extract()` returns character vector that contains the part of the element that matches; and returns NA for elements w/ no match
 ```{r}
 # str_subset() returns the entire element of the elements that match the pattern
-str_subset(string = c("One", "25th", "3000"), pattern = "\\d")
-str_subset(string = c("One", "25th", "3000"), pattern = "\\d") %>% length()
+str_subset(string = c("One", "25th", "3000"), pattern = "\\d+")
+str_subset(string = c("One", "25th", "3000"), pattern = "\\d+") %>% length()
 
 # str_extract() returns just the part of the element that matches; and returns NA for elements w/ no match
-str_extract(string = c("One", "25th", "3000"), pattern = "\\d")
-str_extract(string = c("One", "25th", "3000"), pattern = "\\d") %>% length()
+str_extract(string = c("One", "25th", "3000"), pattern = "\\d+")
+str_extract(string = c("One", "25th", "3000"), pattern = "\\d+") %>% length()
 ```
 
 
@@ -1549,6 +1549,10 @@ str_replace_all(string = "Thanks for the Memories", pattern = "[aeiou]", replace
 # Use \\1 and \\2 to refer to the capturing groups
 str_replace(string = "pig latin", pattern = "(\\w{1})(\\w+)",
             replacement = "\\2\\1ay")
+
+# this works too
+str_replace(string = "pig latin", pattern = "(\\w)(\\w+)",
+            replacement = "\\2\\1ay")
 ```
 
 **[`str_replace_all()`]** Change all words to pig latin:
@@ -1598,7 +1602,7 @@ str_split(string, pattern, n = Inf, simplify = FALSE)
 ```
 
 - Function: Splits a string by specified pattern
-  - Returns character vector containing the split substrings
+  - [by default] returns a list that contains character vectors containing the split substrings
 - Arguments:
   - `string`: Character vector (or vector coercible to character) to search
   - `pattern`: Pattern to look for and split by
@@ -1727,6 +1731,10 @@ str_locate(string = c("555.123.4567", "(555) 135-7900 and (555) 246-8000"),
 ```{r}
 # Locate positions for all stretches of numbers
 str_locate_all(string = c("555.123.4567", "(555) 135-7900 and (555) 246-8000"),
+               pattern = "\\d+")
+
+# basically, str_locate_all gives the positions associated wtih elements 
+str_extract_all(string = c("555.123.4567", "(555) 135-7900 and (555) 246-8000"),
                pattern = "\\d+")
 ```
 
