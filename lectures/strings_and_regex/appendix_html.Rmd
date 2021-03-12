@@ -1,0 +1,703 @@
+---
+title: "Strings and Regular Expressions"
+author: 
+date: 
+urlcolor: blue
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true # toc_float option to float the table of contents to the left of the main document content. floating table of contents will always be visible even when the document is scrolled
+      #collapsed: false # collapsed (defaults to TRUE) controls whether the TOC appears with only the top-level (e.g., H2) headers. If collapsed initially, the TOC is automatically expanded inline when necessary
+      #smooth_scroll: true # smooth_scroll (defaults to TRUE) controls whether page scrolls are animated when TOC items are navigated to via mouse clicks
+    number_sections: true
+    fig_caption: true # ? this option doesn't seem to be working for figure inserted below outside of r code chunk    
+    highlight: tango # Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock" (specify null to prevent syntax    
+    theme: default # theme specifies the Bootstrap theme to use for the page. Valid themes include default, cerulean, journal, flatly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
+    df_print: tibble #options: default, tibble, paged
+
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
+```
+
+
+# Appendix
+
+
+## HTML
+
+__Markup Language__
+
+> "A markup language is a computer language that uses tags to define elements within a document. It is human-readable, meaning markup files contain standard words, rather than typical programming syntax." 
+
+*Credit: [Markup Language](https://techterms.com/definition/markup_language) from TechTerms*
+
+<br>
+__Hypertext Markup Language (HTML)__
+
+- HTML is a markup language for the creation of websites
+    - HTML puts the content on the webpage, but does not "style" the page (e.g., fonts, colors, background)
+    - CSS (**C**ascading **S**tyle **S**heets) adds style to the webpage (e.g., fonts, colors, etc.)
+    - Javascript adds functionality to the webpage
+
+### HTML Basics  
+
+__Intro to HTML (and CSS)__
+
+- Watch this __excellent__ 12-minute introductory HTML tutorial by LearnCode.academy
+    - Link: [HTML Tutorial for beginners](https://www.youtube.com/watch?v=RjHflb-QgVc)
+- Watch this 7-minute introductory CSS tutorial by LearnCode.academy
+    - Link: [HTML CSS Tutorial for Beginners](https://youtu.be/J35jug1uHzE)
+
+<br>
+__A Simple HTML Document__ (From [w3schools](https://www.w3schools.com/html/html_intro.asp))
+
+- HTML consists of a series of **elements**
+  - Elements are defined by a start tag, some content, and an end tag:
+    - `<tagname> Content </tagname>`
+  - Elements can be nested within one another
+- Components of a basic HTML document:
+  - Begin with `<!DOCTYPE html>` to indicate it is an HTML document
+  - The `<html>` element is the root element of an HTML page, where all other elements are nested
+  - The `<head>` element contains meta information about the document (ie. not displayed on webpage)
+    - Including CSS style to apply to html content
+  - The `<body>` element contains the visible page content
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>
+```
+
+<br>
+
+### Tags
+
+What are **HTML tags**?
+
+- HTML tags are element names surrounded by angle brackets
+- Tags usually come in pairs (e.g. `<p>` and `</p>`)
+    - The first tag is the start tag and the second tag is the end tag
+- But some tags are self-closing (e.g., `<img />`)
+    
+*Credit: [HTML introduction](https://www.w3schools.com/html/html_intro.asp) from W3schools*   
+
+<br>
+Some **common HTML tags** (_not inclusive_): 
+
+Tag                Description    
+------------------ ------------------  
+`<h1>` - `<h6>`    Heading     
+`<p>`              Paragraph
+`<a>`              Link
+`<img>`            Image
+`<div>`            Division (can think of it as a container to group other elements)
+`<strong>`         Bold
+`<em>`             Italics
+`<ul>`             Unordered list (consists of `<li>` elements)
+`<ol>`             Ordered list (consists of `<li>` elements)
+&nbsp;&nbsp;`<li>` &nbsp;&nbsp;&nbsp;&nbsp;List item
+`<table>`          Table (consists of `<tr>`, `<td>`, & `<th>` elements)
+&nbsp;&nbsp;`<tr>` &nbsp;&nbsp;&nbsp;&nbsp;Table row
+&nbsp;&nbsp;`<td>` &nbsp;&nbsp;&nbsp;&nbsp;Table data/cell 
+&nbsp;&nbsp;`<th>` &nbsp;&nbsp;&nbsp;&nbsp;Table header 
+
+<br>
+
+
+### Attributes  
+
+What are **attributes**?
+
+- Attributes in HTML elements are optional, but all HTML elements can have attributes
+- Attributes are used to specify additional characteristics of elements
+- Attributes are __always__ specified in the start tag
+- Attributes usually come in name/value pairs like: `name="value"`
+
+*Credit: [HTML attributes](https://www.w3schools.com/html/html_attributes.asp) from W3schools*
+
+<br>
+Some **common attributes** you may encounter:
+
+- The `href` attribute for an `<a>` tag (_specifies url to link to_):
+  ```
+  <a href="https://www.w3schools.com">This is a link</a>
+  ```
+- The `src` attribute for an `<img>` tag (_specifies image to display_):
+  ```
+  <img src="html_cheatsheet.jpg" />
+  ```
+- You can add more than one attribute to an element:
+  ```
+  <img src="html_cheatsheet.jpg" width="200" height="300" />
+  ```
+- The `class` and `id` attributes are also commonly added to elements to be able to identify and select for them
+
+<br>
+
+#### `class`  
+
+- The `class` attribute can specify one or more class names for an HTML element
+- An element can be identified by its class
+- You can select for an element by its class using `.` followed by the class name (more from GeekstoGeeks [here](https://www.geeksforgeeks.org/html-class-attribute/?ref=lbp))
+  - For example, this can be used in CSS to select for and style all elements with a specific class
+
+__HTML__:
+
+```{html, eval=FALSE}
+<div class="countries">
+  <h3>United States</h3>
+  <p class="place">Washington D.C.</p>
+  <img src="https://cdn.aarp.net/content/dam/aarp/travel/destination-guides/2018/03/1140-trv-dst-dc-main.imgcache.revd66f01d4a19adcecdb09fdacd4471fa8.jpg">
+</div>
+    
+<div class="countries">
+  <h3>Mexico</h3>
+  <p class="place">Guadalajara</p>
+  <img src="https://cityofguadalajara.com/wp-content/uploads/2016/11/Centro-Historico-de-Guadalajara-800x288.jpg">
+</div>
+```
+ 
+__CSS__:
+ 
+```{css, eval=FALSE}
+<style>   
+.countries {
+  background-color: #e6e6e6;
+  color: #336699;
+  margin: 10px;
+  padding: 15px;
+}
+
+.place {
+  color: black;
+}
+</style>
+```
+
+__Result__:
+
+<style>
+.countries {
+  background-color: #e6e6e6;
+  color: #336699;
+  margin: 10px;
+  padding: 15px;
+  display: inline-block;
+}
+
+.place {
+  color: black;
+}
+
+.countries img {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+</style>
+
+<div class="countries">
+<h3>United States</h3>
+<p class="place">Washington D.C </p>
+<img src="https://cdn.aarp.net/content/dam/aarp/travel/destination-guides/2018/03/1140-trv-dst-dc-main.imgcache.revd66f01d4a19adcecdb09fdacd4471fa8.jpg">
+</div>
+
+
+<div class="countries">
+<h3>Mexico</h3>
+<p class="place">Guadalajara</p>
+<img src="https://cityofguadalajara.com/wp-content/uploads/2016/11/Centro-Historico-de-Guadalajara-800x288.jpg">
+</div>
+
+*Credit: [HTML Classes](https://www.w3schools.com/html/html_classes.asp) from W3schools*
+
+
+#### `id`
+
+- The `id` attribute is used to specify one unique HTML element within the HTML document
+- An element can be identified by its id
+- You can select for an element by its id using `#` followed by the id name (more from GeekstoGeeks [here](https://www.w3schools.com/html/html_id.asp))
+  - For example, this can be used in CSS to select for and style a specific element with a certain id
+
+__HTML__:
+
+```{html, eval=FALSE}
+<div id="banner">My Banner</div>
+```
+
+__CSS__:
+
+```{css, eval=FALSE}
+<style>
+#banner {
+  background-color: #e6e6e6;
+  font-size: 40px;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+```
+
+__Result__:
+
+<style>
+#banner {
+  background-color: #e6e6e6;
+  font-size: 40px;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+
+<div id="banner">My Banner</div>
+
+*Credit: [HTML Id](https://www.w3schools.com/html/html_id.asp) from W3schools*
+
+
+<br>
+
+### Student Exercise
+
+- Spend 5-10 minutes playing with the simple HTML text below; experiment with whichever additional elements/tags/attributes/etc you want
+- Paste the below code into [TryIt Editor](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default) and click __Run__
+
+```{html, eval=FALSE}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page title (in head tag)</title>
+</head>
+<body>
+
+  <h1>Title of level 1 heading</h1>
+  
+  <p>My first paragraph.</p>
+  <p>My second paragraph.</p>
+  <p>Add some bold text <strong>right here</strong></p>
+  <p>Add some italics text <em>right here</em></p>
+  
+
+  <p>Include a hyperlink tag within a paragraph tag. this book looks interesting : <a href="https://bookdown.org/rdpeng/rprogdatascience/">R Programming for Data Science</a></p>  
+  
+  <p>Include another hyperlink tag within a paragraph tag. chapter on <a href="https://bookdown.org/rdpeng/rprogdatascience/regular-expressions.html">Regular Expressions</a></p>    
+  <p> put a button inside this paragraph <button>I am a button!</button></p>
+  
+  <p>Here are some items in a list, but items not placed within an unordered list </p>
+  
+  <li> text you want in item</li>
+  <li> text you want in another item</li>
+  
+  <p>Here are some items in an unordered list</p>
+  
+  <ul>
+  <li> first item in unordered list </li>
+  <li> second item in unordered list </li>
+  </ul>
+
+</body>
+  
+</html>
+```
+
+<br>
+
+### HTML Resources
+
+Lots of wonderful resources on the web to learn HTML!
+
+- Use this website to create/modify HTML code and view the result after it is compiled
+    - [TryIt Editor](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default)
+- HTML cheat sheets 
+    - [Link to HTML cheat sheet (PDF)](https://web.stanford.edu/group/csp/cs21/htmlcheatsheet.pdf)
+    - [Link to another HTML cheat sheet ](http://www.cheat-sheets.org/saved-copy/html-cheat-sheet.png), (shown below) 
+
+
+![](http://www.cheat-sheets.org/saved-copy/html-cheat-sheet.png)
+
+## Webscraping using `rvest`
+
+__The `rvest` package__
+
+> `rvest` helps you scrape information from web pages. It is designed to work with magrittr to make it easy to express common web scraping tasks, inspired by libraries like beautiful soup.
+
+*Credit: `rvest` [webpage](http://rvest.tidyverse.org/)*
+
+> [`rvest` package contains] Wrappers around the `xml2` and `httr` packages to make it easy to download, then manipulate, HTML and XML.
+
+*Credit: `rvest` package documentation*
+
+<br>
+
+```{r, warning=F, message=F}
+library(rvest)
+```
+
+<br>
+__Why use the `rvest` package?__
+
+- `rvest` makes it easy to parse HTML
+- First, we use the `read_html()` function to [read in the HTML](#reading-html) and convert it to an `xml_document`/`xml_node` object
+- A **node** is just an HTML **element**
+- HTML is made up of nested elements, so once we've read in the HTML to a `xml_node` object, we can easily traverse the nested nodes (ie. children elements) and [parse the HTML](#parsing-html)
+- `rvest` comes with many helpful functions to search and extract various parts of the HTML
+  - `html_node()`/`html_nodes()`: Search and extract node(s) (ie. HTML elements)
+  - `html_text()`: Extract the content between HTML tags
+  - `html_attr()`/`html_attrs()`: Extract the attribute(s) of HTML tags
+
+<!-- COMMENT OUT BELOW CODE BECAUSE WEBSITE https://corona.help/ IS NO LONGER IN OPERATION
+
+### Reading HTML
+
+
+
+
+__The `read_html()` function__:
+
+```{r, eval = FALSE}
+?read_html
+
+# SYNTAX AND DEFAULT VALUES
+read_html(x, encoding = "", ..., options = c("RECOVER", "NOERROR", "NOBLANKS"))
+```
+
+- Arguments:
+  - `x`: The input can be a string containing HTML or url to the webpage you want to scrape
+- Output:
+  - The HTML that is read in will be returned as an `rvest` `xml_document`/`xml_node` object and can be easily parsed
+  - You can also view the raw HTML using `as.character()`
+  
+__Scraping HTML from a webpage__:
+
+- Navigate to the webpage (e.g., https://corona.help/) in your browser
+  - If possible, use Google Chrome or Mozilla Firefox
+- View the HTML of the page by right clicking > `View Page Source`
+  - This will be the raw HTML that is scraped when we use `read_html()`
+- When you right click, you may notice another option called `Inspect` (Chrome) or `Inspect Element` (Firefox) that will pop up a side panel
+  - This can be helpful for visualizing the HTML elements on the page
+  - You can also click on this side panel and hit <kbd>ctrl</kbd> + <kbd>f</kbd> (Windows) or <kbd>cmd</kbd> + <kbd>f</kbd> (Macs) to search for elements using a selector
+  - But note that the HTML you see here might not be the same as what you see in `View Page Source` (i.e., _what is scraped_), since it also reflects changes made to the HTML _after_ the page was loaded (e.g., _by JavaScript_)
+
+<br>
+<details><summary>**Example**: Using `read_html()` to read in HTML from string</summary>
+
+```{r}
+html <- read_html("<h1>This is a heading.</h1><p>This is a paragraph.</p>")
+
+# View object
+html
+
+# View class of object
+class(html)
+
+# View raw HTML
+as.character(html)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `read_html()` to scrape the page `https://corona.help/`</summary>
+
+
+```{r}
+corona <- read_html("https://corona.help/")
+
+# View object
+corona
+
+# View class of object
+class(corona)
+```
+
+```{r, eval=FALSE}
+# View raw HTML [output omitted]
+as.character(corona)
+```
+
+```{r}
+# Inspect raw HTML
+str(as.character(corona))
+```
+
+</details>
+
+### Parsing HTML
+
+__The `html_node()` & `html_nodes()` functions__:
+
+```{r, eval = FALSE}
+?html_node
+?html_nodes
+
+# SYNTAX
+html_node(x, css, xpath)
+html_nodes(x, css, xpath)
+```
+
+- Arguments:
+  - `x`: An `rvest` `xml_document`/`xml_node` object (use `read_html()` to get this)
+  - `css`: Selector (can select by HTML tag name, its attributes, etc.)
+- Output:
+  - `html_node()` returns the first element that it finds as an `rvest` `xml_node` object
+    - Recall that a node is just an HTML element
+  - `html_nodes()` returns all elements that it finds as an `rvest` `xml_nodeset` object
+    - All elements that are selected will be returned in a nodeset
+  - Again, you can view the raw HTML using `as.character()`
+    - Syntax: `as.character(html_node(...))`
+
+__Selecting for HTML elements__:
+
+- HTML elements can be selected in many ways
+  - Selecting by tagname: `'p'`, `'table'`, etc.
+  - Selecting by class using `.`: `'.my-class'`
+  - Selecting by id using `#`: `'#my-id'`
+  - Selecting nested elements: `'table tr'` (_selects all rows within a table_)
+- You can test your selector in your browser
+  - Right click and select `Inspect` (Chrome) or `Inspect Element` (Firefox) to bring up a side panel
+  - Hit <kbd>ctrl</kbd> + <kbd>f</kbd> (Windows) or <kbd>cmd</kbd> + <kbd>f</kbd> (Macs) and enter your selector to search for elements
+
+
+<br>
+<details><summary>**Example**: Using `html_node()` & `html_nodes()` to parse HTML string</summary>
+
+Remember that the input to `html_node()`/`html_nodes()` should be an `rvest` `xml_document`/`xml_node` object, which we can obtain from `read_html()`:
+
+```{r}
+html <- read_html("<p>Paragraph #1</p><p>Paragraph #2</p><p>Paragraph #3</p>")
+
+# View class of object
+class(html)
+
+# View raw HTML to see what elements are there
+as.character(html)
+```
+
+<br>
+If we search for the `<p>` element using `html_node()`, it will return the first result:
+
+```{r}
+first_p <- html_node(html, 'p')
+
+# View class of object
+class(first_p)
+
+# View raw HTML
+as.character(first_p)
+```
+
+<br>
+If we search for the `<p>` element using `html_nodes()`, it will return all results:
+
+```{r}
+all_p <- html_nodes(html, 'p')
+
+# View class of object
+class(all_p)
+
+# View raw HTML
+as.character(all_p)
+```
+
+<br>
+Note that we could also use `%>%`:
+
+```{r}
+# These are equivalent to the above
+first_p <- html %>% html_node('p')
+all_p <- html %>% html_nodes('p')
+```
+
+</details>
+
+
+<br>
+<details><summary>**Example**: Using `html_node()` & `html_nodes()` to parse `https://corona.help/`</summary>
+
+
+Let's revisit the HTML we scraped from https://corona.help/ in the previous example
+
+  - We will try selecting for the "Total by country" table off of that page
+  - In your browser, right click > `View Page Source` to check that the `table` element is indeed in the scraped HTML
+  - Then, you can right click the table on the page and inspect it to better visualize the elements
+
+
+```{r}
+# Scraped HTML is stored in this `xml_document`/`xml_node` object
+class(corona)
+```
+
+<br>
+Select for the `<table>` element on that page using `html_node()`:
+
+```{r}
+# Since this table is the only table on the page, we can just use `html_node()`
+corona_table <- corona %>% html_node('table')
+corona_table
+
+# View class of object
+class(corona_table)
+```
+
+```{r, eval=FALSE}
+# View raw HTML of `corona_table` [output omitted]
+as.character(corona_table)
+```
+
+<br>
+Select all rows in the table (i.e., `<tr>` elements) using `html_nodes()`
+
+- It makes sense to select by row (rather than column) because each row usually represent an observation
+- The way HTML tables are structured also makes it easier to extract information by row because each `<tr>` element (i.e., row) has `<th>`/`<td>` elements (i.e., column cells) nested within it, and not the other way around
+- But if you wanted to select a certain column, there are ways to do that as well (e.g., `table tr td:nth-child(1)` selects the first cell in each row a.k.a. the first column in table)
+
+
+```{r}
+# We can chain `html_node()`/`html_nodes()` functions
+corona_rows <- corona %>% html_node('table') %>% html_nodes('tr')
+
+# Alternatively, we can use `table tr` as the selector to select all `tr` elements within a `table`
+corona_rows <- corona %>% html_nodes('table tr')
+
+# Investigate object
+head(corona_rows) # View first few rows
+typeof(corona_rows)
+class(corona_rows)
+length(corona_rows) # Number of elements
+```
+
+</details>
+
+<br>
+
+### Practicing regex
+
+The following examples use the Coronavirus data from https://corona.help/
+
+  - Recall that we have selected for all rows in the data table on that page in the previous example
+  - If we wanted to try and create a dataframe out of this table, we could further select each cell in the table (i.e., `<td>` elements from each row)
+  - For now, we will be practicing parsing data from each row using regex
+
+View `corona_rows` we selected from previous example:
+
+```{r}
+# View first few rows
+head(corona_rows)
+corona_rows[1:5] # first five rows
+corona_rows[c(1)] # header row
+corona_rows[1] # header row
+```
+
+<br>
+Let's convert this to raw HTML using `as.character()` to practice writing regular expressions. Refer back to this output to help you determine what pattern you want to match:
+
+```{r}
+# Convert rows to raw HTML
+rows <- as.character(corona_rows)[-c(1)] # [-c(1)] means skip header row
+
+# View first few rows as raw HTML
+writeLines(head(rows, 2))  # printing via writeLines() is much prettier than printing via print()
+
+# Investgate object named `rows`, which is a character vector
+typeof(rows)
+class(rows)
+length(rows)
+```
+
+<br>
+<details><summary>**Example**: Using `str_subset()` to subset rows</summary>
+
+Let's filter for rows whose country name starts with `'United'`. First, preview what our regular expression matches using `str_view()`:
+
+```{r}
+str_view_all(string = head(rows), pattern = 'United \\w+')
+```
+
+
+Inspect the output from `str_detect()`, which returns `TRUE` if there is a match and `FALSE` if not. For example, we see there is a `TRUE` for the first element (United States) and fifth element (United Kingdom):
+
+```{r}
+str_detect(string = head(rows), pattern = 'United \\w+')
+```
+
+Finally, subset rows by country name using `str_subset()`, which keeps elements of character vector for which `str_detect()` is `TRUE` (i.e., keeps elements where the pattern "matches"):
+
+```{r}
+subset_by_country <- str_subset(string = rows, pattern = 'United \\w+')
+writeLines(subset_by_country)
+```
+
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `str_extract()` to extract link for each row</summary>
+
+Since all links follow the same pattern, we can use regex to extract this info:
+
+```{r}
+links <- str_extract(string = rows, pattern = 'https://corona.help/country/[-a-z]+')
+
+# View first few links
+head(links)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `str_match()` to extract country for each row</summary>
+
+Since all countries are in a `div` element with the same attributes, we can use the following regex to extract the country name:
+
+```{r}
+countries <- str_match(string = rows, pattern = '<div style="height:100%;width:100%">([\\w ]+)</div>')
+
+# View first few countries
+# We used a capturing group to extract the country name from between the tags
+head(countries)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `str_match_all()` to extract number deaths and critical for each row</summary>
+
+Since both the number of deaths and critical are in a `<td>` element with the same `class` attribute, we can use the following regex to extract both numbers:
+
+```{r}
+num_danger <- str_match_all(string = rows, pattern = '<td class="text-danger">([\\d,]+)</td>')
+
+# View matches for first few rows
+# We used a capturing group to extract the numbers from between the tags
+head(num_danger)
+```
+
+</details>
+
+<br>
+<details><summary>**Example**: Using `str_replace_all()` to convert numeric values to thousands for each row</summary>
+
+Rewrite all numeric values greater than one thousand in terms of `k`:
+
+```{r}
+num_to_k <- str_replace_all(string = rows, pattern = '>([\\d,]+),\\d{3}<', replacement = '>\\1k<')
+
+# View replacements for first few rows
+writeLines(head(num_to_k))
+```
+
+</details>
+
+ -->
+
