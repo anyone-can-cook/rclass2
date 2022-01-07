@@ -646,6 +646,7 @@ figures_dir
 Similarly, we can use the file path object anywhere that we would normally input a file path:
 
 ```{r}
+getwd()
 # List the contents of the `output` directory
 list.files(path = output_dir)
 ```
