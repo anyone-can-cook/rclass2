@@ -105,12 +105,23 @@ Another broad goal of the course is for students to begin developing practical p
 
 ## Course structure
 
-<!-- For the first two or three weeks of the course, we will have synchronous lectures and class time will be on TBD. In the subsequent weeks, we will have asynchronous (pre-class) lectures and a synchronous workshop-style class that meets on TBD.  -->
+__Overview__. For the first week of class and the first two weeks of the GitHub unit, we will have synchronous lectures and class time will take all or most of the allotted Friday 9:00am to 11:50am time. During the other weeks, students will only be required to attend the Friday synchronous zoom class from 9AM-10AM. However, the instructor will continue lecturing until all material for the week has been covered. All lectures will be recorded. Weekly work students are expected to do outside of class time will consist of students working through lecture material on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
 
-The course will be structured around weekly asynchronous (pre-class) lectures and one online synchronous workshop-style class meeting per week. Weekly homework will consist of students working through the lectures on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
+__Asynchronous course materials__.  Asynchronous course materials for each week will focus on the topic for that week (e.g., "ggplot"). Course materials will consist of three types of resources: first, detailed lecture slides (PDF or HTML) with sample code; second, video lecture of the instructor working through these slides (recorded on the pevious Friday); and, third, the ".Rmd" file that created the PDF/HTML lecture slides. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run R code on their own computer while they work through lecture materials on their own.
 
-1. __Asynchronous (pre-class) lecture materials__. Weekly asynchronous lecture materials will be posted on the course website with the expectation that students work through all lecture materials on their own. Lecture materials will consist of three types of resources: first, detailed lecture notes (HTML) with sample code; second, video lectures (45 to 60 minutes total per week) that discuss important and/or challenging concepts from the lecture, but not a line-by-line recitation of the lecture; and, third, the .Rmd file that created the HTML lecture notes. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will be able to "learn by doing" in that they can run R code on their own computer while they work through lecture materials on their own.
-1. __Synchronous class meetings.__ Our weekly online synchronous meeting will be Fridays from 9:00 - 10:30AM via Zoom. However, for Week 1 (and potentially for other selected weeks) weeks we will meet from 9:00 - 11:20AM. Synchronous meetings will largely be forward-looking (i.e., introducing new material) rather than backward-looking (e.g., reviewing/applying previously introduced material). The bulk of synchronous class time will be lecture about new course material. Lectures will not cover every concept and every slide. Rather, the goal of these lectures is for students to learn the most important and/or difficult concepts so that they have an easier time working through lecture materials on their own. These lectures will be recorded and added to the asynchronous lecture materials. We will also devote some time to Q&A about previous material and -- time permitting -- time for students to get started on the upcoming problem set.
+**Example of weekly work flow (from Fall 2021)**:
+
+- Friday 10/15/21 9AM-11:50AM synchronous class
+  - Ozan lectures about "Pipes, dplyr, and variable creation"
+  - students only required to attend zoom from 9AM-10AM
+- Prior to Friday 10/22/21 9AM-11:50AM synchronous class
+  - students work through "Pipes, dplyr, and variable creation" course materials
+    - **important**: run code on your own in the ".Rmd" file
+  - do any additional required reading (very modest)
+  - complete problem set about "Pipes, dplyr, and variable creation" with your problem set group
+- Friday 10/22/21 9AM-11:50AM synchronous class
+  - Ozan lectures about "processing across rows"
+  - students only required to attend zoom from 9AM-10AM
 
 ## How to succeed in this class
 
@@ -148,7 +159,7 @@ All course related material can be found on the [course website](https://anyone-
 
 ## Course discussion
 
-We will be using GitHub teams for class announcements [HERE](https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements).
+We will be using GitHub teams for class announcements [HERE](https://github.com/orgs/anyone-can-cook/teams/rclass2_w22_announcements).
 
   - __GitHub teams__: The teaching team will post all class announcements using GitHub teams. The GitHub team discussions feature allows for quick and seamless communication to all members of an organization or team -- in this case, to all students with a GitHub account enrolled in the course. Some features include:  
   
@@ -159,7 +170,7 @@ We will be using GitHub teams for class announcements [HERE](https://github.com/
 
 *Credit: [Introducing team discussions](https://github.blog/2017-11-20-introducing-team-discussions/)*  
 
-We will be using GitHub issues for questions and class discussion [HERE](https://github.com/anyone-can-cook/rclass2_student_issues).
+We will be using GitHub issues for questions and class discussion [HERE](https://github.com/anyone-can-cook/rclass2_w22_student_issues/issues).
 
   - __GitHub issues__: GitHub issues are traditionally used by collaborators of a repository for managing tasks for a project. Our rational for using issues is twofold: 1) help track and organize questions related to course material and problem sets and 2) promote classroom participation. Students are encouraged to contribute to issues by posting questions, sharing helpful resources, and/or taking a stab at answering questions posted on issues. Some features include: 
     
@@ -202,29 +213,39 @@ Course grade will be based on the following components:
 
 ## Problem sets (90 percent of total grade)
 
-Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by 9:00am, right before we start class. 
+Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by 9am each Friday, right before we start class. In general, each problem set will give you practice using the skills and concepts introduced in course materials for thate week.  For example, after the lecture on joining (merging) datasets, the problem set for that week will require that students complete several different tasks involving merging data.  Additionally, the weekly problem sets will require you to use data manipulation skills you learned in previous weeks. Link to problem set expectations and helpful resources [HERE](https://github.com/anyone-can-cook/rclass1/raw/master/lectures/problemset_resources/problemset_resources.pdf).
 
-Problem sets submitted a week after the problem set is due will not receive points because at that point we will post solutions on the course website. **Only** problem sets that are given an extension--with the approval of the teaching team-- will be accepted late. The lowest problem-set grade will be dropped from the calculation of your final grade. 
+**Problem set groups**
 
-Your will not lose points for late submission if you cannot submit a problem set due to an unexpected emergency. But please contact the instructor by email as soon as you can so we can work out a plan.
-
-In general, each problem set will give you practice using the skills and concepts introduced during the previous lecture.  For example, after the lecture on creating functions, the problem set for that week will require that students complete several different tasks involving creating their own function(s).  Additionally, the weekly problem sets will require you to use the programming skills you learned in previous weeks.  
-
-With the exception of the first problem set, students will complete problem sets in groups of 3. We will form groups during class in week 1 and you will keep the same group throughout the quarter. However, each student will submit their own assignment. You are encouraged to work together and get help from your group. However, it is important that you understand how to do the problem set on your own, rather than copying the solution developed by group members.  
-
-Since you will be working together, it is understandable that answers for many questions will be the same as your group members. However, if I find compelling evidence that a student merely copied solutions from a classmate, I will consider this a violation of academic integrity and that student will receive a zero for the homework assignment.
+- Students will complete problem sets in groups of 3. We highly encourage students who are abroad to form their own group to set a time to work on the problem sets together.  
+- We will form groups during the first synchronous class and you will keep the same group throughout the quarter. However, each student will submit their own assignment. You are encouraged to work together and get help from your group. However, it is important that you understand how to do the problem set on your own, rather than copying the solution developed by group members.
+- Since you will be working together, it is understandable that answers for many questions will be the same as your group members. However, if I find compelling evidence that a student merely copied solutions from a classmate, I will consider this a violation of academic integrity and that student will receive a zero for the homework assignment.
 
 A general strategy I recommend for completing the problem sets is as follows: (1) after lecture, do the reading associated with that lecture; (2) try doing the problem set on your own; (3) communicate with your group to work through the problem set, with a particular focus on areas group members find challenging.
 
-Link to problem set expectations [HERE](https://anyone-can-cook.github.io/rclass2/assets/resources/ps_expectations.html).
+**Grading policies**
 
-## Attendance and participation (10 percent of total grade)
+- The lowest problem-set grade will be dropped from the calculation of your final grade. 
+- Grading and problem set groups
+  - Because we do not have the person-power to grade weekly problem sets for each individual student enrolled (e.g., 40 students), one submission from each problem set group will be chosen at random. The grade on that problem set submission will be the grade for all members of the group.
+  - For up to two questions, you may ask TAs to regrade an answer that you feel you answered correctly that the graded submission did not answer correctly
+  - If a member of a problem set group has not submitted the problem set by the time the TAs conduct grading, that submission will be graded separately once it is submitted because we do not have resources to grade weekly due to the very large number of students enrolled. 
+- Policy on late assignments
+  - Problem sets submitted after 11:59PM on Friday will lose one percentage point (e.g., max grade becomes 99% instead of 100%)
+  - Starting at 12AM Monday morning, problem sets will lose an additional percentage point for each week-day it is not submitted
+    - e.g., for a problem set submitted at 10AM on Monday, the max grade becomes 98%
+    - e.g., for a problem set submitted at 10AM on Tuesday, the max grade becomes 97%
+  - For late submissions due to an unexpected emergency, you will not lose points. Please contact the instructor and/or TAs and we will work it out together.  
 
-Students are expected to participate in the weekly class meetings by being attentive, supportive, by asking questions, or by answering questions posed by others on Zoom. Additionally, students can receive strong participation grades by asking questions and answering questions on GitHub issues. 
 
-Students are required to attend the weekly class meetings (unless you have talked to the instructors about this beforehand). Each unexcused absence results in a loss of 20% from your attendance/participation grade. Three or more unexcused absences will result in a failing grade for the course. 
+## Participation (10 percent of total grade)
 
-An excused absence is a professional opportunity that you discuss with me beforehand or a medical, or family emergency.  Excused absences will not result in a loss of attendance points.  However, you will be responsible for all material covered in that class and you will be expected to turn in homework assignments on time.
+Broadly, we expect students to participate by being attentive, supportive of classmates, by asking questions, and by answering questions posed by classmates.
+
+Practically speaking, the vast majority of your participation grade will depend on weekly participation on Github. Each week, students are required to post one communication on Github. This could be asking a question about the problem set, answering a question posed by a classmate, or a post describing something you learned while working through the week's material/problem set. If you post at least one communication on Github each week, you will earn an "A" for participation for the quarter.
+
+In addition, students can work towards an 100% participation grade for the quarter by asking/answering questions during synchronous lecture (e.g., zoom chat) or by consistently being helpful/supportive to your classmates on Github.
+
 
 ## Grading scale
 
@@ -246,6 +267,7 @@ kable(grade,col.names = c("Letter Grade", "Percentage"), escape = T) %>%
 Below is a overview of course topics and schedule. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](https://anyone-can-cook.github.io/rclass2/).
 
 1. Organizing files, directories, and scripts; reading and writing data [1 week]
+1. Graphing with ggplot [1 week]
 1. Git and GitHub [3 weeks]
 1. Loops, writing functions, and functional programming [3 weeks]
 1. Strings and regular expressions [2 weeks]
