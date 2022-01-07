@@ -28,7 +28,7 @@ library(kableExtra)
 library(tidyverse)
 
 t <- c("Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
-l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_announcements", "https://ucla.zoom.us/j/94557277378")
+l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_w22_student_issues/issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_w22_announcements", " https://ucla.zoom.us/j/94803208051")
 
 info <- tibble(t, l)
 
