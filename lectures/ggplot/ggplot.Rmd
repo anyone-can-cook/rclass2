@@ -104,7 +104,7 @@ els_keepvars <- c(
 )
 els_keepvars
 
-load(url("https://github.com/anyone-can-cook/rclass2/raw/master/data/els/els.RData"))
+load(url("https://github.com/anyone-can-cook/rclass2/raw/main/data/els/els.RData"))
 
 els <- els %>%
   # keep only subset of vars
