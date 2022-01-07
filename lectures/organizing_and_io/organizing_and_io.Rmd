@@ -81,7 +81,7 @@ What is a **directory** and how to organize one?
 
 - Folders are referred to as **directories**
 - Your project directory is the folder that contains all the files and subfolders (i.e., subdirectories) you create for the purpose of your project
-- There is no right or wrong way to organize a project directory, but the structure shown below is generally a good way to set up your project
+- There is no one-right-way to organize a project directory, but the structure shown below is generally a good way to set up your project
   - You can have a `data/` subdirectory to hold all data files, `scripts/` subdirectory to hold your scripts, etc.
 - When using RStudio, it is often useful to turn your project directory into an **RStudio project**
 
@@ -101,7 +101,7 @@ How to create an **RStudio project**?
 - If there's a folder you want to turn into a project, select `Existing Directory`
 - Under `Project working directory`, browse for your folder and click `Create Project`
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/rstudio_project.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/rstudio_project.png)
 
 <br>
 Why use **RStudio project**?
@@ -144,7 +144,7 @@ getwd()
 <br>
 When you run an **R script**, the working directory is the directory indicated at the top of your console in RStudio:
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/r_console.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/r_console.png)
 
 - If you are not working from an RStudio project, this is typically your **home directory**
 - If you are working from an RStudio project, your working directory would be the project directory
@@ -152,7 +152,7 @@ When you run an **R script**, the working directory is the directory indicated a
 <br>
 What is the **home directory**?
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/home.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/home.png)
 
 - You can view your home directory in RStudio by clicking on `Home` in the bottom right file viewer panel
 - The [home directory](https://en.wikipedia.org/wiki/Home_directory) is a user's main directory on a computer and it varies by operating systems
@@ -351,6 +351,7 @@ dir.create(path, showWarnings = TRUE, recursive = FALSE, mode = "0777")
 ```{r}
 # Check current working directory
 getwd()
+list.files()
 
 # Create new directory called `my_folder`
 dir.create(path = "my_folder")
@@ -722,7 +723,7 @@ download.file(url, destfile, method, quiet = FALSE, mode = "w",
 
 We will be downloading the **2019 Institutional Characteristics** data dictionary file from the [IPEDS Data Center](https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx). Select the year and survey from the drop down and right-click the "Dictionary" link to obtain the URL to download:
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/hd2019.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/hd2019.png)
 
 ```{r}
 # Recall the file path object to the `data` directory we created earlier
@@ -842,7 +843,7 @@ We will be reading data from the [Mobility Report Cards: The Role of Colleges in
 
 We will be reading in **Online Data Table 1** under the **Mobility Report Cards: The Role of Colleges in Intergenerational Mobility** drop down from the [Equality of Opportunity Project Data Page](http://www.equality-of-opportunity.org/data/). Right-click the "Excel" link to obtain the URL to read (Note: it is actually a CSV file, not Excel):
 
-![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/mrc_table1.png)
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/mrc_table1.png)
 
 <br>
 **Example**: Reading data from the web using `read_csv()`
@@ -1375,7 +1376,7 @@ High school longitudinal surveys from National Center for Education Statistics (
 
 ```{r}
 # Read .dta file from URL
-hsls <- read_dta(file = 'https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/data/hsls/hsls_sch_small.dta')
+hsls <- read_dta(file = 'https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/data/hsls/hsls_sch_small.dta')
 
 # Print first few rows of the hsls dataframe
 head(hsls)
@@ -1557,7 +1558,7 @@ url(description, open = "", blocking = TRUE,
 
 ```{r}
 # Load `recruit_school_somevars.RDS` file from URL
-df_school <- readRDS(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RDS'))
+df_school <- readRDS(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/recruit_school_somevars.RDS'))
 ```
 
 <br>
@@ -1565,7 +1566,7 @@ df_school <- readRDS(file = url(description = 'https://github.com/anyone-can-coo
 
 ```{r}
 # Load `recruit_school_somevars.RData` file from URL
-load(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/master/data/recruiting/recruit_school_somevars.RData'))
+load(file = url(description = 'https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/recruit_school_somevars.RData'))
 ```
 
 ```{r, echo = FALSE}

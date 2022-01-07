@@ -131,7 +131,7 @@ Four of the most common methods used for APIs are:
 
 [__Headers__](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) let the client and server provide additional information about an HTTP request. An HTTP header has a case-sensitive name followed by a colon `:` and its value.  
 
-[![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/http_request.png)](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039) 
+[![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/http_request.png)](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039) 
 
 *Credit: Burak Guzel ([HTTP Headers for Dummies](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039))*
 
