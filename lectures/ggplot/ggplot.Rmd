@@ -83,47 +83,34 @@ We will use public-use data from the _National Center for Education Statistics (
 - Follows 10th graders from 2002 until 2012
 - Variable `stu_id` uniquely identifies observations
 ```{r}
-
-# variables we want to select from full ELS dataset
-els_keepvars <- c(
-    "STU_ID",        # student id
-    "STRAT_ID",      # stratum id
-    "PSU",           # primary sampling unit
-    "BYRACE",        # (base year) race/ethnicity 
-    "BYINCOME",      # (base year) parental income
-    "BYPARED",       # (base year) parental education
-    "BYNELS2M",      # (base year) math score
-    "BYNELS2R",      # (base year) reading score
-    "F3ATTAINMENT",  # (3rd follow up) attainment
-    "F2PS1SEC",      # (2nd follow up) first institution attended
-    "F3ERN2011",     # (3rd follow up) earnings from employment in 2011
-    "F1SEX",         # (1st follow up) sex composite
-    "F2EVRATT",      # (2nd follow up, composite) ever attended college
-    "F2PS1LVL",      # (2nd follow up, composite) first attended postsecondary institution, level 
-    "F2PS1CTR",      # (2nd follow up, composite) first attended postsecondary institution, control
-    "F2PS1SLC"       # (2nd follow up, composite) first attended postsecondary institution, selectivity
-)
-els_keepvars
-
-load(url("https://github.com/anyone-can-cook/rclass2/raw/main/data/els/els.RData"))
-
-els <- els %>%
-  # keep only subset of vars
-  select(one_of(els_keepvars)) %>%
-  # lower variable names
-  rename_all(tolower)
+load(file = url('https://github.com/anyone-can-cook/educ152/raw/main/data/els/output_data/els_stu.RData'))
+els <- df_els_stu_allobs
+rm(df_els_stu_allobs)
 
 glimpse(els)
 
 els %>% var_label()
 ```
 
+```{r, echo = F}
+els <- els %>% 
+  mutate(
+    bys34a = unclass(bys34a),
+    f3ern2011 = unclass(f3ern2011),
+    f2evratt = unclass(f2evratt),
+    f1mothed = unclass(f1mothed),
+    f1fathed = unclass(f1fathed),
+    f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female')
+  )
+```
+
+
 # Concepts
 
 Basic definitions:
 
 - Grammar
-    - "The fundamental principles or rules of an art or science" (Oxford English dictonary)
+    - "The fundamental principles or rules of an art or science" (Oxford English dictionary)
 - Grammar of graphics [@RN4563]
     - Principles/rules to describe and construct statistical graphics
 - Layered grammar of graphics [@RN4561]
@@ -185,10 +172,10 @@ The five layers of the grammar of graphics:
 
 **Example**: Imagine a dataset where each observation is a student
 
-- The variables of interest are high school math test score (`bynels2m`), earnings in 2011 (`f3ern2011`), and student sex (`f1sex`)
+- The variables of interest are hours per week spent on homework in high school (`bys34a`), earnings in 2011 (`f3ern2011`), and student sex (`f1sex`)
 
 ```{r}
-els %>% select(stu_id, bynels2m, f3ern2011, f1sex) %>% as_factor() %>% head(10)
+els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% as_factor() %>% head(10)
 ```
 
 
@@ -198,21 +185,20 @@ els %>% select(stu_id, bynels2m, f3ern2011, f1sex) %>% as_factor() %>% head(10)
 
 **Example**: Consider the previous dataset
 
-- Map HS math test score to the x-axis
+- Map hours/week on homework to the x-axis
 - Map 2011 income to the y-axis
-- Additionally, if we are creating a scatterplot of test score (x-axis) and income (y-axis), we might use sex to define the color of each point
+- Additionally, if we are creating a scatterplot of homework time (x-axis) and income (y-axis), we might use sex to define the color of each point
 
 ```{r}
-els %>% select(stu_id, bynels2m, f3ern2011, f1sex) %>% 
-  rename(x = bynels2m, y = f3ern2011, color = f1sex) %>% 
-  as_factor() %>% head(10)
+els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% 
+  rename(x = bys34a, y = f3ern2011, color = f1sex) %>% 
+  head(10)
 ```
 
 ```{r, echo = F}
 els %>% 
-  filter(bynels2m > 0) %>% 
-  mutate(f1sex = as_factor(f1sex)) %>% 
-  ggplot(mapping = aes(x = bynels2m, y = f3ern2011, color = f1sex)) +
+  filter(bys34a > 0) %>%
+  ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1sex)) +
   geom_point()
 ```
 
@@ -221,38 +207,36 @@ els %>%
 
 A **statistical transformation** transforms the underlying data before plotting it.
 
-**Example**: Imagine creating a scatterplot of the relationship between HS math test score (x-axis) and 2011 income (y-axis)
+**Example**: Imagine creating a scatterplot of the relationship between hours/week spent on homework (x-axis) and 2011 income (y-axis)
 
 - When creating a scatterplot we usually do not transform the data prior to plotting
 - This is the "identity" transformation (_default for plots like scatterplots_)
     
 ```{r}
-els %>% select(stu_id,bynels2m,f3ern2011) %>% rename(x=bynels2m, y=f3ern2011) %>% 
-  as_factor() %>% head(10)
+els %>% select(stu_id,bys34a,f3ern2011) %>% rename(x=bys34a, y=f3ern2011) %>% 
+  head(10)
 ```
 
 ```{r, echo = F}
 els %>% 
-  filter(bynels2m > 0) %>% 
-  mutate(f1sex = as_factor(f1sex)) %>% 
-  ggplot(mapping = aes(x = bynels2m, y = f3ern2011)) +
+  filter(bys34a > 0) %>% 
+  ggplot(mapping = aes(x = bys34a, y = f3ern2011)) +
   geom_point()
 ```
     
-**Example**: Imagine creating a bar chart of the number of students by race/ethnicity
+**Example**: Imagine creating a bar chart of the number of students by sex
 
-- Here, we do not plot the raw data. Rather, we count the number of observations for each race/ethnicity category. 
+- Here, we do not plot the raw data. Rather, we count the number of observations for each sex category. 
 - This is the "count" transformation (_default for plots like barplots_)
 
 ```{r}
-els %>% count(byrace) %>% as_factor()
+els %>% count(f1sex) %>% as_factor()
 ```
 
 ```{r, echo = F}
 els %>% 
-  mutate(byrace = as_factor(byrace)) %>% 
-  ggplot(mapping = aes(y = byrace)) +
-  geom_bar()
+  ggplot(mapping = aes(x = f1sex)) +
+  geom_bar(width = 0.6)
 ```
 
 
@@ -463,21 +447,21 @@ diam_ggplot + geom_point()
 ```
 
 
-**Example**: Scatterplot of the relationship between high school math test score (`bynels2m`) and 2011 earnings (`f3ern2011`), using the `els` dataset
+**Example**: Scatterplot of the hours/week spent on homework (`bys34a`) and 2011 earnings (`f3ern2011`), using the `els` dataset
 
 
 - First, let's investigate the underlying variables:
 
 ```{r}
-els %>% select(bynels2m,f3ern2011) %>%
+els %>% select(bys34a,f3ern2011) %>%
   summarize_all(.funs = list(~ mean(., na.rm = TRUE), ~ min(., na.rm = TRUE), ~ max(., na.rm = TRUE)))
 ```
 
 - Investigate values less than zero:
 
 ```{r}
-els %>% select(bynels2m) %>% filter(bynels2m<0) %>% count(bynels2m)
-els %>% select(bynels2m) %>% filter(bynels2m<0) %>% count(bynels2m) %>% as_factor()
+els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a)
+els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a) %>% as_factor()
 
 els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011)
 els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011) %>% as_factor()
@@ -489,27 +473,27 @@ els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011) %>% as_fa
 ```{r}
 els_v2 <- els %>% 
   mutate(
-    hs_math = if_else(bynels2m<0,NA_real_,as.numeric(bynels2m)),
+    hw_time = if_else(bys34a<0,NA_real_,as.numeric(bys34a)),
     earn2011 = if_else(f3ern2011<0,NA_real_,as.numeric(f3ern2011)),
   )
 
 #check
-els_v2 %>% filter(bynels2m<0) %>% count(bynels2m, hs_math)
+els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
 els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
 
-els_v2 %>% count(bypared) %>% as_factor()
+els_v2 %>% count(f1mothed, f1fathed) %>% as_factor()
 ```
 
 - To avoid scatterplot with too many points, create a dataframe consisting of students whose parents have a PhD or first professional degree:
 
 ```{r}
-els_parphd <- els_v2 %>% filter(bypared==8)
+els_parphd <- els_v2 %>% filter(f1mothed==8, f1fathed==8)
 ```
 
 - Plot the scatterplot:
 
 ```{r, warning = FALSE}
-ggplot(data= els_parphd, aes(x = hs_math, y = earn2011)) + geom_point()
+ggplot(data= els_parphd, aes(x = hw_time, y = earn2011)) + geom_point()
 ```
 
 <br>
@@ -548,18 +532,18 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ```
   
 
-**Student Task**: Using the `els_parphd` dataset, create a scatterplot of the relationship between HS math score (`hs_math`) on the x-axis and 2011 earnings (`earn2011`) on the y-axis, with the color of points determined by sex (`f1sex`)
+**Student Task**: Using the `els_parphd` dataset, create a scatterplot of the relationship between hours/week spent on homework (`hw_time`) on the x-axis and 2011 earnings (`earn2011`) on the y-axis, with the color of points determined by sex (`f1sex`)
 
 <details><summary>Solution</summary>
 
 - Below code doesn't work because `aes()` expects the `color` aesthetic to be a factor variable:
 ```{r, eval = FALSE}
-ggplot(data= els_parphd, aes(x = hs_math, y = earn2011, color = f1sex)) + geom_point()
+ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = f1sex)) + geom_point()
 ```
 
 - This works:
 ```{r, warning = FALSE}
-ggplot(data= els_parphd, aes(x = hs_math, y = earn2011, color = as_factor(f1sex))) + geom_point()
+ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = as_factor(f1sex))) + geom_point()
 ```
 </details>
 <br>
@@ -571,13 +555,13 @@ Why use `geom_smooth()`?
 - The biggest problem with scatterplots is "overplotting." That is, when you plot many observations, points may be plotted on top of one another and it becomes difficult to visually discern the relationship:
 
 ```{r}
-ggplot(data = els_v2, aes(x = hs_math, y = earn2011)) + geom_point()
+ggplot(data = els_v2, aes(x = hw_time, y = earn2011)) + geom_point()
 ```
 
 - Instead, using `geom_smooth()` creates smoothed prediction lines with shaded confidence intervals:
 
 ```{r}
-ggplot(data = els_v2, aes(x = hs_math, y = earn2011)) + geom_smooth()
+ggplot(data = els_v2, aes(x = hw_time, y = earn2011)) + geom_smooth()
 ```
 
 <br>
@@ -602,33 +586,33 @@ geom_smooth(mapping = NULL, data = NULL, stat = "smooth",
     
 <br>
 
-**Example**: Smoothed prediction lines for high school math test score (`bynels2m`) versus 2011 earnings (`f3ern2011`), using the `els` dataset
+**Example**: Smoothed prediction lines for hours/week spent on homework (`bys34a`) versus 2011 earnings (`f3ern2011`), using the `els` dataset
 
 - This code produces same plot as above, when aesthetics were specified in `ggplot()`:
 
 ```{r}
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hs_math, y = earn2011))
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011))
 ```
 
 - Use `group` aesthetic to create separate prediction lines by sex (`f1sex`):
 
 ```{r}
-#ggplot(data=els_v2, aes(x = hs_math, y = earn2011, group=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hs_math, y = earn2011, group=as_factor(f1sex)))
+#ggplot(data=els_v2, aes(x = hw_time, y = earn2011, group=as_factor(f1sex))) + geom_smooth()
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, group=as_factor(f1sex)))
 ```
 
 - Use `linetype` aesthetic to create separate prediction lines (with different line styles) by sex (`f1sex`):
 
 ```{r}
-#ggplot(data=els_v2, aes(x = hs_math, y = earn2011, linetype=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hs_math, y = earn2011, linetype=as_factor(f1sex)))
+#ggplot(data=els_v2, aes(x = hw_time, y = earn2011, linetype=as_factor(f1sex))) + geom_smooth()
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype=as_factor(f1sex)))
 ```
 
 - Use `color` aesthetic to create separate prediction lines (with different colors) by sex (`f1sex`):
 
 ```{r}
-#ggplot(data=els_v2, aes(x = hs_math, y = earn2011, color=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hs_math, y = earn2011, color=as_factor(f1sex)))
+#ggplot(data=els_v2, aes(x = hw_time, y = earn2011, color=as_factor(f1sex))) + geom_smooth()
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, color=as_factor(f1sex)))
 ```
 
 
@@ -638,14 +622,14 @@ ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hs_math, y = earn2011, color
 
 ```{r}
 ggplot(data= els_v2) + 
-  geom_point(mapping = aes(x = hs_math, y = earn2011)) + 
-  geom_smooth(mapping = aes(x = hs_math, y = earn2011))
+  geom_point(mapping = aes(x = hw_time, y = earn2011)) + 
+  geom_smooth(mapping = aes(x = hw_time, y = earn2011))
 ```
 
 - Equivalently, the same plot can be created using this syntax:
 
 ```{r}
-ggplot(data= els_v2, aes(x = hs_math, y = earn2011)) + 
+ggplot(data= els_v2, aes(x = hw_time, y = earn2011)) + 
   geom_point() +
   geom_smooth()
 ```
@@ -653,19 +637,19 @@ ggplot(data= els_v2, aes(x = hs_math, y = earn2011)) +
 - Adjust x-axis and y-axis limits by using `+ xlim()` and `+ ylim()`:
 
 ```{r}
-ggplot(data= els_v2, aes(x = hs_math, y = earn2011)) + 
+ggplot(data= els_v2, aes(x = hw_time, y = earn2011)) + 
   geom_point() +
   geom_smooth() +
-  xlim(c(20,80)) + ylim(c(0,100000))
+  xlim(c(0,21)) + ylim(c(0,100000))
 ```
 
 - Layer smoothed prediction lines with different line types by sex (`f1sex`) on top of scatterplot with different point colors by sex:
 
 ```{r}
 ggplot(data= els_v2) + 
-  geom_point(mapping = aes(x = hs_math, y = earn2011, color = as_factor(f1sex))) + 
-  geom_smooth(mapping = aes(x = hs_math, y = earn2011, linetype = as_factor(f1sex))) +
-  xlim(c(20,80)) + ylim(c(0,100000))
+  geom_point(mapping = aes(x = hw_time, y = earn2011, color = as_factor(f1sex))) + 
+  geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype = as_factor(f1sex))) +
+  xlim(c(0,21)) + ylim(c(0,100000))
 ```
 
 
