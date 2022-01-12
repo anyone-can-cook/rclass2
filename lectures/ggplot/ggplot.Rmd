@@ -15,7 +15,7 @@ output:
     #fig_width = 7 #Default width (in inches) for figures
     #fig_height = 5 #Default height (in inches) for figures
     #html_preview: TRUE #TRUE to also generate an HTML file for the purpose of locally previewing what the document will look like on GitHub.    
-    df_print: tibble # Method to be used for printing data frames. Valid values include "default", "kable", "tibble", and "paged". The "default" method uses print.data.frame. 
+    df_print: default # Method to be used for printing data frames. Valid values include "default", "kable", "tibble", and "paged". The "default" method uses print.data.frame. 
     
     #Options you are not using yet:
       
@@ -39,6 +39,7 @@ Load packages:
 ```{r, message=FALSE}
 library(tidyverse)
 library(ggplot2) # superfluous because ggplot2 is part of tidyverse
+library(scales) # for formatting labels for axes and legends
 
 library(haven)
 library(labelled)
@@ -148,7 +149,7 @@ The seven parameters of the layered grammar of graphics consists of:
 
 > "In practice, you rarely need to supply all seven parameters to make a graph because ggplot2 will provide useful defaults for everything except the data, the mappings, and the geom function." [@RN4564, chapter 3]
 
-Syntax conveying the seven parameters of the layered grammer of graphics:
+Syntax conveying the seven parameters of the layered grammar of graphics:
 
 ```{r, eval = FALSE}
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + 
@@ -187,24 +188,9 @@ The five layers of the grammar of graphics:
 - The variables of interest are high school math test score (`bynels2m`), earnings in 2011 (`f3ern2011`), and student sex (`f1sex`)
 
 ```{r}
-glimpse(els)
-els %>% select(stu_id,bynels2m,f3ern2011,f1sex) %>% as_factor() %>% head(10)
+els %>% select(stu_id, bynels2m, f3ern2011, f1sex) %>% as_factor() %>% head(10)
 ```
 
-<!--
-PROBABLY CUT THIS HYPOTHETICAL DATASET
-```{r, echo = FALSE, eval = FALSE}
-incage <- tribble(
-  ~id, ~age, ~inc000,
-  1, 30, 70,
-  2, 20, 18,
-  3, 25, 150,
-  4, 50, 200,
-  5, 65, 15
-)
-incage
-```
--->
 
 ### Set of mappings (__mappings__)
 
@@ -217,11 +203,17 @@ incage
 - Additionally, if we are creating a scatterplot of test score (x-axis) and income (y-axis), we might use sex to define the color of each point
 
 ```{r}
-
-els %>% select(stu_id,bynels2m,f3ern2011,f1sex) %>% 
-  rename(x=bynels2m, y=f3ern2011, color=f1sex) %>% 
+els %>% select(stu_id, bynels2m, f3ern2011, f1sex) %>% 
+  rename(x = bynels2m, y = f3ern2011, color = f1sex) %>% 
   as_factor() %>% head(10)
+```
 
+```{r, echo = F}
+els %>% 
+  filter(bynels2m > 0) %>% 
+  mutate(f1sex = as_factor(f1sex)) %>% 
+  ggplot(mapping = aes(x = bynels2m, y = f3ern2011, color = f1sex)) +
+  geom_point()
 ```
 
 
@@ -232,21 +224,35 @@ A **statistical transformation** transforms the underlying data before plotting 
 **Example**: Imagine creating a scatterplot of the relationship between HS math test score (x-axis) and 2011 income (y-axis)
 
 - When creating a scatterplot we usually do not transform the data prior to plotting
-- This is the "identity" transformation
+- This is the "identity" transformation (_default for plots like scatterplots_)
     
 ```{r}
 els %>% select(stu_id,bynels2m,f3ern2011) %>% rename(x=bynels2m, y=f3ern2011) %>% 
   as_factor() %>% head(10)
+```
 
+```{r, echo = F}
+els %>% 
+  filter(bynels2m > 0) %>% 
+  mutate(f1sex = as_factor(f1sex)) %>% 
+  ggplot(mapping = aes(x = bynels2m, y = f3ern2011)) +
+  geom_point()
 ```
     
 **Example**: Imagine creating a bar chart of the number of students by race/ethnicity
 
 - Here, we do not plot the raw data. Rather, we count the number of observations for each race/ethnicity category. 
-- This count is a statistical transformation
+- This is the "count" transformation (_default for plots like barplots_)
 
 ```{r}
 els %>% count(byrace) %>% as_factor()
+```
+
+```{r, echo = F}
+els %>% 
+  mutate(byrace = as_factor(byrace)) %>% 
+  ggplot(mapping = aes(y = byrace)) +
+  geom_bar()
 ```
 
 
@@ -301,10 +307,17 @@ p <- qplot(x = x1, y = y1, geom = "blank", xlab = NULL, ylab = NULL) +
 
 p +
   ggtitle(label = "Cartesian coordinate system")
-
 ```
 
-- When using the default Cartesian coordinate system, a common task is to flip the x and y axis. (From [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#coordinate-systems))
+- Use `coord_fixed()` to fix the scaling of the coordinate system
+
+```{r}
+p +
+  coord_fixed()
+```
+
+
+- When using the default Cartesian coordinate system, a common task is to flip the x and y axis using `coord_flip()`. (From [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#coordinate-systems))
 
 ```{r}
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
@@ -963,6 +976,292 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_wrap(cyl ~ class, ncol = 4)
 ```
+
+
+# Customization
+
+There are many ways to customize the display of our plot. For this section, we will build upon this scatterplot we saw earlier:
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point()
+```
+
+
+## Labels
+
+Functions to add title and axis labels:
+
+- `ggtitle()`: Add title of graph
+- `xlab()`: Add x-axis label
+- `ylab()`: Add y-axis label
+
+**Example**: Adding title and axis labels
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price')
+```
+
+
+## Scales
+
+__The `scale_x_continuous()` and `scale_y_continuous()` functions__:
+
+```{r, eval = FALSE}
+?scale_x_continuous
+?scale_y_continuous
+
+# SYNTAX AND DEFAULT VALUES
+scale_x_continuous(
+  name = waiver(),
+  breaks = waiver(),
+  minor_breaks = waiver(),
+  n.breaks = NULL,
+  labels = waiver(),
+  limits = NULL,
+  expand = waiver(),
+  oob = censor,
+  na.value = NA_real_,
+  trans = "identity",
+  guide = waiver(),
+  position = "bottom",
+  sec.axis = waiver()
+)
+
+scale_y_continuous(
+  name = waiver(),
+  breaks = waiver(),
+  minor_breaks = waiver(),
+  n.breaks = NULL,
+  labels = waiver(),
+  limits = NULL,
+  expand = waiver(),
+  oob = censor,
+  na.value = NA_real_,
+  trans = "identity",
+  guide = waiver(),
+  position = "left",
+  sec.axis = waiver()
+)
+```
+
+- Description (from help file)
+    - "`scale_x_continuous()` and `scale_y_continuous()` are the default scales for continuous x and y aesthetics."
+- Arguments
+    - `name`: The name of the scale. Used as the axis or legend title.
+    - `labels`: Custom labelling of the scales (i.e., ticks)
+    - `limits`: Limits of the scale (i.e., min/max values)
+    - `position`: The position of the axis. (`'left'` or `'right'` for y axes, `'top'` or `'bottom'` for x axes)
+
+<br>
+__The `label_number()` function__:
+
+```{r, eval = FALSE}
+?label_number
+
+# SYNTAX AND DEFAULT VALUES
+label_number(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
+```
+
+- Description (from help file)
+    - "Use `label_number()` force decimal display of numbers (i.e. don't use scientific notation)"
+- Arguments
+    - `accuracy`: A number to round to (e.g. use 0.01 to show 2 decimal places of precision)
+    - `scale`: A scaling factor (e.g., x will be multiplied by scale before formatting)
+    - `prefix`: Symbols to display before value
+    - `suffix`: Symbols to display after value
+
+<br>
+**Example**: Formatting numbers on the y-axis
+
+We can use `scale_y_continuous()`, in conjunction with `label_number()` from the `scales` package, to format the numbers on the y-axis:
+
+- Use `prefix` to add `$` before the number
+- Use `suffix` to add `K` after the number
+- Use `scale` of `1e-3` to divide number by `1000`
+- Use `accuracy` of `1` to round number to the ones digit
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+
+
+## Colors
+
+There are several ways to customize the color palettes of the plot, including `scale_color_brewer()` for discrete scale and `scale_color_gradient()` for continuous scale.
+
+<br>
+__The `scale_color_brewer()` function__:
+
+```{r, eval = FALSE}
+?scale_color_brewer
+
+# SYNTAX AND DEFAULT VALUES
+scale_color_brewer(
+  ...,
+  type = "seq",
+  palette = 1,
+  direction = 1,
+  aesthetics = "colour"
+)
+```
+
+- Description (from help file)
+    - "The `brewer` scales provides sequential, diverging and qualitative colour schemes from ColorBrewer"
+- Arguments
+    - `palette`: Name of the color palette (see below)
+    - `direction`: `1` for default ordering, `-1` for reverse ordering
+
+[![](http://www.sthda.com/sthda/RDoc/images/rcolorbrewer.png)](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually)
+
+<br>
+**Example**: Customizing color palette of discrete scale
+
+Let's color the points by the diamond color. This is the default display:
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+
+We can use `scale_color_brewer()` to customize the color palette. This also accepts other arguments for labeling including `name` to specify the legend title:
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_brewer(palette = 'Spectral', name = 'Color')
+```
+
+
+<br>
+__The `scale_color_gradient()` function__:
+
+```{r, eval = FALSE}
+?scale_color_gradient
+
+# SYNTAX AND DEFAULT VALUES
+scale_color_gradient(
+  ...,
+  low = "#132B43",
+  high = "#56B1F7",
+  space = "Lab",
+  na.value = "grey50",
+  guide = "colourbar",
+  aesthetics = "colour"
+)
+```
+
+- Description (from help file)
+    - "`scale_*_gradient` creates a two colour gradient (low-high)"
+- Arguments
+    - `low`: Color for low end of the gradient
+    - `high`: Color for high end of the gradient
+
+
+<br>
+**Example**: Customizing color palette of continuous scale 
+
+Let's color the points by the diamond depth percentage. This is the default display:
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = depth)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+
+We can use `scale_color_gradient()` to customize the color palette. This also accepts other arguments for labeling including `name` to specify the legend title and `labels` to customize the legend values:
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = depth)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_gradient(low = 'white', high = 'purple', name = 'Depth percentage', 
+                       labels = label_number(suffix = '%'))
+```
+
+
+## Themes
+
+To customize the display of the plot, `ggplot` offers several [preset themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), including:
+
+- `theme_grey()` (_default_)
+- `theme_bw()`
+- `theme_light()`
+- `theme_dark()`
+- `theme_minimal()`
+- `theme_classic()`
+
+**Example**: Using preset theme
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_brewer(palette = 'Spectral', name = 'Color') +
+  theme_minimal()
+```
+
+<br>
+We can also use [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to customize specific components of the plot.
+
+**Example**: Using custom theme
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_brewer(palette = 'Spectral', name = 'Color') +
+  theme(
+    text = element_text(size = 8),
+    panel.background = element_blank(),
+    plot.title = element_text(color = '#444444', size = 10, hjust = 0.5, face = 'bold'),
+    axis.ticks = element_blank(),
+    axis.title = element_text(face = 'bold'),
+    legend.title = element_text(face = 'bold'),
+    legend.key = element_blank(),
+    legend.key.size = unit(0.5, 'cm')
+  )
+```
+
 
 # Exporting plots
 
