@@ -377,6 +377,7 @@ aes(x, y, ...)
 **Example**: Putting `ggplot()` and `aes()` together
 
 - Specifying `ggplot()` and `aes()` without specifying a geom layer (e.g., `geom_point()`) creates a blank ggplot:
+  - (The two lines of code below are functionally identical)
 
 ```{r}
 ggplot(data = diamonds, aes(x = carat, y = price))
@@ -477,14 +478,18 @@ els_v2 <- els %>%
 #check
 els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
 els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
-
-els_v2 %>% count(f1mothed, f1fathed)
 ```
 
 - To avoid scatterplot with too many points, create a dataframe consisting of students whose parents have a PhD or first professional degree:
 
 ```{r}
-els_parphd <- els_v2 %>% filter(f1mothed==8, f1fathed==8)
+els_v2 %>% count(f1pared)
+
+els_v2$f1pared %>% class()
+els_v2$f1pared %>% attributes()
+
+# els_v2$f1pared is a factor class variable so we filter based on factor levels
+els_parphd <- els_v2 %>% filter(f1pared=="Completed PhD, MD, other advanced degree")
 ```
 
 - Plot the scatterplot:
@@ -493,22 +498,6 @@ els_parphd <- els_v2 %>% filter(f1mothed==8, f1fathed==8)
 ggplot(data= els_parphd, aes(x = hw_time, y = earn2011)) + geom_point()
 ```
 
-<br>
-
-__The `geom_point()` function__:
-
-```{r, eval = FALSE}
-?geom_point
-
-# SYNTAX AND DEFAULT VALUES
-geom_point(mapping = NULL, data = NULL, stat = "identity",
-           position = "identity", ..., na.rm = FALSE, show.legend = NA,
-           inherit.aes = TRUE)
-```
-
-- Aesthetics: `geom_point()` understands (i.e., accepts) the following aesthetics (required aesthetics in **bold**)
-    - **`x`**, **`y`**, `alpha`, `colour`, `fill`, `group`, `shape`, `size`, `stroke`
-    - Note: Other geom functions (e.g., `geom_bar()`) accepts a different set of aesthetics
 
 <br>
 
@@ -527,21 +516,39 @@ ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class))
 ```
+
+<br>
+
+__The `geom_point()` function__:
+
+```{r, eval = FALSE}
+?geom_point
+
+# SYNTAX AND DEFAULT VALUES
+geom_point(mapping = NULL, data = NULL, stat = "identity",
+           position = "identity", ..., na.rm = FALSE, show.legend = NA,
+           inherit.aes = TRUE)
+```
+
+- note that the default statistical transformation is `stat = "identity"`
+  - that is, we simply plot values of `x` and `y` on the Cartesian coordinate system; we don't perform some kind of statistical transformation before plotting
+- The `mapping` argument determines Aesthetics, like this:
+  - `geom_point(mapping = aes(...))`
+- Aesthetics previously stated from `ggplot(mapping = aes(...))` will be carried forward unless you explicitly change them within `geom_point(mapping = aes(...))`
+- For any geometric layer function (e.g., `geom_point`, `geom_bar`, `geom_boxplot`), the help file will tell you which aesthetics the function will accept
+  - Aesthetics: `geom_point()` understands (i.e., accepts) the following aesthetics (required aesthetics in **bold**)
+    - **`x`**, **`y`**, `alpha`, `colour`, `fill`, `group`, `shape`, `size`, `stroke`
+  - Note: Other geom functions (e.g., `geom_bar()`) accepts a different set of aesthetics
   
 
 **Student Task**: Using the `els_parphd` dataset, create a scatterplot of the relationship between hours/week spent on homework (`hw_time`) on the x-axis and 2011 earnings (`earn2011`) on the y-axis, with the color of points determined by sex (`f1sex`)
 
 <details><summary>Solution</summary>
 
-- Below code doesn't work because `aes()` expects the `color` aesthetic to be a factor variable:
 ```{r, eval = FALSE}
 ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = f1sex)) + geom_point()
 ```
 
-- This works:
-```{r, warning = FALSE}
-ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = f1sex)) + geom_point()
-```
 </details>
 <br>
 
@@ -598,6 +605,12 @@ ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011))
 ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, group=f1sex))
 ```
 
+- Alternatively, we could produce the same plot by specifying all aesthetics -- including the `group` aesthetic -- within the `ggplot()` function rather than the `geom_smooth()` function:
+
+```{r}
+ggplot(data = els_v2, aes(x = hw_time, y = earn2011, group=f1sex)) + geom_smooth()
+```
+
 - Use `linetype` aesthetic to create separate prediction lines (with different line styles) by sex (`f1sex`):
 
 ```{r}
@@ -638,6 +651,16 @@ ggplot(data= els_v2, aes(x = hw_time, y = earn2011)) +
   geom_point() +
   geom_smooth() +
   xlim(c(0,21)) + ylim(c(0,100000))
+```
+
+- Let's try smaller y-axis limits:
+  - __Note__. Observations with income values above the y-axis limit are removed from the plot. This includes being removed from the calculation of the smooted prediction line
+
+```{r}
+ggplot(data= els_v2, aes(x = hw_time, y = earn2011)) + 
+  geom_point() +
+  geom_smooth() +
+  xlim(c(0,21)) + ylim(c(0,35000))
 ```
 
 - Layer smoothed prediction lines with different line types by sex (`f1sex`) on top of scatterplot with different point colors by sex:
@@ -692,6 +715,9 @@ geom_col(mapping = NULL, data = NULL, position = "stack", ...,
          inherit.aes = TRUE)
 ```
 
+- Both `geom_bar` and `geom_col` accept the following aesthetics:
+  - x, y, alpha, colour, fill, group, linetype, size
+  
 <br>
 
 **Example**: Bar chart with the variable `cut` (e.g., "Fair," "Good," "Ideal") as x-axis and number of diamonds as y-axis, using the `diamonds` dataset
@@ -704,6 +730,7 @@ diamonds %>% count(cut)
 
 ***Method 1***: Create bar chart using `geom_bar()`
 
+- note: `geom_bar()` uses `stat = "count"`
 ```{r}
 ggplot(data = diamonds, aes(x = cut)) +
   geom_bar()
@@ -711,12 +738,20 @@ ggplot(data = diamonds, aes(x = cut)) +
 
 ***Method 2***: Create bar chart using `geom_col()`
 
-- First, create an object of frequency count for the variable `cut`:
+By contrast, help file says `geom_col()` uses " uses `stat_identity()`: it leaves the data as is."
+
+
+- So before we create chart using `geom_col()` we create an object that contains the frequency count for the variable `cut`:
 
 ```{r}
 cut_count <- diamonds %>% count(cut)
 cut_count
+
+cut_count %>% str()
 ```
+- Note that the object `cut_count` is just a data frame with two variables:
+  - `cut` is a factor variable with five levels
+  - `n` is an integer variable, showing the number of observations for each level of `cut`
 
 - Next, use `ggplot() + geom_col` to plot the data from the object `cut_count`:
 
@@ -724,6 +759,12 @@ cut_count
 ggplot(data = cut_count, aes(x = cut, y=n)) +
   geom_col()
 ```
+- note: if we didn't specify the aesthetic `y=n` we would get an error because `y` is a required aesthetic for `geom_col()`
+```{r, eval = F}
+ggplot(data = cut_count, aes(x = cut)) +
+  geom_col()
+```
+
 
 - Alternatively, we can use pipes to create the plot without creating a separate `cut_count` object first:
 
@@ -750,7 +791,7 @@ els_v2 %>% count(f2evratt)
 ```
 
 ```{r}
-els_v2 %>% count(f2evratt) 
+els_v2 %>% count(f2evratt)
 ```
 
 ***Method 1***: Create bar chart using `geom_bar()`
@@ -763,7 +804,7 @@ ggplot(data = els_v2, aes(x = f2evratt)) +
 - Additionally, we can use pipes to filter values of `f2evratt` before plotting:
 
 ```{r}
-els_v2 %>% filter(f2evratt>=0) %>% ggplot(aes(x = f2evratt)) +
+els_v2 %>% filter(f2evratt %in% c('No','Yes')) %>% ggplot(aes(x = f2evratt)) +
   geom_bar()
 ```
 
@@ -772,7 +813,7 @@ els_v2 %>% filter(f2evratt>=0) %>% ggplot(aes(x = f2evratt)) +
 ```{r}
 els_v2 %>% 
   # filter to remove missing values
-  filter(f2evratt>=0) %>% 
+  filter(f2evratt %in% c('No','Yes')) %>% 
   # use count() to create summary statistics object
   count(f2evratt) %>%
   # plot summary statistic object
@@ -988,7 +1029,9 @@ diamonds %>%
 
 ## Scales
 
-__The `scale_x_continuous()` and `scale_y_continuous()` functions__:
+The __`scale_x_continuous()`__ function is used to control the display of the x-axis when x is a continuous variable.
+
+Similarly, the __`scale_y_continuous()`__ to control the display of the y-axis when y is a continuous variable
 
 ```{r, eval = FALSE}
 ?scale_x_continuous
@@ -1037,6 +1080,11 @@ scale_y_continuous(
     - `position`: The position of the axis. (`'left'` or `'right'` for y axes, `'top'` or `'bottom'` for x axes)
 
 <br>
+
+To force "decimal display" of numbers (rather than scientific notation), we can use the `label_number()` function like this: 
+
+- `scale_y_continuous(labels = label_number(...))`
+
 __The `label_number()` function__:
 
 ```{r, eval = FALSE}
@@ -1081,14 +1129,23 @@ diamonds %>%
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
 ```
+- Alternatively, we could specificy scale like this: `scale = .001`:
 
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = .001, accuracy = 1))
+```
 
 ## Colors
 
 There are several ways to customize the color palettes of the plot, including `scale_color_brewer()` for discrete scale and `scale_color_gradient()` for continuous scale.
 
 <br>
-__The `scale_color_brewer()` function__:
+__The `scale_color_brewer()` function__ for categorical/discrete variables
 
 ```{r, eval = FALSE}
 ?scale_color_brewer
@@ -1106,15 +1163,29 @@ scale_color_brewer(
 - Description (from help file)
     - "The `brewer` scales provides sequential, diverging and qualitative colour schemes from ColorBrewer"
 - Arguments
-    - `palette`: Name of the color palette (see below)
-    - `direction`: `1` for default ordering, `-1` for reverse ordering
+    - `palette`: "If a string, will use that named palette. If a number, will index into the list of palettes of appropriate type. The list of available palettes can found in the Palettes section"
+    - `direction`: "Sets the order of colours in the scale. If 1, the default, colours are as output by `RColorBrewer::brewer.pal()`. If -1, the order of colours is reversed."
+    - `aesthetics`: which aesthetic mappings the `scale_color_brewer()` function should apply to. Default is `aesthetics = "colour"`
 
+<br>
+Visualization of color palettes (e.g., `scale_color_brewer(palette=Pastel2)`)
 [![](http://www.sthda.com/sthda/RDoc/images/rcolorbrewer.png)](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually)
 
 <br>
 **Example**: Customizing color palette of discrete scale
 
-Let's color the points by the diamond color. This is the default display:
+We'll color the points of the scatterplot by the variable `color`
+
+- from `?diamonds`, the variable `color` is described as "diamond colour, from D (best) to J (worst)"
+  - `diamonds$color` is an "ordered" "factor" variable with factor levels shown below
+  
+```{r}
+diamonds %>% count(color)
+
+diamonds$color %>% class()
+diamonds$color %>% attributes()
+```
+First, let's create a scatterplot of the relationship between carat (x-axis) and price (y-axis) with color of points determined by the variable `color` and we'll use the default display (i.e., don't specify `scale_color_brewer()` function:
 
 ```{r}
 diamonds %>% 
@@ -1134,9 +1205,20 @@ diamonds %>%
   ggtitle('Correlation between diamond carat and price') +
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
-  scale_color_brewer(palette = 'Spectral', name = 'Color')
+  scale_color_brewer(palette = 'Spectral', name = 'Diamond color')
 ```
 
+- Use `direction = -1` to reverse the order of colors drawn from the ('Spectral') palette
+  
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_brewer(palette = 'Spectral', direction = -1, name = 'Diamond color')
+```
 
 <br>
 __The `scale_color_gradient()` function__:
@@ -1166,7 +1248,19 @@ scale_color_gradient(
 <br>
 **Example**: Customizing color palette of continuous scale 
 
-Let's color the points by the diamond depth percentage. This is the default display:
+Let's color the points by the variable `diamonds$depth`, which represents "diamond depth percentage"
+
+- from [brilliance.com](https://www.brilliance.com/education/diamonds/depth-table): "Depth percentage is the diamond’s depth [height] divided by the width of the diamond. This percentage dictates the overall proportions of the diamond, which in turn directly impact how light reflects off the facets in the stone.
+- The variable `diamonds$depth` is a continous variable
+
+```{r}
+diamonds %>% select(depth) %>%
+  summarize_all(.funs = list(~ mean(., na.rm = TRUE), ~ sd(., na.rm = TRUE), ~ min(., na.rm = TRUE), ~ max(., na.rm = TRUE)))
+```
+
+
+
+First, color scatterplot by `depth` using the default display palette:
 
 ```{r}
 diamonds %>% 
@@ -1175,6 +1269,16 @@ diamonds %>%
   ggtitle('Correlation between diamond carat and price') +
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+Next, let's add `scale_color_gradient()` but we'll manually insert the default values for `low` and `high` arguments
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = depth)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_gradient(low = '#132B43', high = '#56B1F7')
 ```
 
 We can use `scale_color_gradient()` to customize the color palette. This also accepts other arguments for labeling including `name` to specify the legend title and `labels` to customize the legend values:
@@ -1193,16 +1297,19 @@ diamonds %>%
 
 ## Themes
 
-To customize the display of the plot, `ggplot` offers several [preset themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), including:
+From "[Complete Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)," Themes control "non-data display"
 
-- `theme_grey()` (_default_)
-- `theme_bw()`
-- `theme_light()`
-- `theme_dark()`
-- `theme_minimal()`
-- `theme_classic()`
+- non-data display means stuff not determined by values of the data
+- Use `theme()` "if you just need to tweak the display of an existing theme"
+- Use one of the following "complete themes" (preset themes) if you want to control __all__ non-data display of a plot, e.g.,:
+  - `theme_grey()` (_default_)
+  - `theme_bw()`
+  - `theme_light()`
+  - `theme_dark()`
+  - `theme_minimal()`
+  - `theme_classic()`
 
-**Example**: Using preset theme
+**Example**: Using preset theme `theme_minimal`
 
 ```{r}
 diamonds %>% 
@@ -1214,9 +1321,20 @@ diamonds %>%
   scale_color_brewer(palette = 'Spectral', name = 'Color') +
   theme_minimal()
 ```
+**Example**: Using preset theme `theme_dark`
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_brewer(palette = 'Spectral', name = 'Color') +
+  theme_dark()
+```
 
 <br>
-We can also use [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to customize specific components of the plot.
+We can also use [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to customize specific non-data components of the plot.
 
 **Example**: Using custom theme
 
