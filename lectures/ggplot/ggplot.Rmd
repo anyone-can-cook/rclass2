@@ -84,8 +84,7 @@ We will use public-use data from the _National Center for Education Statistics (
 - Variable `stu_id` uniquely identifies observations
 ```{r}
 load(file = url('https://github.com/anyone-can-cook/educ152/raw/main/data/els/output_data/els_stu.RData'))
-els <- df_els_stu_allobs
-rm(df_els_stu_allobs)
+els <- df_els_stu_allobs_fac
 
 glimpse(els)
 
@@ -175,7 +174,7 @@ The five layers of the grammar of graphics:
 - The variables of interest are hours per week spent on homework in high school (`bys34a`), earnings in 2011 (`f3ern2011`), and student sex (`f1sex`)
 
 ```{r}
-els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% as_factor() %>% head(10)
+els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% head(10)
 ```
 
 
@@ -230,7 +229,7 @@ els %>%
 - This is the "count" transformation (_default for plots like barplots_)
 
 ```{r}
-els %>% count(f1sex) %>% as_factor()
+els %>% count(f1sex) 
 ```
 
 ```{r, echo = F}
@@ -461,10 +460,8 @@ els %>% select(bys34a,f3ern2011) %>%
 
 ```{r}
 els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a)
-els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a) %>% as_factor()
 
 els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011)
-els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011) %>% as_factor()
 ```
 
 - Create version of variables that replace values less than zero with `NA`:
@@ -481,7 +478,7 @@ els_v2 <- els %>%
 els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
 els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
 
-els_v2 %>% count(f1mothed, f1fathed) %>% as_factor()
+els_v2 %>% count(f1mothed, f1fathed)
 ```
 
 - To avoid scatterplot with too many points, create a dataframe consisting of students whose parents have a PhD or first professional degree:
@@ -543,7 +540,7 @@ ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = f1sex)) + geom_p
 
 - This works:
 ```{r, warning = FALSE}
-ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = as_factor(f1sex))) + geom_point()
+ggplot(data= els_parphd, aes(x = hw_time, y = earn2011, color = f1sex)) + geom_point()
 ```
 </details>
 <br>
@@ -598,21 +595,21 @@ ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011))
 
 ```{r}
 #ggplot(data=els_v2, aes(x = hw_time, y = earn2011, group=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, group=as_factor(f1sex)))
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, group=f1sex))
 ```
 
 - Use `linetype` aesthetic to create separate prediction lines (with different line styles) by sex (`f1sex`):
 
 ```{r}
 #ggplot(data=els_v2, aes(x = hw_time, y = earn2011, linetype=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype=as_factor(f1sex)))
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype=f1sex))
 ```
 
 - Use `color` aesthetic to create separate prediction lines (with different colors) by sex (`f1sex`):
 
 ```{r}
 #ggplot(data=els_v2, aes(x = hw_time, y = earn2011, color=as_factor(f1sex))) + geom_smooth()
-ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, color=as_factor(f1sex)))
+ggplot(data=els_v2) + geom_smooth(mapping = aes(x = hw_time, y = earn2011, color=f1sex))
 ```
 
 
@@ -647,8 +644,8 @@ ggplot(data= els_v2, aes(x = hw_time, y = earn2011)) +
 
 ```{r}
 ggplot(data= els_v2) + 
-  geom_point(mapping = aes(x = hw_time, y = earn2011, color = as_factor(f1sex))) + 
-  geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype = as_factor(f1sex))) +
+  geom_point(mapping = aes(x = hw_time, y = earn2011, color = f1sex)) + 
+  geom_smooth(mapping = aes(x = hw_time, y = earn2011, linetype = f1sex)) +
   xlim(c(0,21)) + ylim(c(0,100000))
 ```
 
@@ -753,20 +750,20 @@ els_v2 %>% count(f2evratt)
 ```
 
 ```{r}
-els_v2 %>% count(f2evratt) %>% as_factor()
+els_v2 %>% count(f2evratt) 
 ```
 
 ***Method 1***: Create bar chart using `geom_bar()`
 
 ```{r}
-ggplot(data = els_v2, aes(x = as_factor(f2evratt))) +
+ggplot(data = els_v2, aes(x = f2evratt)) +
   geom_bar()
 ```
 
 - Additionally, we can use pipes to filter values of `f2evratt` before plotting:
 
 ```{r}
-els_v2 %>% filter(f2evratt>=0) %>% ggplot(aes(x = as_factor(f2evratt))) +
+els_v2 %>% filter(f2evratt>=0) %>% ggplot(aes(x = f2evratt)) +
   geom_bar()
 ```
 
@@ -779,7 +776,7 @@ els_v2 %>%
   # use count() to create summary statistics object
   count(f2evratt) %>%
   # plot summary statistic object
-  ggplot(aes(x=as_factor(f2evratt), y=n)) + geom_col()
+  ggplot(aes(x=f2evratt, y=n)) + geom_col()
 ```
 
 </details>
@@ -792,15 +789,12 @@ els_v2 %>% select(f2evratt,f2ps1lvl) %>% var_label()
 
 #ever attended
 els_v2 %>%  count(f2evratt)
-els_v2 %>%  count(f2evratt) %>% as_factor()
 
 #level of first postsec institution
 els_v2 %>%  count(f2ps1lvl)
-els_v2 %>%  count(f2ps1lvl) %>% as_factor()
 
 #ever attended by level attended
 els_v2 %>%  count(f2evratt,f2ps1lvl)
-els_v2 %>%  count(f2evratt,f2ps1lvl) %>% as_factor()
 
 ```
 
