@@ -1277,7 +1277,7 @@ diamonds %>%
 There are several ways to customize the color palettes of the plot. `scale_color_brewer()` is used when we want to color discrete/categorical variables and `scale_color_gradient()` is used when we want to color continuous variables.
 
 
-## `scale_color_brewer()` for discrete variables
+### `scale_color_brewer()` for discrete variables
 
 <br>
 __The `scale_color_brewer()` function__ for categorical/discrete variables
@@ -1357,7 +1357,7 @@ diamonds %>%
 ```
 
 
-## `scale_color_gradient()` for continuous variables
+### `scale_color_gradient()` for continuous variables
 
 To color continuous variables, we need a _color gradient_, which is defined as "a gradual blending from one color to another" ([Being Shady: How to Use Gradient Color in UX Design](https://xd.adobe.com/ideas/principles/web-design/gradient-color-definition/)). A _two-color gradient_ transitions from one color to another (e.g., red to blue), where one end is called the _low end_ of the gradient and the other is the _high end_ of the gradient. There can also be other gradients between more than 2 colors (e.g., red to yellow to blue).
 
