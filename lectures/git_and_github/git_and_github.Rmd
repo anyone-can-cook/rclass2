@@ -819,6 +819,14 @@ What are **local** and **remote** repositories?
     - There are 2 types of URL: HTTPS and SSH
     - HTTPS and SSH are two different ways to authenticate that you are you
     - If you haven't set up SSH, then choose HTTPS
+    - **If you are using HTTPS, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)**
+      - "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
+      - **Example**: On the command line, when prompted for the password, enter your token rather than your GitHub password
+        ```
+        $ git clone https://github.com/username/repo.git
+        Username: your_github_username
+        Password: your_token
+        ```
 
 <br>
 There are **2 basic ways** to get your local repository set up with a remote:
