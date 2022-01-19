@@ -53,6 +53,10 @@ Resources used to create this lecture:
 - http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html
 - https://ggplot2-book.org/
 
+**ggplot cheatsheet**: It may be helpful to familiarize yourself with this cheatsheet and use it as a reference point for review and practice after going through the lecture.
+
+- https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf
+
 
 ## Datasets we will use
 
@@ -82,14 +86,33 @@ We will use public-use data from the _National Center for Education Statistics (
 
 - Follows 10th graders from 2002 until 2012
 - Variable `stu_id` uniquely identifies observations
+
+The following RData file contains 2 dataframes, `df_els_stu_allobs` (variables are mostly haven labelled) and `df_els_stu_allobs_fac` (variables are mostly factors). We will be using the `df_els_stu_allobs_fac` because `ggplot` generally expects categorical variables to be factor variables.
+
 ```{r}
 load(file = url('https://github.com/anyone-can-cook/educ152/raw/main/data/els/output_data/els_stu.RData'))
 els <- df_els_stu_allobs_fac
+```
 
-glimpse(els)
 
+<br>
+<details><summary>**ELS dataset**: Overview of variables using `glimpse()`</summary>
+
+```{r}
+els %>% glimpse()
+```
+
+</details>
+
+<br>
+<details><summary>**ELS dataset**: Overview of variable labels using `var_label()`</summary>
+
+```{r}
 els %>% var_label()
 ```
+
+</details>
+
 
 ```{r, echo = F}
 els <- els %>% 
@@ -101,6 +124,69 @@ els <- els %>%
     f1fathed = unclass(f1fathed),
     f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female')
   )
+```
+
+## Type/class of variables ggplot expects
+
+
+`ggplot` often doesn't work well with variables whose class is haven labelled. For categorical variables, `ggplot` works best with factor class because there is an ordering to the categorical values. We can convert variables to factor class as part of the data manipulation step prior to plotting.
+
+<br>
+**Example**: Comparing plotting haven labelled and factor variables
+
+The `f1race` variable has a class of haven labelled in the `df_els_stu_allobs` dataframe and class of factor in the `df_els_stu_allobs_fac` dataframe. For the factor version, the levels should be the values we want the plot to display (e.g., `White, non-Hispanic`, `Black or African American, non-Hispanic`).
+
+```{r}
+# Haven labelled
+df_els_stu_allobs$f1race %>% str()
+df_els_stu_allobs %>% ggplot() + geom_bar(aes(y=f1race))
+```
+
+```{r}
+# Factor
+df_els_stu_allobs_fac$f1race %>% str()
+df_els_stu_allobs_fac %>% ggplot() + geom_bar(aes(y=f1race))
+```
+
+<br>
+If we try using `f1race` from `df_els_stu_allobs` (haven labelled) to specify the color of the points in the following scatterplot, we will get an error:
+
+```{r, eval = F}
+# Haven labelled (does not work)
+df_els_stu_allobs %>% 
+  filter(unclass(bys34a) > 0) %>%
+  ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1race)) +
+  geom_point()
+```
+
+But using `f1race` from `df_els_stu_allobs_fac` (factor) works:
+
+```{r}
+# Factor
+df_els_stu_allobs_fac %>% 
+  filter(unclass(bys34a) > 0) %>%
+  ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1race)) +
+  geom_point()
+```
+
+We can also specify the _levels_ of a factor variable to control the order in which the values are displayed:
+
+```{r}
+df_els_stu_allobs_fac$f1race <- factor(
+  df_els_stu_allobs_fac$f1race, 
+  levels = c('White, non-Hispanic', 
+             'Black or African American, non-Hispanic', 
+             'Asian, Hawaii/Pac. Islander,non-Hispanic', 
+             'Amer. Indian/Alaska Native, non-Hispanic', 
+             'More than one race, non-Hispanic', 
+             'Hispanic, race specified', 
+             'Hispanic, no race specified')
+)
+
+df_els_stu_allobs_fac %>% 
+  filter(unclass(bys34a) > 0) %>%
+  ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1race)) +
+  geom_point()
 ```
 
 
@@ -117,8 +203,8 @@ Basic definitions:
     - The layered grammar of graphics is a "formal system for building plots... based on the insight that you can uniquely describe _any_ plot as a combination of" seven paramaters [@RN4564, chapter 3] 
 - Aesthetics
     - __Aesthetics__ are visual elements of the plot (e.g., lines, points, symbols, colors, axes)
-    - __Aesthetic mappings__ are visual elements of the plot determined by values of specific variables (e.g., a scatterplot where the color of each point depends on the value of the variable `race`)
-    - However, aesthetics need not be determined by variable values. For example, when creating a scatterplot you may specify that the color of each point be blue.
+    - __Aesthetic mappings__ (**mappings**) are visual elements of the plot determined by values of specific variables (e.g., a scatterplot where the color of each point depends on the value of the variable `race`)
+    - In the context of visualization using ggplot, all **mappings** are **aesthetic mappings** but not all **aesthetics** are **aesthetic mappings** (i.e., determined by variable values). For example, when creating a scatterplot you may specify that the color of each point be blue.
 
 The seven parameters of the layered grammar of graphics consists of:
 
@@ -159,7 +245,7 @@ What does Wickham mean by __layers__? (from "[Telling Stories with Data Using th
 The five layers of the grammar of graphics:
 
 - [Dataset](#dataset-data) (__data__)
-- [Set of mappings](#set-of-mappings-mappings) (__mappings__)
+- [Set of aesthetic mappings](#set-of-aesthetic-mappings-mappings) (__mappings__)
 - [Statistical transformation](#statistical-transformation-stat) (__stat__)
 - [Geometric object](#geometric-objects-geoms) (__geom__)
 - [Position adjustment](#position-adjustment-position) (__position__)
@@ -178,15 +264,15 @@ els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% head(10)
 ```
 
 
-### Set of mappings (__mappings__)
+### Set of aesthetic mappings (__mappings__)
 
 **Mapping** defines how variables in a dataset are applied (mapped) to a graphic.
 
 **Example**: Consider the previous dataset
 
-- Map hours/week on homework to the x-axis
+- Map hours/week spent on homework to the x-axis
 - Map 2011 income to the y-axis
-- Additionally, if we are creating a scatterplot of homework time (x-axis) and income (y-axis), we might use sex to define the color of each point
+- Map sex to the color of each point
 
 ```{r}
 els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% 
@@ -194,7 +280,7 @@ els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>%
   head(10)
 ```
 
-```{r, echo = F}
+```{r}
 els %>% 
   filter(bys34a > 0) %>%
   ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1sex)) +
@@ -202,9 +288,27 @@ els %>%
 ```
 
 
+**Example**: Depending on the type of plot, a different set of mapping may be needed (i.e., not always `x` to one variable and `y` to another)
+
+- Map sex to the x-axis (_by default, bar plots will plot the counts, see next section_)
+
+```{r}
+els %>% select(stu_id, f1sex) %>% 
+  rename(x = f1sex) %>% 
+  head(10)
+```
+
+```{r}
+els %>% 
+  ggplot(mapping = aes(x = f1sex)) +
+  geom_bar(width = 0.6)
+```
+
+
+
 ### Statistical transformation (__stat__)
 
-A **statistical transformation** transforms the underlying data before plotting it.
+A **statistical transformation** transforms the underlying data before plotting it. Different types of plots (i.e., `geom_*()`) will use a different transformation by default so we often do not need to explicitly specify it.
 
 **Example**: Imagine creating a scatterplot of the relationship between hours/week spent on homework (x-axis) and 2011 income (y-axis)
 
@@ -216,7 +320,7 @@ els %>% select(stu_id,bys34a,f3ern2011) %>% rename(x=bys34a, y=f3ern2011) %>%
   head(10)
 ```
 
-```{r, echo = F}
+```{r}
 els %>% 
   filter(bys34a > 0) %>% 
   ggplot(mapping = aes(x = bys34a, y = f3ern2011)) +
@@ -232,7 +336,7 @@ els %>%
 els %>% count(f1sex) 
 ```
 
-```{r, echo = F}
+```{r}
 els %>% 
   ggplot(mapping = aes(x = f1sex)) +
   geom_bar(width = 0.6)
@@ -243,7 +347,7 @@ els %>%
 
 Graphs visually display data, using **geometric objects** like a point, line, bar, etc.
 
-- Each geometric object in a graph is called a "geom"
+- Each geometric object in a graph is called a "geom" -- they are defined as "visual marks that represent data points" ([ggplot cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf))
 - "A geom is the geometrical object that a plot uses to represent data" [@RN4564, chapter 3]
 - "People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms"  [@RN4564, chapter 3]
 - __Aesthetics__ are "visual attributes of the geom" (e.g., color, fill, shape, position) ([Grammar of Graphics](https://cfss.uchicago.edu/notes/grammar-of-graphics/))
@@ -1026,12 +1130,39 @@ diamonds %>%
   xlab('Carat') + ylab('Price')
 ```
 
+<br>
+Alternatively, the `labs()` function can be used to add all titles and labels:
+
+```{r, eval = FALSE}
+?labs
+
+# SYNTAX AND DEFAULT VALUES
+labs(
+  ...,
+  title = waiver(),
+  subtitle = waiver(),
+  caption = waiver(),
+  tag = waiver()
+)
+```
+
+_Note_: A **waiver** is a "flag" object, similar to `NULL`, that indicates the calling function should just use the default value. It is used in certain functions to distinguish between displaying nothing (`NULL`) and displaying a default value calculated elsewhere (`waiver()`).
+
+**Example**: Adding title and axis labels using `labs()`
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point() +
+  labs(title = 'Correlation between diamond carat and price', x = 'Carat', y = 'Price')
+```
+
 
 ## Scales
 
 The __`scale_x_continuous()`__ function is used to control the display of the x-axis when x is a continuous variable.
 
-Similarly, the __`scale_y_continuous()`__ to control the display of the y-axis when y is a continuous variable
+Similarly, the __`scale_y_continuous()`__ function is to control the display of the y-axis when y is a continuous variable.
 
 ```{r, eval = FALSE}
 ?scale_x_continuous
@@ -1129,7 +1260,8 @@ diamonds %>%
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
 ```
-- Alternatively, we could specificy scale like this: `scale = .001`:
+
+- Alternatively, we could specify scale like this: `scale = .001`:
 
 ```{r}
 diamonds %>% 
@@ -1142,7 +1274,10 @@ diamonds %>%
 
 ## Colors
 
-There are several ways to customize the color palettes of the plot, including `scale_color_brewer()` for discrete scale and `scale_color_gradient()` for continuous scale.
+There are several ways to customize the color palettes of the plot. `scale_color_brewer()` is used when we want to color discrete/categorical variables and `scale_color_gradient()` is used when we want to color continuous variables.
+
+
+### `scale_color_brewer()` for discrete variables
 
 <br>
 __The `scale_color_brewer()` function__ for categorical/discrete variables
@@ -1185,6 +1320,7 @@ diamonds %>% count(color)
 diamonds$color %>% class()
 diamonds$color %>% attributes()
 ```
+
 First, let's create a scatterplot of the relationship between carat (x-axis) and price (y-axis) with color of points determined by the variable `color` and we'll use the default display (i.e., don't specify `scale_color_brewer()` function:
 
 ```{r}
@@ -1220,7 +1356,11 @@ diamonds %>%
   scale_color_brewer(palette = 'Spectral', direction = -1, name = 'Diamond color')
 ```
 
-<br>
+
+### `scale_color_gradient()` for continuous variables
+
+To color continuous variables, we need a _color gradient_, which is defined as "a gradual blending from one color to another" ([Being Shady: How to Use Gradient Color in UX Design](https://xd.adobe.com/ideas/principles/web-design/gradient-color-definition/)). A _two-color gradient_ transitions from one color to another (e.g., red to blue), where one end is called the _low end_ of the gradient and the other is the _high end_ of the gradient. There can also be other gradients between more than 2 colors (e.g., red to yellow to blue).
+
 __The `scale_color_gradient()` function__:
 
 ```{r, eval = FALSE}
@@ -1270,7 +1410,9 @@ diamonds %>%
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
 ```
-Next, let's add `scale_color_gradient()` but we'll manually insert the default values for `low` and `high` arguments
+
+Next, let's add `scale_color_gradient()` but we'll manually insert the default values for `low` and `high` arguments:
+
 ```{r}
 diamonds %>% 
   ggplot(mapping = aes(x = carat, y = price, color = depth)) + 
@@ -1297,11 +1439,11 @@ diamonds %>%
 
 ## Themes
 
-From "[Complete Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)," Themes control "non-data display"
+From "[Complete Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)," **themes** control "non-data display."
 
-- non-data display means stuff not determined by values of the data
+- A **theme** controls all non-data display (i.e., stuff not determined by values of the data)
 - Use `theme()` "if you just need to tweak the display of an existing theme"
-- Use one of the following "complete themes" (preset themes) if you want to control __all__ non-data display of a plot, e.g.,:
+- Use one of the following "complete themes" (preset themes) if you want to control __all__ non-data display of a plot, e.g.:
   - `theme_grey()` (_default_)
   - `theme_bw()`
   - `theme_light()`
@@ -1309,7 +1451,7 @@ From "[Complete Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)," 
   - `theme_minimal()`
   - `theme_classic()`
 
-**Example**: Using preset theme `theme_minimal`
+**Example**: Using preset theme `theme_minimal()`
 
 ```{r}
 diamonds %>% 
@@ -1321,7 +1463,9 @@ diamonds %>%
   scale_color_brewer(palette = 'Spectral', name = 'Color') +
   theme_minimal()
 ```
-**Example**: Using preset theme `theme_dark`
+
+**Example**: Using preset theme `theme_dark()`
+
 ```{r}
 diamonds %>% 
   ggplot(mapping = aes(x = carat, y = price, color = color)) + 
@@ -1334,7 +1478,11 @@ diamonds %>%
 ```
 
 <br>
-We can also use [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to customize specific non-data components of the plot.
+We can also use [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to customize specific non-data components of the plot, including:
+
+- Font family, size, color of text
+- Color and gridlines of plot background
+- Display and positioning of axes and labels
 
 **Example**: Using custom theme
 
@@ -1362,6 +1510,16 @@ diamonds %>%
 # Exporting plots
 
 The plots generated by `ggplot` can be exported as a PDF, PNG, or other file types. (From [Creating and Saving Graphs - R Base Graphs](http://www.sthda.com/english/wiki/creating-and-saving-graphs-r-base-graphs))
+
+When working with RMarkdown files, you can directly embed the code for the plot within code chunks to knit into the final document. But for R scripts, there may be times where you want to save the plot outputs to be used elsewhere.
+
+There are many different kinds of file formats, including: ([Saving a `ggplot` object as an image](https://tmieno2.github.io/R-as-GIS-for-Economists/ggsave.html))
+
+- **vector graphics** (pdf, svg, eps)
+- **raster graphics** (jpg, png, tif)
+
+The main difference is that vector graphics are scalable, meaning the image retains its quality when enlarged, so they are generally preferred over raster graphics when possible.
+
 
 ## Exporting in RStudio
 

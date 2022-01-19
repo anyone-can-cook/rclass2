@@ -1,0 +1,28 @@
+---
+title: 'Analysis Report'
+output: pdf_document
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(echo = F, warning = F, message = F, out.width = '75%', fig.align = 'center')
+
+
+# Load libraries
+
+
+# Directory paths
+
+
+```
+
+
+# About the data
+
+
+
+# Data analysis
+
+
+
+# References
+
