@@ -20,6 +20,10 @@ output:
 
 # Introduction
 
+```{bash, eval=FALSE}
+git config --global user.mail "ozanj@ucla.edu"
+git config --global user.name "ozanj"
+```
 
 Load packages:
 ```{r, message=FALSE}
@@ -107,7 +111,7 @@ What is __GitHub__?
 - [GitHub](https://github.com/) is the industry standard hosting site/service for Git repositories
     - Hosting services allow people/organizations to store files on the internet and make those files available to others
 - Microsoft acquired Github in 2018 for $7.5 billion
-- GitHub stores your local repositories in "the cloud"
+- GitHub stores your repositories in "the cloud"
     - E.g., if you create a local repository stored on your machine, GitHub enables you to create a "remote" version of this repository
     - Also, you can connect to a remote repository that already exists and create a local version of this respository on your machine
 - More broadly, GitHub enables you to store files, share code, and communicate with others
@@ -134,14 +138,13 @@ Here is how we will learn Git and GitHub over the course of the quarter:
     - Provide a conceptual overview of concepts and workflow
     - Show you how to accomplish specific tasks by issuing commands on the command line
     - Devote time to providing in-depth conceptual understanding of particular topics/concepts
-    - You will practice doing Git/GitHub stuff during in-class exercises and in weekly problem sets
+    - You will practice doing Git/GitHub while you work through lecture and in weekly problem sets
 - With the exception of using [GitHub](https://github.com/) for communication ("issues") and for creating/cloning repositories, we will perform all tasks on the **command line** rather than using a point-and-click **graphical user interface (GUI)**
     - Initially, this will feel intimidating, but after a few weeks you will see that this helps you understand Git/GitHub better and is much more efficient
 - After the Git/GitHub unit:
     - Weekly problem sets will be completed and submitted using GitHub
     - When communicating with your problem set "team," you will use GitHub "issues"
     - When posing questions to instructors/classmates, you will use GitHub "issues"
-    - Selected additional lectures/class exercises about additional Git/GitHub concepts
 
 ## Command line vs. graphical user interface (GUI)
 
@@ -208,7 +211,7 @@ _[Helping my students overcome __command-line bullshittery__](http://www.pgbovin
 
 ## Installation and running shell commands from RStudio
 
-If you have a **Windows** computer, you will need to [follow these steps](https://anyone-can-cook.github.io/rclass2/assets/resources/bash_on_windows.html) to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. If you have a **Mac**, you won't need to download anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/). However, if you have a newer version of Mac, you may need to run `xcode-select --install` in your Terminal before you're able to use Git commands (see [here](https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a) for more info).
+If you have a **Windows** computer, you will need to [follow these steps](https://anyone-can-cook.github.io/rclass2/assets/resources/bash_on_windows.html) [OZAN - CHANGE URL] to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. If you have a **Mac**, you won't need to download anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/). However, if you have a newer version of Mac, you may need to run `xcode-select --install` in your Terminal before you're able to use Git commands (see [here](https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a) for more info).
 
 <br>
 In **RStudio**, there is a **Terminal** tab (next to the **Console** tab) where you can run Bash commands and perform Git operations:
@@ -221,6 +224,14 @@ _Credit: [RStudio Terminal blog post](https://blog.rstudio.com/2017/08/11/rstudi
 If you are working from an **R markdown file**, you can also create `bash` code chunks (similar to `R` code chunks) for running shell commands. All you need to do is indicate `{bash}` for the code chunk:
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/bash_chunk.png)
+
+Try running this code chunk on your own
+
+- if it works, you the bash/terminal program is connected to Rstudio!
+```{bash}
+echo "Hello, World!"
+```
+
 
 ## RStudio Console vs. Terminal
 
@@ -235,7 +246,15 @@ What is the difference between the RStudio **Console** and **Terminal**?
 
 # Command line
 
-In this section, we will go over some of the commonly used command line commands. You can run these commands either in your **RStudio Terminal** or in a `bash` code chunk of an **R markdown file**.
+In this section, we will go over some of the commonly used bash command line commands. You can run these commands either in a standalone **Git Bash/Terminal application**, your **RStudio Terminal** or in a `bash` code chunk of an **R markdown file**.
+
+- Running bash commands from **Git Bash/Terminal application** or **RStudio Terminal**
+  - current (working) directory will be your home directory
+    - Home directory for Git Bash/Terminal application may differ from home directory in RStudio Terminal
+  - if you change working directory, this change will persist for the duration of your current R session
+- Running bash commands from code chunk of an R Markdown file
+  - current (working) directory will be directory where the .Rmd file is saved
+  - if you change the working directory within a code chunk, after code chunk finishes running the working directory will revert back to the directory where the .Rmd file is saved 
 
 <br>
 Generally, you can pull up the **help file** for a command by running:
@@ -264,6 +283,8 @@ man ls
   - `-l`: List files in long format (i.e., include additional information like file size, date of creation, etc.)
 - Arguments:
   - `directory_name(s)`: Which directories to list the content of (default: current directory)
+    - note: provide the filepath relative to the current (working) directory
+    - note: unlike *R*, do not need to put filepath in quotes; but you can!
 - Equivalent R function: `list.files()`
 
 <br>
@@ -277,6 +298,14 @@ ls
 
 ```{bash}
 ls ..
+```
+- This works too (same output as above)
+```{bash}
+ls ../
+```
+- This works too (same output as above)
+```{bash}
+ls ".."
 ```
 
 **Example**: Using `ls -a` to list content in parent directory including entries whose names begin with a dot
@@ -309,7 +338,7 @@ pwd
 
 - Syntax: `cd <directory_name>`
 - Arguments:
-  - `directory_name`: Which directory to change to
+  - `directory_name`: Which directory to change to, relative to your current working directory
 - Equivalent R function: `setwd()`
 
 <details><summary>**Example**: Using `cd` to change directory</summary>
@@ -323,14 +352,17 @@ pwd
 # Change to parent directory and print current directory
 cd ..
 pwd
+# list files
+ls
 ```
 
 </details>
 
 <br><hr><br>
-**`mkdir`**: Create new directories
+**`mkdir`**: Create new directories, if they do not already exist
 
 - Syntax: `mkdir [<option(s)>] <directory_name(s)>`
+- help: `mkdir --help` (Windows); `man mkdir` (Mac)
 - Options:
   - `-p`: Create intermediate directories as required
 - Arguments:
@@ -340,6 +372,7 @@ pwd
 <details><summary>**Example**: Using `mkdir` to create new directory</summary>
 
 ```{bash}
+# mkdir --help # help (windows)
 # List content of current directory
 ls
 ```
@@ -359,6 +392,12 @@ ls
 # List content of current directory
 ls
 ```
+- this code would give us an error because we cannot create child directory `folder_c` if `folder_b` does not already exist unless we specify the `-p` option on the `mkdir` function
+```{bash, eval=FALSE}
+mkdir folder_a folder_b/folder_c
+ls
+```
+
 
 ```{bash}
 # Create new directories (don't need to explicitly create folder_b before folder_c)
@@ -410,8 +449,10 @@ ls my_folder
 **`rm`**: Delete files or directories
 
 - Syntax: `rm [<option(s)>] [<file/directory_name(s)>]`
+- Help: `rm --help` (Windows); `man rm` (Mac)
 - Options:
   - `-r`: Remove directories and their contents recursively (this flag is required to delete a directory)
+    - "recursive": in computer science, "recursion is a programming technique using function or algorithm that calls itself one or more times until a specified condition is met" [SOURCE](https://www.cpp.edu/~ftang/courses/CS240/lectures/recursion.htm#:~:text=In%20computer%20science%2C%20recursion%20is,one%20called%20to%20the%20first.)
   - `-f`: Force remove a file/directory
 - Equivalent R function: `unlink()`
 
@@ -423,6 +464,7 @@ ls
 ```
 
 ```{bash}
+# rm --help
 # Delete files
 rm file_a.txt file_b.txt
 ls
@@ -449,16 +491,55 @@ ls
 
 ## Working with files
 
+This section shows bash code to:
+
+- add (write) text to files (`echo` function)
+- print contents of files (`cat` function)
+- print first part of a file (`head` function)
+- print last part of a file (`tail` function)
+- copy files or directories (`cp` function)
+- rename or move files (`mv` function)
+
+<br>
 <br>
 **`echo`**: Write to standard output (i.e., print to terminal)
 
 - Syntax: `echo <text_to_print>`
-  - _Note_: Use `help echo` to access the help file on Windows
+- Help:
+  - Windows: `help echo` (note: this is different from the usual `function_name --help` syntax
+  - Mac: `man echo`
 - Arguments:
   - `text_to_print`: Text to print to terminal
-- Notes:
-  - The text outputted to the terminal can be _redirected_ to a file using `>`
-  - The text could also be _appended_ to an existing file using `>>` (i.e., not overwrite existing content of file)
+- What executing `echo` function does:
+  - if you execute `echo <text_to_print>`, it will simply print that text on terminal
+  - `echo <text_to_print> > file_name` (overwrite file)
+    - The text outputted to the terminal can be _redirected_ to a file using `>`
+    - if file already exists, using `>` will overwrite contents of existing file
+  - `echo <text_to_print> >> file_name` (append to file)
+    - The text could also be _appended_ to an existing file using `>>` (i.e., not overwrite existing content of file)
+- `echo` interprets the following backslash-escaped characters
+  - `\a`: alert (bell)
+  - `\b`: backspace
+  - `\c`: suppress further output
+  - `\e`: escape character
+  - `\E`: escape character
+  - `\f`: form feed
+  - `\n`: new line
+  - `\r`: carriage return
+  - `\t`: horizontal tab
+  - `\v`: vertical tab
+  - `\\`: backslash
+
+<br>
+<details><summary>**Example**: Using `echo` to print text to terminal</summary>
+
+```{bash}
+# help echo # help Windows
+# man echo # help Mac
+echo "Hello, World!"
+```
+
+<br><br>
 
 **`cat`**: Concatenate and print files
 
@@ -466,12 +547,6 @@ ls
 - Arguments:
   - `file_name`: File to print to terminal
 
-
-<details><summary>**Example**: Using `echo` to print text to terminal</summary>
-
-```{bash}
-echo "Hello, World!"
-```
 
 </details>
 
