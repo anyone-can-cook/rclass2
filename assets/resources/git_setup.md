@@ -1,26 +1,9 @@
-% Getting set up with Git
+% Setting up Git
 
 
 ## Setting up a GitHub account
 
 If you have not already, make sure you have created an account on GitHub [here](https://github.com/) and are added to the [anyone-can-cook](https://github.com/anyone-can-cook) organization.
-
-What are **local** and **remote** repositories?
-
-- Local vs. remote git repository:
-    - __Local__ git repository: Git repository for a project stored on your machine
-    - __Remote__ git repository: Git repository for a project stored on the internet (e.g., GitHub)
-- Typically, a local git repository is connected to a remote git repository for collaboration
-- A remote repository is identified by its URL, which can be used to connect your local repository
-    - There are 2 types of URL: HTTPS and SSH
-    - HTTPS and SSH are two different ways to authenticate that you are you
-    - If you haven't set up SSH, then choose HTTPS (you will most likely be using this)
-    
-Steps to set up **access token**:
-
-- If you are using **HTTPS**, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)
-- "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
-
 
 ## Installing Git for Macs
 
@@ -78,6 +61,24 @@ Check that you are able to run bash in an RMarkdown code chunk:
 - Run `echo "Hello, World!"` inside the code chunk and make sure it works
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/bash_chunk.png)
+
+## Generating GitHub access token
+
+What are **local** and **remote** repositories?
+
+- Local vs. remote git repository:
+    - __Local__ git repository: Git repository for a project stored on your machine
+    - __Remote__ git repository: Git repository for a project stored on the internet (e.g., GitHub)
+- Typically, a local git repository is connected to a remote git repository for collaboration
+- A remote repository is identified by its URL, which can be used to connect your local repository
+    - There are 2 types of URL: HTTPS and SSH
+    - HTTPS and SSH are two different ways to authenticate that you are you
+    - If you haven't set up SSH, then choose HTTPS (you will most likely be using this)
+    
+Steps to set up **access token**:
+
+- If you are using **HTTPS**, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)
+- "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
 
 ## Tutorials [optional]
 
