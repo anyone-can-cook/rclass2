@@ -1,4 +1,32 @@
-% Running Bash on Windows
+% Getting set up with Git
+
+
+## Setting up a GitHub account
+
+If you have not already, make sure you have created an account on GitHub [here](https://github.com/) and are added to the [anyone-can-cook](https://github.com/anyone-can-cook) organization.
+
+What are **local** and **remote** repositories?
+
+- Local vs. remote git repository:
+    - __Local__ git repository: Git repository for a project stored on your machine
+    - __Remote__ git repository: Git repository for a project stored on the internet (e.g., GitHub)
+- Typically, a local git repository is connected to a remote git repository for collaboration
+- A remote repository is identified by its URL, which can be used to connect your local repository
+    - There are 2 types of URL: HTTPS and SSH
+    - HTTPS and SSH are two different ways to authenticate that you are you
+    - If you haven't set up SSH, then choose HTTPS (you will most likely be using this)
+    
+Steps to set up **access token**:
+
+- If you are using **HTTPS**, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)
+- "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
+
+
+## Installing Git for Macs
+
+Mac users should already have git installed. Open up your [**Terminal** application](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac) and check that it is installed by running `git`. You should see some information about Git commands and usage being outputted to your screen.
+
+If not, then you may need to install Git by downloading it from [here](https://git-scm.com/downloads).
 
 ## Installing Git for Windows
 
@@ -13,11 +41,12 @@ What is **Git for Windows**?
 Steps to **install**:
 
 - Download [Git for Windows](https://gitforwindows.org/) and run the installer
-- You'll be going with the default option for most steps _except one step towards the end as described later_
+- You'll be going with the pre-selected (default) options for most steps _except one step towards the end as described later_
 - One of the first screens you'll see in the setup process is the location where Git will be installed (e.g., `C:\Program Files\Git`). Leave it as default but just make a note of this path in case we need it later for troubleshooting purposes.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_install.png)</center>
 - In the screen below, you can optionally select to install a shortcut to Git Bash on your Desktop for easier access.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_shortcut.png)</center>
+- When asked about which default editor you would like Git to use, go with the option that is already pre-selected for you (i.e., Vim)
 - When you get to the step shown below about **Adjusting your PATH environment**, make sure to select **Use Git and optional Unix tools from the Command Prompt**. If you do not, you may run into the issue described in the troubleshooting section below.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_path.png)</center>
 - After you finish the installation process, check that **Git Bash** is your default terminal in **RStudio** by going under `Tools` > `Global Options...` (`Terminal` tab). You may need to restart **RStudio** for changes to be reflected.
@@ -39,3 +68,20 @@ Adding to `PATH` on Windows:
 - If the path to your Bash executable is not part of your `PATH`, you can add it
 - One way to do it is by running the R command `Sys.setenv()` seen [here](https://github.com/orgs/Rucla-ed/teams/announcements/discussions/3?from_comment=2#discussion-3-comment-2), but this only modifies the `PATH` for your current R session
 - Instead, you can follow [these steps](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/) to add `C:\Program Files\Git\bin` to your `PATH`
+
+## Running bash in RMarkdown
+
+Check that you are able to run bash in an RMarkdown code chunk:
+
+- Create a new RMarkdown file
+- Add a code chunk and indicate `{bash}`, as seen below
+- Run `echo "Hello, World!"` inside the code chunk and make sure it works
+
+![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/bash_chunk.png)
+
+## Tutorials [optional]
+
+- Codecademy tutorial (10-20 min read) 
+    - Read through this tutorial on getting started with GitHub https://www.codecademy.com/articles/f1-u3-git-setup  
+- Hello World GitHub Guide (10-20 min read) 
+    - Read through this short tutorial on GitHub https://guides.github.com/activities/hello-world/  
