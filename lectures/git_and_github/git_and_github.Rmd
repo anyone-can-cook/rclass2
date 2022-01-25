@@ -1893,9 +1893,20 @@ git cat-file -p 6108458
 
 <br>
 After the files have been committed, tree objects will be created for any sub-directories as well as for the root directory of the repository:
+```{bash, eval = FALSE}
+#git config --global user.name
+#git config --global user.email
+
+#git config user.name
+#git config user.mail
+```
+
 
 ```{bash, echo=-c(1:2), results='hide'}
 cd ~/my_git_repo
+
+#git config --global user.name "Ozan Jaquette"
+#git config --global user.email "ozanj@ucla.edu"
 
 # Make a commit
 git commit -m "initial commit"
