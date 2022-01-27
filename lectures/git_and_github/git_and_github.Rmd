@@ -1713,8 +1713,16 @@ index c1cff38..8b151a2 100644
 <br>
 Every git repository that is created using `git init` contains a **`.git/` directory** that "contains all the informations needed for git to work" (From [Git series 1/3: Understanding git for real by exploring the .git directory](https://www.daolf.com/posts/git-series-part-1/)):
 
-```{bash, echo=-c(1:4)}
+```{bash}
 cd ~  # change to root directory
+pwd
+```
+
+- Initialize a new git repository in `my_git_repo` directory
+
+```{bash}
+cd ~  # change to root directory
+pwd
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
 
@@ -1728,7 +1736,7 @@ ls -al
 <br>
 What's inside the **`.git/` directory**?
 
-```{bash, echo=-c(1:2)}
+```{bash}
 cd ~/my_git_repo
 
 # List out the contents of the .git/ directory (in tree form)
@@ -1778,7 +1786,7 @@ There are 4 types of **git objects** (From [The Git Object Model](http://shafiul
 
 ### Blob object
 
-A **blob** is generally a file which stores data
+A **blob** is generally a file which stores data, like text
 
 - For example, this could be an R script
 - The file must be added to the _staging area_ (i.e., "index") in order for the blob object to be created
@@ -1788,14 +1796,14 @@ A **blob** is generally a file which stores data
   - But only the first 7 characters of the hash is required to uniquely identify it
 - This hash can also be computed from the name of the file for which the blob is to be created by using the `git hash-object` command
 
-```{bash, echo=-c(1:2)}
+```{bash}
 cd ~/my_git_repo
 
-# Create new R script
+# Create new R script (working directory)
 echo "library(tidyverse)" > create_dataset.R
 echo "mpg %>% head(5)" >> create_dataset.R
 
-# Add R script
+# Add R script to staging area
 git add create_dataset.R
 
 # View .git/objects directory
@@ -1853,7 +1861,9 @@ git cat-file -s c1cff38
 </details>
 <br>
 
-### Tree object
+### What the heck are all these objects!?
+
+After a **blob** the next type of git object to discuss is a **tree**
 
 A **tree** is a directory that contains references to blobs (_files_) or other trees (_sub-directories_)
 
@@ -1862,9 +1872,12 @@ A **tree** is a directory that contains references to blobs (_files_) or other t
 - The root directory of the git repository is also a tree itself, and contains references to all its content at the point of commit (like a "snapshot")
 - A commit must be made in order for the tree object(s) to be created
 
+But before saying more about trees, we're gonna take a detour to give you some skills to diagnose all these different objects we are going to encounter as we start adding folders and making commits
+
+- add a sub-directory named `my_git_repo/notes` (type of git object = tree) and a couple text files to the sub-directory (type of git object = blob)
 ```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
-rm -rf notes
+rm -rf notes # force remove notes directory if it exists
 
 # Create a sub-directory 
 mkdir notes
@@ -1879,39 +1892,47 @@ git add .
 # View .git/objects directory
 find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
+We can use `git hash-object` to verify the hashes for the files `notes/note_1.txt` and `notes/note_2.txt`:
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Generate blob object hash for the file notes/note_1.txt
+echo 'hash for notes/note_1.txt:'
+git hash-object notes/note_1.txt
+
+# Generate blob object hash for the file notes/note_2.txt
+echo 'hash for notes/note_2.txt:'
+git hash-object notes/note_2.txt
+```
 
 <br>
-As seen, new blob objects are created for `note_1.txt` and `note_2.txt` since the files have been added (but tree objects will not be created until a commit has been made):
+Now that we know the hash associated with `note_1.txt` and `note_2.txt` we can use `git cat-file` to print the contents of these files. 
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
 # View content of note_1.txt and note_2.txt
-git cat-file -p 476fb98
-git cat-file -p 6108458
+git cat-file -p 6108458 # note_1.txt
+git cat-file -p 476fb98 # note_2.txt
 ```
+<br>
+We also created the directory `notes`, but tree objects (i.e., directories) are not created until a commit has been made
+
+- this is why we don't see an object for the root directory `my_git_repo`
 
 <br>
 After the files have been committed, tree objects will be created for any sub-directories as well as for the root directory of the repository:
-```{bash, eval = FALSE}
-#git config --global user.name
-#git config --global user.email
 
-#git config user.name
-#git config user.mail
-```
-
-
-```{bash, echo=-c(1:2), results='hide'}
+```{bash}
 cd ~/my_git_repo
-
-#git config --global user.name "Ozan Jaquette"
-#git config --global user.email "ozanj@ucla.edu"
 
 # Make a commit
 git commit -m "initial commit"
 ```
+Now that we have made our first commit, let's print contents of `.git/objects` directory
 
+- now `.git/objects` has 6 objects, each associated with a different hash. Ugh. this is getting confusing! what the hell are all these things!?
 ```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
 git branch -M main
@@ -1920,8 +1941,130 @@ git branch -M main
 find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 
+Commands to diagnose git objects 
+
+- find hashes associated with all blob (files) and tree (directory) objects (except the root directory)
+  - `git ls-tree -rt HEAD` 
+- find hash for a particular folder associated with the most recent commit
+  - `git rev-parse HEAD:path/to/directory`
+    - e.g., `git rev-parse HEAD:notes`
+- find hash associated with a commit
+  - `git log` 
+- find hash associated with root directory (e.g., `my_git_repo` is root directory for our repository)
+  - can find this by printing the contents of the git object associated with most recent commit
+
 <br>
+Example of using `git log` to show hash associated with commits
+  - note that the below hash `911922e0bae092a8077dd678d5d30a16a25fadc8` can also be found above
+```{bash}
+cd ~/my_git_repo
+git log
+```
+
+
+<br>
+**`git ls-tree`**: List the contents of a tree object
+
+- Help: `git ls-tree --help`
+- Syntax: `git ls-tree [<option(s)>] [<tree hash id>] [<path>]`
+- Some useful options:
+  - `-r`: recurse into subtrees (i.e, show contents of sub-folders)
+  - `-t`: show trees when recursing (i.e., when showing contents of sub-folders, also show folders within these sub-folders)
+  - useful to use `-r` and `-t` together, like: `-rt`
+- how to specify `[<path>]`
+  - `HEAD` is basically a shortcut to the most recent commit. so if we specify the path as `HEAD`, this will show the directory structure of the respository associated with the most recent commit. For example,
+    - `git ls-tree -rt HEAD`
+  - `HEAD:/path/to/directory`
+    - use this syntax to show contents of a tree object that is a sub-directory within the root directory. For example,
+    - `git ls-tree -rt HEAD:notes`
+
+<br>
+```{bash}
+cd ~/my_git_repo
+
+# View .git/objects directory
+find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
+
+Examples of using `git ls-tree [<path>]` to identify git objects
+
+- show git hash associated with all blob (file) and tree (folder) objects within the root directory
+
+```{bash}
+cd ~/my_git_repo
+
+# View .git/objects directory
+git ls-tree -rt HEAD
+```
+- Show contents of a particular sub-directory
+```{bash}
+cd ~/my_git_repo
+git ls-tree -rt HEAD:notes
+```
+
+Examples of using `git ls-tree [<hash id>]` to identify git objects
+
+- Once we know the hash associated with a particular object, we can specify this hash insead of `<path>`
+- show contents of "notes" folder
+
+```{bash}
+cd ~/my_git_repo
+git ls-tree -rt 6cf7bbf4
+```
+- Once we know the hash associated with root directory (based on process of elimination), we can show contents associated with that hash
+```{bash}
+cd ~/my_git_repo
+git ls-tree -rt f59085d
+```
+
+
+**`git rev-parse`**: command 
+
+- `git rev-parse HEAD`: retrieve hash associated with latest commit
+  - `git rev-parse --short HEAD`: retrieve first 7 digits of hash associated with latest commit
+- `git rev-parse HEAD:path/to/directory`: retrieve hash for a particular folder in most recent commit
+  - e.g., `git rev-parse HEAD:notes`
+
+Examples of using `git rev-parse`
+
+- hash for latest commit
+```{bash}
+cd ~/my_git_repo
+
+echo 'retrieve hash associated with latest commit:'
+git rev-parse HEAD
+```
+- retrieve hash for sub-directory `notes` in latest commit
+```{bash}
+cd ~/my_git_repo
+
+echo 'retrieve hash associated folder notes in latest commit:'
+git rev-parse HEAD:notes
+```
+
+
+### Tree object
+
+A **tree** is a directory that contains references to blobs (_files_) or other trees (_sub-directories_)
+
+- Any sub-directories created inside the git repository is a tree object
+  - It contains references to any blobs (_files_) or additional trees (_sub-directories_) within it
+- The root directory of the git repository is also a tree itself, and contains references to all its content at the point of commit (like a "snapshot")
+- A commit must be made in order for the tree object(s) to be created
+
+
+Show git hash associated with all blob (file) and tree (folder) objects within the root directory
+```{bash}
+cd ~/my_git_repo
+
+# View .git/objects directory
+git ls-tree -rt HEAD
+```
+<br>
+
 As we now see, the tree objects for the `my_git_repo/` root directory and `notes/` sub-directory exists, and another object has been created for the commit (_more info on that in [next section](#commit-object)_):
+
+- show object type using `git cat-file -t`
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -1958,7 +2101,7 @@ cd ~/my_git_repo
 ls -al
 ```
 
-Second, show contents of tree using `git cat-file`:
+Second, show contents of tree (root directory) using `git cat-file`:
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
@@ -2001,7 +2144,46 @@ committer <username> <email> <time>
 
 
 <br>
-All commits except for the initial commit will contain a reference to its `parent` commit. So let's create a second commit:
+All commits except for the initial commit will contain a reference to its `parent` commit. 
+<br>
+
+Investigate contents associated with our first commit using `git log`
+```{bash}
+cd ~/my_git_repo
+git log
+```
+<br>
+<details><summary>**Example**: Using `git cat-file` to view commit object content for first commit</summary>
+
+- _**Note**: we use `git rev-list HEAD | tail -n 1` to obtain hash associated with the commit because commit hash depends on time_
+
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo
+
+# Retrieve commit hash for first commit
+echo 'retrieve hash associated with first commit:'
+git rev-list HEAD | tail -n 1
+
+echo ''
+echo 'show object type associated with the git object:'
+git cat-file -t $(git rev-list HEAD | tail -n 1)
+
+# View content of the commit object
+echo ''
+echo 'print contents of the commit:'
+git cat-file -p $(git rev-list HEAD | tail -n 1)
+```
+- Because printing commit object gave us the hash for the root directory (tree), we can use this to print contents of root directory
+
+```{bash}
+cd ~/my_git_repo
+echo 'print contents root directory:'
+git cat-file -p f59085df
+```
+
+</details>
+
+Let's create a second commit:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -2020,34 +2202,23 @@ find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 
 
-<br>
-<details><summary>**Example**: Using `git cat-file` to view commit object content for first commit</summary>
-
-- _**Note**: The commit hash will be different each time we run this because it is dependent on the time_
-
-```{bash, echo=-c(1:2)}
-cd ~/my_git_repo
-
-# Retrieve commit hash for first commit
-git rev-list HEAD | tail -n 1
-
-# View content of the commit object
-git cat-file -p $(git rev-list HEAD | tail -n 1)
-```
-</details>
 
 <br>
 <details><summary>**Example**: Using `git cat-file` to view commit object content for second commit</summary>
 
 - _**Note**: The commit hash will be different each time we run this because it is dependent on the time_
+- Note that the "parent" of the most recent commit is the hash for the previous commit!
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Retrieve commit hash for lastest commit
+# Retrieve commit hash for latest commit
+echo 'Retrieve commit hash for latest commit:'
 git rev-parse HEAD
 
 # View content of the commit object
+echo ''
+echo 'print contents of most recent commit object:'
 git cat-file -p $(git rev-parse HEAD)
 ```
 </details>
@@ -2087,7 +2258,10 @@ find .git/objects -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# View content of the tag object
+echo 'print hash associated with v1 tag:'
+(git show-ref -s v1)
+echo ''
+echo 'print contents of the v1 tag:'
 git cat-file -p $(git show-ref -s v1)  # retrieves hash for v1 tag
 ```
 
@@ -2106,6 +2280,8 @@ The `HEAD` file is a pointer to your current (active) branch -- specifically, it
 
 
 If we output the contents of `HEAD`, we see it contains a reference to the _main_ branch:
+
+- note: below we are using `cat` command to print contents of a file rather than `git cat`
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -2164,7 +2340,7 @@ On the other hand, `git pull` is effectively a `git fetch` followed by a `git me
 
 ## Full example
 
-```{bash, echo=-c(1:4)}
+```{bash}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
