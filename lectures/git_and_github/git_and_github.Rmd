@@ -2526,6 +2526,15 @@ Below are some common git commands you might use to **undo changes**:
 - [git reset](#git-reset)
 - [git revert](#git-revert)
 
+<br>
+When learning these commands, helpful to keep in mind this visualization of the __Three components of a Git project__"
+
+<center>![](https://miro.medium.com/max/686/1*diRLm1S5hkVoh5qeArND0Q.png){width=500px}</center>
+
+*Credit: Lucas Maurer, [medium.com](https://medium.com/@lucasmaurer/git-gud-the-working-tree-staging-area-and-local-repo-a1f0f4822018)*
+
+<br>
+
 ## `git checkout`
 
 **`git checkout`**: Restore working tree files (or switch branches)
@@ -2539,8 +2548,17 @@ Below are some common git commands you might use to **undo changes**:
 <br>
 <details><summary>**Example**: Using `git checkout` to discard changes to a tracked, unstaged file</summary>
 
+In this `git checkout` example we will:
 
-```{bash, echo=-c(1:6), results='hide'}
+- Initialize an (empty) folder as a git repo
+- (in working directory) Create a file `create_dataset.R` that contains two lines of code
+- "add" changes to `create_dataset.R` to "staging area" and "commit" those changes to the local repository
+- (in working directory) insert a new line of code to `create_dataset.R`
+- Imagine that we decide we don't like this new line of code we created in the working area
+- so we use `git checkout <file_name>` to undo changes made in the "working directory" to the file `create_dataset.R`
+  - The result is that file `create_dataset.R` goes back to the way it was after the initial commit and the result of `git status` is "nothing to commit, working tree clean"
+
+```{bash, results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2577,7 +2595,12 @@ cat create_dataset.R
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
+echo 'output from git status:'
+git status
+
 # See exact changes that have been made to file since last commit
+echo ''
+echo 'output from git diff:'
 git diff
 ```
 
@@ -2589,7 +2612,12 @@ cd ~/my_git_repo
 git checkout create_dataset.R
 
 # View file after discarding changes
+echo 'view contents of file create_dataset.R after undoing changes using git checkout:'
 cat create_dataset.R
+
+echo ''
+echo 'output from git status:'
+git status
 ```
 
 </details>
@@ -2613,8 +2641,25 @@ cat create_dataset.R
 
 <br>
 <details><summary>**Example**: Using `git reset` to unstage a file</summary>
+
+In this `git checkout` example we will:
+
+- Initialize an (empty) folder as a git repo
+- (in working directory) Create a file `create_dataset.R` that contains two lines of code
+- "add" changes to `create_dataset.R` to "staging area" and "commit" those changes to the local repository
+- (in working directory) insert a new line of code to `create_dataset.R`
+- "add" this change to `create_dataset.R` to the staging area
+- Imagine that we decide we don't like this new line of code we added to the staging area
+- so we use `git reset HEAD <file_name>` to "unstage" changes we had "added" to the staging area. The result is that:
+  - changes we made to `create_dataset.R` are now unstaged changes in the working directory rather than staged changes ready to be committed
+  - `git reset` does not delete the line of code we added after the initial commit
   
-```{bash, echo=-c(1:6), results='hide'}
+How this `git reset` example differs from the (previous) `git checkout`
+
+- In the `git checkout` example we made a change to a file in the working directory but we didn't add that change to the staging area; in the `git reset` example we added this change to the staging area
+- Whereas `git checkout` deleted the line of code we had inserted in the working directory, `git reset` unstages this new line of code (so it exists as "changes not staged for commit") but does not delete the new line of code
+  
+```{bash, results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2648,17 +2693,24 @@ git status
 cd ~/my_git_repo
 
 # Use git reset to unstage file
+echo 'use git reset to unstage changes added to the staging area'
 git reset HEAD create_dataset.R
 
 # Check status to verify it has been unstaged (listed under `Changes not staged for commit`)
+echo ''
+echo 'output from git status (after using git reset to unstage changes):'
 git status
+
+echo ''
+echo 'print the file create_dataset.R (after using git reset to unstage changes):'
+cat create_dataset.R
 ```
 </details>
 
 <br>
 <details><summary>**Example**: Using `git reset` to undo a commit</summary>
 
-```{bash, echo=-c(1:6), results='hide'}
+```{bash, results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
 mkdir my_git_repo  # make directory `my_git_repo`
@@ -2719,7 +2771,9 @@ cat create_dataset.R
 - Help: `git revert --help`
 - Syntax:
   - `git revert --no-edit <commit_hash>`: Revert all commits up to and including the specified `commit_hash`
-    - The difference between `git revert` and `git reset` is that the former does not actually remove any past commits, but instead creates a new commit that reverts changes (see figure below)
+    - The difference between `git revert` and `git reset` (see figure below):
+      - `git revert` does not remove any previous commits; rather, it creates a new commit (e.g., commit 3) that changes things back to the way they were prior to some commit (e.g., prior to commit 2)
+      - `git reset` removes a previous commit, so there will be no record of this commit in `git log`, it'll be like it never happened 
     - When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permanently erase history
     - When you are working locally and want to undo commits that you have not yet pushed to a remote, then `git reset` may also be an option
     - The `--no-edit` option means that you will use the default message for the revert commit
