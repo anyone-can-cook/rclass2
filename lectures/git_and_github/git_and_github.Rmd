@@ -1955,7 +1955,6 @@ Commands to diagnose git objects
 
 <br>
 Example of using `git log` to show hash associated with commits
-  - note that the below hash `911922e0bae092a8077dd678d5d30a16a25fadc8` can also be found above
 ```{bash}
 cd ~/my_git_repo
 git log
