@@ -2844,10 +2844,15 @@ cat create_dataset.R
 What is a __branch__?
 
 - A branch is an "independent line of development" that "isolates your work from that of other team members" ([Using branches](https://backlog.com/git-tutorial/using-branches/) tutorial)
-- By default, a git repository "has one branch named [__main__] which is considered to be the definitive branch. We use [other] branches to experiment and make edits before committing them to [__main__]" ([Hello World](https://guides.github.com/activities/hello-world/) tutorial)
-- "When you create a branch off the [__main__] branch, you're making a copy, or snapshot, of [main] as it was at that point in time"
-- A branch can be thought of as a "pointer to a single commit"
+- By default, a git repository "has one branch named [__main__] which is considered to be the definitive branch. 
+  - Default branches used to be named [__master__]
+  - Starting in 2020, github transitioned to making [__main__] the default branch name [LINK]https://github.com/github/renaming()
+  - For some of you the default branch may still be named [__master__]
+- We use [other] branches to experiment and make edits before committing them to [__main__]" ([Hello World](https://guides.github.com/activities/hello-world/) tutorial)
 - In the figure below, each circle represents a commit. There are three branches - the **main** branch and 2 other branches (**little feature** and **big feature**) that "branched" off **main**. 
+- "When you create a branch off the [__main__] branch, you're making a copy, or snapshot, of [main] as it was at that point in time"
+  - Therefore, a branch can be thought of as a "pointer to a single commit"
+
 
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/git_branch.png)
 
@@ -2875,6 +2880,43 @@ Defining **branches** in terms of **commits**:
 *Credit: Modified from [Mastering git branches](https://geeks.uniplaces.com/mastering-branches-in-git-f20cb2d0c51f) by Henrique Mota*
 
 <br>
+
+__Commit objects show relationship between commits and "references"__
+
+- In the below example [output hard-coded], we print the contents of a commit object (the second commit made to a repo)
+- The Second commit has the hash `c281829157334317e93172c8acca20ffaaa59cff`, let's call it `commit2`
+- In printing the contents of the commit object for `commit2`:
+  - the "parent" commit has hash `b764bdbcfbe2009f01e89283cbbf35c95b9e2ad6`, which is `commit1`
+- Using the language of branching, we could say the making `commit2` creates the "reference" to `commit`
+  - The reference is the "parent" commit hash that is located inside the commit object for `commit2`
+  
+```{bash, eval=FALSE}
+cd ~/my_git_repo
+
+echo 'Print commit hash for latest commit:'
+git rev-parse HEAD
+
+echo ''
+echo 'Print contents of most recent commit object:'
+echo ''
+git cat-file -p $(git rev-parse HEAD)
+```
+
+```
+## Print commit hash for latest commit:
+## c281829157334317e93172c8acca20ffaaa59cff
+## 
+## print contents of most recent commit object:
+## 
+## tree 524db779f0a3e3b3b353b522285c7da4830e21f1
+## parent b764bdbcfbe2009f01e89283cbbf35c95b9e2ad6
+## author Ozan Jaquette <ozanj@ucla.edu> 1643410447 -0800
+## committer Ozan Jaquette <ozanj@ucla.edu> 1643410447 -0800
+## 
+## second commit
+```
+
+<br>
 Why use **branches**?
 
 - Branching is a means of working on different versions of files in a repository at one time
@@ -2890,24 +2932,32 @@ Why use **branches**?
     - We have a file [predict_grad.Rmd](https://github.com/eddatasci/unrollment_proj/blob/main/scripts/rmd/predict_grad.Rmd) that reads in secondary data, creates analysis variables, runs alternative models for predicting the probability of obtaining a BA
     - Several collaborators are working on different parts of `predict_grad.Rmd`. For example, one person writing functions to clean data and create analysis variables and another person writing functions to run models and store model results.
     - Need a way for multiple people to work on `predict_grad.Rmd` at the same time
-- Typically, there is one main branch (usually **main**) that contains working or approved changes. All other development and testing is usually done on separate branches.
-- It is good practice to work on branches, then merge back to main at key points
+- Typically, there is one main branch (usually **main**) that contains approved changes. All other development and testing is usually done on separate branches.
+- It is good practice to work on branches, then "merge" back to main at key points
 
 ## `git branch`
 
 **`git branch`**: List, create, or delete branches
 
 - Help: `git branch --help`
-- Syntax:
-  - `git branch [<option(s)>]`: List existing branches (default: only local branches)
+- List existing branches (default: only local branches)
+  - syntax: `git branch [<option(s)>]`: 
     - There will be a `*` next to your current branch
-    - Options:
+    - Common ptions:
       - `-a`: List all branches, both local and remote (remote branches will start with `remotes/`)
       - `-r`: List only remote branches
       - `-v`: Display details about latest commits next to each branch
-  - `git branch <branch_name>`: Create new local branch
-  - `git branch -d <branch_name>`: Delete local branch
-    - You must be on a branch different than the one you want to delete
+- Create new local branch
+  - syntax: `git branch <branch_name>`
+- Delete local branch
+  - syntax: `git branch -d <branch_name>`: 
+  - You must be on a branch different than the one you want to delete
+- Rename/move branch
+  - Options:
+    - `-m` or `--move`: Move/rename a branch
+    - `-f` or `--force`: force; in combination with `-m` (move), "allow renaming the branch even if the new branch name already exists"
+    - `-M`: shortcut for `-m -f` (move and force)
+  - sample syntax `git branch -M <new_branch_name>`
 
 <br>
 <details><summary>**Example**: Using `git branch` to list branches</summary>
@@ -2940,7 +2990,6 @@ git commit -m "import tidyverse in create_dataset.R"
 
 ```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
-git branch -M main
 
 # Now we can see the `main` branch listed, with an `*` indicating it is our current branch
 git branch
@@ -2959,6 +3008,8 @@ git branch -v
 <br>
 The `-a` option will list both local and remote branches. Remote branches will start with `remotes/` in the output. They will also include both the remote repository name and the branch name (e.g., `origin/main` in the example below). In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `main` branch in the example below):
 
+- In the example below, code not run and the output is hard-coded; this is what the output would look like after we connected a local repo to a remote repo
+
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
 
@@ -2974,6 +3025,8 @@ git branch -a
 
 <br>
 To list only information on remote branches, we can use the `-r` option. Notice that the names do not have `remotes/` prepended, as that only appears when listing all branches using `-a` to be able to distinguish between local and remote branches:
+
+- code not run; output hard-coded
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
@@ -3018,6 +3071,14 @@ git branch
 <br>
 <details><summary>**Example**: Using `git branch` to delete branch</summary>
 
+<br>
+
+A common practice around creating/deleting branches (but don't have to do things this way)
+
+- A programmer creatSe a new branch -- let's name it `dev` for "development" -- to make some improvement to a script. 
+- Once the programmer is satisfied with this improvement, they "merge" the changes from the `dev` branch to the `main` branch (merging covered below). 
+- then, they delete the `dev` branch.
+
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
@@ -3034,6 +3095,61 @@ git branch -d dev
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
+
+# See branch listing
+git branch
+```
+
+</details>
+
+<br>
+
+<details><summary>**Example**: Using `git branch -M` to force rename a branch</summary>
+
+<br>
+
+Recall that the option `-M` is a shortcut for `-m` (move) and `-f` (force)
+
+- You may have seen the following code in this lecture or elsewhere: `git branch -M main`
+  - This code is saying "rename the current branch "main" even if a branch named "main" already exists
+  - We inserted this code because some computers initilize git repo with the default branch name "master" rather than "main"
+  
+  
+In the below example, we initialize a repo, make a commit, then force rename the branch name
+```{bash}
+cd ~  # change to root directory
+rm -rf my_git_repo2  # force remove `my_git_repo` (if it exists)
+mkdir my_git_repo2  # make directory `my_git_repo`
+
+# Initialize a new git repository in `my_git_repo` directory
+cd my_git_repo2
+git init
+
+# Create new R script
+echo "library(tidyverse)" > create_dataset.R
+
+# Add/commit R script
+git add create_dataset.R
+git commit -m "import tidyverse in create_dataset.R"
+```
+List existing branches; note default branch was named "main"
+```{bash}
+cd ~/my_git_repo2
+
+# See branch listing
+git branch
+```
+Use `git branch -M` to force rename a branch
+```{bash}
+cd ~/my_git_repo2
+
+# Delete branch
+git branch -M branch1
+```
+
+List existing branches
+```{bash, echo=-c(1:2)}
+cd ~/my_git_repo2
 
 # See branch listing
 git branch
@@ -3106,7 +3222,7 @@ git branch
 
 </details>
 
-## Pushing new local branch
+## Pushing local branch
 
 What is an **upstream branch**?
 
@@ -3120,22 +3236,129 @@ What is an **upstream branch**?
 *Credit: [devconnected, How To Set Upstream Branch on Git](https://devconnected.com/how-to-set-upstream-branch-on-git/)*
 
 <br>
-**Example**: Pushing a new local branch to the remote
+**Example**: Pushing local branch to the remote
 
 When you create a new local branch, you may choose to push it to the remote if you want a copy of it on GitHub, or if you want others to be able to contribute to it. When you push a local branch for the first time, you are required to set the upstream branch, otherwise it won't let you push. Then, all subsequent pushes after this first one can just be `git push`.
 
-In the example below, let's say we created a new branch `dev` that we want to push to a remote named `origin`:
 
-```{bash, eval=F}
+In the below code chunks (code not run), we do the following:
+
+- Initialize a new local repo
+- create a file and make a commit
+- create a new branch named `dev`
+- use `git remote add <remote_name> <remote_url>` to connect to a remote repo (assume you created this remote repo on github.com)
+- use `git push -u origin main` to push local branch named "main" to the remote for the first time
+- switch to `dev` branch and use `git push -u origin dev` push local branch named "dev" to the remote for the first time
+we inlet's say we created a new branch `dev` that we want to push to a remote named `origin`:
+
+<br>
+Initialize new repo, make a commit, create a new branch named `dev`
+```{bash}
+cd ~  # change to root directory
+rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
+mkdir my_git_repo  # make directory `my_git_repo`
+
+# Initialize a new git repository in `my_git_repo` directory
+cd my_git_repo
+git init
+
+cd ~/my_git_repo
+
+# Create new R script
+echo "library(tidyverse)" > create_dataset.R
+
+# Add/commit R script
+git add create_dataset.R
+git commit -m "import tidyverse in create_dataset.R"
+
+git branch
+
 # Create and switch to new branch
 git checkout -b dev
-
-# Push branch to remote for the first time
-git push -u origin dev
-
-# Any subsequent pushes
-git push
 ```
+After creating repo on github, use `git remote add <remote_name> <remote_url> to add a new remote
+```{bash, eval = FALSE}
+cd ~/my_git_repo
+#git branch
+git remote add origin https://github.com/ozanj/my_git_repo.git
+git remote -v
+```
+- Switch to main branch and push changes [if any] to remote repository
+```{bash, eval = FALSE}
+cd ~/my_git_repo
+
+# switch to main branch
+git checkout main
+
+git push -u origin main
+```
+```
+## $ git push -u origin main
+## Enumerating objects: 3, done.
+## Counting objects: 100% (3/3), done.
+## Writing objects: 100% (3/3), 259 bytes | 259.00 KiB/s, done.
+## Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+## To https://github.com/ozanj/my_git_repo.git
+##  * [new branch]      main -> main
+## Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+```
+
+Show local and remote branches
+```{bash, eval=F}
+cd ~/my_git_repo
+git branch -a
+```
+```
+##   dev
+## * main
+##   remotes/origin/main
+```
+
+Switch to `dev` branch and push to changes to remote repository
+```{bash, eval=F}
+cd ~/my_git_repo
+
+# switch to dev branch
+git checkout dev
+
+# print local and remote branches
+#git branch -a
+
+#push branch to remote for the first time
+#git push -u origin dev
+
+#git push
+```
+```
+$ git push -u origin dev
+## Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+## remote:
+## remote: Create a pull request for 'dev' on GitHub by visiting:
+## remote:      https://github.com/ozanj/my_git_repo/pull/new/dev
+## remote:
+## To https://github.com/ozanj/my_git_repo.git
+##  * [new branch]      dev -> dev
+## Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+```
+
+Show local and remote branches
+```{bash, eval=F}
+cd ~/my_git_repo
+git branch -a
+```
+
+```
+## $ git branch -a
+## * dev
+##   main
+##   remotes/origin/dev
+##   remotes/origin/main
+
+```
+
+<br>
+
 
 # Merging
 
@@ -3200,11 +3423,38 @@ Types of **merges**:
 <br>
 <details><summary>**Example**: Using `git merge` for fast-forward merge</summary>
 
+Initialize new repo, make a commit, create a new branch named `dev`
+```{bash}
+cd ~  # change to root directory
+rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
+mkdir my_git_repo  # make directory `my_git_repo`
+
+# Initialize a new git repository in `my_git_repo` directory
+cd my_git_repo
+git init
+
+cd ~/my_git_repo
+
+# Create new R script
+echo "library(tidyverse)" > create_dataset.R
+
+# Add/commit R script
+git add create_dataset.R
+git commit -m "import tidyverse in create_dataset.R"
+
+git branch
+
+# Create and switch to new branch
+git checkout -b dev
+```
+
+
 Continuing from previous examples, we have the `main` and `dev` branches, which are even with the same initial commit:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
+git checkout main
 # View commit log for `main` branch
 git log
 ```
@@ -3231,6 +3481,8 @@ Now, let's make a second commit on the `dev` branch:
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
+
+git branch
 
 # Modify R script
 echo "mpg %>% head(5)" >> create_dataset.R
@@ -3454,6 +3706,8 @@ cat create_dataset.R
 
 Let's say your remote branch is ahead of your local branch by some commits. You can run `git pull` to incorporate those changes:
 
+- below code not run; will work if you previously connected local repo to remote
+
 ```{bash, eval=F}
 # Incorporate remote changes to current branch
 git pull
@@ -3593,10 +3847,14 @@ Date:   Fri Jan 22 11:15:50 2021 -0800
 
 ## Merge conflicts
 
-When attempting a `git merge`, conflict can arise **when starting** a merge or **during** the merge. (From [Git merge conflicts](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
+When attempting a `git merge`, two types of merge conflict can arise for two different reasons: (1) **when starting** a merge; and (2) **during** a merge (From [Git merge conflicts](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
 
 <br>
-**When starting** a merge, Git will first check if you have any changes in either the working directory or staging area. If so, Git will abort the merge completely and display an error message that looks like this:
+
+First, conflicts that arise **when starting** a merge
+
+- these conflicts arise because your current branch has changes to tracked files that have not yet been committed, so git will not allow you to merge to another branch until those changes have been committed
+- **When starting** a merge, Git will first check if you have any changes in either the working directory or staging area. If so, Git will abort the merge completely and display an error message that looks like this:
 
 ```
 error: Your local changes to the following files would be overwritten by merge:
@@ -3606,7 +3864,10 @@ Aborting
 ```
 
 <br>
-**During** a 3-way merge when both branches made changes to the same line(s) of the same file(s), a conflict will occur. The error message would look like this:
+
+Second, conflicts that arise **during** the merge.
+
+- **During** a 3-way merge when both branches made changes to the same line(s) of the same file(s), a conflict will occur. The error message would look like this:
 
 ```
 Auto-merging <file_name>
@@ -3614,7 +3875,7 @@ CONFLICT (content): Merge conflict in <file_name>
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-If you open the failed file, you will see that Git has marked the line(s) that were conflicting:
+- If you open the failed file, you will see that Git has marked the line(s) that were conflicting:
 
 ```
 <normal_line_of_code>
@@ -3714,6 +3975,8 @@ git status
 
 <br>
 If we try to merge changes from `revision` into `main` now, there will be a merge conflict because we have uncommited changes. The merge will be aborted:
+
+- note: the merge conflict exists because we have uncommitted changes in the branch we are currently on; the merge conflict here is not because the same line differs on two different branches
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
@@ -3827,7 +4090,7 @@ cat create_dataset.R
 What to do when you encounter a **merge conflict**?
 
 - As introduced earlier, you can use `git merge --abort` to abort the merge and restore the branches back to their original states
-- Alternatively, you can manually edit the file(s) to resolve the conflicts
+- Alternatively, you can manually edit the file(s) to resolve the conflicts (often do this on a text editor)
   - Make sure to remove the markers that Git has added (i.e., `<<<<<<< HEAD`, `=======`, `>>>>>>> <branch_name>`) and choose which version of the conflicted line to keep
   - `git add` the file(s) after you are done resolving the conflicts
   - Commit your changes using `git commit -m "<commit_message>"` to complete the merge
@@ -3854,7 +4117,9 @@ cat create_dataset.R
 ```
 
 <br>
-We can manually edit the file to resolve the conflicts. Let's say we choose to filter for `'volkswagen'` instead:
+We can manually edit the file to resolve the conflicts, usually by opening up file in a text editor. 
+
+- Let's say we choose to filter for `'volkswagen'` instead:
 
 ```
 ## library(tidyverse)
