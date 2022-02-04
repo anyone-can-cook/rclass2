@@ -3472,6 +3472,7 @@ input, select, textarea {
 	  line-height: 2;
 	}
 
+	#lectures .container > div ul ul,
 	#readings .container > div ul ul {
 	  margin-left: 1em;
 	  list-style-type: disc;
