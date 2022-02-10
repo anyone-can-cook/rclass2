@@ -184,6 +184,7 @@ class(l[-c(1,3)])
 If the logical vector is the same length as the object, then each element in the object whose corresponding position in the logical vector is `TRUE` will be selected:
 
 ```{r}
+v
 # Select 2nd and 3rd elements from numeric vector
 v[c(FALSE, TRUE, TRUE, FALSE)]
 
@@ -205,6 +206,7 @@ class(l[c(FALSE, TRUE)])
 <br>
 We can also write expressions that evaluate to either `TRUE` or `FALSE`:
 
+- this is the sort of stuff we do when we filter observations based on variable values (e.g., show me the observations where the statement `var1>=30` is `TRUE` )
 ```{r}
 # This expression is recycled and evaluates to be equivalent to `l[c(FALSE, FALSE, TRUE, TRUE)]`
 v[v > 20]
@@ -376,6 +378,8 @@ Subsetting dataframes with `[]`, `[[]]`, and `$`:
 We can subset dataframe column(s) the same way we have subsetted atomic vector or list element(s):
 
 ```{r}
+df
+
 # Select 1st column from dataframe (note that `names` attribute is retained)
 df[1]
 
@@ -599,7 +603,7 @@ length(df[1:3])
 ```
 
 <br>
-When we subset a dataframe using `[[]]` (i.e., _isolate a specific column in the dataframe_), the length of the subsetted object is the number of rows in the dataframe:
+When we subset a dataframe using `[[]]` (i.e., _isolate a specific column in the dataframe_), the length of the subsetted object is the number of elements in the atomic vector (i.e., the number of rows in the dataframe):
 
 ```{r}
 # Isolate a specific column
@@ -621,6 +625,7 @@ When writing loops, it is very common to create a sequence from 1 to the length 
 ```{r}
 # There are 4 elements in the atomic vector
 v
+length(v)
 
 # Use `:` to generate a sequence from 1 to 4
 1:length(v)
@@ -655,6 +660,9 @@ df
 
 # Use `seq_along()` to generate a sequence from 1 to 4
 seq_along(df)
+
+# which is gives us the same thing as this:
+1:length(df)
 ```
 
 
@@ -737,6 +745,8 @@ You may see the **loop sequence** being written in slightly different ways. For 
 - Looping over the vector `c(1,2,3)`
 
     ```{r}
+    c(1,2,3)
+    
     for(z in c(1,2,3)) {  # Loop sequence
       print(z)  # Loop body
     }
@@ -745,6 +755,8 @@ You may see the **loop sequence** being written in slightly different ways. For 
 - Looping over the sequence `1:3` 
 
     ```{r}
+    1:3
+    
     for(z in 1:3) {  # Loop sequence
       print(z)  # Loop body
     }
@@ -754,6 +766,8 @@ You may see the **loop sequence** being written in slightly different ways. For 
     
     ```{r}
     num_sequence <- 1:3
+    num_sequence
+    
     for(z in num_sequence) {  # Loop sequence
       print(z)  # Loop body
     }
@@ -763,23 +777,58 @@ You may see the **loop sequence** being written in slightly different ways. For 
 
 When building a loop, it is useful to print out information to understand what the loop is doing.
 
-For example, the two loops below are essentially the same, but the second approach is preferable because it more clearly prints out what object we are working with inside the loop:
+- __In my opinion, the MOST IMPORTANT tool for learning how to write loops (and how to write functions) is knowing how to print out the value of the object(s) associated with each iteration__
 
-- Using `print()` to print a single object `z` (_`print()` also outputs element number `[1]` while `writeLines()` does not_)
 
+Using `print()` to print a single object `z`
+
+- Using `print()` to show the value of object(s) within an iteration is not best approach because
+  - `print()` can only print one object per line
+  - `print()` can't include additional text that tells you what stuff is
     ```{r}
     for(z in c(1,2,3)) {
       print(z)
     }
     ```
+    
+ 
+ <br>
+ 
+__The best way to print object(s) associated with each iteration is wrapping the `str_c()` function within the `writeLines()` function__. 
+
+- recommend spending a few minutes reviewing `str_c()` function
+  - help: `?str_c`
+  - See section on `str_c` from "Intro to strings, dates, and time" lecture of Rclass1 [LINK HERE](https://anyone-can-cook.github.io/rclass1/lectures/strings_dates_time/strings_dates_time.html#42_str_c())
+- Why wrap `str_c()` within `writeLines()`?:
+  - within a loop body (or function body),`str_c()` function by itself will not print output
+  - `writeLines(str_c(...))` forces whatever is returned by `str_c()` to be printed
+
 
 - Using `str_c()` and `writeLines()` to concatenate and print multiple items
-
+  - within a loop body or function body, in order to print output returned by `str_c()` you must wrap `str_c()` within `writeLines()` function
     ```{r}
     for(z in c(1,2,3)) {
       writeLines(str_c("object z=", z))
     }
     ```
+<br><br>
+
+- _Note_: Using `writeLines()` by itself to print a single object `z` (code not run); this approach won't work because `writeLines` can only write character objects
+
+```{r, eval = FALSE}
+    for(z in c(1,2,3)) {
+      writeLines(z)
+    }
+```
+
+- - _Note_: Using `str_c()` without wrapping in `writeLines()` 
+  - `str_c()` function that is within a loop body (or function body) will not print output
+    ```{r}
+    for(z in c(1,2,3)) {
+      str_c("object z=", z)
+    }
+    ```
+    
 
 ### Student exercise
 
@@ -793,13 +842,13 @@ For example, the two loops below are essentially the same, but the second approa
 <details><summary>**Solutions**</summary>
 
 ```{r}
-birth_years <- c(1944,1950,1981,2016)
+birth_years <- c(1944,1950,1981,2016,2019)
 birth_years
 
 for(y in birth_years) {  # Loop sequence
   writeLines(str_c("object y=", y))  # Loop body
-  z <- 2021 - y
-  writeLines(str_c("value of 2021 minus ", y, " is ", z))
+  z <- 2022 - y
+  writeLines(str_c("value of 2022 minus ", y, " is ", z))
 }
 ```
 </details>
@@ -809,7 +858,7 @@ for(y in birth_years) {  # Loop sequence
 
 There are 3 ways to loop over elements of an object:
 
-1. [Looping over the elements](#looping-over-elements) (approach we have used so far)
+1. [Looping over the element (contents)](#looping-over-elements) (approach we have used so far)
 2. [Looping over names of the elements](#looping-over-names)
 3. [Looping over numeric indices associated with element position](#looping-over-indices) (approach recommended by Grolemnund and Wickham)
 
@@ -822,6 +871,9 @@ For the examples in the next few subsections, we will be working with the follow
     vec <- c(a = 5, b = -10, c = 30)
     vec
     ```
+  - element (contents) are: `r c(v[[1]],v[[2]],v[[3]])`
+  - element names are: `r names(vec)`
+  - indices of element position are: `r 1:length(vec)`
 
 - Create dataframe called `df` with randomly generated data, 3 columns (vars) and 4 rows (obs)
 
@@ -872,6 +924,7 @@ for (i in df) {
 <br>
 <details><summary>**Example**: Calculating column averages for `df` by looping over columns</summary>
 
+<br>
 The dataframe `df` is a list object, where each element is a vector (i.e., column):
 
 ```{r}
@@ -900,7 +953,7 @@ for (i in df) {
         - Approach recommended by Wickham because it isolates value of element
 
 <br>
-**Example**: Looping over elements in `vec`
+**Example**: Looping over element names in `vec`
 
 ```{r}
 vec  # View named atomic vector object
@@ -981,7 +1034,7 @@ for (i in names(df)) {
     - In this case, using `[[]]` and `[]` are equivalent because `names()` returns an unnamed vector, which does not have any attributes
 
 <br>
-**Example**: Looping over elements in `vec`
+**Example**: Looping over indices of `vec` element position
 
 ```{r}
 vec  # View named atomic vector object
@@ -1017,6 +1070,7 @@ We could also access the element's name by its index:
 ```{r}
 names(df)  # View names of dataframe object (i.e., column names)
 names(df)[[2]]  # We can access any element in the names vector by its index
+  # names(df)[2]  # same as above
 
 # Incorporate the above line into the loop
 for (i in 1:length(df)) {
@@ -1026,6 +1080,8 @@ for (i in 1:length(df)) {
 
 <br>
 <details><summary>**Example**: Calculating column averages for `df` by looping over column indices</summary>
+
+<br>
 
 Use `i in seq_along(df)` to loop over the column indices and `[[]]` to access column contents:
 
@@ -1045,7 +1101,7 @@ There are **3 ways** to loop over elements of an object:
 
 1. [Looping over the elements](#looping-over-elements)
 2. [Looping over names of the elements](#looping-over-names)
-3. [Looping over numeric indices associated with element position](#looping-over-indices) (approach recommended by Grolemnund and Wickham)
+3. [Looping over numeric indices associated with element position](#looping-over-indices)
     - Grolemnund and Wickham recommends this approach (**#3**) because given an element's index position, we can also extract the element name (**#2**) and value (**#1**)
 
 
@@ -1178,6 +1234,8 @@ Let's create a new object to store these column averages. Specifically, we'll cr
 
 ```{r}
 output <- vector(mode = "numeric", length = length(df))
+
+output # print
 class(output)  # Specified by `mode` argument in `vector()`
 length(output)  # Specified by `length` argument in `vector()`
 ```
