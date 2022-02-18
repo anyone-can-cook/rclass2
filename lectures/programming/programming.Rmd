@@ -1296,9 +1296,10 @@ __Note__:
 
 What is **conditional execution**?
 
+- a **condition** is some statement that evaluates to either `TRUE` or `FALSE`; for example `1>5` evaluates to `FALSE`
 - **Conditional execution** is the running of specific blocks of code based on some **condition**
   - E.g., If the number is even, run this block of code. Otherwise, run the other block of code, etc.
-- We can write `if`-(`else if`)-`else` statements to run code conditionally (covered in upcoming sections)
+- We can write `if`, `else if`, and `else` statements to run code conditionally (covered in upcoming sections)
 - This is useful because it allows for decision-making in the code
 
 ![](https://media.geeksforgeeks.org/wp-content/uploads/decision-making-c-4.png){width=500px}
@@ -1361,6 +1362,13 @@ The block of code is executed if the condition evaluates to `TRUE`:
 
 ```{r}
 if (TRUE) {
+  writeLines("This block is executed.")
+}
+```
+
+note that below block of code yields the exact same result as above because the condition evaluates to `TRUE`
+```{r}
+if (1==1) {
   writeLines("This block is executed.")
 }
 ```
