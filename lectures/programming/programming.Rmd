@@ -2960,7 +2960,9 @@ How to handle **invalid inputs**?
     - Especially in the case where the invalid input does not cause the function to break, but gives an unintended output instead, we want to explicitly raise an error so this does not go unnoticed
 
 <br>
-__The `stop()` function__:
+__`stop()` function__ (base R):
+
+- The `sto()` function "stops execution of the current expression and executes an error action"
 
 ```{r, eval=FALSE}
 ?stop
@@ -3071,9 +3073,12 @@ Recall that functions generally follow **three sequential steps**:
 
 What are **return values**?
 
-- Just how functions can take inputs (i.e., arguments), functions can also return values as output
+- Just as functions can take inputs (i.e., arguments), functions can also return values as output
 - The last statement that the function evaluates will be automatically (i.e., implicitly) returned
+  - e.g., so if you want a function to return a data frame named `df`, you could have the last line of the function be this:
+    - `df`
 - We can use the assignment operator `<-` to store returned values in a new object for future use
+
 
 Recall the `print_hello()` function:
 

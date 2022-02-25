@@ -2233,7 +2233,7 @@ div.tocify {
 <span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    3.25    0.14    3.42</span></span></code></pre></div>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    3.18    0.03    3.22</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before loop (<em>Recommended</em>)</p>
 <ul>
 <li>“Before you start the loop, you must always allocate sufficient space for the output. This is very important for efficiency” (From <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R for Data Science</a>)</li>
@@ -2247,7 +2247,7 @@ div.tocify {
 <span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.01    0.00    0.01</span></span></code></pre></div>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.02    0.00    0.02</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -2273,7 +2273,7 @@ div.tocify {
 <span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.30    0.00    0.31</span></span></code></pre></div>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.33    0.00    0.33</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">if_else</span>(prices <span class="sc">&lt;</span> <span class="dv">500</span>,</span>
@@ -2282,7 +2282,7 @@ div.tocify {
 <span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>                   )</span>
 <span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.07    0.00    0.06</span></span></code></pre></div>
+<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.05    0.02    0.06</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -2325,7 +2325,7 @@ div.tocify {
 <span id="cb100-29"><a href="#cb100-29" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb100-30"><a href="#cb100-30" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb100-31"><a href="#cb100-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb100-32"><a href="#cb100-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.03    0.00    0.03</span></span></code></pre></div>
+<span id="cb100-32"><a href="#cb100-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.04    0.00    0.05</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using <code>if</code>/<code>else if</code>/<code>else</code> statements inside a for loop</p>
 <ul>
 <li>With <code>if</code>/<code>else if</code>/<code>else</code> statements, not all conditions below will be checked (only up to when one of the blocks get executed)</li>
@@ -2648,25 +2648,25 @@ div.tocify {
 <span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Date[1:1], format: &quot;1979-01-16&quot;</span></span></code></pre></div>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate an age given a birthdate:</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2022-02-17&quot;</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2022-02-24&quot;</span></span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference</span></span>
 <span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)</span>
-<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 15738 days</span></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 15745 days</span></span>
 <span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y))</span>
-<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &#39;difftime&#39; num 15738</span></span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &#39;difftime&#39; num 15745</span></span>
 <span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to duration</span></span>
 <span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y))</span>
-<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1359763200s (~43.09 years)&quot;</span></span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1360368000s (~43.11 years)&quot;</span></span>
 <span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
 <span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Formal class &#39;Duration&#39; [package &quot;lubridate&quot;] with 1 slot</span></span>
 <span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..@ .Data: num 1.36e+09</span></span>
 <span id="cb116-17"><a href="#cb116-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-18"><a href="#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb116-19"><a href="#cb116-19" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb116-20"><a href="#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 43.0883</span></span>
+<span id="cb116-20"><a href="#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 43.10746</span></span>
 <span id="cb116-21"><a href="#cb116-21" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)), <span class="st">&quot;years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
 <span id="cb116-22"><a href="#cb116-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num 43.1</span></span>
 <span id="cb116-23"><a href="#cb116-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -3540,7 +3540,10 @@ div.tocify {
 <li>Especially in the case where the invalid input does not cause the function to break, but gives an unintended output instead, we want to explicitly raise an error so this does not go unnoticed</li>
 </ul></li>
 </ul>
-<p><br> <strong>The <code>stop()</code> function</strong>:</p>
+<p><br> <strong><code>stop()</code> function</strong> (base R):</p>
+<ul>
+<li>The <code>sto()</code> function “stops execution of the current expression and executes an error action”</li>
+</ul>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>?stop</span>
 <span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX AND DEFAULT VALUES</span></span>
@@ -3633,8 +3636,14 @@ div.tocify {
 <h3 number="5.4.1"><span class="header-section-number">5.4.1</span> Implicit returns</h3>
 <p>What are <strong>return values</strong>?</p>
 <ul>
-<li>Just how functions can take inputs (i.e., arguments), functions can also return values as output</li>
-<li>The last statement that the function evaluates will be automatically (i.e., implicitly) returned</li>
+<li>Just as functions can take inputs (i.e., arguments), functions can also return values as output</li>
+<li>The last statement that the function evaluates will be automatically (i.e., implicitly) returned
+<ul>
+<li>e.g., so if you want a function to return a data frame named <code>df</code>, you could have the last line of the function be this:
+<ul>
+<li><code>df</code></li>
+</ul></li>
+</ul></li>
 <li>We can use the assignment operator <code>&lt;-</code> to store returned values in a new object for future use</li>
 </ul>
 <p>Recall the <code>print_hello()</code> function:</p>
