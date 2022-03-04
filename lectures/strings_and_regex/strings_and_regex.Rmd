@@ -505,6 +505,7 @@ my_string = "Class starts at 10 AM and ends at 1 PM."
 my_regex = "\\d+ [AP]M"
 
 # The escaped string "\\d" results in the regex \d
+print(my_regex)
 writeLines(my_regex)
 
 # View matches for our regular expression
@@ -642,6 +643,7 @@ __Example__: use regular expression `\D` to match all instances of a non-digit c
 
 ```{r}
 # The escaped string "\\D" results in the regex \D
+print("\\D")
 writeLines("\\D")
 
 # Match any instances of a non-digit
