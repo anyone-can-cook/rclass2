@@ -242,10 +242,12 @@ These characters followed by a backslash `\` take on a new meaning. The `n` by i
 
 ```{r}
 x <- "Hi!\nMy name is\nWhat?\nMy name is\nWho?\nMy name is\nChika-chika\nSlim Shady"
-#print(x) # print 
-writeLines(x)
 
-#Hi!\nMy name is\nWhat?\nMy name is\nWho?\nMy name is\nChika-chika\nSlim Shady
+# note that print(x) prints the literal text, not its special meaning
+print(x) # print 
+
+# wrapping print(x) within writeLInes() prints text after executing special meaning
+writeLines(x)
 ```
 
 __Escape sequences__
@@ -336,10 +338,11 @@ We create different versions of an object named `my_string` that contains specia
 
 ```{r}
 my_string <- "A\tB" # contains \t tab
-#my_string
+my_string
 writeLines(my_string)
 
 my_string <- "B\nC" # contains \n newline
+my_string
 writeLines(my_string)
 
 my_string <- "A\tB\nC\tD" # contains \t tab and \n newline
