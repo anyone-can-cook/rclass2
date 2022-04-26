@@ -105,6 +105,20 @@ Another broad goal of the course is for students to begin developing practical p
 
 ## Course structure
 
+__Overview__. Course structure consists of weekly __asynchronous course materials__ and weekly __synchronous workshop meetings__. Each week we will focus on a particular topic (e.g., creating variables; writing functions). For each weekly topic, students will complete a problem set. Problem sets will be completed in groups and focus on practical application of concepts/skills from the topic of the week.
+
+__Asynchronous course materials__.  Asynchronous course materials will focus on the topic for that week (e.g., processing across rows). Course materials will consist of three types of resources: 
+
+1. Detailed lecture slides (PDF or HTML) with sample code
+1. Pre-recorded video lecture of the instructor working through these slides
+1. The ".Rmd" file that created the PDF/HTML lecture slides.
+    - The .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run _R_ code on their own computer while they work through lecture materials on their own.
+
+__Synchronous workshop meetings__. Synchronous class time will largely consist of workshop-style meetings in which students work in zoom breakout rooms in small groups. Typically, students will be in a breakout room with members of their problem set group, though working with other students is fine too. During these synchronous workshop meetings, students will work through course materials (e.g., lecture slides, video lectures) and/or the associated problem set as they see fit. The synchronous workshops are also a great time to ask questions about course material or practical applications. The instructor/TAs will be moving from one breakout room to the next, providing help. In some weeks, the instructor will devote a modest amount of time to class-wide lecture or discussion with the goal of framing practical applications and/or addressing difficulties that many students are encountering.
+
+Each group can develop their own approach to how they want to use the synchronous workshop time. Some groups may work relatively independently, while others may work collaboratively. Some groups may agree to work through all asynchronous lecture materials beforehand so they can devote all workshop time to making progress on the problem set. Other groups may use the workshop time to primarily to work through the course materials.
+
+<!-- 
 __Overview__. For the first week of class and the first two weeks of the GitHub unit, we will have synchronous lectures and class time will take all or most of the allotted Friday 9:00am to 11:50am time. During the other weeks, students will only be required to attend the Friday synchronous zoom class from 9AM-10AM. However, the instructor will continue lecturing until all material for the week has been covered. All lectures will be recorded. Weekly work students are expected to do outside of class time will consist of students working through lecture material on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
 
 __Asynchronous course materials__.  Asynchronous course materials for each week will focus on the topic for that week (e.g., "ggplot"). Course materials will consist of three types of resources: first, detailed lecture slides (PDF or HTML) with sample code; second, video lecture of the instructor working through these slides (recorded on the pevious Friday); and, third, the ".Rmd" file that created the PDF/HTML lecture slides. This .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run R code on their own computer while they work through lecture materials on their own.
@@ -122,6 +136,10 @@ __Asynchronous course materials__.  Asynchronous course materials for each week 
 - Friday 10/22/21 9AM-11:50AM synchronous class
   - Ozan lectures about "processing across rows"
   - students only required to attend zoom from 9AM-10AM
+-->
+
+
+
 
 ## How to succeed in this class
 
@@ -223,13 +241,18 @@ Students will complete 10 problem sets (the last one due during finals week). Pr
 
 A general strategy I recommend for completing the problem sets is as follows: (1) after lecture, do the reading associated with that lecture; (2) try doing the problem set on your own; (3) communicate with your group to work through the problem set, with a particular focus on areas group members find challenging.
 
-**Grading policies**
-
-- The lowest problem-set grade will be dropped from the calculation of your final grade. 
+<!-- 
 - Grading and problem set groups
   - Because we do not have the person-power to grade weekly problem sets for each individual student enrolled (e.g., 40 students), one submission from each problem set group will be chosen at random. The grade on that problem set submission will be the grade for all members of the group.
   - For up to two questions, you may ask TAs to regrade an answer that you feel you answered correctly that the graded submission did not answer correctly
   - If a member of a problem set group has not submitted the problem set by the time the TAs conduct grading, that submission will be graded separately once it is submitted because we do not have resources to grade weekly due to the very large number of students enrolled. 
+
+
+-->
+
+**Grading policies**
+
+- The lowest problem-set grade will be dropped from the calculation of your final grade. 
 - Policy on late assignments
   - Problem sets submitted after 11:59PM on Friday will lose one percentage point (e.g., max grade becomes 99% instead of 100%)
   - Starting at 12AM Monday morning, problem sets will lose an additional percentage point for each week-day it is not submitted
