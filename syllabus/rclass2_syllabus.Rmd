@@ -1,24 +1,22 @@
 ---
-title: "EDUC 260B: Fundamentals of Programming"
-subtitle: "Winter 2022"
-author: 
-date: 
-urlcolor: blue
-output: 
-  # pdf_document
-  # word_document:
-  #   toc: no
-  #   toc_depth: '3'
+title: 'EDUC 260B: Fundamentals of Programming'
+author: "null"
+date: "null"
+output:
   html_document:
-    toc: true
+    toc: yes
     toc_depth: 3
-    toc_float: true
-    number_sections: true
-    fig_caption: true
+    toc_float: yes
+    number_sections: yes
+    fig_caption: yes
     highlight: tango
     theme: default
     df_print: tibble
-
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+urlcolor: blue
+subtitle: Winter 2022
 ---
 
 # Course information
@@ -63,23 +61,14 @@ The prerequisite is the first course in the sequence: [EDUC 260A: Introduction t
   
 ## Teaching assistants
 
-**Brianna Wright**  
+**Joyce Nguy**  
 
 - Pronouns: she/her/hers
-- Email: [briannawright135@gmail.com](briannawright135@gmail.com)
+- Email: [joycenguy@g.ucla.edu](joycenguy@g.ucla.edu)
 - Office hours:
-  - Zoom office hours: Thursdays 9am-10am, zoom [link](https://ucla.zoom.us/j/96112454375)
+  - Zoom office hours: Mondays 10am -11am, zoom [link](https://ucla.zoom.us/j/8458209354)
   - And by appointment
  
-  
-**Liza Chavac**  
-
-- Pronouns: she/her/hers
-- Email: [lizachavac@gmail.com](lizachavac@gmail.com)
-- Office hours:
-  - Zoom office hours: Tuesdays 1pm-2pm, zoom [link](https://ucla.zoom.us/j/3465888342)
-  - And by appointment
-
 **Fernando Mora**  
 
 - Pronouns: he/him/his
