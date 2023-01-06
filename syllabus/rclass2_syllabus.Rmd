@@ -1,7 +1,7 @@
 ---
 title: 'EDUC 260B: Fundamentals of Programming'
-author: "null"
-date: "null"
+author: ""
+date: ""
 output:
   html_document:
     toc: yes
@@ -16,7 +16,7 @@ output:
     toc: yes
     toc_depth: '3'
 urlcolor: blue
-subtitle: Winter 2022
+subtitle: Winter 2023
 ---
 
 # Course information
@@ -113,7 +113,7 @@ Another broad goal of the course is for students to begin developing practical p
 
 ## Course structure
 
-__Overview__. Course structure consists of weekly __asynchronous course materials__ and weekly __synchronous workshop meetings__. Each week we will focus on a particular topic (e.g., creating variables; writing functions). For each weekly topic, students will complete a problem set. Problem sets will be completed in groups and focus on practical application of concepts/skills from the topic of the week.
+__Overview__. Course structure consists of weekly __asynchronous course materials__ and weekly __synchronous meetings__. Each week we will focus on a particular topic (e.g., creating variables; writing functions). For each weekly topic, students will complete a problem set. Problem sets will be completed in groups and focus on practical application of concepts/skills from the topic of the week.
 
 __Asynchronous course materials__.  Asynchronous course materials will focus on the topic for that week (e.g., processing across rows). Course materials will consist of three types of resources: 
 
@@ -122,9 +122,11 @@ __Asynchronous course materials__.  Asynchronous course materials will focus on 
 1. The ".Rmd" file that created the PDF/HTML lecture slides.
     - The .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run _R_ code on their own computer while they work through lecture materials on their own.
 
-__Synchronous workshop meetings__. Synchronous class time will largely consist of workshop-style meetings in which students work in zoom breakout rooms in small groups. Typically, students will be in a breakout room with members of their problem set group, though working with other students is fine too. During these synchronous workshop meetings, students will work through course materials (e.g., lecture slides, video lectures) and/or the associated problem set as they see fit. The synchronous workshops are also a great time to ask questions about course material or practical applications. The instructor/TAs will be moving from one breakout room to the next, providing help. In some weeks, the instructor will devote a modest amount of time to class-wide lecture or discussion with the goal of framing practical applications and/or addressing difficulties that many students are encountering.
+__Synchronous meetings__. Synchronous class meetings will be on Zoom. Attendance during the entire period is required, but students may ask instructor/TAs for exceptions due to scheduling conflicts. 
 
-Each group can develop their own approach to how they want to use the synchronous workshop time. Some groups may work relatively independently, while others may work collaboratively. Some groups may agree to work through all asynchronous lecture materials beforehand so they can devote all workshop time to making progress on the problem set. Other groups may use the workshop time to primarily to work through the course materials.
+During synchronous class time, students will have the option of (A) attending live lecture from the instructor or (B) working through lecture materials/problem sets in Zoom breakout rooms in small groups (e.g., problem set groups) or on their own. For the first two weeks of class, students will not have the option of working in Zoom breakout rooms.
+
+For students who decide to work in Zoom breakout rooms, you will use this time to work through course materials (e.g., lecture slides, video lectures) and/or the associated problem set as you see fit. The synchronous workshops are also a great time to ask questions about course material or practical applications. TAs will be moving from one breakout room to the next, providing help. Each group can develop their own approach to how they want to use the synchronous workshop time. Some groups may work relatively independently, while others may work collaboratively. Some groups may agree to work through all asynchronous lecture materials beforehand so they can devote all workshop time to making progress on the problem set. The one requirement I make: do not do the problem set before working through the associated lecture material.
 
 <!-- 
 __Overview__. For the first week of class and the first two weeks of the GitHub unit, we will have synchronous lectures and class time will take all or most of the allotted Friday 9:00am to 11:50am time. During the other weeks, students will only be required to attend the Friday synchronous zoom class from 9AM-10AM. However, the instructor will continue lecturing until all material for the week has been covered. All lectures will be recorded. Weekly work students are expected to do outside of class time will consist of students working through lecture material on their own, a modest amount of required reading, and weekly problem sets completed in groups of three.
@@ -235,7 +237,7 @@ Required software we will be using:
 Course grade will be based on the following components:
 
 -	Weekly problem sets (90 percent of total grade)
--	Attendance and participation (10 percent of total grade)
+-	Participation (10 percent of total grade)
 
 ## Problem sets (90 percent of total grade)
 
@@ -260,6 +262,7 @@ A general strategy I recommend for completing the problem sets is as follows: (1
 
 **Grading policies**
 
+- One problem set per problem set group will be graded (at random); the grade for that problem set will be the grade for all members of that problem set group
 - The lowest problem-set grade will be dropped from the calculation of your final grade. 
 - Policy on late assignments
   - Problem sets submitted after 11:59PM on Friday will lose one percentage point (e.g., max grade becomes 99% instead of 100%)
