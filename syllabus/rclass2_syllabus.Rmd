@@ -21,12 +21,12 @@ subtitle: Winter 2022
 
 # Course information
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, warning = FALSE}
 library(kableExtra)
 library(tidyverse)
 
-t <- c("Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
-l <- c("https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_w22_student_issues/issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_w22_announcements", " https://ucla.zoom.us/j/94803208051")
+t <- c("Weekly meetings (online)","Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
+l <- c('Fridays 9-11AM Pacific',"https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_w22_student_issues/issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_w22_announcements", " https://ucla.zoom.us/j/94803208051")
 
 info <- tibble(t, l)
 
@@ -58,6 +58,10 @@ The prerequisite is the first course in the sequence: [EDUC 260A: Introduction t
 - Office hours:
   - Zoom office hours: Wednesdays 3-4pm, zoom [link](https://ucla.zoom.us/j/2545750562)
   - And by appointment
+- Dates Ozan misses all/part of class (we will still have class!)
+  - 1/27/2023 (misses all class, admissions meeting)
+  - 2/10/2023 (Ozan leaves at 10AM)
+  - 3/10/2023 (Ozan leaves at 10AM)
   
 ## Teaching assistants
 
