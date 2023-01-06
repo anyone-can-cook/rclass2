@@ -77,6 +77,7 @@ The prerequisite is the first course in the sequence: [EDUC 260A: Introduction t
   - Zoom office hours: Tuesdays 2pm-3pm, zoom [link](https://ucla.zoom.us/j/4336432237)
   - And by appointment
 
+**Xochilth Lopez**
 # Course learning goals
 
 1. Organize files, directories, and programming scripts for a research project
