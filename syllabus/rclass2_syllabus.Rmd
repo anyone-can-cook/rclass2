@@ -231,6 +231,14 @@ Required software we will be using:
 - **[RStudio](https://rstudio.com/products/rstudio/download/)**, integrated development environment for R  [**FREE!**]
 - Link to tips for software installation [HERE](https://anyone-can-cook.github.io/rclass2/assets/resources/software_installation.pdf).
 
+## Accessibility 
+
+Google Chrome Live Caption:
+
+*	All synchronous classes will be on Zoom with captions enabled 
+*	For videos that are posted on our website that may not already contain captioning, please enable Google Chrome Live Caption. Google Chrome live caption uses AI to caption any videos playing on your Google Chrome browser, and is simple to set up. You can find detailed instructions on how to enable live caption on this link: https://support.google.com/chrome/answer/10538231?hl=en
+
+Should you need assistance setting this up, please come to any TA office hours or shoot us an email! 
 
 # Assignments and grading
 
@@ -353,16 +361,6 @@ __UCLA policy__
 __This class__  
 
   - Given that 90% of course grade is based on problem sets, the primary academic honesty concern that could come up in this class is copying problem set solutions from somebody else and passing this in as your own work.
-
-
-# Accessibility 
-
-## Google Chrome Live Caption
-We will be recording all lectures on Zoom with Zoom captions enabled. However, it is possible that we have had class recordings from previous years posted that do not have captioning. Thus, if you encounter a recording on our website that does not include captioning, please enable Google Chrome Live Caption. 
-
-Google Chrome live caption uses AI to caption any videos playing on your Google Chrome browser, and is simple to set up. You can find detailed instructions on how to enable live caption on this link: https://support.google.com/chrome/answer/10538231?hl=en
-
-Should you need assistance setting this up, please come to any TA office hours or shoot us an email! 
 
 
 # Campus resources
