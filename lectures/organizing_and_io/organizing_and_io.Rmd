@@ -66,6 +66,13 @@ Common file formats to **read** from:
 _Source: Professor Darin Christensen_
 
 <br>
+
+Note:
+
+- `.rds` files can store a single R object
+- `.Rdata` files can store multiple R objects
+
+<br>
 Common file formats to **write** to:
 
 | **Format** | **Package** | **Function** |
@@ -84,6 +91,9 @@ What is a **directory** and how to organize one?
 - There is no one-right-way to organize a project directory, but the structure shown below is generally a good way to set up your project
   - You can have a `data/` subdirectory to hold all data files, `scripts/` subdirectory to hold your scripts, etc.
 - When using RStudio, it is often useful to turn your project directory into an **RStudio project**
+- In the below directory structure, the folder named `my_project` is the "root directory" for your research project (sometimes called the "project directory" or "project root directory")
+  - the folders `data`, `scripts`, and `figures` are sub-directories of your root directory
+  - the file `my_project.Rproj` is your RStudio project file and lives in the root directory for your research project
 
 ```
 my_project/
@@ -91,6 +101,7 @@ my_project/
 |- data/
 |- scripts/
 |- figures/
+|- my_project.Rproj
 ```
 
 ## RStudio project
@@ -106,10 +117,10 @@ How to create an **RStudio project**?
 <br>
 Why use **RStudio project**?
 
-- Creating a RStudio project helps keep everything relative to the project directory
-  - Your R Console and R scripts will run using the project directory as the working directory
-  - Your Terminal in RStudio will start in the project directory
-  - Your file browser window (bottom right panel) will also start off in the project directory
+- Creating a RStudio project helps keep everything relative to the project root directory
+  - Your R Console and R scripts will run using the project root directory as the working directory
+  - Your Terminal in RStudio will start in the project root directory
+  - Your file browser window (bottom right panel) will also start off in the project root directory
 
 
 ## Working directory
@@ -147,7 +158,7 @@ When you run an **R script**, the working directory is the directory indicated a
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/r_console.png)
 
 - If you are not working from an RStudio project, this is typically your **home directory**
-- If you are working from an RStudio project, your working directory would be the project directory
+- If you are working from an RStudio project, your working directory would be the project root directory
 
 <br>
 What is the **home directory**?
@@ -155,7 +166,7 @@ What is the **home directory**?
 ![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/main/assets/images/home.png)
 
 - You can view your home directory in RStudio by clicking on `Home` in the bottom right file viewer panel
-- The [home directory](https://en.wikipedia.org/wiki/Home_directory) is a user's main directory on a computer and it varies by operating systems
+- The [home directory](https://en.wikipedia.org/wiki/Home_directory) is a user's main directory on a computer and it varies by operating systems. It is usually:
     - MacOS: `/Users/<username>`
     - Windows: `C:\Users\<username>`
 - The tilde (`~`) refers to the user's home directory
@@ -176,8 +187,8 @@ To summarize, your **working directory** will be as follows in the various scena
 |  | **Not working from RStudio Project** | **Working from RStudio Project** |
 | ------ | -------- | ------- |
 | **In R Markdown code chunk** | Directory that the `.Rmd` file is in | Directory that the `.Rmd` file is in  |
-| **In R script** | Home directory | Project directory |
-| **In R console** | Home directory  | Project directory  |
+| **In R script** | Home directory | project root directory |
+| **In R console** | Home directory  | project root directory  |
 
 ## File paths
 
@@ -211,7 +222,7 @@ There are two types of **file paths**:
     - `./my_project/` is the relative file path to the `my_project/` directory
     - `./my_project/data/` is the relative file path to the `data/` directory
   - E.g., Assuming your working directory is the `data/` folder:
-    - `./` is the relative file path to the `data/` directory
+    - `./` is the relative file path to the `data/` directory (i.e., folder you are currently in)
     - `../` is the relative file path to the `my_project/` directory
     - `../scripts/` is the relative file path to the `scripts/` directory
 
@@ -235,7 +246,7 @@ What are the advantages of using **relative file paths**?
 
 - Notice that the _absolute file path_ is dependent on your specific machine
     - E.g., `/Users/<username>/path/to/file` has your specific username in it
-- When you are collaborating with others on a shared project directory (e.g., on a GitHub repository), you will want to use _relative file paths_ in your scripts to refer to the shared files/folders, so that the path will be valid for everyone
+- When you are collaborating with others on a shared project root directory (e.g., on a GitHub repository), you will want to use _relative file paths_ in your scripts to refer to the shared files/folders, so that the path will be valid for everyone
 
 ## Navigating files and folders
 
@@ -447,6 +458,9 @@ unlink(x, recursive = FALSE, force = FALSE)
 <details><summary>**Example**: Deleting a directory within current working directory using `unlink()`</summary>
 
 ```{r}
+getwd()
+list.files()
+
 # Delete `my_folder` we just created
 unlink(x = "my_folder", recursive = TRUE) 
 
@@ -471,8 +485,12 @@ research_project/
 ```
 
 ```{r}
+# delete research_project folder in case it already exists
+unlink(x = 'research_project', recursive = TRUE, force = TRUE)
+
 # Check working directory to see where your directory will be created
 getwd()
+list.files()
 
 # Create `research_project` directory
 dir.create(path = "research_project")
@@ -660,6 +678,9 @@ Let's download an image from [R for Data Science](https://r4ds.had.co.nz/data-vi
 # We will introduce the download.file() function in the next section
 download.file(url = 'https://d33wubrfki0l68.cloudfront.net/8b89c5554ed6108359d59909d441dbeb010e8802/9f366/visualize_files/figure-html/unnamed-chunk-7-1.png',
               destfile = file.path(figures_dir, 'scatterplot.png'))
+
+# confirm figure is there:
+list.files(path = figures_dir)
 ```
 
 <br>
@@ -683,6 +704,12 @@ There are many functions available to read in various types of data. The most co
 | Stata (`.dta`) | `haven` | `read_dta()` |
 | R (`.rds`) | base R | `readRDS()` |
 | R (`.Rdata`) | base R | `load()` |
+
+Note:
+
+- `.rds` files can store a single R object
+- `.Rdata` files can store multiple R objects
+
 
 <br>
 What can these functions read in?
@@ -760,7 +787,7 @@ unzip(zipfile, files = NULL, list = FALSE, overwrite = TRUE,
 
 - Function: Extract files from or list a zip archive
 - Arguments
-  - `zipfile`: Path to zip file
+  - `zipfile`: Path to zip file (including file name)
   - `exdir`: The directory to extract files to
 
 <br>
