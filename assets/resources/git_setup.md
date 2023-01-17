@@ -24,12 +24,17 @@ What is **Git for Windows**?
 Steps to **install**:
 
 - Download [Git for Windows](https://gitforwindows.org/) and run the installer
-- You'll be going with the pre-selected (default) options for most steps _except one step towards the end as described later_
+- *note*: screens on installation steps will look slightly different for you because below screens based on an older version of Git
 - One of the first screens you'll see in the setup process is the location where Git will be installed (e.g., `C:\Program Files\Git`). Leave it as default but just make a note of this path in case we need it later for troubleshooting purposes.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_install.png)</center>
 - In the screen below, you can optionally select to install a shortcut to Git Bash on your Desktop for easier access.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_shortcut.png)</center>
 - When asked about which default editor you would like Git to use, go with the option that is already pre-selected for you (i.e., Vim)
+  - if you have a preferred text editor already installed, feel free to choose that instead
+- for most of the remaining installation steps, go with the pre-selected (default) options _except a couple steps described belowr_
+- **Adjusting the name of the initial branch in new repositories**
+  - choose the option **Override the default branch name for new repositories** and make sure new branch name set to `main`
+<center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_initial_branch_name.png)</center>
 - When you get to the step shown below about **Adjusting your PATH environment**, make sure to select **Use Git and optional Unix tools from the Command Prompt**. If you do not, you may run into the issue described in the troubleshooting section below.
 <center>![](https://raw.githubusercontent.com/anyone-can-cook/rclass2/master/assets/images/git_path.png)</center>
 - After you finish the installation process, check that **Git Bash** is your default terminal in **RStudio** by going under `Tools` > `Global Options...` (`Terminal` tab). You may need to restart **RStudio** for changes to be reflected.
