@@ -201,7 +201,7 @@ __*Why learn the command line and "command-line bullshittery," from Philip J. Gu
 
 > "But this power comes at a great cost: __*It takes a tremendous amount of command-line bullshittery to install, set up, and configure all of this wonderful free software*__. What I mean by command-line bullshittery is dealing with all of the arcane, obscure, strange bullshit of the command-line paradigm that most of these free tools are built upon....So perhaps what is more important to a researcher than programming ability is adeptness at dealing with command-line bullshittery, since that enables one to become 10x or even 100x more productive than peers by finding, installing, configuring, customizing, and remixing the appropriate pieces of free software."
 
-_[Helping my students overcome __command-line bullshittery__](http://www.pgbovine.net/command-line-bullshittery.htm) by Philip J. Guo_
+_[Helping my students overcome __command-line bullshittery__](https://archive.ph/k1aKe) by Philip J. Guo_
 
 
 ## Installation and running shell commands from RStudio
