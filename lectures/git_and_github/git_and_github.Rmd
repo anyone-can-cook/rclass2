@@ -70,6 +70,7 @@ What is __Git__? (from git [website](https://git-scm.com/))
 
 - Git is a particular version control software created by _The Git Project_
   - [Git is free and open source software](https://git-scm.com/about/free-and-open-source), meaning that anyone can use, share, and modify the software
+  - Although Microsoft owns Github (described) below, it thankfully does not own Git!
 - Git can be used by:
     - An individual/standalone developer
     - For collaborative projects, where multiple people collaborate on each file
@@ -106,9 +107,9 @@ What is __GitHub__?
 - [GitHub](https://github.com/) is the industry standard hosting site/service for Git repositories
     - Hosting services allow people/organizations to store files on the internet and make those files available to others
 - Microsoft acquired Github in 2018 for $7.5 billion
-- GitHub stores your repositories in "the cloud"
-    - E.g., if you create a local repository stored on your machine, GitHub enables you to create a "remote" version of this repository
-    - Also, you can connect to a remote repository that already exists and create a local version of this respository on your machine
+- Github is where **remote** git repositories live
+  - E.g., if you create a local repository stored on your machine, GitHub enables you to create a "remote" version of this repository that live "in the cloud"
+  - Also, you can connect to a remote repository that already exists and create a local version of this respository on your machine
 - More broadly, GitHub enables you to store files, share code, and communicate with others
 - Github organizations
   - Github [organizations](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations) "are shared accounts where businesses and open-source projects can collaborate across many projects [that is, collaborate across many repositories] at once"
@@ -119,11 +120,13 @@ What is __GitHub__?
 
 
 
-## How we will learn Git and GitHub
+## How we will learn Git
+
+Even professional programmers find learning and understanding git to be challenging
 
 > "Whoah, I’ve just read this quick tutorial about git and oh my god it is cool. I feel now super comfortable using it, and I’m not afraid at all to break something.”— said no one ever ([de Wulf](https://www.daolf.com/posts/git-series-part-1/))
 
-Understanding and learning how to use Git and GitHub can be intimidating. A lot of tutorials give you recipes for how to accomplish specific tasks (either point-and-click or issuing commands on command line), but don't provide a conceptual understanding of how things work.
+Understanding and learning how to use Git can be intimidating. A lot of tutorials give you recipes for how to accomplish specific tasks (either point-and-click or issuing commands on command line), but don't provide a conceptual understanding of how things work.
 
 Here is how we will learn Git and GitHub over the course of the quarter:
 
@@ -204,9 +207,16 @@ __*Why learn the command line and "command-line bullshittery," from Philip J. Gu
 _[Helping my students overcome __command-line bullshittery__](https://archive.ph/k1aKe) by Philip J. Guo_
 
 
-## Installation and running shell commands from RStudio
+## Installation and running command line from RStudio
 
-If you have a **Windows** computer, you will need to [follow steps in this link](https://anyone-can-cook.github.io/rclass2/assets/resources/git_setup.html) to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. If you have a **Mac**, you won't need to download anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/). However, if you have a newer version of Mac, you may need to run `xcode-select --install` in your Terminal before you're able to use Git commands (see [here](https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a) for more info).
+### Installation
+
+If you have a **Windows** computer, you will need to [follow steps in this link](https://anyone-can-cook.github.io/rclass2/assets/resources/git_setup.html) to install [Git for Windows](https://gitforwindows.org/), which will allow you to run Bash and Git commands. 
+
+If you have a **Mac**, you won't need to download anything because it already comes with a [Terminal app](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/). However, if you have a newer version of Mac, you may need to run `xcode-select --install` in your Terminal before you're able to use Git commands (see [here](https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a) for more info).
+
+### Running command line commands from RStudio
+
 
 <br>
 In **RStudio**, there is a **Terminal** tab (next to the **Console** tab) where you can run Bash commands and perform Git operations:
