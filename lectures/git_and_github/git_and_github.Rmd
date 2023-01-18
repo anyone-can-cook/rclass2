@@ -21,7 +21,7 @@ output:
 # Introduction
 
 Load packages:
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
@@ -251,7 +251,7 @@ What is the difference between the RStudio **Console** and **Terminal**?
 
 # Command line
 
-In this section, we will go over some of the commonly used bash command line commands. You can run these commands either in a standalone **Git Bash/Terminal application**, your **RStudio Terminal** or in a `bash` code chunk of an **R markdown file**.
+In this section, we will go over some of the commonly used bash command line commands. You can run these commands either in a standalone **Git Bash/Terminal application**, your **RStudio Terminal**, or in a `bash` code chunk of an **R markdown file**.
 
 - Running bash commands from **Git Bash/Terminal application** or **RStudio Terminal**
   - This is how you will do things when working with git in real projects
@@ -368,6 +368,10 @@ ls
 </details>
 
 <br><hr><br>
+Usually, we make new directories using command line (terminal) rather than making directories in R (console, script or .Rmd) using the `dir.create()` function
+
+<br>
+
 **`mkdir`**: Create new directories, if they do not already exist
 
 - Syntax: `mkdir [<option(s)>] <directory_name(s)>`
@@ -383,6 +387,7 @@ ls
 ```{bash}
 # mkdir --help # help (windows)
 # List content of current directory
+pwd
 ls
 ```
 
@@ -399,24 +404,31 @@ ls
 
 ```{bash}
 # List content of current directory
+pwd
 ls
 ```
-- this code would give us an error because we cannot create child directory `folder_c` if `folder_b` does not already exist unless we specify the `-p` option on the `mkdir` function
+- below code would give us an error because we cannot create child directory `folder_c` if `folder_b` does not already exist unless we specify the `-p` option on the `mkdir` function
 ```{bash, eval=FALSE}
 mkdir folder_a folder_b/folder_c
 ls
 ```
 
-
+- use `mkdir` with the `-p` option to create required intermediate directory
 ```{bash}
 # Create new directories (don't need to explicitly create folder_b before folder_c)
 mkdir -p folder_a folder_b/folder_c
 ls
+
+ls folder_b
 ```
 
 </details>
 
 <br><hr><br>
+Often, we want to initialize (create) files, and we add content to these files in a later step
+
+<br>
+
 **`touch`**: Create new files
 
 - Syntax: `touch <file_name(s)>`
@@ -460,9 +472,11 @@ ls my_folder
 - Syntax: `rm [<option(s)>] [<file/directory_name(s)>]`
 - Help: `rm --help` (Windows); `man rm` (Mac)
 - Options:
-  - `-r`: Remove directories and their contents recursively (this flag is required to delete a directory)
+  - `-r`: Remove directories and their contents recursively (this option is required to delete a directory, even an empty directory)
     - "recursive": in computer science, "recursion is a programming technique using function or algorithm that calls itself one or more times until a specified condition is met" [SOURCE](https://www.cpp.edu/~ftang/courses/CS240/lectures/recursion.htm#:~:text=In%20computer%20science%2C%20recursion%20is,one%20called%20to%20the%20first.)
   - `-f`: Force remove a file/directory
+    - help file says: "ignore nonexistent files and arguments, never prompt (for confirmation about whether to delete file/directory)"
+  - `-rf`: equivalent to writing `-r -f`  options to "force remove directories"
 - Equivalent R function: `unlink()`
 
 <details><summary>**Example**: Using `rm` to delete files</summary>
@@ -511,6 +525,8 @@ This section shows bash code to:
 
 <br>
 <br>
+Often, we want to insert text into a file from the command line
+<br>
 **`echo`**: Write to standard output (i.e., print to terminal)
 
 - Syntax: `echo <text_to_print>`
@@ -526,7 +542,7 @@ This section shows bash code to:
     - if file already exists, using `>` will overwrite contents of existing file
   - `echo <text_to_print> >> file_name` (append to file)
     - The text could also be _appended_ to an existing file using `>>` (i.e., not overwrite existing content of file)
-- `echo` interprets the following backslash-escaped characters
+- `echo` interprets the following "backslash-escaped" characters (will explain more fully in the strings/regex unit)
   - `\a`: alert (bell)
   - `\b`: backspace
   - `\c`: suppress further output
@@ -644,11 +660,11 @@ tail -n 1 my_script.R
 <br><hr><br>
 **`cp`**: Copies files or directories
 
-- Syntax: `cp [<option(s)>] [<source_file/directory>] [<destination_file/directory>]`
+- Syntax: `cp [<option(s)>] [<source_directory/file>] [<source_directory/file>]`
 - Options:
   - `-r`: Copies directories and their contents recursively (this flag is required to copy a directory)
 - Arguments:
-  - Copies the `source_file/directory` to `destination_file/directory`
+  - Copies the `source_directory/file` to `source_directory/file`
 
 <details><summary>**Example**: Using `cp` to copy a file</summary>
 
@@ -691,11 +707,14 @@ ls my_folder_copy
 **`mv`**: Rename or move files
 
 - Syntax:
-  - Renaming: `mv [<old_file/directory>] [<new_file/directory>]`
-  - Moving: `mv [<file/directory(s)>] [<destination_directory>]`
-- Arguments:
+  - Renaming: `mv [<old_directory/file>] [<new_directory/file>]`
+  - Moving: `mv [<directory/file(s)>] [<destination_directory>]`
+- Arguments (how renaming and moving differ)
   - To rename, provide 2 arguments - the file/directory you want to rename and the name you want to change it to
   - To move, the last argument provided should be a directory and all files/directories provided before that will be moved into that directory
+- Options
+  - `-n`: do not overwite an existing file
+
 
 <details><summary>**Example**: Using `mv` to rename a file or directory</summary>
 
@@ -894,22 +913,30 @@ Basic/essential git commands:
 
 # Getting started: Git repository
 
+## Local and remote repositories
+
+
 What are **local** and **remote** repositories?
 
 - Local vs. remote git repository:
     - __Local__ git repository: Git repository for a project stored on your machine
-    - __Remote__ git repository: Git repository for a project stored on the internet (e.g., GitHub)
+    - __Remote__ git repository (often called "origin"): Git repository for a project stored on the internet (e.g., GitHub)
 - Typically, a local git repository is connected to a remote git repository for collaboration
     - Everyone working on the project will have a local copy of the shared remote repository
     - You'll all be making changes to your local repository and **pushing** them to the remote, as well as **pulling** other people's changes from the remote to your local copy
     - That way, everyone's project repository will be in sync and up-to-date with everybody else's
 - A remote repository is identified by its URL, which can be used to connect your local repository
-    - There are 2 types of URL: HTTPS and SSH
-    - HTTPS and SSH are two different ways to authenticate that you are you
-    - If you haven't set up SSH, then choose HTTPS
-    - **If you are using HTTPS, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)**
-      - "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
-      - **Example**: On the command line, when prompted for the password, enter your token rather than your GitHub password
+- There are 2 types of URL: HTTPS and SSH
+  - HTTPS and SSH are two different ways to authenticate that you are you
+  - HTTPS
+    - "Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It uses cryptography for secure communication over a computer network, and is widely used on the Internet" ([link](https://en.wikipedia.org/wiki/HTTPS))
+  - SSH
+    - "An SSH key is a secure access credential used in the Secure Shell (SSH) protocol" ([link](https://sectigo.com/resource-library/what-is-an-ssh-key))
+  - **If you haven't set up SSH (you probably haven't), then choose HTTPS**
+- HTTPS tokens  
+  - **If you are using HTTPS, you must first create a personal access token on GitHub following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token)**
+    - "Once you have a token, you can enter it instead of your password when performing Git operations over HTTPS." ([GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#using-a-token-on-the-command-line))
+    - **Example**: On the command line, when prompted for the password, enter your token rather than your GitHub password
         ```
         $ git clone https://github.com/username/repo.git
         Username: your_github_username
@@ -945,7 +972,9 @@ Understanding how **local** and **remote** repositories are connected:
 
 ## Clone a remote repository from GitHub to your local machine
 
-**Obtain the URL of the remote repository on GitHub**:
+This is usually the easiest way to get a local repository set up with a remote repository
+
+**Step 1: Obtain the URL of the remote repository on GitHub**:
 
 - In your browser, navigate to the repository on GitHub
   - This can be an already existing repository (e.g., [rclass2](https://github.com/anyone-can-cook/rclass2) repo) or a new repository you create
@@ -954,7 +983,7 @@ Understanding how **local** and **remote** repositories are connected:
 - Click on the green `Code` button
 - Copy either the repository URL to your clipboard (use HTTPS URL if you don't have SSH set up)
 
-**Clone the repository to your local machine**:
+**Step 2: Clone the repository to your local machine**:
 
 - In your Terminal/Git Bash, change directory into where you want to clone the repository
   - Note that you do not need to create a new folder for this repository. Cloning it will create a folder for you that contains the contents of the repository.
