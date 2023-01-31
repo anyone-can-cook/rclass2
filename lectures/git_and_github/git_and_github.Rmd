@@ -2639,20 +2639,48 @@ git cat-file -p $(git rev-parse HEAD)
 
 # Git commands: Undoing changes
 
-Below are some common git commands you might use to **undo changes**:
-
-- [git checkout](#git-checkout)
-- [git reset](#git-reset)
-- [git revert](#git-revert)
-
+Sometimes we want to **undo changes** we have made to files in our git repository. 
 <br>
-When learning these commands, helpful to keep in mind this visualization of the __Three components of a Git project__"
+When thinking about undoing changes to files, helpful to keep in mind this visualization of the **three components and workflow of a git repository**
+
+- note: here we focus on a local repository on your computer
+
 
 <center>![](https://miro.medium.com/max/686/1*diRLm1S5hkVoh5qeArND0Q.png){width=500px}</center>
 
 *Credit: Lucas Maurer, [medium.com](https://medium.com/@lucasmaurer/git-gud-the-working-tree-staging-area-and-local-repo-a1f0f4822018)*
 
 <br>
+
+Overview of different **undo changes** operations
+
+- **Discard (unstaged) changes to a tracked file that were made in your working directory**
+  - situation
+    - the file is part of your repository (it is being tracked); you made changes to file while working in your working directory and you want to get rid of those changes
+  - command: `git restore <file(s)>`
+  - result: changes you made to `<file>` in your working directory are discarded, gone forever
+- **Unstage staged changes to a file**
+    - situation: 
+      - in your working directory, you made changes to a file, then you staged those changes, and now you want to unstage those changes
+    - command: `git restore --staged <file(s)>`
+      - equivalent: `git reset HEAD <file_name(s)>`
+    - result: staged changes to `<file>` are unstaged; these unstaged changes are retained in your working directory
+- **Remove commit(s) prior to a specific commit (previous commits discarded)**
+  - situation: you want to undo previous comments and you want to record of these previous commits
+  - result:
+  - command: 
+- **Revert back to a specific commit (previous commits retained)**
+  - situation:
+  - result:
+  - command: 
+
+
+
+Below are some common git commands you might use to **undo changes**:
+
+- [git checkout](#git-checkout)
+- [git reset](#git-reset)
+- [git revert](#git-revert)
 
 ## `git checkout`
 
