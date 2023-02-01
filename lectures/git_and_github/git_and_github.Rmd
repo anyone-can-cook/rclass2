@@ -2652,28 +2652,40 @@ When thinking about undoing changes to files, helpful to keep in mind this visua
 
 <br>
 
-Overview of different **undo changes** operations
+Overview of four different **undo changes** operations
 
-- **Discard (unstaged) changes to a tracked file that were made in your working directory**
-  - situation
-    - the file is part of your repository (it is being tracked); you made changes to file while working in your working directory and you want to get rid of those changes
-  - command: `git restore <file(s)>`
-  - result: changes you made to `<file>` in your working directory are discarded, gone forever
-- **Unstage staged changes to a file**
+1. **Discard (unstaged) changes to a tracked file that were made in your working directory**
+    - situation
+      - the file is part of your repository (it is being tracked); you made changes to file while working in your working directory and you want to get rid of those changes
+    - command: `git restore <file(s)>`
+    - result: 
+      - changes you made to `<file>` in your working directory are discarded, gone forever
+1. **Unstage staged changes to a file(s)**
     - situation: 
       - in your working directory, you made changes to a file, then you staged those changes, and now you want to unstage those changes
     - command: `git restore --staged <file(s)>`
       - equivalent: `git reset HEAD <file_name(s)>`
-    - result: staged changes to `<file>` are unstaged; these unstaged changes are retained in your working directory
-- **Remove commit(s) prior to a specific commit (previous commits discarded)**
-  - situation: you want to undo previous comments and you want to record of these previous commits
-  - result:
-  - command: 
-- **Revert back to a specific commit (previous commits retained)**
-  - situation:
-  - result:
-  - command: 
+    - result: 
+      - staged changes to `<file>` are unstaged; these unstaged changes are retained in your working directory
+1. **Remove commit(s) prior to a specific commit (previous commits discarded)**
+    - situation: you want to undo previous _n_ commits and you want to record of these previous commits
+    - command: `git reset <commit_hash>`
+    - result:  
+      - Undoes all commits up to (but not including) the specified `<commit_hash>`
+1. **Revert back to a specific commit (previous commits retained)**
+    - situation: you want to undo previous _n_ commits but you want a record of these previous commits
+    - command: `git revert --no-edit <commit_hash>`
+    - result: 
+      - Revert all commits up to and including the specified `<commit_hash>`
+      - `git revert` does not remove any previous commits; rather, it creates a new commit (e.g., commit 3) that changes things back to the way they were prior to some commit (e.g., prior to commit 2)
 
+<br>
+
+Image of `git revert` vs. `git reset`
+
+<center>![](https://miro.medium.com/max/667/1*gwwLoCvrGdTPk6QfX7PZfQ.jpeg){width=500px}</center>
+
+*Credit: [NUKE Designs, Git revert](https://blog.nakulrajput.com/git-revert/)*
 
 
 Below are some common git commands you might use to **undo changes**:
@@ -2682,27 +2694,29 @@ Below are some common git commands you might use to **undo changes**:
 - [git reset](#git-reset)
 - [git revert](#git-revert)
 
-## `git checkout`
 
-**`git checkout`**: Restore working tree files (or switch branches)
+## `git restore`: discard unstaged changes
 
-- Help: `git checkout --help`
-- Syntax: `git checkout [<file_name(s)>]`
+
+**`git restore`**: Discard/undo changes made in working directory to tracked file(s)
+
+- Help: `git restore --help`
+- Syntax: `git restore [<file_name(s)>]`
 - Result: Undo changes made to specified `file_name(s)` in the _working directory_
     - This only applies to tracked, unstaged files (i.e., files listed under `Changes not staged for commit` when you check `git status`)
-- _**Note**: The `git checkout` command can also be used for switching branches, but that will be covered later_
 
 <br>
-<details><summary>**Example**: Using `git checkout` to discard changes to a tracked, unstaged file</summary>
+<details><summary>**Example**: Using `git restore` to discard changes to a tracked, unstaged file</summary>
 
-In this `git checkout` example we will:
+<br>
+In this `git restore` example we will:
 
 - Initialize an (empty) folder as a git repo
 - (in working directory) Create a file `create_dataset.R` that contains two lines of code
 - "add" changes to `create_dataset.R` to "staging area" and "commit" those changes to the local repository
 - (in working directory) insert a new line of code to `create_dataset.R`
 - Imagine that we decide we don't like this new line of code we created in the working area
-- so we use `git checkout <file_name>` to undo changes made in the "working directory" to the file `create_dataset.R`
+- so we use `git restore <file_name>` to undo changes made in the "working directory" to the file `create_dataset.R`
   - The result is that file `create_dataset.R` goes back to the way it was after the initial commit and the result of `git status` is "nothing to commit, working tree clean"
 
 ```{bash, results='hide'}
@@ -2723,7 +2737,7 @@ git commit -m "add create_dataset.R"
 
 ```{bash, echo=-c(1:3)}
 cd ~/my_git_repo
-git branch -M main
+git branch -M main # ignore
 
 # View how create_dataset.R looks when it was committed
 cat create_dataset.R
@@ -2756,7 +2770,7 @@ git diff
 cd ~/my_git_repo
 
 # Undo those changes using git checkout
-git checkout create_dataset.R
+git restore create_dataset.R
 
 # View file after discarding changes
 echo 'view contents of file create_dataset.R after undoing changes using git checkout:'
@@ -2771,41 +2785,32 @@ git status
 <br>
 
 
-## `git reset`
+## `git restore`: unstage staged changes
 
-**`git reset`**: Reset current `HEAD` to the specified state
+Using **`git restore`**: to unstage staged changes to a file(s)
 
-- Help: `git reset --help`
-- Syntax:
-  - `git reset HEAD <file_name(s)>`: Unstages the specified `file_name(s)` from the _staging area_ to the _working directory_
-    - This only applies to staged files (i.e., files listed under `Changes to be committed` when you check `git status`) and will move them back under `Changes not staged for commit` or `Untracked files`
-    - `HEAD` is a pointer to the latest commit and will restore the _staging area_/"index" to that state
-    - Any changes made to the file in the _working directory_ are still retained
-    - _**Note**: In newer versions of git, you can also use `git restore --staged <file_name(s)>` to unstage files_
-  - `git reset <commit_hash>`: Undo all commits up to (but not including) the specified `commit_hash`
-    - The `HEAD` pointer will be set to the specified commit
-    - The undone changes will be retained in the _working directory_
+- Do this by adding the `--staged` option to `git restore`
+- Syntax: `git restore --staged [<file(s)>]`
+- Result: 
+  - staged changes to `<file(s)>` are unstaged
+  - these unstaged changes are retained in your working directory
+    - files listed as `Changes not staged for commit` when you check `git status`
+
 
 <br>
-<details><summary>**Example**: Using `git reset` to unstage a file</summary>
+<details><summary>**Example**: Using `git restore --staged` to unstage a file</summary>
 
-In this `git checkout` example we will:
+In this example we will:
 
 - Initialize an (empty) folder as a git repo
 - (in working directory) Create a file `create_dataset.R` that contains two lines of code
 - "add" changes to `create_dataset.R` to "staging area" and "commit" those changes to the local repository
 - (in working directory) insert a new line of code to `create_dataset.R`
 - "add" this change to `create_dataset.R` to the staging area
-- Imagine that we decide we don't like this new line of code we added to the staging area
-- so we use `git reset HEAD <file_name>` to "unstage" changes we had "added" to the staging area. The result is that:
-  - changes we made to `create_dataset.R` are now unstaged changes in the working directory rather than staged changes ready to be committed
-  - `git reset` does not delete the line of code we added after the initial commit
-  
-How this `git reset` example differs from the (previous) `git checkout`
+- We use `git restore --staged <file_name>` to "unstage" changes we had "added" to the staging area. 
+- Result:changes we made to `create_dataset.R` are now unstaged changes in the working directory rather than staged changes ready to be committed
+  - `git restore --staged` does not delete the line of code we added after the initial commit
 
-- In the `git checkout` example we made a change to a file in the working directory but we didn't add that change to the staging area; in the `git reset` example we added this change to the staging area
-- Whereas `git checkout` deleted the line of code we had inserted in the working directory, `git reset` unstages this new line of code (so it exists as "changes not staged for commit") but does not delete the new line of code
-  
 ```{bash, results='hide'}
 cd ~  # change to root directory
 rm -rf my_git_repo  # force remove `my_git_repo` (if it exists)
@@ -2839,9 +2844,9 @@ git status
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Use git reset to unstage file
+# Use git restore --staged to unstage file
 echo 'use git reset to unstage changes added to the staging area'
-git reset HEAD create_dataset.R
+git restore --staged create_dataset.R
 
 # Check status to verify it has been unstaged (listed under `Changes not staged for commit`)
 echo ''
@@ -2853,6 +2858,18 @@ echo 'print the file create_dataset.R (after using git reset to unstage changes)
 cat create_dataset.R
 ```
 </details>
+    
+    
+## `git reset`: discard commits
+
+**`git reset`**: Remove commit(s) prior to a specific commit (previous commits discarded)
+
+- Help: `git reset --help`
+- Syntax: `git reset <commit_hash>`: 
+- Result: 
+  - Undo all commits up to (but not including) the specified `commit_hash`
+  - The `HEAD` pointer will be set to the specified commit
+  - Changes to files associated with undone commits are retained in the _working directory_
 
 <br>
 <details><summary>**Example**: Using `git reset` to undo a commit</summary>
@@ -2889,7 +2906,11 @@ cd ~/my_git_repo
 
 # View commit log
 git log
+
+# this code retrieves the first commit hash
+git rev-list HEAD | tail -n 1
 ```
+
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
@@ -2904,27 +2925,41 @@ git log
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
-# Notice that the changes to the file is still retained in the working directory
+# changes to files associated with undone commit(s) are retained in working directory
 cat create_dataset.R
+
+git status
 ```
 
 </details>
 <br>
 
-## `git revert`
+## `git revert`: 
 
-**`git revert`**: Revert existing commit(s)
+  - command: `git revert --no-edit <commit_hash>`
+  - result: 
+    - Revert all commits up to and including the specified `<commit_hash>`
+    - `git revert` does not remove any previous commits; rather, it creates a new commit (e.g., commit 3) that changes things back to the way they were prior to some commit (e.g., prior to commit 2)
+
+
+**`git revert`**: Revert back to a specific commit, previous commits retained
 
 - Help: `git revert --help`
-- Syntax:
-  - `git revert --no-edit <commit_hash>`: Revert all commits up to and including the specified `commit_hash`
-    - The difference between `git revert` and `git reset` (see figure below):
-      - `git revert` does not remove any previous commits; rather, it creates a new commit (e.g., commit 3) that changes things back to the way they were prior to some commit (e.g., prior to commit 2)
-      - `git reset` removes a previous commit, so there will be no record of this commit in `git log`, it'll be like it never happened 
-    - When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permanently erase history
-    - When you are working locally and want to undo commits that you have not yet pushed to a remote, then `git reset` may also be an option
-    - The `--no-edit` option means that you will use the default message for the revert commit
-    - _**Note**: If you run this command without `--no-edit`, you'll be taken to a screen where you have a chance to edit the commit message of the new commit. Just enter `:q` to use the default message._
+- Syntax:`git revert --no-edit <commit_hash>`
+  - The `--no-edit` option means that you will use the default message for the revert commit
+    - If you run command without `--no-edit`, you'll be taken to a screen where you have a chance to edit the commit message of the new commit. Just enter `:q` to use the default message.
+- Result:
+  - Revert all commits up to and including the specified `<commit_hash>`; does this by creating a new commit that takes the repository back to way it was before `<commit_hash>`
+  - Previous commits retained in case you want to access them
+  - changes made by those previous commits not retained in working directory
+  
+
+The difference between `git revert` and `git reset` (see figure below):
+
+- `git reset` removes a previous commit, so there will be no record of this commit in `git log`, it'll be like it never happened
+- `git revert` does not remove any previous commits; rather, it creates a new commit (e.g., commit 3) that changes things back to the way they were prior to some commit (e.g., prior to commit 2)
+- When working in a collaborative project where multiple users are contributing to a remote repository, you may want to use `git revert` so that it does not permanently erase history
+- When you are working locally and want to undo commits that you have not yet pushed to a remote, then `git reset` may also be an option
 
 <center>![](https://miro.medium.com/max/667/1*gwwLoCvrGdTPk6QfX7PZfQ.jpeg){width=500px}</center>
 
@@ -2965,15 +3000,18 @@ cd ~/my_git_repo
 
 # View commit log
 git log
+
+# this code retrieve's hash id associated with the most recent commit
+git rev-parse HEAD
 ```
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
 
 # Specify the hash ID of the unwanted commit
-git revert --no-edit $(git rev-parse --short HEAD)  # git rev-parse retrieves latest commit hash
+git revert --no-edit $(git rev-parse HEAD)  # git rev-parse retrieves latest commit hash
 
-# View commit log
+# View commit log; note, now there are three commits
 git log
 ```
 
