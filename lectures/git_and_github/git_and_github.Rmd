@@ -2688,12 +2688,6 @@ Image of `git revert` vs. `git reset`
 *Credit: [NUKE Designs, Git revert](https://blog.nakulrajput.com/git-revert/)*
 
 
-Below are some common git commands you might use to **undo changes**:
-
-- [git checkout](#git-checkout)
-- [git reset](#git-reset)
-- [git revert](#git-revert)
-
 
 ## `git restore`: discard unstaged changes
 
