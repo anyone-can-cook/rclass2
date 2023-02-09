@@ -3043,7 +3043,13 @@ Defining **branches** in terms of **commits**:
 - People often define a __branch__ as "a pointer to a single commit"
     - In programming, a "pointer" is a variable/object that stores the address of other variables or objects in memory
 - Recall that a **commit** is a snapshot of a repository at a particular point in time
-    - Each commit also stores connections (referred to as "references") between the current commit and previous commits (referred to as "ancestors")
+    - "references"
+      - Each commit also stores connections (referred to as "references") between the current commit and previous commits 
+    - "ancestors"
+      - for a given commit, "ancestors" are all previous commits
+    - "parent"
+      - for a given commit, the "parent" is the most-recent previous commit
+      - for a given commit, the hash of the "parent" commit is the "reference" between the current commit and most-recent the previous commit
 - The figure below shows the relationship between commits, references, and branches
 - Below, **commits 1**, **2**, **3**, and **4** are made to the __main__ branch, prior to the creation of **branch 1**
     - When we make **commit 2**, we create _reference 1_, which is a pointer from **commit 2** to **commit 1**
@@ -3065,8 +3071,8 @@ __Commit objects show relationship between commits and "references"__
 - In the below example [output hard-coded], we print the contents of a commit object (the second commit made to a repo)
 - The Second commit has the hash `c281829157334317e93172c8acca20ffaaa59cff`, let's call it `commit2`
 - In printing the contents of the commit object for `commit2`:
-  - the "parent" commit has hash `b764bdbcfbe2009f01e89283cbbf35c95b9e2ad6`, which is `commit1`
-- Using the language of branching, we could say the making `commit2` creates the "reference" to `commit`
+  - the "parent" commit has hash `b764bdbcfbe2009f01e89283cbbf35c95b9e2ad6`, which is the hash for `commit1`
+- Using the language of branching, we could say the making `commit2` creates the "reference" to `commit1`
   - The reference is the "parent" commit hash that is located inside the commit object for `commit2`
   
 ```{bash, eval=FALSE}
@@ -3112,6 +3118,10 @@ Why use **branches**?
     - Several collaborators are working on different parts of `predict_grad.Rmd`. For example, one person writing functions to clean data and create analysis variables and another person writing functions to run models and store model results.
     - Need a way for multiple people to work on `predict_grad.Rmd` at the same time
 - Typically, there is one main branch (usually **main**) that contains approved changes. All other development and testing is usually done on separate branches.
+- Standard "good practice" in the programming world
+  - the "main" branch is sacred! don't do your work on the main branch
+  - do your day-to-day work on separate "development" branches
+    - once you finish a task, or get the code the way you want it, then "merge" these changes from your development branch to the main branch
 - It is good practice to work on branches, then "merge" back to main at key points
 
 ## `git branch`
@@ -3185,9 +3195,12 @@ git branch -v
 ```
 
 <br>
-The `-a` option will list both local and remote branches. Remote branches will start with `remotes/` in the output. They will also include both the remote repository name and the branch name (e.g., `origin/main` in the example below). In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `main` branch in the example below):
+The `-a` option will list both local and remote branches. 
 
-- In the example below, code not run and the output is hard-coded; this is what the output would look like after we connected a local repo to a remote repo
+- Remote branches will start with `remotes/` in the output. 
+- They will also include both the remote repository name and the branch name (e.g., `origin/main` in the example below). 
+- In addition to remote branches, we'll also see the remote `HEAD` listed and where it's pointing to (e.g., remote `HEAD` is pointing to remote `main` branch in the example below):
+- In the example below (code not run and the output is hard-coded), this is what the output would look like after we connected a local repo to a remote repo:
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
@@ -3203,9 +3216,10 @@ git branch -a
 ```
 
 <br>
-To list only information on remote branches, we can use the `-r` option. Notice that the names do not have `remotes/` prepended, as that only appears when listing all branches using `-a` to be able to distinguish between local and remote branches:
+To list only information on remote branches, we can use the `-r` option. 
 
-- code not run; output hard-coded
+- Notice that the names do not have `remotes/` prepended, as that only appears when listing all branches using `-a` to be able to distinguish between local and remote branches:
+- code not run; output hard-coded:
 
 ```{bash, echo=-c(1:2), eval=FALSE}
 cd ~/my_git_repo
@@ -3290,7 +3304,7 @@ git branch
 Recall that the option `-M` is a shortcut for `-m` (move) and `-f` (force)
 
 - You may have seen the following code in this lecture or elsewhere: `git branch -M main`
-  - This code is saying "rename the current branch "main" even if a branch named "main" already exists
+  - This code is saying: rename the current branch "main" even if a branch named "main" already exists
   - We inserted this code because some computers initilize git repo with the default branch name "master" rather than "main"
   
   
@@ -3322,7 +3336,7 @@ Use `git branch -M` to force rename a branch
 ```{bash}
 cd ~/my_git_repo2
 
-# Delete branch
+# Force rename current branch from current name to branch1
 git branch -M branch1
 ```
 
@@ -3354,6 +3368,9 @@ git branch
 
 ```{bash, echo=-c(1:2)}
 cd ~/my_git_repo
+
+# Force rename current branch to "main"
+git branch -M main
 
 # See branch listing
 git branch
@@ -3426,9 +3443,9 @@ In the below code chunks (code not run), we do the following:
 - create a file and make a commit
 - create a new branch named `dev`
 - use `git remote add <remote_name> <remote_url>` to connect to a remote repo (assume you created this remote repo on github.com)
+  - note: for this step, it doesn't matter which branch you are currently on; the remote_url will be the same for all branches
 - use `git push -u origin main` to push local branch named "main" to the remote for the first time
 - switch to `dev` branch and use `git push -u origin dev` push local branch named "dev" to the remote for the first time
-we inlet's say we created a new branch `dev` that we want to push to a remote named `origin`:
 
 <br>
 Initialize new repo, make a commit, create a new branch named `dev`
@@ -3458,6 +3475,9 @@ git checkout -b dev
 After creating repo on github, use `git remote add <remote_name> <remote_url> to add a new remote
 ```{bash, eval = FALSE}
 cd ~/my_git_repo
+
+git checkout main # switch to main branch; fine if we don't though
+
 #git branch
 git remote add origin https://github.com/ozanj/my_git_repo.git
 git remote -v
@@ -3469,7 +3489,7 @@ cd ~/my_git_repo
 # switch to main branch
 git checkout main
 
-git push -u origin main
+git push -u origin main # we have to add -u origin main cuz this is first time we are connecting local main to remote main
 ```
 ```
 ## $ git push -u origin main
@@ -3494,7 +3514,7 @@ git branch -a
 ##   remotes/origin/main
 ```
 
-Switch to `dev` branch and push to changes to remote repository
+Switch to `dev` branch and push to changes to remote repository (code not run)
 ```{bash, eval=F}
 cd ~/my_git_repo
 
@@ -3502,10 +3522,10 @@ cd ~/my_git_repo
 git checkout dev
 
 # print local and remote branches
-#git branch -a
+git branch -a
 
 #push branch to remote for the first time
-#git push -u origin dev
+git push -u origin dev
 
 #git push
 ```
