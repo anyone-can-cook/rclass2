@@ -3338,6 +3338,8 @@ cd ~/my_git_repo2
 
 # Force rename current branch from current name to branch1
 git branch -M branch1
+
+git branch
 ```
 
 List existing branches
