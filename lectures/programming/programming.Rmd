@@ -847,8 +847,8 @@ birth_years
 
 for(y in birth_years) {  # Loop sequence
   writeLines(str_c("object y=", y))  # Loop body
-  z <- 2022 - y
-  writeLines(str_c("value of 2022 minus ", y, " is ", z))
+  z <- 2023 - y
+  writeLines(str_c("value of 2023 minus ", y, " is ", z))
 }
 ```
 </details>
@@ -898,8 +898,7 @@ vec  # View named atomic vector object
 
 for (i in vec) {
   writeLines(str_c("value of object i=",i))
-  writeLines(str_c("object i has: type=", typeof(i), "; length=", length(i), "; class=", class(i),
-      "\n"))  # "\n" adds line break
+  writeLines(str_c("object i has: type=", typeof(i), "; length=", length(i), "; class=", class(i), "\n"))  # "\n" adds line break
 }
 ```
 
@@ -916,8 +915,7 @@ df  # View dataframe object
 
 for (i in df) {
   writeLines(str_c("value of object i=",i))
-  writeLines(str_c("object i has: type=", typeof(i), "; length=", length(i), "; class=", class(i),
-      "\n"))  # "\n" adds line break
+  writeLines(str_c("object i has: type=", typeof(i), "; length=", length(i), "; class=", class(i), "\n"))  # "\n" adds line break
 }
 ```
 
@@ -961,7 +959,7 @@ names(vec)  # View names of atomic vector object
 
 for (i in names(vec)) {
   writeLines(str_c("\nvalue of object i=", i, "; type=", typeof(i)))
-  str(vec[i])  # Access element contents using []
+  #str(vec[i])  # Access element contents using []
   str(vec[[i]])  # Access element contents using [[]]
 }
 ```
@@ -979,7 +977,7 @@ str(df[["a"]]) # double bracket
 
 for (i in names(df)) {
   writeLines(str_c("\nvalue of object i=", i, "; type=", typeof(i)))
-  str(df[i])  # Access element contents using []
+  #str(df[i])  # Access element contents using []
   str(df[[i]])  # Access element contents using [[]]
 }
 ```
@@ -1043,7 +1041,7 @@ length(vec)  # View length of atomic vector object
 
 for (i in 1:length(vec)) {
   writeLines(str_c("\nvalue of object i=", i, "; type=", typeof(i)))
-  str(vec[i])  # Access element contents using []
+  #str(vec[i])  # Access element contents using []
   str(vec[[i]])  # Access element contents using [[]]
 }
 ```
@@ -1070,7 +1068,7 @@ We could also access the element's name by its index:
 ```{r}
 names(df)  # View names of dataframe object (i.e., column names)
 names(df)[[2]]  # We can access any element in the names vector by its index
-  # names(df)[2]  # same as above
+   #names(df)[2]  # same as above
 
 # Incorporate the above line into the loop
 for (i in 1:length(df)) {
