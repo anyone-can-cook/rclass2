@@ -1421,6 +1421,11 @@ length(is.na("NA"))
 if (is.na("NA")) {
   writeLines("This block is not executed because the condition evaluates to `FALSE`.")
 }
+
+# double negative equals positive!
+if (!is.na("NA")) {
+  writeLines("This block is not not executed because `!FALSE` evaluates to `TRUE`!")
+}
 ```
 
 </details>
@@ -1521,6 +1526,9 @@ if (condition) {
 Recall the function [`dir.exists()`](https://anyone-can-cook.github.io/rclass2/lectures/organizing_and_io/organizing_and_io.html#244_Checking_if_filedirectory_exists) that checks if a directory exists:
 
 ```{r}
+getwd()
+list.files()
+
 directory <- "my_new_directory"
 dir.exists(directory)
 ```
@@ -1568,6 +1576,7 @@ We can loop over multiple directory names and for each, create the directory onl
 
 ```{r}
 directories <- c("scripts", "dictionaries", "output")
+directories
 
 for (i in directories) {
   if (dir.exists(i)) {
@@ -1598,7 +1607,7 @@ for (i in directories) {
 
 ```{r, echo=FALSE}
 # Delete directories
-unlink(directories, recursive = TRUE)
+unlink(directories, recursive = TRUE, force = TRUE)
 ```
 
 </details>
@@ -1607,7 +1616,7 @@ unlink(directories, recursive = TRUE)
 
 What are **`else if` statements**?
 
-- Between the `if` and `else` blocks, you can include additional block(s) using `else if` that gets executed if its condition is met and none of the previous blocks got executed
+- Between the `if` blocks and `else` blocks, you can include additional block(s) using `else if` that gets executed if its condition is met and none of the previous blocks got executed
 - In other words, only 1 block will ever execute in an `if`/`else if`/`else` chain
 
 ```{r, eval=FALSE}
@@ -1916,6 +1925,28 @@ Like all functions, user-written functions usually follow **three steps**:
 2. __Process__ the input
     - This may include utilizing existing functions from other packages, for example `sum()` or `length()`
 3. __Return__ a new object
+
+<br>
+Can think of user-written functions as anologous to **mathematical functions** that take one or more input variables
+
+- below, create function `f_xy` that takes two input variables: `x` and `y`
+```{r}
+f_xy <- function(x,y) {
+  # function body
+  x^2 + y
+}
+
+f_xy(x=2,y=2)
+f_xy(x=3,y=1)
+
+#what the function returns
+f_xy(x=3,y=1) %>% str() # a numeric atomic vector of length 1
+
+# assign the output of function to an object
+z <- f_xy(x=3,y=1)
+z
+```
+<br>
 
 **Examples** of what we might want to write a function for:
 
@@ -2333,10 +2364,7 @@ z_score(x = v)
 
 seq(20, 25)
 z_score(x = seq(20, 25))
-  
-  # investigate what function returns
-  z_score(x = c(1, 2, 3, 4, 5)) %>% str()
-  
+
   #you could even create a new object whose values are the output/return of the function
   z_object <- z_score(x = c(1, 2, 3, 4, 5))
   z_object
