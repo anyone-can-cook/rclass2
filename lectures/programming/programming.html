@@ -3610,12 +3610,11 @@ that checks if a directory exists:</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/ozanj/Documents/rclass2/lectures/programming&quot;</span></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
-<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;my_new_directory&quot; &quot;output&quot;           &quot;programming.html&quot;</span></span>
-<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;programming.Rmd&quot;  &quot;scripts&quot;</span></span>
-<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>directory <span class="ot">&lt;-</span> <span class="st">&quot;my_new_directory&quot;</span></span>
-<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.exists</span>(directory)</span>
-<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;my_new_directory&quot; &quot;programming.html&quot; &quot;programming.Rmd&quot;</span></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>directory <span class="ot">&lt;-</span> <span class="st">&quot;my_new_directory&quot;</span></span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.exists</span>(directory)</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p><br> Let’s take a look at using an if-else statement to create the
 directory (using <a href="https://anyone-can-cook.github.io/rclass2/lectures/organizing_and_io/organizing_and_io.html#243_Creating_directories"><code>dir.create()</code></a>)
 only if it doesn’t currently exist:</p>
@@ -3629,8 +3628,7 @@ only if it doesn’t currently exist:</p>
 <span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that directory is created</span></span>
 <span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
-<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;dictionaries&quot;     &quot;my_new_directory&quot; &quot;output&quot;           &quot;programming.html&quot;</span></span>
-<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;programming.Rmd&quot;  &quot;scripts&quot;</span></span></code></pre></div>
+<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;my_new_directory&quot; &quot;programming.html&quot; &quot;programming.Rmd&quot;</span></span></code></pre></div>
 <p><br> If we try running this code again, the <code>if</code> block
 would be executed because the directory already exists:</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.exists</span>(directory)</span>
@@ -3663,9 +3661,9 @@ directory only if it does not already exist:</p>
 <span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="fu">str_c</span>(<span class="st">&quot;Created directory &#39;&quot;</span>, i, <span class="st">&quot;&#39;.&quot;</span>))</span>
 <span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The directory &#39;scripts&#39; already exists.</span></span>
-<span id="cb87-14"><a href="#cb87-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The directory &#39;dictionaries&#39; already exists.</span></span>
-<span id="cb87-15"><a href="#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The directory &#39;output&#39; already exists.</span></span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Created directory &#39;scripts&#39;.</span></span>
+<span id="cb87-14"><a href="#cb87-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Created directory &#39;dictionaries&#39;.</span></span>
+<span id="cb87-15"><a href="#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Created directory &#39;output&#39;.</span></span>
 <span id="cb87-16"><a href="#cb87-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-17"><a href="#cb87-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that directories are created</span></span>
 <span id="cb87-18"><a href="#cb87-18" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
@@ -3813,7 +3811,7 @@ R</a>)</li>
 <span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    4.37    1.75    6.13</span></span></code></pre></div>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    3.70    1.67    5.39</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Creating the output vector before
 loop (<em>Recommended</em>)</p>
 <ul>
@@ -3863,7 +3861,7 @@ loop</p>
 <span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1.9     0.0     1.9</span></span></code></pre></div>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    1.61    0.00    1.61</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using the vectorised
 <code>if_else()</code> function (<em>Recommended</em>)</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(</span>
@@ -3873,7 +3871,7 @@ loop</p>
 <span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>                   )</span>
 <span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.07    0.00    0.06</span></span></code></pre></div>
+<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.06    0.00    0.06</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -3922,7 +3920,7 @@ price</li>
 <span id="cb100-29"><a href="#cb100-29" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb100-30"><a href="#cb100-30" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb100-31"><a href="#cb100-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb100-32"><a href="#cb100-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.06    0.00    0.06</span></span></code></pre></div>
+<span id="cb100-32"><a href="#cb100-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.03    0.00    0.03</span></span></code></pre></div>
 <p><br> <strong>[Method 2]</strong> Using
 <code>if</code>/<code>else if</code>/<code>else</code> statements inside
 a for loop</p>
@@ -3975,7 +3973,7 @@ R programming</a>)</li>
 <span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(prices <span class="sc">&lt;</span> <span class="dv">2000</span>, <span class="dv">7</span>, <span class="dv">8</span>)))))))</span>
 <span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed </span></span>
-<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.01    0.00    0.01</span></span></code></pre></div>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    0.02    0.00    0.02</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -4364,25 +4362,25 @@ help handle birthdates:</p>
 <p><br> Using <code>today()</code> to get today’s date, we can calculate
 an age given a birthdate:</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2023-02-23&quot;</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2023-03-02&quot;</span></span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference</span></span>
 <span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)</span>
-<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 16109 days</span></span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 16116 days</span></span>
 <span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y))</span>
-<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &#39;difftime&#39; num 16109</span></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &#39;difftime&#39; num 16116</span></span>
 <span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;units&quot;)= chr &quot;days&quot;</span></span>
 <span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to duration</span></span>
 <span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y))</span>
-<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1391817600s (~44.1 years)&quot;</span></span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1392422400s (~44.12 years)&quot;</span></span>
 <span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a><span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
 <span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Formal class &#39;Duration&#39; [package &quot;lubridate&quot;] with 1 slot</span></span>
 <span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..@ .Data: num 1.39e+09</span></span>
 <span id="cb117-17"><a href="#cb117-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age in years as numeric vector</span></span>
 <span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)), <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 44.10404</span></span>
+<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 44.1232</span></span>
 <span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.duration</span>(<span class="fu">today</span>() <span class="sc">-</span> <span class="fu">mdy</span>(y)), <span class="st">&quot;years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
 <span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num 44.1</span></span>
 <span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -5794,8 +5792,52 @@ order:</p>
 <span id="cb175-8"><a href="#cb175-8" aria-hidden="true" tabindex="-1"></a>vec <span class="sc">%&gt;%</span> <span class="fu">times_three</span>() <span class="sc">%&gt;%</span> <span class="fu">add_two</span>()</span>
 <span id="cb175-9"><a href="#cb175-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  8 11 14</span></span></code></pre></div>
 </details>
+<p><br></p>
 </div>
 </div>
+</div>
+<div id="what-to-learn-next" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> What to learn next</h1>
+<p><br></p>
+<p><strong>Writing functions and loops that utilize tidyverse
+functions</strong></p>
+<ul>
+<li>Including certain <code>Tidyverse</code>/<code>dplyr</code>
+functions in a user-written function requires some programming concepts
+that we did not introduce in this lecture
+<ul>
+<li>For more explanation, see <a href="https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/">here</a>
+and <a href="https://adv-r.hadley.nz/quasiquotation.html#unquoting">here</a>.</li>
+</ul></li>
+<li>For a pretty digestable explanation of how to write user-defined
+functions that utilzie tidyverse functions, read the <a href="https://dplyr.tidyverse.org/articles/programming.html">Programming
+with dplyr</a> vignette</li>
+</ul>
+<p><br> <br></p>
+<p><strong>Replacing loops with “map” functions from the
+<code>purrr</code> package and/or “apply” functions from Base
+R</strong></p>
+<blockquote>
+<p>The pattern of looping over a vector, doing something to each element
+and saving the results is so common that the purrr package provides a
+family of functions to do it for you (<a href="https://r4ds.had.co.nz/iteration.html#the-map-functions">Wickham,
+chapter 21.5</a>)</p>
+</blockquote>
+<ul>
+<li>The <code>purrr</code> package, which is part of Tidyverse, creates
+a family of functions called “map” functions replace the need for
+writing loops</li>
+<li>to learn more about <code>purrr</code> map functions, read section
+<a href="https://r4ds.had.co.nz/iteration.html#for-loops-vs.-functionals">21.4</a>
+and section <a href="https://r4ds.had.co.nz/iteration.html#the-map-functions">21.5</a>
+of <em>R for Data Science</em> by Wickham</li>
+<li><code>purrr</code> map functions are similar to the “apply family of
+functions” from Base R
+<ul>
+<li>check out this <a href="https://www.datacamp.com/tutorial/r-tutorial-apply-family">tutorial</a>
+on apply functions</li>
+</ul></li>
+</ul>
 </div>
 
 

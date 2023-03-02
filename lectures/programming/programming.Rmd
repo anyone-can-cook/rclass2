@@ -3334,3 +3334,27 @@ vec %>% times_three() %>% add_two()
 ```
 
 </details>
+
+<br>
+
+# What to learn next
+
+<br>
+
+**Writing functions and loops that utilize tidyverse functions**
+
+- Including certain `Tidyverse`/`dplyr` functions in a user-written function requires some programming concepts that we did not introduce in this lecture
+  - For more explanation, see [here](https://www.r-bloggers.com/data-frame-columns-as-arguments-to-dplyr-functions/) and [here](https://adv-r.hadley.nz/quasiquotation.html#unquoting). 
+- For a pretty digestable explanation of how to write user-defined functions that utilzie tidyverse functions, read the [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html) vignette
+
+<br>
+<br>
+
+**Replacing loops with "map" functions from the `purrr` package and/or "apply" functions from Base R**
+
+> The pattern of looping over a vector, doing something to each element and saving the results is so common that the purrr package provides a family of functions to do it for you ([Wickham, chapter 21.5](https://r4ds.had.co.nz/iteration.html#the-map-functions))
+
+- The `purrr` package, which is part of Tidyverse, creates a family of functions called "map" functions replace the need for writing loops
+- to learn more about `purrr` map functions, read section [21.4](https://r4ds.had.co.nz/iteration.html#for-loops-vs.-functionals) and section [21.5](https://r4ds.had.co.nz/iteration.html#the-map-functions) of _R for Data Science_ by Wickham 
+- `purrr` map functions are similar to the "apply family of functions" from Base R
+  - check out this [tutorial](https://www.datacamp.com/tutorial/r-tutorial-apply-family) on apply functions
