@@ -2845,7 +2845,7 @@ str_c(c("a", "b"), c(1, 2), collapse = "|")
 length(str_c(c("a", "b"), c(1, 2), collapse = "|"))  # resulting vector has length = 1
 
 # specify alternative values for both `sep` and `collapse`
-  #str_c(c("a", "b"), c(1, 2), sep = "~", collapse = "|")
+  str_c(c("a", "b"), c(1, 2), sep = "~", collapse = "|")
 ```
 
 <br>
@@ -2875,6 +2875,7 @@ z_score <- function(x, na) {
 w
 z_score(x=w, na=TRUE)
 z_score(x=w, na=FALSE)
+#z_score(x=w, na="hello")
 #z_score(w) # error: argument "na" is missing, with no default
 ```
 
@@ -2960,6 +2961,7 @@ Recall the first iteration of our `print_hello()` function, which basically just
     
     # Call function
     print_hello1(x="Ozan")
+    print_hello1(x="Ozan Jaquette")
     ```
 
 - Modify function to take an arbitrary number of names to greet
@@ -2972,6 +2974,7 @@ Recall the first iteration of our `print_hello()` function, which basically just
     
     # Call function
     print_hello2("Dasher", "Dancer", "Prancer", "Vixen")
+    print_hello2("Dasher", "Dancer", "Prancer", "Vixen", "Joyce Nguy", "Taylor Swift")
 
     ```
 
@@ -3043,7 +3046,7 @@ print_hello <- function(x, y) {
 
 print_hello(x = "Sumru Jaquette-Nasiali", y="04/05/2019") # this works
 
-print_hello(x = "Sumru Jaquette-Nasiali", y="2019/04/05") # this does not
+#print_hello(x = "Sumru Jaquette-Nasiali", y="2019/04/05") # this does not
 ```
 
 <br>
@@ -3163,7 +3166,7 @@ assess_price <- function(price) {
   }
 }
 
-assess_price(price=450)
+assess_price(price=450) %>% str()
 assess_price(price=1050) %>% str()
 
 prices <- unique(diamonds$price)[23:27]
@@ -3189,9 +3192,13 @@ assess_price <- function(price) {
   "I can't afford that."  # This is now the last statement in the function that will be returned
 }
 
+prices
 for (i in prices) {
   writeLines(assess_price(i))
 }
+
+assess_price(price=450) %>% str()
+assess_price(price=1050) %>% str()
 ```
 
 <br>
@@ -3210,10 +3217,19 @@ assess_price <- function(price) {
   "I can't afford that."
 }
 
+prices
 for (i in prices) {
   writeLines(assess_price(i))
 }
 
+assess_price(price = 10)
+cheap <- assess_price(price = 10)
+cheap
+
+assess_price(price = 2000)
+assess_price(price = 2000) %>% str()
+p <- assess_price(price = 2000)
+p
 ```
 
 </details>
@@ -3254,6 +3270,14 @@ diamond_info_by_color <- function(color) {
 
 diamond_info_by_color('E')
 diamond_info_by_color('E') %>% str()
+
+tables <- diamond_info_by_color('E')
+
+tables %>% str()
+tables
+
+tables[[1]]
+tables[['cut_table']]
 ```
 
 <br>
@@ -3315,7 +3339,6 @@ add_two <- function(v) {
 vec
 add_two(v=vec)
 vec %>% add_two() # same
-
 
 times_three <- function(v) {
   v * 3
