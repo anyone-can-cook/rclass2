@@ -2988,7 +2988,7 @@ How to handle **invalid inputs**?
 <br>
 __`stop()` function__ (base R):
 
-- The `sto()` function "stops execution of the current expression and executes an error action"
+- The `stop()` function "stops execution of the current expression and executes an error action"
 
 ```{r, eval=FALSE}
 ?stop
@@ -3060,6 +3060,7 @@ print_hello <- function(x, y) {
   str_c("Hello, world. My name is", x, "and I am", age, "years old", sep = " ", collapse = NULL)
 }
 
+print_hello(x = "Sumru Jaquette-Nasiali", y = "04/05/2019")
 print_hello(x = "Sumru Jaquette-Nasiali", y = "2019/04/05")
 ```
 
@@ -3313,6 +3314,8 @@ add_two <- function(v) {
 
 vec
 add_two(v=vec)
+vec %>% add_two() # same
+
 
 times_three <- function(v) {
   v * 3
@@ -3320,6 +3323,7 @@ times_three <- function(v) {
 
 vec
 times_three(v=vec)
+vec %>% times_three() # same
 ```
 
 <br>
@@ -3327,9 +3331,11 @@ We can chain together the functions to perform the operations in order:
 
 ```{r}
 vec
+vec %>% add_two()
 vec %>% add_two() %>% times_three()
 
 vec
+vec %>% times_three()
 vec %>% times_three() %>% add_two()
 ```
 
