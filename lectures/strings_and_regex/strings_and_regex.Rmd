@@ -162,8 +162,8 @@ __The `str_view()` & `str_view_all()` functions__:
 ?str_view_all
 
 # SYNTAX AND DEFAULT VALUES
-str_view(string, pattern, match = NA)
-str_view_all(string, pattern, match = NA)
+str_view(string, pattern, match = NA, html = FALSE)
+str_view_all(string, pattern, match = NA, html = FALSE)
 ```
 
 - Function:
@@ -174,8 +174,15 @@ str_view_all(string, pattern, match = NA)
   - `pattern`: Pattern to look for.
       - The default interpretation is a regular expression, as described in `stringi::stringi-search-regex`. Control options with `regex()`.
   - `match`: If `TRUE`, shows only strings that match the pattern. If `FALSE`, shows only the strings that don't match the pattern. Otherwise (the default, `NA`) displays both matches and non-matches.
+  - `html`: Use HTML output? If TRUE will create an HTML widget; if FALSE will style using ANSI escapes. The default prefers ANSI escapes if available in the current terminal; you can override by setting `options(stringr.html = TRUE)`
 
 <br>
+Override default settings of `html=FALSE`
+```{r}
+options(stringr.html = TRUE)
+```
+
+
 **Example**: Using `str_view()` & `str_view_all()` to match literal text
 
 We'll match text from this string vector:
@@ -190,7 +197,7 @@ p12_df$text[119] %>% length() # our string has length==1 (i.e., it is a one-elem
 Let's use these functions to match the exact string `"Co"` from one of the tweets in our `p12_df` dataframe. `str_view()` will show us the first pattern match. Notice that the pattern is case-sensitive, as the `"co"` in `"colleagues"` was not matched:
 
 ```{r}
-str_view(string = p12_df$text[119], pattern = 'Co')
+str_view(string = p12_df$text[119], pattern = 'Co', html = TRUE)
 ```
 
 <br>
@@ -327,6 +334,14 @@ Similarly, to include a literal backslash `\` in the string, we need to escape t
 
 ```{r}
 my_string <- "The executable is located in C:\\Program Files\\Git\\bin"
+my_string
+writeLines(my_string)
+```
+By contrast, this won't work:
+
+- says "`\P`" is an unrecognized escape character
+```{r, eval = FALSE}
+my_string <- "The executable is located in C:\Program Files\Git\bin"
 my_string
 writeLines(my_string)
 ```
