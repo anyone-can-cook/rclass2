@@ -2777,8 +2777,8 @@ from one of the tweets in our <code>p12_df</code> dataframe.
 that the pattern is case-sensitive, as the <code>&quot;co&quot;</code> in
 <code>&quot;colleagues&quot;</code> was not matched:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="at">string =</span> p12_df<span class="sc">$</span>text[<span class="dv">119</span>], <span class="at">pattern =</span> <span class="st">&#39;Co&#39;</span>, <span class="at">html =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="str_view html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-de8580f058f122e96987" style="width:960px;height:100%;"></div>
-<script type="application/json" data-for="htmlwidget-de8580f058f122e96987">{"x":{"html":"<ul>\n  <li><pre>\"I stand with my colleagues at @UW and America's leading research universities as they take fight to <span class='match'>Co<\/span>vid-19 in our labs and hospitals.\"\n\n#ProudToBeOnTheirTeam x #Always<span class='match'>Co<\/span>mpete x #GoHuskies https://t.co/4YSf4SpPe0<\/pre><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div class="str_view html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a830dcef7038f5eac8e1" style="width:960px;height:100%;"></div>
+<script type="application/json" data-for="htmlwidget-a830dcef7038f5eac8e1">{"x":{"html":"<ul>\n  <li><pre>\"I stand with my colleagues at @UW and America's leading research universities as they take fight to <span class='match'>Co<\/span>vid-19 in our labs and hospitals.\"\n\n#ProudToBeOnTheirTeam x #Always<span class='match'>Co<\/span>mpete x #GoHuskies https://t.co/4YSf4SpPe0<\/pre><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p><br> We can use <code>str_view_all()</code> to show all matches, not
 just the first match:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(<span class="at">string =</span> p12_df<span class="sc">$</span>text[<span class="dv">119</span>], <span class="at">pattern =</span> <span class="st">&#39;Co&#39;</span>)</span>
@@ -4240,7 +4240,7 @@ and <code>FALSE</code> if there is one</li>
 <strong>Example</strong>: Using <code>str_detect()</code> on string
 </summary>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detects if there is a digit in the string</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="at">string =</span> <span class="st">&quot;P. Sherman, 42 Wallaby Way, Sydne&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="at">string =</span> <span class="st">&quot;P. Sherman, 42 Wallaby Way, Sydney&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>)</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </details>
 <br>
@@ -4473,13 +4473,17 @@ match</li>
 <strong>Example</strong>: Using <code>str_extract()</code> &amp;
 <code>str_extract_all()</code> on character vector
 </summary>
+<p><br></p>
 <p><strong>[<code>str_extract()</code>]</strong> Extract the first
 occurrence of a word for each string:</p>
-<p><br></p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracts first match of a word</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>),</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>)</span>
-<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Three&quot; &quot;Two&quot;   &quot;A&quot;</span></span></code></pre></div>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Three&quot; &quot;Two&quot;   &quot;A&quot;</span></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>),</span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">str</span>() <span class="co"># a character vector of length 3</span></span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  chr [1:3] &quot;Three&quot; &quot;Two&quot; &quot;A&quot;</span></span></code></pre></div>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracts first match to element that begins with &quot;A&quot;</span></span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>),</span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pattern =</span> <span class="st">&quot;^A&quot;</span>)</span>
@@ -4492,9 +4496,9 @@ occurrence of a word for each string:</p>
 <span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>),</span>
 <span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">pattern =</span> <span class="st">&quot;^A&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
 <span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p><br></p>
 <p><strong>[<code>str_extract_all()</code>]</strong> Extract all
 occurrences of a word for each string:</p>
-<p><br></p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracts all matches of a word, returning a list of character vectors</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>), </span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>)</span>
@@ -4518,8 +4522,19 @@ occurrences of a word for each string:</p>
 <p>Types of objects returned by <code>str_extract()</code> and
 <code>str_extract_all()</code></p>
 <ul>
-<li>By default, whereas <code>str_extract()</code> returns a character
-vector <code>str_extract_all()</code> returns a list</li>
+<li>By default <code>str_extract()</code> returns a character vector,
+<code>str_extract_all()</code> returns a list</li>
+<li>By default <code>str_extract_all()</code> returns a list
+<ul>
+<li>can use Base R subsetting to isolate particular elements of object
+returned by <code>str_extract_all()</code></li>
+</ul></li>
+<li><code>str_extract_all()</code> with argument
+<code>simplify = TRUE</code> returns character matrix
+<ul>
+<li>can use Base R subsetting to isolate particular elements of object
+returned by <code>str_extract_all()</code></li>
+</ul></li>
 </ul>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str_extract returns a character vector</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>), </span>
@@ -4536,8 +4551,15 @@ vector <code>str_extract_all()</code> returns a list</li>
 <span id="cb88-13"><a href="#cb88-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb88-14"><a href="#cb88-14" aria-hidden="true" tabindex="-1"></a><span class="co"># str_extract_all with simplify = TRUE returns a character matrix</span></span>
 <span id="cb88-15"><a href="#cb88-15" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>), </span>
-<span id="cb88-16"><a href="#cb88-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
-<span id="cb88-17"><a href="#cb88-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  chr [1:3, 1:6] &quot;Three&quot; &quot;Two&quot; &quot;A&quot; &quot;French&quot; &quot;turtle&quot; &quot;partridge&quot; &quot;hens&quot; ...</span></span></code></pre></div>
+<span id="cb88-16"><a href="#cb88-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb88-17"><a href="#cb88-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]    [,2]        [,3]    [,4] [,5]   [,6]  </span></span>
+<span id="cb88-18"><a href="#cb88-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;Three&quot; &quot;French&quot;    &quot;hens&quot;  &quot;&quot;   &quot;&quot;     &quot;&quot;    </span></span>
+<span id="cb88-19"><a href="#cb88-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;Two&quot;   &quot;turtle&quot;    &quot;doves&quot; &quot;&quot;   &quot;&quot;     &quot;&quot;    </span></span>
+<span id="cb88-20"><a href="#cb88-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;A&quot;     &quot;partridge&quot; &quot;in&quot;    &quot;a&quot;  &quot;pear&quot; &quot;tree&quot;</span></span>
+<span id="cb88-21"><a href="#cb88-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-22"><a href="#cb88-22" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;Three French hens&quot;</span>, <span class="st">&quot;Two turtle doves&quot;</span>, <span class="st">&quot;A partridge in a pear tree&quot;</span>), </span>
+<span id="cb88-23"><a href="#cb88-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
+<span id="cb88-24"><a href="#cb88-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  chr [1:3, 1:6] &quot;Three&quot; &quot;Two&quot; &quot;A&quot; &quot;French&quot; &quot;turtle&quot; &quot;partridge&quot; &quot;hens&quot; ...</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4623,6 +4645,7 @@ character) to search</li>
 <strong>Example</strong>: Using <code>str_match()</code> &amp;
 <code>str_match_all()</code> on character vector
 </summary>
+<p><br></p>
 <p><strong>[<code>str_match()</code>]</strong> Extract the first month,
 day, year for each string:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we a string of 3-elements with dates stored in MDY format, but each stored slighlty different </span></span>
@@ -4636,8 +4659,20 @@ day, year for each string:</p>
 <span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;5-1-2020&quot; &quot;5&quot;  &quot;1&quot;  &quot;2020&quot;</span></span>
 <span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;12/25/17&quot; &quot;12&quot; &quot;25&quot; &quot;17&quot;  </span></span>
 <span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;01.01.13&quot; &quot;01&quot; &quot;01&quot; &quot;13&quot;</span></span>
-<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note: pattern is digit one or more times followed by &quot;-&quot; or &quot;.&quot;; then digit one ore more times ....</span></span></code></pre></div>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note: pattern is digit one or more times followed by &quot;-&quot; or &quot;.&quot;; then digit one ore more times ....</span></span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="co"># without specifying capturing groups</span></span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;5-1-2020&quot;</span>, <span class="st">&quot;12/25/17&quot;</span>, <span class="st">&quot;01.01.13 to 01.01.14&quot;</span>),</span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+[-/</span><span class="sc">\\</span><span class="st">.]</span><span class="sc">\\</span><span class="st">d+[-/</span><span class="sc">\\</span><span class="st">.]</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]      </span></span>
+<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;5-1-2020&quot;</span></span>
+<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;12/25/17&quot;</span></span>
+<span id="cb92-20"><a href="#cb92-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;01.01.13&quot;</span></span></code></pre></div>
 <p><code>str_match()</code> returns a character matrix</p>
+<ul>
+<li>Use Base R subsetting to isolate desired elements:
+<code>object_name[&lt;rows&gt;,&lt;columns&gt;]</code></li>
+</ul>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">str_match</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;5-1-2020&quot;</span>, <span class="st">&quot;12/25/17&quot;</span>, <span class="st">&quot;01.01.13 to 01.01.14&quot;</span>),</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)&quot;</span>)</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4652,15 +4687,20 @@ day, year for each string:</p>
 <span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">1</span>,] <span class="co"># isolate first row</span></span>
 <span id="cb93-14"><a href="#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5-1-2020&quot; &quot;5&quot;        &quot;1&quot;        &quot;2020&quot;</span></span>
-<span id="cb93-15"><a href="#cb93-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-16"><a href="#cb93-16" aria-hidden="true" tabindex="-1"></a>m[,<span class="dv">1</span>] <span class="co"># isolate first column</span></span>
-<span id="cb93-17"><a href="#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5-1-2020&quot; &quot;12/25/17&quot; &quot;01.01.13&quot;</span></span>
-<span id="cb93-18"><a href="#cb93-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-19"><a href="#cb93-19" aria-hidden="true" tabindex="-1"></a>m[,<span class="dv">4</span>] <span class="co"># isolate fourth column</span></span>
-<span id="cb93-20"><a href="#cb93-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020&quot; &quot;17&quot;   &quot;13&quot;</span></span>
-<span id="cb93-21"><a href="#cb93-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-22"><a href="#cb93-22" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">3</span>,<span class="dv">4</span>] <span class="co"># isolate cell defined by row 3 and column 4</span></span>
-<span id="cb93-23"><a href="#cb93-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;13&quot;</span></span></code></pre></div>
+<span id="cb93-15"><a href="#cb93-15" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,] <span class="co"># rows 1 and 2</span></span>
+<span id="cb93-16"><a href="#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]       [,2] [,3] [,4]  </span></span>
+<span id="cb93-17"><a href="#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;5-1-2020&quot; &quot;5&quot;  &quot;1&quot;  &quot;2020&quot;</span></span>
+<span id="cb93-18"><a href="#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;12/25/17&quot; &quot;12&quot; &quot;25&quot; &quot;17&quot;</span></span>
+<span id="cb93-19"><a href="#cb93-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-20"><a href="#cb93-20" aria-hidden="true" tabindex="-1"></a>m[,<span class="dv">1</span>] <span class="co"># isolate first column</span></span>
+<span id="cb93-21"><a href="#cb93-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5-1-2020&quot; &quot;12/25/17&quot; &quot;01.01.13&quot;</span></span>
+<span id="cb93-22"><a href="#cb93-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-23"><a href="#cb93-23" aria-hidden="true" tabindex="-1"></a>m[,<span class="dv">4</span>] <span class="co"># isolate fourth column</span></span>
+<span id="cb93-24"><a href="#cb93-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020&quot; &quot;17&quot;   &quot;13&quot;</span></span>
+<span id="cb93-25"><a href="#cb93-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-26"><a href="#cb93-26" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">3</span>,<span class="dv">4</span>] <span class="co"># isolate cell defined by row 3 and column 4</span></span>
+<span id="cb93-27"><a href="#cb93-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;13&quot;</span></span></code></pre></div>
+<p><br></p>
 <p>How <code>str_match()</code> differs from
 <code>str_extract()</code></p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str_match(): first column contains full match; then separate columns for matches from each capturing group</span></span>
@@ -4672,10 +4712,12 @@ day, year for each string:</p>
 <span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;01.01.13&quot; &quot;01&quot; &quot;01&quot; &quot;13&quot;</span></span>
 <span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="co">#`str_extract()` returns character vector with each element containing full match; doesn&#39;t return separate elements for each matching group</span></span>
-<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;5-1-2020&quot;</span>, <span class="st">&quot;12/25/17&quot;</span>, <span class="st">&quot;01.01.13 to 01.01.14&quot;</span>),</span>
-<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)&quot;</span>)</span>
-<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5-1-2020&quot; &quot;12/25/17&quot; &quot;01.01.13&quot;</span></span></code></pre></div>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="co">#`str_extract()` returns character vector with each element containing full match; </span></span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># str_extract() doesn&#39;t return separate elements for each matching group</span></span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;5-1-2020&quot;</span>, <span class="st">&quot;12/25/17&quot;</span>, <span class="st">&quot;01.01.13 to 01.01.14&quot;</span>),</span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)[-/</span><span class="sc">\\</span><span class="st">.](</span><span class="sc">\\</span><span class="st">d+)&quot;</span>)</span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;5-1-2020&quot; &quot;12/25/17&quot; &quot;01.01.13&quot;</span></span></code></pre></div>
+<p><br></p>
 <p><strong>[<code>str_match_all()</code>]</strong> Extract all month,
 day, year for each string:</p>
 <p>Whereas <code>str_match()</code> returns a character matrix
@@ -4712,33 +4754,48 @@ list is a character matrix</p>
 <strong>Example</strong>: Using <code>str_match()</code> on dataframe
 column
 </summary>
+<p><br></p>
+<p>first, show how to extact date and time from variables
+<code>p12_df$created_at</code></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(<span class="at">string =</span> p12_df<span class="sc">$</span>created_at[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">pattern =</span> <span class="st">&quot;([</span><span class="sc">\\</span><span class="st">d-]+) ([</span><span class="sc">\\</span><span class="st">d:]+)&quot;</span>)</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]                  [,2]         [,3]      </span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,] &quot;2020-04-25 22:37:18&quot; &quot;2020-04-25&quot; &quot;22:37:18&quot;</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,] &quot;2020-04-23 21:11:49&quot; &quot;2020-04-23&quot; &quot;21:11:49&quot;</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,] &quot;2020-04-21 04:00:00&quot; &quot;2020-04-21&quot; &quot;04:00:00&quot;</span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,] &quot;2020-04-24 03:00:00&quot; &quot;2020-04-24&quot; &quot;03:00:00&quot;</span></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,] &quot;2020-04-20 19:00:21&quot; &quot;2020-04-20&quot; &quot;19:00:21&quot;</span></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,] &quot;2020-04-20 02:20:01&quot; &quot;2020-04-20&quot; &quot;02:20:01&quot;</span></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,] &quot;2020-04-22 04:00:00&quot; &quot;2020-04-22&quot; &quot;04:00:00&quot;</span></span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,] &quot;2020-04-25 17:00:00&quot; &quot;2020-04-25&quot; &quot;17:00:00&quot;</span></span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,] &quot;2020-04-21 15:13:06&quot; &quot;2020-04-21&quot; &quot;15:13:06&quot;</span></span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,] &quot;2020-04-21 17:52:47&quot; &quot;2020-04-21&quot; &quot;17:52:47&quot;</span></span></code></pre></div>
 <p>Below, we extract datetime from the <code>created_at</code> column.
 The first capturing group matches the date part and the second capturing
 group matches the time part:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>datetime_regex <span class="ot">&lt;-</span> <span class="st">&quot;([</span><span class="sc">\\</span><span class="st">d-]+) ([</span><span class="sc">\\</span><span class="st">d:]+)&quot;</span></span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The 1st capturing group will be in the 2nd column of the matrix returned from `str_match()`</span></span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So we use [, 2] below and save the result to the `date` column of the dataframe</span></span>
-<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">str_match</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> datetime_regex)[, <span class="dv">2</span>],</span>
-<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The 2nd capturing group will be in the 3rd column of the matrix returned from `str_match()`</span></span>
-<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So we use [, 3] below and save the result to the `time` column of the dataframe</span></span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> <span class="fu">str_match</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> datetime_regex)[, <span class="dv">3</span>]</span>
-<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(created_at, date, time)</span>
-<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 3</span></span>
-<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    created_at          date       time    </span></span>
-<span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;   </span></span>
-<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-04-25 22:37:18 2020-04-25 22:37:18</span></span>
-<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-04-23 21:11:49 2020-04-23 21:11:49</span></span>
-<span id="cb96-16"><a href="#cb96-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-04-21 04:00:00 2020-04-21 04:00:00</span></span>
-<span id="cb96-17"><a href="#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-04-24 03:00:00 2020-04-24 03:00:00</span></span>
-<span id="cb96-18"><a href="#cb96-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-04-20 19:00:21 2020-04-20 19:00:21</span></span>
-<span id="cb96-19"><a href="#cb96-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-04-20 02:20:01 2020-04-20 02:20:01</span></span>
-<span id="cb96-20"><a href="#cb96-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-04-22 04:00:00 2020-04-22 04:00:00</span></span>
-<span id="cb96-21"><a href="#cb96-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-04-25 17:00:00 2020-04-25 17:00:00</span></span>
-<span id="cb96-22"><a href="#cb96-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-04-21 15:13:06 2020-04-21 15:13:06</span></span>
-<span id="cb96-23"><a href="#cb96-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-04-21 17:52:47 2020-04-21 17:52:47</span></span>
-<span id="cb96-24"><a href="#cb96-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>datetime_regex <span class="ot">&lt;-</span> <span class="st">&quot;([</span><span class="sc">\\</span><span class="st">d-]+) ([</span><span class="sc">\\</span><span class="st">d:]+)&quot;</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The 1st capturing group will be in the 2nd column of the matrix returned from `str_match()`</span></span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So we use [, 2] below and save the result to the `date` column of the dataframe</span></span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">str_match</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> datetime_regex)[, <span class="dv">2</span>],</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The 2nd capturing group will be in the 3rd column of the matrix returned from `str_match()`</span></span>
+<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So we use [, 3] below and save the result to the `time` column of the dataframe</span></span>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> <span class="fu">str_match</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> datetime_regex)[, <span class="dv">3</span>]</span>
+<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(created_at, date, time)</span>
+<span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 3</span></span>
+<span id="cb97-12"><a href="#cb97-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    created_at          date       time    </span></span>
+<span id="cb97-13"><a href="#cb97-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;   </span></span>
+<span id="cb97-14"><a href="#cb97-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-04-25 22:37:18 2020-04-25 22:37:18</span></span>
+<span id="cb97-15"><a href="#cb97-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-04-23 21:11:49 2020-04-23 21:11:49</span></span>
+<span id="cb97-16"><a href="#cb97-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-04-21 04:00:00 2020-04-21 04:00:00</span></span>
+<span id="cb97-17"><a href="#cb97-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-04-24 03:00:00 2020-04-24 03:00:00</span></span>
+<span id="cb97-18"><a href="#cb97-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-04-20 19:00:21 2020-04-20 19:00:21</span></span>
+<span id="cb97-19"><a href="#cb97-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-04-20 02:20:01 2020-04-20 02:20:01</span></span>
+<span id="cb97-20"><a href="#cb97-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-04-22 04:00:00 2020-04-22 04:00:00</span></span>
+<span id="cb97-21"><a href="#cb97-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-04-25 17:00:00 2020-04-25 17:00:00</span></span>
+<span id="cb97-22"><a href="#cb97-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-04-21 15:13:06 2020-04-21 15:13:06</span></span>
+<span id="cb97-23"><a href="#cb97-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-04-21 17:52:47 2020-04-21 17:52:47</span></span>
+<span id="cb97-24"><a href="#cb97-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows</span></span></code></pre></div>
 </details>
 </div>
 <div id="str_replace-str_replace_all" class="section level2" number="4.6">
@@ -4746,12 +4803,12 @@ group matches the time part:</p>
 <code>str_replace()</code> &amp; <code>str_replace_all()</code></h2>
 <p><br> <strong>The <code>str_replace()</code> &amp;
 <code>str_replace_all()</code> functions</strong>:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>?str_replace</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>?str_replace_all</span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX</span></span>
-<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string, pattern, replacement)</span>
-<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(string, pattern, replacement)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>?str_replace</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>?str_replace_all</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string, pattern, replacement)</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(string, pattern, replacement)</span></code></pre></div>
 <ul>
 <li>Function: Replaces matched patterns in a string
 <ul>
@@ -4779,14 +4836,14 @@ provide a named vector of replacements as the <code>pattern</code></li>
 </summary>
 <p><strong>[<code>str_replace()</code>]</strong> Replace the first
 occurrence of a vowel:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace first vowel with empty string</span></span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;Thanks for the Memories&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;[aeiou]&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thnks for the Memories&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace first vowel with empty string</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;Thanks for the Memories&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;[aeiou]&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thnks for the Memories&quot;</span></span></code></pre></div>
 <p><strong>[<code>str_replace_all()</code>]</strong> Replace all
 occurrences of a vowel:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace all vowels with empty strings</span></span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;Thanks for the Memories&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;[aeiou]&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thnks fr th Mmrs&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace all vowels with empty strings</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;Thanks for the Memories&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;[aeiou]&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thnks fr th Mmrs&quot;</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4796,21 +4853,21 @@ occurrences of a vowel:</p>
 </summary>
 <p><strong>[<code>str_replace()</code>]</strong> Change first word that
 is matched to pig latin:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use \\1 and \\2 to refer to the capturing groups</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w{1})(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay latin&quot;</span></span>
-<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="co"># this works too</span></span>
-<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w)(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
-<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
-<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay latin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use \\1 and \\2 to refer to the capturing groups</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w{1})(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay latin&quot;</span></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co"># this works too</span></span>
+<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w)(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
+<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
+<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay latin&quot;</span></span></code></pre></div>
 <p><strong>[<code>str_replace_all()</code>]</strong> Change all words to
 pig latin:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use \\1 and \\2 to refer to the capturing groups</span></span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w{1})(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
-<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
-<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay atinlay&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use \\1 and \\2 to refer to the capturing groups</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;pig latin&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">w{1})(</span><span class="sc">\\</span><span class="st">w+)&quot;</span>,</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1ay&quot;</span>)</span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;igpay atinlay&quot;</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4818,9 +4875,9 @@ pig latin:</p>
 <strong>Example</strong>: Using <code>str_replace_all()</code> for
 multiple replacements
 </summary>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace all occurrences of &quot;at&quot; with &quot;@&quot;, and all digits with &quot;#&quot;</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;Tomorrow at 10:30AM&quot;</span>, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;at&quot;</span> <span class="ot">=</span> <span class="st">&quot;@&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span> <span class="ot">=</span> <span class="st">&quot;#&quot;</span>))</span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Tomorrow @ ##:##AM&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace all occurrences of &quot;at&quot; with &quot;@&quot;, and all digits with &quot;#&quot;</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&quot;Tomorrow at 10:30AM&quot;</span>, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;at&quot;</span> <span class="ot">=</span> <span class="st">&quot;@&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span> <span class="ot">=</span> <span class="st">&quot;#&quot;</span>))</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Tomorrow @ ##:##AM&quot;</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4828,35 +4885,35 @@ multiple replacements
 <strong>Example</strong>: Using <code>str_replace_all()</code> on
 dataframe column
 </summary>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace all hashtags and handles from tweet with an empty string</span></span>
-<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">removed_hashtags_handles =</span> <span class="fu">str_replace_all</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;[@#]</span><span class="sc">\\</span><span class="st">S+&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, removed_hashtags_handles)</span>
-<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
-<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                                  remov…¹</span></span>
-<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                                 &lt;chr&gt;  </span></span>
-<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2020 | @dadpat7 |… &quot;Big D…</span></span>
-<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f9c0#WSU #GoCougs… &quot;Couga…</span></span>
-<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a #Pullman distan… &quot;Darie…</span></span>
-<span id="cb103-12"><a href="#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply ⬇️  #WSU #CougsC… &quot;6 hou…</span></span>
-<span id="cb103-13"><a href="#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914 #WSU #GoCougs h… &quot;Why d…</span></span>
-<span id="cb103-14"><a href="#cb103-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \U0001f43e #WSU #… &quot;Tell …</span></span>
-<span id="cb103-15"><a href="#cb103-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman buildings, but what are … &quot;We lo…</span></span>
-<span id="cb103-16"><a href="#cb103-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away from the #WSU syst… &quot;Congr…</span></span>
-<span id="cb103-17"><a href="#cb103-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2rFE. #WSU #GoCou… &quot;Learn…</span></span>
-<span id="cb103-18"><a href="#cb103-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off against \n@Esports_WA … &quot;Tomor…</span></span>
-<span id="cb103-19"><a href="#cb103-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable name ¹​removed_hashtags_handles</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace all hashtags and handles from tweet with an empty string</span></span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">removed_hashtags_handles =</span> <span class="fu">str_replace_all</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;[@#]</span><span class="sc">\\</span><span class="st">S+&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, removed_hashtags_handles)</span>
+<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
+<span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                                  remov…¹</span></span>
+<span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                                 &lt;chr&gt;  </span></span>
+<span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2020 | @dadpat7 |… &quot;Big D…</span></span>
+<span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f9c0#WSU #GoCougs… &quot;Couga…</span></span>
+<span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a #Pullman distan… &quot;Darie…</span></span>
+<span id="cb104-12"><a href="#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply ⬇️  #WSU #CougsC… &quot;6 hou…</span></span>
+<span id="cb104-13"><a href="#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914 #WSU #GoCougs h… &quot;Why d…</span></span>
+<span id="cb104-14"><a href="#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \U0001f43e #WSU #… &quot;Tell …</span></span>
+<span id="cb104-15"><a href="#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman buildings, but what are … &quot;We lo…</span></span>
+<span id="cb104-16"><a href="#cb104-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away from the #WSU syst… &quot;Congr…</span></span>
+<span id="cb104-17"><a href="#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2rFE. #WSU #GoCou… &quot;Learn…</span></span>
+<span id="cb104-18"><a href="#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off against \n@Esports_WA … &quot;Tomor…</span></span>
+<span id="cb104-19"><a href="#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable name ¹​removed_hashtags_handles</span></span></code></pre></div>
 </details>
 </div>
 <div id="str_split" class="section level2" number="4.7">
 <h2><span class="header-section-number">4.7</span>
 <code>str_split()</code></h2>
 <p><br> <strong>The <code>str_split()</code> function</strong>:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>?str_split</span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX AND DEFAULT VALUES</span></span>
-<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(string, pattern, <span class="at">n =</span> <span class="cn">Inf</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>?str_split</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX AND DEFAULT VALUES</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(string, pattern, <span class="at">n =</span> <span class="cn">Inf</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <ul>
 <li>Function: Splits a string by specified pattern
 <ul>
@@ -4880,32 +4937,32 @@ character vectors</li>
 <strong>Example</strong>: Using <code>str_split()</code> on character
 vector
 </summary>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split by comma or the word &quot;and&quot;</span></span>
-<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;The Lion, the Witch, and the Wardrobe&quot;</span>, <span class="st">&quot;Peanut butter and jelly&quot;</span>),</span>
-<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>)</span>
-<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The Lion&quot;     &quot;the Witch&quot;    &quot;the Wardrobe&quot;</span></span>
-<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Peanut butter&quot; &quot;jelly&quot;</span></span></code></pre></div>
-<p><br> We can specify <code>n</code> to control the maximum number of
-substrings we want to return:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Limit split to only return 2 substrings</span></span>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split by comma or the word &quot;and&quot;</span></span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;The Lion, the Witch, and the Wardrobe&quot;</span>, <span class="st">&quot;Peanut butter and jelly&quot;</span>),</span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>)</span>
 <span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The Lion&quot;                    &quot;the Witch, and the Wardrobe&quot;</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The Lion&quot;     &quot;the Witch&quot;    &quot;the Wardrobe&quot;</span></span>
 <span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
 <span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Peanut butter&quot; &quot;jelly&quot;</span></span></code></pre></div>
+<p><br> We can specify <code>n</code> to control the maximum number of
+substrings we want to return:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Limit split to only return 2 substrings</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;The Lion, the Witch, and the Wardrobe&quot;</span>, <span class="st">&quot;Peanut butter and jelly&quot;</span>),</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The Lion&quot;                    &quot;the Witch, and the Wardrobe&quot;</span></span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Peanut butter&quot; &quot;jelly&quot;</span></span></code></pre></div>
 <p><br> We can specify <code>simplify = TRUE</code> to return a
 character matrix instead of a list:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return split substrings in a character matrix</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;The Lion, the Witch, and the Wardrobe&quot;</span>, <span class="st">&quot;Peanut butter and jelly&quot;</span>),</span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]            [,2]        [,3]          </span></span>
-<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;The Lion&quot;      &quot;the Witch&quot; &quot;the Wardrobe&quot;</span></span>
-<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;Peanut butter&quot; &quot;jelly&quot;     &quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return split substrings in a character matrix</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;The Lion, the Witch, and the Wardrobe&quot;</span>, <span class="st">&quot;Peanut butter and jelly&quot;</span>),</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pattern =</span> <span class="st">&quot;,? and |, &quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]            [,2]        [,3]          </span></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;The Lion&quot;      &quot;the Witch&quot; &quot;the Wardrobe&quot;</span></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;Peanut butter&quot; &quot;jelly&quot;     &quot;&quot;</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4916,35 +4973,35 @@ column
 <p>When we split the <code>created_at</code> field at either a hyphen or
 space, we can separated out the year, month, day, and time components of
 the string:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use `as.character()` so we can see the content of the character vector of splitted strings</span></span>
-<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year_month_day_time =</span> <span class="fu">as.character</span>(<span class="fu">str_split</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> <span class="st">&quot;[- ]&quot;</span>))</span>
-<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(created_at, year_month_day_time)</span>
-<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
-<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    created_at          year_month_day_time                        </span></span>
-<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;                                      </span></span>
-<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-04-25 22:37:18 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;25\&quot;, \&quot;22:37:18\&quot;)&quot;</span></span>
-<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-04-23 21:11:49 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;23\&quot;, \&quot;21:11:49\&quot;)&quot;</span></span>
-<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-04-21 04:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;04:00:00\&quot;)&quot;</span></span>
-<span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-04-24 03:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;24\&quot;, \&quot;03:00:00\&quot;)&quot;</span></span>
-<span id="cb108-13"><a href="#cb108-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-04-20 19:00:21 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;20\&quot;, \&quot;19:00:21\&quot;)&quot;</span></span>
-<span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-04-20 02:20:01 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;20\&quot;, \&quot;02:20:01\&quot;)&quot;</span></span>
-<span id="cb108-15"><a href="#cb108-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-04-22 04:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;22\&quot;, \&quot;04:00:00\&quot;)&quot;</span></span>
-<span id="cb108-16"><a href="#cb108-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-04-25 17:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;25\&quot;, \&quot;17:00:00\&quot;)&quot;</span></span>
-<span id="cb108-17"><a href="#cb108-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-04-21 15:13:06 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;15:13:06\&quot;)&quot;</span></span>
-<span id="cb108-18"><a href="#cb108-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-04-21 17:52:47 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;17:52:47\&quot;)&quot;</span></span>
-<span id="cb108-19"><a href="#cb108-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use `as.character()` so we can see the content of the character vector of splitted strings</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year_month_day_time =</span> <span class="fu">as.character</span>(<span class="fu">str_split</span>(<span class="at">string =</span> created_at, <span class="at">pattern =</span> <span class="st">&quot;[- ]&quot;</span>))</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(created_at, year_month_day_time)</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    created_at          year_month_day_time                        </span></span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;                                      </span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-04-25 22:37:18 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;25\&quot;, \&quot;22:37:18\&quot;)&quot;</span></span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-04-23 21:11:49 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;23\&quot;, \&quot;21:11:49\&quot;)&quot;</span></span>
+<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-04-21 04:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;04:00:00\&quot;)&quot;</span></span>
+<span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-04-24 03:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;24\&quot;, \&quot;03:00:00\&quot;)&quot;</span></span>
+<span id="cb109-13"><a href="#cb109-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-04-20 19:00:21 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;20\&quot;, \&quot;19:00:21\&quot;)&quot;</span></span>
+<span id="cb109-14"><a href="#cb109-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-04-20 02:20:01 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;20\&quot;, \&quot;02:20:01\&quot;)&quot;</span></span>
+<span id="cb109-15"><a href="#cb109-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-04-22 04:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;22\&quot;, \&quot;04:00:00\&quot;)&quot;</span></span>
+<span id="cb109-16"><a href="#cb109-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-04-25 17:00:00 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;25\&quot;, \&quot;17:00:00\&quot;)&quot;</span></span>
+<span id="cb109-17"><a href="#cb109-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-04-21 15:13:06 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;15:13:06\&quot;)&quot;</span></span>
+<span id="cb109-18"><a href="#cb109-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-04-21 17:52:47 &quot;c(\&quot;2020\&quot;, \&quot;04\&quot;, \&quot;21\&quot;, \&quot;17:52:47\&quot;)&quot;</span></span>
+<span id="cb109-19"><a href="#cb109-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows</span></span></code></pre></div>
 </details>
 </div>
 <div id="str_count" class="section level2" number="4.8">
 <h2><span class="header-section-number">4.8</span>
 <code>str_count()</code></h2>
 <p><br> <strong>The <code>str_count()</code> function</strong>:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>?str_count</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX AND DEFAULT VALUES</span></span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(string, <span class="at">pattern =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>?str_count</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX AND DEFAULT VALUES</span></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(string, <span class="at">pattern =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Function: Counts the number of matches in a string
 <ul>
@@ -4963,9 +5020,9 @@ character) to search</li>
 <strong>Example</strong>: Using <code>str_count()</code> on character
 vector
 </summary>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counts the number of digits</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;H2O2&quot;</span>, <span class="st">&quot;Year 3000&quot;</span>, <span class="st">&quot;4th of July&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>)</span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counts the number of digits</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;H2O2&quot;</span>, <span class="st">&quot;Year 3000&quot;</span>, <span class="st">&quot;4th of July&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>)</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 1</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -4973,26 +5030,26 @@ vector
 <strong>Example</strong>: Using <code>str_count()</code> on dataframe
 column
 </summary>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Counts the total number of hashtags and mentions</span></span>
-<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_hashtags_and_mentions =</span> <span class="fu">str_count</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;[@#]</span><span class="sc">\\</span><span class="st">S+&quot;</span>)</span>
-<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, num_hashtags_and_mentions)</span>
-<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
-<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                                  num_h…¹</span></span>
-<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                                   &lt;int&gt;</span></span>
-<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2020 | @dadpat7 |…       5</span></span>
-<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f9c0#WSU #GoCougs…       2</span></span>
-<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a #Pullman distan…       4</span></span>
-<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply ⬇️  #WSU #CougsC…       3</span></span>
-<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914 #WSU #GoCougs h…       3</span></span>
-<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \U0001f43e #WSU #…       2</span></span>
-<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman buildings, but what are …       3</span></span>
-<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away from the #WSU syst…       3</span></span>
-<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2rFE. #WSU #GoCou…       2</span></span>
-<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off against \n@Esports_WA …       5</span></span>
-<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable name</span></span>
-<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ¹​num_hashtags_and_mentions</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Counts the total number of hashtags and mentions</span></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_hashtags_and_mentions =</span> <span class="fu">str_count</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;[@#]</span><span class="sc">\\</span><span class="st">S+&quot;</span>)</span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, num_hashtags_and_mentions)</span>
+<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 2</span></span>
+<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                                  num_h…¹</span></span>
+<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                                   &lt;int&gt;</span></span>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2020 | @dadpat7 |…       5</span></span>
+<span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f9c0#WSU #GoCougs…       2</span></span>
+<span id="cb112-11"><a href="#cb112-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a #Pullman distan…       4</span></span>
+<span id="cb112-12"><a href="#cb112-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply ⬇️  #WSU #CougsC…       3</span></span>
+<span id="cb112-13"><a href="#cb112-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914 #WSU #GoCougs h…       3</span></span>
+<span id="cb112-14"><a href="#cb112-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \U0001f43e #WSU #…       2</span></span>
+<span id="cb112-15"><a href="#cb112-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman buildings, but what are …       3</span></span>
+<span id="cb112-16"><a href="#cb112-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away from the #WSU syst…       3</span></span>
+<span id="cb112-17"><a href="#cb112-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2rFE. #WSU #GoCou…       2</span></span>
+<span id="cb112-18"><a href="#cb112-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off against \n@Esports_WA …       5</span></span>
+<span id="cb112-19"><a href="#cb112-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable name</span></span>
+<span id="cb112-20"><a href="#cb112-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ¹​num_hashtags_and_mentions</span></span></code></pre></div>
 </details>
 </div>
 <div id="str_locate-str_locate_all" class="section level2" number="4.9">
@@ -5000,12 +5057,12 @@ column
 <code>str_locate()</code> &amp; <code>str_locate_all()</code></h2>
 <p><br> <strong>The <code>str_locate()</code> &amp;
 <code>str_locate_all()</code> functions</strong>:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>?str_locate</span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>?str_locate_all</span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX</span></span>
-<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(string, pattern)</span>
-<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate_all</span>(string, pattern)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>?str_locate</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>?str_locate_all</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># SYNTAX</span></span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(string, pattern)</span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate_all</span>(string, pattern)</span></code></pre></div>
 <ul>
 <li>Function: Locates the position of patterns in a string
 <ul>
@@ -5027,40 +5084,40 @@ character) to search</li>
 </summary>
 <p><strong>[<code>str_locate()</code>]</strong> Locate the start and end
 positions for first stretch of numbers:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locate positions for first stretch of numbers</span></span>
-<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
-<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
-<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
-<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     1   3</span></span>
-<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     2   4</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locate positions for first stretch of numbers</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     1   3</span></span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     2   4</span></span></code></pre></div>
 <p><strong>[<code>str_locate_all()</code>]</strong> Locate the start and
 end positions for all stretches of numbers:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locate positions for all stretches of numbers</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
-<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
-<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     1   3</span></span>
-<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     5   7</span></span>
-<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]     9  12</span></span>
-<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
-<span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     2   4</span></span>
-<span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     7   9</span></span>
-<span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    11  14</span></span>
-<span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    21  23</span></span>
-<span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    26  28</span></span>
-<span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]    30  33</span></span>
-<span id="cb114-18"><a href="#cb114-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-19"><a href="#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="co"># basically, str_locate_all gives the positions associated wtih elements </span></span>
-<span id="cb114-20"><a href="#cb114-20" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
-<span id="cb114-21"><a href="#cb114-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
-<span id="cb114-22"><a href="#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb114-23"><a href="#cb114-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;555&quot;  &quot;123&quot;  &quot;4567&quot;</span></span>
-<span id="cb114-24"><a href="#cb114-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb114-25"><a href="#cb114-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb114-26"><a href="#cb114-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;555&quot;  &quot;135&quot;  &quot;7900&quot; &quot;555&quot;  &quot;246&quot;  &quot;8000&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locate positions for all stretches of numbers</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     1   3</span></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     5   7</span></span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]     9  12</span></span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      start end</span></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     2   4</span></span>
+<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     7   9</span></span>
+<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    11  14</span></span>
+<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    21  23</span></span>
+<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    26  28</span></span>
+<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]    30  33</span></span>
+<span id="cb115-18"><a href="#cb115-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-19"><a href="#cb115-19" aria-hidden="true" tabindex="-1"></a><span class="co"># basically, str_locate_all gives the positions associated wtih elements </span></span>
+<span id="cb115-20"><a href="#cb115-20" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">&quot;555.123.4567&quot;</span>, <span class="st">&quot;(555) 135-7900 and (555) 246-8000&quot;</span>),</span>
+<span id="cb115-21"><a href="#cb115-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb115-22"><a href="#cb115-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb115-23"><a href="#cb115-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;555&quot;  &quot;123&quot;  &quot;4567&quot;</span></span>
+<span id="cb115-24"><a href="#cb115-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb115-25"><a href="#cb115-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb115-26"><a href="#cb115-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;555&quot;  &quot;135&quot;  &quot;7900&quot; &quot;555&quot;  &quot;246&quot;  &quot;8000&quot;</span></span></code></pre></div>
 </details>
 <br>
 <details>
@@ -5068,30 +5125,30 @@ end positions for all stretches of numbers:</p>
 <strong>Example</strong>: Using <code>str_locate()</code> on dataframe
 column
 </summary>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start position of first hashtag in tweet (ie. 1st column of matrix returned from `str_locate()`)</span></span>
-<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_of_first_hashtag =</span> <span class="fu">str_locate</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;#</span><span class="sc">\\</span><span class="st">S+&quot;</span>)[, <span class="dv">1</span>],</span>
-<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End position of first hashtag in tweet (ie. 2nd column of matrix returned from `str_locate()`)</span></span>
-<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_of_first_hashtag =</span> <span class="fu">str_locate</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;#</span><span class="sc">\\</span><span class="st">S+&quot;</span>)[, <span class="dv">2</span>],</span>
-<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Length of first hashtag in tweet (ie. difference between start and end positions)</span></span>
-<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">length_of_first_hashtag =</span> end_of_first_hashtag <span class="sc">-</span> start_of_first_hashtag</span>
-<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, start_of_first_hashtag, end_of_first_hashtag, length_of_first_hashtag)</span>
-<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 4</span></span>
-<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                  start…¹ end_o…² lengt…³</span></span>
-<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;</span></span>
-<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2…      29      36       7</span></span>
-<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f…      46      49       3</span></span>
-<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a…      53      60       7</span></span>
-<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply…      57      60       3</span></span>
-<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914…      44      47       3</span></span>
-<span id="cb115-18"><a href="#cb115-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \…      52      55       3</span></span>
-<span id="cb115-19"><a href="#cb115-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman building…     144     147       3</span></span>
-<span id="cb115-20"><a href="#cb115-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away fr…      59      62       3</span></span>
-<span id="cb115-21"><a href="#cb115-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2…      57      60       3</span></span>
-<span id="cb115-22"><a href="#cb115-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off agains…     266     274       8</span></span>
-<span id="cb115-23"><a href="#cb115-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable names ¹​start_of_first_hashtag,</span></span>
-<span id="cb115-24"><a href="#cb115-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ²​end_of_first_hashtag, ³​length_of_first_hashtag</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>p12_df <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start position of first hashtag in tweet (ie. 1st column of matrix returned from `str_locate()`)</span></span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_of_first_hashtag =</span> <span class="fu">str_locate</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;#</span><span class="sc">\\</span><span class="st">S+&quot;</span>)[, <span class="dv">1</span>],</span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End position of first hashtag in tweet (ie. 2nd column of matrix returned from `str_locate()`)</span></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_of_first_hashtag =</span> <span class="fu">str_locate</span>(<span class="at">string =</span> text, <span class="at">pattern =</span> <span class="st">&quot;#</span><span class="sc">\\</span><span class="st">S+&quot;</span>)[, <span class="dv">2</span>],</span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Length of first hashtag in tweet (ie. difference between start and end positions)</span></span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">length_of_first_hashtag =</span> end_of_first_hashtag <span class="sc">-</span> start_of_first_hashtag</span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">select</span>(text, start_of_first_hashtag, end_of_first_hashtag, length_of_first_hashtag)</span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 328 × 4</span></span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    text                                                  start…¹ end_o…² lengt…³</span></span>
+<span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;</span></span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &quot;Big Dez is headed to Indy!\n\n#GoCougs | #NFLDraft2…      29      36       7</span></span>
+<span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 &quot;Cougar Cheese. That&#39;s it. That&#39;s the tweet. \U0001f…      46      49       3</span></span>
+<span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 &quot;Darien McLaughlin &#39;19, and her dog, Yuki, went on a…      53      60       7</span></span>
+<span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 &quot;6 houses, one pick. Cougs, which one you got? Reply…      57      60       3</span></span>
+<span id="cb116-17"><a href="#cb116-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 &quot;Why did you choose to attend @WSUPullman?\U0001f914…      44      47       3</span></span>
+<span id="cb116-18"><a href="#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 &quot;Tell us one of your Bryan Clock Tower memories ⏰ \…      52      55       3</span></span>
+<span id="cb116-19"><a href="#cb116-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 &quot;We loved seeing your top three @WSUPullman building…     144     147       3</span></span>
+<span id="cb116-20"><a href="#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 &quot;Congratulations, graduates! We’re two weeks away fr…      59      62       3</span></span>
+<span id="cb116-21"><a href="#cb116-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 &quot;Learn more about this story at https://t.co/45BzKc2…      57      60       3</span></span>
+<span id="cb116-22"><a href="#cb116-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 &quot;Tomorrow, our @WSUEsports Team is facing off agains…     266     274       8</span></span>
+<span id="cb116-23"><a href="#cb116-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 318 more rows, and abbreviated variable names ¹​start_of_first_hashtag,</span></span>
+<span id="cb116-24"><a href="#cb116-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ²​end_of_first_hashtag, ³​length_of_first_hashtag</span></span></code></pre></div>
 </details>
 </div>
 </div>
@@ -5107,9 +5164,9 @@ what you’re doing.</p>
 <p><em>Credit: Garrick Aden-Buie (<a href="https://www.garrickadenbuie.com/project/regexplain/">RegExplain</a>)</em></p>
 <p><br> <strong>RegExplain</strong> is an RStudio addin that allows the
 user to check their regex matching functions interactively.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installation</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;gadenbuie/regexplain&quot;</span>)</span>
-<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(regexplain)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installation</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;gadenbuie/regexplain&quot;</span>)</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(regexplain)</span></code></pre></div>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>

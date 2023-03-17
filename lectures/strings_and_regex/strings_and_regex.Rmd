@@ -1289,7 +1289,7 @@ str_detect(string, pattern, negate = FALSE)
 
 ```{r}
 # Detects if there is a digit in the string
-str_detect(string = "P. Sherman, 42 Wallaby Way, Sydne", pattern = "\\d")
+str_detect(string = "P. Sherman, 42 Wallaby Way, Sydney", pattern = "\\d")
 ```
 
 </details>
@@ -1446,14 +1446,19 @@ str_extract(string = c("One", "25th", "3000"), pattern = "\\d+") %>% length()
 <br>
 <details><summary>**Example**: Using `str_extract()` & `str_extract_all()` on character vector</summary>
 
+<br>
+
 **[`str_extract()`]** Extract the first occurrence of a word for each string:
 
-<br>
+
 
 ```{r}
 # Extracts first match of a word
 str_extract(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"),
             pattern = "\\w+")
+
+str_extract(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"),
+            pattern = "\\w+") %>% str() # a character vector of length 3
 ```
 ```{r}
 # Extracts first match to element that begins with "A"
@@ -1466,10 +1471,11 @@ c("Three French hens", "Two turtle doves", "A partridge in a pear tree") %>% len
 str_extract(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"),
             pattern = "^A") %>% length()
 ```
+<br>
 
 **[`str_extract_all()`]** Extract all occurrences of a word for each string:
 
-<br>
+
 
 ```{r}
 # Extracts all matches of a word, returning a list of character vectors
@@ -1484,7 +1490,11 @@ str_extract_all(string = c("Three French hens", "Two turtle doves", "A partridge
 
 Types of objects returned by `str_extract()` and `str_extract_all()`
 
-- By default, whereas `str_extract()` returns a character vector `str_extract_all()` returns a list
+- By default `str_extract()` returns a character vector, `str_extract_all()` returns a list
+- By default `str_extract_all()` returns a list
+  - can use Base R subsetting to isolate particular elements of object returned by `str_extract_all()`
+- `str_extract_all()` with argument `simplify = TRUE` returns character matrix
+  - can use Base R subsetting to isolate particular elements of object returned by `str_extract_all()`
 ```{r}
 # str_extract returns a character vector
 str_extract(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"), 
@@ -1495,6 +1505,9 @@ str_extract_all(string = c("Three French hens", "Two turtle doves", "A partridge
                 pattern = "\\w+") %>% str()
 
 # str_extract_all with simplify = TRUE returns a character matrix
+str_extract_all(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"), 
+                pattern = "\\w+", simplify = TRUE)
+
 str_extract_all(string = c("Three French hens", "Two turtle doves", "A partridge in a pear tree"), 
                 pattern = "\\w+", simplify = TRUE) %>% str()
 ```
@@ -1554,6 +1567,8 @@ str_match_all(string, pattern)
 <br>
 <details><summary>**Example**: Using `str_match()` & `str_match_all()` on character vector</summary>
 
+<br>
+
 **[`str_match()`]** Extract the first month, day, year for each string:
 
 ```{r}
@@ -1564,9 +1579,15 @@ c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14")
 str_match(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
           pattern = "(\\d+)[-/\\.](\\d+)[-/\\.](\\d+)")
   # note: pattern is digit one or more times followed by "-" or "."; then digit one ore more times ....
+
+# without specifying capturing groups
+str_match(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
+          pattern = "\\d+[-/\\.]\\d+[-/\\.]\\d+")
 ```
 
 `str_match()` returns a character matrix
+
+- Use Base R subsetting to isolate desired elements: `object_name[<rows>,<columns>]`
 ```{r}
 m <- str_match(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
           pattern = "(\\d+)[-/\\.](\\d+)[-/\\.](\\d+)")
@@ -1576,6 +1597,7 @@ m %>% str() # character matrix of threw rows and four columns
 m # print entire character matrix
 
 m[1,] # isolate first row
+m[1:2,] # rows 1 and 2
 
 m[,1] # isolate first column
 
@@ -1583,6 +1605,8 @@ m[,4] # isolate fourth column
 
 m[3,4] # isolate cell defined by row 3 and column 4
 ```
+
+<br>
 
 How `str_match()` differs from `str_extract()`
 
@@ -1593,11 +1617,13 @@ str_match(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
           pattern = "(\\d+)[-/\\.](\\d+)[-/\\.](\\d+)")
 
 
-#`str_extract()` returns character vector with each element containing full match; doesn't return separate elements for each matching group
+#`str_extract()` returns character vector with each element containing full match; 
+  # str_extract() doesn't return separate elements for each matching group
 str_extract(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
           pattern = "(\\d+)[-/\\.](\\d+)[-/\\.](\\d+)")
 ```
 
+<br>
 
 **[`str_match_all()`]** Extract all month, day, year for each string:
 
@@ -1617,6 +1643,14 @@ str_match_all(string = c("5-1-2020", "12/25/17", "01.01.13 to 01.01.14"),
 
 <br>
 <details><summary>**Example**: Using `str_match()` on dataframe column</summary>
+
+<br>
+
+first, show how to extact date and time from variables `p12_df$created_at`
+```{r}
+str_match(string = p12_df$created_at[1:10], pattern = "([\\d-]+) ([\\d:]+)")
+```
+
 
 Below, we extract datetime from the `created_at` column. The first capturing group matches the date part and the second capturing group matches the time part:
 
