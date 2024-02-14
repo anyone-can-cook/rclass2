@@ -1,20 +1,20 @@
 ---
 title: 'EDUC 260B: Fundamentals of Programming'
-author: ""
-date: ""
-output:
-  html_document:
-    toc: yes
-    toc_depth: 3
-    toc_float: yes
-    number_sections: yes
-    fig_caption: yes
-    highlight: tango
-    theme: default
-    df_print: tibble
-  pdf_document:
-    toc: yes
-    toc_depth: '3'
+format: docx
+toc: true
+toc-depth: 3
+toc_float: yes
+toccolor: blue
+toc-location: left
+number-sections: true
+fig_caption: yes
+highlight-style: tango
+theme: default
+df_print: tibble
+keep_md: yes
+  #pdf_document:
+  #  toc: yes
+  #  toc_depth: '3'
 urlcolor: blue
 subtitle: Winter 2024
 ---
@@ -22,16 +22,21 @@ subtitle: Winter 2024
 # Course information
 
 ```{r echo=FALSE, message=FALSE, warning = FALSE}
-library(kableExtra)
+library(flextable)
 library(tidyverse)
 
-t <- c("Weekly meetings (online)","Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
-l <- c('Fridays 9-11AM Pacific',"https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues_w23/issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_w23_announcements", " https://ucla.zoom.us/j/8458209354") 
 
-info <- tibble(t, l)
+Resource <- c("Weekly meetings (online)","Class website (public)", "Questions & Discussion (private)", "Announcements (private)", "Class Zoom link")
+Link <- c('Day Time Pacific',"https://anyone-can-cook.github.io/rclass2/", "https://github.com/anyone-can-cook/rclass2_student_issues_w23/issues", "https://github.com/orgs/anyone-can-cook/teams/rclass2_w23_announcements", " https://ucla.zoom.us/j/8458209354") 
 
-kable(info,col.names = c("Resource","Link"), escape = T) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "responsive"), full_width = F, position = "left")
+info <- tibble(Resource, Link)
+
+ft <- flextable(info)
+
+ft <- width(ft, width = 3)
+
+ft
+
 ```
 
 # Course description
@@ -56,38 +61,27 @@ The prerequisite is the first course in the sequence: [EDUC 260A: Introduction t
 - Office: Moore Hall, Room 3038
 - Email: [ozanj@ucla.edu](ozanj@ucla.edu)
 - Office hours:
-  - Zoom office hours: Wednesdays 3-4pm, zoom [link](https://ucla.zoom.us/j/2545750562)
-  - And by appointment
-- Dates Ozan misses all/part of class (we will still have class!)
-  - 1/27/2023 (misses all class, admissions meeting)
-  - 2/10/2023 (Ozan leaves at 10AM)
-  - 3/10/2023 (Ozan leaves at 10AM)
+  - Zoom office hours: 
+  - And by appointment:
   
 ## Teaching assistants
 
-**Joyce Nguy**  
+**NAME**  
 
-- Pronouns: she/her/hers
-- Email: [joycenguy@g.ucla.edu](joycenguy@g.ucla.edu)
+- Pronouns: 
+- Email: 
 - Office hours:
-  - Zoom office hours: Mondays 10am -11am, zoom [link](https://ucla.zoom.us/j/8458209354)
+  - Zoom office hours: 
   - And by appointment
  
-**Fernando Mora**  
+**NAME**  
 
-- Pronouns: he/him/his
-- Email: [fjmora@ucla.edu](fjmora@ucla.edu)
+- Pronouns: 
+- Email: 
 - Office hours:
-  - Zoom office hours: Tuesdays 2pm-3pm, zoom [link](https://ucla.zoom.us/j/4336432237)
+  - Zoom office hours: 
   - And by appointment
 
-**Xochilth Lopez-Salgado**
-
-- Pronouns: she/her/hers
-- Email: [lopezxochilth@ucla.edu](lopezxochilth@ucla.edu)
-- Office hours:
-  - Zoom office hours: Wednesdays 11am-12pm, zoom [link](https://ucla.zoom.us/j/6550025244)
-  - And by appointment
   
 # Course learning goals
 
@@ -291,28 +285,81 @@ In addition, students can work towards an 100% participation grade for the quart
 
 ## Grading scale
 
-```{r echo=FALSE, message=FALSE}
-library(kableExtra)
-library(tidyverse)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 lg <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F")
-nv <- c("93<100%", "90<93%", "87<90%", "83<87%", "80<83%", "77<80%", "73<77%", "70<73%", "60<70%", "0<60%")
+nv <- c("93<=100%", "90<93%", "87<90%", "83<87%", "80<83%", "77<80%", "73<77%", "70<73%", "60<70%", "0<60%")
 
 grade <- tibble(lg, nv)
 
-kable(grade,col.names = c("Letter Grade", "Percentage"), escape = T) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F, position = "left")
+gd <- flextable(grade)
+
+gd <- set_header_labels(gd,
+  values = list(
+    lg = "Letter Grade",
+    nv = "Percentage"
+  ),
+  width = 3
+)
+
+gd
 ```
 
 # Course topics and schedule
 
 Below is a overview of course topics and schedule. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](https://anyone-can-cook.github.io/rclass2/).
 
-1. Organizing files, directories, and scripts; reading and writing data [1 week]
-1. Graphing with ggplot [1 week]
-1. Git and GitHub [3 weeks]
-1. Loops, writing functions, and functional programming [3 weeks]
-1. Strings and regular expressions [2 weeks]
+
+**Week 1: Organizing files, directories, and scripts**
+
+- Introduce best practices for organizing files and directories for efficient workflow.
+- Learn best practices for formatting R scripts to promote seamless collaboration and workflow.
+
+**Week 2: git/Github- core concepts & workflow**  
+
+- Introduce shell commands in Terminal/Git Bash
+- Provide git/Github workflow and underlying structure
+- Learn basic git commands (e.g., git clone, git add, git commit)
+
+**Week 3: git/Github- Git repository & working in a team** 
+
+- Continuation of git/Github overview
+- Learn and practice creating local and remote Github repositories
+- Understand common git commands to observe changes to your reposiory (e.g., git status, git log)
+
+**Week 4: Programming- Iteration** 
+
+- Understand the basics of iteration with loops
+- Practice different approaches to writing loops
+- Loop over vectors, elements, names, or indices
+
+**Week 5: Programming- Functions & Conditional Statements**
+
+- Understand the basics of conditional execution
+- Work with `if`, `else`, and `else if` statements
+
+**Week 6: Programming- Functions & Conditional Statements continued...**
+
+- Understand the core components of functions
+- Learn to write functions
+
+**Week 7: Programming- Purr/mapping functions**
+
+- Learn core functional programming using the `purr` package
+- Apple mapping functions to perform multiple tasks at once
+
+**Week 8: Strings & Regex**
+
+- Become proficient in manipulating string/character data using string functions and regular expressions
+  
+**Week 9: Strings & Regex continued...**
+
+- Use string functions and regular expression (regex) patterns to parse text
+- Apply regular expressions to practical applications (e.g., analyzing text data, web-scraping)
+  
+**Week 10: Databases/SQL**
+
+- Learn about relational databases such as SQL and their utility for research 
 
 
 # Course policies
